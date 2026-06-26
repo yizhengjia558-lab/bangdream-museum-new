@@ -28,7 +28,7 @@ export function BandDetailView({
       <BandBackButton color={band.colors.primary} />
 
       <section className="page-hero-band relative overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-14">
-        {backdrop && <CinematicBackground src={backdrop} overlay={0.42} />}
+        {backdrop && <CinematicBackground src={backdrop} overlay={0.42} parallax={false} kenBurns={false} />}
         <div className="page-hero-scrim pointer-events-none absolute inset-0 z-[1]" aria-hidden />
 
         <div className="relative z-10 page-container">
@@ -75,7 +75,7 @@ export function BandDetailView({
         </div>
       </section>
 
-      <section className="page-section relative py-16 pb-24 sm:py-20 sm:pb-28">
+      <section className="page-section relative py-16 pb-[calc(7rem+env(safe-area-inset-bottom))] sm:py-20 sm:pb-[calc(8rem+env(safe-area-inset-bottom))]">
         <div className="relative page-container">
           <SectionHeading title={t("band.gallery")} subtitle={t("band.gallerySubtitle")} />
           <CardGallery cards={allCards.slice(0, 120)} themeColor={band.colors.primary} />

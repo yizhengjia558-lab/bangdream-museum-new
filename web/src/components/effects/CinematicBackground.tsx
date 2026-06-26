@@ -25,23 +25,34 @@ export function CinematicBackground({
   remote = false,
 }: CinematicBackgroundProps) {
   const url = remote ? src : assetUrl(src);
+  const [loaded, setLoaded] = useState(false);
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 800], [0, parallax ? 80 : 0]);
-  const scale = useTransform(scrollY, [0, 800], [1, parallax ? 1.08 : 1]);
+  const y = useTransform(scrollY, [0, 600], [0, parallax ? 48 : 0]);
+  const scale = useTransform(scrollY, [0, 600], [1.18, parallax ? 1.24 : 1.18]);
 
   return (
-    <div className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}>
-      <motion.div className="absolute inset-0" style={parallax ? { y, scale } : undefined}>
+    <div className={cn("cinematic-bg pointer-events-none absolute inset-0 overflow-hidden", className)}>
+      <div className="cinematic-bg__fallback absolute inset-0" aria-hidden />
+
+      <motion.div
+        className="cinematic-bg__layer absolute -inset-[18%]"
+        style={parallax ? { y, scale } : { scale: 1.18 }}
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={url}
           alt={alt}
+          decoding="async"
+          loading="eager"
+          onLoad={() => setLoaded(true)}
           className={cn(
-            "h-full w-full object-cover object-center",
-            kenBurns && "animate-ken-burns"
+            "cinematic-bg__image h-full w-full object-cover object-center transition-opacity duration-500",
+            kenBurns && !parallax && "animate-ken-burns",
+            loaded ? "opacity-100" : "opacity-0"
           )}
         />
       </motion.div>
+
       <div
         className="absolute inset-0"
         style={{

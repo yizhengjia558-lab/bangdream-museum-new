@@ -17,11 +17,11 @@ export function BandsPageView() {
           <h1 className="type-section-name mt-4">{t("bands.allBands")}</h1>
         </header>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        <ul className="band-card-grid">
           {BAND_THEMES.map((band, i) => (
             <BandCard key={band.slug} band={band} index={i} />
           ))}
-        </div>
+        </ul>
       </div>
     </>
   );

@@ -30,11 +30,10 @@ export function CharacterHero({
   const displayName = getCharacterName(character, locale);
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      <CinematicBackground src={backdrop} overlay={0.45} />
+    <section className="character-hero relative min-h-screen overflow-hidden">
+      <CinematicBackground src={backdrop} overlay={0.45} parallax={false} kenBurns={false} />
       <div
-        className="pointer-events-none absolute inset-0 opacity-50"
-        style={{ backdropFilter: "blur(48px)", WebkitBackdropFilter: "blur(48px)" }}
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/15 via-black/25 to-black/45"
         aria-hidden
       />
 

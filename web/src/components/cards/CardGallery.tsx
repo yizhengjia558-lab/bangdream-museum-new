@@ -5,12 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { GlassButton } from "@/components/ui/GlassButton";
 import { GlassPanel } from "@/components/ui/GlassPanel";
-import { CardTile } from "@/components/cards/CardTile";
-import { CardVariantBadge } from "@/components/cards/CardVariantBadge";
+import { CardGalleryItem } from "@/components/cards/CardGalleryItem";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { expandCardDisplays, type CardDisplayItem } from "@/lib/cards";
 import type { CardData } from "@/lib/data";
-import { cn } from "@/lib/utils";
 
 interface CardGalleryProps {
   cards: CardData[];
@@ -39,43 +37,18 @@ export function CardGallery({
 
   return (
     <>
-      <div className="card-gallery columns-2 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5">
+      <ul className="card-gallery-grid">
         {shown.map((item, i) => (
-          <motion.div
+          <CardGalleryItem
             key={item.key}
-            id={`card-tile-${item.key}`}
-            initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ delay: (i % 12) * 0.04, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className={cn(
-              "card-gallery-item break-inside-avoid scroll-mt-28",
-              highlightKey === item.key && "card-gallery-item--highlight"
-            )}
-          >
-            <CardTile onClick={() => setLightbox(item)}>
-              <CardVariantBadge variant={item.variant} />
-
-              <div className="card-image-wrap relative aspect-[3/4]">
-                <AssetImage
-                  src={item.src}
-                  alt={item.card.card_name}
-                  fill
-                  className="card-image object-cover"
-                />
-                <div className="glass-reflection" />
-              </div>
-
-              <div className="card-caption">
-                <p className="card-caption-rarity" style={{ color: themeColor }}>
-                  {item.card.rarity}
-                </p>
-                <p className="card-caption-name mt-2 line-clamp-2">{item.card.card_name}</p>
-              </div>
-            </CardTile>
-          </motion.div>
+            item={item}
+            index={i}
+            themeColor={themeColor}
+            highlight={highlightKey === item.key}
+            onClick={() => setLightbox(item)}
+          />
         ))}
-      </div>
+      </ul>
 
       {visible < displays.length && (
         <div className="mt-12 flex justify-center">

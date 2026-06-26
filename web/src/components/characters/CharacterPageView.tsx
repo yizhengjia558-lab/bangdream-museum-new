@@ -1,11 +1,9 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { AssetImage } from "@/components/ui/AssetImage";
 import { expandCardDisplays } from "@/lib/cards";
 import { CharacterCardArchive } from "@/components/characters/CharacterCardArchive";
-import { CardTile } from "@/components/cards/CardTile";
-import { CardVariantBadge } from "@/components/cards/CardVariantBadge";
+import { CardGalleryItem } from "@/components/cards/CardGalleryItem";
 import { CharacterHero } from "@/components/characters/CharacterHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BandBackButton } from "@/components/bands/BandBackButton";
@@ -68,24 +66,22 @@ export function CharacterPageView({
         <div className="pointer-events-none absolute inset-0 bloom-layer" aria-hidden />
         <div className="relative page-container">
           <SectionHeading title={t("character.featured")} subtitle={t("character.featuredSubtitle")} />
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-8">
-            {featured.map((item) => (
-              <CardTile key={item.key}>
-                <CardVariantBadge variant={item.variant} />
-                <div className="card-image-wrap relative aspect-[3/4]">
-                  <AssetImage src={item.src} alt={item.card.card_name} fill className="card-image object-cover" />
-                  <div className="glass-reflection" />
-                </div>
-                <div className="card-caption text-center">
-                  <span className="card-caption-name line-clamp-2">{item.card.card_name}</span>
-                </div>
-              </CardTile>
+          <ul className="card-gallery-grid card-gallery-grid--featured">
+            {featured.map((item, i) => (
+              <CardGalleryItem
+                key={item.key}
+                item={item}
+                index={i}
+                themeColor={primary}
+                highlight={false}
+                onClick={() => jumpToCard(item.key)}
+              />
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      <section id="character-archive" className="page-section relative scroll-mt-28 py-20 pb-28">
+      <section id="character-archive" className="character-archive-section page-section relative scroll-mt-28 py-20">
         <div className="relative page-container">
           <SectionHeading title={t("character.archive")} subtitle={t("character.archiveSubtitle")} />
           <CharacterCardArchive
