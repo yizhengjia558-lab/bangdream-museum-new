@@ -200,14 +200,19 @@ def find_initial_card_id(character_id: int, cards: dict) -> str | None:
     return sorted(matches, key=int)[0] if matches else None
 
 
-def fetch_live_costume_image(client: httpx.Client, card_id: str) -> bytes | None:
+def fetch_live_costume_image(
+    client: httpx.Client, card_id: str, bp_member_id: int | None = None
+) -> bytes | None:
     resp = client.get(
-        f"https://bandori.party/api/costumes/?card={card_id}&i_costume_type=live&page_size=20",
+        f"https://bandori.party/api/costumes/?card={card_id}&i_costume_type=live&page_size=100",
         timeout=60,
     )
     if resp.status_code != 200:
         return None
-    results = sorted(resp.json().get("results") or [], key=lambda c: c.get("id") or 0)
+    results = resp.json().get("results") or []
+    if bp_member_id is not None:
+        results = [c for c in results if c.get("member") == bp_member_id]
+    results = sorted(results, key=lambda c: c.get("id") or 0)
     for costume in results:
         img_url = costume.get("display_image") or ""
         if img_url.startswith("//"):
@@ -227,12 +232,12 @@ def download_standing_image(
     name_jp: str,
 ) -> tuple[bytes | None, str]:
     initial = find_initial_card_id(char_id, cards)
-    if initial:
-        data = fetch_live_costume_image(client, initial)
-        if data:
-            return data, f"costume(card={initial})"
-
     bp_id = bestdori_to_bp_member_id(char_id)
+    if initial:
+        data = fetch_live_costume_image(client, initial, bp_id)
+        if data:
+            return data, f"costume(card={initial},member={bp_id})"
+
     bp = bp_members_by_id.get(bp_id) if bp_id else None
     if bp is None:
         bp = bp_members.get(norm_name(name_jp))
@@ -301,10 +306,11 @@ def collect(force: bool = False) -> None:
             client, int(char_id), cards, bp_members_by_id, bp_members, name_jp
         )
         if data:
-            saved = save_unique(data, standing_dir / "standing.png", global_hash_registry)
-            if saved:
-                standing_files.append(str(saved.relative_to(ROOT)).replace("\\", "/"))
-                log(f"  Standing: {source} ({saved.name})")
+            dest = standing_dir / "standing.png"
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_bytes(data)
+            standing_files.append(str(dest.relative_to(ROOT)).replace("\\", "/"))
+            log(f"  Standing: {source} ({dest.name})")
         if not standing_files:
             log(f"  Standing: unavailable")
 

@@ -35,14 +35,15 @@ def find_initial_card_id(character_id: int, cards: dict) -> str | None:
     return sorted(matches, key=int)[0]
 
 
-def fetch_live_costume_image(client: httpx.Client, card_id: str) -> bytes | None:
-    url = f"https://bandori.party/api/costumes/?card={card_id}&i_costume_type=live&page_size=20"
+def fetch_live_costume_image(
+    client: httpx.Client, card_id: str, bp_member_id: int | None = None
+) -> bytes | None:
+    url = f"https://bandori.party/api/costumes/?card={card_id}&i_costume_type=live&page_size=100"
     resp = client.get(url, timeout=60)
     resp.raise_for_status()
     results = resp.json().get("results") or []
-    if not results:
-        return None
-
+    if bp_member_id is not None:
+        results = [c for c in results if c.get("member") == bp_member_id]
     results.sort(key=lambda c: c.get("id") or 0)
     for costume in results:
         img_url = costume.get("display_image") or ""
@@ -103,15 +104,15 @@ def upgrade_standing(
 
     data: bytes | None = None
     source = ""
+    bp_id = bestdori_to_bp_member_id(char_id)
 
     initial_card = find_initial_card_id(char_id, cards)
     if initial_card:
-        data = fetch_live_costume_image(client, initial_card)
+        data = fetch_live_costume_image(client, initial_card, bp_id)
         if data:
-            source = f"costume(card={initial_card})"
+            source = f"costume(card={initial_card},member={bp_id})"
 
     if not data:
-        bp_id = bestdori_to_bp_member_id(char_id)
         if bp_id:
             data = fetch_member_image(client, bp_id)
             if data:
