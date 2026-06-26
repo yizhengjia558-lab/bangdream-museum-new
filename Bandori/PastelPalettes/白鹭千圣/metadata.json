@@ -1,0 +1,607 @@
+{
+  "character_name_cn": "白鹭 千圣",
+  "character_name_jp": "白鷺 千聖",
+  "band": "Pastel＊Palettes",
+  "cards": [
+    {
+      "card_name": "铁壁的微笑",
+      "rarity": "1-Star",
+      "event": "Initial Member Card",
+      "release_date": "2017-03-16",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018001_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "舞台",
+      "rarity": "2-Star",
+      "event": "开服纪念招募",
+      "release_date": "2017-03-16",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018002_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "目标的距离",
+      "rarity": "3-Star",
+      "event": "开服纪念招募",
+      "release_date": "2017-03-16",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018003_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018003_rip/card_after_training.png"
+    },
+    {
+      "card_name": "红心女王",
+      "rarity": "2-Star",
+      "event": "小兔子脱逃中！",
+      "release_date": "2017-05-23",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018005_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "纯白的居所",
+      "rarity": "3-Star",
+      "event": "Beginning White招募",
+      "release_date": "2017-05-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018006_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018006_rip/card_after_training.png"
+    },
+    {
+      "card_name": "推心置腹的伙伴",
+      "rarity": "4-Star",
+      "event": "花与蝶招募",
+      "release_date": "2017-07-21",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018007_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018007_rip/card_after_training.png"
+    },
+    {
+      "card_name": "朱丽叶之名",
+      "rarity": "3-Star",
+      "event": "浮世间绽放 蔷薇其名为",
+      "release_date": "2017-08-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018009_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018009_rip/card_after_training.png"
+    },
+    {
+      "card_name": "认真・恐慌",
+      "rarity": "3-Star",
+      "event": "紧张不已！？偶像团体野外求生招募",
+      "release_date": "2019-10-15",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018011_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018011_rip/card_after_training.png"
+    },
+    {
+      "card_name": "前往辉煌的舞台",
+      "rarity": "2-Star",
+      "event": "集会之旅的伙伴们 招募",
+      "release_date": "2020-01-07",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018013_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "留宿会",
+      "rarity": "4-Star",
+      "event": "Pastel＊Bloom Girls招募",
+      "release_date": "2020-02-04",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018014_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018014_rip/card_after_training.png"
+    },
+    {
+      "card_name": "偶像的规则",
+      "rarity": "2-Star",
+      "event": "无法退让的信念 燃烧吧武士道",
+      "release_date": "2020-03-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018016_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018016_rip/card_after_training.png"
+    },
+    {
+      "card_name": "延续梦想之路",
+      "rarity": "4-Star",
+      "event": "彩的熠熠生辉之路 招募",
+      "release_date": "2020-04-28",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018017_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018017_rip/card_after_training.png"
+    },
+    {
+      "card_name": "向阳处的片刻时光",
+      "rarity": "4-Star",
+      "event": "阳光洒落古典的花园 招募",
+      "release_date": "2020-06-23",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018018_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018018_rip/card_after_training.png"
+    },
+    {
+      "card_name": "偶像·女巫",
+      "rarity": "3-Star",
+      "event": "Trick or Escape!",
+      "release_date": "2020-06-30",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018019_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018019_rip/card_after_training.png"
+    },
+    {
+      "card_name": "GOGO WEGO！",
+      "rarity": "2-Star",
+      "event": "campaign",
+      "release_date": "2018-11-16",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018020_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "美好的同款",
+      "rarity": "3-Star",
+      "event": "勇往直前 Groovy 招募",
+      "release_date": "2020-08-18",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018021_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018021_rip/card_after_training.png"
+    },
+    {
+      "card_name": "模范偶像",
+      "rarity": "3-Star",
+      "event": "活出、理想的自我",
+      "release_date": "2020-09-08",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018022_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018022_rip/card_after_training.png"
+    },
+    {
+      "card_name": "光芒四溢",
+      "rarity": "4-Star",
+      "event": "WHITE×WHITE=JOYFUL! 招募",
+      "release_date": "2020-10-13",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018023_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018023_rip/card_after_training.png"
+    },
+    {
+      "card_name": "照亮梦想",
+      "rarity": "2-Star",
+      "event": "Brand New Season Dream Festival 招募",
+      "release_date": "2020-07-01",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018024_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "容量超载",
+      "rarity": "4-Star",
+      "event": "空想科学！蒸汽系偶像 招募",
+      "release_date": "2020-12-01",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018025_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018025_rip/card_after_training.png"
+    },
+    {
+      "card_name": "心旷神怡",
+      "rarity": "4-Star",
+      "event": "闪闪发光！Seaside Flower 招募",
+      "release_date": "2021-02-02",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018027_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018027_rip/card_after_training.png"
+    },
+    {
+      "card_name": "若是眺望远方",
+      "rarity": "3-Star",
+      "event": "梦与现实 百人一首",
+      "release_date": "2021-03-09",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018028_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018028_rip/card_after_training.png"
+    },
+    {
+      "card_name": "东奔西走",
+      "rarity": "4-Star",
+      "event": "Dream Festival 招募",
+      "release_date": "2021-03-16",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018030_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018030_rip/card_after_training.png"
+    },
+    {
+      "card_name": "铭记这个特别瞬间",
+      "rarity": "3-Star",
+      "event": "朝着梦想 勇往直前",
+      "release_date": "2021-04-13",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018031_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018031_rip/card_after_training.png"
+    },
+    {
+      "card_name": "因为有小薰在",
+      "rarity": "4-Star",
+      "event": "双璧 彼此的骑士 招募",
+      "release_date": "2021-04-27",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018032_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018032_rip/card_after_training.png"
+    },
+    {
+      "card_name": "要注意混合方法！",
+      "rarity": "3-Star",
+      "event": "饱含心意地送上 五彩缤纷的巧克力 招募",
+      "release_date": "2021-06-01",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018033_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018033_rip/card_after_training.png"
+    },
+    {
+      "card_name": "能够走多远？",
+      "rarity": "2-Star",
+      "event": "路灯照耀 街头现场演出 招募",
+      "release_date": "2021-06-15",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018034_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "Country Flower",
+      "rarity": "2-Star",
+      "event": "捕捉 属于我的影像",
+      "release_date": "2021-07-06",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018035_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "盛放的声援",
+      "rarity": "2-Star",
+      "event": "夏之律动・上 Dream Festival 招募",
+      "release_date": "2021-07-13",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018036_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "期待高涨的安可",
+      "rarity": "3-Star",
+      "event": "Backstage Pass 3",
+      "release_date": "2021-07-13",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018037_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018037_rip/card_after_training.png"
+    },
+    {
+      "card_name": "互相支援的存在",
+      "rarity": "4-Star",
+      "event": "盛赞的戏剧性表演 招募",
+      "release_date": "2021-08-03",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018038_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018038_rip/card_after_training.png"
+    },
+    {
+      "card_name": "绽放在水面的花朵",
+      "rarity": "3-Star",
+      "event": "叹息在 雨过天晴的彼端",
+      "release_date": "2021-09-14",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018039_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018039_rip/card_after_training.png"
+    },
+    {
+      "card_name": "迈向舞台灯光",
+      "rarity": "4-Star",
+      "event": "开启成熟稳重模式 招募",
+      "release_date": "2021-11-02",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018040_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018040_rip/card_after_training.png"
+    },
+    {
+      "card_name": "无法抑制的感情",
+      "rarity": "3-Star",
+      "event": "TITLE IDOL",
+      "release_date": "2022-01-04",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018041_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018041_rip/card_after_training.png"
+    },
+    {
+      "card_name": "无声的支持",
+      "rarity": "2-Star",
+      "event": "二人三脚的准则",
+      "release_date": "2022-01-18",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018042_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "与飘舞的樱花花瓣一起",
+      "rarity": "4-Star",
+      "event": "星海的宇宙观光周游船招募",
+      "release_date": "2022-03-22",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018043_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018043_rip/card_after_training.png"
+    },
+    {
+      "card_name": "Special birthday！",
+      "rarity": "4-Star",
+      "event": "千圣生日纪念招募",
+      "release_date": "2022-04-05",
+      "untrained_image": "",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018044_rip/card_after_training.png"
+    },
+    {
+      "card_name": "职业意识僵尸",
+      "rarity": "5-Star",
+      "event": "甦醒吧！Sparkling Soul 招募",
+      "release_date": "2022-05-17",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018045_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018045_rip/card_after_training.png"
+    },
+    {
+      "card_name": "第3回ガルパ杯",
+      "rarity": "4-Star",
+      "event": "Other",
+      "release_date": "2100-10-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018038_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018038_rip/card_after_training.png"
+    },
+    {
+      "card_name": "跑腿女服务生",
+      "rarity": "2-Star",
+      "event": "Girls·Be·Ambitious!",
+      "release_date": "2021-08-11",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018047_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "保持坦率的你",
+      "rarity": "4-Star",
+      "event": "灯火通明 繁华的长夜 招募",
+      "release_date": "2021-10-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018048_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018048_rip/card_after_training.png"
+    },
+    {
+      "card_name": "庆祝新的一年",
+      "rarity": "4-Star",
+      "event": "可喜可贺 欢庆的黄道吉日 招募",
+      "release_date": "2021-12-31",
+      "untrained_image": "",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018050_rip/card_after_training.png"
+    },
+    {
+      "card_name": "传播的热意",
+      "rarity": "2-Star",
+      "event": "That Day, That Song",
+      "release_date": "2022-02-19",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018051_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "梦色婚礼",
+      "rarity": "2-Star",
+      "event": "3.5周年纪念Dream Festival 招募",
+      "release_date": "2022-03-11",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018052_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "Precious birthday！",
+      "rarity": "4-Star",
+      "event": "千圣生日纪念Precious birthday！招募",
+      "release_date": "2023-04-05",
+      "untrained_image": "",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018053_rip/card_after_training.png"
+    },
+    {
+      "card_name": "耀眼夺目的历史",
+      "rarity": "4-Star",
+      "event": "La La La travel 招募",
+      "release_date": "2023-01-20",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018054_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018054_rip/card_after_training.png"
+    },
+    {
+      "card_name": "狗狗要通过",
+      "rarity": "3-Star",
+      "event": "Wedding・Must・Go・On！",
+      "release_date": "2023-02-17",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018055_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018055_rip/card_after_training.png"
+    },
+    {
+      "card_name": "第4回ガルパ杯",
+      "rarity": "4-Star",
+      "event": "Other",
+      "release_date": "2100-10-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018048_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018048_rip/card_after_training.png"
+    },
+    {
+      "card_name": "眸中倒映之花",
+      "rarity": "4-Star",
+      "event": "叮叮咚咚♪响于夜市 夏季的音色 招募",
+      "release_date": "2023-04-21",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018057_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018057_rip/card_after_training.png"
+    },
+    {
+      "card_name": "艳羡与微笑",
+      "rarity": "3-Star",
+      "event": "CRUSH ON THE DRUM!!!",
+      "release_date": "2023-05-30",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018058_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018058_rip/card_after_training.png"
+    },
+    {
+      "card_name": "致王子殿下",
+      "rarity": "4-Star",
+      "event": "merry many times招募",
+      "release_date": "2023-08-02",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018059_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018059_rip/card_after_training.png"
+    },
+    {
+      "card_name": "不甘之情融于蒸汽",
+      "rarity": "4-Star",
+      "event": "夏之律动·后章Dream Festival招募",
+      "release_date": "2023-08-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018061_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018061_rip/card_after_training.png"
+    },
+    {
+      "card_name": "毕业",
+      "rarity": "4-Star",
+      "event": "毕业 〜3月的天空蔚蓝澄澈〜",
+      "release_date": "2023-10-22",
+      "untrained_image": "",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018062_rip/card_after_training.png"
+    },
+    {
+      "card_name": "一起迈出一步",
+      "rarity": "5-Star",
+      "event": "I・Doll・house♡ 招募",
+      "release_date": "2023-11-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018067_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018067_rip/card_after_training.png"
+    },
+    {
+      "card_name": "新的校园",
+      "rarity": "4-Star",
+      "event": "迎风展翅的我们",
+      "release_date": "2024-01-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018068_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018068_rip/card_after_training.png"
+    },
+    {
+      "card_name": "与那天一样的风和你",
+      "rarity": "5-Star",
+      "event": "KIRAMEKI Festival 招募",
+      "release_date": "2024-02-25",
+      "untrained_image": "",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018069_rip/card_after_training.png"
+    },
+    {
+      "card_name": "为了见到开心的表情",
+      "rarity": "3-Star",
+      "event": "在荒野中绽放吧，花季少女们",
+      "release_date": "2024-03-05",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018070_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018070_rip/card_after_training.png"
+    },
+    {
+      "card_name": "正因为想要守护",
+      "rarity": "5-Star",
+      "event": "公主骑士们的英杰传奇招募",
+      "release_date": "2024-07-17",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018071_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018071_rip/card_after_training.png"
+    },
+    {
+      "card_name": "深厚信赖",
+      "rarity": "2-Star",
+      "event": "Step Together",
+      "release_date": "2024-11-11",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018072_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "偶尔放缓步调",
+      "rarity": "5-Star",
+      "event": "年末庆典Dream Festival 招募",
+      "release_date": "2024-12-12",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018073_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018073_rip/card_after_training.png"
+    },
+    {
+      "card_name": "你给我的勇气",
+      "rarity": "5-Star",
+      "event": "与你心心相印♡五彩缤纷的心招募",
+      "release_date": "2025-02-23",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018074_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018074_rip/card_after_training.png"
+    },
+    {
+      "card_name": "更加注视我吧",
+      "rarity": "5-Star",
+      "event": "【我推的孩子】×少女乐团派对！招募 Part2",
+      "release_date": "2025-08-16",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018075_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018075_rip/card_after_training.png"
+    },
+    {
+      "card_name": "只给一条建议",
+      "rarity": "4-Star",
+      "event": "带来幸福的圣诞夜赠礼招募",
+      "release_date": "2025-05-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018076_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "光舞的旋律",
+      "rarity": "5-Star",
+      "event": "GIRLS ROCK in FULL BL∞M招募",
+      "release_date": "2025-09-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018077_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018077_rip/card_after_training.png"
+    },
+    {
+      "card_name": "勾起拍摄冲动的侧脸",
+      "rarity": "3-Star",
+      "event": "花开季节的幕后剪影",
+      "release_date": "2025-10-11",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018078_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018078_rip/card_after_training.png"
+    },
+    {
+      "card_name": "看一眼就懂啦！",
+      "rarity": "5-Star",
+      "event": "千变万化！赛博超级偶像",
+      "release_date": "2026-01-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018079_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018079_rip/card_after_training.png"
+    },
+    {
+      "card_name": "LOVELY CAT",
+      "rarity": "2-Star",
+      "event": "伊芙的魅力推广大作战！",
+      "release_date": "2026-06-05",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018080_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "My dear dog",
+      "rarity": "5-Star",
+      "event": "7周年纪念·后篇Dream Festival招募",
+      "release_date": "2026-06-15",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018081_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018081_rip/card_after_training.png"
+    },
+    {
+      "card_name": "新たな学び舎",
+      "rarity": "4-Star",
+      "event": "campaign",
+      "release_date": "2100-11-30",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018068_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018068_rip/card_after_training.png"
+    },
+    {
+      "card_name": "私の気持ち",
+      "rarity": "5-Star",
+      "event": "綺雲たなびく楼閣への誘いガチャ",
+      "release_date": "2026-02-27",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018083_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018083_rip/card_after_training.png"
+    },
+    {
+      "card_name": "落としたもの",
+      "rarity": "5-Star",
+      "event": "あの誓いに手を伸ばしてガチャ",
+      "release_date": "2026-04-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018084_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018084_rip/card_after_training.png"
+    },
+    {
+      "card_name": "断崖絶壁の告白",
+      "rarity": "3-Star",
+      "event": "君と一緒に！パスパレ全国ツアー！",
+      "release_date": "2026-05-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018085_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018085_rip/card_after_training.png"
+    },
+    {
+      "card_name": "Card 5003",
+      "rarity": "2-Star",
+      "event": "campaign",
+      "release_date": "",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018s01_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "罗森联动2025",
+      "rarity": "2-Star",
+      "event": "campaign",
+      "release_date": "2025-08-11",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res018001_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "Card 90018",
+      "rarity": "2-Star",
+      "event": "",
+      "release_date": "",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res900018_rip/card_normal.png",
+      "trained_image": ""
+    }
+  ]
+}

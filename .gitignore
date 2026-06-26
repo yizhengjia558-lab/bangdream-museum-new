@@ -1,0 +1,30 @@
+# Dependencies
+web/node_modules/
+web/.next/
+web/out/
+
+# Assets junction (canonical copy is Bandori/; CI creates symlink)
+web/public/assets/
+
+# Compressed asset manifest (local)
+compress_manifest.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+
+# Local logs
+*.log
+
+# Env / secrets
+.env
+.env.*
+.dev.vars
+.aliyun.env
+
+# Wrangler
+.wrangler/
