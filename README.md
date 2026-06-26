@@ -32,8 +32,9 @@ python collect_bandori.py
 3. 仓库 **Settings → Pages → Source** 选择 **GitHub Actions**
 4. 推送后等待 Actions 中 **Deploy GitHub Pages** 完成
 
-网站地址：`https://<用户名>.github.io/<仓库名>/`
+网站地址：`https://yizhengjia558-lab.github.io/bangdream-museum-new/`
 
+> 当前仓库：`yizhengjia558-lab/bangdream-museum-new`  
 > 图片资源约 1.8GB，GitHub Pages 产物有体积上限；若 Actions 部署失败，请改用阿里云 OSS。
 
 ## 项目结构
