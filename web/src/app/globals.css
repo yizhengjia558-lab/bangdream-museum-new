@@ -1152,15 +1152,15 @@ button.glass-frame.card-tile {
 
 .band-back-btn--fixed {
   position: fixed;
-  top: 1.25rem;
-  right: 1.25rem;
+  top: max(1.25rem, env(safe-area-inset-top, 0px));
+  right: max(1.25rem, env(safe-area-inset-right, 0px));
   z-index: 70;
 }
 
 .lang-toggle-fixed {
   position: fixed;
-  top: 1.25rem;
-  left: 1.25rem;
+  top: max(1.25rem, env(safe-area-inset-top, 0px));
+  left: max(1.25rem, env(safe-area-inset-left, 0px));
   z-index: 70;
 }
 
@@ -1171,21 +1171,15 @@ button.glass-frame.card-tile {
 
 .theme-toggle-fixed {
   position: fixed;
-  top: 1.25rem;
-  right: 1.25rem;
-  z-index: 60;
+  top: calc(max(1.25rem, env(safe-area-inset-top, 0px)) + 3.25rem);
+  right: max(1.25rem, env(safe-area-inset-right, 0px));
+  z-index: 70;
 }
 
+/* 有返回按钮时：主题切换固定在返回按钮正下方 */
 body:has(.band-back-btn--fixed) .theme-toggle-fixed {
-  top: 4.5rem;
-  right: 1.25rem;
-}
-
-@media (min-width: 640px) {
-  body:has(.band-back-btn--fixed) .theme-toggle-fixed {
-    top: 1.25rem;
-    right: 10.5rem;
-  }
+  top: calc(max(1.25rem, env(safe-area-inset-top, 0px)) + 2.75rem + 0.625rem);
+  right: max(1.25rem, env(safe-area-inset-right, 0px));
 }
 
 /* ── Scroll to top ── */
