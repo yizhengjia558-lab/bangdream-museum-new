@@ -8,6 +8,10 @@ const bandori = path.join(root, "Bandori");
 const out = path.join(__dirname, "../src/data/site-data.json");
 
 const index = JSON.parse(fs.readFileSync(path.join(bandori, "all_characters.json"), "utf8"));
+const voiceActorsPath = path.join(__dirname, "../src/data/voice-actors.json");
+const voiceActorsRaw = fs.existsSync(voiceActorsPath)
+  ? JSON.parse(fs.readFileSync(voiceActorsPath, "utf8"))
+  : {};
 
 function toWebPath(relativePath) {
   const parts = relativePath.replace(/\\/g, "/").split("/").filter(Boolean);
@@ -148,6 +152,38 @@ const characters = index.characters.map((entry) => {
     ...galleryTrained,
   ];
 
+  const vaMeta = voiceActorsRaw[String(entry.character_id)];
+
+  /** Prefer per-character VoiceActor/ folder; fall back to voice-actors.json path. */
+  function resolveVoiceActorImage() {
+    const vaDir = path.join(bandori, entry.path.replace(/\//g, path.sep), "VoiceActor");
+    if (fs.existsSync(vaDir)) {
+      const preferred = ["cv.jpg", "cv.png", "cv.webp", "cv.jpeg"];
+      for (const name of preferred) {
+        const abs = path.join(vaDir, name);
+        if (fs.existsSync(abs)) return toAssetPath(`${entry.path}/VoiceActor/${name}`);
+      }
+      const any = fs
+        .readdirSync(vaDir)
+        .filter((f) => /\.(jpe?g|png|webp)$/i.test(f))
+        .sort()[0];
+      if (any) return toAssetPath(`${entry.path}/VoiceActor/${any}`);
+    }
+    if (vaMeta?.image) return toAssetPath(vaMeta.image);
+    return "";
+  }
+
+  const vaImage = resolveVoiceActorImage();
+  const voice_actor =
+    vaImage || vaMeta
+      ? {
+          cv_jp: vaMeta?.cv_jp || "",
+          cv_romaji: vaMeta?.cv_romaji || "",
+          cv_cn: vaMeta?.cv_cn || "",
+          image: vaImage,
+        }
+      : undefined;
+
   return {
     id: entry.character_id,
     slug: String(entry.character_id),
@@ -158,6 +194,7 @@ const characters = index.characters.map((entry) => {
     standing: toAssetPath(entry.standing_path),
     card_count: allCards.length,
     cards: allCards,
+    ...(voice_actor ? { voice_actor } : {}),
   };
 });
 

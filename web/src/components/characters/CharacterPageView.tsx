@@ -5,6 +5,7 @@ import { expandCardDisplays } from "@/lib/cards";
 import { CharacterCardArchive } from "@/components/characters/CharacterCardArchive";
 import { CardGalleryItem } from "@/components/cards/CardGalleryItem";
 import { CharacterHero } from "@/components/characters/CharacterHero";
+import { CharacterVoiceActorSection } from "@/components/characters/CharacterVoiceActorSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BandBackButton } from "@/components/bands/BandBackButton";
 import { useLocale } from "@/components/i18n/LocaleProvider";
@@ -61,6 +62,10 @@ export function CharacterPageView({
         cardDisplays={displays}
         onJumpToCard={jumpToCard}
       />
+
+      {character.voice_actor?.image ? (
+        <CharacterVoiceActorSection voiceActor={character.voice_actor} accent={primary} />
+      ) : null}
 
       <section className="page-section relative py-20">
         <div className="pointer-events-none absolute inset-0 bloom-layer" aria-hidden />

@@ -210,11 +210,11 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   transform: rotate(-14deg);
-  opacity: 0.55;
+  opacity: 0.78;
 }
 
 [data-theme="dark"] .bd-page-bg__scroll {
-  opacity: 0.38;
+  opacity: 0.62;
 }
 
 .bd-page-bg__scroll-row {
@@ -222,21 +222,29 @@ body {
   width: max-content;
   white-space: nowrap;
   font-family: var(--font-title-active);
-  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  font-size: clamp(2.75rem, 8.5vw, 6rem);
   font-weight: 900;
   font-style: italic;
   letter-spacing: 0.06em;
   line-height: 1.1;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(233, 67, 94, 0.35);
-  text-stroke: 1.5px rgba(233, 67, 94, 0.35);
+  color: rgba(233, 67, 94, 0.14);
+  -webkit-text-stroke: 2.75px rgba(233, 67, 94, 0.62);
+  text-stroke: 2.75px rgba(233, 67, 94, 0.62);
+  paint-order: stroke fill;
+  text-shadow:
+    0 0 32px rgba(233, 67, 94, 0.22),
+    0 2px 12px rgba(233, 67, 94, 0.12);
   animation: bd-scroll-forward 48s linear infinite;
   animation-delay: calc(var(--row-i, 0) * -6s);
 }
 
 [data-theme="dark"] .bd-page-bg__scroll-row {
-  -webkit-text-stroke: 1.5px rgba(255, 107, 138, 0.28);
-  text-stroke: 1.5px rgba(255, 107, 138, 0.28);
+  color: rgba(255, 120, 150, 0.12);
+  -webkit-text-stroke: 2.75px rgba(255, 120, 150, 0.58);
+  text-stroke: 2.75px rgba(255, 120, 150, 0.58);
+  text-shadow:
+    0 0 40px rgba(255, 107, 138, 0.28),
+    0 2px 16px rgba(255, 107, 138, 0.18);
 }
 
 .bd-page-bg__scroll-row span {
@@ -245,14 +253,15 @@ body {
 
 .bd-page-bg__scroll--reverse {
   transform: rotate(-14deg);
-  opacity: 0.28;
+  opacity: 0.52;
 }
 
 .bd-page-bg__scroll--reverse .bd-page-bg__scroll-row {
   animation-name: bd-scroll-reverse;
   animation-duration: 62s;
-  font-size: clamp(2rem, 6vw, 4rem);
-  -webkit-text-stroke-width: 1px;
+  font-size: clamp(2.25rem, 6.5vw, 4.5rem);
+  -webkit-text-stroke-width: 2.25px;
+  text-stroke-width: 2.25px;
 }
 
 .bd-page-bg__scroll-row--alt {
@@ -1318,6 +1327,197 @@ body:has(.band-back-btn--fixed) .theme-toggle-fixed {
 }
 
 [data-theme="dark"] .character-hero-stat-value {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.character-voice-actor {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.character-voice-actor-label {
+  margin: 0 0 0.875rem;
+  font-family: var(--font-body-active);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  color: var(--text-muted);
+  opacity: 0.72;
+}
+
+.character-voice-actor-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.character-voice-actor-photo {
+  position: relative;
+  flex-shrink: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  overflow: hidden;
+  border-radius: 9999px;
+  border: 2px solid var(--glass-border-strong);
+  background: var(--glass-bg-strong);
+}
+
+.character-voice-actor-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.character-voice-actor-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-subtitle-active);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: var(--glass-bg-strong);
+}
+
+.character-voice-actor-photo--fallback .character-voice-actor-fallback {
+  display: flex;
+}
+
+.character-voice-actor-text {
+  min-width: 0;
+}
+
+.character-voice-actor-name {
+  margin: 0;
+  font-family: var(--font-subtitle-active);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.character-voice-actor-alt {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-body-active);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .character-voice-actor-label {
+  opacity: 0.6;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+[data-theme="dark"] .character-voice-actor-name {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* ── Character voice actor showcase (above cards) ── */
+
+.character-voice-section-panel {
+  padding: clamp(1.75rem, 4vw, 2.5rem) clamp(1.75rem, 4vw, 3rem);
+}
+
+.character-voice-section-eyebrow {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-subtitle-active);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+.character-voice-section-body {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.character-voice-section-photo {
+  position: relative;
+  flex-shrink: 0;
+  width: clamp(7rem, 22vw, 10rem);
+  height: clamp(7rem, 22vw, 10rem);
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 2px solid var(--glass-border-strong);
+  background: var(--glass-bg-strong);
+}
+
+.character-voice-section-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.character-voice-section-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-title-active);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  background: var(--glass-bg-strong);
+}
+
+.character-voice-section-photo--fallback .character-voice-section-fallback {
+  display: flex;
+}
+
+.character-voice-section-name {
+  margin: 0;
+  font-family: var(--font-title-active);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.character-voice-section-alt {
+  margin: 0.5rem 0 0;
+  font-family: var(--font-subtitle-active);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.character-voice-section-romaji {
+  margin: 0.375rem 0 0;
+  font-family: var(--font-body-active);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+@media (max-width: 480px) {
+  .character-voice-section-body {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+[data-theme="dark"] .character-voice-section-name {
   color: rgba(255, 255, 255, 0.95);
 }
 

@@ -13,6 +13,13 @@ export interface CardData {
   trained_file: string;
 }
 
+export interface VoiceActorData {
+  cv_jp: string;
+  cv_romaji: string;
+  cv_cn: string;
+  image: string;
+}
+
 export interface CharacterData {
   id: number;
   slug: string;
@@ -23,6 +30,7 @@ export interface CharacterData {
   standing: string;
   card_count: number;
   cards: CardData[];
+  voice_actor?: VoiceActorData;
 }
 
 export function getAllCharacters(): CharacterData[] {

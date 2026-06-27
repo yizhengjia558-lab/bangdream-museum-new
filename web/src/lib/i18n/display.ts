@@ -1,4 +1,4 @@
-import type { CharacterData } from "@/lib/data";
+import type { CharacterData, VoiceActorData } from "@/lib/data";
 import type { BandTheme } from "@/lib/themes";
 import type { Locale } from "./types";
 
@@ -14,6 +14,12 @@ export function getCharacterAltName(character: CharacterData, locale: Locale): s
   if (locale === "zh") return character.name_jp;
   if (locale === "ja") return character.name_cn;
   return character.name_cn;
+}
+
+export function getVoiceActorName(va: VoiceActorData, locale: Locale): string {
+  if (locale === "zh") return va.cv_cn || va.cv_jp;
+  if (locale === "ja") return va.cv_jp;
+  return va.cv_romaji || va.cv_jp;
 }
 
 export function getBandName(band: BandTheme, locale: Locale): string {

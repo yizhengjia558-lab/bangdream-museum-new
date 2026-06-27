@@ -1,0 +1,263 @@
+{
+  "1": {
+    "character_id": 1,
+    "cv_jp": "愛美",
+    "cv_romaji": "Aimi",
+    "cv_cn": "爱美",
+    "x_handle": "aimi_sound",
+    "image": "PoppinParty/户山香澄/VoiceActor/cv.jpg"
+  },
+  "2": {
+    "character_id": 2,
+    "cv_jp": "大塚紗英",
+    "cv_romaji": "Otsuka Sae",
+    "cv_cn": "大冢纱英",
+    "x_handle": "Sae_Otsuka",
+    "image": "PoppinParty/花园多惠/VoiceActor/cv.jpg"
+  },
+  "3": {
+    "character_id": 3,
+    "cv_jp": "西本 りみ",
+    "cv_romaji": "Nishimoto Rimi",
+    "cv_cn": "西本里美",
+    "image": "VoiceActors/3.png"
+  },
+  "4": {
+    "character_id": 4,
+    "cv_jp": "大橋 彩香",
+    "cv_romaji": "Ohashi Ayaka",
+    "cv_cn": "大桥彩香",
+    "image": ""
+  },
+  "5": {
+    "character_id": 5,
+    "cv_jp": "伊藤 彩沙",
+    "cv_romaji": "Itou Ayasa",
+    "cv_cn": "伊藤彩沙",
+    "x_handle": "AyasaIto",
+    "image": "PoppinParty/市谷有咲/VoiceActor/cv.jpg"
+  },
+  "6": {
+    "character_id": 6,
+    "cv_jp": "佐倉 綾音",
+    "cv_romaji": "Sakura Ayane",
+    "cv_cn": "佐仓绫音",
+    "x_handle": "Ayane_Sakura",
+    "image": "Afterglow/美竹兰/VoiceActor/cv.jpg"
+  },
+  "7": {
+    "character_id": 7,
+    "cv_jp": "三澤 紗千香",
+    "cv_romaji": "Misawa Sachika",
+    "cv_cn": "三泽纱千香",
+    "x_handle": "Sachika_Misawa",
+    "image": "Afterglow/青叶摩卡/VoiceActor/cv.jpg"
+  },
+  "8": {
+    "character_id": 8,
+    "cv_jp": "加藤 英美里",
+    "cv_romaji": "Katou Emiri",
+    "cv_cn": "加藤英美里",
+    "image": ""
+  },
+  "9": {
+    "character_id": 9,
+    "cv_jp": "日笠 陽子",
+    "cv_romaji": "Hikasa Yoko",
+    "cv_cn": "日笠阳子",
+    "x_handle": "YokoHikasa",
+    "image": "Afterglow/宇田川巴/VoiceActor/cv.png"
+  },
+  "10": {
+    "character_id": 10,
+    "cv_jp": "金元 寿子",
+    "cv_romaji": "Kanemoto Hisako",
+    "cv_cn": "金元寿子",
+    "x_handle": "Hisako_Kanemoto",
+    "image": "Afterglow/羽泽鸫/VoiceActor/cv.png"
+  },
+  "11": {
+    "character_id": 11,
+    "cv_jp": "美来 伊藤",
+    "cv_romaji": "Miku Itou",
+    "cv_cn": "伊藤美来",
+    "x_handle": "miku_itou",
+    "image": "HelloHappyWorld/弦卷心/VoiceActor/cv.jpg"
+  },
+  "12": {
+    "character_id": 12,
+    "cv_jp": "田所 あずさ",
+    "cv_romaji": "Tadokoro Azusa",
+    "cv_cn": "田所梓",
+    "image": ""
+  },
+  "13": {
+    "character_id": 13,
+    "cv_jp": "吉田 有里",
+    "cv_romaji": "Yoshida Yuri",
+    "cv_cn": "吉田有里",
+    "x_handle": "Yuri_Yoshida",
+    "image": "HelloHappyWorld/北泽育美/VoiceActor/cv.jpg"
+  },
+  "14": {
+    "character_id": 14,
+    "cv_jp": "豊田 萌絵",
+    "cv_romaji": "Toyota Moe",
+    "cv_cn": "丰田萌绘",
+    "x_handle": "MoeToyota",
+    "image": "HelloHappyWorld/松原花音/VoiceActor/cv.png"
+  },
+  "15": {
+    "character_id": 15,
+    "cv_jp": "黒沢 ともよ",
+    "cv_romaji": "Kurosawa Tomoyo",
+    "cv_cn": "黑泽朋世",
+    "image": ""
+  },
+  "16": {
+    "character_id": 16,
+    "cv_jp": "前島亜美",
+    "cv_romaji": "Maeshima Ami",
+    "cv_cn": "前岛亚美",
+    "x_handle": "amimaeshima",
+    "image": "PastelPalettes/丸山彩/VoiceActor/cv.png"
+  },
+  "17": {
+    "character_id": 17,
+    "cv_jp": "小澤亜李",
+    "cv_romaji": "Ozawa Ari",
+    "cv_cn": "小泽亚李",
+    "x_handle": "ozawa_ari",
+    "image": "PastelPalettes/冰川日菜/VoiceActor/cv.png"
+  },
+  "18": {
+    "character_id": 18,
+    "cv_jp": "上坂 すみれ",
+    "cv_romaji": "Uesaka Sumire",
+    "cv_cn": "上坂堇",
+    "image": "VoiceActors/18.jpg"
+  },
+  "19": {
+    "character_id": 19,
+    "cv_jp": "育実 中上",
+    "cv_romaji": "Nakagami Ikumi",
+    "cv_cn": "中上育实",
+    "image": ""
+  },
+  "20": {
+    "character_id": 20,
+    "cv_jp": "秦 佐和子",
+    "cv_romaji": "Hata Sawako",
+    "cv_cn": "秦佐和子",
+    "image": "VoiceActors/20.jpg"
+  },
+  "21": {
+    "character_id": 21,
+    "cv_jp": "相羽 あいな",
+    "cv_romaji": "Aiba Aina",
+    "cv_cn": "相羽爱奈",
+    "x_handle": "aiba_ai",
+    "image": "Roselia/凑友希那/VoiceActor/cv.jpg"
+  },
+  "22": {
+    "character_id": 22,
+    "cv_jp": "工藤晴香",
+    "cv_romaji": "Kudō Haruka",
+    "cv_cn": "工藤晴香",
+    "x_handle": "kudo_haruka",
+    "image": "Roselia/冰川纱夜/VoiceActor/cv.jpg"
+  },
+  "23": {
+    "character_id": 23,
+    "cv_jp": "中島由貴",
+    "cv_romaji": "Nakashima Yuki",
+    "cv_cn": "中岛由贵",
+    "image": ""
+  },
+  "24": {
+    "character_id": 24,
+    "cv_jp": "桜川 めぐ",
+    "cv_romaji": "Sakuragawa Megu",
+    "cv_cn": "樱川芽实",
+    "image": ""
+  },
+  "25": {
+    "character_id": 25,
+    "cv_jp": "志崎樺音",
+    "cv_romaji": "Shizaki Kanon",
+    "cv_cn": "志崎桦音",
+    "x_handle": "kanon_snow",
+    "image": "Roselia/白金燐子/VoiceActor/cv.jpg"
+  },
+  "26": {
+    "character_id": 26,
+    "cv_jp": "進藤あまね",
+    "cv_romaji": "Amane Shindo",
+    "cv_cn": "进藤天音",
+    "image": ""
+  },
+  "27": {
+    "character_id": 27,
+    "cv_jp": "直田姫奈",
+    "cv_romaji": "Hina Suguta",
+    "cv_cn": "椥田帆夏",
+    "image": ""
+  },
+  "28": {
+    "character_id": 28,
+    "cv_jp": "西尾夕香",
+    "cv_romaji": "Yuka Nishio",
+    "cv_cn": "西尾夕香",
+    "image": ""
+  },
+  "29": {
+    "character_id": 29,
+    "cv_jp": "mika",
+    "cv_romaji": "mika",
+    "cv_cn": "mika",
+    "image": ""
+  },
+  "30": {
+    "character_id": 30,
+    "cv_jp": "Ayasa",
+    "cv_romaji": "Ayasa",
+    "cv_cn": "Ayasa",
+    "image": ""
+  },
+  "31": {
+    "character_id": 31,
+    "cv_jp": "",
+    "cv_romaji": "Raychell",
+    "cv_cn": "Raychell",
+    "image": ""
+  },
+  "32": {
+    "character_id": 32,
+    "cv_jp": "小原 莉子",
+    "cv_romaji": "Riko Kohara",
+    "cv_cn": "小原莉子",
+    "image": ""
+  },
+  "33": {
+    "character_id": 33,
+    "cv_jp": "夏芽",
+    "cv_romaji": "Natsume",
+    "cv_cn": "夏芽",
+    "image": ""
+  },
+  "34": {
+    "character_id": 34,
+    "cv_jp": "倉知 玲鳳",
+    "cv_romaji": "Reo Kurachi",
+    "cv_cn": "仓知玲凤",
+    "image": ""
+  },
+  "35": {
+    "character_id": 35,
+    "cv_jp": "紡木 吏佐",
+    "cv_romaji": "Risa Tsumugi",
+    "cv_cn": "纺木吏佐",
+    "x_handle": "Risa_tsumugi",
+    "image": "RaiseASuilen/珠手知由/VoiceActor/cv.jpg"
+  }
+}

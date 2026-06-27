@@ -37,6 +37,7 @@ const zh = {
     archiveSubtitle: "完整收藏",
     cards: "卡面",
     band: "所属乐队",
+    voiceActor: "声优",
   },
   card: {
     untrained: "特训前",
@@ -93,6 +94,7 @@ const en = {
     archiveSubtitle: "Full Collection",
     cards: "Cards",
     band: "Band",
+    voiceActor: "Voice Actor",
   },
   card: {
     untrained: "Before Training",
@@ -149,6 +151,7 @@ const ja = {
     archiveSubtitle: "全コレクション",
     cards: "カード",
     band: "所属バンド",
+    voiceActor: "声優",
   },
   card: {
     untrained: "特訓前",
