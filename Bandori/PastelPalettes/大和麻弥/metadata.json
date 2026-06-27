@@ -548,6 +548,14 @@
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019084_rip/card_after_training.png"
     },
     {
+      "card_name": "bilibili",
+      "rarity": "2-Star",
+      "event": "campaign",
+      "release_date": "2026-06-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res019001_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
       "card_name": "Card 90019",
       "rarity": "2-Star",
       "event": "",

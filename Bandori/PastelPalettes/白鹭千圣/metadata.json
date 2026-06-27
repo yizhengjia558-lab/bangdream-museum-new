@@ -336,7 +336,7 @@
       "rarity": "4-Star",
       "event": "可喜可贺 欢庆的黄道吉日 招募",
       "release_date": "2021-12-31",
-      "untrained_image": "",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018050_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018050_rip/card_after_training.png"
     },
     {
@@ -505,7 +505,7 @@
       "event": "带来幸福的圣诞夜赠礼招募",
       "release_date": "2025-05-26",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018076_rip/card_normal.png",
-      "trained_image": ""
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018076_rip/card_after_training.png"
     },
     {
       "card_name": "光舞的旋律",

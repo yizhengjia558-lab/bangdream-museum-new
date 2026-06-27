@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T11:35:29.632Z",
+  "generated_at": "2026-06-27T13:29:25.756Z",
   "character_count": 35,
   "characters": [
     {
@@ -9,7 +9,7 @@
       "name_jp": "戸山 香澄",
       "band": "Poppin'Party",
       "band_folder": "PoppinParty",
-      "standing": "/assets/PoppinParty/%E6%88%B7%E5%B1%B1%E9%A6%99%E6%BE%84/Standing/standing.png?v=1782459806989",
+      "standing": "/assets/PoppinParty/%E6%88%B7%E5%B1%B1%E9%A6%99%E6%BE%84/Standing/standing.png?v=1782566889054",
       "card_count": 83,
       "cards": [
         {
@@ -934,7 +934,7 @@
       "name_jp": "花園 たえ",
       "band": "Poppin'Party",
       "band_folder": "PoppinParty",
-      "standing": "/assets/PoppinParty/%E8%8A%B1%E5%9B%AD%E5%A4%9A%E6%83%A0/Standing/standing.png?v=1782459808781",
+      "standing": "/assets/PoppinParty/%E8%8A%B1%E5%9B%AD%E5%A4%9A%E6%83%A0/Standing/standing.png?v=1782566891345",
       "card_count": 69,
       "cards": [
         {
@@ -1705,8 +1705,8 @@
       "name_jp": "牛込 りみ",
       "band": "Poppin'Party",
       "band_folder": "PoppinParty",
-      "standing": "/assets/PoppinParty/%E7%89%9B%E8%BE%BC%E9%87%8C%E7%BE%8E/Standing/standing.png?v=1782459810528",
-      "card_count": 68,
+      "standing": "/assets/PoppinParty/%E7%89%9B%E8%BE%BC%E9%87%8C%E7%BE%8E/Standing/standing.png?v=1782566895321",
+      "card_count": 69,
       "cards": [
         {
           "id": "3-0",
@@ -2381,14 +2381,14 @@
         },
         {
           "id": "3-65",
-          "card_name": "緊張読み聞かせタイム",
+          "card_name": "紧张的朗读时间",
           "rarity": "4-Star",
-          "event": "キミと過ごす聖夜のひとときガチャ",
-          "release_date": "2025-12-10",
+          "event": "与你共度的圣夜时光招募",
+          "release_date": "2026-06-25",
           "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res003079_rip/card_normal.png",
           "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res003079_rip/card_after_training.png",
-          "untrained_file": "/assets/PoppinParty/%E7%89%9B%E8%BE%BC%E9%87%8C%E7%BE%8E/Cards/Untrained/2347_%E7%B7%8A%E5%BC%B5%E8%AA%AD%E3%81%BF%E8%81%9E%E3%81%8B%E3%81%9B%E3%82%BF%E3%82%A4%E3%83%A0.png",
-          "trained_file": "/assets/PoppinParty/%E7%89%9B%E8%BE%BC%E9%87%8C%E7%BE%8E/Cards/Trained/2347_%E7%B7%8A%E5%BC%B5%E8%AA%AD%E3%81%BF%E8%81%9E%E3%81%8B%E3%81%9B%E3%82%BF%E3%82%A4%E3%83%A0_trained.png"
+          "untrained_file": "/assets/PoppinParty/%E7%89%9B%E8%BE%BC%E9%87%8C%E7%BE%8E/Cards/Untrained/2347_%E7%B4%A7%E5%BC%A0%E7%9A%84%E6%9C%97%E8%AF%BB%E6%97%B6%E9%97%B4.png",
+          "trained_file": "/assets/PoppinParty/%E7%89%9B%E8%BE%BC%E9%87%8C%E7%BE%8E/Cards/Trained/2347_%E7%B4%A7%E5%BC%A0%E7%9A%84%E6%9C%97%E8%AF%BB%E6%97%B6%E9%97%B4_trained.png"
         },
         {
           "id": "3-66",
@@ -2446,6 +2446,17 @@
           "trained_file": ""
         },
         {
+          "id": "u-2347_緊張読み聞かせタイム.png",
+          "card_name": "緊張読み聞かせタイム",
+          "rarity": "Gallery",
+          "event": "",
+          "release_date": "",
+          "untrained_image": "",
+          "trained_image": "paired",
+          "untrained_file": "/assets/PoppinParty/%E7%89%9B%E8%BE%BC%E9%87%8C%E7%BE%8E/Cards/Untrained/2347_%E7%B7%8A%E5%BC%B5%E8%AA%AD%E3%81%BF%E8%81%9E%E3%81%8B%E3%81%9B%E3%82%BF%E3%82%A4%E3%83%A0.png",
+          "trained_file": "/assets/PoppinParty/%E7%89%9B%E8%BE%BC%E9%87%8C%E7%BE%8E/Cards/Trained/2347_%E7%B7%8A%E5%BC%B5%E8%AA%AD%E3%81%BF%E8%81%9E%E3%81%8B%E3%81%9B%E3%82%BF%E3%82%A4%E3%83%A0_trained.png"
+        },
+        {
           "id": "u-90043_Card_90043.png",
           "card_name": "Card_90043",
           "rarity": "Gallery",
@@ -2465,7 +2476,7 @@
       "name_jp": "山吹 沙綾",
       "band": "Poppin'Party",
       "band_folder": "PoppinParty",
-      "standing": "/assets/PoppinParty/%E5%B1%B1%E5%90%B9%E6%B2%99%E7%BB%AB/Standing/standing.png?v=1782459812747",
+      "standing": "/assets/PoppinParty/%E5%B1%B1%E5%90%B9%E6%B2%99%E7%BB%AB/Standing/standing.png?v=1782566897344",
       "card_count": 69,
       "cards": [
         {
@@ -3236,7 +3247,7 @@
       "name_jp": "市ヶ谷 有咲",
       "band": "Poppin'Party",
       "band_folder": "PoppinParty",
-      "standing": "/assets/PoppinParty/%E5%B8%82%E8%B0%B7%E6%9C%89%E5%92%B2/Standing/standing.png?v=1782459814770",
+      "standing": "/assets/PoppinParty/%E5%B8%82%E8%B0%B7%E6%9C%89%E5%92%B2/Standing/standing.png?v=1782566899200",
       "card_count": 77,
       "cards": [
         {
@@ -4095,7 +4106,7 @@
       "name_jp": "美竹 蘭",
       "band": "Afterglow",
       "band_folder": "Afterglow",
-      "standing": "/assets/Afterglow/%E7%BE%8E%E7%AB%B9%E5%85%B0/Standing/standing.png?v=1782459815507",
+      "standing": "/assets/Afterglow/%E7%BE%8E%E7%AB%B9%E5%85%B0/Standing/standing.png?v=1782566901127",
       "card_count": 75,
       "cards": [
         {
@@ -4932,7 +4943,7 @@
       "name_jp": "青葉 モカ",
       "band": "Afterglow",
       "band_folder": "Afterglow",
-      "standing": "/assets/Afterglow/%E9%9D%92%E5%8F%B6%E6%91%A9%E5%8D%A1/Standing/standing.png?v=1782459817990",
+      "standing": "/assets/Afterglow/%E9%9D%92%E5%8F%B6%E6%91%A9%E5%8D%A1/Standing/standing.png?v=1782566903401",
       "card_count": 69,
       "cards": [
         {
@@ -5703,7 +5714,7 @@
       "name_jp": "上原 ひまり",
       "band": "Afterglow",
       "band_folder": "Afterglow",
-      "standing": "/assets/Afterglow/%E4%B8%8A%E5%8E%9F%E7%BB%AF%E7%8E%9B%E4%B8%BD/Standing/standing.png?v=1782459819932",
+      "standing": "/assets/Afterglow/%E4%B8%8A%E5%8E%9F%E7%BB%AF%E7%8E%9B%E4%B8%BD/Standing/standing.png?v=1782566905095",
       "card_count": 71,
       "cards": [
         {
@@ -6496,7 +6507,7 @@
       "name_jp": "宇田川 巴",
       "band": "Afterglow",
       "band_folder": "Afterglow",
-      "standing": "/assets/Afterglow/%E5%AE%87%E7%94%B0%E5%B7%9D%E5%B7%B4/Standing/standing.png?v=1782459821657",
+      "standing": "/assets/Afterglow/%E5%AE%87%E7%94%B0%E5%B7%9D%E5%B7%B4/Standing/standing.png?v=1782566907611",
       "card_count": 66,
       "cards": [
         {
@@ -7234,7 +7245,7 @@
       "name_jp": "羽沢 つぐみ",
       "band": "Afterglow",
       "band_folder": "Afterglow",
-      "standing": "/assets/Afterglow/%E7%BE%BD%E6%B3%BD%E9%B8%AB/Standing/standing.png?v=1782459823618",
+      "standing": "/assets/Afterglow/%E7%BE%BD%E6%B3%BD%E9%B8%AB/Standing/standing.png?v=1782566909391",
       "card_count": 72,
       "cards": [
         {
@@ -7848,7 +7859,7 @@
           "rarity": "3-Star",
           "event": "交互之音、空之止境",
           "release_date": "2024-05-24",
-          "untrained_image": "",
+          "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010070_rip/card_normal.png",
           "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010070_rip/card_after_training.png",
           "untrained_file": "/assets/Afterglow/%E7%BE%BD%E6%B3%BD%E9%B8%AB/Cards/Untrained/1847_%E4%BA%8C%E4%BA%BA%E7%9A%84%E6%83%B3%E6%B3%95.png",
           "trained_file": "/assets/Afterglow/%E7%BE%BD%E6%B3%BD%E9%B8%AB/Cards/Trained/1847_%E4%BA%8C%E4%BA%BA%E7%9A%84%E6%83%B3%E6%B3%95_trained.png"
@@ -8038,8 +8049,8 @@
       "name_jp": "弦巻 こころ",
       "band": "Hello, Happy World!",
       "band_folder": "HelloHappyWorld",
-      "standing": "/assets/HelloHappyWorld/%E5%BC%A6%E5%8D%B7%E5%BF%83/Standing/standing.png?v=1782459824151",
-      "card_count": 75,
+      "standing": "/assets/HelloHappyWorld/%E5%BC%A6%E5%8D%B7%E5%BF%83/Standing/standing.png?v=1782566911334",
+      "card_count": 76,
       "cards": [
         {
           "id": "11-0",
@@ -8769,14 +8780,14 @@
         },
         {
           "id": "11-69",
-          "card_name": "満開の笑顔、２つ",
+          "card_name": "两张灿烂的笑脸",
           "rarity": "3-Star",
-          "event": "笑顔あふれる聖夜の前に",
-          "release_date": "2025-12-10",
+          "event": "在笑颜盛放的平安夜",
+          "release_date": "2026-06-25",
           "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res011089_rip/card_normal.png",
           "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res011089_rip/card_after_training.png",
-          "untrained_file": "/assets/HelloHappyWorld/%E5%BC%A6%E5%8D%B7%E5%BF%83/Cards/Untrained/2345_%E6%BA%80%E9%96%8B%E3%81%AE%E7%AC%91%E9%A1%94%E3%80%81%EF%BC%92%E3%81%A4.png",
-          "trained_file": "/assets/HelloHappyWorld/%E5%BC%A6%E5%8D%B7%E5%BF%83/Cards/Trained/2345_%E6%BA%80%E9%96%8B%E3%81%AE%E7%AC%91%E9%A1%94%E3%80%81%EF%BC%92%E3%81%A4_trained.png"
+          "untrained_file": "/assets/HelloHappyWorld/%E5%BC%A6%E5%8D%B7%E5%BF%83/Cards/Untrained/2345_%E4%B8%A4%E5%BC%A0%E7%81%BF%E7%83%82%E7%9A%84%E7%AC%91%E8%84%B8.png",
+          "trained_file": "/assets/HelloHappyWorld/%E5%BC%A6%E5%8D%B7%E5%BF%83/Cards/Trained/2345_%E4%B8%A4%E5%BC%A0%E7%81%BF%E7%83%82%E7%9A%84%E7%AC%91%E8%84%B8_trained.png"
         },
         {
           "id": "11-70",
@@ -8856,6 +8867,17 @@
           "trained_file": ""
         },
         {
+          "id": "u-2345_満開の笑顔、２つ.png",
+          "card_name": "満開の笑顔、２つ",
+          "rarity": "Gallery",
+          "event": "",
+          "release_date": "",
+          "untrained_image": "",
+          "trained_image": "paired",
+          "untrained_file": "/assets/HelloHappyWorld/%E5%BC%A6%E5%8D%B7%E5%BF%83/Cards/Untrained/2345_%E6%BA%80%E9%96%8B%E3%81%AE%E7%AC%91%E9%A1%94%E3%80%81%EF%BC%92%E3%81%A4.png",
+          "trained_file": "/assets/HelloHappyWorld/%E5%BC%A6%E5%8D%B7%E5%BF%83/Cards/Trained/2345_%E6%BA%80%E9%96%8B%E3%81%AE%E7%AC%91%E9%A1%94%E3%80%81%EF%BC%92%E3%81%A4_trained.png"
+        },
+        {
           "id": "u-90046_Card_90046.png",
           "card_name": "Card_90046",
           "rarity": "Gallery",
@@ -8875,7 +8897,7 @@
       "name_jp": "瀬田 薫",
       "band": "Hello, Happy World!",
       "band_folder": "HelloHappyWorld",
-      "standing": "/assets/HelloHappyWorld/%E6%BF%91%E7%94%B0%E8%96%B0/Standing/standing.png?v=1782459825851",
+      "standing": "/assets/HelloHappyWorld/%E6%BF%91%E7%94%B0%E8%96%B0/Standing/standing.png?v=1782566913457",
       "card_count": 78,
       "cards": [
         {
@@ -9745,7 +9767,7 @@
       "name_jp": "北沢 はぐみ",
       "band": "Hello, Happy World!",
       "band_folder": "HelloHappyWorld",
-      "standing": "/assets/HelloHappyWorld/%E5%8C%97%E6%B3%BD%E8%82%B2%E7%BE%8E/Standing/standing.png?v=1782459827598",
+      "standing": "/assets/HelloHappyWorld/%E5%8C%97%E6%B3%BD%E8%82%B2%E7%BE%8E/Standing/standing.png?v=1782566915526",
       "card_count": 72,
       "cards": [
         {
@@ -10549,7 +10571,7 @@
       "name_jp": "松原 花音",
       "band": "Hello, Happy World!",
       "band_folder": "HelloHappyWorld",
-      "standing": "/assets/HelloHappyWorld/%E6%9D%BE%E5%8E%9F%E8%8A%B1%E9%9F%B3/Standing/standing.png?v=1782459828602",
+      "standing": "/assets/HelloHappyWorld/%E6%9D%BE%E5%8E%9F%E8%8A%B1%E9%9F%B3/Standing/standing.png?v=1782566917944",
       "card_count": 75,
       "cards": [
         {
@@ -11386,8 +11408,8 @@
       "name_jp": "ミッシェル",
       "band": "Hello, Happy World!",
       "band_folder": "HelloHappyWorld",
-      "standing": "/assets/HelloHappyWorld/%E7%B1%B3%E6%AD%87%E5%B0%94/Standing/standing.png?v=1782459830306",
-      "card_count": 75,
+      "standing": "/assets/HelloHappyWorld/%E7%B1%B3%E6%AD%87%E5%B0%94/Standing/standing.png?v=1782566919959",
+      "card_count": 76,
       "cards": [
         {
           "id": "15-0",
@@ -12128,13 +12150,13 @@
         },
         {
           "id": "15-69",
-          "card_name": "手のひらにクリスマス",
+          "card_name": "掌心里的圣诞节",
           "rarity": "2-Star",
-          "event": "笑顔あふれる聖夜の前に",
-          "release_date": "2025-12-10",
+          "event": "在笑颜盛放的平安夜",
+          "release_date": "2026-06-25",
           "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res015084_rip/card_normal.png",
           "trained_image": "",
-          "untrained_file": "/assets/HelloHappyWorld/%E7%B1%B3%E6%AD%87%E5%B0%94/Cards/Untrained/2346_%E6%89%8B%E3%81%AE%E3%81%B2%E3%82%89%E3%81%AB%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9.png",
+          "untrained_file": "/assets/HelloHappyWorld/%E7%B1%B3%E6%AD%87%E5%B0%94/Cards/Untrained/2346_%E6%8E%8C%E5%BF%83%E9%87%8C%E7%9A%84%E5%9C%A3%E8%AF%9E%E8%8A%82.png",
           "trained_file": ""
         },
         {
@@ -12204,6 +12226,17 @@
           "trained_file": ""
         },
         {
+          "id": "u-2346_手のひらにクリスマス.png",
+          "card_name": "手のひらにクリスマス",
+          "rarity": "Gallery",
+          "event": "",
+          "release_date": "",
+          "untrained_image": "",
+          "trained_image": "",
+          "untrained_file": "/assets/HelloHappyWorld/%E7%B1%B3%E6%AD%87%E5%B0%94/Cards/Untrained/2346_%E6%89%8B%E3%81%AE%E3%81%B2%E3%82%89%E3%81%AB%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9.png",
+          "trained_file": ""
+        },
+        {
           "id": "u-90050_Card_90050.png",
           "card_name": "Card_90050",
           "rarity": "Gallery",
@@ -12223,7 +12256,7 @@
       "name_jp": "丸山 彩",
       "band": "Pastel＊Palettes",
       "band_folder": "PastelPalettes",
-      "standing": "/assets/PastelPalettes/%E4%B8%B8%E5%B1%B1%E5%BD%A9/Standing/standing.png?v=1782459831306",
+      "standing": "/assets/PastelPalettes/%E4%B8%B8%E5%B1%B1%E5%BD%A9/Standing/standing.png?v=1782566922188",
       "card_count": 79,
       "cards": [
         {
@@ -13104,7 +13137,7 @@
       "name_jp": "氷川 日菜",
       "band": "Pastel＊Palettes",
       "band_folder": "PastelPalettes",
-      "standing": "/assets/PastelPalettes/%E5%86%B0%E5%B7%9D%E6%97%A5%E8%8F%9C/Standing/standing.png?v=1782459832061",
+      "standing": "/assets/PastelPalettes/%E5%86%B0%E5%B7%9D%E6%97%A5%E8%8F%9C/Standing/standing.png?v=1782566924234",
       "card_count": 73,
       "cards": [
         {
@@ -13919,7 +13952,7 @@
       "name_jp": "白鷺 千聖",
       "band": "Pastel＊Palettes",
       "band_folder": "PastelPalettes",
-      "standing": "/assets/PastelPalettes/%E7%99%BD%E9%B9%AD%E5%8D%83%E5%9C%A3/Standing/standing.png?v=1782459834054",
+      "standing": "/assets/PastelPalettes/%E7%99%BD%E9%B9%AD%E5%8D%83%E5%9C%A3/Standing/standing.png?v=1782566926578",
       "card_count": 73,
       "cards": [
         {
@@ -14368,7 +14401,7 @@
           "rarity": "4-Star",
           "event": "可喜可贺 欢庆的黄道吉日 招募",
           "release_date": "2021-12-31",
-          "untrained_image": "",
+          "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018050_rip/card_normal.png",
           "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018050_rip/card_after_training.png",
           "untrained_file": "/assets/PastelPalettes/%E7%99%BD%E9%B9%AD%E5%8D%83%E5%9C%A3/Cards/Untrained/1380_%E5%BA%86%E7%A5%9D%E6%96%B0%E7%9A%84%E4%B8%80%E5%B9%B4.png",
           "trained_file": "/assets/PastelPalettes/%E7%99%BD%E9%B9%AD%E5%8D%83%E5%9C%A3/Cards/Trained/1380_%E5%BA%86%E7%A5%9D%E6%96%B0%E7%9A%84%E4%B8%80%E5%B9%B4_trained.png"
@@ -14589,7 +14622,7 @@
           "event": "带来幸福的圣诞夜赠礼招募",
           "release_date": "2025-05-26",
           "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018076_rip/card_normal.png",
-          "trained_image": "",
+          "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018076_rip/card_after_training.png",
           "untrained_file": "/assets/PastelPalettes/%E7%99%BD%E9%B9%AD%E5%8D%83%E5%9C%A3/Cards/Untrained/2105_%E5%8F%AA%E7%BB%99%E4%B8%80%E6%9D%A1%E5%BB%BA%E8%AE%AE.png",
           "trained_file": "/assets/PastelPalettes/%E7%99%BD%E9%B9%AD%E5%8D%83%E5%9C%A3/Cards/Trained/2105_%E5%8F%AA%E7%BB%99%E4%B8%80%E6%9D%A1%E5%BB%BA%E8%AE%AE_trained.png"
         },
@@ -14734,8 +14767,8 @@
       "name_jp": "大和 麻弥",
       "band": "Pastel＊Palettes",
       "band_folder": "PastelPalettes",
-      "standing": "/assets/PastelPalettes/%E5%A4%A7%E5%92%8C%E9%BA%BB%E5%BC%A5/Standing/standing.png?v=1782459835772",
-      "card_count": 66,
+      "standing": "/assets/PastelPalettes/%E5%A4%A7%E5%92%8C%E9%BA%BB%E5%BC%A5/Standing/standing.png?v=1782566928782",
+      "card_count": 67,
       "cards": [
         {
           "id": "19-0",
@@ -15454,6 +15487,17 @@
         },
         {
           "id": "19-68",
+          "card_name": "bilibili",
+          "rarity": "2-Star",
+          "event": "campaign",
+          "release_date": "2026-06-26",
+          "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res019001_rip/card_normal.png",
+          "trained_image": "",
+          "untrained_file": "/assets/PastelPalettes/%E5%A4%A7%E5%92%8C%E9%BA%BB%E5%BC%A5/Cards/Untrained/10054_bilibili.png",
+          "trained_file": ""
+        },
+        {
+          "id": "19-69",
           "card_name": "Card 90019",
           "rarity": "2-Star",
           "event": "",
@@ -15472,7 +15516,7 @@
       "name_jp": "若宮 イヴ",
       "band": "Pastel＊Palettes",
       "band_folder": "PastelPalettes",
-      "standing": "/assets/PastelPalettes/%E8%8B%A5%E5%AE%AB%E4%BC%8A%E8%8A%99/Standing/standing.png?v=1782459837479",
+      "standing": "/assets/PastelPalettes/%E8%8B%A5%E5%AE%AB%E4%BC%8A%E8%8A%99/Standing/standing.png?v=1782566931556",
       "card_count": 71,
       "cards": [
         {
@@ -16265,7 +16309,7 @@
       "name_jp": "湊 友希那",
       "band": "Roselia",
       "band_folder": "Roselia",
-      "standing": "/assets/Roselia/%E5%87%91%E5%8F%8B%E5%B8%8C%E9%82%A3/Standing/standing.png?v=1782459837986",
+      "standing": "/assets/Roselia/%E5%87%91%E5%8F%8B%E5%B8%8C%E9%82%A3/Standing/standing.png?v=1782566934828",
       "card_count": 77,
       "cards": [
         {
@@ -17124,7 +17168,7 @@
       "name_jp": "氷川 紗夜",
       "band": "Roselia",
       "band_folder": "Roselia",
-      "standing": "/assets/Roselia/%E5%86%B0%E5%B7%9D%E7%BA%B1%E5%A4%9C/Standing/standing.png?v=1782459838569",
+      "standing": "/assets/Roselia/%E5%86%B0%E5%B7%9D%E7%BA%B1%E5%A4%9C/Standing/standing.png?v=1782566936952",
       "card_count": 73,
       "cards": [
         {
@@ -17939,8 +17983,8 @@
       "name_jp": "今井 リサ",
       "band": "Roselia",
       "band_folder": "Roselia",
-      "standing": "/assets/Roselia/%E4%BB%8A%E4%BA%95%E8%8E%89%E8%8E%8E/Standing/standing.png?v=1782459839606",
-      "card_count": 77,
+      "standing": "/assets/Roselia/%E4%BB%8A%E4%BA%95%E8%8E%89%E8%8E%8E/Standing/standing.png?v=1782566938737",
+      "card_count": 78,
       "cards": [
         {
           "id": "23-0",
@@ -18692,14 +18736,14 @@
         },
         {
           "id": "23-72",
-          "card_name": "一緒に飾り付け！",
+          "card_name": "一起来装饰吧！",
           "rarity": "5-Star",
-          "event": "キミと過ごす聖夜のひとときガチャ",
-          "release_date": "2025-12-10",
+          "event": "与你共度的圣夜时光招募",
+          "release_date": "2026-06-25",
           "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res023087_rip/card_normal.png",
           "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res023087_rip/card_after_training.png",
-          "untrained_file": "/assets/Roselia/%E4%BB%8A%E4%BA%95%E8%8E%89%E8%8E%8E/Cards/Untrained/2343_%E4%B8%80%E7%B7%92%E3%81%AB%E9%A3%BE%E3%82%8A%E4%BB%98%E3%81%91%EF%BC%81.png",
-          "trained_file": "/assets/Roselia/%E4%BB%8A%E4%BA%95%E8%8E%89%E8%8E%8E/Cards/Trained/2343_%E4%B8%80%E7%B7%92%E3%81%AB%E9%A3%BE%E3%82%8A%E4%BB%98%E3%81%91%EF%BC%81_trained.png"
+          "untrained_file": "/assets/Roselia/%E4%BB%8A%E4%BA%95%E8%8E%89%E8%8E%8E/Cards/Untrained/2343_%E4%B8%80%E8%B5%B7%E6%9D%A5%E8%A3%85%E9%A5%B0%E5%90%A7%EF%BC%81.png",
+          "trained_file": "/assets/Roselia/%E4%BB%8A%E4%BA%95%E8%8E%89%E8%8E%8E/Cards/Trained/2343_%E4%B8%80%E8%B5%B7%E6%9D%A5%E8%A3%85%E9%A5%B0%E5%90%A7%EF%BC%81_trained.png"
         },
         {
           "id": "23-73",
@@ -18779,6 +18823,17 @@
           "trained_file": "/assets/Roselia/%E4%BB%8A%E4%BA%95%E8%8E%89%E8%8E%8E/Cards/Trained/1626_Say_cheese%EF%BC%81_trained.png"
         },
         {
+          "id": "u-2343_一緒に飾り付け！.png",
+          "card_name": "一緒に飾り付け！",
+          "rarity": "Gallery",
+          "event": "",
+          "release_date": "",
+          "untrained_image": "",
+          "trained_image": "paired",
+          "untrained_file": "/assets/Roselia/%E4%BB%8A%E4%BA%95%E8%8E%89%E8%8E%8E/Cards/Untrained/2343_%E4%B8%80%E7%B7%92%E3%81%AB%E9%A3%BE%E3%82%8A%E4%BB%98%E3%81%91%EF%BC%81.png",
+          "trained_file": "/assets/Roselia/%E4%BB%8A%E4%BA%95%E8%8E%89%E8%8E%8E/Cards/Trained/2343_%E4%B8%80%E7%B7%92%E3%81%AB%E9%A3%BE%E3%82%8A%E4%BB%98%E3%81%91%EF%BC%81_trained.png"
+        },
+        {
           "id": "u-90023_Card_90023.png",
           "card_name": "Card_90023",
           "rarity": "Gallery",
@@ -18798,7 +18853,7 @@
       "name_jp": "宇田川 あこ",
       "band": "Roselia",
       "band_folder": "Roselia",
-      "standing": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Standing/standing.png?v=1782459841560",
+      "standing": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Standing/standing.png?v=1782566940606",
       "card_count": 76,
       "cards": [
         {
@@ -19166,6 +19221,17 @@
         },
         {
           "id": "24-33",
+          "card_name": "黑暗力量那个的变装",
+          "rarity": "2-Star",
+          "event": "Have a good HALLOWEEN！！",
+          "release_date": "2021-11-16",
+          "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res024042_rip/card_normal.png",
+          "trained_image": "",
+          "untrained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Untrained/1047_%E9%BB%91%E6%9A%97%E5%8A%9B%E9%87%8F%E9%82%A3%E4%B8%AA%E7%9A%84%E5%8F%98%E8%A3%85.png",
+          "trained_file": ""
+        },
+        {
+          "id": "24-34",
           "card_name": "恶灵退散！",
           "rarity": "4-Star",
           "event": "永暗的Flowering pride 招募",
@@ -19176,7 +19242,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1105_%E6%81%B6%E7%81%B5%E9%80%80%E6%95%A3%EF%BC%81_trained.png"
         },
         {
-          "id": "24-34",
+          "id": "24-35",
           "card_name": "蓝玫瑰的保养",
           "rarity": "3-Star",
           "event": "Backstage Pass 4",
@@ -19187,7 +19253,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1144_%E8%93%9D%E7%8E%AB%E7%91%B0%E7%9A%84%E4%BF%9D%E5%85%BB_trained.png"
         },
         {
-          "id": "24-35",
+          "id": "24-36",
           "card_name": "因为很重要！",
           "rarity": "3-Star",
           "event": "带着心中的迷茫与犹豫",
@@ -19198,7 +19264,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1176_%E5%9B%A0%E4%B8%BA%E5%BE%88%E9%87%8D%E8%A6%81%EF%BC%81_trained.png"
         },
         {
-          "id": "24-36",
+          "id": "24-37",
           "card_name": "遵循吾之指引吧",
           "rarity": "4-Star",
           "event": "出航！BRANDNEW MARINE 招募",
@@ -19209,7 +19275,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1181_%E9%81%B5%E5%BE%AA%E5%90%BE%E4%B9%8B%E6%8C%87%E5%BC%95%E5%90%A7_trained.png"
         },
         {
-          "id": "24-37",
+          "id": "24-38",
           "card_name": "Special birthday！",
           "rarity": "4-Star",
           "event": "亚子生日纪念招募",
@@ -19220,7 +19286,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1216_Special_birthday%EF%BC%81_trained.png"
         },
         {
-          "id": "24-38",
+          "id": "24-39",
           "card_name": "宽广的舞台",
           "rarity": "3-Star",
           "event": "Sprechchor",
@@ -19231,7 +19297,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1220_%E5%AE%BD%E5%B9%BF%E7%9A%84%E8%88%9E%E5%8F%B0_trained.png"
         },
         {
-          "id": "24-40",
+          "id": "24-41",
           "card_name": "快乐玫瑰",
           "rarity": "2-Star",
           "event": "姹紫嫣红 优雅之花 招募",
@@ -19242,7 +19308,7 @@
           "trained_file": ""
         },
         {
-          "id": "24-41",
+          "id": "24-42",
           "card_name": "期盼已久的特别日子",
           "rarity": "4-Star",
           "event": "来自圣诞老人的邀请函 招募",
@@ -19253,7 +19319,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1359_%E6%9C%9F%E7%9B%BC%E5%B7%B2%E4%B9%85%E7%9A%84%E7%89%B9%E5%88%AB%E6%97%A5%E5%AD%90_trained.png"
         },
         {
-          "id": "24-42",
+          "id": "24-43",
           "card_name": "天真无邪的导火索",
           "rarity": "2-Star",
           "event": "「我不是传闻中的那种人！」",
@@ -19264,7 +19330,7 @@
           "trained_file": ""
         },
         {
-          "id": "24-43",
+          "id": "24-44",
           "card_name": "环伊甸园",
           "rarity": "2-Star",
           "event": "3.5周年纪念Dream Festival 招募",
@@ -19275,7 +19341,7 @@
           "trained_file": ""
         },
         {
-          "id": "24-44",
+          "id": "24-45",
           "card_name": "向着新世界飞翔",
           "rarity": "4-Star",
           "event": "振翅高飞 圣域维纳斯 招募",
@@ -19286,7 +19352,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1494_%E5%90%91%E7%9D%80%E6%96%B0%E4%B8%96%E7%95%8C%E9%A3%9E%E7%BF%94_trained.png"
         },
         {
-          "id": "24-45",
+          "id": "24-46",
           "card_name": "向着夏季DIVE！",
           "rarity": "2-Star",
           "event": "无风、PM5:45",
@@ -19297,7 +19363,7 @@
           "trained_file": ""
         },
         {
-          "id": "24-46",
+          "id": "24-47",
           "card_name": "Precious birthday！",
           "rarity": "4-Star",
           "event": "亚子生日纪念Precious birthday！招募",
@@ -19308,7 +19374,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1541_Precious_birthday%EF%BC%81_trained.png"
         },
         {
-          "id": "24-47",
+          "id": "24-48",
           "card_name": "第4回ガルパ杯",
           "rarity": "4-Star",
           "event": "Other",
@@ -19319,7 +19385,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1568_%E7%AC%AC4%E5%9B%9E%E3%82%AC%E3%83%AB%E3%83%91%E6%9D%AF_trained.png"
         },
         {
-          "id": "24-48",
+          "id": "24-49",
           "card_name": "追赶、超越",
           "rarity": "4-Star",
           "event": "燃为群青的光焰 招募",
@@ -19330,7 +19396,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1583_%E8%BF%BD%E8%B5%B6%E3%80%81%E8%B6%85%E8%B6%8A_trained.png"
         },
         {
-          "id": "24-49",
+          "id": "24-50",
           "card_name": "全身心感受新年日出",
           "rarity": "2-Star",
           "event": "迎春万岁！欢天喜地过新年！",
@@ -19341,7 +19407,7 @@
           "trained_file": ""
         },
         {
-          "id": "24-50",
+          "id": "24-51",
           "card_name": "直到生命值降为0！",
           "rarity": "4-Star",
           "event": "威风凛凛  倾盆而降的蓝蔷薇招募",
@@ -19352,7 +19418,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1690_%E7%9B%B4%E5%88%B0%E7%94%9F%E5%91%BD%E5%80%BC%E9%99%8D%E4%B8%BA0%EF%BC%81_trained.png"
         },
         {
-          "id": "24-51",
+          "id": "24-52",
           "card_name": "像魔法一样绽放！",
           "rarity": "5-Star",
           "event": "KIRAMEKI Festival 招募",
@@ -19363,7 +19429,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1718_%E5%83%8F%E9%AD%94%E6%B3%95%E4%B8%80%E6%A0%B7%E7%BB%BD%E6%94%BE%EF%BC%81_trained.png"
         },
         {
-          "id": "24-52",
+          "id": "24-53",
           "card_name": "上吧，Trish",
           "rarity": "2-Star",
           "event": "不朽的蔷薇未闻其色",
@@ -19374,7 +19440,7 @@
           "trained_file": ""
         },
         {
-          "id": "24-53",
+          "id": "24-54",
           "card_name": "前往积雨云的彼岸",
           "rarity": "4-Star",
           "event": "楚楚动人 蓝蔷薇的深邃幽蓝招募",
@@ -19385,7 +19451,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1783_%E5%89%8D%E5%BE%80%E7%A7%AF%E9%9B%A8%E4%BA%91%E7%9A%84%E5%BD%BC%E5%B2%B8_trained.png"
         },
         {
-          "id": "24-54",
+          "id": "24-55",
           "card_name": "一、二、三、四！",
           "rarity": "5-Star",
           "event": "Boo！Spooky Nightmare招募",
@@ -19396,7 +19462,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1828_%E4%B8%80%E3%80%81%E4%BA%8C%E3%80%81%E4%B8%89%E3%80%81%E5%9B%9B%EF%BC%81_trained.png"
         },
         {
-          "id": "24-55",
+          "id": "24-56",
           "card_name": "应当守护的事物",
           "rarity": "5-Star",
           "event": "佇立于暗夜中的寂静蔷薇招募",
@@ -19407,7 +19473,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/1872_%E5%BA%94%E5%BD%93%E5%AE%88%E6%8A%A4%E7%9A%84%E4%BA%8B%E7%89%A9_trained.png"
         },
         {
-          "id": "24-57",
+          "id": "24-58",
           "card_name": "为了不迷失方向",
           "rarity": "2-Star",
           "event": "淡蔷薇色的海市蜃楼",
@@ -19418,7 +19484,7 @@
           "trained_file": ""
         },
         {
-          "id": "24-59",
+          "id": "24-60",
           "card_name": "欢迎回来，莉莎姐",
           "rarity": "3-Star",
           "event": "纯洁的思念、绽放的约定",
@@ -19429,7 +19495,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/2019_%E6%AC%A2%E8%BF%8E%E5%9B%9E%E6%9D%A5%EF%BC%8C%E8%8E%89%E8%8E%8E%E5%A7%90_trained.png"
         },
         {
-          "id": "24-60",
+          "id": "24-61",
           "card_name": "下定决心的奔跑",
           "rarity": "5-Star",
           "event": "文学少女与千秋的庭园招募",
@@ -19440,7 +19506,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/2072_%E4%B8%8B%E5%AE%9A%E5%86%B3%E5%BF%83%E7%9A%84%E5%A5%94%E8%B7%91_trained.png"
         },
         {
-          "id": "24-61",
+          "id": "24-62",
           "card_name": "自豪的手工巧克力！",
           "rarity": "4-Star",
           "event": "对你的思念汇聚而成赤红之夜招募",
@@ -19451,7 +19517,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/2150_%E8%87%AA%E8%B1%AA%E7%9A%84%E6%89%8B%E5%B7%A5%E5%B7%A7%E5%85%8B%E5%8A%9B%EF%BC%81_trained.png"
         },
         {
-          "id": "24-62",
+          "id": "24-63",
           "card_name": "攀向至高的巅峰",
           "rarity": "5-Star",
           "event": "绽放的蔷薇骑士招募",
@@ -19462,7 +19528,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/2192_%E6%94%80%E5%90%91%E8%87%B3%E9%AB%98%E7%9A%84%E5%B7%85%E5%B3%B0_trained.png"
         },
         {
-          "id": "24-63",
+          "id": "24-64",
           "card_name": "荣耀骑士",
           "rarity": "2-Star",
           "event": "心向无限、行往彼方",
@@ -19473,7 +19539,7 @@
           "trained_file": ""
         },
         {
-          "id": "24-64",
+          "id": "24-65",
           "card_name": "来吧，踏浪前行",
           "rarity": "3-Star",
           "event": "Summer Smile♡TV show!",
@@ -19484,7 +19550,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/2260_%E6%9D%A5%E5%90%A7%EF%BC%8C%E8%B8%8F%E6%B5%AA%E5%89%8D%E8%A1%8C_trained.png"
         },
         {
-          "id": "24-65",
+          "id": "24-66",
           "card_name": "帮助我的是",
           "rarity": "4-Star",
           "event": "传递给大家吧！KAWAII♡Happy Party!Part1♡",
@@ -19495,7 +19561,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/2320_%E5%B8%AE%E5%8A%A9%E6%88%91%E7%9A%84%E6%98%AF_trained.png"
         },
         {
-          "id": "24-66",
+          "id": "24-67",
           "card_name": "将誓言化为力量",
           "rarity": "4-Star",
           "event": "来自水晶宫殿的统治者招募",
@@ -19506,7 +19572,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/2330_%E5%B0%86%E8%AA%93%E8%A8%80%E5%8C%96%E4%B8%BA%E5%8A%9B%E9%87%8F_trained.png"
         },
         {
-          "id": "24-67",
+          "id": "24-68",
           "card_name": "１年を占う一瞬",
           "rarity": "3-Star",
           "event": "迷い道の先、福来たる",
@@ -19517,7 +19583,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/2355_%EF%BC%91%E5%B9%B4%E3%82%92%E5%8D%A0%E3%81%86%E4%B8%80%E7%9E%AC_trained.png"
         },
         {
-          "id": "24-69",
+          "id": "24-70",
           "card_name": "深淵なる旋律に……",
           "rarity": "4-Star",
           "event": "祝福のガールズ・トゥ・レディガチャ",
@@ -19528,7 +19594,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/2420_%E6%B7%B1%E6%B7%B5%E3%81%AA%E3%82%8B%E6%97%8B%E5%BE%8B%E3%81%AB%E2%80%A6%E2%80%A6_trained.png"
         },
         {
-          "id": "24-70",
+          "id": "24-71",
           "card_name": "NEAR FUTURE",
           "rarity": "5-Star",
           "event": "ドリームフェスティバルガチャ",
@@ -19539,7 +19605,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/2462_NEAR_FUTURE_trained.png"
         },
         {
-          "id": "24-71",
+          "id": "24-72",
           "card_name": "最高のセトリを！",
           "rarity": "3-Star",
           "event": "ディープ・ローズ・ホライズン",
@@ -19550,7 +19616,7 @@
           "trained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Trained/2466_%E6%9C%80%E9%AB%98%E3%81%AE%E3%82%BB%E3%83%88%E3%83%AA%E3%82%92%EF%BC%81_trained.png"
         },
         {
-          "id": "24-72",
+          "id": "24-73",
           "card_name": "霓裳羽衣",
           "rarity": "2-Star",
           "event": "campaign",
@@ -19561,7 +19627,7 @@
           "trained_file": ""
         },
         {
-          "id": "24-73",
+          "id": "24-74",
           "card_name": "bilibili",
           "rarity": "2-Star",
           "event": "campaign",
@@ -19572,7 +19638,7 @@
           "trained_file": ""
         },
         {
-          "id": "24-74",
+          "id": "24-75",
           "card_name": "双音",
           "rarity": "2-Star",
           "event": "campaign",
@@ -19583,7 +19649,7 @@
           "trained_file": ""
         },
         {
-          "id": "24-75",
+          "id": "24-76",
           "card_name": "罗森联动2025",
           "rarity": "2-Star",
           "event": "campaign",
@@ -19594,7 +19660,7 @@
           "trained_file": ""
         },
         {
-          "id": "24-76",
+          "id": "24-77",
           "card_name": "Card 90024",
           "rarity": "2-Star",
           "event": "",
@@ -19602,17 +19668,6 @@
           "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res900024_rip/card_normal.png",
           "trained_image": "",
           "untrained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Untrained/90024_Card_90024.png",
-          "trained_file": ""
-        },
-        {
-          "id": "u-1047_黑暗力量那个的变装.png",
-          "card_name": "黑暗力量那个的变装",
-          "rarity": "Gallery",
-          "event": "",
-          "release_date": "",
-          "untrained_image": "",
-          "trained_image": "",
-          "untrained_file": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Cards/Untrained/1047_%E9%BB%91%E6%9A%97%E5%8A%9B%E9%87%8F%E9%82%A3%E4%B8%AA%E7%9A%84%E5%8F%98%E8%A3%85.png",
           "trained_file": ""
         },
         {
@@ -19646,7 +19701,7 @@
       "name_jp": "白金 燐子",
       "band": "Roselia",
       "band_folder": "Roselia",
-      "standing": "/assets/Roselia/%E7%99%BD%E9%87%91%E7%87%90%E5%AD%90/Standing/standing.png?v=1782459842636",
+      "standing": "/assets/Roselia/%E7%99%BD%E9%87%91%E7%87%90%E5%AD%90/Standing/standing.png?v=1782566943232",
       "card_count": 73,
       "cards": [
         {
@@ -20461,7 +20516,7 @@
       "name_jp": "倉田 ましろ",
       "band": "Morfonica",
       "band_folder": "Morfonica",
-      "standing": "/assets/Morfonica/%E4%BB%93%E7%94%B0%E7%9C%9F%E7%99%BD/Standing/standing.png?v=1782459843659",
+      "standing": "/assets/Morfonica/%E4%BB%93%E7%94%B0%E7%9C%9F%E7%99%BD/Standing/standing.png?v=1782566947782",
       "card_count": 50,
       "cards": [
         {
@@ -21023,8 +21078,8 @@
       "name_jp": "桐ヶ谷 透子",
       "band": "Morfonica",
       "band_folder": "Morfonica",
-      "standing": "/assets/Morfonica/%E6%A1%90%E8%B0%B7%E9%80%8F%E5%AD%90/Standing/standing.png?v=1782459845400",
-      "card_count": 43,
+      "standing": "/assets/Morfonica/%E6%A1%90%E8%B0%B7%E9%80%8F%E5%AD%90/Standing/standing.png?v=1782566949642",
+      "card_count": 44,
       "cards": [
         {
           "id": "27-0",
@@ -21435,14 +21490,14 @@
         },
         {
           "id": "27-40",
-          "card_name": "ガラス越しの煌めき",
+          "card_name": "透过玻璃的闪耀光芒",
           "rarity": "5-Star",
-          "event": "キミと過ごす聖夜のひとときガチャ",
-          "release_date": "2025-12-10",
+          "event": "与你共度的圣夜时光招募",
+          "release_date": "2026-06-25",
           "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027046_rip/card_normal.png",
           "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027046_rip/card_after_training.png",
-          "untrained_file": "/assets/Morfonica/%E6%A1%90%E8%B0%B7%E9%80%8F%E5%AD%90/Cards/Untrained/2344_%E3%82%AC%E3%83%A9%E3%82%B9%E8%B6%8A%E3%81%97%E3%81%AE%E7%85%8C%E3%82%81%E3%81%8D.png",
-          "trained_file": "/assets/Morfonica/%E6%A1%90%E8%B0%B7%E9%80%8F%E5%AD%90/Cards/Trained/2344_%E3%82%AC%E3%83%A9%E3%82%B9%E8%B6%8A%E3%81%97%E3%81%AE%E7%85%8C%E3%82%81%E3%81%8D_trained.png"
+          "untrained_file": "/assets/Morfonica/%E6%A1%90%E8%B0%B7%E9%80%8F%E5%AD%90/Cards/Untrained/2344_%E9%80%8F%E8%BF%87%E7%8E%BB%E7%92%83%E7%9A%84%E9%97%AA%E8%80%80%E5%85%89%E8%8A%92.png",
+          "trained_file": "/assets/Morfonica/%E6%A1%90%E8%B0%B7%E9%80%8F%E5%AD%90/Cards/Trained/2344_%E9%80%8F%E8%BF%87%E7%8E%BB%E7%92%83%E7%9A%84%E9%97%AA%E8%80%80%E5%85%89%E8%8A%92_trained.png"
         },
         {
           "id": "27-41",
@@ -21498,6 +21553,17 @@
           "trained_image": "",
           "untrained_file": "/assets/Morfonica/%E6%A1%90%E8%B0%B7%E9%80%8F%E5%AD%90/Cards/Untrained/90027_Card_90027.png",
           "trained_file": ""
+        },
+        {
+          "id": "u-2344_ガラス越しの煌めき.png",
+          "card_name": "ガラス越しの煌めき",
+          "rarity": "Gallery",
+          "event": "",
+          "release_date": "",
+          "untrained_image": "",
+          "trained_image": "paired",
+          "untrained_file": "/assets/Morfonica/%E6%A1%90%E8%B0%B7%E9%80%8F%E5%AD%90/Cards/Untrained/2344_%E3%82%AC%E3%83%A9%E3%82%B9%E8%B6%8A%E3%81%97%E3%81%AE%E7%85%8C%E3%82%81%E3%81%8D.png",
+          "trained_file": "/assets/Morfonica/%E6%A1%90%E8%B0%B7%E9%80%8F%E5%AD%90/Cards/Trained/2344_%E3%82%AC%E3%83%A9%E3%82%B9%E8%B6%8A%E3%81%97%E3%81%AE%E7%85%8C%E3%82%81%E3%81%8D_trained.png"
         }
       ]
     },
@@ -21508,7 +21574,7 @@
       "name_jp": "広町 七深",
       "band": "Morfonica",
       "band_folder": "Morfonica",
-      "standing": "/assets/Morfonica/%E5%B9%BF%E7%94%BA%E4%B8%83%E6%B7%B1/Standing/standing.png?v=1782459847132",
+      "standing": "/assets/Morfonica/%E5%B9%BF%E7%94%BA%E4%B8%83%E6%B7%B1/Standing/standing.png?v=1782566951493",
       "card_count": 43,
       "cards": [
         {
@@ -21993,7 +22059,7 @@
       "name_jp": "二葉 つくし",
       "band": "Morfonica",
       "band_folder": "Morfonica",
-      "standing": "/assets/Morfonica/%E4%BA%8C%E5%8F%B6%E7%AD%91%E7%B4%AB/Standing/standing.png?v=1782459848213",
+      "standing": "/assets/Morfonica/%E4%BA%8C%E5%8F%B6%E7%AD%91%E7%B4%AB/Standing/standing.png?v=1782566953364",
       "card_count": 41,
       "cards": [
         {
@@ -22456,7 +22522,7 @@
       "name_jp": "八潮 瑠唯",
       "band": "Morfonica",
       "band_folder": "Morfonica",
-      "standing": "/assets/Morfonica/%E5%85%AB%E6%BD%AE%E7%91%A0%E5%94%AF/Standing/standing.png?v=1782459849793",
+      "standing": "/assets/Morfonica/%E5%85%AB%E6%BD%AE%E7%91%A0%E5%94%AF/Standing/standing.png?v=1782566955110",
       "card_count": 43,
       "cards": [
         {
@@ -22941,7 +23007,7 @@
       "name_jp": "和奏 レイ",
       "band": "RAISE A SUILEN",
       "band_folder": "RaiseASuilen",
-      "standing": "/assets/RaiseASuilen/%E5%92%8C%E5%A5%8F%E7%91%9E%E4%BE%9D/Standing/standing.png?v=1782459850899",
+      "standing": "/assets/RaiseASuilen/%E5%92%8C%E5%A5%8F%E7%91%9E%E4%BE%9D/Standing/standing.png?v=1782566956969",
       "card_count": 39,
       "cards": [
         {
@@ -23382,7 +23448,7 @@
       "name_jp": "朝日 六花",
       "band": "RAISE A SUILEN",
       "band_folder": "RaiseASuilen",
-      "standing": "/assets/RaiseASuilen/%E6%9C%9D%E6%97%A5%E5%85%AD%E8%8A%B1/Standing/standing.png?v=1782459852473",
+      "standing": "/assets/RaiseASuilen/%E6%9C%9D%E6%97%A5%E5%85%AD%E8%8A%B1/Standing/standing.png?v=1782566958699",
       "card_count": 44,
       "cards": [
         {
@@ -23878,7 +23944,7 @@
       "name_jp": "佐藤 ますき",
       "band": "RAISE A SUILEN",
       "band_folder": "RaiseASuilen",
-      "standing": "/assets/RaiseASuilen/%E4%BD%90%E8%97%A4%E7%9B%8A%E6%9C%A8/Standing/standing.png?v=1782459854446",
+      "standing": "/assets/RaiseASuilen/%E4%BD%90%E8%97%A4%E7%9B%8A%E6%9C%A8/Standing/standing.png?v=1782566960126",
       "card_count": 38,
       "cards": [
         {
@@ -24308,8 +24374,8 @@
       "name_jp": "鳰原 令王那",
       "band": "RAISE A SUILEN",
       "band_folder": "RaiseASuilen",
-      "standing": "/assets/RaiseASuilen/%E9%B3%B0%E5%8E%9F%E4%BB%A4%E7%8E%8B%E9%82%A3/Standing/standing.png?v=1782459855695",
-      "card_count": 37,
+      "standing": "/assets/RaiseASuilen/%E9%B3%B0%E5%8E%9F%E4%BB%A4%E7%8E%8B%E9%82%A3/Standing/standing.png?v=1782566963059",
+      "card_count": 38,
       "cards": [
         {
           "id": "34-0",
@@ -24676,6 +24742,17 @@
         },
         {
           "id": "34-38",
+          "card_name": "bilibili",
+          "rarity": "2-Star",
+          "event": "campaign",
+          "release_date": "2026-06-26",
+          "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res034001_rip/card_normal.png",
+          "trained_image": "",
+          "untrained_file": "/assets/RaiseASuilen/%E9%B3%B0%E5%8E%9F%E4%BB%A4%E7%8E%8B%E9%82%A3/Cards/Untrained/10053_bilibili.png",
+          "trained_file": ""
+        },
+        {
+          "id": "34-39",
           "card_name": "Card 90034",
           "rarity": "2-Star",
           "event": "",
@@ -24727,7 +24804,7 @@
       "name_jp": "珠手 ちゆ",
       "band": "RAISE A SUILEN",
       "band_folder": "RaiseASuilen",
-      "standing": "/assets/RaiseASuilen/%E7%8F%A0%E6%89%8B%E7%9F%A5%E7%94%B1/Standing/standing.png?v=1782459857752",
+      "standing": "/assets/RaiseASuilen/%E7%8F%A0%E6%89%8B%E7%9F%A5%E7%94%B1/Standing/standing.png?v=1782566964855",
       "card_count": 36,
       "cards": [
         {
