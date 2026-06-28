@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-27T18:09:23.764Z",
+  "generated_at": "2026-06-28T13:43:34.041Z",
   "character_count": 35,
   "characters": [
     {
@@ -9,7 +9,7 @@
       "name_jp": "戸山 香澄",
       "band": "Poppin'Party",
       "band_folder": "PoppinParty",
-      "standing": "/assets/PoppinParty/%E6%88%B7%E5%B1%B1%E9%A6%99%E6%BE%84/Standing/standing.png?v=1782459806989",
+      "standing": "/assets/PoppinParty/%E6%88%B7%E5%B1%B1%E9%A6%99%E6%BE%84/Standing/standing.png?v=1782654112784",
       "card_count": 83,
       "cards": [
         {
@@ -930,7 +930,7 @@
         "cv_jp": "愛美",
         "cv_romaji": "Aimi",
         "cv_cn": "爱美",
-        "image": "/assets/PoppinParty/%E6%88%B7%E5%B1%B1%E9%A6%99%E6%BE%84/VoiceActor/d48933171d93089407a596f355fb8f7e.jpg?v=1782583740902"
+        "image": "/assets/PoppinParty/%E6%88%B7%E5%B1%B1%E9%A6%99%E6%BE%84/VoiceActor/d48933171d93089407a596f355fb8f7e.jpg?v=1782654095095"
       }
     },
     {
@@ -940,7 +940,7 @@
       "name_jp": "花園 たえ",
       "band": "Poppin'Party",
       "band_folder": "PoppinParty",
-      "standing": "/assets/PoppinParty/%E8%8A%B1%E5%9B%AD%E5%A4%9A%E6%83%A0/Standing/standing.png?v=1782459808781",
+      "standing": "/assets/PoppinParty/%E8%8A%B1%E5%9B%AD%E5%A4%9A%E6%83%A0/Standing/standing.png?v=1782654116292",
       "card_count": 69,
       "cards": [
         {
@@ -1707,7 +1707,7 @@
         "cv_jp": "大塚紗英",
         "cv_romaji": "Otsuka Sae",
         "cv_cn": "大冢纱英",
-        "image": "/assets/PoppinParty/%E8%8A%B1%E5%9B%AD%E5%A4%9A%E6%83%A0/VoiceActor/bf064229a20e9034c2e54d847e12365b.jpg?v=1782583740907"
+        "image": "/assets/PoppinParty/%E8%8A%B1%E5%9B%AD%E5%A4%9A%E6%83%A0/VoiceActor/bf064229a20e9034c2e54d847e12365b.jpg?v=1782654095257"
       }
     },
     {
@@ -1717,7 +1717,7 @@
       "name_jp": "牛込 りみ",
       "band": "Poppin'Party",
       "band_folder": "PoppinParty",
-      "standing": "/assets/PoppinParty/%E7%89%9B%E8%BE%BC%E9%87%8C%E7%BE%8E/Standing/standing.png?v=1782459810528",
+      "standing": "/assets/PoppinParty/%E7%89%9B%E8%BE%BC%E9%87%8C%E7%BE%8E/Standing/standing.png?v=1782654119241",
       "card_count": 69,
       "cards": [
         {
@@ -2484,7 +2484,7 @@
         "cv_jp": "西本 りみ",
         "cv_romaji": "Nishimoto Rimi",
         "cv_cn": "西本里美",
-        "image": "/assets/PoppinParty/%E7%89%9B%E8%BE%BC%E9%87%8C%E7%BE%8E/VoiceActor/1d1df31c33aaa1e47f2bf2be10b3e75c.jpg?v=1782583740904"
+        "image": "/assets/PoppinParty/%E7%89%9B%E8%BE%BC%E9%87%8C%E7%BE%8E/VoiceActor/1d1df31c33aaa1e47f2bf2be10b3e75c.jpg?v=1782654095177"
       }
     },
     {
@@ -2494,7 +2494,7 @@
       "name_jp": "山吹 沙綾",
       "band": "Poppin'Party",
       "band_folder": "PoppinParty",
-      "standing": "/assets/PoppinParty/%E5%B1%B1%E5%90%B9%E6%B2%99%E7%BB%AB/Standing/standing.png?v=1782459812747",
+      "standing": "/assets/PoppinParty/%E5%B1%B1%E5%90%B9%E6%B2%99%E7%BB%AB/Standing/standing.png?v=1782654125165",
       "card_count": 69,
       "cards": [
         {
@@ -3261,7 +3261,7 @@
         "cv_jp": "大橋 彩香",
         "cv_romaji": "Ohashi Ayaka",
         "cv_cn": "大桥彩香",
-        "image": "/assets/PoppinParty/%E5%B1%B1%E5%90%B9%E6%B2%99%E7%BB%AB/VoiceActor/ceb2263bb691be9987530795d36ed35f.jpg?v=1782583740895"
+        "image": "/assets/PoppinParty/%E5%B1%B1%E5%90%B9%E6%B2%99%E7%BB%AB/VoiceActor/ceb2263bb691be9987530795d36ed35f.jpg?v=1782654094910"
       }
     },
     {
@@ -3271,7 +3271,7 @@
       "name_jp": "市ヶ谷 有咲",
       "band": "Poppin'Party",
       "band_folder": "PoppinParty",
-      "standing": "/assets/PoppinParty/%E5%B8%82%E8%B0%B7%E6%9C%89%E5%92%B2/Standing/standing.png?v=1782459814770",
+      "standing": "/assets/PoppinParty/%E5%B8%82%E8%B0%B7%E6%9C%89%E5%92%B2/Standing/standing.png?v=1782654128570",
       "card_count": 77,
       "cards": [
         {
@@ -4126,7 +4126,7 @@
         "cv_jp": "伊藤 彩沙",
         "cv_romaji": "Itou Ayasa",
         "cv_cn": "伊藤彩沙",
-        "image": "/assets/PoppinParty/%E5%B8%82%E8%B0%B7%E6%9C%89%E5%92%B2/VoiceActor/ea3f7260570035befa8743a9eec96a9b.jpg?v=1782583740898"
+        "image": "/assets/PoppinParty/%E5%B8%82%E8%B0%B7%E6%9C%89%E5%92%B2/VoiceActor/ea3f7260570035befa8743a9eec96a9b.jpg?v=1782654095003"
       }
     },
     {
@@ -4136,7 +4136,7 @@
       "name_jp": "美竹 蘭",
       "band": "Afterglow",
       "band_folder": "Afterglow",
-      "standing": "/assets/Afterglow/%E7%BE%8E%E7%AB%B9%E5%85%B0/Standing/standing.png?v=1782459815507",
+      "standing": "/assets/Afterglow/%E7%BE%8E%E7%AB%B9%E5%85%B0/Standing/standing.png?v=1782654131769",
       "card_count": 75,
       "cards": [
         {
@@ -4969,7 +4969,7 @@
         "cv_jp": "佐倉 綾音",
         "cv_romaji": "Sakura Ayane",
         "cv_cn": "佐仓绫音",
-        "image": "/assets/Afterglow/%E7%BE%8E%E7%AB%B9%E5%85%B0/VoiceActor/70bb515195cb651d61fe3f1be56978c8.jpg?v=1782583740854"
+        "image": "/assets/Afterglow/%E7%BE%8E%E7%AB%B9%E5%85%B0/VoiceActor/70bb515195cb651d61fe3f1be56978c8.jpg?v=1782654093535"
       }
     },
     {
@@ -4979,7 +4979,7 @@
       "name_jp": "青葉 モカ",
       "band": "Afterglow",
       "band_folder": "Afterglow",
-      "standing": "/assets/Afterglow/%E9%9D%92%E5%8F%B6%E6%91%A9%E5%8D%A1/Standing/standing.png?v=1782459817990",
+      "standing": "/assets/Afterglow/%E9%9D%92%E5%8F%B6%E6%91%A9%E5%8D%A1/Standing/standing.png?v=1782654134757",
       "card_count": 69,
       "cards": [
         {
@@ -5746,7 +5746,7 @@
         "cv_jp": "三澤 紗千香",
         "cv_romaji": "Misawa Sachika",
         "cv_cn": "三泽纱千香",
-        "image": "/assets/Afterglow/%E9%9D%92%E5%8F%B6%E6%91%A9%E5%8D%A1/VoiceActor/c102fc033ba0b9ead29f0b1ddf542bf5.jpg?v=1782583740858"
+        "image": "/assets/Afterglow/%E9%9D%92%E5%8F%B6%E6%91%A9%E5%8D%A1/VoiceActor/c102fc033ba0b9ead29f0b1ddf542bf5.jpg?v=1782654093702"
       }
     },
     {
@@ -5756,7 +5756,7 @@
       "name_jp": "上原 ひまり",
       "band": "Afterglow",
       "band_folder": "Afterglow",
-      "standing": "/assets/Afterglow/%E4%B8%8A%E5%8E%9F%E7%BB%AF%E7%8E%9B%E4%B8%BD/Standing/standing.png?v=1782459819932",
+      "standing": "/assets/Afterglow/%E4%B8%8A%E5%8E%9F%E7%BB%AF%E7%8E%9B%E4%B8%BD/Standing/standing.png?v=1782654137706",
       "card_count": 71,
       "cards": [
         {
@@ -6545,7 +6545,7 @@
         "cv_jp": "加藤 英美里",
         "cv_romaji": "Katou Emiri",
         "cv_cn": "加藤英美里",
-        "image": "/assets/Afterglow/%E4%B8%8A%E5%8E%9F%E7%BB%AF%E7%8E%9B%E4%B8%BD/VoiceActor/22a79989975acdef8c7725cb21606d82.jpg?v=1782583740849"
+        "image": "/assets/Afterglow/%E4%B8%8A%E5%8E%9F%E7%BB%AF%E7%8E%9B%E4%B8%BD/VoiceActor/22a79989975acdef8c7725cb21606d82.jpg?v=1782654093363"
       }
     },
     {
@@ -6555,7 +6555,7 @@
       "name_jp": "宇田川 巴",
       "band": "Afterglow",
       "band_folder": "Afterglow",
-      "standing": "/assets/Afterglow/%E5%AE%87%E7%94%B0%E5%B7%9D%E5%B7%B4/Standing/standing.png?v=1782459821657",
+      "standing": "/assets/Afterglow/%E5%AE%87%E7%94%B0%E5%B7%9D%E5%B7%B4/Standing/standing.png?v=1782654141121",
       "card_count": 66,
       "cards": [
         {
@@ -7289,7 +7289,7 @@
         "cv_jp": "日笠 陽子",
         "cv_romaji": "Hikasa Yoko",
         "cv_cn": "日笠阳子",
-        "image": "/assets/Afterglow/%E5%AE%87%E7%94%B0%E5%B7%9D%E5%B7%B4/VoiceActor/96a0892087e7255a48d9b7fc17d6fc71.jpg?v=1782583740851"
+        "image": "/assets/Afterglow/%E5%AE%87%E7%94%B0%E5%B7%9D%E5%B7%B4/VoiceActor/96a0892087e7255a48d9b7fc17d6fc71.jpg?v=1782654093442"
       }
     },
     {
@@ -7299,7 +7299,7 @@
       "name_jp": "羽沢 つぐみ",
       "band": "Afterglow",
       "band_folder": "Afterglow",
-      "standing": "/assets/Afterglow/%E7%BE%BD%E6%B3%BD%E9%B8%AB/Standing/standing.png?v=1782459823618",
+      "standing": "/assets/Afterglow/%E7%BE%BD%E6%B3%BD%E9%B8%AB/Standing/standing.png?v=1782654143683",
       "card_count": 72,
       "cards": [
         {
@@ -8099,7 +8099,7 @@
         "cv_jp": "金元 寿子",
         "cv_romaji": "Kanemoto Hisako",
         "cv_cn": "金元寿子",
-        "image": "/assets/Afterglow/%E7%BE%BD%E6%B3%BD%E9%B8%AB/VoiceActor/56b74ac41ca0e52ed74296eb5bc2f3a8.jpg?v=1782583740856"
+        "image": "/assets/Afterglow/%E7%BE%BD%E6%B3%BD%E9%B8%AB/VoiceActor/56b74ac41ca0e52ed74296eb5bc2f3a8.jpg?v=1782654093624"
       }
     },
     {
@@ -8109,7 +8109,7 @@
       "name_jp": "弦巻 こころ",
       "band": "Hello, Happy World!",
       "band_folder": "HelloHappyWorld",
-      "standing": "/assets/HelloHappyWorld/%E5%BC%A6%E5%8D%B7%E5%BF%83/Standing/standing.png?v=1782459824151",
+      "standing": "/assets/HelloHappyWorld/%E5%BC%A6%E5%8D%B7%E5%BF%83/Standing/standing.png?v=1782654145935",
       "card_count": 76,
       "cards": [
         {
@@ -8953,7 +8953,7 @@
         "cv_jp": "美来 伊藤",
         "cv_romaji": "Miku Itou",
         "cv_cn": "伊藤美来",
-        "image": "/assets/HelloHappyWorld/%E5%BC%A6%E5%8D%B7%E5%BF%83/VoiceActor/066798df9b1ac92d43c1e8c0d6bb2f83.jpg?v=1782583740863"
+        "image": "/assets/HelloHappyWorld/%E5%BC%A6%E5%8D%B7%E5%BF%83/VoiceActor/066798df9b1ac92d43c1e8c0d6bb2f83.jpg?v=1782654093871"
       }
     },
     {
@@ -8963,7 +8963,7 @@
       "name_jp": "瀬田 薫",
       "band": "Hello, Happy World!",
       "band_folder": "HelloHappyWorld",
-      "standing": "/assets/HelloHappyWorld/%E6%BF%91%E7%94%B0%E8%96%B0/Standing/standing.png?v=1782459825851",
+      "standing": "/assets/HelloHappyWorld/%E6%BF%91%E7%94%B0%E8%96%B0/Standing/standing.png?v=1782654150325",
       "card_count": 78,
       "cards": [
         {
@@ -9829,7 +9829,7 @@
         "cv_jp": "田所 あずさ",
         "cv_romaji": "Tadokoro Azusa",
         "cv_cn": "田所梓",
-        "image": "/assets/HelloHappyWorld/%E6%BF%91%E7%94%B0%E8%96%B0/VoiceActor/0b8b13e051acf3627b1ef106aab1d032.jpg?v=1782583740868"
+        "image": "/assets/HelloHappyWorld/%E6%BF%91%E7%94%B0%E8%96%B0/VoiceActor/0b8b13e051acf3627b1ef106aab1d032.jpg?v=1782654094037"
       }
     },
     {
@@ -9839,7 +9839,7 @@
       "name_jp": "北沢 はぐみ",
       "band": "Hello, Happy World!",
       "band_folder": "HelloHappyWorld",
-      "standing": "/assets/HelloHappyWorld/%E5%8C%97%E6%B3%BD%E8%82%B2%E7%BE%8E/Standing/standing.png?v=1782459827598",
+      "standing": "/assets/HelloHappyWorld/%E5%8C%97%E6%B3%BD%E8%82%B2%E7%BE%8E/Standing/standing.png?v=1782654153753",
       "card_count": 72,
       "cards": [
         {
@@ -10639,7 +10639,7 @@
         "cv_jp": "吉田 有里",
         "cv_romaji": "Yoshida Yuri",
         "cv_cn": "吉田有里",
-        "image": "/assets/HelloHappyWorld/%E5%8C%97%E6%B3%BD%E8%82%B2%E7%BE%8E/VoiceActor/1d0606c47c00ad2821852703de74f6e9.jpg?v=1782583740861"
+        "image": "/assets/HelloHappyWorld/%E5%8C%97%E6%B3%BD%E8%82%B2%E7%BE%8E/VoiceActor/1d0606c47c00ad2821852703de74f6e9.jpg?v=1782654093785"
       }
     },
     {
@@ -10649,7 +10649,7 @@
       "name_jp": "松原 花音",
       "band": "Hello, Happy World!",
       "band_folder": "HelloHappyWorld",
-      "standing": "/assets/HelloHappyWorld/%E6%9D%BE%E5%8E%9F%E8%8A%B1%E9%9F%B3/Standing/standing.png?v=1782459828602",
+      "standing": "/assets/HelloHappyWorld/%E6%9D%BE%E5%8E%9F%E8%8A%B1%E9%9F%B3/Standing/standing.png?v=1782654156469",
       "card_count": 75,
       "cards": [
         {
@@ -11482,7 +11482,7 @@
         "cv_jp": "豊田 萌絵",
         "cv_romaji": "Toyota Moe",
         "cv_cn": "丰田萌绘",
-        "image": "/assets/HelloHappyWorld/%E6%9D%BE%E5%8E%9F%E8%8A%B1%E9%9F%B3/VoiceActor/cb11eaef509cb8b6974ba1f69aaf70e7.jpg?v=1782583740866"
+        "image": "/assets/HelloHappyWorld/%E6%9D%BE%E5%8E%9F%E8%8A%B1%E9%9F%B3/VoiceActor/cb11eaef509cb8b6974ba1f69aaf70e7.jpg?v=1782654093955"
       }
     },
     {
@@ -11492,7 +11492,7 @@
       "name_jp": "ミッシェル",
       "band": "Hello, Happy World!",
       "band_folder": "HelloHappyWorld",
-      "standing": "/assets/HelloHappyWorld/%E7%B1%B3%E6%AD%87%E5%B0%94/Standing/standing.png?v=1782459830306",
+      "standing": "/assets/HelloHappyWorld/%E7%B1%B3%E6%AD%87%E5%B0%94/Standing/standing.png?v=1782654159791",
       "card_count": 76,
       "cards": [
         {
@@ -12336,7 +12336,7 @@
         "cv_jp": "黒沢 ともよ",
         "cv_romaji": "Kurosawa Tomoyo",
         "cv_cn": "黑泽朋世",
-        "image": "/assets/HelloHappyWorld/%E7%B1%B3%E6%AD%87%E5%B0%94/VoiceActor/1d3a704a45d6a3762451592a0953e564.jpg?v=1782583740869"
+        "image": "/assets/HelloHappyWorld/%E7%B1%B3%E6%AD%87%E5%B0%94/VoiceActor/1d3a704a45d6a3762451592a0953e564.jpg?v=1782654094130"
       }
     },
     {
@@ -12346,7 +12346,7 @@
       "name_jp": "丸山 彩",
       "band": "Pastel＊Palettes",
       "band_folder": "PastelPalettes",
-      "standing": "/assets/PastelPalettes/%E4%B8%B8%E5%B1%B1%E5%BD%A9/Standing/standing.png?v=1782459831306",
+      "standing": "/assets/PastelPalettes/%E4%B8%B8%E5%B1%B1%E5%BD%A9/Standing/standing.png?v=1782654162525",
       "card_count": 79,
       "cards": [
         {
@@ -13223,7 +13223,7 @@
         "cv_jp": "前島亜美",
         "cv_romaji": "Maeshima Ami",
         "cv_cn": "前岛亚美",
-        "image": "/assets/PastelPalettes/%E4%B8%B8%E5%B1%B1%E5%BD%A9/VoiceActor/ba445a4c4887868a46e5724f91da6f90.jpg?v=1782583740883"
+        "image": "/assets/PastelPalettes/%E4%B8%B8%E5%B1%B1%E5%BD%A9/VoiceActor/ba445a4c4887868a46e5724f91da6f90.jpg?v=1782654094495"
       }
     },
     {
@@ -13233,7 +13233,7 @@
       "name_jp": "氷川 日菜",
       "band": "Pastel＊Palettes",
       "band_folder": "PastelPalettes",
-      "standing": "/assets/PastelPalettes/%E5%86%B0%E5%B7%9D%E6%97%A5%E8%8F%9C/Standing/standing.png?v=1782459832061",
+      "standing": "/assets/PastelPalettes/%E5%86%B0%E5%B7%9D%E6%97%A5%E8%8F%9C/Standing/standing.png?v=1782654165810",
       "card_count": 73,
       "cards": [
         {
@@ -14044,7 +14044,7 @@
         "cv_jp": "小澤亜李",
         "cv_romaji": "Ozawa Ari",
         "cv_cn": "小泽亚李",
-        "image": "/assets/PastelPalettes/%E5%86%B0%E5%B7%9D%E6%97%A5%E8%8F%9C/VoiceActor/b8ecc4f10f2fe271558fb3d28309818a.jpg?v=1782583740885"
+        "image": "/assets/PastelPalettes/%E5%86%B0%E5%B7%9D%E6%97%A5%E8%8F%9C/VoiceActor/b8ecc4f10f2fe271558fb3d28309818a.jpg?v=1782654094577"
       }
     },
     {
@@ -14054,7 +14054,7 @@
       "name_jp": "白鷺 千聖",
       "band": "Pastel＊Palettes",
       "band_folder": "PastelPalettes",
-      "standing": "/assets/PastelPalettes/%E7%99%BD%E9%B9%AD%E5%8D%83%E5%9C%A3/Standing/standing.png?v=1782459834054",
+      "standing": "/assets/PastelPalettes/%E7%99%BD%E9%B9%AD%E5%8D%83%E5%9C%A3/Standing/standing.png?v=1782654168410",
       "card_count": 73,
       "cards": [
         {
@@ -14865,7 +14865,7 @@
         "cv_jp": "上坂 すみれ",
         "cv_romaji": "Uesaka Sumire",
         "cv_cn": "上坂堇",
-        "image": "/assets/PastelPalettes/%E7%99%BD%E9%B9%AD%E5%8D%83%E5%9C%A3/VoiceActor/4ead606d4b3d9ff5557b76902db2e705.jpg?v=1782583740889"
+        "image": "/assets/PastelPalettes/%E7%99%BD%E9%B9%AD%E5%8D%83%E5%9C%A3/VoiceActor/4ead606d4b3d9ff5557b76902db2e705.jpg?v=1782654094743"
       }
     },
     {
@@ -14875,7 +14875,7 @@
       "name_jp": "大和 麻弥",
       "band": "Pastel＊Palettes",
       "band_folder": "PastelPalettes",
-      "standing": "/assets/PastelPalettes/%E5%A4%A7%E5%92%8C%E9%BA%BB%E5%BC%A5/Standing/standing.png?v=1782459835772",
+      "standing": "/assets/PastelPalettes/%E5%A4%A7%E5%92%8C%E9%BA%BB%E5%BC%A5/Standing/standing.png?v=1782654171379",
       "card_count": 67,
       "cards": [
         {
@@ -15620,7 +15620,7 @@
         "cv_jp": "育実 中上",
         "cv_romaji": "Nakagami Ikumi",
         "cv_cn": "中上育实",
-        "image": "/assets/PastelPalettes/%E5%A4%A7%E5%92%8C%E9%BA%BB%E5%BC%A5/VoiceActor/e8bd8a934e9d38d59888563d49926237.jpg?v=1782583740888"
+        "image": "/assets/PastelPalettes/%E5%A4%A7%E5%92%8C%E9%BA%BB%E5%BC%A5/VoiceActor/e8bd8a934e9d38d59888563d49926237.jpg?v=1782654094657"
       }
     },
     {
@@ -15630,7 +15630,7 @@
       "name_jp": "若宮 イヴ",
       "band": "Pastel＊Palettes",
       "band_folder": "PastelPalettes",
-      "standing": "/assets/PastelPalettes/%E8%8B%A5%E5%AE%AB%E4%BC%8A%E8%8A%99/Standing/standing.png?v=1782459837479",
+      "standing": "/assets/PastelPalettes/%E8%8B%A5%E5%AE%AB%E4%BC%8A%E8%8A%99/Standing/standing.png?v=1782654174294",
       "card_count": 71,
       "cards": [
         {
@@ -16419,7 +16419,7 @@
         "cv_jp": "秦 佐和子",
         "cv_romaji": "Hata Sawako",
         "cv_cn": "秦佐和子",
-        "image": "/assets/PastelPalettes/%E8%8B%A5%E5%AE%AB%E4%BC%8A%E8%8A%99/VoiceActor/d5182890948a767e4a5eacbb708fb8f4.jpg?v=1782583740892"
+        "image": "/assets/PastelPalettes/%E8%8B%A5%E5%AE%AB%E4%BC%8A%E8%8A%99/VoiceActor/d5182890948a767e4a5eacbb708fb8f4.jpg?v=1782654094827"
       }
     },
     {
@@ -16429,7 +16429,7 @@
       "name_jp": "湊 友希那",
       "band": "Roselia",
       "band_folder": "Roselia",
-      "standing": "/assets/Roselia/%E5%87%91%E5%8F%8B%E5%B8%8C%E9%82%A3/Standing/standing.png?v=1782459837986",
+      "standing": "/assets/Roselia/%E5%87%91%E5%8F%8B%E5%B8%8C%E9%82%A3/Standing/standing.png?v=1782654178379",
       "card_count": 77,
       "cards": [
         {
@@ -17284,7 +17284,7 @@
         "cv_jp": "相羽 あいな",
         "cv_romaji": "Aiba Aina",
         "cv_cn": "相羽爱奈",
-        "image": "/assets/Roselia/%E5%87%91%E5%8F%8B%E5%B8%8C%E9%82%A3/VoiceActor/2d4da794376a158f53c4feb921641d0f.jpg?v=1782583740924"
+        "image": "/assets/Roselia/%E5%87%91%E5%8F%8B%E5%B8%8C%E9%82%A3/VoiceActor/2d4da794376a158f53c4feb921641d0f.jpg?v=1782654095795"
       }
     },
     {
@@ -17294,7 +17294,7 @@
       "name_jp": "氷川 紗夜",
       "band": "Roselia",
       "band_folder": "Roselia",
-      "standing": "/assets/Roselia/%E5%86%B0%E5%B7%9D%E7%BA%B1%E5%A4%9C/Standing/standing.png?v=1782459838569",
+      "standing": "/assets/Roselia/%E5%86%B0%E5%B7%9D%E7%BA%B1%E5%A4%9C/Standing/standing.png?v=1782654181440",
       "card_count": 73,
       "cards": [
         {
@@ -18105,7 +18105,7 @@
         "cv_jp": "工藤晴香",
         "cv_romaji": "Kudō Haruka",
         "cv_cn": "工藤晴香",
-        "image": "/assets/Roselia/%E5%86%B0%E5%B7%9D%E7%BA%B1%E5%A4%9C/VoiceActor/c3513d066fe26a0f4756e20850393e45.jpg?v=1782583740921"
+        "image": "/assets/Roselia/%E5%86%B0%E5%B7%9D%E7%BA%B1%E5%A4%9C/VoiceActor/c3513d066fe26a0f4756e20850393e45.jpg?v=1782654095700"
       }
     },
     {
@@ -18115,7 +18115,7 @@
       "name_jp": "今井 リサ",
       "band": "Roselia",
       "band_folder": "Roselia",
-      "standing": "/assets/Roselia/%E4%BB%8A%E4%BA%95%E8%8E%89%E8%8E%8E/Standing/standing.png?v=1782459839606",
+      "standing": "/assets/Roselia/%E4%BB%8A%E4%BA%95%E8%8E%89%E8%8E%8E/Standing/standing.png?v=1782654184857",
       "card_count": 78,
       "cards": [
         {
@@ -18981,7 +18981,7 @@
         "cv_jp": "中島由貴",
         "cv_romaji": "Nakashima Yuki",
         "cv_cn": "中岛由贵",
-        "image": "/assets/Roselia/%E4%BB%8A%E4%BA%95%E8%8E%89%E8%8E%8E/VoiceActor/5ef39102e4562e11db4466b7ed1653fb.jpg?v=1782583740919"
+        "image": "/assets/Roselia/%E4%BB%8A%E4%BA%95%E8%8E%89%E8%8E%8E/VoiceActor/5ef39102e4562e11db4466b7ed1653fb.jpg?v=1782654095609"
       }
     },
     {
@@ -18991,7 +18991,7 @@
       "name_jp": "宇田川 あこ",
       "band": "Roselia",
       "band_folder": "Roselia",
-      "standing": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Standing/standing.png?v=1782459841560",
+      "standing": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/Standing/standing.png?v=1782654187449",
       "card_count": 76,
       "cards": [
         {
@@ -19835,7 +19835,7 @@
         "cv_jp": "桜川 めぐ",
         "cv_romaji": "Sakuragawa Megu",
         "cv_cn": "樱川芽实",
-        "image": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/VoiceActor/538704caabc7028c3af8e1b8ae288ffb.jpg?v=1782583740926"
+        "image": "/assets/Roselia/%E5%AE%87%E7%94%B0%E5%B7%9D%E4%BA%9A%E5%AD%90/VoiceActor/538704caabc7028c3af8e1b8ae288ffb.jpg?v=1782654095885"
       }
     },
     {
@@ -19845,7 +19845,7 @@
       "name_jp": "白金 燐子",
       "band": "Roselia",
       "band_folder": "Roselia",
-      "standing": "/assets/Roselia/%E7%99%BD%E9%87%91%E7%87%90%E5%AD%90/Standing/standing.png?v=1782459842636",
+      "standing": "/assets/Roselia/%E7%99%BD%E9%87%91%E7%87%90%E5%AD%90/Standing/standing.png?v=1782654190325",
       "card_count": 73,
       "cards": [
         {
@@ -20656,7 +20656,7 @@
         "cv_jp": "志崎樺音",
         "cv_romaji": "Shizaki Kanon",
         "cv_cn": "志崎桦音",
-        "image": "/assets/Roselia/%E7%99%BD%E9%87%91%E7%87%90%E5%AD%90/VoiceActor/b0f14a6e1e073c71a91864437dec87bd.jpg?v=1782583740929"
+        "image": "/assets/Roselia/%E7%99%BD%E9%87%91%E7%87%90%E5%AD%90/VoiceActor/b0f14a6e1e073c71a91864437dec87bd.jpg?v=1782654095969"
       }
     },
     {
@@ -20666,7 +20666,7 @@
       "name_jp": "倉田 ましろ",
       "band": "Morfonica",
       "band_folder": "Morfonica",
-      "standing": "/assets/Morfonica/%E4%BB%93%E7%94%B0%E7%9C%9F%E7%99%BD/Standing/standing.png?v=1782459843659",
+      "standing": "/assets/Morfonica/%E4%BB%93%E7%94%B0%E7%9C%9F%E7%99%BD/Standing/standing.png?v=1782654193055",
       "card_count": 50,
       "cards": [
         {
@@ -21224,7 +21224,7 @@
         "cv_jp": "進藤あまね",
         "cv_romaji": "Amane Shindo",
         "cv_cn": "进藤天音",
-        "image": "/assets/Morfonica/%E4%BB%93%E7%94%B0%E7%9C%9F%E7%99%BD/VoiceActor/8f57c837839015b50595e3c927d81516.jpg?v=1782583740874"
+        "image": "/assets/Morfonica/%E4%BB%93%E7%94%B0%E7%9C%9F%E7%99%BD/VoiceActor/8f57c837839015b50595e3c927d81516.jpg?v=1782654094238"
       }
     },
     {
@@ -21234,7 +21234,7 @@
       "name_jp": "桐ヶ谷 透子",
       "band": "Morfonica",
       "band_folder": "Morfonica",
-      "standing": "/assets/Morfonica/%E6%A1%90%E8%B0%B7%E9%80%8F%E5%AD%90/Standing/standing.png?v=1782459845400",
+      "standing": "/assets/Morfonica/%E6%A1%90%E8%B0%B7%E9%80%8F%E5%AD%90/Standing/standing.png?v=1782654195097",
       "card_count": 44,
       "cards": [
         {
@@ -21726,7 +21726,7 @@
         "cv_jp": "直田姫奈",
         "cv_romaji": "Hina Suguta",
         "cv_cn": "椥田帆夏",
-        "image": "/assets/Morfonica/%E6%A1%90%E8%B0%B7%E9%80%8F%E5%AD%90/VoiceActor/8f381a5c9ca9d64e68133a0f61098943.jpg?v=1782583740881"
+        "image": "/assets/Morfonica/%E6%A1%90%E8%B0%B7%E9%80%8F%E5%AD%90/VoiceActor/8f381a5c9ca9d64e68133a0f61098943.jpg?v=1782654094404"
       }
     },
     {
@@ -21736,7 +21736,7 @@
       "name_jp": "広町 七深",
       "band": "Morfonica",
       "band_folder": "Morfonica",
-      "standing": "/assets/Morfonica/%E5%B9%BF%E7%94%BA%E4%B8%83%E6%B7%B1/Standing/standing.png?v=1782459847132",
+      "standing": "/assets/Morfonica/%E5%B9%BF%E7%94%BA%E4%B8%83%E6%B7%B1/Standing/standing.png?v=1782654197373",
       "card_count": 43,
       "cards": [
         {
@@ -22217,7 +22217,7 @@
         "cv_jp": "西尾夕香",
         "cv_romaji": "Yuka Nishio",
         "cv_cn": "西尾夕香",
-        "image": "/assets/Morfonica/%E5%B9%BF%E7%94%BA%E4%B8%83%E6%B7%B1/VoiceActor/d3a43af83b71c6d84ba33b017bd3f83d.jpg?v=1782583740879"
+        "image": "/assets/Morfonica/%E5%B9%BF%E7%94%BA%E4%B8%83%E6%B7%B1/VoiceActor/d3a43af83b71c6d84ba33b017bd3f83d.jpg?v=1782654094351"
       }
     },
     {
@@ -22227,7 +22227,7 @@
       "name_jp": "二葉 つくし",
       "band": "Morfonica",
       "band_folder": "Morfonica",
-      "standing": "/assets/Morfonica/%E4%BA%8C%E5%8F%B6%E7%AD%91%E7%B4%AB/Standing/standing.png?v=1782459848213",
+      "standing": "/assets/Morfonica/%E4%BA%8C%E5%8F%B6%E7%AD%91%E7%B4%AB/Standing/standing.png?v=1782654199337",
       "card_count": 41,
       "cards": [
         {
@@ -22686,7 +22686,7 @@
         "cv_jp": "mika",
         "cv_romaji": "mika",
         "cv_cn": "mika",
-        "image": "/assets/Morfonica/%E4%BA%8C%E5%8F%B6%E7%AD%91%E7%B4%AB/VoiceActor/8da53b7c652e7c52cc003ecf25ffb6d2.jpg?v=1782583740871"
+        "image": "/assets/Morfonica/%E4%BA%8C%E5%8F%B6%E7%AD%91%E7%B4%AB/VoiceActor/8da53b7c652e7c52cc003ecf25ffb6d2.jpg?v=1782654094180"
       }
     },
     {
@@ -22696,7 +22696,7 @@
       "name_jp": "八潮 瑠唯",
       "band": "Morfonica",
       "band_folder": "Morfonica",
-      "standing": "/assets/Morfonica/%E5%85%AB%E6%BD%AE%E7%91%A0%E5%94%AF/Standing/standing.png?v=1782459849793",
+      "standing": "/assets/Morfonica/%E5%85%AB%E6%BD%AE%E7%91%A0%E5%94%AF/Standing/standing.png?v=1782654201089",
       "card_count": 43,
       "cards": [
         {
@@ -23177,7 +23177,7 @@
         "cv_jp": "Ayasa",
         "cv_romaji": "Ayasa",
         "cv_cn": "Ayasa",
-        "image": "/assets/Morfonica/%E5%85%AB%E6%BD%AE%E7%91%A0%E5%94%AF/VoiceActor/cfe5c862723edf2b017c5cc5d6a0fc22.jpg?v=1782583740877"
+        "image": "/assets/Morfonica/%E5%85%AB%E6%BD%AE%E7%91%A0%E5%94%AF/VoiceActor/cfe5c862723edf2b017c5cc5d6a0fc22.jpg?v=1782654094297"
       }
     },
     {
@@ -23187,7 +23187,7 @@
       "name_jp": "和奏 レイ",
       "band": "RAISE A SUILEN",
       "band_folder": "RaiseASuilen",
-      "standing": "/assets/RaiseASuilen/%E5%92%8C%E5%A5%8F%E7%91%9E%E4%BE%9D/Standing/standing.png?v=1782459850899",
+      "standing": "/assets/RaiseASuilen/%E5%92%8C%E5%A5%8F%E7%91%9E%E4%BE%9D/Standing/standing.png?v=1782654203125",
       "card_count": 39,
       "cards": [
         {
@@ -23624,7 +23624,7 @@
         "cv_jp": "",
         "cv_romaji": "Raychell",
         "cv_cn": "Raychell",
-        "image": "/assets/RaiseASuilen/%E5%92%8C%E5%A5%8F%E7%91%9E%E4%BE%9D/VoiceActor/9d34db0af98379dfbabd4ca2c27743cf.jpg?v=1782583740910"
+        "image": "/assets/RaiseASuilen/%E5%92%8C%E5%A5%8F%E7%91%9E%E4%BE%9D/VoiceActor/9d34db0af98379dfbabd4ca2c27743cf.jpg?v=1782654095359"
       }
     },
     {
@@ -23634,7 +23634,7 @@
       "name_jp": "朝日 六花",
       "band": "RAISE A SUILEN",
       "band_folder": "RaiseASuilen",
-      "standing": "/assets/RaiseASuilen/%E6%9C%9D%E6%97%A5%E5%85%AD%E8%8A%B1/Standing/standing.png?v=1782459852473",
+      "standing": "/assets/RaiseASuilen/%E6%9C%9D%E6%97%A5%E5%85%AD%E8%8A%B1/Standing/standing.png?v=1782654205349",
       "card_count": 44,
       "cards": [
         {
@@ -24126,7 +24126,7 @@
         "cv_jp": "小原 莉子",
         "cv_romaji": "Riko Kohara",
         "cv_cn": "小原莉子",
-        "image": "/assets/RaiseASuilen/%E6%9C%9D%E6%97%A5%E5%85%AD%E8%8A%B1/VoiceActor/eb5be6f7877583c6edae29aaeca4283d.jpg?v=1782583740913"
+        "image": "/assets/RaiseASuilen/%E6%9C%9D%E6%97%A5%E5%85%AD%E8%8A%B1/VoiceActor/eb5be6f7877583c6edae29aaeca4283d.jpg?v=1782654095412"
       }
     },
     {
@@ -24136,7 +24136,7 @@
       "name_jp": "佐藤 ますき",
       "band": "RAISE A SUILEN",
       "band_folder": "RaiseASuilen",
-      "standing": "/assets/RaiseASuilen/%E4%BD%90%E8%97%A4%E7%9B%8A%E6%9C%A8/Standing/standing.png?v=1782459854446",
+      "standing": "/assets/RaiseASuilen/%E4%BD%90%E8%97%A4%E7%9B%8A%E6%9C%A8/Standing/standing.png?v=1782654207687",
       "card_count": 38,
       "cards": [
         {
@@ -24562,7 +24562,7 @@
         "cv_jp": "夏芽",
         "cv_romaji": "Natsume",
         "cv_cn": "夏芽",
-        "image": "/assets/RaiseASuilen/%E4%BD%90%E8%97%A4%E7%9B%8A%E6%9C%A8/VoiceActor/a09c4f8ed97d0e4cf91cc3667be6809e.jpg?v=1782583740908"
+        "image": "/assets/RaiseASuilen/%E4%BD%90%E8%97%A4%E7%9B%8A%E6%9C%A8/VoiceActor/a09c4f8ed97d0e4cf91cc3667be6809e.jpg?v=1782654095304"
       }
     },
     {
@@ -24572,7 +24572,7 @@
       "name_jp": "鳰原 令王那",
       "band": "RAISE A SUILEN",
       "band_folder": "RaiseASuilen",
-      "standing": "/assets/RaiseASuilen/%E9%B3%B0%E5%8E%9F%E4%BB%A4%E7%8E%8B%E9%82%A3/Standing/standing.png?v=1782459855695",
+      "standing": "/assets/RaiseASuilen/%E9%B3%B0%E5%8E%9F%E4%BB%A4%E7%8E%8B%E9%82%A3/Standing/standing.png?v=1782654209944",
       "card_count": 38,
       "cards": [
         {
@@ -24998,7 +24998,7 @@
         "cv_jp": "倉知 玲鳳",
         "cv_romaji": "Reo Kurachi",
         "cv_cn": "仓知玲凤",
-        "image": "/assets/RaiseASuilen/%E9%B3%B0%E5%8E%9F%E4%BB%A4%E7%8E%8B%E9%82%A3/VoiceActor/42af4906b2f7226804ddd757254339e3.jpg?v=1782583740916"
+        "image": "/assets/RaiseASuilen/%E9%B3%B0%E5%8E%9F%E4%BB%A4%E7%8E%8B%E9%82%A3/VoiceActor/42af4906b2f7226804ddd757254339e3.jpg?v=1782654095510"
       }
     },
     {
@@ -25008,7 +25008,7 @@
       "name_jp": "珠手 ちゆ",
       "band": "RAISE A SUILEN",
       "band_folder": "RaiseASuilen",
-      "standing": "/assets/RaiseASuilen/%E7%8F%A0%E6%89%8B%E7%9F%A5%E7%94%B1/Standing/standing.png?v=1782459857752",
+      "standing": "/assets/RaiseASuilen/%E7%8F%A0%E6%89%8B%E7%9F%A5%E7%94%B1/Standing/standing.png?v=1782654212251",
       "card_count": 36,
       "cards": [
         {
@@ -25412,7 +25412,7 @@
         "cv_jp": "紡木 吏佐",
         "cv_romaji": "Risa Tsumugi",
         "cv_cn": "纺木吏佐",
-        "image": "/assets/RaiseASuilen/%E7%8F%A0%E6%89%8B%E7%9F%A5%E7%94%B1/VoiceActor/9ffb38df6def313cfc095232479f3910.jpg?v=1782583740914"
+        "image": "/assets/RaiseASuilen/%E7%8F%A0%E6%89%8B%E7%9F%A5%E7%94%B1/VoiceActor/9ffb38df6def313cfc095232479f3910.jpg?v=1782654095462"
       }
     }
   ]
