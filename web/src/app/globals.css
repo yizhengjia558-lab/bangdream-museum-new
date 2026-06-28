@@ -210,11 +210,11 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   transform: rotate(-14deg);
-  opacity: 0.78;
+  opacity: 0.38;
 }
 
 [data-theme="dark"] .bd-page-bg__scroll {
-  opacity: 0.62;
+  opacity: 0.28;
 }
 
 .bd-page-bg__scroll-row {
@@ -222,29 +222,25 @@ body {
   width: max-content;
   white-space: nowrap;
   font-family: var(--font-title-active);
-  font-size: clamp(2.75rem, 8.5vw, 6rem);
+  font-size: clamp(2.5rem, 7.5vw, 5.25rem);
   font-weight: 900;
   font-style: italic;
   letter-spacing: 0.06em;
   line-height: 1.1;
-  color: rgba(233, 67, 94, 0.14);
-  -webkit-text-stroke: 2.75px rgba(233, 67, 94, 0.62);
-  text-stroke: 2.75px rgba(233, 67, 94, 0.62);
+  color: rgba(233, 67, 94, 0.05);
+  -webkit-text-stroke: 1.5px rgba(233, 67, 94, 0.22);
+  text-stroke: 1.5px rgba(233, 67, 94, 0.22);
   paint-order: stroke fill;
-  text-shadow:
-    0 0 32px rgba(233, 67, 94, 0.22),
-    0 2px 12px rgba(233, 67, 94, 0.12);
+  text-shadow: none;
   animation: bd-scroll-forward 48s linear infinite;
   animation-delay: calc(var(--row-i, 0) * -6s);
 }
 
 [data-theme="dark"] .bd-page-bg__scroll-row {
-  color: rgba(255, 120, 150, 0.12);
-  -webkit-text-stroke: 2.75px rgba(255, 120, 150, 0.58);
-  text-stroke: 2.75px rgba(255, 120, 150, 0.58);
-  text-shadow:
-    0 0 40px rgba(255, 107, 138, 0.28),
-    0 2px 16px rgba(255, 107, 138, 0.18);
+  color: rgba(255, 120, 150, 0.04);
+  -webkit-text-stroke: 1.5px rgba(255, 120, 150, 0.2);
+  text-stroke: 1.5px rgba(255, 120, 150, 0.2);
+  text-shadow: none;
 }
 
 .bd-page-bg__scroll-row span {
@@ -253,15 +249,15 @@ body {
 
 .bd-page-bg__scroll--reverse {
   transform: rotate(-14deg);
-  opacity: 0.52;
+  opacity: 0.22;
 }
 
 .bd-page-bg__scroll--reverse .bd-page-bg__scroll-row {
   animation-name: bd-scroll-reverse;
   animation-duration: 62s;
-  font-size: clamp(2.25rem, 6.5vw, 4.5rem);
-  -webkit-text-stroke-width: 2.25px;
-  text-stroke-width: 2.25px;
+  font-size: clamp(2rem, 6vw, 4rem);
+  -webkit-text-stroke-width: 1.25px;
+  text-stroke-width: 1.25px;
 }
 
 .bd-page-bg__scroll-row--alt {
