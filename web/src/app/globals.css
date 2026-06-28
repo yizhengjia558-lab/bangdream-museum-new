@@ -1794,6 +1794,11 @@ button.glass-frame.card-tile {
   position: relative;
 }
 
+/* Dropdown wrapper uses lang-toggle-fixed; must win over .lang-switcher relative positioning */
+.lang-switcher.lang-toggle-fixed {
+  position: fixed;
+}
+
 .lang-switcher-menu {
   position: absolute;
   top: calc(100% + 0.5rem);
