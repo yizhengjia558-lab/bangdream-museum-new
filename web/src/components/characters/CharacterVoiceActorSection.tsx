@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { GlassPanel } from "@/components/ui/GlassPanel";
+import { ImageLightbox } from "@/components/ui/ImageLightbox";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getVoiceActorName } from "@/lib/i18n/display";
 import type { VoiceActorData } from "@/lib/data";
@@ -15,6 +17,7 @@ export function CharacterVoiceActorSection({
   accent: string;
 }) {
   const { t, locale } = useLocale();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const name = getVoiceActorName(voiceActor, locale);
   const altName =
     locale === "zh"
@@ -38,11 +41,14 @@ export function CharacterVoiceActorSection({
           >
             <p className="character-voice-section-eyebrow">{t("character.voiceActor")}</p>
             <div className="character-voice-section-body">
-              <div
-                className="character-voice-section-photo"
-                style={{ boxShadow: `0 12px 48px ${accent}40`, borderColor: `${accent}55` }}
-              >
-                {voiceActor.image ? (
+              {voiceActor.image ? (
+                <button
+                  type="button"
+                  className="character-voice-section-photo character-voice-section-photo-btn"
+                  style={{ boxShadow: `0 12px 48px ${accent}40`, borderColor: `${accent}55` }}
+                  aria-label={t("character.viewVoiceActorPhoto")}
+                  onClick={() => setLightboxOpen(true)}
+                >
                   <AssetImage
                     src={voiceActor.image}
                     alt={name}
@@ -54,11 +60,20 @@ export function CharacterVoiceActorSection({
                       );
                     }}
                   />
-                ) : null}
-                <span className="character-voice-section-fallback" aria-hidden>
-                  {name.slice(0, 1)}
-                </span>
-              </div>
+                  <span className="character-voice-section-zoom" aria-hidden>
+                    {t("character.viewVoiceActorPhoto")}
+                  </span>
+                </button>
+              ) : (
+                <div
+                  className="character-voice-section-photo character-voice-section-photo--fallback"
+                  style={{ boxShadow: `0 12px 48px ${accent}40`, borderColor: `${accent}55` }}
+                >
+                  <span className="character-voice-section-fallback" aria-hidden>
+                    {name.slice(0, 1)}
+                  </span>
+                </div>
+              )}
               <div className="character-voice-section-text">
                 <h2 className="character-voice-section-name">{name}</h2>
                 {altName && altName !== name ? (
@@ -72,6 +87,17 @@ export function CharacterVoiceActorSection({
           </GlassPanel>
         </motion.div>
       </div>
+
+      {voiceActor.image ? (
+        <ImageLightbox
+          open={lightboxOpen}
+          src={voiceActor.image}
+          alt={name}
+          caption={name}
+          closeLabel={t("common.close")}
+          onClose={() => setLightboxOpen(false)}
+        />
+      ) : null}
     </section>
   );
 }

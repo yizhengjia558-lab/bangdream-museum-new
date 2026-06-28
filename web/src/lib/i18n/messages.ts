@@ -38,6 +38,7 @@ const zh = {
     cards: "卡面",
     band: "所属乐队",
     voiceActor: "声优",
+    viewVoiceActorPhoto: "查看声优大图",
   },
   card: {
     untrained: "特训前",
@@ -49,7 +50,7 @@ const zh = {
     searchHint: "输入关键词，点击结果快速跳转",
     jumpTo: "跳转到卡面",
   },
-  common: { members: "成员", cards: "卡面", scrollToTop: "回到顶部" },
+  common: { members: "成员", cards: "卡面", scrollToTop: "回到顶部", close: "关闭" },
   footer: {
     title: "BanG Dream! 数字博物馆",
     subtitle: "角色档案沉浸体验",
@@ -95,6 +96,7 @@ const en = {
     cards: "Cards",
     band: "Band",
     voiceActor: "Voice Actor",
+    viewVoiceActorPhoto: "View full photo",
   },
   card: {
     untrained: "Before Training",
@@ -106,7 +108,7 @@ const en = {
     searchHint: "Type a keyword and select a result to jump",
     jumpTo: "Jump to card",
   },
-  common: { members: "Members", cards: "Cards", scrollToTop: "Back to Top" },
+  common: { members: "Members", cards: "Cards", scrollToTop: "Back to Top", close: "Close" },
   footer: {
     title: "BanG Dream! Digital Museum",
     subtitle: "Character Archive Experience",
@@ -152,6 +154,7 @@ const ja = {
     cards: "カード",
     band: "所属バンド",
     voiceActor: "声優",
+    viewVoiceActorPhoto: "声優写真を拡大",
   },
   card: {
     untrained: "特訓前",
@@ -163,7 +166,7 @@ const ja = {
     searchHint: "キーワードを入力し、結果をクリックして移動",
     jumpTo: "カードへ移動",
   },
-  common: { members: "メンバー", cards: "カード", scrollToTop: "トップへ" },
+  common: { members: "メンバー", cards: "カード", scrollToTop: "トップへ", close: "閉じる" },
   footer: {
     title: "BanG Dream! デジタルミュージアム",
     subtitle: "キャラクターアーカイブ体験",
