@@ -6,10 +6,12 @@ import { GlassPanel } from "@/components/ui/GlassPanel";
 import { CardFilterBar } from "@/components/cards/CardFilterBar";
 import { CardGalleryItem } from "@/components/cards/CardGalleryItem";
 import { CardDetailModal } from "@/components/cards/CardDetailModal";
+import { useGlobalSearch } from "@/components/search/GlobalSearchProvider";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { EMPTY_CARD_FILTERS, filterCards, type CardFilterState } from "@/lib/card-filters";
+import { buildMemberMap, filterCardsBySearch } from "@/lib/card-search";
 import { expandCardDisplays, type CardDisplayItem } from "@/lib/cards";
-import type { CardData, CharacterData } from "@/lib/data";
+import { getAllCharacters, type CardData, type CharacterData } from "@/lib/data";
 
 interface CardGalleryProps {
   cards: CardData[];
@@ -31,6 +33,7 @@ export function CardGallery({
   showFilters = true,
 }: CardGalleryProps) {
   const { t } = useLocale();
+  const { query, hasQuery } = useGlobalSearch();
   const [filters, setFilters] = useState<CardFilterState>(EMPTY_CARD_FILTERS);
   const [internalVisible, setInternalVisible] = useState(48);
   const [lightbox, setLightbox] = useState<CardDisplayItem | null>(null);
@@ -38,12 +41,20 @@ export function CardGallery({
   const visible = controlledVisible ?? internalVisible;
   const setVisible = onVisibleChange ?? setInternalVisible;
 
-  const filteredCards = useMemo(() => filterCards(cards, filters), [cards, filters]);
+  const memberMap = useMemo(
+    () => buildMemberMap(members.length > 0 ? members : getAllCharacters()),
+    [members]
+  );
+
+  const filteredCards = useMemo(() => {
+    const facetFiltered = filterCards(cards, filters);
+    return filterCardsBySearch(facetFiltered, query, memberMap);
+  }, [cards, filters, query, memberMap]);
   const displays = useMemo(() => expandCardDisplays(filteredCards), [filteredCards]);
 
   useEffect(() => {
     setVisible(48);
-  }, [filters, setVisible]);
+  }, [filters, query, setVisible]);
 
   const shown = displays.slice(0, visible);
 
@@ -63,7 +74,9 @@ export function CardGallery({
 
       {displays.length === 0 ? (
         <GlassPanel className="card-filter-empty p-10 text-center">
-          <p className="text-[var(--text-secondary)]">{t("filter.noResults")}</p>
+          <p className="text-[var(--text-secondary)]">
+            {hasQuery ? t("search.noResults") : t("filter.noResults")}
+          </p>
         </GlassPanel>
       ) : (
         <ul className="card-gallery-grid">

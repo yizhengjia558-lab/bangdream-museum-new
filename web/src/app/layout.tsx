@@ -9,6 +9,7 @@ import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { FavoritesProvider } from "@/components/favorites/FavoritesProvider";
 import { LocaleProvider } from "@/components/i18n/LocaleProvider";
 import { LanguageToggle } from "@/components/i18n/LanguageToggle";
+import { GlobalSearchProvider } from "@/components/search/GlobalSearchProvider";
 import { DocumentLocale } from "@/components/i18n/DocumentLocale";
 import { BangDreamPageBackground } from "@/components/effects/BangDreamPageBackground";
 import { ScrollToTopButton } from "@/components/layout/ScrollToTopButton";
@@ -61,18 +62,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <BangDreamPageBackground />
         <LocaleProvider>
           <DocumentLocale />
-          <FavoritesProvider>
-            <ThemeProvider>
-              <SmoothScroll>
-                <LanguageToggle className="lang-toggle-fixed" />
-                <ThemeToggle className="theme-toggle-fixed" />
-                <ScrollToTopButton />
-                <SiteHeader />
-                <main className="relative flex-1">{children}</main>
-                <SiteFooter />
-              </SmoothScroll>
-            </ThemeProvider>
-          </FavoritesProvider>
+          <GlobalSearchProvider>
+            <FavoritesProvider>
+              <ThemeProvider>
+                <SmoothScroll>
+                  <LanguageToggle className="lang-toggle-fixed" />
+                  <ThemeToggle className="theme-toggle-fixed" />
+                  <ScrollToTopButton />
+                  <SiteHeader />
+                  <main className="relative flex-1">{children}</main>
+                  <SiteFooter />
+                </SmoothScroll>
+              </ThemeProvider>
+            </FavoritesProvider>
+          </GlobalSearchProvider>
         </LocaleProvider>
       </body>
     </html>

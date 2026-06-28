@@ -59,6 +59,15 @@ const zh = {
     fullscreenPreview: "全屏预览",
   },
   common: { members: "成员", cards: "卡面", scrollToTop: "回到顶部", close: "关闭" },
+  search: {
+    placeholder: "搜索成员、乐队、声优、卡面…",
+    clear: "清空搜索",
+    noResults: "未找到匹配结果",
+    typeBand: "乐队",
+    typeMember: "成员",
+    typeCard: "卡面",
+    typeVoiceActor: "声优",
+  },
   filter: {
     title: "卡面筛选",
     clearAll: "清空全部筛选",
@@ -160,6 +169,15 @@ const en = {
     fullscreenPreview: "FULL-SCREEN PREVIEW",
   },
   common: { members: "Members", cards: "Cards", scrollToTop: "Back to Top", close: "Close" },
+  search: {
+    placeholder: "Search members, bands, voice actors, cards…",
+    clear: "Clear search",
+    noResults: "No matching results",
+    typeBand: "Band",
+    typeMember: "Member",
+    typeCard: "Card",
+    typeVoiceActor: "Voice Actor",
+  },
   filter: {
     title: "Card Filters",
     clearAll: "Clear all filters",
@@ -261,6 +279,15 @@ const ja = {
     fullscreenPreview: "全画面プレビュー",
   },
   common: { members: "メンバー", cards: "カード", scrollToTop: "トップへ", close: "閉じる" },
+  search: {
+    placeholder: "メンバー、バンド、声優、カードを検索…",
+    clear: "検索をクリア",
+    noResults: "一致する結果がありません",
+    typeBand: "バンド",
+    typeMember: "メンバー",
+    typeCard: "カード",
+    typeVoiceActor: "声優",
+  },
   filter: {
     title: "カードフィルター",
     clearAll: "フィルターをすべて解除",

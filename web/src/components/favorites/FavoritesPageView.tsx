@@ -1,24 +1,27 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CardGalleryItem } from "@/components/cards/CardGalleryItem";
 import { CardDetailModal } from "@/components/cards/CardDetailModal";
-import { CardNameSearch } from "@/components/cards/CardNameSearch";
 import { useFavorites } from "@/components/favorites/FavoritesProvider";
+import { useGlobalSearch } from "@/components/search/GlobalSearchProvider";
 import { BandBackButton } from "@/components/bands/BandBackButton";
 import { GlassButton } from "@/components/ui/GlassButton";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { expandCardDisplays, filterCardDisplaysByName, type CardDisplayItem } from "@/lib/cards";
-import { getAllSiteCards } from "@/lib/data";
+import { expandCardDisplays, type CardDisplayItem } from "@/lib/cards";
+import { buildMemberMap, filterCardsBySearch } from "@/lib/card-search";
+import { getAllCharacters, getAllSiteCards } from "@/lib/data";
 
-const ALL_DISPLAYS = expandCardDisplays(getAllSiteCards());
+const ALL_CARDS = getAllSiteCards();
+const ALL_DISPLAYS = expandCardDisplays(ALL_CARDS);
+const MEMBER_MAP = buildMemberMap(getAllCharacters());
 
 export function FavoritesPageView() {
   const { t } = useLocale();
   const { favorites, count } = useFavorites();
-  const [query, setQuery] = useState("");
+  const { query, hasQuery } = useGlobalSearch();
   const [visible, setVisible] = useState(48);
   const [lightbox, setLightbox] = useState<CardDisplayItem | null>(null);
 
@@ -28,10 +31,18 @@ export function FavoritesPageView() {
   }, [favorites]);
 
   const filtered = useMemo(() => {
-    const q = query.trim();
-    if (!q) return favoriteDisplays;
-    return filterCardDisplaysByName(favoriteDisplays, q, favoriteDisplays.length);
-  }, [favoriteDisplays, query]);
+    if (!hasQuery) return favoriteDisplays;
+    const favoriteCards = ALL_CARDS.filter((card) =>
+      favoriteDisplays.some((display) => display.card.id === card.id)
+    );
+    const matchedCards = filterCardsBySearch(favoriteCards, query, MEMBER_MAP);
+    const matchedIds = new Set(matchedCards.map((card) => card.id));
+    return favoriteDisplays.filter((display) => matchedIds.has(display.card.id));
+  }, [favoriteDisplays, hasQuery, query]);
+
+  useEffect(() => {
+    setVisible(48);
+  }, [query]);
 
   const shown = filtered.slice(0, visible);
 
@@ -53,16 +64,6 @@ export function FavoritesPageView() {
             )}
           </GlassPanel>
 
-          {count > 0 && (
-            <CardNameSearch
-              displays={favoriteDisplays}
-              themeColor="#e9435e"
-              mode="filter"
-              query={query}
-              onQueryChange={setQuery}
-            />
-          )}
-
           {count === 0 ? (
             <GlassPanel className="favorites-empty p-12 text-center">
               <p className="text-lg font-semibold text-[var(--text-primary)]">{t("favorites.empty")}</p>
@@ -73,7 +74,7 @@ export function FavoritesPageView() {
             </GlassPanel>
           ) : filtered.length === 0 ? (
             <GlassPanel className="favorites-empty p-10 text-center">
-              <p className="text-[var(--text-secondary)]">{t("card.searchNoResults")}</p>
+              <p className="text-[var(--text-secondary)]">{t("search.noResults")}</p>
             </GlassPanel>
           ) : (
             <>
