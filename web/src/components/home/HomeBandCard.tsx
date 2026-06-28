@@ -76,7 +76,13 @@ export function HomeBandCard({
               <div className="glass-reflection pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
               <div className="band-showcase-panel-inner">
-                <BandLogo band={band} size="lg" />
+                <motion.div
+                  className="band-logo-float"
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: 4 + index * 0.3, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <BandLogo band={band} size="lg" />
+                </motion.div>
 
                 <h2 className="band-showcase-name mt-10" style={{ color: band.colors.primary }}>
                   {bandName}

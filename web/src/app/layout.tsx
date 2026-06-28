@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { FavoritesProvider } from "@/components/favorites/FavoritesProvider";
 import { LocaleProvider } from "@/components/i18n/LocaleProvider";
 import { LanguageToggle } from "@/components/i18n/LanguageToggle";
 import { BangDreamPageBackground } from "@/components/effects/BangDreamPageBackground";
@@ -58,16 +59,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="theme-body flex min-h-full flex-col font-[family-name:var(--font-body-active)] antialiased">
         <BangDreamPageBackground />
         <LocaleProvider>
-          <ThemeProvider>
-            <SmoothScroll>
-              <LanguageToggle className="lang-toggle-fixed" />
-              <ThemeToggle className="theme-toggle-fixed" />
-              <ScrollToTopButton />
-              <SiteHeader />
-              <main className="relative flex-1">{children}</main>
-              <SiteFooter />
-            </SmoothScroll>
-          </ThemeProvider>
+          <FavoritesProvider>
+            <ThemeProvider>
+              <SmoothScroll>
+                <LanguageToggle className="lang-toggle-fixed" />
+                <ThemeToggle className="theme-toggle-fixed" />
+                <ScrollToTopButton />
+                <SiteHeader />
+                <main className="relative flex-1">{children}</main>
+                <SiteFooter />
+              </SmoothScroll>
+            </ThemeProvider>
+          </FavoritesProvider>
         </LocaleProvider>
       </body>
     </html>

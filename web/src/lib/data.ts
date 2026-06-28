@@ -64,6 +64,19 @@ export function getBandWithMembers(slug: string): (BandTheme & { members: Charac
   return { ...band, members: getCharactersByBand(band.folder) };
 }
 
+export function getAllSiteCards(): CardData[] {
+  return getAllCharacters().flatMap((character) =>
+    character.cards.map((card) => ({
+      ...card,
+      character_id: card.character_id ?? character.id,
+      character_name_cn: card.character_name_cn ?? character.name_cn,
+      character_name_jp: card.character_name_jp ?? character.name_jp,
+      band: card.band ?? character.band,
+      band_folder: card.band_folder ?? character.band_folder,
+    }))
+  );
+}
+
 export function getFeaturedCards(limit = 12): CardData[] {
   const all = getAllCharacters().flatMap((c) =>
     c.cards.slice(0, 2).map((card) => ({ ...card, character: c }))

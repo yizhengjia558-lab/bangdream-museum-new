@@ -10,22 +10,32 @@ export function CardNameSearch({
   themeColor = "#e9435e",
   onJump,
   variant = "default",
+  mode = "jump",
+  query: controlledQuery,
+  onQueryChange,
 }: {
   displays: CardDisplayItem[];
   themeColor?: string;
-  onJump: (key: string) => void;
+  onJump?: (key: string) => void;
   variant?: "default" | "compact";
+  mode?: "jump" | "filter";
+  query?: string;
+  onQueryChange?: (query: string) => void;
 }) {
   const { t } = useLocale();
   const listId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
-  const [query, setQuery] = useState("");
+  const [internalQuery, setInternalQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const query = controlledQuery ?? internalQuery;
+  const setQuery = onQueryChange ?? setInternalQuery;
+  const isFilterMode = mode === "filter";
+
   const results = useMemo(() => filterCardDisplaysByName(displays, query), [displays, query]);
-  const showDropdown = open && query.trim().length > 0;
+  const showDropdown = !isFilterMode && open && query.trim().length > 0;
 
   useEffect(() => {
     setActiveIndex(0);
@@ -40,7 +50,7 @@ export function CardNameSearch({
   }, []);
 
   const jump = (key: string) => {
-    onJump(key);
+    onJump?.(key);
     setOpen(false);
     inputRef.current?.blur();
   };
@@ -84,9 +94,11 @@ export function CardNameSearch({
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
-            setOpen(true);
+            if (!isFilterMode) setOpen(true);
           }}
-          onFocus={() => setOpen(true)}
+          onFocus={() => {
+            if (!isFilterMode) setOpen(true);
+          }}
           onKeyDown={onKeyDown}
           placeholder={t("card.searchPlaceholder")}
           className="card-search-input"
@@ -97,7 +109,12 @@ export function CardNameSearch({
           aria-autocomplete="list"
         />
       </div>
-      {variant === "default" && <p className="card-search-hint">{t("card.searchHint")}</p>}
+      {variant === "default" && !isFilterMode && <p className="card-search-hint">{t("card.searchHint")}</p>}
+      {isFilterMode && query.trim().length > 0 && (
+        <p className="card-search-hint">
+          {t("favorites.searchResultCount").replace("{count}", String(results.length))}
+        </p>
+      )}
 
       {showDropdown && (
         <ul

@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { AssetImage } from "@/components/ui/AssetImage";
 import { GlassButton } from "@/components/ui/GlassButton";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { CardFilterBar } from "@/components/cards/CardFilterBar";
 import { CardGalleryItem } from "@/components/cards/CardGalleryItem";
+import { CardDetailModal } from "@/components/cards/CardDetailModal";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { EMPTY_CARD_FILTERS, filterCards, type CardFilterState } from "@/lib/card-filters";
 import { expandCardDisplays, type CardDisplayItem } from "@/lib/cards";
@@ -89,57 +88,7 @@ export function CardGallery({
         </div>
       )}
 
-      <AnimatePresence>
-        {lightbox && (
-          <motion.div
-            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
-            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            transition={{ duration: 0.4 }}
-            className="glass-dark fixed inset-0 z-[100] flex items-center justify-center p-6"
-            onClick={() => setLightbox(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0, filter: "blur(8px)" }}
-              animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
-              exit={{ scale: 0.95, opacity: 0, filter: "blur(4px)" }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <GlassPanel className="max-h-[90vh] max-w-5xl overflow-hidden p-6 sm:p-8">
-                <span
-                  className={`mb-4 inline-block rounded-full px-3 py-1 text-xs font-bold ${
-                    lightbox.variant === "trained"
-                      ? "border border-white/20 bg-white/15 text-white"
-                      : "border border-white/10 bg-black/30 text-white/70"
-                  }`}
-                >
-                  {lightbox.variant === "trained" ? t("card.trained") : t("card.untrained")}
-                </span>
-                <AssetImage
-                  src={lightbox.src}
-                  alt={lightbox.card.card_name}
-                  className="max-h-[70vh] w-auto rounded-2xl object-contain"
-                />
-                <div className="mt-6 text-center">
-                  <p className="font-[family-name:var(--font-subtitle-active)] text-xl font-bold text-[var(--text-primary)]">
-                    {lightbox.card.card_name}
-                  </p>
-                  <p className="mt-2 text-sm text-[var(--text-secondary)]">
-                    {lightbox.card.rarity} · {lightbox.card.event || t("card.special")}
-                  </p>
-                </div>
-                <button
-                  className="absolute -top-2 -right-2 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-lg text-white backdrop-blur-md transition hover:bg-white/20"
-                  onClick={() => setLightbox(null)}
-                >
-                  ×
-                </button>
-              </GlassPanel>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <CardDetailModal item={lightbox} onClose={() => setLightbox(null)} themeColor={themeColor} />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import type { Locale } from "./types";
 
 const zh = {
-  nav: { home: "首页", bands: "乐队" },
+  nav: { home: "首页", bands: "乐队", favorites: "我的收藏" },
   back: "返回",
   theme: { light: "浅色", dark: "深色" },
   lang: { switch: "切换语言", current: "当前语言" },
@@ -49,6 +49,10 @@ const zh = {
     searchNoResults: "未找到匹配的卡面",
     searchHint: "输入关键词，点击结果快速跳转",
     jumpTo: "跳转到卡面",
+    viewMode: "VIEW MODE",
+    beforeTraining: "BEFORE TRAINING",
+    afterTraining: "AFTER TRAINING",
+    fullscreenPreview: "FULL-SCREEN PREVIEW",
   },
   common: { members: "成员", cards: "卡面", scrollToTop: "回到顶部", close: "关闭" },
   filter: {
@@ -75,6 +79,17 @@ const zh = {
       collab: "联动",
     },
   },
+  favorites: {
+    title: "我的收藏",
+    subtitle: "珍藏的心动卡面",
+    count: "已收藏 {count} 张卡面",
+    hint: "点击卡片右上角爱心可取消收藏",
+    empty: "还没有收藏任何卡面",
+    emptyHint: "浏览乐队或角色页面，点击卡片右上角的爱心即可加入收藏",
+    add: "加入收藏",
+    remove: "取消收藏",
+    searchResultCount: "找到 {count} 张匹配卡面",
+  },
   footer: {
     title: "BanG Dream! 数字博物馆",
     subtitle: "角色档案沉浸体验",
@@ -83,7 +98,7 @@ const zh = {
 } as const;
 
 const en = {
-  nav: { home: "Home", bands: "Bands" },
+  nav: { home: "Home", bands: "Bands", favorites: "Favorites" },
   back: "Back",
   theme: { light: "Light", dark: "Dark" },
   lang: { switch: "Switch language", current: "Current language" },
@@ -131,6 +146,10 @@ const en = {
     searchNoResults: "No matching cards",
     searchHint: "Type a keyword and select a result to jump",
     jumpTo: "Jump to card",
+    viewMode: "VIEW MODE",
+    beforeTraining: "BEFORE TRAINING",
+    afterTraining: "AFTER TRAINING",
+    fullscreenPreview: "FULL-SCREEN PREVIEW",
   },
   common: { members: "Members", cards: "Cards", scrollToTop: "Back to Top", close: "Close" },
   filter: {
@@ -157,6 +176,17 @@ const en = {
       collab: "Collab",
     },
   },
+  favorites: {
+    title: "My Favorites",
+    subtitle: "Cards you've saved",
+    count: "{count} cards saved",
+    hint: "Tap the heart on a card to remove it from favorites",
+    empty: "No favorites yet",
+    emptyHint: "Browse bands or characters and tap the heart on any card to save it here",
+    add: "Add to favorites",
+    remove: "Remove from favorites",
+    searchResultCount: "{count} matching cards",
+  },
   footer: {
     title: "BanG Dream! Digital Museum",
     subtitle: "Character Archive Experience",
@@ -165,7 +195,7 @@ const en = {
 } as const;
 
 const ja = {
-  nav: { home: "ホーム", bands: "バンド" },
+  nav: { home: "ホーム", bands: "バンド", favorites: "お気に入り" },
   back: "戻る",
   theme: { light: "ライト", dark: "ダーク" },
   lang: { switch: "言語を切り替え", current: "現在の言語" },
@@ -213,6 +243,10 @@ const ja = {
     searchNoResults: "一致するカードがありません",
     searchHint: "キーワードを入力し、結果をクリックして移動",
     jumpTo: "カードへ移動",
+    viewMode: "VIEW MODE",
+    beforeTraining: "BEFORE TRAINING",
+    afterTraining: "AFTER TRAINING",
+    fullscreenPreview: "FULL-SCREEN PREVIEW",
   },
   common: { members: "メンバー", cards: "カード", scrollToTop: "トップへ", close: "閉じる" },
   filter: {
@@ -238,6 +272,17 @@ const ja = {
       birthday: "バースデー",
       collab: "コラボ",
     },
+  },
+  favorites: {
+    title: "お気に入り",
+    subtitle: "保存したカード",
+    count: "{count} 枚を保存中",
+    hint: "カード右上のハートをタップしてお気に入りから削除",
+    empty: "お気に入りはまだありません",
+    emptyHint: "バンドやキャラクターページで、カード右上のハートをタップして保存できます",
+    add: "お気に入りに追加",
+    remove: "お気に入りから削除",
+    searchResultCount: "{count} 枚が一致",
   },
   footer: {
     title: "BanG Dream! デジタルミュージアム",

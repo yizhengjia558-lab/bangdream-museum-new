@@ -7,6 +7,20 @@ export type CardDisplayItem = {
   src: string;
 };
 
+export type CardVariant = "untrained" | "trained";
+
+export function getCardVariantSrc(card: CardData, variant: CardVariant): string {
+  return variant === "trained"
+    ? card.trained_file || card.trained_image
+    : card.untrained_file || card.untrained_image;
+}
+
+export function getCardVariantAvailability(card: CardData) {
+  const untrained = Boolean(card.untrained_file || card.untrained_image);
+  const trained = Boolean(card.trained_file || card.trained_image);
+  return { untrained, trained, both: untrained && trained };
+}
+
 /** Expand each card into untrained + trained display tiles (trained immediately after untrained). */
 export function expandCardDisplays(cards: CardData[]): CardDisplayItem[] {
   const items: CardDisplayItem[] = [];

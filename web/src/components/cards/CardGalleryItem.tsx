@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { FitText } from "@/components/ui/FitText";
+import { CardFavoriteButton } from "@/components/cards/CardFavoriteButton";
 import { CardTile } from "@/components/cards/CardTile";
 import { CardVariantBadge } from "@/components/cards/CardVariantBadge";
 import type { CardDisplayItem } from "@/lib/cards";
@@ -24,16 +25,18 @@ export function CardGalleryItem({
   return (
     <motion.li
       id={`card-tile-${item.key}`}
-      initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      initial={{ opacity: 0, y: 32, scale: 0.96 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ delay: (index % 12) * 0.04, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ delay: (index % 12) * 0.04, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{ scale: 1.02 }}
       className={cn(
         "card-gallery-item scroll-mt-28",
         highlight && "card-gallery-item--highlight"
       )}
     >
-      <CardTile className="card-tile--uniform h-full" onClick={onClick}>
+      <CardTile className="card-tile--uniform card-tile--interactive h-full" onClick={onClick}>
+        <CardFavoriteButton displayKey={item.key} />
         <CardVariantBadge variant={item.variant} />
 
         <div className="card-image-wrap card-image-wrap--landscape relative aspect-[4/3]">

@@ -1,16 +1,33 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { StarryParticles } from "@/components/effects/StarryParticles";
+import { FloatingLightOrbs } from "@/components/effects/FloatingLightOrbs";
+import { HeroBannerCarousel } from "@/components/home/HeroBannerCarousel";
 import { CardRiver } from "@/components/home/CardRiver";
 import { GlassButton } from "@/components/ui/GlassButton";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import type { HeroBannerSlide } from "@/lib/hero-banner";
 import type { RiverCardItem } from "@/lib/hero-cards";
+import { motion } from "framer-motion";
 
-export function HeroMainVisual({ riverCards }: { riverCards: RiverCardItem[] }) {
+export function HeroMainVisual({
+  riverCards,
+  bannerSlides,
+}: {
+  riverCards: RiverCardItem[];
+  bannerSlides: HeroBannerSlide[];
+}) {
   const { t } = useLocale();
 
   return (
     <div className="hero-block">
+      <div className="home-fx-layer" aria-hidden>
+        <StarryParticles />
+        <FloatingLightOrbs />
+      </div>
+
+      <HeroBannerCarousel slides={bannerSlides} />
+
       <section className="hero-intro">
         <div className="hero-copy">
           <motion.p
