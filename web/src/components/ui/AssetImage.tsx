@@ -1,3 +1,4 @@
+import type { ImgHTMLAttributes } from "react";
 import { cn, assetUrl } from "@/lib/utils";
 
 interface AssetImageProps {
@@ -6,10 +7,11 @@ interface AssetImageProps {
   className?: string;
   fill?: boolean;
   priority?: boolean;
+  onError?: ImgHTMLAttributes<HTMLImageElement>["onError"];
 }
 
 /** Native img — avoids Next/Image issues with Chinese asset paths on Windows. */
-export function AssetImage({ src, alt, className, fill, priority }: AssetImageProps) {
+export function AssetImage({ src, alt, className, fill, priority, onError }: AssetImageProps) {
   const url = assetUrl(src);
 
   if (fill) {
@@ -20,6 +22,7 @@ export function AssetImage({ src, alt, className, fill, priority }: AssetImagePr
         alt={alt}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
+        onError={onError}
         className={cn("absolute inset-0 h-full w-full", className)}
       />
     );
@@ -27,6 +30,6 @@ export function AssetImage({ src, alt, className, fill, priority }: AssetImagePr
 
   return (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src={url} alt={alt} loading={priority ? "eager" : "lazy"} decoding="async" className={className} />
+    <img src={url} alt={alt} loading={priority ? "eager" : "lazy"} decoding="async" onError={onError} className={className} />
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { AssetImage } from "@/components/ui/AssetImage";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getVoiceActorName } from "@/lib/i18n/display";
@@ -42,13 +43,10 @@ export function CharacterVoiceActorSection({
                 style={{ boxShadow: `0 12px 48px ${accent}40`, borderColor: `${accent}55` }}
               >
                 {voiceActor.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <AssetImage
                     src={voiceActor.image}
                     alt={name}
                     className="character-voice-section-img"
-                    loading="lazy"
-                    decoding="async"
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
                       e.currentTarget.parentElement?.classList.add(
