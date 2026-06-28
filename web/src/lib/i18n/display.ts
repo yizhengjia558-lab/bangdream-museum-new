@@ -1,8 +1,34 @@
-import type { CharacterData, VoiceActorData } from "@/lib/data";
+import type { CardData, CharacterData, VoiceActorData } from "@/lib/data";
 import type { BandTheme } from "@/lib/themes";
 import type { Locale } from "./types";
 
 const CJK_RE = /[\u4e00-\u9fff\u3040-\u309f\u30a0-\u33ff]/;
+
+function parseStarCount(rarity: string): number | null {
+  const starMatch = rarity.match(/(\d)\s*[-–]?\s*star/i);
+  if (starMatch) return Number(starMatch[1]);
+  const zhMatch = rarity.match(/(\d)\s*星/);
+  if (zhMatch) return Number(zhMatch[1]);
+  return null;
+}
+
+export function getCardRarityLabel(card: Pick<CardData, "rarity" | "stars">, locale: Locale): string {
+  const stars = card.stars ?? parseStarCount(card.rarity);
+
+  if (stars) {
+    if (locale === "zh") return `${stars} 星`;
+    if (locale === "ja") return `${stars}★`;
+    return `${stars}-Star`;
+  }
+
+  if (/gallery/i.test(card.rarity)) {
+    if (locale === "zh") return "画廊";
+    if (locale === "ja") return "ギャラリー";
+    return "Gallery";
+  }
+
+  return card.rarity;
+}
 
 export function getCharacterName(character: CharacterData, locale: Locale): string {
   if (locale === "zh") return character.name_cn;

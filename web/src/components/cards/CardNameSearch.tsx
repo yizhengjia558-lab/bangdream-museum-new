@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { getCardRarityLabel } from "@/lib/i18n/display";
 import { filterCardDisplaysByName, type CardDisplayItem } from "@/lib/cards";
 import { cn } from "@/lib/utils";
 
@@ -22,7 +23,7 @@ export function CardNameSearch({
   query?: string;
   onQueryChange?: (query: string) => void;
 }) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const listId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -141,7 +142,7 @@ export function CardNameSearch({
                       <span className="card-search-result-variant" style={{ color: themeColor }}>
                         {variantLabel}
                       </span>
-                      <span className="card-search-result-rarity">{item.card.rarity}</span>
+                      <span className="card-search-result-rarity">{getCardRarityLabel(item.card, locale)}</span>
                     </span>
                   </button>
                 </li>

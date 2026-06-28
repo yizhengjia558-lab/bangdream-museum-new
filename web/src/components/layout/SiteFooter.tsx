@@ -30,6 +30,12 @@ export function SiteFooter() {
             >
               {t("nav.bands")}
             </Link>
+            <Link
+              href="/favorites/"
+              className="text-[11px] font-semibold tracking-[0.12em] text-[var(--text-muted)] uppercase transition hover:text-[var(--brand-pink)]"
+            >
+              {t("nav.favorites")}
+            </Link>
           </nav>
           <p className="mt-8 text-[10px] leading-relaxed text-[var(--text-muted)]">
             {t("footer.disclaimer")}

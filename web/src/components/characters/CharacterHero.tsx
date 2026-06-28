@@ -7,7 +7,7 @@ import { AssetImage } from "@/components/ui/AssetImage";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { CardNameSearch } from "@/components/cards/CardNameSearch";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { getBandName, getCharacterName } from "@/lib/i18n/display";
+import { getBandName, getCharacterAltName, getCharacterName } from "@/lib/i18n/display";
 import type { CardDisplayItem } from "@/lib/cards";
 import type { CharacterData } from "@/lib/data";
 import type { BandTheme } from "@/lib/themes";
@@ -28,6 +28,7 @@ export function CharacterHero({
   const accent = theme?.colors.primary ?? "#e9435e";
   const backdrop = getCharacterBackdrop(character);
   const displayName = getCharacterName(character, locale);
+  const altName = getCharacterAltName(character, locale);
 
   return (
     <section className="character-hero relative min-h-screen overflow-hidden">
@@ -75,6 +76,7 @@ export function CharacterHero({
             )}
 
             <h1 className="character-hero-name">{displayName}</h1>
+            {altName ? <p className="character-hero-alt-name">{altName}</p> : null}
 
             <dl className="character-hero-stats">
               <div className="character-hero-stat">

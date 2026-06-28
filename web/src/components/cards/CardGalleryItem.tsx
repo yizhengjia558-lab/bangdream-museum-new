@@ -6,6 +6,8 @@ import { FitText } from "@/components/ui/FitText";
 import { CardFavoriteButton } from "@/components/cards/CardFavoriteButton";
 import { CardTile } from "@/components/cards/CardTile";
 import { CardVariantBadge } from "@/components/cards/CardVariantBadge";
+import { useLocale } from "@/components/i18n/LocaleProvider";
+import { getCardRarityLabel } from "@/lib/i18n/display";
 import type { CardDisplayItem } from "@/lib/cards";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +24,9 @@ export function CardGalleryItem({
   highlight: boolean;
   onClick: () => void;
 }) {
+  const { locale } = useLocale();
+  const rarityLabel = getCardRarityLabel(item.card, locale);
+
   return (
     <motion.li
       id={`card-tile-${item.key}`}
@@ -51,7 +56,7 @@ export function CardGalleryItem({
 
         <div className="card-caption card-caption--uniform">
           <p className="card-caption-rarity" style={{ color: themeColor }}>
-            {item.card.rarity}
+            {rarityLabel}
           </p>
           <FitText
             text={item.card.card_name}

@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { CardFavoriteButton } from "@/components/cards/CardFavoriteButton";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { getCardRarityLabel } from "@/lib/i18n/display";
 import {
   getCardVariantAvailability,
   getCardVariantSrc,
@@ -26,7 +27,7 @@ export function CardDetailModal({
   onClose: () => void;
   themeColor?: string;
 }) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const [variant, setVariant] = useState<CardVariant>("untrained");
   const [fullscreen, setFullscreen] = useState(false);
 
@@ -37,6 +38,7 @@ export function CardDetailModal({
 
   const activeSrc = item ? getCardVariantSrc(item.card, variant) : "";
   const activeKey = item ? displayKey(item.card.id, variant) : "";
+  const rarityLabel = item ? getCardRarityLabel(item.card, locale) : "";
 
   useEffect(() => {
     if (!item) return;
@@ -159,7 +161,7 @@ export function CardDetailModal({
               <div className="card-detail-meta">
                 <p className="card-detail-name">{item.card.card_name}</p>
                 <p className="card-detail-sub">
-                  {item.card.rarity} · {item.card.event || t("card.special")}
+                  {rarityLabel} · {item.card.event || t("card.special")}
                 </p>
               </div>
             </motion.div>

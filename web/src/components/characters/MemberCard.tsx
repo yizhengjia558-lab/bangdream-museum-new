@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { CardTile } from "@/components/cards/CardTile";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { getCharacterName } from "@/lib/i18n/display";
+import { getCharacterAltName, getCharacterName } from "@/lib/i18n/display";
 import type { CharacterData } from "@/lib/data";
 import type { BandTheme } from "@/lib/themes";
 
@@ -20,7 +20,7 @@ export function MemberCard({
 }) {
   const { locale } = useLocale();
   const displayName = getCharacterName(member, locale);
-  const altName = locale === "zh" ? member.name_jp : locale === "ja" ? member.name_cn : member.name_cn;
+  const altName = getCharacterAltName(member, locale);
 
   return (
     <motion.div

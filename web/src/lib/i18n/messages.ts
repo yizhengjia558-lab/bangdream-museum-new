@@ -5,6 +5,10 @@ const zh = {
   back: "返回",
   theme: { light: "浅色", dark: "深色" },
   lang: { switch: "切换语言", current: "当前语言" },
+  meta: {
+    title: "BanG Dream! — 数字角色博物馆",
+    description: "探索 BanG Dream! 七支乐队、35 位成员与完整卡面图鉴的沉浸式数字博物馆。",
+  },
   hero: {
     eyebrow: "GIRLS BAND PARTY!",
     title: "BanG Dream!",
@@ -49,10 +53,10 @@ const zh = {
     searchNoResults: "未找到匹配的卡面",
     searchHint: "输入关键词，点击结果快速跳转",
     jumpTo: "跳转到卡面",
-    viewMode: "VIEW MODE",
-    beforeTraining: "BEFORE TRAINING",
-    afterTraining: "AFTER TRAINING",
-    fullscreenPreview: "FULL-SCREEN PREVIEW",
+    viewMode: "显示模式",
+    beforeTraining: "特训前",
+    afterTraining: "特训后",
+    fullscreenPreview: "全屏预览",
   },
   common: { members: "成员", cards: "卡面", scrollToTop: "回到顶部", close: "关闭" },
   filter: {
@@ -102,6 +106,10 @@ const en = {
   back: "Back",
   theme: { light: "Light", dark: "Dark" },
   lang: { switch: "Switch language", current: "Current language" },
+  meta: {
+    title: "BanG Dream! — Digital Character Museum",
+    description: "An immersive digital museum for BanG Dream! bands, characters, and card collections.",
+  },
   hero: {
     eyebrow: "GIRLS BAND PARTY!",
     title: "BanG Dream!",
@@ -199,6 +207,10 @@ const ja = {
   back: "戻る",
   theme: { light: "ライト", dark: "ダーク" },
   lang: { switch: "言語を切り替え", current: "現在の言語" },
+  meta: {
+    title: "BanG Dream! — デジタルキャラクターミュージアム",
+    description: "BanG Dream! のバンド、キャラクター、カードコレクションを探索できるデジタルミュージアム。",
+  },
   hero: {
     eyebrow: "GIRLS BAND PARTY!",
     title: "BanG Dream!",
@@ -243,10 +255,10 @@ const ja = {
     searchNoResults: "一致するカードがありません",
     searchHint: "キーワードを入力し、結果をクリックして移動",
     jumpTo: "カードへ移動",
-    viewMode: "VIEW MODE",
-    beforeTraining: "BEFORE TRAINING",
-    afterTraining: "AFTER TRAINING",
-    fullscreenPreview: "FULL-SCREEN PREVIEW",
+    viewMode: "表示モード",
+    beforeTraining: "特訓前",
+    afterTraining: "特訓後",
+    fullscreenPreview: "全画面プレビュー",
   },
   common: { members: "メンバー", cards: "カード", scrollToTop: "トップへ", close: "閉じる" },
   filter: {

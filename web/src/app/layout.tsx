@@ -9,6 +9,7 @@ import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { FavoritesProvider } from "@/components/favorites/FavoritesProvider";
 import { LocaleProvider } from "@/components/i18n/LocaleProvider";
 import { LanguageToggle } from "@/components/i18n/LanguageToggle";
+import { DocumentLocale } from "@/components/i18n/DocumentLocale";
 import { BangDreamPageBackground } from "@/components/effects/BangDreamPageBackground";
 import { ScrollToTopButton } from "@/components/layout/ScrollToTopButton";
 
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="theme-body flex min-h-full flex-col font-[family-name:var(--font-body-active)] antialiased">
         <BangDreamPageBackground />
         <LocaleProvider>
+          <DocumentLocale />
           <FavoritesProvider>
             <ThemeProvider>
               <SmoothScroll>
