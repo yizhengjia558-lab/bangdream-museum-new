@@ -1,7 +1,7 @@
 "use client";
 
 import { CardGallery } from "@/components/cards/CardGallery";
-import type { CardData } from "@/lib/data";
+import type { CardData, CharacterData } from "@/lib/data";
 
 export function CharacterCardArchive({
   cards,
@@ -9,12 +9,14 @@ export function CharacterCardArchive({
   visible,
   onVisibleChange,
   highlightKey,
+  members = [],
 }: {
   cards: CardData[];
   themeColor: string;
   visible: number;
   onVisibleChange: (visible: number) => void;
   highlightKey: string | null;
+  members?: CharacterData[];
 }) {
   return (
     <CardGallery
@@ -23,6 +25,8 @@ export function CharacterCardArchive({
       visible={visible}
       onVisibleChange={onVisibleChange}
       highlightKey={highlightKey}
+      members={members}
+      showFilters
     />
   );
 }

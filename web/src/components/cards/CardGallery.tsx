@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { GlassButton } from "@/components/ui/GlassButton";
 import { GlassPanel } from "@/components/ui/GlassPanel";
+import { CardFilterBar } from "@/components/cards/CardFilterBar";
 import { CardGalleryItem } from "@/components/cards/CardGalleryItem";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { EMPTY_CARD_FILTERS, filterCards, type CardFilterState } from "@/lib/card-filters";
 import { expandCardDisplays, type CardDisplayItem } from "@/lib/cards";
-import type { CardData } from "@/lib/data";
+import type { CardData, CharacterData } from "@/lib/data";
 
 interface CardGalleryProps {
   cards: CardData[];
@@ -16,6 +18,8 @@ interface CardGalleryProps {
   visible?: number;
   onVisibleChange?: (visible: number) => void;
   highlightKey?: string | null;
+  members?: CharacterData[];
+  showFilters?: boolean;
 }
 
 export function CardGallery({
@@ -24,31 +28,58 @@ export function CardGallery({
   visible: controlledVisible,
   onVisibleChange,
   highlightKey = null,
+  members = [],
+  showFilters = true,
 }: CardGalleryProps) {
-  const displays = expandCardDisplays(cards);
+  const { t } = useLocale();
+  const [filters, setFilters] = useState<CardFilterState>(EMPTY_CARD_FILTERS);
   const [internalVisible, setInternalVisible] = useState(48);
   const [lightbox, setLightbox] = useState<CardDisplayItem | null>(null);
-  const { t } = useLocale();
 
   const visible = controlledVisible ?? internalVisible;
   const setVisible = onVisibleChange ?? setInternalVisible;
+
+  const filteredCards = useMemo(() => filterCards(cards, filters), [cards, filters]);
+  const displays = useMemo(() => expandCardDisplays(filteredCards), [filteredCards]);
+
+  useEffect(() => {
+    setVisible(48);
+  }, [filters, setVisible]);
 
   const shown = displays.slice(0, visible);
 
   return (
     <>
-      <ul className="card-gallery-grid">
-        {shown.map((item, i) => (
-          <CardGalleryItem
-            key={item.key}
-            item={item}
-            index={i}
-            themeColor={themeColor}
-            highlight={highlightKey === item.key}
-            onClick={() => setLightbox(item)}
-          />
-        ))}
-      </ul>
+      {showFilters && (
+        <CardFilterBar
+          cards={cards}
+          filters={filters}
+          onChange={setFilters}
+          members={members}
+          themeColor={themeColor}
+          resultCount={filteredCards.length}
+          totalCount={cards.length}
+        />
+      )}
+
+      {displays.length === 0 ? (
+        <GlassPanel className="card-filter-empty p-10 text-center">
+          <p className="text-[var(--text-secondary)]">{t("filter.noResults")}</p>
+        </GlassPanel>
+      ) : (
+        <ul className="card-gallery-grid">
+          {shown.map((item, i) => (
+            <CardGalleryItem
+              key={item.key}
+              item={item}
+              index={i}
+              themeColor={themeColor}
+              highlight={highlightKey === item.key}
+              onClick={() => setLightbox(item)}
+            />
+          ))}
+        </ul>
+      )}
 
       {visible < displays.length && (
         <div className="mt-12 flex justify-center">

@@ -1,6 +1,9 @@
 import siteData from "@/data/site-data.json";
 import { BAND_THEMES, getBandByFolder, getBandBySlug, type BandTheme } from "./themes";
 
+export type CardAttribute = "power" | "cool" | "pure" | "happy";
+export type CardKind = "normal" | "limited" | "birthday" | "collab";
+
 export interface CardData {
   id: string;
   card_name: string;
@@ -11,6 +14,16 @@ export interface CardData {
   trained_image: string;
   untrained_file: string;
   trained_file: string;
+  character_id?: number;
+  character_name_cn?: string;
+  character_name_jp?: string;
+  band?: string;
+  band_folder?: string;
+  stars?: number | null;
+  attribute?: CardAttribute | "";
+  card_kind?: CardKind;
+  release_year?: number | null;
+  bestdori_card_id?: number | null;
 }
 
 export interface VoiceActorData {

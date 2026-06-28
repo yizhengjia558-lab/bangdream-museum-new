@@ -1,11 +1,43 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { spawnSync } from "child_process";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "../..");
 const bandori = path.join(root, "Bandori");
 const out = path.join(__dirname, "../src/data/site-data.json");
+const enrichmentScript = path.join(root, "scripts/build-card-enrichment.py");
+const enrichmentPath = path.join(__dirname, "../src/data/card-enrichment.json");
+
+spawnSync("python", [enrichmentScript], { cwd: root, stdio: "inherit" });
+
+const enrichmentRaw = fs.existsSync(enrichmentPath)
+  ? JSON.parse(fs.readFileSync(enrichmentPath, "utf8"))
+  : { cards: {} };
+
+function normCardName(name) {
+  return (name || "").replace(/\s+/g, "").toLowerCase();
+}
+
+function enrichCardFields(card, entry, meta) {
+  const key = `${entry.character_id}|${normCardName(card.card_name)}`;
+  const extra = enrichmentRaw.cards?.[key] || {};
+  const releaseYear = extra.release_year ?? (card.release_date ? parseInt(card.release_date.slice(0, 4), 10) : null);
+  return {
+    ...card,
+    character_id: entry.character_id,
+    character_name_cn: meta.character_name_cn,
+    character_name_jp: meta.character_name_jp,
+    band: meta.band,
+    band_folder: entry.band_folder,
+    stars: extra.stars ?? null,
+    attribute: extra.attribute || "",
+    card_kind: extra.card_kind || "normal",
+    release_year: Number.isFinite(releaseYear) ? releaseYear : null,
+    bestdori_card_id: extra.bestdori_card_id ?? null,
+  };
+}
 
 const index = JSON.parse(fs.readFileSync(path.join(bandori, "all_characters.json"), "utf8"));
 const voiceActorsPath = path.join(__dirname, "../src/data/voice-actors.json");
@@ -101,17 +133,21 @@ const characters = index.characters.map((entry) => {
     if (untrained) usedUntrained.add(untrained);
     if (trained) usedTrained.add(trained);
 
-    return {
-      id: `${entry.character_id}-${idx}`,
-      card_name: card.card_name,
-      rarity: card.rarity,
-      event: card.event,
-      release_date: card.release_date,
-      untrained_image: card.untrained_image,
-      trained_image: card.trained_image,
-      untrained_file: untrained,
-      trained_file: trained,
-    };
+    return enrichCardFields(
+      {
+        id: `${entry.character_id}-${idx}`,
+        card_name: card.card_name,
+        rarity: card.rarity,
+        event: card.event,
+        release_date: card.release_date,
+        untrained_image: card.untrained_image,
+        trained_image: card.trained_image,
+        untrained_file: untrained,
+        trained_file: trained,
+      },
+      entry,
+      meta
+    );
   });
 
   const galleryUntrained = untrainedFiles
@@ -119,32 +155,42 @@ const characters = index.characters.map((entry) => {
     .map((f) => {
       const paired = findTrainedPair(trainedFiles, f.raw);
       if (paired) usedTrained.add(paired);
-      return {
-        id: `u-${f.raw}`,
-        card_name: f.label,
-        rarity: "Gallery",
-        event: "",
-        release_date: "",
-        untrained_image: "",
-        trained_image: paired ? "paired" : "",
-        untrained_file: f.file,
-        trained_file: paired,
-      };
+      return enrichCardFields(
+        {
+          id: `u-${f.raw}`,
+          card_name: f.label,
+          rarity: "Gallery",
+          event: "",
+          release_date: "",
+          untrained_image: "",
+          trained_image: paired ? "paired" : "",
+          untrained_file: f.file,
+          trained_file: paired,
+        },
+        entry,
+        meta
+      );
     });
 
   const galleryTrained = trainedFiles
     .filter((f) => !usedTrained.has(f.file))
-    .map((f) => ({
-      id: `t-${f.raw}`,
-      card_name: f.label,
-      rarity: "Gallery",
-      event: "",
-      release_date: "",
-      untrained_image: "",
-      trained_image: "",
-      untrained_file: "",
-      trained_file: f.file,
-    }));
+    .map((f) =>
+      enrichCardFields(
+        {
+          id: `t-${f.raw}`,
+          card_name: f.label,
+          rarity: "Gallery",
+          event: "",
+          release_date: "",
+          untrained_image: "",
+          trained_image: "",
+          untrained_file: "",
+          trained_file: f.file,
+        },
+        entry,
+        meta
+      )
+    );
 
   const allCards = [
     ...cards.filter((c) => c.untrained_file || c.trained_file),

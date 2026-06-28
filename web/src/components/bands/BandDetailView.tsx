@@ -8,6 +8,7 @@ import { GlassPanel } from "@/components/ui/GlassPanel";
 import { BandBackButton } from "@/components/bands/BandBackButton";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getBandName, getBandSlogan } from "@/lib/i18n/display";
+import { flattenBandCards } from "@/lib/card-filters";
 import type { CharacterData } from "@/lib/data";
 import type { BandTheme } from "@/lib/themes";
 import { getCharacterBackdrop } from "@/lib/character-utils";
@@ -18,7 +19,7 @@ export function BandDetailView({
   band: BandTheme & { members: CharacterData[] };
 }) {
   const { t, locale } = useLocale();
-  const allCards = band.members.flatMap((m) => m.cards);
+  const allCards = flattenBandCards(band.members);
   const backdrop = band.members[0] ? getCharacterBackdrop(band.members[0]) : "";
   const bandName = getBandName(band, locale);
   const slogan = getBandSlogan(band, locale);
@@ -78,7 +79,7 @@ export function BandDetailView({
       <section className="page-section relative py-16 pb-[calc(7rem+env(safe-area-inset-bottom))] sm:py-20 sm:pb-[calc(8rem+env(safe-area-inset-bottom))]">
         <div className="relative page-container">
           <SectionHeading title={t("band.gallery")} subtitle={t("band.gallerySubtitle")} />
-          <CardGallery cards={allCards.slice(0, 120)} themeColor={band.colors.primary} />
+          <CardGallery cards={allCards} themeColor={band.colors.primary} members={band.members} />
         </div>
       </section>
     </div>

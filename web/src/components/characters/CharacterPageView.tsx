@@ -11,6 +11,7 @@ import { BandBackButton } from "@/components/bands/BandBackButton";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import type { CharacterData } from "@/lib/data";
 import type { BandTheme } from "@/lib/themes";
+import { getCharactersByBand } from "@/lib/data";
 
 export function CharacterPageView({
   character,
@@ -52,6 +53,8 @@ export function CharacterPageView({
     },
     [displays]
   );
+
+  const bandMembers = theme ? getCharactersByBand(theme.folder) : [];
 
   return (
     <>
@@ -95,6 +98,7 @@ export function CharacterPageView({
             visible={visible}
             onVisibleChange={setVisible}
             highlightKey={highlightKey}
+            members={bandMembers.length ? bandMembers : [character]}
           />
         </div>
       </section>
