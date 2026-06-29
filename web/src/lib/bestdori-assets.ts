@@ -1,77 +1,56 @@
 export type BestdoriRegion = "jp" | "cn" | "en" | "kr" | "tw";
 
-const DEFAULT_REGION: BestdoriRegion = "jp";
 const REGIONS: BestdoriRegion[] = ["jp", "cn", "en", "kr", "tw"];
 
-function assetBase(region: BestdoriRegion = DEFAULT_REGION) {
+function assetBase(region: BestdoriRegion) {
   return `https://bestdori.com/assets/${region}`;
 }
 
-/** Q版小人 — 学校制服/私服 chibi（Bestdori 线上资源） */
-export function getCharacterChibiUrls(characterId: number, regions: BestdoriRegion[] = REGIONS) {
-  return regions.map(
-    (region) => `${assetBase(region)}/chara/chibi/${characterId}_rip/normal.png`
-  );
+/** 成员页默认 Q 版 / LIVE SD（初始卡面服装） */
+export function getDefaultCharacterSdResourceName(characterId: number) {
+  return `sd${String(characterId).padStart(3, "0")}001`;
 }
 
-/** 卡面对应 LIVE 迷你立绘（SD） */
-export function getCardLivesdUrl(sdResourceName: string, region: BestdoriRegion = DEFAULT_REGION) {
+/** Bestdori 官方 LIVE SD 立绘（图 2 那种 Q 版小人） */
+export function getLivesdImageUrl(sdResourceName: string, region: BestdoriRegion = "jp") {
   return `${assetBase(region)}/characters/livesd/${sdResourceName}_rip/sdchara.png`;
 }
 
-export type Live2DModelParams = {
-  characterId: number;
-  costumeId?: number | null;
-  assetBundleName?: string | null;
-  regions?: BestdoriRegion[];
-};
-
-/**
- * Live2D model3.json 候选 URL（按优先级）。
- * Bestdori 部分服装仅有 buildData.asset；此处依次尝试常见公开路径。
- */
-export function getLive2DModelCandidates({
-  characterId,
-  costumeId,
-  assetBundleName,
-  regions = REGIONS,
-}: Live2DModelParams): string[] {
-  const urls: string[] = [];
-
-  for (const region of regions) {
-    const base = `${assetBase(region)}/live2d/chara`;
-
-    if (assetBundleName) {
-      urls.push(`${base}/${assetBundleName}_rip/model.model3.json`);
-      urls.push(`${base}/${assetBundleName}/model.model3.json`);
-    }
-
-    if (costumeId != null) {
-      urls.push(`${base}/${characterId}_${costumeId}/model.model3.json`);
-    }
-
-    urls.push(`${base}/${characterId}_general/model.model3.json`);
-  }
-
-  return [...new Set(urls)];
+/** 依次尝试多区服 SD 图 */
+export function getLivesdImageCandidates(sdResourceName: string, regions: BestdoriRegion[] = REGIONS) {
+  return regions.map((region) => getLivesdImageUrl(sdResourceName, region));
 }
 
-export async function probeLive2DModelUrl(url: string): Promise<boolean> {
-  try {
-    const res = await fetch(url, { method: "GET", mode: "cors" });
-    if (!res.ok) return false;
-    const contentType = res.headers.get("content-type") ?? "";
-    if (contentType.includes("text/html")) return false;
-    const text = (await res.text()).trimStart();
-    return text.startsWith("{") && text.includes("FileReferences");
-  } catch {
-    return false;
-  }
+/** 角色 SD：优先卡面/指定资源，再回退到默认 sd{id}001 */
+export function getCharacterSdCandidates(characterId: number, sdResourceName?: string | null) {
+  const names = [...new Set([sdResourceName, getDefaultCharacterSdResourceName(characterId)].filter(Boolean))] as string[];
+  return names.flatMap((name) => getLivesdImageCandidates(name));
 }
 
-export async function resolveLive2DModelUrl(params: Live2DModelParams): Promise<string | null> {
-  for (const url of getLive2DModelCandidates(params)) {
-    if (await probeLive2DModelUrl(url)) return url;
+/** Bestdori 官方 Live2D Viewer（图 3 动态立绘） */
+export function getBestdoriLive2DViewerUrl(assetBundleName: string, region: BestdoriRegion = "jp") {
+  return `https://bestdori.com/tool/live2d/asset/${region}/live2d/chara/${assetBundleName}`;
+}
+
+export function getLive2DBuildDataUrl(assetBundleName: string, region: BestdoriRegion = "jp") {
+  return `${assetBase(region)}/live2d/chara/${assetBundleName}_rip/buildData.asset`;
+}
+
+/** 探测 Live2D 资源是否存在（buildData.asset） */
+export async function probeLive2DAsset(assetBundleName: string): Promise<boolean> {
+  for (const region of ["jp", "cn"] as BestdoriRegion[]) {
+    try {
+      const res = await fetch(getLive2DBuildDataUrl(assetBundleName, region), { method: "HEAD" });
+      if (res.ok) return true;
+    } catch {
+      /* try next region */
+    }
   }
-  return null;
+  return false;
+}
+
+export async function resolveLive2DViewerUrl(assetBundleName: string | null | undefined): Promise<string | null> {
+  if (!assetBundleName) return null;
+  const ok = await probeLive2DAsset(assetBundleName);
+  return ok ? getBestdoriLive2DViewerUrl(assetBundleName) : null;
 }

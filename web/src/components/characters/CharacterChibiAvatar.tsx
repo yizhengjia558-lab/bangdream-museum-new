@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { getCharacterChibiUrls } from "@/lib/bestdori-assets";
+import { getCharacterSdCandidates } from "@/lib/bestdori-assets";
 import { cn } from "@/lib/utils";
 
 type Size = "sm" | "md" | "lg";
@@ -12,18 +12,24 @@ const sizeClass: Record<Size, string> = {
   lg: "character-chibi--lg",
 };
 
+/** Bestdori LIVE SD 立绘（Q 版小人） */
 export function CharacterChibiAvatar({
   characterId,
+  sdResourceName,
   className,
   size = "md",
   alt = "",
 }: {
   characterId: number;
+  sdResourceName?: string | null;
   className?: string;
   size?: Size;
   alt?: string;
 }) {
-  const urls = useMemo(() => getCharacterChibiUrls(characterId), [characterId]);
+  const urls = useMemo(
+    () => getCharacterSdCandidates(characterId, sdResourceName),
+    [characterId, sdResourceName]
+  );
   const [urlIndex, setUrlIndex] = useState(0);
   const [hidden, setHidden] = useState(false);
 
@@ -38,7 +44,6 @@ export function CharacterChibiAvatar({
         className="character-chibi__img"
         loading="lazy"
         decoding="async"
-        crossOrigin="anonymous"
         onError={() => {
           if (urlIndex + 1 < urls.length) setUrlIndex((i) => i + 1);
           else setHidden(true);

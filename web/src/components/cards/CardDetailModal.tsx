@@ -102,10 +102,8 @@ export function CardDetailModal({
                 {characterId > 0 && (
                   <CardLive2DViewer
                     characterId={characterId}
-                    costumeId={item.card.costume_id}
                     live2dAssetBundleName={item.card.live2d_asset_bundle_name}
                     sdResourceName={item.card.sd_resource_name}
-                    cardImageSrc={activeSrc}
                     className="card-detail-live2d"
                   />
                 )}

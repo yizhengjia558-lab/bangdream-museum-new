@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28T17:06:02.577Z",
+  "generated_at": "2026-06-29T03:51:11.568Z",
   "character_count": 35,
   "characters": [
     {
@@ -22162,7 +22162,7 @@
           "bestdori_card_id": 1388,
           "costume_id": 1294,
           "sd_resource_name": "sd013050",
-          "live2d_asset_bundle_name": null
+          "live2d_asset_bundle_name": "013_live_event_174_ssr"
         },
         {
           "id": "13-41",
@@ -40270,7 +40270,7 @@
           "bestdori_card_id": 1600,
           "costume_id": 1480,
           "sd_resource_name": "sd023062",
-          "live2d_asset_bundle_name": null
+          "live2d_asset_bundle_name": "023_birthday_2022"
         },
         {
           "id": "23-54",

@@ -1,8 +1,624 @@
 {
-  "generated_at": "2026-06-28T17:06:02.365099+00:00",
+  "generated_at": "2026-06-29T03:51:11.333286+00:00",
   "matched": 2269,
   "total": 2325,
   "cards": {
+    "1|card5001": {
+      "character_id": 1,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "1|card90001": {
+      "character_id": 1,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "1|card90041": {
+      "character_id": 1,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "2|card90002": {
+      "character_id": 2,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "2|card90042": {
+      "character_id": 2,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "3|card90003": {
+      "character_id": 3,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "3|card90043": {
+      "character_id": 3,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "4|card5005": {
+      "character_id": 4,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "4|card90004": {
+      "character_id": 4,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "4|card90044": {
+      "character_id": 4,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "5|card90005": {
+      "character_id": 5,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "5|card90045": {
+      "character_id": 5,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "6|card90006": {
+      "character_id": 6,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "7|card90007": {
+      "character_id": 7,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "8|card90008": {
+      "character_id": 8,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "9|card90009": {
+      "character_id": 9,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "10|card90010": {
+      "character_id": 10,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "11|card90011": {
+      "character_id": 11,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "11|card90046": {
+      "character_id": 11,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "12|card5004": {
+      "character_id": 12,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "12|card90012": {
+      "character_id": 12,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "12|card90047": {
+      "character_id": 12,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "13|card90013": {
+      "character_id": 13,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "13|card90048": {
+      "character_id": 13,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "14|card5010": {
+      "character_id": 14,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "14|card90014": {
+      "character_id": 14,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "14|card90049": {
+      "character_id": 14,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "15|card90015": {
+      "character_id": 15,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "15|card90050": {
+      "character_id": 15,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "16|card90016": {
+      "character_id": 16,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "17|card90017": {
+      "character_id": 17,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "18|card5003": {
+      "character_id": 18,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "18|card90018": {
+      "character_id": 18,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "19|card90019": {
+      "character_id": 19,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "20|card90020": {
+      "character_id": 20,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "21|card5002": {
+      "character_id": 21,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "21|card90021": {
+      "character_id": 21,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "22|card90022": {
+      "character_id": 22,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "23|card5008": {
+      "character_id": 23,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "23|card90023": {
+      "character_id": 23,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "24|card90024": {
+      "character_id": 24,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "25|card5006": {
+      "character_id": 25,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "25|card90025": {
+      "character_id": 25,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "26|card5007": {
+      "character_id": 26,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "26|card90026": {
+      "character_id": 26,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "27|card90027": {
+      "character_id": 27,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "28|card90028": {
+      "character_id": 28,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "29|card90029": {
+      "character_id": 29,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "30|card90030": {
+      "character_id": 30,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "31|card90031": {
+      "character_id": 31,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "32|card5009": {
+      "character_id": 32,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "32|card90032": {
+      "character_id": 32,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "33|card90033": {
+      "character_id": 33,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "34|card5011": {
+      "character_id": 34,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "34|card90034": {
+      "character_id": 34,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
+    "35|card90035": {
+      "character_id": 35,
+      "bestdori_card_id": null,
+      "stars": 2,
+      "attribute": "",
+      "card_kind": "normal",
+      "release_year": null,
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
+    },
     "1|奋不顾身向前冲！": {
       "character_id": 1,
       "bestdori_card_id": 1,
@@ -861,17 +1477,6 @@
       "sd_resource_name": "sd001099",
       "live2d_asset_bundle_name": "001_live_event_332_r"
     },
-    "1|card5001": {
-      "character_id": 1,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "1|bilibili": {
       "character_id": 1,
       "bestdori_card_id": 10023,
@@ -904,28 +1509,6 @@
       "costume_id": 1608,
       "sd_resource_name": "sd001043",
       "live2d_asset_bundle_name": "001_live_r_2023"
-    },
-    "1|card90001": {
-      "character_id": 1,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
-    "1|card90041": {
-      "character_id": 1,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "2|天然美人": {
       "character_id": 2,
@@ -1686,28 +2269,6 @@
       "sd_resource_name": "sd002035",
       "live2d_asset_bundle_name": "002_live_r_2022"
     },
-    "2|card90002": {
-      "character_id": 2,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
-    "2|card90042": {
-      "character_id": 2,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "3|最喜欢巧克力了": {
       "character_id": 3,
       "bestdori_card_id": 9,
@@ -2467,28 +3028,6 @@
       "sd_resource_name": "sd003049",
       "live2d_asset_bundle_name": "003_live_r_2022"
     },
-    "3|card90003": {
-      "character_id": 3,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
-    "3|card90043": {
-      "character_id": 3,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "4|大家的姐姐": {
       "character_id": 4,
       "bestdori_card_id": 13,
@@ -3226,17 +3765,6 @@
       "sd_resource_name": "sd004081",
       "live2d_asset_bundle_name": "004_live_event_332_ur"
     },
-    "4|card5005": {
-      "character_id": 4,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "4|倾诉": {
       "character_id": 4,
       "bestdori_card_id": 10012,
@@ -3247,28 +3775,6 @@
       "costume_id": 590,
       "sd_resource_name": "sd004026",
       "live2d_asset_bundle_name": "004_live_r_2019"
-    },
-    "4|card90004": {
-      "character_id": 4,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
-    "4|card90044": {
-      "character_id": 4,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "5|故作乖巧的优等生": {
       "character_id": 5,
@@ -4117,28 +4623,6 @@
       "sd_resource_name": "sd005501",
       "live2d_asset_bundle_name": "005_live_default"
     },
-    "5|card90005": {
-      "character_id": 5,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
-    "5|card90045": {
-      "character_id": 5,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "6|为朋友着想的气魄": {
       "character_id": 6,
       "bestdori_card_id": 21,
@@ -4975,17 +5459,6 @@
       "sd_resource_name": "sd006090",
       "live2d_asset_bundle_name": "006_live_event_328_ur"
     },
-    "6|card90006": {
-      "character_id": 6,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "7|我行我素": {
       "character_id": 7,
       "bestdori_card_id": 25,
@@ -5744,17 +6217,6 @@
       "costume_id": 1614,
       "sd_resource_name": "sd007002",
       "live2d_asset_bundle_name": "007_live_r_2023"
-    },
-    "7|card90007": {
-      "character_id": 7,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "8|大家的队长！": {
       "character_id": 8,
@@ -6548,17 +7010,6 @@
       "sd_resource_name": "sd008037",
       "live2d_asset_bundle_name": "008_live_r_2020"
     },
-    "8|card90008": {
-      "character_id": 8,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "9|能够依靠的果断大姐姐": {
       "character_id": 9,
       "bestdori_card_id": 33,
@@ -7295,17 +7746,6 @@
       "costume_id": 2356,
       "sd_resource_name": "sd009081",
       "live2d_asset_bundle_name": "009_live_event_328_sr"
-    },
-    "9|card90009": {
-      "character_id": 9,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "10|大家的支柱": {
       "character_id": 10,
@@ -8098,17 +8538,6 @@
       "costume_id": 1342,
       "sd_resource_name": "sd010054",
       "live2d_asset_bundle_name": "010_live_r_2022"
-    },
-    "10|card90010": {
-      "character_id": 10,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "11|花咲川的异空间": {
       "character_id": 11,
@@ -8946,28 +9375,6 @@
       "sd_resource_name": "sd011035",
       "live2d_asset_bundle_name": "011_live_r_2020"
     },
-    "11|card90011": {
-      "character_id": 11,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
-    "11|card90046": {
-      "character_id": 11,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "12|传说中的王子殿下": {
       "character_id": 12,
       "bestdori_card_id": 45,
@@ -9782,17 +10189,6 @@
       "sd_resource_name": "sd012089",
       "live2d_asset_bundle_name": "012_live_event_331_sr"
     },
-    "12|card5004": {
-      "character_id": 12,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "12|幻想": {
       "character_id": 12,
       "bestdori_card_id": 10013,
@@ -9825,28 +10221,6 @@
       "costume_id": 1619,
       "sd_resource_name": "sd012029",
       "live2d_asset_bundle_name": "012_live_r_2023"
-    },
-    "12|card90012": {
-      "character_id": 12,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
-    "12|card90047": {
-      "character_id": 12,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "13|微笑队长": {
       "character_id": 13,
@@ -10297,7 +10671,7 @@
       "release_year": 2022,
       "costume_id": 1294,
       "sd_resource_name": "sd013050",
-      "live2d_asset_bundle_name": null
+      "live2d_asset_bundle_name": "013_live_event_174_ssr"
     },
     "13|解开谜团之人": {
       "character_id": 13,
@@ -10429,7 +10803,7 @@
       "release_year": 2100,
       "costume_id": 1294,
       "sd_resource_name": "sd013050",
-      "live2d_asset_bundle_name": null
+      "live2d_asset_bundle_name": "013_live_event_174_ssr"
     },
     "13|刚出炉的笑容！": {
       "character_id": 13,
@@ -10628,28 +11002,6 @@
       "costume_id": 38,
       "sd_resource_name": "sd013501",
       "live2d_asset_bundle_name": "013_live_default"
-    },
-    "13|card90013": {
-      "character_id": 13,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
-    "13|card90048": {
-      "character_id": 13,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "14|稳重的少女": {
       "character_id": 14,
@@ -11465,39 +11817,6 @@
       "sd_resource_name": "sd014088",
       "live2d_asset_bundle_name": "014_live_event_331_r"
     },
-    "14|card5010": {
-      "character_id": 14,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
-    "14|card90014": {
-      "character_id": 14,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
-    "14|card90049": {
-      "character_id": 14,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "15|凡事皆须适度": {
       "character_id": 15,
       "bestdori_card_id": 57,
@@ -12311,28 +12630,6 @@
       "costume_id": 837,
       "sd_resource_name": "sd015033",
       "live2d_asset_bundle_name": "015_live_r_2020"
-    },
-    "15|card90015": {
-      "character_id": 15,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
-    "15|card90050": {
-      "character_id": 15,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "16|粉色代表☆": {
       "character_id": 16,
@@ -13236,17 +13533,6 @@
       "sd_resource_name": "bili_sd016001",
       "live2d_asset_bundle_name": "bili_016_collabo_ssr"
     },
-    "16|card90016": {
-      "character_id": 16,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "17|天才少女": {
       "character_id": 17,
       "bestdori_card_id": 65,
@@ -14050,17 +14336,6 @@
       "sd_resource_name": "sd017002",
       "live2d_asset_bundle_name": "017_live_default"
     },
-    "17|card90017": {
-      "character_id": 17,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "18|铁壁的微笑": {
       "character_id": 18,
       "bestdori_card_id": 69,
@@ -14853,17 +15128,6 @@
       "sd_resource_name": "sd018085",
       "live2d_asset_bundle_name": "018_live_event_330_sr"
     },
-    "18|card5003": {
-      "character_id": 18,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "18|罗森联动2025": {
       "character_id": 18,
       "bestdori_card_id": 10040,
@@ -14874,17 +15138,6 @@
       "costume_id": 1625,
       "sd_resource_name": "sd018028",
       "live2d_asset_bundle_name": "018_live_r_2023"
-    },
-    "18|card90018": {
-      "character_id": 18,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "19|乐器宅鼓手": {
       "character_id": 19,
@@ -15644,17 +15897,6 @@
       "costume_id": 1351,
       "sd_resource_name": "bili_sd019001",
       "live2d_asset_bundle_name": "019_live_r_2022"
-    },
-    "19|card90019": {
-      "character_id": 19,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "20|武士道！": {
       "character_id": 20,
@@ -16459,17 +16701,6 @@
       "sd_resource_name": "sd020058",
       "live2d_asset_bundle_name": "020_live_r_2022"
     },
-    "20|card90020": {
-      "character_id": 20,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "21|孤高的歌姬": {
       "character_id": 21,
       "bestdori_card_id": 81,
@@ -17262,17 +17493,6 @@
       "sd_resource_name": "sd021086",
       "live2d_asset_bundle_name": "021_live_event_333_ur"
     },
-    "21|card5002": {
-      "character_id": 21,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "21|bilibili": {
       "character_id": 21,
       "bestdori_card_id": 10001,
@@ -17327,17 +17547,6 @@
       "costume_id": 1353,
       "sd_resource_name": "sd021051",
       "live2d_asset_bundle_name": "021_live_r_2022"
-    },
-    "21|card90021": {
-      "character_id": 21,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "22|一本正经的奋斗者": {
       "character_id": 22,
@@ -18164,17 +18373,6 @@
       "sd_resource_name": "sd022500",
       "live2d_asset_bundle_name": "022_live_r_2018"
     },
-    "22|card90022": {
-      "character_id": 22,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "23|气氛活跃者☆": {
       "character_id": 23,
       "bestdori_card_id": 89,
@@ -18756,7 +18954,7 @@
       "release_year": 2023,
       "costume_id": 1480,
       "sd_resource_name": "sd023062",
-      "live2d_asset_bundle_name": null
+      "live2d_asset_bundle_name": "023_birthday_2022"
     },
     "23|saycheese！": {
       "character_id": 23,
@@ -19000,17 +19198,6 @@
       "sd_resource_name": "sd023089",
       "live2d_asset_bundle_name": "023_live_event_333_ssr"
     },
-    "23|card5008": {
-      "character_id": 23,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "23|霓裳羽衣": {
       "character_id": 23,
       "bestdori_card_id": 10003,
@@ -19032,17 +19219,6 @@
       "costume_id": 845,
       "sd_resource_name": "sd023040",
       "live2d_asset_bundle_name": "023_live_r_2020"
-    },
-    "23|card90023": {
-      "character_id": 23,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "24|帅气！鼓手": {
       "character_id": 24,
@@ -19891,17 +20067,6 @@
       "sd_resource_name": "sd024053",
       "live2d_asset_bundle_name": "024_live_r_2023"
     },
-    "24|card90024": {
-      "character_id": 24,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "25|讨厌嘈杂和拥挤": {
       "character_id": 25,
       "bestdori_card_id": 97,
@@ -20694,17 +20859,6 @@
       "sd_resource_name": "sd025083",
       "live2d_asset_bundle_name": "025_live_event_333_r"
     },
-    "25|card5006": {
-      "character_id": 25,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "25|霓裳羽衣": {
       "character_id": 25,
       "bestdori_card_id": 10005,
@@ -20715,17 +20869,6 @@
       "costume_id": 266,
       "sd_resource_name": "sd025500",
       "live2d_asset_bundle_name": "025_live_r_2018"
-    },
-    "25|card90025": {
-      "character_id": 25,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "26|纯真振翅": {
       "character_id": 26,
@@ -21255,17 +21398,6 @@
       "sd_resource_name": "sd026054",
       "live2d_asset_bundle_name": "026_live_event_334_ur"
     },
-    "26|card5007": {
-      "character_id": 26,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "26|bilibili": {
       "character_id": 26,
       "bestdori_card_id": 10025,
@@ -21287,17 +21419,6 @@
       "costume_id": 100001,
       "sd_resource_name": "bili_sd026001",
       "live2d_asset_bundle_name": "bili_026_collabo_ur"
-    },
-    "26|card90026": {
-      "character_id": 26,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "27|纯真振翅": {
       "character_id": 27,
@@ -21794,17 +21915,6 @@
       "sd_resource_name": "sd027002",
       "live2d_asset_bundle_name": "027_live_r_2023"
     },
-    "27|card90027": {
-      "character_id": 27,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "28|纯真振翅": {
       "character_id": 28,
       "bestdori_card_id": 899,
@@ -22300,17 +22410,6 @@
       "sd_resource_name": "sd028017",
       "live2d_asset_bundle_name": "028_live_r_2022"
     },
-    "28|card90028": {
-      "character_id": 28,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "29|纯真振翅": {
       "character_id": 29,
       "bestdori_card_id": 900,
@@ -22784,17 +22883,6 @@
       "sd_resource_name": "sd029019",
       "live2d_asset_bundle_name": "029_live_r_2023"
     },
-    "29|card90029": {
-      "character_id": 29,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "30|纯真振翅": {
       "character_id": 30,
       "bestdori_card_id": 901,
@@ -23257,17 +23345,6 @@
       "sd_resource_name": "sd030047",
       "live2d_asset_bundle_name": "030_live_event_334_ur"
     },
-    "30|card90030": {
-      "character_id": 30,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "31|热情演出": {
       "character_id": 31,
       "bestdori_card_id": 961,
@@ -23718,17 +23795,6 @@
       "costume_id": 2361,
       "sd_resource_name": "sd031048",
       "live2d_asset_bundle_name": "031_live_event_329_sr"
-    },
-    "31|card90031": {
-      "character_id": 31,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "32|热情演出": {
       "character_id": 32,
@@ -24181,17 +24247,6 @@
       "sd_resource_name": "sd032047",
       "live2d_asset_bundle_name": "032_live_event_329_ur"
     },
-    "32|card5009": {
-      "character_id": 32,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "32|bilibili": {
       "character_id": 32,
       "bestdori_card_id": 10026,
@@ -24213,17 +24268,6 @@
       "costume_id": 1639,
       "sd_resource_name": "sd032025",
       "live2d_asset_bundle_name": "032_live_r_2023"
-    },
-    "32|card90032": {
-      "character_id": 32,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "33|热情演出": {
       "character_id": 33,
@@ -24665,17 +24709,6 @@
       "sd_resource_name": "sd033045",
       "live2d_asset_bundle_name": "033_live_event_329_r"
     },
-    "33|card90033": {
-      "character_id": 33,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "34|热情演出": {
       "character_id": 34,
       "bestdori_card_id": 964,
@@ -25083,17 +25116,6 @@
       "sd_resource_name": "sd034043",
       "live2d_asset_bundle_name": "034_live_event_329_ssr"
     },
-    "34|card5011": {
-      "character_id": 34,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
-    },
     "34|bilibili": {
       "character_id": 34,
       "bestdori_card_id": 10053,
@@ -25104,17 +25126,6 @@
       "costume_id": 1366,
       "sd_resource_name": "bili_sd034001",
       "live2d_asset_bundle_name": "034_live_r_2022"
-    },
-    "34|card90034": {
-      "character_id": 34,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     },
     "35|热情演出": {
       "character_id": 35,
@@ -25533,17 +25544,6 @@
       "costume_id": 2360,
       "sd_resource_name": "sd035046",
       "live2d_asset_bundle_name": "035_live_event_329_ur"
-    },
-    "35|card90035": {
-      "character_id": 35,
-      "bestdori_card_id": null,
-      "stars": 2,
-      "attribute": "",
-      "card_kind": "normal",
-      "release_year": null,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
     }
   }
 }
