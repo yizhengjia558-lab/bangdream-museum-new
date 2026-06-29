@@ -12,11 +12,13 @@ export function CardLive2DViewer({
   characterId,
   live2dAssetBundleName,
   sdResourceName,
+  characterName,
   className,
 }: {
   characterId: number;
   live2dAssetBundleName?: string | null;
   sdResourceName?: string | null;
+  characterName?: string;
   className?: string;
 }) {
   return (
@@ -25,6 +27,7 @@ export function CardLive2DViewer({
         characterId={characterId}
         live2dAssetBundleName={live2dAssetBundleName}
         sdResourceName={sdResourceName}
+        characterName={characterName}
       />
     </div>
   );

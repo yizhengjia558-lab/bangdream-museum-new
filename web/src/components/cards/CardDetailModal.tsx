@@ -104,6 +104,7 @@ export function CardDetailModal({
                     characterId={characterId}
                     live2dAssetBundleName={item.card.live2d_asset_bundle_name}
                     sdResourceName={item.card.sd_resource_name}
+                    characterName={item.card.card_name}
                     className="card-detail-live2d"
                   />
                 )}

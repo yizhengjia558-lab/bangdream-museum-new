@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T07:26:33.901Z",
+  "generated_at": "2026-06-29T11:01:44.608Z",
   "character_count": 35,
   "characters": [
     {
@@ -5392,7 +5392,7 @@
           "bestdori_card_id": 13,
           "costume_id": 1611,
           "sd_resource_name": "sd004001",
-          "live2d_asset_bundle_name": null
+          "live2d_asset_bundle_name": "004_live_r_2023"
         },
         {
           "id": "4-1",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T07:26:33.658358+00:00",
+  "generated_at": "2026-06-29T11:01:44.366911+00:00",
   "matched": 2269,
   "total": 2325,
   "cards": {
@@ -3037,7 +3037,7 @@
       "release_year": 2017,
       "costume_id": 1611,
       "sd_resource_name": "sd004001",
-      "live2d_asset_bundle_name": null
+      "live2d_asset_bundle_name": "004_live_r_2023"
     },
     "4|舞台": {
       "character_id": 4,

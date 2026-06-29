@@ -21,6 +21,11 @@ export function getLivesdImageCandidates(sdResourceName: string, regions: Bestdo
   return regions.map((region) => getLivesdImageUrl(sdResourceName, region));
 }
 
+/** 校服 Q 版（成员页用 sd{id}001） */
+export function getSchoolUniformSdCandidates(characterId: number, regions: BestdoriRegion[] = REGIONS) {
+  return getLivesdImageCandidates(getDefaultCharacterSdResourceName(characterId), regions);
+}
+
 /** 角色 SD：优先卡面/指定资源，再回退到默认 sd{id}001 */
 export function getCharacterSdCandidates(characterId: number, sdResourceName?: string | null) {
   const names = [...new Set([sdResourceName, getDefaultCharacterSdResourceName(characterId)].filter(Boolean))] as string[];
