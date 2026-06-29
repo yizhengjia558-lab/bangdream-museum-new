@@ -1,3 +1,5 @@
+import { getBestdoriAssetProxyUrl } from "@/lib/live2d-proxy";
+
 export type BestdoriRegion = "jp" | "cn" | "en" | "kr" | "tw";
 
 const REGIONS: BestdoriRegion[] = ["jp", "cn", "en", "kr", "tw"];
@@ -11,14 +13,30 @@ export function getDefaultCharacterSdResourceName(characterId: number) {
   return `sd${String(characterId).padStart(3, "0")}001`;
 }
 
-/** Bestdori 官方 LIVE SD 立绘（图 2 那种 Q 版小人） */
-export function getLivesdImageUrl(sdResourceName: string, region: BestdoriRegion = "jp") {
+function livesdAssetPath(sdResourceName: string, region: BestdoriRegion) {
+  return `${region}/characters/livesd/${sdResourceName}_rip/sdchara.png`;
+}
+
+/** Bestdori LIVE SD 立绘直链 */
+export function getLivesdImageDirectUrl(sdResourceName: string, region: BestdoriRegion = "jp") {
   return `${assetBase(region)}/characters/livesd/${sdResourceName}_rip/sdchara.png`;
 }
 
-/** 依次尝试多区服 SD 图 */
+/** Bestdori 官方 LIVE SD 立绘（优先同源代理，再直链） */
+export function getLivesdImageUrl(sdResourceName: string, region: BestdoriRegion = "jp") {
+  return getLivesdImageDirectUrl(sdResourceName, region);
+}
+
+/** 依次尝试：各区服代理 → 各区服直链 */
 export function getLivesdImageCandidates(sdResourceName: string, regions: BestdoriRegion[] = REGIONS) {
-  return regions.map((region) => getLivesdImageUrl(sdResourceName, region));
+  const urls: string[] = [];
+  for (const region of regions) {
+    urls.push(getBestdoriAssetProxyUrl(livesdAssetPath(sdResourceName, region)));
+  }
+  for (const region of regions) {
+    urls.push(getLivesdImageDirectUrl(sdResourceName, region));
+  }
+  return [...new Set(urls)];
 }
 
 /** 校服 Q 版（成员页用 sd{id}001） */

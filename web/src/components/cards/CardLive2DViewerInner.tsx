@@ -9,6 +9,11 @@ const Live2DViewer = dynamic(
   { ssr: false }
 );
 
+const BestdoriLive2DEmbed = dynamic(
+  () => import("@/components/live2d/BestdoriLive2DEmbed").then((m) => m.BestdoriLive2DEmbed),
+  { ssr: false }
+);
+
 export function CardLive2DViewerInner({
   characterId,
   live2dAssetBundleName,
@@ -21,7 +26,7 @@ export function CardLive2DViewerInner({
   characterName?: string;
 }) {
   const [live2dFailed, setLive2dFailed] = useState(false);
-  const showLive2d = Boolean(live2dAssetBundleName) && !live2dFailed;
+  const showWidget = Boolean(live2dAssetBundleName) && !live2dFailed;
 
   return (
     <div className="card-character-visual">
@@ -32,14 +37,21 @@ export function CardLive2DViewerInner({
         className="card-character-visual__sd"
       />
 
-      {showLive2d && live2dAssetBundleName ? (
+      {live2dAssetBundleName ? (
         <div className="card-live2d-phone card-character-visual__live2d">
           <div className="card-live2d-phone__screen">
-            <Live2DViewer
-              assetBundleName={live2dAssetBundleName}
-              className="card-live2d-stage card-live2d-stage--live2d"
-              onError={() => setLive2dFailed(true)}
-            />
+            {showWidget ? (
+              <Live2DViewer
+                assetBundleName={live2dAssetBundleName}
+                className="card-live2d-stage card-live2d-stage--live2d"
+                onError={() => setLive2dFailed(true)}
+              />
+            ) : (
+              <BestdoriLive2DEmbed
+                assetBundleName={live2dAssetBundleName}
+                className="card-live2d-stage card-live2d-stage--live2d"
+              />
+            )}
           </div>
         </div>
       ) : null}

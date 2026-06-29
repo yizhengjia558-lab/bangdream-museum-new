@@ -9,12 +9,14 @@ export function SdSpriteFrame({
   className,
   imgClassName,
   onError,
+  eager = false,
 }: {
   src: string;
   alt?: string;
   className?: string;
   imgClassName?: string;
   onError?: () => void;
+  eager?: boolean;
 }) {
   return (
     <div className={cn("sd-sprite-frame", className)}>
@@ -23,7 +25,7 @@ export function SdSpriteFrame({
         src={src}
         alt={alt}
         className={cn("sd-sprite-frame__img", imgClassName)}
-        loading="lazy"
+        loading={eager ? "eager" : "lazy"}
         decoding="async"
         onError={onError}
       />

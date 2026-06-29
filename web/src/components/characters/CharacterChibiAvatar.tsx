@@ -48,6 +48,7 @@ export function CharacterChibiAvatar({
           alt=""
           className="character-chibi__frame"
           imgClassName="character-chibi__img"
+          eager
           onError={() => {
             if (urlIndex + 1 < urls.length) setUrlIndex((i) => i + 1);
             else setHidden(true);
@@ -108,6 +109,7 @@ export function CardSdFigurePreview({
           alt=""
           className="card-sd-preview__frame"
           imgClassName="card-sd-preview__img"
+          eager
           onError={() => {
             if (urlIndex + 1 < urls.length) setUrlIndex((i) => i + 1);
             else setHidden(true);

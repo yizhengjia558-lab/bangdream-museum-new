@@ -1268,15 +1268,6 @@ button.glass-frame.card-tile {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
-.card-sd-preview__frame {
-  width: 100%;
-  height: 5rem;
-}
-
-.card-sd-preview__img {
-  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.38));
-}
-
 .card-sd-preview__zoom {
   position: absolute;
   top: 0.45rem;
@@ -1372,34 +1363,61 @@ button.glass-frame.card-tile {
   background: rgba(0, 0, 0, 0.22);
 }
 
-.card-live2d-sd,
-.sd-figure-image {
-  width: 100%;
-  height: 100%;
-}
-
 .sd-sprite-frame {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 100%;
+  flex-shrink: 0;
 }
 
 .sd-sprite-frame__img {
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: block;
   width: 200%;
-  height: 200%;
   max-width: none;
-  object-fit: none;
-  object-position: top left;
+  height: auto;
   pointer-events: none;
 }
 
+.card-sd-preview__frame.sd-sprite-frame,
+.character-chibi__frame.sd-sprite-frame {
+  height: 5rem;
+}
+
+.character-chibi--sm .character-chibi__frame.sd-sprite-frame {
+  height: 100%;
+}
+
+.character-chibi--md .character-chibi__frame.sd-sprite-frame {
+  height: 100%;
+}
+
+.character-chibi--lg .character-chibi__frame.sd-sprite-frame {
+  height: 100%;
+}
+
 .card-live2d-sd .sd-sprite-frame__img,
-.card-sd-preview__img {
+.card-sd-preview__img,
+.character-chibi__img {
   filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.38));
+}
+
+.bestdori-live2d-embed {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #0a0a10;
+}
+
+.bestdori-live2d-embed__iframe {
+  position: absolute;
+  top: -52px;
+  left: 50%;
+  width: 420px;
+  max-width: none;
+  height: 760px;
+  border: 0;
+  transform: translateX(-50%);
+  pointer-events: auto;
 }
 
 .card-live2d-loading {

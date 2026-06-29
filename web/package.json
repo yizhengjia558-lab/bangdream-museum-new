@@ -12,7 +12,7 @@
     "preview": "npx --yes serve out -l tcp://0.0.0.0:3000",
     "preview:lan": "npx --yes serve out -l tcp://0.0.0.0:3000",
     "open": "npm run build:static && npx --yes serve out -l tcp://0.0.0.0:3000",
-    "deploy": "npm run build:static && npx wrangler pages deploy --project-name=bangdream-museum --branch=main",
+    "deploy": "npm run build:static && npx wrangler pages deploy out --project-name=bangdream-museum --branch=main",
     "start": "next start",
     "lint": "eslint"
   },
