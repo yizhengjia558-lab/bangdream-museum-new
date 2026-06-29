@@ -1225,7 +1225,7 @@ button.glass-frame.card-tile {
 
   .card-detail-live2d {
     flex: 0 0 min(42%, 220px);
-    min-height: 280px;
+    min-height: 320px;
   }
 
   .card-detail-visual-row .card-detail-image-btn {
@@ -1237,7 +1237,7 @@ button.glass-frame.card-tile {
 .card-live2d-viewer {
   position: relative;
   width: 100%;
-  min-height: 280px;
+  min-height: 320px;
 }
 
 .card-character-visual {
@@ -1250,37 +1250,47 @@ button.glass-frame.card-tile {
 
 .card-sd-preview {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   flex: 0 0 auto;
-  min-height: 5.5rem;
-  padding: 0.35rem;
-  border: 0;
+  min-height: 6.5rem;
+  padding: 0.4rem;
   border-radius: 16px;
   background: rgba(0, 0, 0, 0.24);
-  cursor: zoom-in;
   overflow: hidden;
-  transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 
-.card-sd-preview:hover {
-  background: rgba(0, 0, 0, 0.32);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+.card-sd-preview__frame.sd-sprite-frame {
+  width: 100%;
+  max-width: 5.5rem;
+  aspect-ratio: 1;
+  height: auto;
 }
 
 .card-sd-preview__zoom {
   position: absolute;
-  top: 0.45rem;
-  right: 0.45rem;
+  top: 0.4rem;
+  right: 0.4rem;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 1.65rem;
   height: 1.65rem;
+  padding: 0;
+  border: 0;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
   font-size: 0.72rem;
-  pointer-events: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.card-sd-preview__zoom:hover {
+  background: rgba(0, 0, 0, 0.68);
 }
 
 .card-character-visual__live2d {
@@ -1291,9 +1301,9 @@ button.glass-frame.card-tile {
 .card-live2d-phone {
   position: relative;
   width: 100%;
-  min-height: 180px;
+  min-height: 200px;
   aspect-ratio: 9 / 16;
-  max-height: 260px;
+  max-height: 300px;
   margin-inline: auto;
   padding: 10px;
   border-radius: 28px;
@@ -1366,39 +1376,29 @@ button.glass-frame.card-tile {
 .sd-sprite-frame {
   position: relative;
   overflow: hidden;
-  width: 100%;
   flex-shrink: 0;
+  background-repeat: no-repeat;
+  background-size: 400% 400%;
+  background-position: 0% 0%;
 }
 
-.sd-sprite-frame__img {
-  display: block;
-  width: 200%;
-  max-width: none;
-  height: auto;
+.sd-sprite-frame__probe {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
   pointer-events: none;
 }
 
-.card-sd-preview__frame.sd-sprite-frame,
 .character-chibi__frame.sd-sprite-frame {
-  height: 5rem;
-}
-
-.character-chibi--sm .character-chibi__frame.sd-sprite-frame {
+  width: 100%;
   height: 100%;
 }
 
-.character-chibi--md .character-chibi__frame.sd-sprite-frame {
+.card-live2d-sd .sd-sprite-frame,
+.sd-figure-image.sd-sprite-frame {
+  width: 100%;
   height: 100%;
-}
-
-.character-chibi--lg .character-chibi__frame.sd-sprite-frame {
-  height: 100%;
-}
-
-.card-live2d-sd .sd-sprite-frame__img,
-.card-sd-preview__img,
-.character-chibi__img {
-  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.38));
 }
 
 .bestdori-live2d-embed {
@@ -1408,15 +1408,21 @@ button.glass-frame.card-tile {
   background: #0a0a10;
 }
 
+.bestdori-live2d-embed__viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
 .bestdori-live2d-embed__iframe {
   position: absolute;
-  top: -52px;
+  top: 0;
   left: 50%;
-  width: 420px;
-  max-width: none;
-  height: 760px;
+  width: 720px;
+  height: 1400px;
   border: 0;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-56%) scale(0.34);
+  transform-origin: 50% 56%;
   pointer-events: auto;
 }
 
@@ -1463,15 +1469,6 @@ button.glass-frame.card-tile {
 .character-chibi--interactive {
   position: relative;
   padding: 0;
-  cursor: zoom-in;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.character-chibi--interactive:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.14),
-    0 14px 32px rgba(0, 0, 0, 0.34);
 }
 
 .character-chibi__frame {
@@ -1483,15 +1480,24 @@ button.glass-frame.card-tile {
   position: absolute;
   right: 0.28rem;
   bottom: 0.28rem;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 1.35rem;
   height: 1.35rem;
+  padding: 0;
+  border: 0;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.42);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
   font-size: 0.62rem;
-  pointer-events: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.character-chibi__zoom:hover {
+  background: rgba(0, 0, 0, 0.68);
 }
 
 .character-chibi--sm {
@@ -1561,9 +1567,10 @@ button.glass-frame.card-tile {
   filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
 }
 
-.image-preview-overlay__sd-frame {
+.image-preview-overlay__sd-frame.sd-sprite-frame {
   width: min(72vw, 360px);
   aspect-ratio: 1;
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
 }
 
 .image-preview-overlay__caption {

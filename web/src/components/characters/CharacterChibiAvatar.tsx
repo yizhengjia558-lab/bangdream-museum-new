@@ -14,7 +14,7 @@ const sizeClass: Record<Size, string> = {
   lg: "character-chibi--lg",
 };
 
-/** 成员页校服 Q 版 — 可点击放大预览 */
+/** 成员页校服 Q 版 — 默认展示，可点击放大 */
 export function CharacterChibiAvatar({
   characterId,
   className,
@@ -37,27 +37,25 @@ export function CharacterChibiAvatar({
 
   return (
     <>
-      <button
-        type="button"
-        className={cn("character-chibi character-chibi--interactive", sizeClass[size], className)}
-        aria-label={alt ? `${alt} Q版预览` : "Q版预览"}
-        onClick={() => setPreviewOpen(true)}
-      >
+      <div className={cn("character-chibi character-chibi--interactive", sizeClass[size], className)}>
         <SdSpriteFrame
           src={activeUrl}
-          alt=""
+          alt={alt}
           className="character-chibi__frame"
-          imgClassName="character-chibi__img"
-          eager
           onError={() => {
             if (urlIndex + 1 < urls.length) setUrlIndex((i) => i + 1);
             else setHidden(true);
           }}
         />
-        <span className="character-chibi__zoom" aria-hidden>
+        <button
+          type="button"
+          className="character-chibi__zoom"
+          aria-label={alt ? `${alt} Q版放大` : "Q版放大"}
+          onClick={() => setPreviewOpen(true)}
+        >
           🔍
-        </span>
-      </button>
+        </button>
+      </div>
 
       {previewOpen ? (
         <ImagePreviewOverlay
@@ -72,7 +70,7 @@ export function CharacterChibiAvatar({
   );
 }
 
-/** 卡面详情 Q 版 standing — 可点击放大预览 */
+/** 卡面详情 Q 版 standing — 默认展示，可点击放大 */
 export function CardSdFigurePreview({
   characterId,
   sdResourceName,
@@ -98,27 +96,25 @@ export function CardSdFigurePreview({
 
   return (
     <>
-      <button
-        type="button"
-        className={cn("card-sd-preview", className)}
-        aria-label={alt ? `${alt} Q版预览` : "Q版预览"}
-        onClick={() => setPreviewOpen(true)}
-      >
+      <div className={cn("card-sd-preview", className)}>
         <SdSpriteFrame
           src={activeUrl}
-          alt=""
+          alt={alt}
           className="card-sd-preview__frame"
-          imgClassName="card-sd-preview__img"
-          eager
           onError={() => {
             if (urlIndex + 1 < urls.length) setUrlIndex((i) => i + 1);
             else setHidden(true);
           }}
         />
-        <span className="card-sd-preview__zoom" aria-hidden>
+        <button
+          type="button"
+          className="card-sd-preview__zoom"
+          aria-label={alt ? `${alt} Q版放大` : "Q版放大"}
+          onClick={() => setPreviewOpen(true)}
+        >
           🔍
-        </span>
-      </button>
+        </button>
+      </div>
 
       {previewOpen ? (
         <ImagePreviewOverlay

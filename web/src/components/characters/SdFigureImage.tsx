@@ -10,14 +10,12 @@ export function SdFigureImage({
   sdResourceName,
   uniformOnly = false,
   className,
-  imgClassName,
   alt = "",
 }: {
   characterId: number;
   sdResourceName?: string | null;
   uniformOnly?: boolean;
   className?: string;
-  imgClassName?: string;
   alt?: string;
 }) {
   const urls = useMemo(
@@ -37,7 +35,6 @@ export function SdFigureImage({
       src={urls[urlIndex]}
       alt={alt}
       className={cn("sd-figure-image", className)}
-      imgClassName={imgClassName}
       onError={() => {
         if (urlIndex + 1 < urls.length) setUrlIndex((i) => i + 1);
         else setHidden(true);

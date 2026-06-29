@@ -2,33 +2,28 @@
 
 import { cn } from "@/lib/utils";
 
-/** Bestdori livesd/sdchara.png is a 2×2 sprite sheet — show the standing frame (top-left). */
+/** Bestdori livesd/sdchara.png is a 2×2 sprite sheet — show top-left standing frame. */
 export function SdSpriteFrame({
   src,
   alt = "",
   className,
-  imgClassName,
   onError,
-  eager = false,
 }: {
   src: string;
   alt?: string;
   className?: string;
-  imgClassName?: string;
   onError?: () => void;
-  eager?: boolean;
 }) {
   return (
-    <div className={cn("sd-sprite-frame", className)}>
+    <div
+      className={cn("sd-sprite-frame", className)}
+      role="img"
+      aria-label={alt || undefined}
+      style={{ backgroundImage: `url("${src}")` }}
+    >
+      {/* Preload + error fallback */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={src}
-        alt={alt}
-        className={cn("sd-sprite-frame__img", imgClassName)}
-        loading={eager ? "eager" : "lazy"}
-        decoding="async"
-        onError={onError}
-      />
+      <img src={src} alt="" className="sd-sprite-frame__probe" onError={onError} />
     </div>
   );
 }

@@ -27,14 +27,14 @@ export function getLivesdImageUrl(sdResourceName: string, region: BestdoriRegion
   return getLivesdImageDirectUrl(sdResourceName, region);
 }
 
-/** 依次尝试：各区服代理 → 各区服直链 */
+/** 依次尝试：各区服直链 → 各区服代理 */
 export function getLivesdImageCandidates(sdResourceName: string, regions: BestdoriRegion[] = REGIONS) {
   const urls: string[] = [];
   for (const region of regions) {
-    urls.push(getBestdoriAssetProxyUrl(livesdAssetPath(sdResourceName, region)));
+    urls.push(getLivesdImageDirectUrl(sdResourceName, region));
   }
   for (const region of regions) {
-    urls.push(getLivesdImageDirectUrl(sdResourceName, region));
+    urls.push(getBestdoriAssetProxyUrl(livesdAssetPath(sdResourceName, region)));
   }
   return [...new Set(urls)];
 }
