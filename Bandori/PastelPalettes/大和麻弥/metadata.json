@@ -548,6 +548,14 @@
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019084_rip/card_after_training.png"
     },
     {
+      "card_name": "朝焼けに照らされて",
+      "rarity": "5-Star",
+      "event": "ドリームフェスティバルガチャ",
+      "release_date": "2026-06-30",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019085_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019085_rip/card_after_training.png"
+    },
+    {
       "card_name": "bilibili",
       "rarity": "2-Star",
       "event": "campaign",

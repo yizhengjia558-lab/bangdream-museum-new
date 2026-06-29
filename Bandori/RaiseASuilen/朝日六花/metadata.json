@@ -332,6 +332,14 @@
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032047_rip/card_after_training.png"
     },
     {
+      "card_name": "私たちだけのプール",
+      "rarity": "5-Star",
+      "event": "ドリームフェスティバルガチャ",
+      "release_date": "2026-06-30",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032048_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032048_rip/card_after_training.png"
+    },
+    {
       "card_name": "Card 5009",
       "rarity": "2-Star",
       "event": "campaign",

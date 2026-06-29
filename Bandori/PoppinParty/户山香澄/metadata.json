@@ -628,6 +628,14 @@
       "trained_image": ""
     },
     {
+      "card_name": "仲間を信じて！",
+      "rarity": "5-Star",
+      "event": "笑顔きらめく真夏のサンシャインガチャ",
+      "release_date": "2026-06-30",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res001100_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res001100_rip/card_after_training.png"
+    },
+    {
       "card_name": "Card 5001",
       "rarity": "2-Star",
       "event": "campaign",

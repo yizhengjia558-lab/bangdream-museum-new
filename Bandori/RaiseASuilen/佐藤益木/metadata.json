@@ -324,6 +324,14 @@
       "trained_image": ""
     },
     {
+      "card_name": "通人は語る",
+      "rarity": "3-Star",
+      "event": "エンジョイ！　私たちのベストサマー！",
+      "release_date": "2026-06-30",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res033046_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res033046_rip/card_after_training.png"
+    },
+    {
       "card_name": "Card 90033",
       "rarity": "2-Star",
       "event": "",

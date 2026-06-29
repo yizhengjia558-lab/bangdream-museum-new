@@ -588,6 +588,14 @@
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res024086_rip/card_after_training.png"
     },
     {
+      "card_name": "弾けるサンフラワー",
+      "rarity": "2-Star",
+      "event": "エンジョイ！　私たちのベストサマー！",
+      "release_date": "2026-06-30",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res024087_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
       "card_name": "霓裳羽衣",
       "rarity": "2-Star",
       "event": "campaign",

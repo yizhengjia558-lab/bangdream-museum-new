@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28T13:43:33.764557+00:00",
+  "generated_at": "2026-06-29T15:43:54.825085+00:00",
   "source": [
     "Bestdori API",
     "Bandori Party API"
@@ -31,7 +31,7 @@
       "standing_url": "",
       "cards_untrained_path": "PoppinParty/户山香澄/Cards/Untrained",
       "cards_trained_path": "PoppinParty/户山香澄/Cards/Trained",
-      "card_count": 84
+      "card_count": 85
     },
     {
       "character_id": 2,
@@ -171,7 +171,7 @@
       "standing_url": "",
       "cards_untrained_path": "HelloHappyWorld/弦卷心/Cards/Untrained",
       "cards_trained_path": "HelloHappyWorld/弦卷心/Cards/Trained",
-      "card_count": 78
+      "card_count": 79
     },
     {
       "character_id": 12,
@@ -283,7 +283,7 @@
       "standing_url": "",
       "cards_untrained_path": "PastelPalettes/大和麻弥/Cards/Untrained",
       "cards_trained_path": "PastelPalettes/大和麻弥/Cards/Trained",
-      "card_count": 70
+      "card_count": 71
     },
     {
       "character_id": 20,
@@ -353,7 +353,7 @@
       "standing_url": "",
       "cards_untrained_path": "Roselia/宇田川亚子/Cards/Untrained",
       "cards_trained_path": "Roselia/宇田川亚子/Cards/Trained",
-      "card_count": 78
+      "card_count": 79
     },
     {
       "character_id": 25,
@@ -409,7 +409,7 @@
       "standing_url": "",
       "cards_untrained_path": "Morfonica/广町七深/Cards/Untrained",
       "cards_trained_path": "Morfonica/广町七深/Cards/Trained",
-      "card_count": 46
+      "card_count": 47
     },
     {
       "character_id": 29,
@@ -465,7 +465,7 @@
       "standing_url": "",
       "cards_untrained_path": "RaiseASuilen/朝日六花/Cards/Untrained",
       "cards_trained_path": "RaiseASuilen/朝日六花/Cards/Trained",
-      "card_count": 45
+      "card_count": 46
     },
     {
       "character_id": 33,
@@ -479,7 +479,7 @@
       "standing_url": "",
       "cards_untrained_path": "RaiseASuilen/佐藤益木/Cards/Untrained",
       "cards_trained_path": "RaiseASuilen/佐藤益木/Cards/Trained",
-      "card_count": 41
+      "card_count": 42
     },
     {
       "character_id": 34,
