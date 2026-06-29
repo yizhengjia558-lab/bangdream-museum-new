@@ -6,6 +6,7 @@ import { CinematicBackground } from "@/components/effects/CinematicBackground";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { CardNameSearch } from "@/components/cards/CardNameSearch";
+import { CharacterChibiAvatar } from "@/components/characters/CharacterChibiAvatar";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getBandName, getCharacterAltName, getCharacterName } from "@/lib/i18n/display";
 import type { CardDisplayItem } from "@/lib/cards";
@@ -75,8 +76,13 @@ export function CharacterHero({
               </Link>
             )}
 
-            <h1 className="character-hero-name">{displayName}</h1>
-            {altName ? <p className="character-hero-alt-name">{altName}</p> : null}
+            <div className="character-hero-title-row">
+              <CharacterChibiAvatar characterId={character.id} size="md" alt={displayName} />
+              <div className="character-hero-title-copy">
+                <h1 className="character-hero-name">{displayName}</h1>
+                {altName ? <p className="character-hero-alt-name">{altName}</p> : null}
+              </div>
+            </div>
 
             <dl className="character-hero-stats">
               <div className="character-hero-stat">

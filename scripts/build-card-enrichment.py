@@ -6,9 +6,11 @@ from __future__ import annotations
 import json
 import re
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-from bestdori.cards import get_all as get_cards
+from bestdori.cards import Card, get_all as get_cards
+from bestdori.costumes import Costume
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "web" / "src" / "data" / "card-enrichment.json"
@@ -22,6 +24,7 @@ ATTR_MAP = {
 }
 
 KIND_LIMITED_TYPES = {"limited", "dreamfes", "kirafes"}
+_costume_bundle_cache: dict[int, str | None] = {}
 
 
 def norm(text: str | None) -> str:
@@ -55,6 +58,56 @@ def stars_from_rarity(rarity: str) -> int | None:
     return int(m.group(1)) if m else None
 
 
+def costume_bundle_name(costume_id: int | None) -> str | None:
+    if not costume_id:
+        return None
+    cached = _costume_bundle_cache.get(int(costume_id))
+    if cached is not None or int(costume_id) in _costume_bundle_cache:
+        return cached
+    name = None
+    try:
+        name = Costume(int(costume_id)).get_info().get("assetBundleName")
+    except Exception:
+        pass
+    _costume_bundle_cache[int(costume_id)] = name
+    return name
+
+
+def fetch_live_assets(bestdori_card_id: int) -> dict:
+    payload = {
+        "costume_id": None,
+        "sd_resource_name": None,
+        "live2d_asset_bundle_name": None,
+    }
+
+    try:
+        info = Card(bestdori_card_id).get_info()
+        payload["costume_id"] = info.get("costumeId")
+        payload["sd_resource_name"] = info.get("sdResourceName")
+        costume_id = info.get("costumeId")
+        if costume_id:
+            payload["live2d_asset_bundle_name"] = costume_bundle_name(int(costume_id))
+    except Exception:
+        pass
+
+    return payload
+
+
+def prefetch_live_assets(card_ids: list[int], workers: int = 16) -> dict[int, dict]:
+    cache: dict[int, dict] = {}
+    unique_ids = sorted(set(card_ids))
+    if not unique_ids:
+        return cache
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        futures = {pool.submit(fetch_live_assets, cid): cid for cid in unique_ids}
+        for future in as_completed(futures):
+            cid = futures[future]
+            cache[cid] = future.result()
+
+    return cache
+
+
 def main() -> int:
     cards = get_cards(5)
     index = json.loads(INDEX.read_text(encoding="utf-8"))
@@ -78,6 +131,7 @@ def main() -> int:
         )
 
     enrichment: dict[str, dict] = {}
+    pending_hits: list[tuple[str, dict, dict]] = []
     matched = 0
     total = 0
 
@@ -117,7 +171,7 @@ def main() -> int:
             year = release_year(release_date)
 
             key = f"{cid}|{name_norm}"
-            enrichment[key] = {
+            base = {
                 "character_id": cid,
                 "bestdori_card_id": hit["card_id"] if hit else None,
                 "stars": stars,
@@ -126,7 +180,26 @@ def main() -> int:
                 "release_year": year,
             }
             if hit:
+                pending_hits.append((key, base, hit))
                 matched += 1
+            else:
+                enrichment[key] = {
+                    **base,
+                    "costume_id": None,
+                    "sd_resource_name": None,
+                    "live2d_asset_bundle_name": None,
+                }
+
+    live_asset_cache = prefetch_live_assets([hit["card_id"] for _, _, hit in pending_hits])
+
+    for key, base, hit in pending_hits:
+        live_assets = live_asset_cache.get(hit["card_id"], {})
+        enrichment[key] = {
+            **base,
+            "costume_id": live_assets.get("costume_id"),
+            "sd_resource_name": live_assets.get("sd_resource_name"),
+            "live2d_asset_bundle_name": live_assets.get("live2d_asset_bundle_name"),
+        }
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(

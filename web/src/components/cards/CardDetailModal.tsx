@@ -4,6 +4,9 @@ import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { CardFavoriteButton } from "@/components/cards/CardFavoriteButton";
+import { CardPaletteBackground } from "@/components/cards/CardPaletteBackground";
+import { CardLive2DViewer } from "@/components/cards/CardLive2DViewer";
+import { useCardPalette } from "@/hooks/useCardPalette";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getCardRarityLabel } from "@/lib/i18n/display";
 import {
@@ -39,6 +42,8 @@ export function CardDetailModal({
   const activeSrc = item ? getCardVariantSrc(item.card, variant) : "";
   const activeKey = item ? displayKey(item.card.id, variant) : "";
   const rarityLabel = item ? getCardRarityLabel(item.card, locale) : "";
+  const characterId = item?.card.character_id ?? 0;
+  const palette = useCardPalette(activeSrc, themeColor);
 
   useEffect(() => {
     if (!item) return;
@@ -75,12 +80,13 @@ export function CardDetailModal({
             className="card-detail-backdrop"
             onClick={onClose}
           >
+            <CardPaletteBackground gradient={palette.gradient} className="card-palette-bg--modal" />
             <motion.div
               initial={{ opacity: 0, y: 24, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 16, scale: 0.98 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="card-detail-panel"
+              className={cn("card-detail-panel-wrap", "card-detail-panel")}
               style={{ "--card-accent": themeColor } as CSSProperties}
               onClick={(e) => e.stopPropagation()}
             >
@@ -92,33 +98,46 @@ export function CardDetailModal({
                 <CardFavoriteButton displayKey={activeKey} className="card-detail-favorite" />
               </div>
 
-              <button
-                type="button"
-                className="card-detail-image-btn"
-                onClick={() => setFullscreen(true)}
-                aria-label={t("card.fullscreenPreview")}
-              >
-                <div className="card-detail-image-frame">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={variant}
-                      initial={{ opacity: 0, scale: 1.02 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.98 }}
-                      transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-                      className="card-detail-image-layer"
-                    >
-                      <AssetImage
-                        src={activeSrc}
-                        alt={item.card.card_name}
-                        fill
-                        className="card-detail-image object-contain"
-                      />
-                    </motion.div>
-                  </AnimatePresence>
-                  <div className="card-detail-image-glow" aria-hidden />
-                </div>
-              </button>
+              <div className="card-detail-visual-row">
+                {characterId > 0 && (
+                  <CardLive2DViewer
+                    characterId={characterId}
+                    costumeId={item.card.costume_id}
+                    live2dAssetBundleName={item.card.live2d_asset_bundle_name}
+                    sdResourceName={item.card.sd_resource_name}
+                    cardImageSrc={activeSrc}
+                    className="card-detail-live2d"
+                  />
+                )}
+
+                <button
+                  type="button"
+                  className="card-detail-image-btn"
+                  onClick={() => setFullscreen(true)}
+                  aria-label={t("card.fullscreenPreview")}
+                >
+                  <div className="card-detail-image-frame">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={variant}
+                        initial={{ opacity: 0, scale: 1.02 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.98 }}
+                        transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+                        className="card-detail-image-layer"
+                      >
+                        <AssetImage
+                          src={activeSrc}
+                          alt={item.card.card_name}
+                          fill
+                          className="card-detail-image object-contain"
+                        />
+                      </motion.div>
+                    </AnimatePresence>
+                    <div className="card-detail-image-glow" aria-hidden />
+                  </div>
+                </button>
+              </div>
 
               {showToggle && (
                 <div className="card-detail-toggle-wrap">
@@ -180,6 +199,7 @@ export function CardDetailModal({
             className="card-detail-fullscreen"
             onClick={() => setFullscreen(false)}
           >
+            <CardPaletteBackground gradient={palette.gradient} className="card-palette-bg--fullscreen" />
             <button
               type="button"
               className="card-detail-fullscreen-close"

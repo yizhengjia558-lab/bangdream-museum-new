@@ -36,6 +36,9 @@ function enrichCardFields(card, entry, meta) {
     card_kind: extra.card_kind || "normal",
     release_year: Number.isFinite(releaseYear) ? releaseYear : null,
     bestdori_card_id: extra.bestdori_card_id ?? null,
+    costume_id: extra.costume_id ?? null,
+    sd_resource_name: extra.sd_resource_name ?? null,
+    live2d_asset_bundle_name: extra.live2d_asset_bundle_name ?? null,
   };
 }
 

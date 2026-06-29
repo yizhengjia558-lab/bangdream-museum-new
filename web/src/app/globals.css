@@ -1087,14 +1087,51 @@ button.glass-frame.card-tile {
   align-items: center;
   justify-content: center;
   padding: clamp(1rem, 4vw, 2rem);
-  background: rgba(6, 8, 16, 0.72);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  overflow: hidden;
+  background: transparent;
+}
+
+.card-palette-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.card-palette-bg--modal,
+.card-palette-bg--fullscreen {
+  z-index: 0;
+}
+
+.card-palette-bg__layer {
+  position: absolute;
+  inset: -8%;
+  transform: scale(1.06);
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
+}
+
+.card-palette-bg__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.card-palette-bg--fullscreen .card-palette-bg__scrim {
+  background: rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.card-detail-panel-wrap {
+  position: relative;
+  z-index: 1;
 }
 
 .card-detail-panel {
   position: relative;
-  width: min(100%, 560px);
+  width: min(100%, 720px);
   padding: clamp(1.25rem, 3vw, 1.75rem);
   border-radius: 28px;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1171,6 +1208,153 @@ button.glass-frame.card-tile {
 .card-detail-favorite {
   position: static;
   flex-shrink: 0;
+}
+
+.card-detail-visual-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .card-detail-visual-row {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .card-detail-live2d {
+    flex: 0 0 min(42%, 220px);
+    min-height: 240px;
+  }
+
+  .card-detail-visual-row .card-detail-image-btn {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.card-live2d-viewer,
+.card-live2d-stage {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.card-live2d-canvas-host {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+}
+
+.card-live2d-canvas-host canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.card-live2d-loading {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.04) 8%,
+    rgba(255, 255, 255, 0.12) 18%,
+    rgba(255, 255, 255, 0.04) 33%
+  );
+  background-size: 200% 100%;
+  animation: card-live2d-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes card-live2d-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.card-live2d-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 200px;
+  padding: 0.75rem;
+  border-radius: 18px;
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.card-live2d-fallback__sd {
+  max-height: 160px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.35));
+}
+
+.card-live2d-fallback__card {
+  width: 4.5rem;
+  height: 4.5rem;
+  opacity: 0.55;
+}
+
+/* ── Character chibi avatar ── */
+
+.character-chibi {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.14), transparent 55%),
+    rgba(0, 0, 0, 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+.character-chibi--sm {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 14px;
+}
+
+.character-chibi--md {
+  width: 4.75rem;
+  height: 4.75rem;
+}
+
+.character-chibi--lg {
+  width: 6.5rem;
+  height: 6.5rem;
+  border-radius: 24px;
+}
+
+.character-chibi__img {
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
+}
+
+.character-hero-title-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.character-hero-title-copy {
+  min-width: 0;
 }
 
 .card-detail-image-btn {
@@ -1338,17 +1522,16 @@ button.glass-frame.card-tile {
   align-items: center;
   justify-content: center;
   padding: clamp(1rem, 3vw, 2rem);
-  background: rgba(0, 0, 0, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  overflow: hidden;
+  background: transparent;
   cursor: zoom-out;
 }
 
 .card-detail-fullscreen-close {
   position: fixed;
-  top: 1.25rem;
-  right: 1.25rem;
-  z-index: 111;
+  top: clamp(1rem, 3vw, 1.5rem);
+  right: clamp(1rem, 3vw, 1.5rem);
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1370,6 +1553,8 @@ button.glass-frame.card-tile {
 }
 
 .card-detail-fullscreen-inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;

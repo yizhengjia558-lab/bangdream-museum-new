@@ -24,6 +24,9 @@ export interface CardData {
   card_kind?: CardKind;
   release_year?: number | null;
   bestdori_card_id?: number | null;
+  costume_id?: number | null;
+  sd_resource_name?: string | null;
+  live2d_asset_bundle_name?: string | null;
 }
 
 export interface VoiceActorData {
