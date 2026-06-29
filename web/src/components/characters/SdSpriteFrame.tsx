@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 
-/** Bestdori livesd/sdchara.png is a 2×2 sprite sheet — show top-left standing frame. */
+/** Bestdori livesd/sdchara.png is a 2×2 sprite sheet — standing frame is bottom-left cell. */
 export function SdSpriteFrame({
   src,
   alt = "",

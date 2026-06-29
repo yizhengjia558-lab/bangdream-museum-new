@@ -1263,8 +1263,7 @@ button.glass-frame.card-tile {
 }
 
 .card-sd-preview__frame.sd-sprite-frame {
-  width: 100%;
-  max-width: 5.5rem;
+  width: min(100%, 6.25rem);
   aspect-ratio: 1;
   height: auto;
 }
@@ -1378,8 +1377,9 @@ button.glass-frame.card-tile {
   overflow: hidden;
   flex-shrink: 0;
   background-repeat: no-repeat;
-  background-size: 400% 400%;
-  background-position: 0% 0%;
+  /* 2×2 sheet — standing 帧在左下角 (row 1, col 0) */
+  background-size: 380% 380%;
+  background-position: 0% 100%;
 }
 
 .sd-sprite-frame__probe {
@@ -1416,13 +1416,13 @@ button.glass-frame.card-tile {
 
 .bestdori-live2d-embed__iframe {
   position: absolute;
-  top: 0;
   left: 50%;
-  width: 720px;
-  height: 1400px;
+  top: 50%;
+  width: 960px;
+  height: 1500px;
   border: 0;
-  transform: translateX(-50%) translateY(-56%) scale(0.34);
-  transform-origin: 50% 56%;
+  transform: translate(-50%, -44%) scale(0.21);
+  transform-origin: center center;
   pointer-events: auto;
 }
 

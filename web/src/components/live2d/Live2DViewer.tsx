@@ -41,7 +41,7 @@ function fitModelContain(
   model: import("pixi-live2d-display/cubism2").Live2DModel,
   stageWidth: number,
   stageHeight: number,
-  padding = 0.92
+  padding = 0.88
 ) {
   model.scale.set(1);
   const bounds = model.getLocalBounds();
@@ -51,6 +51,13 @@ function fitModelContain(
   model.scale.set(scale);
   model.x = stageWidth / 2 - (bounds.x + bounds.width / 2) * scale;
   model.y = stageHeight / 2 - (bounds.y + bounds.height / 2) * scale;
+}
+
+function scheduleModelRefit(refit: () => void) {
+  refit();
+  requestAnimationFrame(refit);
+  window.setTimeout(refit, 120);
+  window.setTimeout(refit, 480);
 }
 
 export function Live2DViewer({
@@ -124,7 +131,7 @@ export function Live2DViewer({
           fitModelContain(model, w, h);
         };
 
-        refit();
+        scheduleModelRefit(refit);
         app.stage.addChild(model);
 
         app.stage.interactive = true;
