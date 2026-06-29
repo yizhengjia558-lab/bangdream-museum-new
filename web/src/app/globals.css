@@ -1084,11 +1084,18 @@ button.glass-frame.card-tile {
   inset: 0;
   z-index: 100;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: clamp(1rem, 4vw, 2rem);
-  overflow: hidden;
+  padding: clamp(0.75rem, 3vw, 1.5rem);
+  overflow-x: hidden;
+  overflow-y: auto;
   background: transparent;
+}
+
+@media (min-width: 640px) {
+  .card-detail-backdrop {
+    align-items: center;
+  }
 }
 
 .card-palette-bg {
@@ -1132,7 +1139,11 @@ button.glass-frame.card-tile {
 .card-detail-panel {
   position: relative;
   width: min(100%, 720px);
-  padding: clamp(1.25rem, 3vw, 1.75rem);
+  max-height: min(92vh, 860px);
+  margin-block: auto;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  overflow-x: hidden;
+  overflow-y: auto;
   border-radius: 28px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background:
@@ -1213,40 +1224,53 @@ button.glass-frame.card-tile {
 .card-detail-visual-row {
   display: flex;
   flex-direction: column;
-  gap: 0.875rem;
+  gap: 0.75rem;
+  min-height: 0;
 }
 
 @media (min-width: 640px) {
   .card-detail-visual-row {
     flex-direction: row;
     align-items: stretch;
-    gap: 1rem;
+    gap: 0.875rem;
+    max-height: min(48vh, 340px);
   }
 
   .card-detail-live2d {
-    flex: 0 0 min(48%, 280px);
-    min-height: 420px;
+    flex: 0 0 min(42%, 200px);
+    min-height: 0;
+    max-height: min(48vh, 340px);
   }
 
   .card-detail-visual-row .card-detail-image-btn {
     flex: 1;
     min-width: 0;
+    min-height: 0;
   }
 }
 
 .card-live2d-viewer {
   position: relative;
   width: 100%;
-  min-height: 380px;
   height: 100%;
+  min-height: 0;
+  max-height: min(42vh, 300px);
+}
+
+@media (min-width: 640px) {
+  .card-live2d-viewer {
+    max-height: min(48vh, 340px);
+  }
 }
 
 .card-character-visual {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.45rem;
   width: 100%;
   height: 100%;
+  min-height: 0;
+  max-height: 100%;
 }
 
 .card-sd-preview {
@@ -1256,18 +1280,17 @@ button.glass-frame.card-tile {
   justify-content: center;
   width: 100%;
   flex: 0 0 auto;
-  min-height: 8.5rem;
-  aspect-ratio: 4 / 5;
-  padding: 0.45rem 0.55rem;
-  border-radius: 16px;
+  min-height: 0;
+  padding: 0.35rem;
+  border-radius: 14px;
   background: rgba(0, 0, 0, 0.24);
   overflow: hidden;
 }
 
 .card-sd-preview__frame.sd-sprite-frame {
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 4 / 5;
+  width: min(100%, 5.5rem);
+  aspect-ratio: 1;
+  height: auto;
 }
 
 .card-sd-preview__zoom {
@@ -1295,25 +1318,32 @@ button.glass-frame.card-tile {
 }
 
 .card-character-visual__live2d {
-  flex: 1 1 auto;
+  flex: 1 1 0;
   min-height: 0;
+  display: flex;
 }
 
 .card-live2d-phone {
   position: relative;
   width: 100%;
-  min-height: 240px;
-  aspect-ratio: 9 / 16;
-  max-height: none;
-  flex: 1 1 auto;
+  height: 100%;
+  min-height: 0;
+  max-height: min(36vh, 260px);
   margin-inline: auto;
-  padding: 10px;
-  border-radius: 28px;
+  padding: 8px;
+  border-radius: 22px;
   background: linear-gradient(145deg, rgba(28, 28, 34, 0.96), rgba(12, 12, 16, 0.98));
   border: 2px solid rgba(255, 255, 255, 0.14);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
     0 18px 40px rgba(0, 0, 0, 0.42);
+}
+
+@media (min-width: 640px) {
+  .card-live2d-phone {
+    max-height: none;
+    height: 100%;
+  }
 }
 
 .card-live2d-phone__screen {
@@ -1379,19 +1409,18 @@ button.glass-frame.card-tile {
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
+  background-repeat: no-repeat;
+  /* 2×2 sheet — one cell = 200%, standing frame bottom-left */
+  background-size: 200% 200%;
+  background-position: 0% 100%;
 }
 
-.sd-sprite-frame__sprite {
+.sd-sprite-frame__probe {
   position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 200%;
-  max-width: none;
-  height: auto;
-  transform: scale(0.74);
-  transform-origin: left bottom;
+  width: 0;
+  height: 0;
+  opacity: 0;
   pointer-events: none;
-  user-select: none;
 }
 
 .character-chibi__frame.sd-sprite-frame {
@@ -1412,23 +1441,43 @@ button.glass-frame.card-tile {
   background: #0a0a10;
 }
 
-.bestdori-live2d-embed__viewport {
+.bestdori-live2d-embed__iframe {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: auto;
+}
+
+/* ── Live2D embed route (iframe target) ── */
+
+body.live2d-embed-route header,
+body.live2d-embed-route footer,
+body.live2d-embed-route .lang-toggle-fixed,
+body.live2d-embed-route .theme-toggle-fixed,
+body.live2d-embed-route .scroll-top-btn {
+  display: none !important;
+}
+
+body.live2d-embed-route main {
+  flex: 1;
+  display: flex;
+  padding: 0;
+  min-height: 0;
+}
+
+.live2d-embed-page {
+  flex: 1;
+  width: 100%;
+  min-height: 100dvh;
+  background: #0a0a10;
   overflow: hidden;
 }
 
-.bestdori-live2d-embed__iframe {
+.live2d-embed-page__viewer {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 1280px;
-  height: 1600px;
-  border: 0;
-  /* 裁掉 Bestdori 侧栏，只保留 Live2D 画布区域 */
-  transform: translate(-32%, -50%) scale(0.17);
-  transform-origin: center center;
-  pointer-events: auto;
+  inset: 0;
 }
 
 .card-live2d-loading {
@@ -1574,12 +1623,8 @@ button.glass-frame.card-tile {
 
 .image-preview-overlay__sd-frame.sd-sprite-frame {
   width: min(72vw, 360px);
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1;
   filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
-}
-
-.image-preview-overlay__sd-frame .sd-sprite-frame__sprite {
-  transform: scale(0.78);
 }
 
 .image-preview-overlay__caption {
@@ -1612,11 +1657,20 @@ button.glass-frame.card-tile {
 
 .card-detail-image-frame {
   position: relative;
-  aspect-ratio: 4 / 3;
+  width: 100%;
+  height: min(38vh, 280px);
+  max-height: min(48vh, 340px);
   overflow: hidden;
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(0, 0, 0, 0.35);
+}
+
+@media (min-width: 640px) {
+  .card-detail-image-frame {
+    height: 100%;
+    max-height: min(48vh, 340px);
+  }
 }
 
 .card-detail-image-layer {

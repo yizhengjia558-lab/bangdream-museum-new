@@ -1,9 +1,14 @@
 "use client";
 
-import { getBestdoriLive2DViewerUrl } from "@/lib/bestdori-assets";
 import { cn } from "@/lib/utils";
 
-/** Bestdori Live2D viewer iframe — crop site chrome, fit canvas in phone frame. */
+function getLocalLive2DEmbedUrl(assetBundleName: string) {
+  const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");
+  const origin = typeof window !== "undefined" ? window.location.origin : "";
+  return `${origin}${basePath}/live2d-embed/?bundle=${encodeURIComponent(assetBundleName)}`;
+}
+
+/** Same-origin Live2D embed — full canvas, no Bestdori site chrome. */
 export function BestdoriLive2DEmbed({
   assetBundleName,
   className,
@@ -13,15 +18,13 @@ export function BestdoriLive2DEmbed({
 }) {
   return (
     <div className={cn("bestdori-live2d-embed", className)}>
-      <div className="bestdori-live2d-embed__viewport">
-        <iframe
-          src={getBestdoriLive2DViewerUrl(assetBundleName)}
-          title="Live2D"
-          className="bestdori-live2d-embed__iframe"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
-      </div>
+      <iframe
+        src={getLocalLive2DEmbedUrl(assetBundleName)}
+        title="Live2D"
+        className="bestdori-live2d-embed__iframe"
+        loading="lazy"
+        referrerPolicy="same-origin"
+      />
     </div>
   );
 }

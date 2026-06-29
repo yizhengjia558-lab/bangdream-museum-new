@@ -15,9 +15,14 @@ export function SdSpriteFrame({
   onError?: () => void;
 }) {
   return (
-    <div className={cn("sd-sprite-frame", className)} role="img" aria-label={alt || undefined}>
+    <div
+      className={cn("sd-sprite-frame", className)}
+      role="img"
+      aria-label={alt || undefined}
+      style={{ backgroundImage: `url("${src}")` }}
+    >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt} className="sd-sprite-frame__sprite" draggable={false} onError={onError} />
+      <img src={src} alt="" className="sd-sprite-frame__probe" onError={onError} />
     </div>
   );
 }
