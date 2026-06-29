@@ -1224,8 +1224,8 @@ button.glass-frame.card-tile {
   }
 
   .card-detail-live2d {
-    flex: 0 0 min(42%, 220px);
-    min-height: 320px;
+    flex: 0 0 min(48%, 280px);
+    min-height: 420px;
   }
 
   .card-detail-visual-row .card-detail-image-btn {
@@ -1237,7 +1237,8 @@ button.glass-frame.card-tile {
 .card-live2d-viewer {
   position: relative;
   width: 100%;
-  min-height: 320px;
+  min-height: 380px;
+  height: 100%;
 }
 
 .card-character-visual {
@@ -1255,17 +1256,18 @@ button.glass-frame.card-tile {
   justify-content: center;
   width: 100%;
   flex: 0 0 auto;
-  min-height: 6.5rem;
-  padding: 0.4rem;
+  min-height: 8.5rem;
+  aspect-ratio: 4 / 5;
+  padding: 0.45rem 0.55rem;
   border-radius: 16px;
   background: rgba(0, 0, 0, 0.24);
   overflow: hidden;
 }
 
 .card-sd-preview__frame.sd-sprite-frame {
-  width: min(100%, 6.25rem);
-  aspect-ratio: 1;
-  height: auto;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 5;
 }
 
 .card-sd-preview__zoom {
@@ -1300,9 +1302,10 @@ button.glass-frame.card-tile {
 .card-live2d-phone {
   position: relative;
   width: 100%;
-  min-height: 200px;
+  min-height: 240px;
   aspect-ratio: 9 / 16;
-  max-height: 300px;
+  max-height: none;
+  flex: 1 1 auto;
   margin-inline: auto;
   padding: 10px;
   border-radius: 28px;
@@ -1376,18 +1379,19 @@ button.glass-frame.card-tile {
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
-  background-repeat: no-repeat;
-  /* 2×2 sheet — standing 帧在左下角 (row 1, col 0) */
-  background-size: 380% 380%;
-  background-position: 0% 100%;
 }
 
-.sd-sprite-frame__probe {
+.sd-sprite-frame__sprite {
   position: absolute;
-  width: 0;
-  height: 0;
-  opacity: 0;
+  left: 0;
+  bottom: 0;
+  width: 200%;
+  max-width: none;
+  height: auto;
+  transform: scale(0.74);
+  transform-origin: left bottom;
   pointer-events: none;
+  user-select: none;
 }
 
 .character-chibi__frame.sd-sprite-frame {
@@ -1418,10 +1422,11 @@ button.glass-frame.card-tile {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 960px;
-  height: 1500px;
+  width: 1280px;
+  height: 1600px;
   border: 0;
-  transform: translate(-50%, -44%) scale(0.21);
+  /* 裁掉 Bestdori 侧栏，只保留 Live2D 画布区域 */
+  transform: translate(-32%, -50%) scale(0.17);
   transform-origin: center center;
   pointer-events: auto;
 }
@@ -1501,20 +1506,20 @@ button.glass-frame.card-tile {
 }
 
 .character-chibi--sm {
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 3.75rem;
+  height: 4.75rem;
   border-radius: 14px;
 }
 
 .character-chibi--md {
-  width: 4.75rem;
-  height: 4.75rem;
+  width: 5.25rem;
+  height: 6.75rem;
 }
 
 .character-chibi--lg {
-  width: 6.5rem;
-  height: 6.5rem;
-  border-radius: 24px;
+  width: 6.75rem;
+  height: 8.75rem;
+  border-radius: 22px;
 }
 
 .character-chibi__img {
@@ -1569,8 +1574,12 @@ button.glass-frame.card-tile {
 
 .image-preview-overlay__sd-frame.sd-sprite-frame {
   width: min(72vw, 360px);
-  aspect-ratio: 1;
+  aspect-ratio: 4 / 5;
   filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
+}
+
+.image-preview-overlay__sd-frame .sd-sprite-frame__sprite {
+  transform: scale(0.78);
 }
 
 .image-preview-overlay__caption {

@@ -77,7 +77,7 @@ export function CharacterHero({
             )}
 
             <div className="character-hero-title-row">
-              <CharacterChibiAvatar characterId={character.id} size="md" alt={displayName} />
+              <CharacterChibiAvatar characterId={character.id} size="lg" alt={displayName} />
               <div className="character-hero-title-copy">
                 <h1 className="character-hero-name">{displayName}</h1>
                 {altName ? <p className="character-hero-alt-name">{altName}</p> : null}

@@ -41,7 +41,7 @@ function fitModelContain(
   model: import("pixi-live2d-display/cubism2").Live2DModel,
   stageWidth: number,
   stageHeight: number,
-  padding = 0.88
+  padding = 0.82
 ) {
   model.scale.set(1);
   const bounds = model.getLocalBounds();
