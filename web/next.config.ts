@@ -4,9 +4,10 @@ import { fileURLToPath } from "node:url";
 
 const configDir = path.dirname(fileURLToPath(import.meta.url));
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH?.replace(/\/$/, "") ?? "";
+const staticExport = process.env.NEXT_PUBLIC_STATIC_EXPORT === "1";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  ...(staticExport ? { output: "export" as const } : {}),
   trailingSlash: true,
   ...(basePath ? { basePath, assetPrefix: basePath } : {}),
   turbopack: {
