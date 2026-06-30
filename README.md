@@ -53,22 +53,48 @@ Bushiroad 官网（bang-dream.com）**没有公开的卡面下载 API**，无法
 
 ## 访客统计（可选）
 
-GitHub Pages 是纯静态站点，访客计数通过 **Cloudflare Worker**（免费）实现：
+GitHub Pages 是纯静态站点，访客计数通过 **Cloudflare Worker**（免费）实现。
 
-1. 注册 [Cloudflare](https://dash.cloudflare.com/) 并安装 Wrangler：`npm i -g wrangler`
-2. 创建 KV 并写入 `web/analytics-worker/wrangler.toml` 的 `id`：
-   ```bat
-   cd web\analytics-worker
-   npx wrangler kv namespace create STATS
-   npx wrangler login
-   npm run deploy:analytics
-   ```
-3. （可选）在 Cloudflare Worker 设置 `STATS_SECRET` 管理密钥，用于查看 30 日趋势
-4. 构建时设置环境变量（本地或 GitHub Actions → Settings → Variables）：
-   - `NEXT_PUBLIC_VISITOR_API` = Worker 地址，如 `https://bangdream-museum-analytics.xxx.workers.dev`
-   - GitHub Actions 可使用仓库变量 `VISITOR_API_URL`（已接入 workflow）
+### 一键部署（推荐）
 
-部署后访问 **`/stats/`** 查看统计；页脚会显示累计与今日访问量。
+1. 注册 [Cloudflare](https://dash.cloudflare.com/)（免费）
+2. 在项目根目录双击运行 **`scripts\deploy-analytics.bat`**
+3. 按提示在浏览器完成 Cloudflare 登录
+4. 脚本会自动创建 KV、部署 Worker，并写入 `web/public/visitor-api.json`
+5. 提交并 push 后，GitHub Actions 会重新部署网站
+
+部署完成后：
+- **页脚**显示「累计访问 · 今日访问」
+- **顶栏**（桌面端）显示累计访客数，点击可进入统计页
+- 访问 **`/stats/`** 查看详细统计
+
+### 手动部署
+
+```bat
+cd web\analytics-worker
+npx wrangler login
+npx wrangler kv namespace create STATS
+:: 将输出的 id 填入 wrangler.toml
+npm run deploy
+```
+
+然后将 Worker 地址写入 `web/public/visitor-api.json`：
+
+```json
+{ "api": "https://bangdream-museum-analytics.你的账号.workers.dev" }
+```
+
+### GitHub Actions 自动部署 Worker（可选）
+
+在仓库 Settings → Secrets 添加：
+- `CLOUDFLARE_API_TOKEN` — [创建 API Token](https://dash.cloudflare.com/profile/api-tokens)（权限：Workers KV + Workers Scripts）
+- `CLOUDFLARE_ACCOUNT_ID` — Cloudflare 控制台右侧 Account ID
+
+然后在 Actions 中手动运行 **Deploy Analytics Worker** workflow。
+
+### 管理员视图（可选）
+
+在 Cloudflare Worker 环境变量中设置 `STATS_SECRET`，访问 `/stats/` 输入密钥后可查看 30 日趋势与热门页面。
 
 > 若需包含 MyGO / Ave Mujica 等新乐队，需修改 `collect_bandori.py` 中的 `TARGET_BANDS`。
 

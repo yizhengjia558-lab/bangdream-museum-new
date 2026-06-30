@@ -8,7 +8,7 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 import {
   fetchVisitorStats,
   isDetailedStats,
-  isVisitorAnalyticsEnabled,
+  resolveVisitorApiBase,
   type VisitorStatsDetailed,
   type VisitorStatsPublic,
 } from "@/lib/analytics";
@@ -17,9 +17,9 @@ const TOKEN_STORAGE_KEY = "bd-stats-admin-token";
 
 export function StatsDashboard() {
   const { t } = useLocale();
-  const enabled = isVisitorAnalyticsEnabled();
+  const [enabled, setEnabled] = useState<boolean | null>(null);
   const [stats, setStats] = useState<VisitorStatsPublic | VisitorStatsDetailed | null>(null);
-  const [loading, setLoading] = useState(enabled);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [tokenInput, setTokenInput] = useState("");
   const [token, setToken] = useState("");
@@ -32,14 +32,18 @@ export function StatsDashboard() {
   }, []);
 
   const loadStats = useCallback(async (adminToken?: string) => {
-    if (!enabled) {
+    setLoading(true);
+    setError(false);
+
+    const base = await resolveVisitorApiBase();
+    setEnabled(Boolean(base));
+
+    if (!base) {
       setLoading(false);
       return;
     }
 
-    setLoading(true);
-    setError(false);
-    const result = await fetchVisitorStats(adminToken || undefined);
+    const result = await fetchVisitorStats(adminToken || undefined, base);
     setLoading(false);
 
     if (!result) {
@@ -48,7 +52,7 @@ export function StatsDashboard() {
     }
 
     setStats(result);
-  }, [enabled]);
+  }, []);
 
   useEffect(() => {
     void loadStats(token);
@@ -67,7 +71,7 @@ export function StatsDashboard() {
     void loadStats(trimmed);
   };
 
-  if (!enabled) {
+  if (enabled === false) {
     return (
       <section className="page-section relative pt-28 pb-20">
         <div className="relative page-container max-w-3xl">
@@ -86,7 +90,7 @@ export function StatsDashboard() {
       <div className="relative page-container max-w-4xl">
         <SectionHeading title={t("analytics.title")} subtitle={t("analytics.subtitle")} />
 
-        {loading ? (
+        {enabled === null || loading ? (
           <GlassPanel className="stats-panel p-10 text-center">
             <p className="text-sm text-[var(--text-secondary)]">{t("analytics.loading")}</p>
           </GlassPanel>

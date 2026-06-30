@@ -2,14 +2,16 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { isVisitorAnalyticsEnabled, recordVisit } from "@/lib/analytics";
+import { recordVisit, resolveVisitorApiBase } from "@/lib/analytics";
 
 export function VisitTracker() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!isVisitorAnalyticsEnabled() || !pathname) return;
-    void recordVisit(pathname);
+    if (!pathname) return;
+    resolveVisitorApiBase().then((base) => {
+      if (base) void recordVisit(pathname, base);
+    });
   }, [pathname]);
 
   return null;
