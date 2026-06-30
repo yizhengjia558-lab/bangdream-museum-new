@@ -57,6 +57,9 @@ const zh = {
     beforeTraining: "特训前",
     afterTraining: "特训后",
     fullscreenPreview: "全屏预览",
+    prevCard: "上一张卡面",
+    nextCard: "下一张卡面",
+    navPosition: "{current} / {total}",
   },
   common: { members: "成员", cards: "卡面", scrollToTop: "回到顶部", close: "关闭" },
   search: {
@@ -167,6 +170,9 @@ const en = {
     beforeTraining: "BEFORE TRAINING",
     afterTraining: "AFTER TRAINING",
     fullscreenPreview: "FULL-SCREEN PREVIEW",
+    prevCard: "Previous card",
+    nextCard: "Next card",
+    navPosition: "{current} / {total}",
   },
   common: { members: "Members", cards: "Cards", scrollToTop: "Back to Top", close: "Close" },
   search: {
@@ -277,6 +283,9 @@ const ja = {
     beforeTraining: "特訓前",
     afterTraining: "特訓後",
     fullscreenPreview: "全画面プレビュー",
+    prevCard: "前のカード",
+    nextCard: "次のカード",
+    navPosition: "{current} / {total}",
   },
   common: { members: "メンバー", cards: "カード", scrollToTop: "トップへ", close: "閉じる" },
   search: {

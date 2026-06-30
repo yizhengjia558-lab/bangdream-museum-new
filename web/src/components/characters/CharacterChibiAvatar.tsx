@@ -41,6 +41,7 @@ export function CharacterChibiAvatar({
         <SdSpriteFrame
           src={activeUrl}
           alt={alt}
+          contain
           className="character-chibi__frame"
           onError={() => {
             if (urlIndex + 1 < urls.length) setUrlIndex((i) => i + 1);
@@ -100,6 +101,7 @@ export function CardSdFigurePreview({
         <SdSpriteFrame
           src={activeUrl}
           alt={alt}
+          contain
           className="card-sd-preview__frame"
           onError={() => {
             if (urlIndex + 1 < urls.length) setUrlIndex((i) => i + 1);

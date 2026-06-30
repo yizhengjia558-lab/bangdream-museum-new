@@ -34,7 +34,7 @@ export function CardGalleryItem({
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ delay: (index % 12) * 0.04, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.985 }}
       className={cn(
         "card-gallery-item scroll-mt-28",
         highlight && "card-gallery-item--highlight"

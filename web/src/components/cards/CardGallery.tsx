@@ -101,7 +101,13 @@ export function CardGallery({
         </div>
       )}
 
-      <CardDetailModal item={lightbox} onClose={() => setLightbox(null)} themeColor={themeColor} />
+      <CardDetailModal
+        item={lightbox}
+        items={displays}
+        onSelectItem={setLightbox}
+        onClose={() => setLightbox(null)}
+        themeColor={themeColor}
+      />
     </>
   );
 }

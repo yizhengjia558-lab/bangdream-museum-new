@@ -103,7 +103,13 @@ export function FavoritesPageView() {
         </div>
       </section>
 
-      <CardDetailModal item={lightbox} onClose={() => setLightbox(null)} themeColor="#e9435e" />
+      <CardDetailModal
+        item={lightbox}
+        items={filtered}
+        onSelectItem={setLightbox}
+        onClose={() => setLightbox(null)}
+        themeColor="#e9435e"
+      />
     </>
   );
 }

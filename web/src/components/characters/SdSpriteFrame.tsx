@@ -8,15 +8,18 @@ export function SdSpriteFrame({
   alt = "",
   className,
   onError,
+  contain = false,
 }: {
   src: string;
   alt?: string;
   className?: string;
   onError?: () => void;
+  /** Zoom out within cell so full character (e.g. guitar) fits in frame. */
+  contain?: boolean;
 }) {
   return (
     <div
-      className={cn("sd-sprite-frame", className)}
+      className={cn("sd-sprite-frame", contain && "sd-sprite-frame--contain", className)}
       role="img"
       aria-label={alt || undefined}
       style={{ backgroundImage: `url("${src}")` }}

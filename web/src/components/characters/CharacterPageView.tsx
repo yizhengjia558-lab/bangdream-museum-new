@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import { expandCardDisplays } from "@/lib/cards";
 import { CharacterCardArchive } from "@/components/characters/CharacterCardArchive";
 import { CardGalleryItem } from "@/components/cards/CardGalleryItem";
@@ -12,6 +13,13 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 import type { CharacterData } from "@/lib/data";
 import type { BandTheme } from "@/lib/themes";
 import { getCharactersByBand } from "@/lib/data";
+
+const sectionReveal = {
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-8%" as const },
+  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
+};
 
 export function CharacterPageView({
   character,
@@ -54,6 +62,10 @@ export function CharacterPageView({
     [displays]
   );
 
+  const openFilters = useCallback(() => {
+    document.getElementById("character-archive")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
+
   const bandMembers = theme ? getCharactersByBand(theme.folder) : [];
 
   return (
@@ -64,13 +76,16 @@ export function CharacterPageView({
         theme={theme}
         cardDisplays={displays}
         onJumpToCard={jumpToCard}
+        onOpenFilters={openFilters}
       />
 
       {character.voice_actor?.image ? (
-        <CharacterVoiceActorSection voiceActor={character.voice_actor} accent={primary} />
+        <motion.div {...sectionReveal}>
+          <CharacterVoiceActorSection voiceActor={character.voice_actor} accent={primary} />
+        </motion.div>
       ) : null}
 
-      <section className="page-section relative py-20">
+      <motion.section {...sectionReveal} className="page-section relative py-20">
         <div className="pointer-events-none absolute inset-0 bloom-layer" aria-hidden />
         <div className="relative page-container">
           <SectionHeading title={t("character.featured")} subtitle={t("character.featuredSubtitle")} />
@@ -87,9 +102,13 @@ export function CharacterPageView({
             ))}
           </ul>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="character-archive" className="character-archive-section page-section relative scroll-mt-28 py-20">
+      <motion.section
+        {...sectionReveal}
+        id="character-archive"
+        className="character-archive-section page-section relative scroll-mt-28 py-20"
+      >
         <div className="relative page-container">
           <SectionHeading title={t("character.archive")} subtitle={t("character.archiveSubtitle")} />
           <CharacterCardArchive
@@ -101,7 +120,7 @@ export function CharacterPageView({
             members={bandMembers.length ? bandMembers : [character]}
           />
         </div>
-      </section>
+      </motion.section>
     </>
   );
 }

@@ -8,7 +8,7 @@ import { GlassPanel } from "@/components/ui/GlassPanel";
 import { CardNameSearch } from "@/components/cards/CardNameSearch";
 import { CharacterChibiAvatar } from "@/components/characters/CharacterChibiAvatar";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { getBandName, getCharacterAltName, getCharacterName } from "@/lib/i18n/display";
+import { getBandName, getCharacterAltName, getCharacterName, getVoiceActorName } from "@/lib/i18n/display";
 import type { CardDisplayItem } from "@/lib/cards";
 import type { CharacterData } from "@/lib/data";
 import type { BandTheme } from "@/lib/themes";
@@ -19,23 +19,27 @@ export function CharacterHero({
   theme,
   cardDisplays,
   onJumpToCard,
+  onOpenFilters,
 }: {
   character: CharacterData;
   theme?: BandTheme;
   cardDisplays: CardDisplayItem[];
   onJumpToCard: (key: string) => void;
+  onOpenFilters?: () => void;
 }) {
   const { t, locale } = useLocale();
   const accent = theme?.colors.primary ?? "#e9435e";
   const backdrop = getCharacterBackdrop(character);
   const displayName = getCharacterName(character, locale);
   const altName = getCharacterAltName(character, locale);
+  const cvName = character.voice_actor ? getVoiceActorName(character.voice_actor, locale) : null;
 
   return (
     <section className="character-hero relative min-h-screen overflow-hidden">
-      <CinematicBackground src={backdrop} overlay={0.45} parallax={false} kenBurns={false} />
+      <CinematicBackground src={backdrop} overlay={0.58} parallax={false} kenBurns={false} />
+      <div className="character-hero-vignette pointer-events-none absolute inset-0" aria-hidden />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/15 via-black/25 to-black/45"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/78"
         aria-hidden
       />
 
@@ -69,39 +73,47 @@ export function CharacterHero({
             {theme && (
               <Link
                 href={`/bands/${theme.slug}/`}
-                className="character-hero-band transition hover:opacity-80"
+                className="character-hero-band character-hero-interactive"
                 style={{ color: accent }}
               >
                 {getBandName(theme, locale)}
               </Link>
             )}
 
-            <div className="character-hero-title-row">
+            <div className="character-hero-identity">
               <CharacterChibiAvatar characterId={character.id} size="lg" alt={displayName} />
               <div className="character-hero-title-copy">
                 <h1 className="character-hero-name">{displayName}</h1>
                 {altName ? <p className="character-hero-alt-name">{altName}</p> : null}
+                {cvName ? (
+                  <p className="character-hero-cv">
+                    <span className="character-hero-cv-label">{t("character.voiceActor")}</span>
+                    <span className="character-hero-cv-name">{cvName}</span>
+                  </p>
+                ) : null}
               </div>
             </div>
 
-            <dl className="character-hero-stats">
-              <div className="character-hero-stat">
-                <dt className="character-hero-stat-label">{t("character.cards")}</dt>
-                <dd className="character-hero-stat-value">{character.card_count}</dd>
+            <div className="character-hero-info-grid">
+              <div className="character-hero-info-card">
+                <span className="character-hero-info-card__label">{t("character.cards")}</span>
+                <span className="character-hero-info-card__value">{character.card_count}</span>
               </div>
-              {theme && (
-                <div className="character-hero-stat">
-                  <dt className="character-hero-stat-label">{t("character.band")}</dt>
-                  <dd className="character-hero-stat-value">{getBandName(theme, locale)}</dd>
+              {theme ? (
+                <div className="character-hero-info-card">
+                  <span className="character-hero-info-card__label">{t("character.band")}</span>
+                  <span className="character-hero-info-card__value">{getBandName(theme, locale)}</span>
                 </div>
-              )}
-            </dl>
+              ) : null}
+            </div>
 
             <CardNameSearch
               variant="compact"
               displays={cardDisplays}
               themeColor={accent}
               onJump={onJumpToCard}
+              showFilterTrigger
+              onFilterClick={onOpenFilters}
             />
           </GlassPanel>
         </motion.div>

@@ -22,13 +22,15 @@ export function CardLive2DViewer({
   className?: string;
 }) {
   return (
-    <div className={cn("card-live2d-viewer", className)}>
-      <CardLive2DViewerInner
-        characterId={characterId}
-        live2dAssetBundleName={live2dAssetBundleName}
-        sdResourceName={sdResourceName}
-        characterName={characterName}
-      />
-    </div>
+    <aside className={cn("card-detail-sidebar", className)}>
+      <div className="card-detail-sidebar__scroll">
+        <CardLive2DViewerInner
+          characterId={characterId}
+          live2dAssetBundleName={live2dAssetBundleName}
+          sdResourceName={sdResourceName}
+          characterName={characterName}
+        />
+      </div>
+    </aside>
   );
 }

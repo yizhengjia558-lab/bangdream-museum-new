@@ -9,6 +9,7 @@ import { CardLive2DViewer } from "@/components/cards/CardLive2DViewer";
 import { useCardPalette } from "@/hooks/useCardPalette";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getCardRarityLabel } from "@/lib/i18n/display";
+import type { CardData } from "@/lib/data";
 import {
   getCardVariantAvailability,
   getCardVariantSrc,
@@ -21,16 +22,89 @@ function displayKey(cardId: string, variant: CardVariant) {
   return `${cardId}-${variant}`;
 }
 
+function CardDetailInfoChips({ card }: { card: CardData }) {
+  const { t, locale } = useLocale();
+  const rarityLabel = getCardRarityLabel(card, locale);
+  const attribute = card.attribute
+    ? t(`filter.attr.${card.attribute}` as "filter.attr.power")
+    : null;
+  const kind =
+    card.card_kind && card.card_kind !== "normal"
+      ? t(`filter.kind.${card.card_kind}` as "filter.kind.limited")
+      : null;
+  const releaseYear =
+    card.release_year ?? (card.release_date ? parseInt(card.release_date.slice(0, 4), 10) : null);
+
+  const chips = [
+    { label: rarityLabel, accent: true },
+    attribute ? { label: attribute } : null,
+    kind ? { label: kind } : null,
+    releaseYear ? { label: String(releaseYear) } : null,
+  ].filter(Boolean) as { label: string; accent?: boolean }[];
+
+  if (!chips.length) return null;
+
+  return (
+    <div className="card-detail-info-chips">
+      {chips.map((chip) => (
+        <span
+          key={chip.label}
+          className={cn("card-detail-info-chip", chip.accent && "card-detail-info-chip--accent")}
+        >
+          {chip.label}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function isTypingTarget(target: EventTarget | null) {
+  if (!target || !(target instanceof HTMLElement)) return false;
+  const tag = target.tagName;
+  return tag === "INPUT" || tag === "TEXTAREA" || target.isContentEditable;
+}
+
+function CardDetailNavButton({
+  direction,
+  disabled,
+  onClick,
+  label,
+}: {
+  direction: "prev" | "next";
+  disabled: boolean;
+  onClick: () => void;
+  label: string;
+}) {
+  return (
+    <button
+      type="button"
+      className={cn("card-detail-nav-btn", direction === "prev" ? "card-detail-nav-btn--prev" : "card-detail-nav-btn--next")}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick();
+      }}
+      disabled={disabled}
+      aria-label={label}
+    >
+      <span aria-hidden>{direction === "prev" ? "‹" : "›"}</span>
+    </button>
+  );
+}
+
 export function CardDetailModal({
   item,
+  items = [],
+  onSelectItem,
   onClose,
   themeColor = "#e9435e",
 }: {
   item: CardDisplayItem | null;
+  items?: CardDisplayItem[];
+  onSelectItem?: (item: CardDisplayItem) => void;
   onClose: () => void;
   themeColor?: string;
 }) {
-  const { t, locale } = useLocale();
+  const { t } = useLocale();
   const [variant, setVariant] = useState<CardVariant>("untrained");
   const [fullscreen, setFullscreen] = useState(false);
 
@@ -41,9 +115,24 @@ export function CardDetailModal({
 
   const activeSrc = item ? getCardVariantSrc(item.card, variant) : "";
   const activeKey = item ? displayKey(item.card.id, variant) : "";
-  const rarityLabel = item ? getCardRarityLabel(item.card, locale) : "";
   const characterId = item?.card.character_id ?? 0;
   const palette = useCardPalette(activeSrc, themeColor);
+
+  const navIndex = useMemo(
+    () => (item && items.length ? items.findIndex((entry) => entry.key === item.key) : -1),
+    [item, items]
+  );
+  const canNavigate = items.length > 1 && navIndex >= 0 && Boolean(onSelectItem);
+  const canGoPrev = canNavigate && navIndex > 0;
+  const canGoNext = canNavigate && navIndex < items.length - 1;
+
+  const goPrev = () => {
+    if (canGoPrev && onSelectItem) onSelectItem(items[navIndex - 1]);
+  };
+
+  const goNext = () => {
+    if (canGoNext && onSelectItem) onSelectItem(items[navIndex + 1]);
+  };
 
   useEffect(() => {
     if (!item) return;
@@ -54,14 +143,30 @@ export function CardDetailModal({
   useEffect(() => {
     if (!item) return;
     const onKeyDown = (e: KeyboardEvent) => {
+      if (isTypingTarget(e.target)) return;
+
       if (e.key === "Escape") {
         if (fullscreen) setFullscreen(false);
         else onClose();
+        return;
+      }
+
+      if (!canNavigate || !onSelectItem) return;
+
+      if (e.key === "ArrowLeft" && navIndex > 0) {
+        e.preventDefault();
+        onSelectItem(items[navIndex - 1]);
+        return;
+      }
+
+      if (e.key === "ArrowRight" && navIndex < items.length - 1) {
+        e.preventDefault();
+        onSelectItem(items[navIndex + 1]);
       }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [item, fullscreen, onClose]);
+  }, [item, fullscreen, onClose, canNavigate, navIndex, items, onSelectItem]);
 
   if (!item || !activeSrc) return null;
 
@@ -80,6 +185,12 @@ export function CardDetailModal({
             className="card-detail-backdrop"
             onClick={onClose}
           >
+            {canNavigate ? (
+              <>
+                <CardDetailNavButton direction="prev" disabled={!canGoPrev} onClick={goPrev} label={t("card.prevCard")} />
+                <CardDetailNavButton direction="next" disabled={!canGoNext} onClick={goNext} label={t("card.nextCard")} />
+              </>
+            ) : null}
             <CardPaletteBackground gradient={palette.gradient} className="card-palette-bg--modal" />
             <motion.div
               initial={{ opacity: 0, y: 24, scale: 0.96 }}
@@ -96,91 +207,98 @@ export function CardDetailModal({
 
               <div className="card-detail-header">
                 <CardFavoriteButton displayKey={activeKey} className="card-detail-favorite" />
+                {canNavigate ? (
+                  <p className="card-detail-nav-position">
+                    {t("card.navPosition")
+                      .replace("{current}", String(navIndex + 1))
+                      .replace("{total}", String(items.length))}
+                  </p>
+                ) : null}
               </div>
 
               <div className="card-detail-visual-row">
-                {characterId > 0 && (
+                <div className="card-detail-main">
+                  <button
+                    type="button"
+                    className="card-detail-image-btn"
+                    onClick={() => setFullscreen(true)}
+                    aria-label={t("card.fullscreenPreview")}
+                  >
+                    <div className="card-detail-image-frame">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={`${item.key}-${variant}`}
+                          initial={{ opacity: 0, scale: 1.02 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.98 }}
+                          transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+                          className="card-detail-image-layer"
+                        >
+                          <AssetImage
+                            src={activeSrc}
+                            alt={item.card.card_name}
+                            fill
+                            className="card-detail-image object-contain"
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+                      <div className="card-detail-image-glow" aria-hidden />
+                    </div>
+                  </button>
+
+                  {showToggle ? (
+                    <div className="card-detail-toggle-wrap card-detail-toggle-wrap--inline">
+                      <div className="card-detail-toggle" role="tablist" aria-label={t("card.viewMode")}>
+                        <button
+                          type="button"
+                          role="tab"
+                          aria-selected={variant === "untrained" ? "true" : "false"}
+                          disabled={!availability.untrained}
+                          className={cn(
+                            "card-detail-toggle-btn",
+                            variant === "untrained" && "card-detail-toggle-btn--active"
+                          )}
+                          onClick={() => setVariant("untrained")}
+                        >
+                          {t("card.beforeTraining")}
+                        </button>
+                        <button
+                          type="button"
+                          role="tab"
+                          aria-selected={variant === "trained" ? "true" : "false"}
+                          disabled={!availability.trained}
+                          className={cn(
+                            "card-detail-toggle-btn",
+                            variant === "trained" && "card-detail-toggle-btn--active"
+                          )}
+                          onClick={() => setVariant("trained")}
+                        >
+                          {t("card.afterTraining")}
+                        </button>
+                      </div>
+                    </div>
+                  ) : null}
+
+                  <div className="card-detail-meta card-detail-meta--inline">
+                    <p className="card-detail-name">{item.card.card_name}</p>
+                    <p className="card-detail-sub">{item.card.event || t("card.special")}</p>
+                    <CardDetailInfoChips card={item.card} />
+                  </div>
+
+                  <button type="button" className="card-detail-fullscreen-btn" onClick={() => setFullscreen(true)}>
+                    {t("card.fullscreenPreview")} <span aria-hidden>🔍</span>
+                  </button>
+                </div>
+
+                {characterId > 0 ? (
                   <CardLive2DViewer
                     characterId={characterId}
                     live2dAssetBundleName={item.card.live2d_asset_bundle_name}
                     sdResourceName={item.card.sd_resource_name}
                     characterName={item.card.card_name}
-                    className="card-detail-live2d"
+                    className="card-detail-sidebar"
                   />
-                )}
-
-                <button
-                  type="button"
-                  className="card-detail-image-btn"
-                  onClick={() => setFullscreen(true)}
-                  aria-label={t("card.fullscreenPreview")}
-                >
-                  <div className="card-detail-image-frame">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={variant}
-                        initial={{ opacity: 0, scale: 1.02 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.98 }}
-                        transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-                        className="card-detail-image-layer"
-                      >
-                        <AssetImage
-                          src={activeSrc}
-                          alt={item.card.card_name}
-                          fill
-                          className="card-detail-image object-contain"
-                        />
-                      </motion.div>
-                    </AnimatePresence>
-                    <div className="card-detail-image-glow" aria-hidden />
-                  </div>
-                </button>
-              </div>
-
-              {showToggle && (
-                <div className="card-detail-toggle-wrap">
-                  <p className="card-detail-toggle-label">{t("card.viewMode")}</p>
-                  <div className="card-detail-toggle" role="tablist" aria-label={t("card.viewMode")}>
-                    <button
-                      type="button"
-                      role="tab"
-                      aria-selected={variant === "untrained"}
-                      disabled={!availability.untrained}
-                      className={cn(
-                        "card-detail-toggle-btn",
-                        variant === "untrained" && "card-detail-toggle-btn--active"
-                      )}
-                      onClick={() => setVariant("untrained")}
-                    >
-                      {t("card.beforeTraining")}
-                    </button>
-                    <button
-                      type="button"
-                      role="tab"
-                      aria-selected={variant === "trained"}
-                      disabled={!availability.trained}
-                      className={cn(
-                        "card-detail-toggle-btn",
-                        variant === "trained" && "card-detail-toggle-btn--active"
-                      )}
-                      onClick={() => setVariant("trained")}
-                    >
-                      {t("card.afterTraining")}
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              <button type="button" className="card-detail-fullscreen-btn" onClick={() => setFullscreen(true)}>
-                {t("card.fullscreenPreview")} <span aria-hidden>🔍</span>
-              </button>
-
-              <div className="card-detail-meta">
-                <p className="card-detail-name">{item.card.card_name}</p>
-                <p className="card-detail-sub">
-                  {rarityLabel} · {item.card.event || t("card.special")}
-                </p>
+                ) : null}
               </div>
             </motion.div>
           </motion.div>
@@ -198,6 +316,12 @@ export function CardDetailModal({
             className="card-detail-fullscreen"
             onClick={() => setFullscreen(false)}
           >
+            {canNavigate ? (
+              <>
+                <CardDetailNavButton direction="prev" disabled={!canGoPrev} onClick={goPrev} label={t("card.prevCard")} />
+                <CardDetailNavButton direction="next" disabled={!canGoNext} onClick={goNext} label={t("card.nextCard")} />
+              </>
+            ) : null}
             <CardPaletteBackground gradient={palette.gradient} className="card-palette-bg--fullscreen" />
             <button
               type="button"
@@ -218,7 +342,7 @@ export function CardDetailModal({
             >
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={variant}
+                  key={`${item.key}-${variant}`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}

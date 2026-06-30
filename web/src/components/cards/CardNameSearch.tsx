@@ -14,6 +14,8 @@ export function CardNameSearch({
   mode = "jump",
   query: controlledQuery,
   onQueryChange,
+  showFilterTrigger = false,
+  onFilterClick,
 }: {
   displays: CardDisplayItem[];
   themeColor?: string;
@@ -22,6 +24,8 @@ export function CardNameSearch({
   mode?: "jump" | "filter";
   query?: string;
   onQueryChange?: (query: string) => void;
+  showFilterTrigger?: boolean;
+  onFilterClick?: () => void;
 }) {
   const { t, locale } = useLocale();
   const listId = useId();
@@ -84,31 +88,47 @@ export function CardNameSearch({
       <label htmlFor={listId} className="sr-only">
         {t("card.searchPlaceholder")}
       </label>
-      <div className={cn("card-search-field", variant === "compact" ? "card-search-field--compact" : "glass-panel")}>
-        <span className="card-search-icon" aria-hidden>
-          ⌕
-        </span>
-        <input
-          ref={inputRef}
-          id={listId}
-          type="search"
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            if (!isFilterMode) setOpen(true);
-          }}
-          onFocus={() => {
-            if (!isFilterMode) setOpen(true);
-          }}
-          onKeyDown={onKeyDown}
-          placeholder={t("card.searchPlaceholder")}
-          className="card-search-input"
-          autoComplete="off"
-          role="combobox"
-          aria-expanded={showDropdown}
-          aria-controls={`${listId}-listbox`}
-          aria-autocomplete="list"
-        />
+      <div className={cn("card-search-toolbar", variant === "compact" && "card-search-toolbar--compact")}>
+        <div className={cn("card-search-field", variant === "compact" ? "card-search-field--compact" : "glass-panel")}>
+          <span className="card-search-icon" aria-hidden>
+            ⌕
+          </span>
+          <input
+            ref={inputRef}
+            id={listId}
+            type="search"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              if (!isFilterMode) setOpen(true);
+            }}
+            onFocus={() => {
+              if (!isFilterMode) setOpen(true);
+            }}
+            onKeyDown={onKeyDown}
+            placeholder={t("card.searchPlaceholder")}
+            className="card-search-input"
+            autoComplete="off"
+            role="combobox"
+            aria-expanded={showDropdown}
+            aria-controls={`${listId}-listbox`}
+            aria-autocomplete="list"
+          />
+        </div>
+        {showFilterTrigger ? (
+          <button
+            type="button"
+            className="card-search-filter-btn"
+            aria-label={t("filter.title")}
+            title={t("filter.title")}
+            onClick={() => onFilterClick?.()}
+          >
+            <span className="card-search-filter-btn__icon" aria-hidden>
+              ⧉
+            </span>
+            <span className="card-search-filter-btn__label">{t("filter.title")}</span>
+          </button>
+        ) : null}
       </div>
       {variant === "default" && !isFilterMode && <p className="card-search-hint">{t("card.searchHint")}</p>}
       {isFilterMode && query.trim().length > 0 && (
