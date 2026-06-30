@@ -6,7 +6,23 @@ import { spawnSync } from "child_process";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "../..");
 const bandori = path.join(root, "Bandori");
-const out = path.join(__dirname, "../src/data/site-data.json");
+const indexOut = path.join(__dirname, "../src/data/site-index.json");
+const heroCardsOut = path.join(__dirname, "../src/data/hero-cards.json");
+const homeBandsOut = path.join(__dirname, "../src/data/home-bands.json");
+const publicDataRoot = path.join(__dirname, "../public/data");
+const charactersOutDir = path.join(publicDataRoot, "characters");
+const bandsOutDir = path.join(publicDataRoot, "bands");
+const cardsCatalogOut = path.join(publicDataRoot, "cards-catalog.json");
+
+const BAND_SLUG_BY_FOLDER = {
+  PoppinParty: "poppin-party",
+  Afterglow: "afterglow",
+  PastelPalettes: "pastel-palettes",
+  Roselia: "roselia",
+  HelloHappyWorld: "hello-happy-world",
+  Morfonica: "morfonica",
+  RaiseASuilen: "raise-a-suilen",
+};
 const enrichmentScript = path.join(root, "scripts/build-card-enrichment.py");
 const enrichmentPath = path.join(__dirname, "../src/data/card-enrichment.json");
 
@@ -247,10 +263,139 @@ const characters = index.characters.map((entry) => {
   };
 });
 
-fs.mkdirSync(path.dirname(out), { recursive: true });
+function toSummary(character) {
+  const { cards: _cards, ...summary } = character;
+  return summary;
+}
+
+function cardScore(card) {
+  let s = 0;
+  if (card.rarity.includes("5")) s += 50;
+  if (card.rarity.includes("4")) s += 35;
+  if (card.trained_file) s += 20;
+  if (card.untrained_file) s += 10;
+  return s;
+}
+
+function pickBandCoverImage(members) {
+  const allCards = members.flatMap((m) => m.cards);
+  const ranked = [...allCards].sort((a, b) => cardScore(b) - cardScore(a));
+  for (const card of ranked) {
+    if (card.trained_file) return card.trained_file;
+  }
+  for (const card of ranked) {
+    if (card.untrained_file) return card.untrained_file;
+  }
+  return members[0]?.standing ?? "";
+}
+
+function buildHeroRiverCards(perBand = 6) {
+  const items = [];
+  const folders = Object.keys(BAND_SLUG_BY_FOLDER);
+
+  for (const folder of folders) {
+    const members = characters.filter((c) => c.band_folder === folder);
+    const bandCards = members
+      .flatMap((m) => m.cards)
+      .filter((c) => c.trained_file || c.untrained_file)
+      .sort((a, b) => cardScore(b) - cardScore(a));
+
+    const picked = new Set();
+    for (const card of bandCards) {
+      if (picked.size >= perBand) break;
+      const src = card.trained_file || card.untrained_file;
+      if (!src || picked.has(src)) continue;
+      picked.add(src);
+      items.push({ src, band: card.band ?? members[0]?.band ?? folder });
+    }
+  }
+
+  if (items.length >= 24) return items;
+
+  const extra = characters
+    .flatMap((c) =>
+      c.cards.map((card) => ({
+        src: card.trained_file || card.untrained_file,
+        band: c.band,
+        score: cardScore(card),
+      }))
+    )
+    .filter((c) => c.src)
+    .sort((a, b) => b.score - a.score);
+
+  for (const c of extra) {
+    if (items.length >= 40) break;
+    if (items.some((i) => i.src === c.src)) continue;
+    items.push({ src: c.src, band: c.band });
+  }
+
+  return items;
+}
+
+const summaries = characters.map(toSummary);
+const cardsCatalog = characters.flatMap((character) =>
+  character.cards.map((card) => ({
+    ...card,
+    character_id: card.character_id ?? character.id,
+    character_name_cn: card.character_name_cn ?? character.name_cn,
+    character_name_jp: card.character_name_jp ?? character.name_jp,
+    band: card.band ?? character.band,
+    band_folder: card.band_folder ?? character.band_folder,
+  }))
+);
+
+const homeBands = Object.entries(BAND_SLUG_BY_FOLDER).map(([folder, slug]) => {
+  const members = characters.filter((c) => c.band_folder === folder);
+  return {
+    slug,
+    folder,
+    coverImage: pickBandCoverImage(members),
+    memberCount: members.length,
+    cardCount: members.reduce((n, m) => n + m.card_count, 0),
+    representative: toSummary(members[0]),
+  };
+});
+
+const generatedAt = new Date().toISOString();
+
+fs.mkdirSync(path.dirname(indexOut), { recursive: true });
+fs.mkdirSync(charactersOutDir, { recursive: true });
+fs.mkdirSync(bandsOutDir, { recursive: true });
+
 fs.writeFileSync(
-  out,
-  JSON.stringify({ generated_at: new Date().toISOString(), character_count: characters.length, characters }, null, 2),
+  indexOut,
+  JSON.stringify({ generated_at: generatedAt, character_count: summaries.length, characters: summaries }),
+  "utf8"
+);
+
+fs.writeFileSync(
+  heroCardsOut,
+  JSON.stringify({ generated_at: generatedAt, items: buildHeroRiverCards(6) }),
+  "utf8"
+);
+
+fs.writeFileSync(
+  homeBandsOut,
+  JSON.stringify({ generated_at: generatedAt, bands: homeBands }),
+  "utf8"
+);
+
+for (const character of characters) {
+  fs.writeFileSync(
+    path.join(charactersOutDir, `${character.slug}.json`),
+    JSON.stringify(character),
+    "utf8"
+  );
+}
+
+for (const [folder] of Object.entries(BAND_SLUG_BY_FOLDER)) {
+  const members = characters.filter((c) => c.band_folder === folder);
+  fs.writeFileSync(path.join(bandsOutDir, `${folder}.json`), JSON.stringify({ members }), "utf8");
+}
+
+fs.writeFileSync(
+  cardsCatalogOut,
+  JSON.stringify({ generated_at: generatedAt, cards: cardsCatalog }),
   "utf8"
 );
 
@@ -258,4 +403,6 @@ const withBoth = characters.reduce(
   (n, c) => n + c.cards.filter((card) => card.untrained_file && card.trained_file).length,
   0
 );
-console.log(`Wrote ${characters.length} characters, ${characters.reduce((s, c) => s + c.cards.length, 0)} card entries, ${withBoth} with both variants`);
+console.log(
+  `Wrote index (${summaries.length} chars), ${cardsCatalog.length} catalog cards, ${withBoth} with both variants`
+);

@@ -7,7 +7,7 @@ import { GlassPanel } from "@/components/ui/GlassPanel";
 import { ImageLightbox } from "@/components/ui/ImageLightbox";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getVoiceActorName } from "@/lib/i18n/display";
-import type { VoiceActorData } from "@/lib/data";
+import type { VoiceActorData } from "@/lib/data-types";
 
 export function CharacterVoiceActorSection({
   voiceActor,

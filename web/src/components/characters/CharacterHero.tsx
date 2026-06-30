@@ -10,7 +10,7 @@ import { CharacterChibiAvatar } from "@/components/characters/CharacterChibiAvat
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getBandName, getCharacterAltName, getCharacterName, getVoiceActorName } from "@/lib/i18n/display";
 import type { CardDisplayItem } from "@/lib/cards";
-import type { CharacterData } from "@/lib/data";
+import type { CharacterData } from "@/lib/data-types";
 import type { BandTheme } from "@/lib/themes";
 import { getCharacterBackdrop } from "@/lib/character-utils";
 

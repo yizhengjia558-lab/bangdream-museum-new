@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getBandWithMembers } from "@/lib/data";
+import { getBandWithMembers } from "@/lib/data-server";
 import { BAND_THEMES } from "@/lib/themes";
 import { BandDetailView } from "@/components/bands/BandDetailView";
 

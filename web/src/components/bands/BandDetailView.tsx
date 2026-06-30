@@ -9,7 +9,7 @@ import { BandBackButton } from "@/components/bands/BandBackButton";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getBandName, getBandSlogan } from "@/lib/i18n/display";
 import { flattenBandCards } from "@/lib/card-filters";
-import type { CharacterData } from "@/lib/data";
+import type { CharacterData } from "@/lib/data-types";
 import type { BandTheme } from "@/lib/themes";
 import { getCharacterBackdrop } from "@/lib/character-utils";
 

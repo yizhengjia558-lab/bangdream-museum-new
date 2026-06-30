@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { AssetImage } from "@/components/ui/AssetImage";
-import type { CharacterData } from "@/lib/data";
+import type { CharacterSummary } from "@/lib/data-types";
 
-export function CharacterCarousel({ characters }: { characters: CharacterData[] }) {
+export function CharacterCarousel({ characters }: { characters: CharacterSummary[] }) {
   const [index, setIndex] = useState(0);
   const featured = characters.slice(0, 12);
 

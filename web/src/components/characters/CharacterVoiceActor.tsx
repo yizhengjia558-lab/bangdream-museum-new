@@ -3,7 +3,7 @@
 import { AssetImage } from "@/components/ui/AssetImage";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getVoiceActorName } from "@/lib/i18n/display";
-import type { VoiceActorData } from "@/lib/data";
+import type { VoiceActorData } from "@/lib/data-types";
 
 export function CharacterVoiceActor({
   voiceActor,

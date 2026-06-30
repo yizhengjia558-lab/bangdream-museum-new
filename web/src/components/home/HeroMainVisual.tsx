@@ -7,7 +7,7 @@ import { CardRiver } from "@/components/home/CardRiver";
 import { GlassButton } from "@/components/ui/GlassButton";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import type { HeroBannerSlide } from "@/lib/hero-banner";
-import type { RiverCardItem } from "@/lib/hero-cards";
+import type { RiverCardItem } from "@/lib/data-types";
 import { motion } from "framer-motion";
 
 export function HeroMainVisual({

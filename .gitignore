@@ -26,5 +26,8 @@ __pycache__/
 .dev.vars
 .aliyun.env
 
-# Wrangler
-.wrangler/
+# Generated runtime data (rebuilt via build-data.mjs)
+web/public/data/
+
+# WebP thumbnails generated beside source assets
+**/.thumbs/

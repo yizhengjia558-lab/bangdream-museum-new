@@ -1,6 +1,6 @@
 import Fuse from "fuse.js";
-import type { CardData, CharacterData } from "./data";
-import { getAllCharacters } from "./data";
+import siteIndex from "@/data/site-index.json";
+import type { CardData, CharacterSummary } from "./data-types";
 import { BAND_THEMES, getBandByFolder, type BandTheme } from "./themes";
 
 export type SearchableCard = {
@@ -16,13 +16,13 @@ export type SearchableCard = {
   event: string;
 };
 
-export function buildMemberMap(members: CharacterData[] = getAllCharacters()) {
+export function buildMemberMap(members: CharacterSummary[] = siteIndex.characters as CharacterSummary[]) {
   return new Map(members.map((member) => [member.id, member]));
 }
 
 export function toSearchableCard(
   card: CardData,
-  memberMap: Map<number, CharacterData>,
+  memberMap: Map<number, CharacterSummary>,
   bandCache = new Map<string, BandTheme | undefined>()
 ): SearchableCard {
   const member = card.character_id ? memberMap.get(card.character_id) : undefined;
@@ -61,7 +61,7 @@ const CARD_FUSE_KEYS: (keyof SearchableCard)[] = [
   "event",
 ];
 
-export function createCardFuse(cards: CardData[], memberMap: Map<number, CharacterData>) {
+export function createCardFuse(cards: CardData[], memberMap: Map<number, CharacterSummary>) {
   const bandCache = new Map<string, BandTheme | undefined>();
   const items = cards.map((card) => toSearchableCard(card, memberMap, bandCache));
   return new Fuse(items, {
@@ -75,7 +75,7 @@ export function createCardFuse(cards: CardData[], memberMap: Map<number, Charact
 export function filterCardsBySearch(
   cards: CardData[],
   query: string,
-  memberMap: Map<number, CharacterData>
+  memberMap: Map<number, CharacterSummary>
 ): CardData[] {
   const trimmed = query.trim();
   if (!trimmed) return cards;
@@ -111,7 +111,7 @@ function buildNavFuseItems(): NavFuseItem[] {
     });
   }
 
-  for (const member of getAllCharacters()) {
+  for (const member of siteIndex.characters) {
     const va = member.voice_actor;
     items.push({
       type: "character",

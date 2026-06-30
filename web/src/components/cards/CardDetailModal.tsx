@@ -9,7 +9,7 @@ import { CardLive2DViewer } from "@/components/cards/CardLive2DViewer";
 import { useCardPalette } from "@/hooks/useCardPalette";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getCardRarityLabel } from "@/lib/i18n/display";
-import type { CardData } from "@/lib/data";
+import type { CardData } from "@/lib/data-types";
 import {
   getCardVariantAvailability,
   getCardVariantSrc,

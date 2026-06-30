@@ -6,7 +6,7 @@ import { AssetImage } from "@/components/ui/AssetImage";
 import { CardTile } from "@/components/cards/CardTile";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getCharacterAltName, getCharacterName } from "@/lib/i18n/display";
-import type { CharacterData } from "@/lib/data";
+import type { CharacterSummary } from "@/lib/data-types";
 import type { BandTheme } from "@/lib/themes";
 
 export function MemberCard({
@@ -14,7 +14,7 @@ export function MemberCard({
   theme,
   index,
 }: {
-  member: CharacterData;
+  member: CharacterSummary;
   theme: BandTheme;
   index: number;
 }) {
@@ -41,6 +41,7 @@ export function MemberCard({
               src={member.standing}
               alt={displayName}
               fill
+              variant="thumb"
               className="card-image object-contain object-bottom p-4"
             />
             <div className="glass-reflection" />

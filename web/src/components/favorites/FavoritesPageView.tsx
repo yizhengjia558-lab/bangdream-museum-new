@@ -12,11 +12,8 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { expandCardDisplays, type CardDisplayItem } from "@/lib/cards";
 import { buildMemberMap, filterCardsBySearch } from "@/lib/card-search";
-import { getAllCharacters, getAllSiteCards } from "@/lib/data";
-
-const ALL_CARDS = getAllSiteCards();
-const ALL_DISPLAYS = expandCardDisplays(ALL_CARDS);
-const MEMBER_MAP = buildMemberMap(getAllCharacters());
+import { fetchCardsCatalog } from "@/lib/data";
+import type { CardData } from "@/lib/data-types";
 
 export function FavoritesPageView() {
   const { t } = useLocale();
@@ -24,27 +21,45 @@ export function FavoritesPageView() {
   const { query, hasQuery } = useGlobalSearch();
   const [visible, setVisible] = useState(48);
   const [lightbox, setLightbox] = useState<CardDisplayItem | null>(null);
+  const [catalog, setCatalog] = useState<CardData[] | null>(null);
+  const [catalogError, setCatalogError] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchCardsCatalog()
+      .then((cards) => {
+        if (!cancelled) setCatalog(cards);
+      })
+      .catch(() => {
+        if (!cancelled) setCatalogError(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const memberMap = useMemo(() => (catalog ? buildMemberMap() : new Map()), [catalog]);
+  const allDisplays = useMemo(() => (catalog ? expandCardDisplays(catalog) : []), [catalog]);
 
   const favoriteDisplays = useMemo(() => {
     const set = new Set(favorites);
-    return ALL_DISPLAYS.filter((item) => set.has(item.key));
-  }, [favorites]);
+    return allDisplays.filter((item) => set.has(item.key));
+  }, [allDisplays, favorites]);
 
   const filtered = useMemo(() => {
-    if (!hasQuery) return favoriteDisplays;
-    const favoriteCards = ALL_CARDS.filter((card) =>
-      favoriteDisplays.some((display) => display.card.id === card.id)
-    );
-    const matchedCards = filterCardsBySearch(favoriteCards, query, MEMBER_MAP);
+    if (!hasQuery || !catalog) return favoriteDisplays;
+    const favoriteCards = catalog.filter((card) => favoriteDisplays.some((display) => display.card.id === card.id));
+    const matchedCards = filterCardsBySearch(favoriteCards, query, memberMap);
     const matchedIds = new Set(matchedCards.map((card) => card.id));
     return favoriteDisplays.filter((display) => matchedIds.has(display.card.id));
-  }, [favoriteDisplays, hasQuery, query]);
+  }, [catalog, favoriteDisplays, hasQuery, memberMap, query]);
 
   useEffect(() => {
     setVisible(48);
   }, [query]);
 
   const shown = filtered.slice(0, visible);
+  const loading = count > 0 && !catalog && !catalogError;
 
   return (
     <>
@@ -71,6 +86,14 @@ export function FavoritesPageView() {
               <div className="mt-8">
                 <GlassButton href="/bands/">{t("hero.explore")}</GlassButton>
               </div>
+            </GlassPanel>
+          ) : catalogError ? (
+            <GlassPanel className="favorites-empty p-10 text-center">
+              <p className="text-[var(--text-secondary)]">{t("search.noResults")}</p>
+            </GlassPanel>
+          ) : loading ? (
+            <GlassPanel className="favorites-empty p-10 text-center">
+              <p className="text-[var(--text-secondary)]">…</p>
             </GlassPanel>
           ) : filtered.length === 0 ? (
             <GlassPanel className="favorites-empty p-10 text-center">

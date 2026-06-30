@@ -10,7 +10,7 @@ import { CharacterVoiceActorSection } from "@/components/characters/CharacterVoi
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BandBackButton } from "@/components/bands/BandBackButton";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import type { CharacterData } from "@/lib/data";
+import type { CharacterData } from "@/lib/data-types";
 import type { BandTheme } from "@/lib/themes";
 import { getCharactersByBand } from "@/lib/data";
 

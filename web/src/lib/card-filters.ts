@@ -1,4 +1,4 @@
-import type { CardData, CharacterData } from "./data";
+import type { CardData, CharacterData } from "./data-types";
 
 export type CardAttribute = "power" | "cool" | "pure" | "happy";
 export type CardKind = "normal" | "limited" | "birthday" | "collab";

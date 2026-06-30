@@ -2,7 +2,7 @@
 
 import { useMemo, type CSSProperties } from "react";
 import { AssetImage } from "@/components/ui/AssetImage";
-import type { RiverCardItem } from "@/lib/hero-cards";
+import type { RiverCardItem } from "@/lib/data-types";
 import { cn } from "@/lib/utils";
 
 type LaneConfig = {
@@ -83,7 +83,7 @@ export function CardRiver({
                   }
                 >
                   <div className="card-river-frame">
-                    <AssetImage src={card.src} alt="" fill className="object-cover" />
+                    <AssetImage src={card.src} alt="" fill variant="thumb" className="object-cover" />
                   </div>
                 </div>
               ))}

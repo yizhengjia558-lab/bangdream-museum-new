@@ -1,4 +1,4 @@
-import type { CardData, CharacterData } from "./data";
+import type { CardData, CharacterData } from "./data-types";
 
 /** Best card art for blurred character page backdrop */
 export function getCharacterBackdrop(character: CharacterData): string {

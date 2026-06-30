@@ -1,4 +1,4 @@
-import type { CharacterData } from "./data";
+import type { CharacterData } from "./data-types";
 
 function cardScore(card: CharacterData["cards"][0]) {
   let s = 0;

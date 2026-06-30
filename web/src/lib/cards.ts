@@ -1,4 +1,4 @@
-import type { CardData } from "./data";
+import type { CardData } from "./data-types";
 
 export type CardDisplayItem = {
   key: string;

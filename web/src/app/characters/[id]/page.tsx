@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
-import { getAllCharacters, getCharacterById, getCharacterTheme } from "@/lib/data";
+import { getCharacterById, getCharacterSlugs, getCharacterTheme } from "@/lib/data-server";
 import { CharacterPageView } from "@/components/characters/CharacterPageView";
 
 export function generateStaticParams() {
-  return getAllCharacters().map((c) => ({ id: c.slug }));
+  return getCharacterSlugs().map((id) => ({ id }));
 }
 
 export default async function CharacterPage({ params }: { params: Promise<{ id: string }> }) {

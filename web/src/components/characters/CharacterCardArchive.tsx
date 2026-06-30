@@ -1,7 +1,7 @@
 "use client";
 
 import { CardGallery } from "@/components/cards/CardGallery";
-import type { CardData, CharacterData } from "@/lib/data";
+import type { CardData, CharacterSummary } from "@/lib/data-types";
 
 export function CharacterCardArchive({
   cards,
@@ -16,7 +16,7 @@ export function CharacterCardArchive({
   visible: number;
   onVisibleChange: (visible: number) => void;
   highlightKey: string | null;
-  members?: CharacterData[];
+  members?: CharacterSummary[];
 }) {
   return (
     <CardGallery

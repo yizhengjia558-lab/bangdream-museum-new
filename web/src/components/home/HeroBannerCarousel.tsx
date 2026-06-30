@@ -41,7 +41,7 @@ export function HeroBannerCarousel({ slides }: { slides: HeroBannerSlide[] }) {
         >
           <div className="hero-banner-bg-wrap">
             {slide.coverImage ? (
-              <AssetImage src={slide.coverImage} alt="" fill className="hero-banner-bg object-cover" priority />
+              <AssetImage src={slide.coverImage} alt="" fill variant="thumb" className="hero-banner-bg object-cover" priority />
             ) : (
               <div className="hero-banner-bg-fallback" style={{ background: slide.band.colors.gradient }} />
             )}

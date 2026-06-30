@@ -1,4 +1,4 @@
-import type { CardData, CharacterData, VoiceActorData } from "@/lib/data";
+import type { CardData, CharacterSummary, VoiceActorData } from "@/lib/data-types";
 import type { BandTheme } from "@/lib/themes";
 import type { Locale } from "./types";
 
@@ -30,13 +30,13 @@ export function getCardRarityLabel(card: Pick<CardData, "rarity" | "stars">, loc
   return card.rarity;
 }
 
-export function getCharacterName(character: CharacterData, locale: Locale): string {
+export function getCharacterName(character: CharacterSummary, locale: Locale): string {
   if (locale === "zh") return character.name_cn;
   if (locale === "ja") return character.name_jp;
   return character.name_jp;
 }
 
-export function getCharacterAltName(character: CharacterData, locale: Locale): string | null {
+export function getCharacterAltName(character: CharacterSummary, locale: Locale): string | null {
   if (locale === "zh") return character.name_jp;
   if (locale === "ja") return character.name_cn;
   return character.name_cn;

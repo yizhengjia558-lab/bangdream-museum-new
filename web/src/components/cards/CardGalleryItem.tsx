@@ -49,6 +49,7 @@ export function CardGalleryItem({
             src={item.src}
             alt={item.card.card_name}
             fill
+            variant="thumb"
             className="card-image object-cover"
           />
           <div className="glass-reflection" />

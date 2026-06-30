@@ -18,7 +18,7 @@ import {
   type CardFilterState,
   type CardKind,
 } from "@/lib/card-filters";
-import type { CardData, CharacterData } from "@/lib/data";
+import type { CardData, CharacterSummary } from "@/lib/data-types";
 import { BAND_THEMES } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 
@@ -78,7 +78,7 @@ export function CardFilterBar({
   cards: CardData[];
   filters: CardFilterState;
   onChange: (filters: CardFilterState) => void;
-  members?: CharacterData[];
+  members?: CharacterSummary[];
   themeColor?: string;
   resultCount: number;
   totalCount: number;

@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "node scripts/build-data.mjs",
-    "prebuild": "node scripts/build-data.mjs",
+    "predev": "node scripts/build-data.mjs && node scripts/generate-thumbnails.mjs",
+    "prebuild": "node scripts/build-data.mjs && node scripts/generate-thumbnails.mjs",
     "dev": "node scripts/dev-with-proxy.mjs",
     "dev:next": "next dev",
     "build": "next build",
-    "build:static": "node scripts/build-data.mjs && node scripts/build-static.mjs",
+    "build:static": "node scripts/build-data.mjs && node scripts/generate-thumbnails.mjs && node scripts/build-static.mjs",
     "preview": "npx --yes serve out -l tcp://0.0.0.0:3000",
     "preview:lan": "npx --yes serve out -l tcp://0.0.0.0:3000",
     "open": "npm run build:static && npx --yes serve out -l tcp://0.0.0.0:3000",
@@ -40,6 +40,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

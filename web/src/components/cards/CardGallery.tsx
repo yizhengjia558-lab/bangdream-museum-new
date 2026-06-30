@@ -11,7 +11,7 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 import { EMPTY_CARD_FILTERS, filterCards, type CardFilterState } from "@/lib/card-filters";
 import { buildMemberMap, filterCardsBySearch } from "@/lib/card-search";
 import { expandCardDisplays, type CardDisplayItem } from "@/lib/cards";
-import { getAllCharacters, type CardData, type CharacterData } from "@/lib/data";
+import type { CardData, CharacterSummary } from "@/lib/data-types";
 
 interface CardGalleryProps {
   cards: CardData[];
@@ -19,7 +19,7 @@ interface CardGalleryProps {
   visible?: number;
   onVisibleChange?: (visible: number) => void;
   highlightKey?: string | null;
-  members?: CharacterData[];
+  members?: CharacterSummary[];
   showFilters?: boolean;
 }
 
@@ -41,10 +41,7 @@ export function CardGallery({
   const visible = controlledVisible ?? internalVisible;
   const setVisible = onVisibleChange ?? setInternalVisible;
 
-  const memberMap = useMemo(
-    () => buildMemberMap(members.length > 0 ? members : getAllCharacters()),
-    [members]
-  );
+  const memberMap = useMemo(() => buildMemberMap(members), [members]);
 
   const filteredCards = useMemo(() => {
     const facetFiltered = filterCards(cards, filters);
