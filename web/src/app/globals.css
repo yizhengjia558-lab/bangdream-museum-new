@@ -1572,29 +1572,30 @@ button.glass-frame.card-tile:active {
 
 .card-live2d-phone__scroll-body {
   position: relative;
-  min-height: calc(100% * var(--live2d-zoom, 1));
   width: 100%;
+  height: calc(100% * var(--live2d-zoom, 1));
+  min-height: 100%;
 }
 
 .card-live2d-stage {
   position: absolute;
   inset: 0;
   width: 100%;
-  min-height: 100%;
-  overflow: visible;
+  height: 100%;
+  overflow: hidden;
 }
 
 .card-live2d-stage--live2d {
-  background: transparent;
-  min-height: 100%;
+  background: #0a0a10;
 }
 
 .live2d-viewer {
   position: absolute;
   inset: 0;
   width: 100%;
-  min-height: calc(100% * var(--live2d-zoom, 1));
-  overflow: visible;
+  height: calc(100% * var(--live2d-zoom, 1));
+  min-height: 100%;
+  overflow: hidden;
 }
 
 .live2d-viewer__canvas-host {
@@ -1665,34 +1666,32 @@ button.glass-frame.card-tile:active {
   position: absolute;
   inset: 0;
   width: 100%;
-  min-height: calc(100% * var(--live2d-zoom, 1));
-  overflow: visible;
-  background: #0a0a10;
-}
-
-.bestdori-live2d-embed--panel {
-  background: #0a0a10;
-}
-
-.bestdori-live2d-embed__crop {
-  position: relative;
+  height: 100%;
   overflow: hidden;
+  background: #0a0a10;
+}
+
+.bestdori-live2d-embed--fill {
+  min-height: 100%;
 }
 
 .bestdori-live2d-embed__iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
   border: 0;
   pointer-events: auto;
 }
 
+.bestdori-live2d-embed__iframe--fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .bestdori-live2d-embed__iframe--bestdori {
   position: absolute;
-  inset: auto;
   top: 0;
   left: 0;
+  will-change: transform;
 }
 
 /* ── Live2D embed route (iframe target) ── */
