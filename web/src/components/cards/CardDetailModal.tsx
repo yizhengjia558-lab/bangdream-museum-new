@@ -142,6 +142,17 @@ export function CardDetailModal({
 
   useEffect(() => {
     if (!item) return;
+    document.body.classList.add("card-detail-open");
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.classList.remove("card-detail-open");
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [item]);
+
+  useEffect(() => {
+    if (!item) return;
     const onKeyDown = (e: KeyboardEvent) => {
       if (isTypingTarget(e.target)) return;
 

@@ -27,7 +27,7 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-3 pl-24 pr-24 sm:px-6 sm:pl-32 sm:pr-32">
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-2.5 pt-2 pl-[4.75rem] pr-[4.75rem] sm:px-6 sm:pt-3 sm:pl-32 sm:pr-32">
       <div
         className={cn(
           "glass-dock global-header-dock pointer-events-auto w-full max-w-5xl",
