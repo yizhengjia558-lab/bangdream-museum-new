@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 const IFRAME_WIDTH = 1280;
 const IFRAME_HEIGHT = 1200;
-const BASE_SCALE = 0.22;
+const BASE_SCALE = 0.175;
 
 function getLocalLive2DEmbedUrl(assetBundleName: string) {
   const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");

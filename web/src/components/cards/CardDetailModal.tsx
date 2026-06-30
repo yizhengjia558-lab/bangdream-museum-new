@@ -246,12 +246,11 @@ export function CardDetailModal({
                         <div className="card-detail-image-glow" aria-hidden />
                       </div>
                     </button>
+                  </div>
 
+                  <div className="card-detail-controls">
                     {showToggle ? (
-                      <div
-                        className="card-detail-toggle-wrap card-detail-toggle-wrap--overlay"
-                        onClick={(e) => e.stopPropagation()}
-                      >
+                      <div className="card-detail-toggle-wrap card-detail-toggle-wrap--below">
                         <div className="card-detail-toggle" role="tablist" aria-label={t("card.viewMode")}>
                           <button
                             type="button"
@@ -282,17 +281,17 @@ export function CardDetailModal({
                         </div>
                       </div>
                     ) : null}
-                  </div>
 
-                  <div className="card-detail-meta card-detail-meta--inline">
-                    <p className="card-detail-name">{item.card.card_name}</p>
-                    <p className="card-detail-sub">{item.card.event || t("card.special")}</p>
-                    <CardDetailInfoChips card={item.card} />
-                  </div>
+                    <div className="card-detail-meta card-detail-meta--inline">
+                      <p className="card-detail-name">{item.card.card_name}</p>
+                      <p className="card-detail-sub">{item.card.event || t("card.special")}</p>
+                      <CardDetailInfoChips card={item.card} />
+                    </div>
 
-                  <button type="button" className="card-detail-fullscreen-btn" onClick={() => setFullscreen(true)}>
-                    {t("card.fullscreenPreview")} <span aria-hidden>🔍</span>
-                  </button>
+                    <button type="button" className="card-detail-fullscreen-btn" onClick={() => setFullscreen(true)}>
+                      {t("card.fullscreenPreview")} <span aria-hidden>🔍</span>
+                    </button>
+                  </div>
                 </div>
 
                 {characterId > 0 ? (

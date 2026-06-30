@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createBestdoriLive2DModelJson, pickIdleMotionKey } from "@/lib/bestdori-live2d";
 import { cn } from "@/lib/utils";
 
@@ -191,16 +191,9 @@ export function Live2DViewer({
   if (status === "failed") return null;
 
   return (
-    <div
-      className={cn("live2d-viewer", className)}
-      style={{ minHeight: `${Math.round(220 * zoom)}px` } as CSSProperties}
-    >
+    <div className={cn("live2d-viewer", className)}>
       {status === "loading" ? <div className="live2d-viewer__loading" aria-hidden /> : null}
-      <div
-        ref={hostRef}
-        className="live2d-viewer__canvas-host"
-        style={{ minHeight: `${Math.round(220 * zoom)}px` }}
-      />
+      <div ref={hostRef} className="live2d-viewer__canvas-host" />
     </div>
   );
 }
