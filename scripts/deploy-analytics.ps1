@@ -44,17 +44,36 @@ try {
     Write-Host $deployOut
 
     if ($deployOut -match "register a workers.dev subdomain") {
-        $onboardUrl = "https://dash.cloudflare.com/?to=/:account/workers/onboarding"
-        if ($deployOut -match 'https://dash\.cloudflare\.com/[^\s]+workers/onboarding') {
-            $onboardUrl = $Matches[0]
+        Write-Host ""
+        Write-Host "尝试通过 API 自动注册 workers.dev 子域名..." -ForegroundColor Yellow
+        $tomlAuth = Get-Content "$env:APPDATA\xdg.config\.wrangler\config\default.toml" -Raw
+        if ($tomlAuth -match 'oauth_token = "([^"]+)"') {
+            $cfToken = $Matches[1]
+            $accountId = "2494a2fe48bfe770a01e3f3ce1164861"
+            $subdomain = "bangdream-museum"
+            $headers = @{ Authorization = "Bearer $cfToken"; "Content-Type" = "application/json" }
+            try {
+                $reg = Invoke-RestMethod -Uri "https://api.cloudflare.com/client/v4/accounts/$accountId/workers/subdomain" -Headers $headers -Method Put -Body (@{ subdomain = $subdomain } | ConvertTo-Json)
+                if ($reg.success) {
+                    Write-Host "子域名已注册: $subdomain.workers.dev" -ForegroundColor Green
+                    $deployOut = npx wrangler deploy 2>&1 | Out-String
+                    Write-Host $deployOut
+                }
+            } catch {
+                Write-Host "API 注册失败，请手动在 Cloudflare 控制台设置子域名" -ForegroundColor Red
+            }
         }
-        Write-Host ""
-        Write-Host "需要先在 Cloudflare 注册 workers.dev 子域名（仅需一次）:" -ForegroundColor Yellow
-        Write-Host "  $onboardUrl" -ForegroundColor Cyan
-        Start-Process $onboardUrl
-        Write-Host ""
-        Write-Host "注册完成后，请再次运行 scripts\deploy-analytics.bat" -ForegroundColor Yellow
-        exit 1
+
+        if ($deployOut -match "register a workers.dev subdomain") {
+            $onboardUrl = "https://dash.cloudflare.com/2494a2fe48bfe770a01e3f3ce1164861/workers-and-pages"
+            Write-Host ""
+            Write-Host "请打开 Workers & Pages 设置 workers.dev 子域名:" -ForegroundColor Yellow
+            Write-Host "  $onboardUrl" -ForegroundColor Cyan
+            Start-Process $onboardUrl
+            Write-Host ""
+            Write-Host "设置完成后，请再次运行 scripts\deploy-analytics.bat" -ForegroundColor Yellow
+            exit 1
+        }
     }
 
     if ($LASTEXITCODE -ne 0 -and $deployOut -notmatch 'https://[a-z0-9-]+\.[a-z0-9-]+\.workers\.dev') {
