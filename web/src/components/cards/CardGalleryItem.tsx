@@ -62,8 +62,8 @@ export function CardGalleryItem({
             text={item.card.card_name}
             className="card-caption-name"
             boxClassName="card-caption-name-box"
-            minPx={9}
-            maxPx={14}
+            minPx={11}
+            maxPx={17}
             maxLines={2}
           />
         </div>

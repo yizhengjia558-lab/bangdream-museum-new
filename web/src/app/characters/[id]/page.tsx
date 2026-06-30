@@ -16,7 +16,7 @@ export default async function CharacterPage({ params }: { params: Promise<{ id: 
   const fallbackHref = theme ? `/bands/${theme.slug}/` : "/bands/";
 
   return (
-    <div className="museum-page min-h-screen">
+    <div className="museum-page character-page min-h-screen">
       <CharacterPageView character={character} theme={theme} primary={primary} fallbackHref={fallbackHref} />
     </div>
   );

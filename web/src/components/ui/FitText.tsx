@@ -18,8 +18,8 @@ export function FitText({
   text,
   className,
   boxClassName,
-  minPx = 10,
-  maxPx = 15,
+  minPx = 11,
+  maxPx = 17,
   maxLines = 2,
   style,
 }: FitTextProps) {

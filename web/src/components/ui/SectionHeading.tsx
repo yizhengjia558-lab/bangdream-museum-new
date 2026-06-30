@@ -9,7 +9,7 @@ export function SectionHeading({ title, subtitle, action }: SectionHeadingProps)
     <div className="mb-10 flex flex-wrap items-end justify-between gap-4 sm:mb-12">
       <div>
         <h2 className="section-title">{title}</h2>
-        {subtitle && <p className="mt-3 text-sm font-light tracking-wide text-[var(--text-secondary)]">{subtitle}</p>}
+        {subtitle && <p className="section-subtitle mt-3">{subtitle}</p>}
       </div>
       {action}
     </div>

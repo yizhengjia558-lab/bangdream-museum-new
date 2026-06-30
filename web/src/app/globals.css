@@ -2662,6 +2662,15 @@ body.live2d-embed-route main {
   color: var(--text-primary);
 }
 
+.section-subtitle {
+  font-family: var(--font-body-active);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
 /* ── Motion ── */
 
 @keyframes ken-burns {
@@ -3579,15 +3588,15 @@ body:has(.band-back-btn--fixed) .theme-toggle-fixed {
 
 .card-caption-rarity {
   font-family: var(--font-subtitle-active);
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .card-caption-name {
   font-family: var(--font-subtitle-active);
-  font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
   font-weight: 600;
   line-height: 1.45;
   letter-spacing: 0.02em;
@@ -3596,10 +3605,10 @@ body:has(.band-back-btn--fixed) .theme-toggle-fixed {
 
 .card-caption-jp {
   font-family: var(--font-jp), sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.06em;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 /* ── Band list cards (uniform grid) ── */
@@ -3850,7 +3859,7 @@ body:has(.band-back-btn--fixed) .theme-toggle-fixed {
   flex: 1;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 4.75rem;
+  min-height: 5.25rem;
   margin-top: 0.875rem;
   padding-bottom: 0.25rem;
 }
@@ -3859,7 +3868,7 @@ body:has(.band-back-btn--fixed) .theme-toggle-fixed {
   display: flex;
   align-items: flex-start;
   flex: 1;
-  min-height: 2.75rem;
+  min-height: 3.25rem;
   margin-top: 0.5rem;
   overflow: hidden;
 }
@@ -3871,7 +3880,7 @@ body:has(.band-back-btn--fixed) .theme-toggle-fixed {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  line-height: 1.35;
+  line-height: 1.4;
   word-break: break-word;
 }
 
@@ -3887,6 +3896,103 @@ body:has(.band-back-btn--fixed) .theme-toggle-fixed {
   .character-archive-section {
     padding-bottom: calc(11rem + env(safe-area-inset-bottom, 0px));
   }
+}
+
+/* ── Character card page — larger typography & contrast ── */
+
+.character-page .section-title {
+  font-size: clamp(1.625rem, 3.5vw, 1.875rem);
+}
+
+.character-page .section-subtitle {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+}
+
+.character-page .character-hero-band {
+  font-size: 0.75rem;
+}
+
+.character-page .character-hero-alt-name {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.character-page .character-hero-cv {
+  font-size: 0.8125rem;
+}
+
+.character-page .character-hero-cv-label {
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.character-page .character-hero-cv-name {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.character-page .character-hero-info-card__label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.character-page .character-hero-info-card__value {
+  font-size: 1.125rem;
+}
+
+.character-page .card-search-input {
+  font-size: 1rem;
+}
+
+.character-page .card-search-filter-btn {
+  font-size: 0.6875rem;
+}
+
+.character-page .card-filter-bar-eyebrow {
+  font-size: 0.75rem;
+}
+
+.character-page .card-filter-bar-count {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+}
+
+.character-page .card-filter-group-title {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.character-page .card-filter-chip {
+  font-size: 0.875rem;
+}
+
+[data-theme="light"] .character-page .card-caption-name,
+[data-theme="light"] .character-page .fit-text.card-caption-name {
+  color: rgba(26, 21, 32, 0.94);
+}
+
+[data-theme="dark"] .character-page .card-caption-name,
+[data-theme="dark"] .character-page .fit-text.card-caption-name {
+  color: rgba(255, 255, 255, 0.96);
+}
+
+[data-theme="light"] .character-page .card-caption-rarity {
+  font-weight: 800;
+}
+
+[data-theme="dark"] .character-page .card-caption-jp {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+[data-theme="light"] .character-page .card-caption-jp {
+  color: rgba(26, 21, 32, 0.58);
+}
+
+[data-theme="light"] .character-page .section-subtitle {
+  color: rgba(26, 21, 32, 0.62);
+}
+
+[data-theme="dark"] .character-page .section-subtitle {
+  color: rgba(255, 255, 255, 0.68);
 }
 
 /* ── Cinematic hero background (no scroll flicker) ── */

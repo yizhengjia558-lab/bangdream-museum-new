@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-29T11:01:44.366911+00:00",
-  "matched": 2269,
-  "total": 2325,
+  "generated_at": "2026-06-30T04:26:41.449646+00:00",
+  "matched": 2276,
+  "total": 2332,
   "cards": {
     "1|card5001": {
       "character_id": 1,
@@ -1476,6 +1476,17 @@
       "costume_id": 2379,
       "sd_resource_name": "sd001099",
       "live2d_asset_bundle_name": "001_live_event_332_r"
+    },
+    "1|仲間を信じて！": {
+      "character_id": 1,
+      "bestdori_card_id": 2474,
+      "stars": 5,
+      "attribute": "happy",
+      "card_kind": "limited",
+      "release_year": 2026,
+      "costume_id": 2393,
+      "sd_resource_name": "sd001100",
+      "live2d_asset_bundle_name": "001_live_event_335_ur"
     },
     "1|bilibili": {
       "character_id": 1,
@@ -9353,6 +9364,17 @@
       "sd_resource_name": "sd011093",
       "live2d_asset_bundle_name": "011_live_event_331_ssr"
     },
+    "11|これも『最高の夏』": {
+      "character_id": 11,
+      "bestdori_card_id": 2475,
+      "stars": 5,
+      "attribute": "happy",
+      "card_kind": "limited",
+      "release_year": 2026,
+      "costume_id": 2394,
+      "sd_resource_name": "sd011094",
+      "live2d_asset_bundle_name": "011_live_event_335_ur"
+    },
     "11|独白": {
       "character_id": 11,
       "bestdori_card_id": 10009,
@@ -15887,6 +15909,17 @@
       "sd_resource_name": "sd019084",
       "live2d_asset_bundle_name": "019_live_event_330_ur"
     },
+    "19|朝焼けに照らされて": {
+      "character_id": 19,
+      "bestdori_card_id": 2479,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "limited",
+      "release_year": 2026,
+      "costume_id": 2398,
+      "sd_resource_name": "sd019085",
+      "live2d_asset_bundle_name": "019_dream_festival_4_ur"
+    },
     "19|bilibili": {
       "character_id": 19,
       "bestdori_card_id": 10054,
@@ -20023,6 +20056,17 @@
       "sd_resource_name": "sd024086",
       "live2d_asset_bundle_name": "024_live_event_333_sr"
     },
+    "24|弾けるサンフラワー": {
+      "character_id": 24,
+      "bestdori_card_id": 2477,
+      "stars": 2,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2396,
+      "sd_resource_name": "sd024087",
+      "live2d_asset_bundle_name": "024_live_event_335_r"
+    },
     "24|霓裳羽衣": {
       "character_id": 24,
       "bestdori_card_id": 10004,
@@ -22399,6 +22443,17 @@
       "sd_resource_name": "sd028049",
       "live2d_asset_bundle_name": "028_live_event_334_sr"
     },
+    "28|雰囲気はバッチリ": {
+      "character_id": 28,
+      "bestdori_card_id": 2478,
+      "stars": 4,
+      "attribute": "happy",
+      "card_kind": "limited",
+      "release_year": 2026,
+      "costume_id": 2397,
+      "sd_resource_name": "sd028050",
+      "live2d_asset_bundle_name": "028_live_event_335_ssr"
+    },
     "28|倚音": {
       "character_id": 28,
       "bestdori_card_id": 10019,
@@ -24247,6 +24302,17 @@
       "sd_resource_name": "sd032047",
       "live2d_asset_bundle_name": "032_live_event_329_ur"
     },
+    "32|私たちだけのプール": {
+      "character_id": 32,
+      "bestdori_card_id": 2480,
+      "stars": 5,
+      "attribute": "pure",
+      "card_kind": "limited",
+      "release_year": 2026,
+      "costume_id": 2399,
+      "sd_resource_name": "sd032048",
+      "live2d_asset_bundle_name": "032_dream_festival_4_ur"
+    },
     "32|bilibili": {
       "character_id": 32,
       "bestdori_card_id": 10026,
@@ -24708,6 +24774,17 @@
       "costume_id": 2362,
       "sd_resource_name": "sd033045",
       "live2d_asset_bundle_name": "033_live_event_329_r"
+    },
+    "33|通人は語る": {
+      "character_id": 33,
+      "bestdori_card_id": 2476,
+      "stars": 3,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2395,
+      "sd_resource_name": "sd033046",
+      "live2d_asset_bundle_name": "033_live_event_335_sr"
     },
     "34|热情演出": {
       "character_id": 34,
