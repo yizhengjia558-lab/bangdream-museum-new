@@ -51,6 +51,25 @@ Bushiroad 官网（bang-dream.com）**没有公开的卡面下载 API**，无法
 
 同步完成后 push 到 GitHub，`Deploy GitHub Pages` 会自动重新部署网站。
 
+## 访客统计（可选）
+
+GitHub Pages 是纯静态站点，访客计数通过 **Cloudflare Worker**（免费）实现：
+
+1. 注册 [Cloudflare](https://dash.cloudflare.com/) 并安装 Wrangler：`npm i -g wrangler`
+2. 创建 KV 并写入 `web/analytics-worker/wrangler.toml` 的 `id`：
+   ```bat
+   cd web\analytics-worker
+   npx wrangler kv namespace create STATS
+   npx wrangler login
+   npm run deploy:analytics
+   ```
+3. （可选）在 Cloudflare Worker 设置 `STATS_SECRET` 管理密钥，用于查看 30 日趋势
+4. 构建时设置环境变量（本地或 GitHub Actions → Settings → Variables）：
+   - `NEXT_PUBLIC_VISITOR_API` = Worker 地址，如 `https://bangdream-museum-analytics.xxx.workers.dev`
+   - GitHub Actions 可使用仓库变量 `VISITOR_API_URL`（已接入 workflow）
+
+部署后访问 **`/stats/`** 查看统计；页脚会显示累计与今日访问量。
+
 > 若需包含 MyGO / Ave Mujica 等新乐队，需修改 `collect_bandori.py` 中的 `TARGET_BANDS`。
 
 ## 项目结构

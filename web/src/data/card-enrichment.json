@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T12:31:26.069697+00:00",
+  "generated_at": "2026-06-30T15:15:45.367228+00:00",
   "matched": 2276,
   "total": 2332,
   "cards": {
@@ -3156,9 +3156,9 @@
       "attribute": "pure",
       "card_kind": "normal",
       "release_year": 2020,
-      "costume_id": 245,
-      "sd_resource_name": "sd004013",
-      "live2d_asset_bundle_name": "004_live_r_2018"
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
     },
     "4|gogowego！": {
       "character_id": 4,
@@ -4036,9 +4036,9 @@
       "attribute": "happy",
       "card_kind": "normal",
       "release_year": 2020,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
+      "costume_id": 617,
+      "sd_resource_name": "sd005032",
+      "live2d_asset_bundle_name": "005_live_event_76_ssr"
     },
     "5|用花色来打扮": {
       "character_id": 5,
@@ -12660,9 +12660,9 @@
       "attribute": "power",
       "card_kind": "normal",
       "release_year": 2017,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
+      "costume_id": 1623,
+      "sd_resource_name": "sd016001",
+      "live2d_asset_bundle_name": "016_live_r_2023"
     },
     "16|舞台": {
       "character_id": 16,
@@ -13485,9 +13485,9 @@
       "attribute": "power",
       "card_kind": "normal",
       "release_year": 2026,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
+      "costume_id": 2254,
+      "sd_resource_name": "sd016094",
+      "live2d_asset_bundle_name": "016_live_event_311_sr"
     },
     "16|轻飘飘的爱心♡": {
       "character_id": 16,

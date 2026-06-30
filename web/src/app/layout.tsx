@@ -13,6 +13,7 @@ import { GlobalSearchProvider } from "@/components/search/GlobalSearchProvider";
 import { DocumentLocale } from "@/components/i18n/DocumentLocale";
 import { BangDreamPageBackground } from "@/components/effects/BangDreamPageBackground";
 import { ScrollToTopButton } from "@/components/layout/ScrollToTopButton";
+import { VisitTracker } from "@/components/analytics/VisitTracker";
 
 const fontTitle = Outfit({
   variable: "--font-title",
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <BangDreamPageBackground />
         <LocaleProvider>
           <DocumentLocale />
+          <VisitTracker />
           <GlobalSearchProvider>
             <FavoritesProvider>
               <ThemeProvider>

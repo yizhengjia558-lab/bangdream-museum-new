@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { VisitorCount } from "@/components/analytics/VisitorCount";
 
 export function SiteFooter() {
   const { t } = useLocale();
@@ -37,6 +38,7 @@ export function SiteFooter() {
               {t("nav.favorites")}
             </Link>
           </nav>
+          <VisitorCount />
           <p className="mt-8 text-[10px] leading-relaxed text-[var(--text-muted)]">
             {t("footer.disclaimer")}
             <br />

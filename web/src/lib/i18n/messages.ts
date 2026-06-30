@@ -114,6 +114,26 @@ const zh = {
     subtitle: "角色档案沉浸体验",
     disclaimer: "同人展示站点 · 与 Bushiroad 无官方关联",
   },
+  analytics: {
+    title: "访客统计",
+    subtitle: "站点访问概览",
+    footerCount: "累计访问 {total} · 今日 {today}",
+    viewStats: "查看统计",
+    totalVisitors: "累计访问",
+    todayVisitors: "今日访问",
+    recentDays: "近 30 日趋势",
+    topPages: "热门页面",
+    loading: "正在加载统计数据…",
+    loadError: "暂时无法获取统计数据，请稍后再试。",
+    disabledHint: "尚未配置访客统计服务",
+    setupSteps:
+      "请在 Cloudflare 部署 analytics-worker，并在构建时设置环境变量 NEXT_PUBLIC_VISITOR_API 为 Worker 地址（例如 https://bangdream-museum-analytics.xxx.workers.dev）。",
+    adminUnlock: "管理员视图",
+    adminHint: "输入在 Cloudflare Worker 中设置的 STATS_SECRET，可查看每日趋势与热门页面。",
+    tokenPlaceholder: "管理密钥",
+    tokenApply: "解锁",
+    updatedAt: "更新于 {time}",
+  },
 } as const;
 
 const en = {
@@ -230,6 +250,26 @@ const en = {
     subtitle: "Character Archive Experience",
     disclaimer: "Fan-made showcase · Not affiliated with Bushiroad",
   },
+  analytics: {
+    title: "Visitor Stats",
+    subtitle: "Site traffic overview",
+    footerCount: "{total} total visits · {today} today",
+    viewStats: "View stats",
+    totalVisitors: "Total visits",
+    todayVisitors: "Today",
+    recentDays: "Last 30 days",
+    topPages: "Top pages",
+    loading: "Loading stats…",
+    loadError: "Unable to load stats right now. Please try again later.",
+    disabledHint: "Visitor analytics is not configured yet",
+    setupSteps:
+      "Deploy analytics-worker on Cloudflare and set NEXT_PUBLIC_VISITOR_API at build time to your Worker URL (e.g. https://bangdream-museum-analytics.xxx.workers.dev).",
+    adminUnlock: "Admin view",
+    adminHint: "Enter the STATS_SECRET configured on your Cloudflare Worker to unlock daily trends and top pages.",
+    tokenPlaceholder: "Admin token",
+    tokenApply: "Unlock",
+    updatedAt: "Updated {time}",
+  },
 } as const;
 
 const ja = {
@@ -345,6 +385,26 @@ const ja = {
     title: "BanG Dream! デジタルミュージアム",
     subtitle: "キャラクターアーカイブ体験",
     disclaimer: "ファンメイド展示 · Bushiroad 非公式",
+  },
+  analytics: {
+    title: "訪問者統計",
+    subtitle: "サイトアクセス概要",
+    footerCount: "累計 {total} · 本日 {today}",
+    viewStats: "統計を見る",
+    totalVisitors: "累計アクセス",
+    todayVisitors: "本日",
+    recentDays: "直近 30 日",
+    topPages: "人気ページ",
+    loading: "統計を読み込み中…",
+    loadError: "統計を取得できませんでした。後でもう一度お試しください。",
+    disabledHint: "訪問者統計が未設定です",
+    setupSteps:
+      "Cloudflare に analytics-worker をデプロイし、ビルド時に NEXT_PUBLIC_VISITOR_API を Worker URL に設定してください。",
+    adminUnlock: "管理者ビュー",
+    adminHint: "Cloudflare Worker の STATS_SECRET を入力すると、日別推移と人気ページが表示されます。",
+    tokenPlaceholder: "管理トークン",
+    tokenApply: "解除",
+    updatedAt: "更新 {time}",
   },
 } as const;
 
