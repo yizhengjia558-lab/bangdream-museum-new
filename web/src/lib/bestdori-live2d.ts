@@ -37,40 +37,54 @@ function refToProxyUrl(ref: BundleRef, region: BestdoriRegion) {
   return getLive2DBundleAssetProxyUrl(ref.bundleName, ref.fileName, region);
 }
 
-async function fetchBuildData(assetBundleName: string, region: BestdoriRegion): Promise<BuildDataBase> {
-  const res = await fetch(getLive2DBuildDataProxyUrl(assetBundleName, region));
-  if (!res.ok) throw new Error(`buildData ${res.status}`);
-  const contentType = res.headers.get("Content-Type") ?? "";
-  const text = await res.text();
-  if (contentType.includes("text/html") || !text.trimStart().startsWith("{")) {
-    throw new Error("buildData invalid");
+async function fetchBuildData(
+  assetBundleName: string
+): Promise<{ base: BuildDataBase; region: BestdoriRegion }> {
+  const regions: BestdoriRegion[] = ["jp", "cn", "en"];
+  let lastError: Error | null = null;
+
+  for (const region of regions) {
+    try {
+      const res = await fetch(getLive2DBuildDataProxyUrl(assetBundleName, region));
+      if (!res.ok) throw new Error(`buildData ${res.status}`);
+      const contentType = res.headers.get("Content-Type") ?? "";
+      const text = await res.text();
+      if (contentType.includes("text/html") || !text.trimStart().startsWith("{")) {
+        throw new Error("buildData invalid");
+      }
+      const parsed = JSON.parse(text) as { Base?: BuildDataBase };
+      if (!parsed.Base?.model) throw new Error("buildData missing model");
+      return { base: parsed.Base, region };
+    } catch (error) {
+      lastError = error instanceof Error ? error : new Error("buildData failed");
+    }
   }
-  const parsed = JSON.parse(text) as { Base?: BuildDataBase };
-  if (!parsed.Base?.model) throw new Error("buildData missing model");
-  return parsed.Base;
+
+  throw lastError ?? new Error("buildData unavailable");
 }
 
 export async function createBestdoriLive2DModelJson(
   assetBundleName: string,
   region: BestdoriRegion = "jp"
 ): Promise<{ modelJsonUrl: string; revoke: () => void }> {
-  const base = await fetchBuildData(assetBundleName, region);
+  const { base, region: resolvedRegion } = await fetchBuildData(assetBundleName);
+  const assetRegion = resolvedRegion ?? region;
 
   const motions: Record<string, Array<{ file: string }>> = {};
   for (const motion of base.motions ?? []) {
     const key = motionKeyFromFileName(motion.fileName);
-    motions[key] = [{ file: refToProxyUrl(motion, region) }];
+    motions[key] = [{ file: refToProxyUrl(motion, assetRegion) }];
   }
 
   const expressions = (base.expressions ?? []).map((expression) => ({
     name: expressionKeyFromFileName(expression.fileName),
-    file: refToProxyUrl(expression, region),
+    file: refToProxyUrl(expression, assetRegion),
   }));
 
   const modelJson: Cubism2ModelJson = {
     version: "Sample 1.0.0",
-    model: refToProxyUrl(base.model, region),
-    textures: base.textures.map((texture) => refToProxyUrl(texture, region)),
+    model: refToProxyUrl(base.model, assetRegion),
+    textures: base.textures.map((texture) => refToProxyUrl(texture, assetRegion)),
     motions,
     expressions,
     layout: { width: 2, center_x: 0, center_y: 0 },
@@ -83,7 +97,7 @@ export async function createBestdoriLive2DModelJson(
   };
 
   if (base.physics) {
-    modelJson.physics = refToProxyUrl(base.physics, region);
+    modelJson.physics = refToProxyUrl(base.physics, assetRegion);
   }
 
   const blob = new Blob([JSON.stringify(modelJson)], { type: "application/json" });

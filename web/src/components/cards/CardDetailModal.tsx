@@ -218,66 +218,71 @@ export function CardDetailModal({
 
               <div className="card-detail-visual-row">
                 <div className="card-detail-main">
-                  <button
-                    type="button"
-                    className="card-detail-image-btn"
-                    onClick={() => setFullscreen(true)}
-                    aria-label={t("card.fullscreenPreview")}
-                  >
-                    <div className="card-detail-image-frame">
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={`${item.key}-${variant}`}
-                          initial={{ opacity: 0, scale: 1.02 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.98 }}
-                          transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-                          className="card-detail-image-layer"
-                        >
-                          <AssetImage
-                            src={activeSrc}
-                            alt={item.card.card_name}
-                            fill
-                            className="card-detail-image object-contain"
-                          />
-                        </motion.div>
-                      </AnimatePresence>
-                      <div className="card-detail-image-glow" aria-hidden />
-                    </div>
-                  </button>
-
-                  {showToggle ? (
-                    <div className="card-detail-toggle-wrap card-detail-toggle-wrap--inline">
-                      <div className="card-detail-toggle" role="tablist" aria-label={t("card.viewMode")}>
-                        <button
-                          type="button"
-                          role="tab"
-                          aria-selected={variant === "untrained" ? "true" : "false"}
-                          disabled={!availability.untrained}
-                          className={cn(
-                            "card-detail-toggle-btn",
-                            variant === "untrained" && "card-detail-toggle-btn--active"
-                          )}
-                          onClick={() => setVariant("untrained")}
-                        >
-                          {t("card.beforeTraining")}
-                        </button>
-                        <button
-                          type="button"
-                          role="tab"
-                          aria-selected={variant === "trained" ? "true" : "false"}
-                          disabled={!availability.trained}
-                          className={cn(
-                            "card-detail-toggle-btn",
-                            variant === "trained" && "card-detail-toggle-btn--active"
-                          )}
-                          onClick={() => setVariant("trained")}
-                        >
-                          {t("card.afterTraining")}
-                        </button>
+                  <div className="card-detail-image-stack">
+                    <button
+                      type="button"
+                      className="card-detail-image-btn"
+                      onClick={() => setFullscreen(true)}
+                      aria-label={t("card.fullscreenPreview")}
+                    >
+                      <div className="card-detail-image-frame">
+                        <AnimatePresence mode="wait">
+                          <motion.div
+                            key={`${item.key}-${variant}`}
+                            initial={{ opacity: 0, scale: 1.02 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.98 }}
+                            transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+                            className="card-detail-image-layer"
+                          >
+                            <AssetImage
+                              src={activeSrc}
+                              alt={item.card.card_name}
+                              fill
+                              className="card-detail-image object-contain"
+                            />
+                          </motion.div>
+                        </AnimatePresence>
+                        <div className="card-detail-image-glow" aria-hidden />
                       </div>
-                    </div>
-                  ) : null}
+                    </button>
+
+                    {showToggle ? (
+                      <div
+                        className="card-detail-toggle-wrap card-detail-toggle-wrap--overlay"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <div className="card-detail-toggle" role="tablist" aria-label={t("card.viewMode")}>
+                          <button
+                            type="button"
+                            role="tab"
+                            aria-selected={variant === "untrained" ? "true" : "false"}
+                            disabled={!availability.untrained}
+                            className={cn(
+                              "card-detail-toggle-btn",
+                              variant === "untrained" && "card-detail-toggle-btn--active"
+                            )}
+                            onClick={() => setVariant("untrained")}
+                          >
+                            {t("card.beforeTraining")}
+                          </button>
+                          <button
+                            type="button"
+                            role="tab"
+                            aria-selected={variant === "trained" ? "true" : "false"}
+                            disabled={!availability.trained}
+                            className={cn(
+                              "card-detail-toggle-btn",
+                              variant === "trained" && "card-detail-toggle-btn--active"
+                            )}
+                            onClick={() => setVariant("trained")}
+                          >
+                            {t("card.afterTraining")}
+                          </button>
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
 
                   <div className="card-detail-meta card-detail-meta--inline">
                     <p className="card-detail-name">{item.card.card_name}</p>

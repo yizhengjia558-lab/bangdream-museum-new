@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { CardSdFigurePreview } from "@/components/characters/CharacterChibiAvatar";
+import { Live2DPhoneFrame } from "@/components/live2d/Live2DPhoneFrame";
 
 const Live2DViewer = dynamic(
   () => import("@/components/live2d/Live2DViewer").then((m) => m.Live2DViewer),
@@ -13,6 +14,8 @@ const BestdoriLive2DEmbed = dynamic(
   () => import("@/components/live2d/BestdoriLive2DEmbed").then((m) => m.BestdoriLive2DEmbed),
   { ssr: false }
 );
+
+type Live2DMode = "widget" | "bestdori";
 
 export function CardLive2DViewerInner({
   characterId,
@@ -25,8 +28,11 @@ export function CardLive2DViewerInner({
   sdResourceName?: string | null;
   characterName?: string;
 }) {
-  const [live2dFailed, setLive2dFailed] = useState(false);
-  const showWidget = Boolean(live2dAssetBundleName) && !live2dFailed;
+  const [live2dMode, setLive2dMode] = useState<Live2DMode>("widget");
+
+  useEffect(() => {
+    setLive2dMode("widget");
+  }, [live2dAssetBundleName]);
 
   return (
     <div className="card-character-visual">
@@ -38,22 +44,25 @@ export function CardLive2DViewerInner({
       />
 
       {live2dAssetBundleName ? (
-        <div className="card-live2d-phone card-character-visual__live2d">
-          <div className="card-live2d-phone__screen">
-            {showWidget ? (
+        <Live2DPhoneFrame className="card-character-visual__live2d">
+          {(zoom) =>
+            live2dMode === "widget" ? (
               <Live2DViewer
                 assetBundleName={live2dAssetBundleName}
+                zoom={zoom}
                 className="card-live2d-stage card-live2d-stage--live2d"
-                onError={() => setLive2dFailed(true)}
+                onError={() => setLive2dMode("bestdori")}
               />
             ) : (
               <BestdoriLive2DEmbed
                 assetBundleName={live2dAssetBundleName}
+                mode="bestdori"
+                zoom={zoom}
                 className="card-live2d-stage card-live2d-stage--live2d"
               />
-            )}
-          </div>
-        </div>
+            )
+          }
+        </Live2DPhoneFrame>
       ) : null}
     </div>
   );

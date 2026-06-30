@@ -1393,8 +1393,8 @@ button.glass-frame.card-tile:active {
   }
 
   .card-detail-sidebar {
-    flex: 0 0 min(32%, 168px);
-    max-width: 168px;
+    flex: 0 0 min(32%, 180px);
+    max-width: 180px;
     order: 2;
     min-height: 0;
   }
@@ -1472,6 +1472,8 @@ button.glass-frame.card-tile:active {
 
 .card-live2d-phone {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   flex: 0 0 auto;
   height: min(28vh, 200px);
@@ -1486,6 +1488,52 @@ button.glass-frame.card-tile:active {
     0 18px 40px rgba(0, 0, 0, 0.42);
 }
 
+.card-live2d-phone__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  flex: 0 0 auto;
+  margin-bottom: 0.35rem;
+  padding: 0 0.15rem;
+}
+
+.card-live2d-phone__tool-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.45rem;
+  height: 1.45rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.card-live2d-phone__tool-btn--reset {
+  font-size: 0.72rem;
+}
+
+.card-live2d-phone__tool-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.card-live2d-phone__zoom-label {
+  min-width: 2.75rem;
+  font-family: var(--font-subtitle-active);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.62);
+}
+
 @media (min-width: 640px) {
   .card-live2d-phone {
     height: min(32vh, 220px);
@@ -1495,31 +1543,54 @@ button.glass-frame.card-tile:active {
 
 .card-live2d-phone__screen {
   position: relative;
+  flex: 1 1 0;
+  min-height: 0;
   width: 100%;
-  height: 100%;
   overflow: hidden;
   border-radius: 18px;
   background: transparent;
 }
 
-.card-live2d-stage {
-  position: absolute;
-  inset: 0;
+.card-live2d-phone__screen--pan {
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+}
+
+.card-live2d-phone__screen--pan::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.card-live2d-phone__screen--pan::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.card-live2d-phone__scroll-body {
+  position: relative;
+  min-height: 100%;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+}
+
+.card-live2d-stage {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  overflow: visible;
 }
 
 .card-live2d-stage--live2d {
   background: transparent;
+  min-height: 12rem;
 }
 
 .live2d-viewer {
-  position: absolute;
-  inset: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  min-height: 12rem;
+  overflow: visible;
 }
 
 .live2d-viewer__canvas-host {
@@ -1587,10 +1658,20 @@ button.glass-frame.card-tile:active {
 }
 
 .bestdori-live2d-embed {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
+  position: relative;
+  width: 100%;
+  min-height: 12rem;
+  overflow: visible;
   background: #0a0a10;
+}
+
+.bestdori-live2d-embed--panel {
+  background: #0a0a10;
+}
+
+.bestdori-live2d-embed__crop {
+  position: relative;
+  overflow: hidden;
 }
 
 .bestdori-live2d-embed__iframe {
@@ -1600,6 +1681,13 @@ button.glass-frame.card-tile:active {
   height: 100%;
   border: 0;
   pointer-events: auto;
+}
+
+.bestdori-live2d-embed__iframe--bestdori {
+  position: absolute;
+  inset: auto;
+  top: 0;
+  left: 0;
 }
 
 /* ── Live2D embed route (iframe target) ── */
@@ -1824,6 +1912,14 @@ body.live2d-embed-route main {
   padding-top: 0.15rem;
 }
 
+.card-detail-image-stack {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 .card-detail-image-btn {
   display: block;
   width: 100%;
@@ -1832,7 +1928,7 @@ body.live2d-embed-route main {
   background: transparent;
   cursor: zoom-in;
   appearance: none;
-  flex: 1 1 auto;
+  flex: 1 1 0;
   min-height: 0;
   transition: transform 0.28s ease, filter 0.28s ease;
 }
@@ -1892,6 +1988,23 @@ body.live2d-embed-route main {
 
 .card-detail-toggle-wrap--inline {
   margin-top: 0;
+}
+
+.card-detail-toggle-wrap--overlay {
+  position: absolute;
+  left: 0.65rem;
+  right: 0.65rem;
+  bottom: 0.75rem;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.card-detail-toggle-wrap--overlay .card-detail-toggle {
+  pointer-events: auto;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgba(8, 8, 14, 0.72);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }
 
 .card-detail-meta--inline {

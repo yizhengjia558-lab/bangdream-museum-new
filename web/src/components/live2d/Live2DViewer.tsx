@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { createBestdoriLive2DModelJson, pickIdleMotionKey } from "@/lib/bestdori-live2d";
 import { cn } from "@/lib/utils";
 
@@ -64,13 +64,19 @@ export function Live2DViewer({
   assetBundleName,
   className,
   onError,
+  zoom = 1,
 }: {
   assetBundleName: string;
   className?: string;
   onError?: () => void;
+  zoom?: number;
 }) {
   const hostRef = useRef<HTMLDivElement>(null);
+  const zoomRef = useRef(zoom);
+  const refitRef = useRef<(() => void) | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "failed">("loading");
+
+  zoomRef.current = zoom;
 
   useEffect(() => {
     let cancelled = false;
@@ -128,9 +134,10 @@ export function Live2DViewer({
           const h = host.clientHeight || height;
           if (w <= 0 || h <= 0) return;
           app.renderer.resize(w, h);
-          fitModelContain(model, w, h);
+          fitModelContain(model, w, h, 0.78 / zoomRef.current);
         };
 
+        refitRef.current = refit;
         scheduleModelRefit(refit);
         app.stage.addChild(model);
 
@@ -167,6 +174,7 @@ export function Live2DViewer({
 
     return () => {
       cancelled = true;
+      refitRef.current = null;
       resizeObserver?.disconnect();
       model?.destroy();
       app?.destroy(true, { children: true, texture: true, baseTexture: true });
@@ -175,12 +183,24 @@ export function Live2DViewer({
     };
   }, [assetBundleName, onError]);
 
+  useEffect(() => {
+    refitRef.current?.();
+    requestAnimationFrame(() => refitRef.current?.());
+  }, [zoom]);
+
   if (status === "failed") return null;
 
   return (
-    <div className={cn("live2d-viewer", className)}>
+    <div
+      className={cn("live2d-viewer", className)}
+      style={{ minHeight: `${Math.round(220 * zoom)}px` } as CSSProperties}
+    >
       {status === "loading" ? <div className="live2d-viewer__loading" aria-hidden /> : null}
-      <div ref={hostRef} className="live2d-viewer__canvas-host" />
+      <div
+        ref={hostRef}
+        className="live2d-viewer__canvas-host"
+        style={{ minHeight: `${Math.round(220 * zoom)}px` }}
+      />
     </div>
   );
 }

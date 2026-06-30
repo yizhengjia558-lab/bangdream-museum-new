@@ -60,6 +60,9 @@ const zh = {
     prevCard: "上一张卡面",
     nextCard: "下一张卡面",
     navPosition: "{current} / {total}",
+    live2dZoomIn: "放大 Live2D",
+    live2dZoomOut: "缩小 Live2D",
+    live2dZoomReset: "重置缩放",
   },
   common: { members: "成员", cards: "卡面", scrollToTop: "回到顶部", close: "关闭" },
   search: {
@@ -173,6 +176,9 @@ const en = {
     prevCard: "Previous card",
     nextCard: "Next card",
     navPosition: "{current} / {total}",
+    live2dZoomIn: "Zoom in Live2D",
+    live2dZoomOut: "Zoom out Live2D",
+    live2dZoomReset: "Reset zoom",
   },
   common: { members: "Members", cards: "Cards", scrollToTop: "Back to Top", close: "Close" },
   search: {
@@ -286,6 +292,9 @@ const ja = {
     prevCard: "前のカード",
     nextCard: "次のカード",
     navPosition: "{current} / {total}",
+    live2dZoomIn: "Live2D を拡大",
+    live2dZoomOut: "Live2D を縮小",
+    live2dZoomReset: "ズームをリセット",
   },
   common: { members: "メンバー", cards: "カード", scrollToTop: "トップへ", close: "閉じる" },
   search: {
