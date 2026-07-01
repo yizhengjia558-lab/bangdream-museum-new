@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T15:15:45.367228+00:00",
+  "generated_at": "2026-07-01T01:39:34.428227+00:00",
   "matched": 2276,
   "total": 2332,
   "cards": {
@@ -3156,9 +3156,9 @@
       "attribute": "pure",
       "card_kind": "normal",
       "release_year": 2020,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null
+      "costume_id": 245,
+      "sd_resource_name": "sd004013",
+      "live2d_asset_bundle_name": "004_live_r_2018"
     },
     "4|gogowego！": {
       "character_id": 4,

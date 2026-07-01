@@ -9,63 +9,21 @@ export type VisitorStatsDetailed = VisitorStatsPublic & {
   topPaths: { path: string; count: number }[];
 };
 
-let resolvedApiBase: string | undefined;
-let resolvePromise: Promise<string> | null = null;
-
-function buildTimeApiBase() {
+function apiBase() {
   return process.env.NEXT_PUBLIC_VISITOR_API?.replace(/\/$/, "") ?? "";
 }
 
-/** Resolve analytics API URL: build-time env first, then /visitor-api.json at runtime. */
-export async function resolveVisitorApiBase(): Promise<string> {
-  if (resolvedApiBase !== undefined) return resolvedApiBase;
-
-  const fromEnv = buildTimeApiBase();
-  if (fromEnv) {
-    resolvedApiBase = fromEnv;
-    return fromEnv;
-  }
-
-  if (typeof window === "undefined") {
-    resolvedApiBase = "";
-    return "";
-  }
-
-  if (!resolvePromise) {
-    resolvePromise = (async () => {
-      try {
-        const prefix = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-        const res = await fetch(`${prefix}/visitor-api.json`, { cache: "no-store" });
-        if (res.ok) {
-          const data = (await res.json()) as { api?: string };
-          const api = data.api?.trim().replace(/\/$/, "") ?? "";
-          if (api) {
-            resolvedApiBase = api;
-            return api;
-          }
-        }
-      } catch {
-        /* fall through */
-      }
-      resolvedApiBase = "";
-      return "";
-    })();
-  }
-
-  return resolvePromise;
-}
-
 export function isVisitorAnalyticsEnabled() {
-  return Boolean(buildTimeApiBase());
+  return Boolean(apiBase());
 }
 
 export function shouldShowVisitorCount() {
   if (process.env.NEXT_PUBLIC_SHOW_VISITOR_COUNT === "0") return false;
-  return true;
+  return isVisitorAnalyticsEnabled();
 }
 
-export async function recordVisit(path: string, apiBase?: string) {
-  const base = apiBase ?? (await resolveVisitorApiBase());
+export async function recordVisit(path: string) {
+  const base = apiBase();
   if (!base || typeof window === "undefined") return;
 
   try {
@@ -80,11 +38,8 @@ export async function recordVisit(path: string, apiBase?: string) {
   }
 }
 
-export async function fetchVisitorStats(
-  token?: string,
-  apiBase?: string
-): Promise<VisitorStatsPublic | VisitorStatsDetailed | null> {
-  const base = apiBase ?? (await resolveVisitorApiBase());
+export async function fetchVisitorStats(token?: string): Promise<VisitorStatsPublic | VisitorStatsDetailed | null> {
+  const base = apiBase();
   if (!base) return null;
 
   const url = new URL(`${base}/stats`);

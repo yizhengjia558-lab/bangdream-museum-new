@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { fetchVisitorStats, resolveVisitorApiBase, shouldShowVisitorCount } from "@/lib/analytics";
+import { fetchVisitorStats, shouldShowVisitorCount } from "@/lib/analytics";
 
 export function VisitorCount() {
   const { t } = useLocale();
@@ -14,9 +14,7 @@ export function VisitorCount() {
     if (!shouldShowVisitorCount()) return;
 
     let cancelled = false;
-    resolveVisitorApiBase().then(async (base) => {
-      if (cancelled || !base) return;
-      const stats = await fetchVisitorStats(undefined, base);
+    fetchVisitorStats().then((stats) => {
       if (cancelled || !stats) return;
       setTotal(stats.total);
       setToday(stats.today);

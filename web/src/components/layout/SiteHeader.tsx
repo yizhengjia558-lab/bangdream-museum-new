@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { useFavorites } from "@/components/favorites/FavoritesProvider";
 import { GlobalSearchBar } from "@/components/search/GlobalSearchBar";
-import { HeaderVisitorBadge } from "@/components/analytics/HeaderVisitorBadge";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -48,7 +47,6 @@ export function SiteHeader() {
           <GlobalSearchBar className="global-search--header" />
 
           <nav className="global-header-nav flex shrink-0 items-center gap-0.5 sm:gap-1">
-            <HeaderVisitorBadge />
             {NAV.map((item) => {
               const active = item.match(pathname);
               const isFavorites = item.href === "/favorites/";
