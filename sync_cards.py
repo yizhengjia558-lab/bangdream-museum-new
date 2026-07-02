@@ -3,7 +3,7 @@
 Incremental card sync from Bestdori (mirrors BanG Dream! GBP game assets).
 
 Bushiroad 官网不提供公开卡面 API；Bestdori 会在日服更新后同步游戏内资源，
-本脚本只下载本地缺失的新卡面，并重建 site-data.json。
+本脚本只下载本地缺失的新卡面，并重建站点 JSON 数据（site-index、hero-cards、public/data 等）。
 """
 
 from __future__ import annotations
@@ -19,6 +19,17 @@ BANDORI = ROOT / "Bandori"
 INDEX = BANDORI / "all_characters.json"
 BUILD_DATA = ROOT / "web" / "scripts" / "build-data.mjs"
 SYNC_LOG = ROOT / "sync_last_run.json"
+
+# Paths passed to `git add` after a successful sync (keep in sync with sync-cards.yml).
+SYNC_GIT_PATHS = [
+    "Bandori",
+    "sync_last_run.json",
+    "web/src/data/site-index.json",
+    "web/src/data/hero-cards.json",
+    "web/src/data/home-bands.json",
+    "web/src/data/card-enrichment.json",
+    "web/public/data/",
+]
 
 
 def log(msg: str) -> None:
@@ -50,7 +61,7 @@ def main() -> int:
     subprocess.check_call([sys.executable, str(ROOT / "collect_bandori.py")])
 
     log("")
-    log("[2/2] Rebuilding site-data.json...")
+    log("[2/2] Rebuilding site data JSON...")
     subprocess.check_call(["node", str(BUILD_DATA)])
 
     after_cards = card_total()
@@ -79,7 +90,7 @@ def main() -> int:
     if new_cards > 0 or new_pngs > 0:
         log("")
         log("New content detected. Commit and push to deploy:")
-        log('  git add Bandori web/src/data/site-data.json sync_last_run.json')
+        log(f"  git add {' '.join(SYNC_GIT_PATHS)}")
         log('  git commit -m "Auto-sync: new cards from Bestdori"')
         log("  git push")
 
