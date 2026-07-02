@@ -59,25 +59,43 @@ function collectImageFiles() {
   return [...files];
 }
 
+function mobileThumbAbsFor(absPath) {
+  const dir = path.dirname(absPath);
+  const base = path.basename(absPath).replace(IMAGE_EXT, "");
+  return path.join(dir, ".thumbs", "m", `${base}.webp`);
+}
+
+const MOBILE_WIDTH = 320;
+const MOBILE_QUALITY = 78;
+
+async function writeWebp(absPath, outPath, width, quality) {
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
+  await sharp(absPath)
+    .rotate()
+    .resize({ width, withoutEnlargement: true })
+    .webp({ quality })
+    .toFile(outPath);
+}
+
 async function ensureThumb(absPath) {
   const rel = path.relative(bandori, absPath);
   const profile = profileFor(rel);
   const thumbAbs = thumbAbsFor(absPath);
-  fs.mkdirSync(path.dirname(thumbAbs), { recursive: true });
+  const mobileAbs = mobileThumbAbsFor(absPath);
+  const srcMtime = fs.statSync(absPath).mtimeMs;
 
-  if (fs.existsSync(thumbAbs)) {
-    const srcMtime = fs.statSync(absPath).mtimeMs;
-    const thumbMtime = fs.statSync(thumbAbs).mtimeMs;
-    if (thumbMtime >= srcMtime) return { skipped: true };
+  let created = 0;
+
+  for (const [outPath, width, quality] of [
+    [thumbAbs, profile.width, profile.quality],
+    [mobileAbs, Math.min(MOBILE_WIDTH, profile.width), MOBILE_QUALITY],
+  ]) {
+    if (fs.existsSync(outPath) && fs.statSync(outPath).mtimeMs >= srcMtime) continue;
+    await writeWebp(absPath, outPath, width, quality);
+    created += 1;
   }
 
-  await sharp(absPath)
-    .rotate()
-    .resize({ width: profile.width, withoutEnlargement: true })
-    .webp({ quality: profile.quality })
-    .toFile(thumbAbs);
-
-  return { skipped: false };
+  return { skipped: created === 0 };
 }
 
 async function main() {

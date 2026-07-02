@@ -10,7 +10,7 @@ interface AssetImageProps {
   className?: string;
   fill?: boolean;
   priority?: boolean;
-  variant?: "thumb" | "full";
+  variant?: "thumb" | "mobile" | "full";
   onError?: ImgHTMLAttributes<HTMLImageElement>["onError"];
 }
 
@@ -31,7 +31,14 @@ export function AssetImage({
   }, [src, variant]);
 
   const handleError: ImgHTMLAttributes<HTMLImageElement>["onError"] = (event) => {
-    if (variant === "thumb") {
+    if (variant === "mobile") {
+      const thumb = cardImageUrl(src, "thumb");
+      if (resolvedSrc !== thumb) {
+        setResolvedSrc(thumb);
+        return;
+      }
+    }
+    if (variant === "thumb" || variant === "mobile") {
       const full = assetUrl(src);
       if (resolvedSrc !== full) {
         setResolvedSrc(full);
@@ -49,6 +56,7 @@ export function AssetImage({
         alt={alt}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
+        fetchPriority={priority ? "high" : undefined}
         onError={handleError}
         className={cn("absolute inset-0 h-full w-full", className)}
       />
@@ -62,6 +70,7 @@ export function AssetImage({
       alt={alt}
       loading={priority ? "eager" : "lazy"}
       decoding="async"
+      fetchPriority={priority ? "high" : undefined}
       onError={handleError}
       className={className}
     />

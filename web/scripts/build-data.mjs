@@ -370,7 +370,7 @@ fs.writeFileSync(
 
 fs.writeFileSync(
   heroCardsOut,
-  JSON.stringify({ generated_at: generatedAt, items: buildHeroRiverCards(6) }),
+  JSON.stringify({ generated_at: generatedAt, items: buildHeroRiverCards(4) }),
   "utf8"
 );
 

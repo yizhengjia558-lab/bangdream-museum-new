@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { cardImageUrl } from "@/lib/card-image";
+import { useMobilePerf } from "@/hooks/useMobilePerf";
 import { cn, assetUrl } from "@/lib/utils";
 import { HERO_CG_BACKGROUNDS } from "@/lib/backgrounds";
 
@@ -24,7 +26,8 @@ export function CinematicBackground({
   parallax = true,
   remote = false,
 }: CinematicBackgroundProps) {
-  const url = remote ? src : assetUrl(src);
+  const mobile = useMobilePerf();
+  const url = remote ? src : mobile ? cardImageUrl(src, "mobile") : assetUrl(src);
   const [loaded, setLoaded] = useState(false);
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 600], [0, parallax ? 48 : 0]);

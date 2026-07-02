@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { expandCardDisplays } from "@/lib/cards";
 import { CharacterCardArchive } from "@/components/characters/CharacterCardArchive";
@@ -10,9 +10,9 @@ import { CharacterVoiceActorSection } from "@/components/characters/CharacterVoi
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BandBackButton } from "@/components/bands/BandBackButton";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import type { CharacterData } from "@/lib/data-types";
+import type { CharacterData, CharacterSummary } from "@/lib/data-types";
 import type { BandTheme } from "@/lib/themes";
-import { getCharactersByBand } from "@/lib/data";
+import { useMobilePerf } from "@/hooks/useMobilePerf";
 
 const sectionReveal = {
   initial: { opacity: 0, y: 28 },
@@ -26,16 +26,23 @@ export function CharacterPageView({
   theme,
   primary,
   fallbackHref,
+  bandMembers = [],
 }: {
   character: CharacterData;
   theme?: BandTheme;
   primary: string;
   fallbackHref: string;
+  bandMembers?: CharacterSummary[];
 }) {
   const { t } = useLocale();
+  const mobile = useMobilePerf();
   const displays = useMemo(() => expandCardDisplays(character.cards), [character.cards]);
-  const [visible, setVisible] = useState(48);
+  const [visible, setVisible] = useState(mobile ? 24 : 48);
   const [highlightKey, setHighlightKey] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (mobile) setVisible((v) => Math.min(v, 24));
+  }, [mobile]);
 
   const featuredCards = character.cards.filter((c) => c.rarity.includes("4") || c.rarity.includes("5")).slice(0, 6);
   const featured = expandCardDisplays(featuredCards);
@@ -66,7 +73,7 @@ export function CharacterPageView({
     document.getElementById("character-archive")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
-  const bandMembers = theme ? getCharactersByBand(theme.folder) : [];
+  const archiveMembers = bandMembers.length ? bandMembers : [character];
 
   return (
     <>
@@ -117,7 +124,7 @@ export function CharacterPageView({
             visible={visible}
             onVisibleChange={setVisible}
             highlightKey={highlightKey}
-            members={bandMembers.length ? bandMembers : [character]}
+            members={archiveMembers}
           />
         </div>
       </motion.section>

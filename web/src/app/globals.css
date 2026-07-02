@@ -4824,6 +4824,39 @@ body.card-detail-open .band-back-btn--fixed {
   }
 }
 
+@media (max-width: 768px) {
+  .bd-page-bg__scroll-row {
+    animation: none;
+  }
+
+  .card-river--lite .card-river-track {
+    animation: none;
+  }
+
+  .card-river--lite .card-river-item {
+    animation: none;
+  }
+
+  .card-river--lite .card-river-frame {
+    filter: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transform: rotate(var(--rotate)) scale(calc(0.88 + var(--depth) * 0.12));
+  }
+
+  .glass-dock,
+  .global-header-dock {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .home-band-card,
+  .band-showcase-card {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 85vh;
+  }
+}
+
 /* ── Reduced motion ── */
 
 @media (prefers-reduced-motion: reduce) {

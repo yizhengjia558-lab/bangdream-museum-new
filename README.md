@@ -22,8 +22,20 @@ python collect_bandori.py
 | 方式 | 脚本 | 说明 |
 |------|------|------|
 | GitHub Pages | `deploy-github.bat` | 海外访问；仓库需开启 Pages → GitHub Actions |
-| 阿里云 OSS | `deploy-aliyun.bat` | 国内访问；复制 `.aliyun.env.example` 为 `.aliyun.env` 并填写密钥 |
+| 阿里云 OSS | `deploy-aliyun.bat` | **国内访问推荐**；复制 `.aliyun.env.example` 为 `.aliyun.env` 并填写密钥 |
 | Cloudflare Pages | `deploy-cloudflare.bat` | 需 `wrangler login` |
+
+### 国内用户加速
+
+GitHub Pages 服务器在海外，国内访问图片容易慢、移动端易卡顿。建议：
+
+1. **部署到阿里云 OSS**（`deploy-aliyun.bat`）— 静态站点 + 图片同域，国内 CDN 节点加速最明显。
+2. **若图片单独放 OSS/CDN**，构建时设置环境变量：
+   ```bat
+   set NEXT_PUBLIC_ASSET_CDN=https://你的Bucket域名或CDN域名
+   ```
+   站点 JS/CSS 仍从 Pages 加载，仅 `/assets/` 图片走国内 CDN。
+3. 本站已针对手机端做性能优化：关闭平滑滚动、简化首页动效、320px 移动缩略图、成员页首屏小图等。
 
 ## GitHub Pages 配置
 

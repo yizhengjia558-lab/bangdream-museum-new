@@ -2,6 +2,7 @@
 
 import { useMemo, type CSSProperties } from "react";
 import { AssetImage } from "@/components/ui/AssetImage";
+import { useMobilePerf } from "@/hooks/useMobilePerf";
 import type { RiverCardItem } from "@/lib/data-types";
 import { cn } from "@/lib/utils";
 
@@ -35,29 +36,33 @@ export function CardRiver({
   cards: RiverCardItem[];
   variant?: "strip";
 }) {
+  const mobile = useMobilePerf();
+
   const lanes = useMemo(() => {
     if (!cards.length) return [];
 
-    return LANES.map((lane, laneIdx) => {
+    const activeLanes = mobile ? LANES.slice(0, 2) : LANES;
+
+    return activeLanes.map((lane, laneIdx) => {
       const laneCards: (RiverCardItem & { rotate: number; floatDelay: number })[] = [];
       for (let i = 0; i < cards.length; i++) {
-        if (i % LANES.length !== laneIdx) continue;
+        if (i % activeLanes.length !== laneIdx) continue;
         const card = cards[i];
         const seed = hashSeed(`${card.src}-${i}`);
         laneCards.push({
           ...card,
-          rotate: ((seed % 200) / 100 - 1) * lane.rotateRange,
+          rotate: mobile ? 0 : ((seed % 200) / 100 - 1) * lane.rotateRange,
           floatDelay: (seed % 400) / 100,
         });
       }
-      return { ...lane, cards: [...laneCards, ...laneCards] };
+      return { ...lane, cards: mobile ? laneCards : [...laneCards, ...laneCards] };
     });
-  }, [cards]);
+  }, [cards, mobile]);
 
   if (!lanes.length) return null;
 
   return (
-    <div className={cn("card-river", variant === "strip" && "card-river-strip")}>
+    <div className={cn("card-river", variant === "strip" && "card-river-strip", mobile && "card-river--lite")}>
       <div className="card-river-strip-fade-top pointer-events-none absolute inset-x-0 top-0 z-10 h-12" aria-hidden />
       <div className="card-river-strip-fade-bottom pointer-events-none absolute inset-x-0 bottom-0 z-10 h-16" aria-hidden />
 
@@ -83,7 +88,7 @@ export function CardRiver({
                   }
                 >
                   <div className="card-river-frame">
-                    <AssetImage src={card.src} alt="" fill variant="thumb" className="object-cover" />
+                    <AssetImage src={card.src} alt="" fill variant={mobile ? "mobile" : "thumb"} className="object-cover" />
                   </div>
                 </div>
               ))}

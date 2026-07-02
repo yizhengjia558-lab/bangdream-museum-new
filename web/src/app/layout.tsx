@@ -30,13 +30,13 @@ const fontSubtitle = Plus_Jakarta_Sans({
 const fontBody = Inter({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600"],
 });
 
 const fontJp = M_PLUS_Rounded_1c({
   variable: "--font-jp",
   subsets: ["latin"],
-  weight: ["400", "500", "700", "800"],
+  weight: ["400", "700"],
 });
 
 const fontZh = Noto_Sans_SC({

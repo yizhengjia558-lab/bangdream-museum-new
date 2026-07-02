@@ -13,6 +13,8 @@ import type { CardDisplayItem } from "@/lib/cards";
 import type { CharacterData } from "@/lib/data-types";
 import type { BandTheme } from "@/lib/themes";
 import { getCharacterBackdrop } from "@/lib/character-utils";
+import { useMobilePerf } from "@/hooks/useMobilePerf";
+import { cn } from "@/lib/utils";
 
 export function CharacterHero({
   character,
@@ -28,6 +30,7 @@ export function CharacterHero({
   onOpenFilters?: () => void;
 }) {
   const { t, locale } = useLocale();
+  const mobile = useMobilePerf();
   const accent = theme?.colors.primary ?? "#e9435e";
   const backdrop = getCharacterBackdrop(character);
   const displayName = getCharacterName(character, locale);
@@ -45,9 +48,9 @@ export function CharacterHero({
 
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-end page-container-wide pb-16 pt-28 lg:flex-row lg:items-end lg:justify-between lg:gap-12 lg:pb-20 lg:pt-32">
         <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.96 }}
+          initial={{ opacity: 0, y: mobile ? 20 : 40, scale: mobile ? 1 : 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: mobile ? 0.65 : 1, ease: [0.22, 1, 0.36, 1] }}
           className="relative h-[65vh] w-full max-w-lg overflow-hidden lg:h-[80vh] lg:max-w-xl lg:flex-1"
         >
           <div
@@ -59,14 +62,18 @@ export function CharacterHero({
             alt={displayName}
             fill
             priority
-            className="animate-float-soft object-contain object-bottom drop-shadow-[0_48px_96px_rgba(0,0,0,0.6)]"
+            variant={mobile ? "mobile" : "full"}
+            className={cn(
+              "object-contain object-bottom drop-shadow-[0_48px_96px_rgba(0,0,0,0.6)]",
+              !mobile && "animate-float-soft"
+            )}
           />
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 30, filter: "blur(8px)" }}
+          initial={{ opacity: 0, x: mobile ? 0 : 30, filter: mobile ? "blur(0px)" : "blur(8px)" }}
           animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: mobile ? 0.55 : 0.9, delay: mobile ? 0.08 : 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="relative z-20 mt-8 w-full max-w-md lg:mt-0 lg:mb-12"
         >
           <GlassPanel className="character-hero-panel" glow={`radial-gradient(circle, ${accent}40, transparent)`}>

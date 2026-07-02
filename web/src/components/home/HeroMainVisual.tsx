@@ -6,6 +6,7 @@ import { HeroBannerCarousel } from "@/components/home/HeroBannerCarousel";
 import { CardRiver } from "@/components/home/CardRiver";
 import { GlassButton } from "@/components/ui/GlassButton";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { useMobilePerf } from "@/hooks/useMobilePerf";
 import type { HeroBannerSlide } from "@/lib/hero-banner";
 import type { RiverCardItem } from "@/lib/data-types";
 import { motion } from "framer-motion";
@@ -18,12 +19,17 @@ export function HeroMainVisual({
   bannerSlides: HeroBannerSlide[];
 }) {
   const { t } = useLocale();
+  const mobile = useMobilePerf();
 
   return (
     <div className="hero-block">
       <div className="home-fx-layer" aria-hidden>
-        <StarryParticles />
-        <FloatingLightOrbs />
+        {!mobile ? (
+          <>
+            <StarryParticles />
+            <FloatingLightOrbs />
+          </>
+        ) : null}
       </div>
 
       <HeroBannerCarousel slides={bannerSlides} />
