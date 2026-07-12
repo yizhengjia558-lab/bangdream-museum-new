@@ -43,7 +43,7 @@ if /i not "%PUSH%"=="y" (
   exit /b 0
 )
 
-git add Bandori sync_last_run.json web/src/data/site-index.json web/src/data/hero-cards.json web/src/data/home-bands.json web/src/data/card-enrichment.json web/public/data/
+git add Bandori sync_last_run.json web/src/data/site-index.json web/src/data/hero-cards.json web/src/data/home-bands.json web/src/data/card-enrichment.json
 git diff --cached --quiet
 if errorlevel 1 (
   git -c user.name="yizhengjia558-lab" -c user.email="yizhengjia558-lab@users.noreply.github.com" commit -m "Auto-sync: update cards from Bestdori"

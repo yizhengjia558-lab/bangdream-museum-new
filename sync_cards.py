@@ -28,7 +28,6 @@ SYNC_GIT_PATHS = [
     "web/src/data/hero-cards.json",
     "web/src/data/home-bands.json",
     "web/src/data/card-enrichment.json",
-    "web/public/data/",
 ]
 
 
