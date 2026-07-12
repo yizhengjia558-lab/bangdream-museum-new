@@ -548,6 +548,14 @@
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007081_rip/card_after_training.png"
     },
     {
+      "card_name": "初めての熱を浴びて",
+      "rarity": "5-Star",
+      "event": "キモチ×イロドリ×リコレクションガチャ",
+      "release_date": "2026-07-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007082_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007082_rip/card_after_training.png"
+    },
+    {
       "card_name": "罗森联动2025",
       "rarity": "2-Star",
       "event": "campaign",

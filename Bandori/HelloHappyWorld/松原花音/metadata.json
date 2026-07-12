@@ -385,7 +385,7 @@
       "event": "Other",
       "release_date": "2100-10-31",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014044_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014044_rip/card_after_training.png"
+      "trained_image": ""
     },
     {
       "card_name": "笑容的追踪者",
@@ -532,10 +532,10 @@
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014080_rip/card_after_training.png"
     },
     {
-      "card_name": "純白の令嬢",
+      "card_name": "纯白的大小姐",
       "rarity": "2-Star",
-      "event": "ウェルカム・トゥ・瀬田薫ランド",
-      "release_date": "2025-12-21",
+      "event": "Welcome to 濑田薰乐园",
+      "release_date": "2026-07-06",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014081_rip/card_normal.png",
       "trained_image": ""
     },

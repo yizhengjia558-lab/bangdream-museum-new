@@ -393,7 +393,7 @@
       "event": "Other",
       "release_date": "2100-10-31",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008042_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008042_rip/card_after_training.png"
+      "trained_image": ""
     },
     {
       "card_name": "Meow♡Maid",
@@ -570,6 +570,14 @@
       "release_date": "2026-04-20",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008083_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008083_rip/card_after_training.png"
+    },
+    {
+      "card_name": "忘れえぬ夕焼け",
+      "rarity": "2-Star",
+      "event": "あの夕映えに誓って",
+      "release_date": "2026-07-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008084_rip/card_normal.png",
+      "trained_image": ""
     },
     {
       "card_name": "bilibili",

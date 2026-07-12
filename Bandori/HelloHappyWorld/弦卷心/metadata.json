@@ -564,10 +564,10 @@
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res011089_rip/card_after_training.png"
     },
     {
-      "card_name": "リクエスト殺到中！",
+      "card_name": "委托蜂拥而至！",
       "rarity": "4-Star",
-      "event": "気品纏いし麗しの君ガチャ",
-      "release_date": "2025-12-21",
+      "event": "气质高雅的秀丽佳人招募",
+      "release_date": "2026-07-06",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res011090_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res011090_rip/card_after_training.png"
     },
@@ -618,6 +618,14 @@
       "release_date": "2020-07-01",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res011900_rip/card_normal.png",
       "trained_image": ""
+    },
+    {
+      "card_name": "小豆泥的秘密特训",
+      "rarity": "5-Star",
+      "event": "小豆泥幻想联动限定招募",
+      "release_date": "2026-07-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res011001_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res011001_rip/card_after_training.png"
     },
     {
       "card_name": "Card 90011",

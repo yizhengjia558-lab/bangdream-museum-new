@@ -612,6 +612,22 @@
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res006090_rip/card_after_training.png"
     },
     {
+      "card_name": "今日は、ありがと",
+      "rarity": "3-Star",
+      "event": "あの夕映えに誓って",
+      "release_date": "2026-07-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res006091_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res006091_rip/card_after_training.png"
+    },
+    {
+      "card_name": "和小豆泥一起装扮",
+      "rarity": "5-Star",
+      "event": "小豆泥幻想联动限定招募",
+      "release_date": "2026-07-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res006001_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res006001_rip/card_after_training.png"
+    },
+    {
       "card_name": "Card 90006",
       "rarity": "2-Star",
       "event": "",

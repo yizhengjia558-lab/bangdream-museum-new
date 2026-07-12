@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T15:43:54.825085+00:00",
+  "generated_at": "2026-07-12T13:26:30.263363+00:00",
   "source": [
     "Bestdori API",
     "Bandori Party API"
@@ -31,7 +31,7 @@
       "standing_url": "",
       "cards_untrained_path": "PoppinParty/户山香澄/Cards/Untrained",
       "cards_trained_path": "PoppinParty/户山香澄/Cards/Trained",
-      "card_count": 85
+      "card_count": 86
     },
     {
       "character_id": 2,
@@ -101,7 +101,7 @@
       "standing_url": "",
       "cards_untrained_path": "Afterglow/美竹兰/Cards/Untrained",
       "cards_trained_path": "Afterglow/美竹兰/Cards/Trained",
-      "card_count": 77
+      "card_count": 79
     },
     {
       "character_id": 7,
@@ -115,7 +115,7 @@
       "standing_url": "",
       "cards_untrained_path": "Afterglow/青叶摩卡/Cards/Untrained",
       "cards_trained_path": "Afterglow/青叶摩卡/Cards/Trained",
-      "card_count": 70
+      "card_count": 71
     },
     {
       "character_id": 8,
@@ -129,7 +129,7 @@
       "standing_url": "",
       "cards_untrained_path": "Afterglow/上原绯玛丽/Cards/Untrained",
       "cards_trained_path": "Afterglow/上原绯玛丽/Cards/Trained",
-      "card_count": 73
+      "card_count": 74
     },
     {
       "character_id": 9,
@@ -143,7 +143,7 @@
       "standing_url": "",
       "cards_untrained_path": "Afterglow/宇田川巴/Cards/Untrained",
       "cards_trained_path": "Afterglow/宇田川巴/Cards/Trained",
-      "card_count": 68
+      "card_count": 69
     },
     {
       "character_id": 10,
@@ -157,7 +157,7 @@
       "standing_url": "",
       "cards_untrained_path": "Afterglow/羽泽鸫/Cards/Untrained",
       "cards_trained_path": "Afterglow/羽泽鸫/Cards/Trained",
-      "card_count": 73
+      "card_count": 74
     },
     {
       "character_id": 11,
@@ -171,7 +171,7 @@
       "standing_url": "",
       "cards_untrained_path": "HelloHappyWorld/弦卷心/Cards/Untrained",
       "cards_trained_path": "HelloHappyWorld/弦卷心/Cards/Trained",
-      "card_count": 79
+      "card_count": 80
     },
     {
       "character_id": 12,
@@ -451,7 +451,7 @@
       "standing_url": "",
       "cards_untrained_path": "RaiseASuilen/和奏瑞依/Cards/Untrained",
       "cards_trained_path": "RaiseASuilen/和奏瑞依/Cards/Trained",
-      "card_count": 42
+      "card_count": 43
     },
     {
       "character_id": 32,

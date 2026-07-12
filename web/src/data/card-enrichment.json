@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-02T13:12:43.899806+00:00",
-  "matched": 2276,
-  "total": 2332,
+  "generated_at": "2026-07-12T13:30:20.088784+00:00",
+  "matched": 2285,
+  "total": 2341,
   "cards": {
     "1|card5001": {
       "character_id": 1,
@@ -1520,6 +1520,17 @@
       "costume_id": 1608,
       "sd_resource_name": "sd001043",
       "live2d_asset_bundle_name": "001_live_r_2023"
+    },
+    "1|小豆泥与未解之谜": {
+      "character_id": 1,
+      "bestdori_card_id": 10048,
+      "stars": 5,
+      "attribute": "happy",
+      "card_kind": "collab",
+      "release_year": 2026,
+      "costume_id": 100005,
+      "sd_resource_name": "bili_sd001003",
+      "live2d_asset_bundle_name": "bili_001_collabo_ur"
     },
     "2|天然美人": {
       "character_id": 2,
@@ -5470,6 +5481,28 @@
       "sd_resource_name": "sd006090",
       "live2d_asset_bundle_name": "006_live_event_328_ur"
     },
+    "6|今日は、ありがと": {
+      "character_id": 6,
+      "bestdori_card_id": 2483,
+      "stars": 3,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2402,
+      "sd_resource_name": "sd006091",
+      "live2d_asset_bundle_name": "006_live_event_336_sr"
+    },
+    "6|和小豆泥一起装扮": {
+      "character_id": 6,
+      "bestdori_card_id": 10049,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "collab",
+      "release_year": 2026,
+      "costume_id": 100006,
+      "sd_resource_name": "bili_sd006001",
+      "live2d_asset_bundle_name": "bili_006_collabo_ur"
+    },
     "7|我行我素": {
       "character_id": 7,
       "bestdori_card_id": 25,
@@ -6217,6 +6250,17 @@
       "costume_id": 2358,
       "sd_resource_name": "sd007081",
       "live2d_asset_bundle_name": "007_live_event_328_ssr"
+    },
+    "7|初めての熱を浴びて": {
+      "character_id": 7,
+      "bestdori_card_id": 2482,
+      "stars": 5,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2401,
+      "sd_resource_name": "sd007082",
+      "live2d_asset_bundle_name": "007_live_event_336_ur"
     },
     "7|罗森联动2025": {
       "character_id": 7,
@@ -7010,6 +7054,17 @@
       "sd_resource_name": "sd008083",
       "live2d_asset_bundle_name": "008_live_event_328_ur"
     },
+    "8|忘れえぬ夕焼け": {
+      "character_id": 8,
+      "bestdori_card_id": 2484,
+      "stars": 2,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2403,
+      "sd_resource_name": "sd008084",
+      "live2d_asset_bundle_name": "008_live_event_336_r"
+    },
     "8|bilibili": {
       "character_id": 8,
       "bestdori_card_id": 10017,
@@ -7426,7 +7481,7 @@
       "release_year": 2021,
       "costume_id": 1136,
       "sd_resource_name": "sd009046",
-      "live2d_asset_bundle_name": "009_live_event_152_ssr"
+      "live2d_asset_bundle_name": null
     },
     "9|第3回ガルパ杯": {
       "character_id": 9,
@@ -7757,6 +7812,17 @@
       "costume_id": 2356,
       "sd_resource_name": "sd009081",
       "live2d_asset_bundle_name": "009_live_event_328_sr"
+    },
+    "9|この夕映えを胸に": {
+      "character_id": 9,
+      "bestdori_card_id": 2481,
+      "stars": 5,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2400,
+      "sd_resource_name": "sd009082",
+      "live2d_asset_bundle_name": "009_live_event_336_ur"
     },
     "10|大家的支柱": {
       "character_id": 10,
@@ -8539,6 +8605,17 @@
       "sd_resource_name": "sd010084",
       "live2d_asset_bundle_name": "010_live_event_328_r"
     },
+    "10|最初の一歩は": {
+      "character_id": 10,
+      "bestdori_card_id": 2485,
+      "stars": 4,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2404,
+      "sd_resource_name": "sd010085",
+      "live2d_asset_bundle_name": "010_live_event_336_ssr"
+    },
     "10|镜明晖": {
       "character_id": 10,
       "bestdori_card_id": 10033,
@@ -9320,13 +9397,13 @@
       "sd_resource_name": "sd011089",
       "live2d_asset_bundle_name": "011_live_event_315_sr"
     },
-    "11|リクエスト殺到中！": {
+    "11|委托蜂拥而至！": {
       "character_id": 11,
       "bestdori_card_id": 2352,
       "stars": 4,
       "attribute": "happy",
       "card_kind": "normal",
-      "release_year": 2025,
+      "release_year": 2026,
       "costume_id": 2286,
       "sd_resource_name": "sd011090",
       "live2d_asset_bundle_name": "011_live_event_316_ssr"
@@ -9396,6 +9473,17 @@
       "costume_id": 833,
       "sd_resource_name": "sd011035",
       "live2d_asset_bundle_name": "011_live_r_2020"
+    },
+    "11|小豆泥的秘密特训": {
+      "character_id": 11,
+      "bestdori_card_id": 10050,
+      "stars": 5,
+      "attribute": "power",
+      "card_kind": "collab",
+      "release_year": 2026,
+      "costume_id": 100007,
+      "sd_resource_name": "bili_sd011001",
+      "live2d_asset_bundle_name": "bili_011_collabo_ur"
     },
     "12|传说中的王子殿下": {
       "character_id": 12,
@@ -10156,13 +10244,13 @@
       "sd_resource_name": "sd012084",
       "live2d_asset_bundle_name": "012_dream_festival_4_ur"
     },
-    "12|儚き宴の幕開け": {
+    "12|梦幻盛宴的序幕": {
       "character_id": 12,
       "bestdori_card_id": 2348,
       "stars": 5,
       "attribute": "happy",
       "card_kind": "normal",
-      "release_year": 2025,
+      "release_year": 2026,
       "costume_id": 2282,
       "sd_resource_name": "sd012085",
       "live2d_asset_bundle_name": "012_live_event_316_ur"
@@ -10970,13 +11058,13 @@
       "sd_resource_name": "sd013081",
       "live2d_asset_bundle_name": "013_live_event_303_ur"
     },
-    "13|心の枷を解き放って": {
+    "13|解开心灵的枷锁": {
       "character_id": 13,
       "bestdori_card_id": 2349,
       "stars": 5,
       "attribute": "happy",
       "card_kind": "normal",
-      "release_year": 2025,
+      "release_year": 2026,
       "costume_id": 2283,
       "sd_resource_name": "sd013082",
       "live2d_asset_bundle_name": "013_live_event_316_ur"
@@ -11751,13 +11839,13 @@
       "sd_resource_name": "sd014080",
       "live2d_asset_bundle_name": "014_live_event_313_ssr"
     },
-    "14|純白の令嬢": {
+    "14|纯白的大小姐": {
       "character_id": 14,
       "bestdori_card_id": 2351,
       "stars": 2,
       "attribute": "cool",
       "card_kind": "normal",
-      "release_year": 2025,
+      "release_year": 2026,
       "costume_id": 2285,
       "sd_resource_name": "sd014081",
       "live2d_asset_bundle_name": "014_live_event_316_r"
@@ -12598,13 +12686,13 @@
       "sd_resource_name": "sd015084",
       "live2d_asset_bundle_name": "015_live_event_315_r"
     },
-    "15|ベテランの手さばき": {
+    "15|老练的手法": {
       "character_id": 15,
       "bestdori_card_id": 2350,
       "stars": 3,
       "attribute": "power",
       "card_kind": "normal",
-      "release_year": 2025,
+      "release_year": 2026,
       "costume_id": 2284,
       "sd_resource_name": "sd015085",
       "live2d_asset_bundle_name": "015_live_event_316_sr"
@@ -13547,7 +13635,7 @@
     "16|彩彩小豆泥": {
       "character_id": 16,
       "bestdori_card_id": 10029,
-      "stars": 4,
+      "stars": 5,
       "attribute": "power",
       "card_kind": "collab",
       "release_year": 2025,
@@ -14631,7 +14719,7 @@
       "release_year": 2021,
       "costume_id": 765,
       "sd_resource_name": "sd018032",
-      "live2d_asset_bundle_name": "018_live_event_100_ssr"
+      "live2d_asset_bundle_name": null
     },
     "18|要注意混合方法！": {
       "character_id": 18,
@@ -15346,7 +15434,7 @@
       "release_year": 2020,
       "costume_id": 483,
       "sd_resource_name": "sd019024",
-      "live2d_asset_bundle_name": "019_live_event_59_ssr"
+      "live2d_asset_bundle_name": null
     },
     "19|理想与现实": {
       "character_id": 19,
@@ -15872,9 +15960,9 @@
       "attribute": "power",
       "card_kind": "normal",
       "release_year": 2026,
-      "costume_id": 2325,
-      "sd_resource_name": "sd019081",
-      "live2d_asset_bundle_name": "019_live_event_323_r"
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
     },
     "19|心交わすひととき": {
       "character_id": 19,
@@ -18646,7 +18734,7 @@
       "release_year": 2020,
       "costume_id": 549,
       "sd_resource_name": "sd023029",
-      "live2d_asset_bundle_name": "023_dream_festival"
+      "live2d_asset_bundle_name": null
     },
     "23|担心过头？": {
       "character_id": 23,
@@ -20362,7 +20450,7 @@
       "release_year": 2020,
       "costume_id": 662,
       "sd_resource_name": "sd025028",
-      "live2d_asset_bundle_name": "025_live_event_81_r"
+      "live2d_asset_bundle_name": null
     },
     "25|终将来临的未来": {
       "character_id": 25,
@@ -21878,9 +21966,9 @@
       "attribute": "happy",
       "card_kind": "normal",
       "release_year": 2025,
-      "costume_id": 2153,
-      "sd_resource_name": "sd027043",
-      "live2d_asset_bundle_name": "027_live_event_293_r"
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null
     },
     "27|审视美的目光": {
       "character_id": 27,
@@ -23850,6 +23938,17 @@
       "costume_id": 2361,
       "sd_resource_name": "sd031048",
       "live2d_asset_bundle_name": "031_live_event_329_sr"
+    },
+    "31|小豆泥模特!?": {
+      "character_id": 31,
+      "bestdori_card_id": 10051,
+      "stars": 5,
+      "attribute": "happy",
+      "card_kind": "collab",
+      "release_year": 2026,
+      "costume_id": 100008,
+      "sd_resource_name": "bili_sd031001",
+      "live2d_asset_bundle_name": "bili_031_collabo_ur"
     },
     "32|热情演出": {
       "character_id": 32,

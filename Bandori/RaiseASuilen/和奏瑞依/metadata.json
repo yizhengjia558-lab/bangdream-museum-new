@@ -332,6 +332,14 @@
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res031048_rip/card_after_training.png"
     },
     {
+      "card_name": "小豆泥模特!?",
+      "rarity": "5-Star",
+      "event": "小豆泥幻想联动限定招募",
+      "release_date": "2026-07-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res031001_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res031001_rip/card_after_training.png"
+    },
+    {
       "card_name": "Card 90031",
       "rarity": "2-Star",
       "event": "",

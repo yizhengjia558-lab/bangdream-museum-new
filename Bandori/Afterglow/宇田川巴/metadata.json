@@ -540,6 +540,14 @@
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009081_rip/card_after_training.png"
     },
     {
+      "card_name": "この夕映えを胸に",
+      "rarity": "5-Star",
+      "event": "キモチ×イロドリ×リコレクションガチャ",
+      "release_date": "2026-07-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009082_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009082_rip/card_after_training.png"
+    },
+    {
       "card_name": "Card 90009",
       "rarity": "2-Star",
       "event": "",

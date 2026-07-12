@@ -668,6 +668,14 @@
       "trained_image": ""
     },
     {
+      "card_name": "小豆泥与未解之谜",
+      "rarity": "5-Star",
+      "event": "小豆泥幻想联动限定招募",
+      "release_date": "2026-07-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res001003_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res001003_rip/card_after_training.png"
+    },
+    {
       "card_name": "Card 90001",
       "rarity": "2-Star",
       "event": "",
