@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T13:23:53.469973+00:00",
+  "generated_at": "2026-07-18T13:09:57.733603+00:00",
   "source": [
     "Bestdori API",
     "Bandori Party API"
@@ -241,7 +241,7 @@
       "standing_url": "",
       "cards_untrained_path": "PastelPalettes/丸山彩/Cards/Untrained",
       "cards_trained_path": "PastelPalettes/丸山彩/Cards/Trained",
-      "card_count": 83
+      "card_count": 84
     },
     {
       "character_id": 17,
@@ -255,7 +255,7 @@
       "standing_url": "",
       "cards_untrained_path": "PastelPalettes/冰川日菜/Cards/Untrained",
       "cards_trained_path": "PastelPalettes/冰川日菜/Cards/Trained",
-      "card_count": 75
+      "card_count": 76
     },
     {
       "character_id": 18,
@@ -269,7 +269,7 @@
       "standing_url": "",
       "cards_untrained_path": "PastelPalettes/白鹭千圣/Cards/Untrained",
       "cards_trained_path": "PastelPalettes/白鹭千圣/Cards/Trained",
-      "card_count": 75
+      "card_count": 76
     },
     {
       "character_id": 19,
@@ -283,7 +283,7 @@
       "standing_url": "",
       "cards_untrained_path": "PastelPalettes/大和麻弥/Cards/Untrained",
       "cards_trained_path": "PastelPalettes/大和麻弥/Cards/Trained",
-      "card_count": 71
+      "card_count": 72
     },
     {
       "character_id": 20,
@@ -297,7 +297,7 @@
       "standing_url": "",
       "cards_untrained_path": "PastelPalettes/若宫伊芙/Cards/Untrained",
       "cards_trained_path": "PastelPalettes/若宫伊芙/Cards/Trained",
-      "card_count": 74
+      "card_count": 75
     },
     {
       "character_id": 21,

@@ -580,6 +580,14 @@
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018085_rip/card_after_training.png"
     },
     {
+      "card_name": "歓喜の輪",
+      "rarity": "5-Star",
+      "event": "微笑み誘う雨粒のきらめきガチャ",
+      "release_date": "2026-07-20",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018086_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018086_rip/card_after_training.png"
+    },
+    {
       "card_name": "Card 5003",
       "rarity": "2-Star",
       "event": "campaign",
