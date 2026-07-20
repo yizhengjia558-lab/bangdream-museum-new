@@ -41,6 +41,8 @@ export interface CharacterSummary {
   band: string;
   band_folder: string;
   standing: string;
+  /** Best trained/untrained card CG for member tiles (preferred over SD standing). */
+  portrait?: string;
   card_count: number;
   voice_actor?: VoiceActorData;
 }

@@ -12,7 +12,7 @@ import { getBandName, getCharacterAltName, getCharacterName, getVoiceActorName }
 import type { CardDisplayItem } from "@/lib/cards";
 import type { CharacterData } from "@/lib/data-types";
 import type { BandTheme } from "@/lib/themes";
-import { getCharacterBackdrop } from "@/lib/character-utils";
+import { getCharacterBackdrop, getCharacterPortrait } from "@/lib/character-utils";
 import { useMobilePerf } from "@/hooks/useMobilePerf";
 import { cn } from "@/lib/utils";
 
@@ -33,6 +33,7 @@ export function CharacterHero({
   const mobile = useMobilePerf();
   const accent = theme?.colors.primary ?? "#e9435e";
   const backdrop = getCharacterBackdrop(character);
+  const portrait = getCharacterPortrait(character);
   const displayName = getCharacterName(character, locale);
   const altName = getCharacterAltName(character, locale);
   const cvName = character.voice_actor ? getVoiceActorName(character.voice_actor, locale) : null;
@@ -58,7 +59,7 @@ export function CharacterHero({
             style={{ background: `${accent}40` }}
           />
           <AssetImage
-            src={character.standing}
+            src={portrait}
             alt={displayName}
             fill
             priority

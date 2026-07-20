@@ -22,8 +22,8 @@ const BAND_SLUG_BY_FOLDER = {
   HelloHappyWorld: "hello-happy-world",
   Morfonica: "morfonica",
   RaiseASuilen: "raise-a-suilen",
+  // MyGO!!!!! + Ave Mujica share Bestdori cards — single museum folder
   MyGO: "mygo",
-  AveMujica: "ave-mujica",
 };
 const enrichmentScript = path.join(root, "scripts/build-card-enrichment.py");
 const enrichmentPath = path.join(__dirname, "../src/data/card-enrichment.json");
@@ -251,6 +251,9 @@ const characters = index.characters.map((entry) => {
         }
       : undefined;
 
+  const standing = toAssetPath(entry.standing_path);
+  const portrait = pickPortraitImage(allCards, standing);
+
   return {
     id: entry.character_id,
     slug: String(entry.character_id),
@@ -258,17 +261,13 @@ const characters = index.characters.map((entry) => {
     name_jp: meta.character_name_jp,
     band: meta.band,
     band_folder: entry.band_folder,
-    standing: toAssetPath(entry.standing_path),
+    standing,
+    portrait,
     card_count: allCards.length,
     cards: allCards,
     ...(voice_actor ? { voice_actor } : {}),
   };
 });
-
-function toSummary(character) {
-  const { cards: _cards, ...summary } = character;
-  return summary;
-}
 
 function cardScore(card) {
   let s = 0;
@@ -277,6 +276,23 @@ function cardScore(card) {
   if (card.trained_file) s += 20;
   if (card.untrained_file) s += 10;
   return s;
+}
+
+/** Prefer trained card CG for member grid / hero (avoids MyGO SD standing sprites). */
+function pickPortraitImage(cards, standing) {
+  const ranked = [...cards].sort((a, b) => cardScore(b) - cardScore(a));
+  for (const card of ranked) {
+    if (card.trained_file) return card.trained_file;
+  }
+  for (const card of ranked) {
+    if (card.untrained_file) return card.untrained_file;
+  }
+  return standing || "";
+}
+
+function toSummary(character) {
+  const { cards: _cards, ...summary } = character;
+  return summary;
 }
 
 function pickBandCoverImage(members) {

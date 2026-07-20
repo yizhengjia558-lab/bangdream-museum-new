@@ -8,6 +8,7 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getCharacterAltName, getCharacterName } from "@/lib/i18n/display";
 import type { CharacterSummary } from "@/lib/data-types";
 import type { BandTheme } from "@/lib/themes";
+import { getCharacterPortrait } from "@/lib/character-utils";
 
 export function MemberCard({
   member,
@@ -21,6 +22,7 @@ export function MemberCard({
   const { locale } = useLocale();
   const displayName = getCharacterName(member, locale);
   const altName = getCharacterAltName(member, locale);
+  const portrait = getCharacterPortrait(member);
 
   return (
     <motion.div
@@ -38,11 +40,11 @@ export function MemberCard({
               style={{ background: theme.colors.gradient }}
             />
             <AssetImage
-              src={member.standing}
+              src={portrait}
               alt={displayName}
               fill
               variant="thumb"
-              className="card-image object-contain object-bottom p-4"
+              className="card-image object-cover object-top"
             />
             <div className="glass-reflection" />
           </div>

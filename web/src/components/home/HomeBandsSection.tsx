@@ -174,10 +174,10 @@ function HomeBandCard({
 
         <div className="relative z-10 grid h-full min-h-[clamp(520px,85vh,700px)] grid-cols-1 items-end lg:grid-cols-[1.15fr_0.85fr]">
           <div className="relative flex h-[min(420px,55vh)] items-end justify-center px-6 pt-14 sm:px-8 sm:pt-16 lg:h-full lg:min-h-0 lg:px-14 lg:pt-24">
-            {representative?.standing ? (
+            {representative?.portrait || representative?.standing ? (
               <div className="band-showcase-character relative aspect-[3/4] w-full max-w-[400px] lg:max-w-[480px]">
                 <AssetImage
-                  src={representative.standing}
+                  src={representative.portrait || representative.standing}
                   alt={band.name}
                   fill
                   variant="thumb"

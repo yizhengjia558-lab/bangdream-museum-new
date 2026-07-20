@@ -6,8 +6,7 @@ export type BandSlug =
   | "hello-happy-world"
   | "morfonica"
   | "raise-a-suilen"
-  | "mygo"
-  | "ave-mujica";
+  | "mygo";
 
 /** Classic GBP bands vs MyGO / Ave Mujica (shown as「其他乐队」). */
 export type BandGroup = "main" | "other";
@@ -223,59 +222,38 @@ export const BAND_THEMES: BandTheme[] = [
   {
     slug: "mygo",
     id: "MyGO!!!!!",
-    name: "MyGO!!!!!",
-    nameJp: "マイゴ",
+    name: "MyGO!!!!! & Ave Mujica",
+    nameJp: "マイゴ & アヴェ・ムジカ",
     sloganEn: "Never Ending Story",
     bgTitle: "MYGO!!!!!",
-    tagline: "迷途少女，以乐队相遇",
+    tagline: "迷途与假面，同一篇章",
     description:
-      "由高松灯等人组成的少女乐队。在迷茫与冲突中摸索「想要传达的声音」，以真实而细腻的情感打动听众。卡面主要来自 Girls Band Party 与 Our Notes 联动收录。",
+      "MyGO!!!!! 与 Ave Mujica 命运交错。手游卡面多为两团联动收录，故在本馆合并为「其他乐队」统一展示。卡面来自 Girls Band Party 与 Our Notes。",
     folder: "MyGO",
     group: "other",
     colors: {
       primary: "#3D8BFF",
       secondary: "#7EB8FF",
-      accent: "#FF8FAB",
+      accent: "#9B1B3A",
       glow: "rgba(61, 139, 255, 0.4)",
       bg: "#060a12",
-      gradient: "linear-gradient(135deg, #3D8BFF 0%, #7EB8FF 45%, #FF8FAB 100%)",
+      gradient: "linear-gradient(135deg, #3D8BFF 0%, #7EB8FF 40%, #9B1B3A 100%)",
     },
-    keywords: ["迷途", "青春", "真实", "灯"],
+    keywords: ["迷途", "假面", "青春", "联动"],
     songs: [
       { title: "春日影", titleJp: "春日影" },
-      { title: "五月雨", titleJp: "五月雨" },
-    ],
-  },
-  {
-    slug: "ave-mujica",
-    id: "Ave Mujica",
-    name: "Ave Mujica",
-    nameJp: "アヴェ・ムジカ",
-    sloganEn: "Oblivionis",
-    bgTitle: "AVE MUJICA",
-    tagline: "假面之下，乐队的另一面",
-    description:
-      "以丰川祥子为中心的神秘假面乐队。与 MyGO!!!!! 命运交错，共同构成「其他乐队」篇章。Bestdori 卡面随 Our Notes / 手游更新逐步同步。",
-    folder: "AveMujica",
-    group: "other",
-    colors: {
-      primary: "#9B1B3A",
-      secondary: "#1A0A12",
-      accent: "#D4AF37",
-      glow: "rgba(155, 27, 58, 0.4)",
-      bg: "#0a0608",
-      gradient: "linear-gradient(135deg, #9B1B3A 0%, #1A0A12 50%, #D4AF37 100%)",
-    },
-    keywords: ["假面", "哥特", "Oblivionis", "命运"],
-    songs: [
       { title: "Ave Mujica", titleJp: "Ave Mujica" },
-      { title: "神様、バカ", titleJp: "神様、バカ" },
     ],
   },
 ];
 
 export const MAIN_BAND_THEMES = BAND_THEMES.filter((b) => b.group === "main");
 export const OTHER_BAND_THEMES = BAND_THEMES.filter((b) => b.group === "other");
+
+/** Old Ave Mujica route redirects here — cards are shared with MyGO on Bestdori. */
+export const OTHER_BAND_REDIRECTS: Record<string, BandSlug> = {
+  "ave-mujica": "mygo",
+};
 
 export function getBandBySlug(slug: string) {
   return BAND_THEMES.find((b) => b.slug === slug);

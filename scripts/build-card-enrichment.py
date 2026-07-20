@@ -116,7 +116,7 @@ def main() -> int:
     bd_by_char: dict[int, list[dict]] = {}
     for card_id, card in cards.items():
         cid = int(card.get("characterId", 0))
-        if not (1 <= cid <= 35):
+        if not (1 <= cid <= 40):
             continue
         prefix = card.get("prefix") or ["", "", "", "", ""]
         bd_by_char.setdefault(cid, []).append(

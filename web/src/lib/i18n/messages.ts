@@ -23,7 +23,7 @@ const zh = {
     sectionTagline: "走进每一片舞台——青春、光芒与音乐在此等候。",
     otherCollection: "其他乐队",
     otherSectionTitle: "MyGO!!!!! & Ave Mujica",
-    otherSectionTagline: "来自新篇章的两支乐队，卡面与成员单独收录于此。",
+    otherSectionTagline: "两团联动卡面合并收录——迷途与假面，同一篇章。",
   },
   bands: {
     archive: "档案馆",
@@ -31,7 +31,7 @@ const zh = {
     enterBand: "进入乐队",
     otherArchive: "新篇章",
     otherBands: "其他乐队",
-    otherTagline: "MyGO!!!!! 与 Ave Mujica —— 与老六团/七团并列的独立分区。",
+    otherTagline: "MyGO!!!!! 与 Ave Mujica 卡面合并展示（Bestdori 多为联动收录）。",
     emptyMembers: "成员卡面将随 Bestdori 数据同步陆续上线。",
   },
   band: {
@@ -166,7 +166,7 @@ const en = {
     sectionTagline: "Step into each stage — youth, light, and music await.",
     otherCollection: "Other Bands",
     otherSectionTitle: "MyGO!!!!! & Ave Mujica",
-    otherSectionTagline: "Two bands from the new chapter, archived separately from the classics.",
+    otherSectionTagline: "Shared / dual cards from the new chapter, archived as one section.",
   },
   bands: {
     archive: "Archive",
@@ -174,7 +174,7 @@ const en = {
     enterBand: "Enter Band",
     otherArchive: "New Chapter",
     otherBands: "Other Bands",
-    otherTagline: "MyGO!!!!! and Ave Mujica — a dedicated section alongside the classic bands.",
+    otherTagline: "MyGO!!!!! and Ave Mujica cards are shown together (shared Bestdori entries).",
     emptyMembers: "Member cards will appear as Bestdori data becomes available.",
   },
   band: {
@@ -309,7 +309,7 @@ const ja = {
     sectionTagline: "それぞれのステージへ — 青春、光、音楽が待っている。",
     otherCollection: "その他のバンド",
     otherSectionTitle: "MyGO!!!!! & Ave Mujica",
-    otherSectionTagline: "新しい章の2バンド。クラシック7バンドとは別に収録。",
+    otherSectionTagline: "連携カードを一つのセクションにまとめて収録。",
   },
   bands: {
     archive: "アーカイブ",
@@ -317,7 +317,7 @@ const ja = {
     enterBand: "バンドへ",
     otherArchive: "新しい章",
     otherBands: "その他のバンド",
-    otherTagline: "MyGO!!!!! と Ave Mujica — クラシックバンドと並ぶ独立セクション。",
+    otherTagline: "MyGO!!!!! と Ave Mujica のカードは Bestdori 上で共有のため統合表示。",
     emptyMembers: "メンバーカードは Bestdori のデータ同期に合わせて順次公開されます。",
   },
   band: {
