@@ -53,7 +53,7 @@ function enrichCardFields(card, entry, meta) {
     attribute: extra.attribute || "",
     card_kind: extra.card_kind || "normal",
     release_year: Number.isFinite(releaseYear) ? releaseYear : null,
-    bestdori_card_id: extra.bestdori_card_id ?? null,
+    bestdori_card_id: extra.bestdori_card_id ?? card.bestdori_card_id ?? null,
     costume_id: extra.costume_id ?? null,
     sd_resource_name: extra.sd_resource_name ?? null,
     live2d_asset_bundle_name: extra.live2d_asset_bundle_name ?? null,
@@ -97,27 +97,62 @@ function readPngDir(absDir, webPrefix) {
     }));
 }
 
-function matchFileByName(files, cardName) {
-  if (!cardName || !files.length) return null;
-  const normalized = cardName.replace(/\s/g, "").toLowerCase();
-  const exact = files.find((f) => f.label.replace(/\s/g, "").toLowerCase() === normalized);
+function normalizeLabel(name) {
+  return (name || "").replace(/[_\s]+/g, "").toLowerCase();
+}
+
+function parseCardIdFromMeta(card) {
+  if (card.card_id != null && Number.isFinite(Number(card.card_id))) {
+    return String(card.card_id);
+  }
+  const m = /^(?:card|カード)\s*(\d+)$/i.exec((card.card_name || "").trim());
+  return m ? m[1] : null;
+}
+
+function parseCardIdFromRaw(raw) {
+  const m = /^(\d+)_/.exec(raw || "");
+  return m ? m[1] : null;
+}
+
+/** Prefer card_id filename prefix, then exact name. Avoid vague fuzzy matches. */
+function matchCardFile(files, card, used) {
+  const available = files.filter((f) => !used.has(f.file));
+  if (!available.length) return null;
+
+  const cardId = parseCardIdFromMeta(card);
+  if (cardId) {
+    const byId = available.find((f) => parseCardIdFromRaw(f.raw) === cardId);
+    if (byId) return byId;
+  }
+
+  const normalized = normalizeLabel(card.card_name);
+  if (!normalized || normalized.startsWith("card")) return null;
+
+  const exact = available.find((f) => normalizeLabel(f.label) === normalized);
   if (exact) return exact;
-  return (
-    files.find((f) => {
-      const label = f.label.replace(/\s/g, "").toLowerCase();
-      return (
-        label.includes(normalized.slice(0, Math.min(4, normalized.length))) ||
-        normalized.includes(label.slice(0, Math.min(4, label.length)))
-      );
-    }) || null
-  );
+
+  // Conservative fuzzy: only unique candidate where one side fully contains the other (≥4 chars)
+  if (normalized.length < 4) return null;
+  const fuzzy = available.filter((f) => {
+    const label = normalizeLabel(f.label);
+    if (!label || label.startsWith("card") || label.length < 4) return false;
+    return label.includes(normalized) || normalized.includes(label);
+  });
+  return fuzzy.length === 1 ? fuzzy[0] : null;
+}
+
+function markFilesWithCardId(files, cardId, used) {
+  if (!cardId) return;
+  for (const f of files) {
+    if (parseCardIdFromRaw(f.raw) === cardId) used.add(f.file);
+  }
 }
 
 /** Pair trained file: `123_foo.png` → `123_foo_trained.png` */
-function findTrainedPair(trainedFiles, untrainedRaw) {
+function findTrainedPair(trainedFiles, untrainedRaw, used) {
   if (!untrainedRaw) return "";
   const expected = untrainedRaw.replace(/\.png$/i, "_trained.png");
-  const hit = trainedFiles.find((f) => f.raw === expected);
+  const hit = trainedFiles.find((f) => f.raw === expected && !used.has(f.file));
   return hit?.file || "";
 }
 
@@ -136,13 +171,13 @@ const characters = index.characters.map((entry) => {
   const usedTrained = new Set();
 
   const cards = meta.cards.map((card, idx) => {
-    const untrainedEntry = matchFileByName(untrainedFiles, card.card_name);
+    const untrainedEntry = matchCardFile(untrainedFiles, card, usedUntrained);
     let untrained = untrainedEntry?.file || "";
-    let trained = untrainedEntry ? findTrainedPair(trainedFiles, untrainedEntry.raw) : "";
+    let trained = untrainedEntry ? findTrainedPair(trainedFiles, untrainedEntry.raw, usedTrained) : "";
 
-    // Trained-only cards (e.g. some KiraFes)
-    if (!untrained && (card.trained_image || card.trained_image === "")) {
-      const trainedEntry = matchFileByName(trainedFiles, card.card_name);
+    // Trained-only cards (e.g. some KiraFes / birthday)
+    if (!untrained) {
+      const trainedEntry = matchCardFile(trainedFiles, card, usedTrained);
       if (trainedEntry) trained = trainedEntry.file;
     }
 
@@ -154,9 +189,17 @@ const characters = index.characters.map((entry) => {
     if (untrained) usedUntrained.add(untrained);
     if (trained) usedTrained.add(trained);
 
+    // Same Bestdori card_id may have both JP-named and CN-named PNG copies — claim all
+    const fileCardId =
+      parseCardIdFromMeta(card) ||
+      (untrainedEntry ? parseCardIdFromRaw(untrainedEntry.raw) : null) ||
+      (trained ? parseCardIdFromRaw(trainedFiles.find((f) => f.file === trained)?.raw || "") : null);
+    markFilesWithCardId(untrainedFiles, fileCardId, usedUntrained);
+    markFilesWithCardId(trainedFiles, fileCardId, usedTrained);
+
     return enrichCardFields(
       {
-        id: `${entry.character_id}-${idx}`,
+        id: card.card_id != null ? String(card.card_id) : `${entry.character_id}-${idx}`,
         card_name: card.card_name,
         rarity: card.rarity,
         event: card.event,
@@ -165,6 +208,7 @@ const characters = index.characters.map((entry) => {
         trained_image: card.trained_image,
         untrained_file: untrained,
         trained_file: trained,
+        bestdori_card_id: card.card_id ?? null,
       },
       entry,
       meta
@@ -174,7 +218,7 @@ const characters = index.characters.map((entry) => {
   const galleryUntrained = untrainedFiles
     .filter((f) => !usedUntrained.has(f.file))
     .map((f) => {
-      const paired = findTrainedPair(trainedFiles, f.raw);
+      const paired = findTrainedPair(trainedFiles, f.raw, usedTrained);
       if (paired) usedTrained.add(paired);
       return enrichCardFields(
         {
@@ -218,6 +262,21 @@ const characters = index.characters.map((entry) => {
     ...galleryUntrained.filter((c) => c.untrained_file || c.trained_file),
     ...galleryTrained,
   ];
+
+  // Same display name on one character (reprints / JP+CN file copies) — keep both but disambiguate
+  const seenNames = new Map();
+  for (const card of allCards) {
+    const key = normalizeLabel(card.card_name);
+    if (!key) continue;
+    if (!seenNames.has(key)) {
+      seenNames.set(key, card);
+      continue;
+    }
+    const suffix = card.bestdori_card_id || String(card.id || "").replace(/^u-(\d+).*/, "$1");
+    if (suffix && !String(card.card_name).includes(`(#${suffix})`)) {
+      card.card_name = `${card.card_name} (#${suffix})`;
+    }
+  }
 
   const vaMeta = voiceActorsRaw[String(entry.character_id)];
 

@@ -369,6 +369,7 @@ def collect(force: bool = False, only_bands: set[int] | None = None) -> None:
                     "rarity": rarity,
                     "event": event_name,
                     "release_date": release_date,
+                    "resource_set": resource_set,
                     "untrained_image": untrained_url,
                     "trained_image": trained_url,
                     "untrained_file": "",
@@ -407,8 +408,9 @@ def collect(force: bool = False, only_bands: set[int] | None = None) -> None:
                     else:
                         entry["trained_file"] = rel
 
-        # Drop entries with no files and no valid URLs (invalid links cleanup)
-        cleaned_cards: list[dict[str, Any]] = []
+        # Drop entries with no files and no valid URLs; dedupe by resource set
+        cleaned_by_res: dict[str, dict[str, Any]] = {}
+        cleaned_no_res: list[dict[str, Any]] = []
         for entry in metadata_cards:
             has_untrained = bool(entry["untrained_file"])
             has_trained = bool(entry["trained_file"])
@@ -416,17 +418,56 @@ def collect(force: bool = False, only_bands: set[int] | None = None) -> None:
                 entry["untrained_image"] = ""
             if not has_trained:
                 entry["trained_image"] = ""
-            if has_untrained or has_trained or entry["untrained_image"] or entry["trained_image"]:
-                cleaned_cards.append(
-                    {
-                        "card_name": entry["card_name"],
-                        "rarity": entry["rarity"],
-                        "event": entry["event"],
-                        "release_date": entry["release_date"],
-                        "untrained_image": entry["untrained_image"],
-                        "trained_image": entry["trained_image"],
-                    }
-                )
+            if not (has_untrained or has_trained or entry["untrained_image"] or entry["trained_image"]):
+                continue
+
+            resource_set = entry.get("resource_set") or ""
+            if not resource_set:
+                # recover from URL if present
+                for url_key in ("untrained_image", "trained_image"):
+                    m = re.search(r"/resourceset/([^/]+?)(?:_rip)?/", entry.get(url_key) or "")
+                    if m:
+                        resource_set = m.group(1)
+                        break
+
+            out = {
+                "card_id": entry["card_id"],
+                "card_name": entry["card_name"],
+                "rarity": entry["rarity"],
+                "event": entry["event"],
+                "release_date": entry["release_date"],
+                "untrained_image": entry["untrained_image"],
+                "trained_image": entry["trained_image"],
+                "resource_set_name": resource_set,
+            }
+
+            if not resource_set:
+                cleaned_no_res.append(out)
+                continue
+
+            prev = cleaned_by_res.get(resource_set)
+            if prev is None:
+                cleaned_by_res[resource_set] = out
+                continue
+
+            # Prefer real CN release over 2100 JP stubs / campaign clones
+            def _rank(c: dict[str, Any]) -> tuple:
+                name = c.get("card_name") or ""
+                date = c.get("release_date") or ""
+                score = 0
+                if date and not date.startswith("2100"):
+                    score += 100
+                if name.startswith("Card"):
+                    score -= 40
+                elif any("\u4e00" <= ch <= "\u9fff" for ch in name):
+                    score += 50
+                return (score, date)
+
+            if _rank(out) > _rank(prev):
+                cleaned_by_res[resource_set] = out
+
+        cleaned_cards = list(cleaned_by_res.values()) + cleaned_no_res
+        cleaned_cards.sort(key=lambda c: (c.get("release_date") or "9999", int(c.get("card_id") or 0)))
 
         metadata = {
             "character_name_cn": name_cn,

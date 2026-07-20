@@ -4,156 +4,174 @@
   "band": "MyGO!!!!!",
   "cards": [
     {
+      "card_id": 1812,
       "card_name": "重新开始的旋律",
       "rarity": "1-Star",
       "event": "Initial Member Card",
       "release_date": "2024-04-10",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040001_rip/card_normal.png",
-      "trained_image": ""
+      "trained_image": "",
+      "resource_set_name": "res040001"
     },
     {
+      "card_id": 1817,
       "card_name": "开始吧，一辈子的约定",
       "rarity": "2-Star",
       "event": "彻夜回响迷途之子们的呐喊招募",
       "release_date": "2024-04-10",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040002_rip/card_normal.png",
-      "trained_image": ""
+      "trained_image": "",
+      "resource_set_name": "res040002"
     },
     {
+      "card_id": 1822,
       "card_name": "要守护的是过去",
       "rarity": "3-Star",
       "event": "彻夜回响迷途之子们的呐喊招募",
       "release_date": "2024-04-10",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040003_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040003_rip/card_after_training.png"
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040003_rip/card_after_training.png",
+      "resource_set_name": "res040003"
     },
     {
+      "card_id": 1827,
       "card_name": "无法抵达理想",
       "rarity": "3-Star",
       "event": "It's MyGO!!!!!",
       "release_date": "2024-04-10",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040004_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040004_rip/card_after_training.png"
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040004_rip/card_after_training.png",
+      "resource_set_name": "res040004"
     },
     {
+      "card_id": 1852,
       "card_name": "和我做个交易吧",
       "rarity": "5-Star",
       "event": "交错的利己主义者WHITE招募",
       "release_date": "2024-05-15",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040005_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040005_rip/card_after_training.png"
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040005_rip/card_after_training.png",
+      "resource_set_name": "res040005"
     },
     {
-      "card_name": "守るのは、過去",
-      "rarity": "3-Star",
-      "event": "Other",
-      "release_date": "2100-10-31",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040003_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040003_rip/card_after_training.png"
-    },
-    {
+      "card_id": 1940,
       "card_name": "比采购更感兴趣的事",
       "rarity": "4-Star",
       "event": "光芒、映射褪色之花招募",
       "release_date": "2024-09-01",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040007_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040007_rip/card_after_training.png"
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040007_rip/card_after_training.png",
+      "resource_set_name": "res040007"
     },
     {
-      "card_name": "Hopeful birthday！",
-      "rarity": "4-Star",
-      "event": "椎名立希生日纪念 Hopeful birthday！招募",
-      "release_date": "2025-08-08",
-      "untrained_image": "",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040008_rip/card_after_training.png"
-    },
-    {
+      "card_id": 2095,
       "card_name": "让您久等了",
       "rarity": "5-Star",
       "event": "Welcome♪魅惑的Afternoon招募",
       "release_date": "2025-06-15",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040009_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040009_rip/card_after_training.png"
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040009_rip/card_after_training.png",
+      "resource_set_name": "res040009"
     },
     {
+      "card_id": 2034,
+      "card_name": "Hopeful birthday！",
+      "rarity": "4-Star",
+      "event": "椎名立希生日纪念 Hopeful birthday！招募",
+      "release_date": "2025-08-08",
+      "untrained_image": "",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040008_rip/card_after_training.png",
+      "resource_set_name": "res040008"
+    },
+    {
+      "card_id": 2161,
       "card_name": "凛然而立",
       "rarity": "2-Star",
       "event": "漂泊猫旅・序曲",
       "release_date": "2025-09-04",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040010_rip/card_normal.png",
-      "trained_image": ""
+      "trained_image": "",
+      "resource_set_name": "res040010"
     },
     {
+      "card_id": 2169,
       "card_name": "柜台对面的你",
       "rarity": "5-Star",
       "event": "秋意盎然Dream Festival 招募",
       "release_date": "2025-09-13",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040011_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040011_rip/card_after_training.png"
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040011_rip/card_after_training.png",
+      "resource_set_name": "res040011"
     },
     {
+      "card_id": 2206,
       "card_name": "存在于前进方向上的答案",
       "rarity": "5-Star",
       "event": "分歧路口，前途漫漫开展纪念招募",
       "release_date": "2025-10-11",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040012_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040012_rip/card_after_training.png"
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040012_rip/card_after_training.png",
+      "resource_set_name": "res040012"
     },
     {
+      "card_id": 2233,
       "card_name": "出乎意料的关系",
       "rarity": "5-Star",
       "event": "绮丽人偶们的嬉戏招募",
       "release_date": "2026-01-09",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040013_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040013_rip/card_after_training.png"
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040013_rip/card_after_training.png",
+      "resource_set_name": "res040013"
     },
     {
-      "card_name": "意料之外的慰劳品",
-      "rarity": "3-Star",
-      "event": "献给分歧路上前行的人们",
-      "release_date": "2026-04-26",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040014_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040014_rip/card_after_training.png"
-    },
-    {
-      "card_name": "守るのは、過去",
-      "rarity": "3-Star",
-      "event": "campaign",
-      "release_date": "2100-11-30",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040003_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040003_rip/card_after_training.png"
-    },
-    {
+      "card_id": 2396,
       "card_name": "星光茶会",
       "rarity": "2-Star",
       "event": "campaign",
       "release_date": "2026-02-17",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040016_rip/card_normal.png",
-      "trained_image": ""
+      "trained_image": "",
+      "resource_set_name": "res040016"
     },
     {
+      "card_id": 2417,
       "card_name": "緊張と高揚の間で",
       "rarity": "3-Star",
       "event": "All☆Stars CiRCRiNG Fes!",
       "release_date": "2026-03-13",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040017_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040017_rip/card_after_training.png"
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040017_rip/card_after_training.png",
+      "resource_set_name": "res040017"
     },
     {
+      "card_id": 2290,
+      "card_name": "意料之外的慰劳品",
+      "rarity": "3-Star",
+      "event": "献给分歧路上前行的人们",
+      "release_date": "2026-04-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040014_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040014_rip/card_after_training.png",
+      "resource_set_name": "res040014"
+    },
+    {
+      "card_id": 5016,
       "card_name": "Card 5016",
       "rarity": "2-Star",
       "event": "campaign",
       "release_date": "",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res040s01_rip/card_normal.png",
-      "trained_image": ""
+      "trained_image": "",
+      "resource_set_name": "res040s01"
     },
     {
+      "card_id": 90040,
       "card_name": "Card 90040",
       "rarity": "2-Star",
       "event": "",
       "release_date": "",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res900040_rip/card_normal.png",
-      "trained_image": ""
+      "trained_image": "",
+      "resource_set_name": "res900040"
     }
   ]
 }
