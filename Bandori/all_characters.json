@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-20T03:10:43.696415+00:00",
+  "generated_at": "2026-07-20T14:03:13.078894+00:00",
   "source": [
     "Bestdori API",
     "Bandori Party API"
@@ -198,7 +198,7 @@
       "standing_url": "",
       "cards_untrained_path": "HelloHappyWorld/北泽育美/Cards/Untrained",
       "cards_trained_path": "HelloHappyWorld/北泽育美/Cards/Trained",
-      "card_count": 69
+      "card_count": 70
     },
     {
       "character_id": 14,
@@ -254,7 +254,7 @@
       "standing_url": "",
       "cards_untrained_path": "PastelPalettes/冰川日菜/Cards/Untrained",
       "cards_trained_path": "PastelPalettes/冰川日菜/Cards/Trained",
-      "card_count": 72
+      "card_count": 73
     },
     {
       "character_id": 18,

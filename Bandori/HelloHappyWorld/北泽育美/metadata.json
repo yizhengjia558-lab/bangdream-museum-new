@@ -24,6 +24,16 @@
       "resource_set_name": "res013002"
     },
     {
+      "card_id": 51,
+      "card_name": "大家一起来！",
+      "rarity": "3-Star",
+      "event": "开服纪念招募",
+      "release_date": "2017-03-16",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res013003_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res013003_rip/card_after_training.png",
+      "resource_set_name": "res013003"
+    },
+    {
       "card_id": 114,
       "card_name": "可爱的侦探",
       "rarity": "2-Star",

@@ -84,6 +84,16 @@
       "resource_set_name": "res017017"
     },
     {
+      "card_id": 10000,
+      "card_name": "bilibili",
+      "rarity": "2-Star",
+      "event": "campaign",
+      "release_date": "2019-06-25",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017900_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res017900"
+    },
+    {
       "card_id": 238,
       "card_name": "认真・摇摇晃晃！",
       "rarity": "3-Star",
@@ -164,7 +174,7 @@
       "resource_set_name": "res017022"
     },
     {
-      "card_id": 10000,
+      "card_id": 10008,
       "card_name": "bilibili",
       "rarity": "2-Star",
       "event": "campaign",
