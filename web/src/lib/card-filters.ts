@@ -15,6 +15,8 @@ export const BAND_FILTER_IDS = [
   "Hello, Happy World!",
   "Morfonica",
   "RAISE A SUILEN",
+  "MyGO!!!!!",
+  "Ave Mujica",
 ] as const;
 
 export type BandFilterId = (typeof BAND_FILTER_IDS)[number];

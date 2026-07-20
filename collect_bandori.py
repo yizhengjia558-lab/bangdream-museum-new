@@ -35,6 +35,9 @@ TARGET_BANDS: dict[int, dict[str, str]] = {
     5: {"folder": "Roselia", "name": "Roselia"},
     18: {"folder": "RaiseASuilen", "name": "RAISE A SUILEN"},
     21: {"folder": "Morfonica", "name": "Morfonica"},
+    # MyGO!!!!! / Ave Mujica — shown as「其他乐队」in the museum UI
+    45: {"folder": "MyGO", "name": "MyGO!!!!!"},
+    46: {"folder": "AveMujica", "name": "Ave Mujica"},
 }
 
 RARITY_LABELS = {1: "1-Star", 2: "2-Star", 3: "3-Star", 4: "4-Star", 5: "5-Star"}
@@ -142,7 +145,8 @@ def download_card_image(card_id: int, train_type: str) -> bytes | None:
 
 def bestdori_to_bp_member_id(char_id: int) -> int | None:
     """Map Bestdori character ID to Bandori Party member ID."""
-    if 1 <= char_id <= 35:
+    # GBP 1–35 → BP 6–40; MyGO 36–40 → BP 41–45
+    if 1 <= char_id <= 40:
         return char_id + 5
     return None
 
@@ -258,7 +262,7 @@ def download_standing_image(
     return None, ""
 
 
-def collect(force: bool = False) -> None:
+def collect(force: bool = False, only_bands: set[int] | None = None) -> None:
     log("Loading Bestdori metadata...")
     characters = get_chars(5)
     cards = get_cards(5)
@@ -271,6 +275,18 @@ def collect(force: bool = False) -> None:
     bp_members, bp_members_by_id = load_bandori_party_members(client)
     log(f"Loaded {len(bp_members_by_id)} Bandori Party members")
 
+    # Preserve existing index when doing a partial band collect
+    existing_index: list[dict[str, Any]] = []
+    index_path = ROOT / "all_characters.json"
+    if only_bands and index_path.exists():
+        try:
+            prev = json.loads(index_path.read_text(encoding="utf-8"))
+            only_folders = {TARGET_BANDS[b]["folder"] for b in only_bands if b in TARGET_BANDS}
+            existing_index = [c for c in prev.get("characters", []) if c.get("band_folder") not in only_folders]
+            log(f"Partial collect: keeping {len(existing_index)} existing characters")
+        except (json.JSONDecodeError, OSError):
+            existing_index = []
+
     target_chars: list[tuple[str, dict[str, Any]]] = []
     for char_id, info in characters.items():
         if info.get("characterType") != "unique":
@@ -278,12 +294,14 @@ def collect(force: bool = False) -> None:
         band_id = info.get("bandId")
         if band_id not in TARGET_BANDS:
             continue
+        if only_bands is not None and band_id not in only_bands:
+            continue
         target_chars.append((char_id, info))
     target_chars.sort(key=lambda x: int(x[0]))
     log(f"Target characters: {len(target_chars)}")
 
     global_hash_registry: dict[str, Path] = {}
-    all_characters_index: list[dict[str, Any]] = []
+    all_characters_index: list[dict[str, Any]] = list(existing_index)
 
     for char_id, char_info in target_chars:
         band_id = char_info["bandId"]
@@ -438,12 +456,14 @@ def collect(force: bool = False) -> None:
         )
 
     index_path = ROOT / "all_characters.json"
+    # Stable order by character_id
+    all_characters_index.sort(key=lambda c: int(c.get("character_id", 0)))
     index_path.write_text(
         json.dumps(
             {
                 "generated_at": datetime.now(timezone.utc).isoformat(),
                 "source": ["Bestdori API", "Bandori Party API"],
-                "excluded_bands": ["MyGO!!!!!", "Ave Mujica"],
+                "excluded_bands": [],
                 "bands": [v["name"] for v in TARGET_BANDS.values()],
                 "character_count": len(all_characters_index),
                 "characters": all_characters_index,
@@ -465,8 +485,15 @@ if __name__ == "__main__":
         action="store_true",
         help="Re-download all images (restore original resolution)",
     )
+    parser.add_argument(
+        "--bands",
+        nargs="+",
+        type=int,
+        help="Only collect these Bestdori bandIds (e.g. 45 46 for MyGO / Ave Mujica)",
+    )
     args = parser.parse_args()
     try:
-        collect(force=args.force)
+        only = set(args.bands) if args.bands else None
+        collect(force=args.force, only_bands=only)
     except KeyboardInterrupt:
         sys.exit(130)

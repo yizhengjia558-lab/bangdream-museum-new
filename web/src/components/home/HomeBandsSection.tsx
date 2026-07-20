@@ -8,10 +8,14 @@ import { BandLogo } from "@/components/ui/BandLogo";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getBandName, getBandSlogan } from "@/lib/i18n/display";
 import type { HomeBandEntry } from "@/lib/data-types";
-import { BAND_THEMES } from "@/lib/themes";
+import { BAND_THEMES, MAIN_BAND_THEMES, OTHER_BAND_THEMES } from "@/lib/themes";
 
 export function HomeBandsSection({ bands }: { bands: HomeBandEntry[] }) {
   const { t } = useLocale();
+
+  const bySlug = new Map(bands.map((entry) => [entry.slug, entry]));
+  const mainEntries = MAIN_BAND_THEMES.map((b) => bySlug.get(b.slug)).filter(Boolean) as HomeBandEntry[];
+  const otherEntries = OTHER_BAND_THEMES.map((b) => bySlug.get(b.slug)).filter(Boolean) as HomeBandEntry[];
 
   return (
     <section className="home-bands-section relative page-section pt-10 pb-16 lg:pt-12 lg:pb-24">
@@ -48,10 +52,9 @@ export function HomeBandsSection({ bands }: { bands: HomeBandEntry[] }) {
         </header>
 
         <div className="flex flex-col gap-14 lg:gap-20">
-          {bands.map((entry, i) => {
+          {mainEntries.map((entry, i) => {
             const band = BAND_THEMES.find((theme) => theme.slug === entry.slug);
             if (!band) return null;
-
             return (
               <HomeBandCard
                 key={entry.slug}
@@ -65,6 +68,58 @@ export function HomeBandsSection({ bands }: { bands: HomeBandEntry[] }) {
             );
           })}
         </div>
+
+        {otherEntries.length > 0 ? (
+          <div className="mt-20 lg:mt-28">
+            <header className="mb-12 text-center sm:mb-14">
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="hero-eyebrow text-[var(--text-muted)]"
+              >
+                {t("home.otherCollection")}
+              </motion.p>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.8, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
+                className="section-display mt-5"
+              >
+                {t("home.otherSectionTitle")}
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.8, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+                className="hero-tagline mx-auto mt-4 max-w-lg"
+              >
+                {t("home.otherSectionTagline")}
+              </motion.p>
+            </header>
+
+            <div className="flex flex-col gap-14 lg:gap-20">
+              {otherEntries.map((entry, i) => {
+                const band = BAND_THEMES.find((theme) => theme.slug === entry.slug);
+                if (!band) return null;
+                return (
+                  <HomeBandCard
+                    key={entry.slug}
+                    band={band}
+                    representative={entry.representative}
+                    coverImage={entry.coverImage}
+                    memberCount={entry.memberCount}
+                    cardCount={entry.cardCount}
+                    index={mainEntries.length + i}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
       </div>
     </section>
   );
@@ -119,7 +174,7 @@ function HomeBandCard({
 
         <div className="relative z-10 grid h-full min-h-[clamp(520px,85vh,700px)] grid-cols-1 items-end lg:grid-cols-[1.15fr_0.85fr]">
           <div className="relative flex h-[min(420px,55vh)] items-end justify-center px-6 pt-14 sm:px-8 sm:pt-16 lg:h-full lg:min-h-0 lg:px-14 lg:pt-24">
-            {representative ? (
+            {representative?.standing ? (
               <div className="band-showcase-character relative aspect-[3/4] w-full max-w-[400px] lg:max-w-[480px]">
                 <AssetImage
                   src={representative.standing}

@@ -259,5 +259,40 @@
     "cv_cn": "纺木吏佐",
     "x_handle": "Risa_tsumugi",
     "image": "RaiseASuilen/珠手知由/VoiceActor/cv.jpg"
+  },
+  "36": {
+    "character_id": 36,
+    "cv_jp": "羊宮妃那",
+    "cv_romaji": "Youmiya Hina",
+    "cv_cn": "羊宫妃那",
+    "image": ""
+  },
+  "37": {
+    "character_id": 37,
+    "cv_jp": "立石凛",
+    "cv_romaji": "Tateishi Rin",
+    "cv_cn": "立石凛",
+    "image": ""
+  },
+  "38": {
+    "character_id": 38,
+    "cv_jp": "青木陽菜",
+    "cv_romaji": "Aoki Hina",
+    "cv_cn": "青木阳菜",
+    "image": ""
+  },
+  "39": {
+    "character_id": 39,
+    "cv_jp": "小日向美香",
+    "cv_romaji": "Kohinata Mika",
+    "cv_cn": "小日向美香",
+    "image": ""
+  },
+  "40": {
+    "character_id": 40,
+    "cv_jp": "林鼓子",
+    "cv_romaji": "Hayashi Coco",
+    "cv_cn": "林鼓子",
+    "image": ""
   }
 }

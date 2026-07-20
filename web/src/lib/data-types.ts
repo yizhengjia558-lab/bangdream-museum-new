@@ -55,7 +55,7 @@ export type HomeBandEntry = {
   coverImage: string;
   memberCount: number;
   cardCount: number;
-  representative: CharacterSummary;
+  representative: CharacterSummary | null;
 };
 
 export type RiverCardItem = {

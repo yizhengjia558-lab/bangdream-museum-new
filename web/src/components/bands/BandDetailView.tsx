@@ -49,11 +49,15 @@ export function BandDetailView({
         <div className="pointer-events-none absolute inset-0 bloom-layer opacity-50" aria-hidden />
         <div className="relative page-container">
           <SectionHeading title={t("band.members")} />
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-8">
-            {band.members.map((member, i) => (
-              <MemberCard key={member.id} member={member} theme={band} index={i} />
-            ))}
-          </div>
+          {band.members.length === 0 ? (
+            <p className="mt-6 text-center text-[var(--text-muted)]">{t("bands.emptyMembers")}</p>
+          ) : (
+            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-8">
+              {band.members.map((member, i) => (
+                <MemberCard key={member.id} member={member} theme={band} index={i} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

@@ -22,6 +22,8 @@ const BAND_SLUG_BY_FOLDER = {
   HelloHappyWorld: "hello-happy-world",
   Morfonica: "morfonica",
   RaiseASuilen: "raise-a-suilen",
+  MyGO: "mygo",
+  AveMujica: "ave-mujica",
 };
 const enrichmentScript = path.join(root, "scripts/build-card-enrichment.py");
 const enrichmentPath = path.join(__dirname, "../src/data/card-enrichment.json");
@@ -352,7 +354,7 @@ const homeBands = Object.entries(BAND_SLUG_BY_FOLDER).map(([folder, slug]) => {
     coverImage: pickBandCoverImage(members),
     memberCount: members.length,
     cardCount: members.reduce((n, m) => n + m.card_count, 0),
-    representative: toSummary(members[0]),
+    representative: members[0] ? toSummary(members[0]) : null,
   };
 });
 

@@ -1,0 +1,135 @@
+{
+  "character_name_cn": "要 乐奈",
+  "character_name_jp": "要 楽奈",
+  "band": "MyGO!!!!!",
+  "cards": [
+    {
+      "card_name": "像猫一样",
+      "rarity": "1-Star",
+      "event": "Initial Member Card",
+      "release_date": "2024-04-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038001_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "开始吧，一辈子的约定",
+      "rarity": "2-Star",
+      "event": "彻夜回响迷途之子们的呐喊招募",
+      "release_date": "2024-04-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038002_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "拨弄琴弦的猫",
+      "rarity": "3-Star",
+      "event": "彻夜回响迷途之子们的呐喊招募",
+      "release_date": "2024-04-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038003_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038003_rip/card_after_training.png"
+    },
+    {
+      "card_name": "随心所欲",
+      "rarity": "3-Star",
+      "event": "It's MyGO!!!!!",
+      "release_date": "2024-04-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038004_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038004_rip/card_after_training.png"
+    },
+    {
+      "card_name": "投币式停车场的猫",
+      "rarity": "5-Star",
+      "event": "交错的利己主义者WHITE招募",
+      "release_date": "2024-05-15",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038005_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038005_rip/card_after_training.png"
+    },
+    {
+      "card_name": "爪弾く猫",
+      "rarity": "3-Star",
+      "event": "Other",
+      "release_date": "2100-10-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038003_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038003_rip/card_after_training.png"
+    },
+    {
+      "card_name": "好闲。",
+      "rarity": "3-Star",
+      "event": "渗入雨滴的颜色",
+      "release_date": "2024-09-01",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038007_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038007_rip/card_after_training.png"
+    },
+    {
+      "card_name": "在飘雪中踏上归途",
+      "rarity": "5-Star",
+      "event": "6周年纪念·前篇Dream Festival  招募",
+      "release_date": "2025-05-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038008_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038008_rip/card_after_training.png"
+    },
+    {
+      "card_name": "某一天的和式走廊",
+      "rarity": "5-Star",
+      "event": "照亮逝梦的光芒招募",
+      "release_date": "2025-09-04",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038009_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038009_rip/card_after_training.png"
+    },
+    {
+      "card_name": "Hopeful birthday！",
+      "rarity": "4-Star",
+      "event": "要乐奈生日纪念Hopeful birthday！招募",
+      "release_date": "2026-02-21",
+      "untrained_image": "",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038010_rip/card_after_training.png"
+    },
+    {
+      "card_name": "此刻的前方",
+      "rarity": "5-Star",
+      "event": "分歧路口，前途漫漫开展纪念招募",
+      "release_date": "2025-10-11",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038011_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038011_rip/card_after_training.png"
+    },
+    {
+      "card_name": "猫咪今日如常",
+      "rarity": "3-Star",
+      "event": "雨过天晴，映入眼帘的天空",
+      "release_date": "2026-01-09",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038012_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038012_rip/card_after_training.png"
+    },
+    {
+      "card_name": "与随性的流浪猫一起",
+      "rarity": "5-Star",
+      "event": "每日自有新风吹拂招募",
+      "release_date": "2026-04-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038013_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038013_rip/card_after_training.png"
+    },
+    {
+      "card_name": "爪弾く猫",
+      "rarity": "3-Star",
+      "event": "campaign",
+      "release_date": "2100-11-30",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038003_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038003_rip/card_after_training.png"
+    },
+    {
+      "card_name": "Card 5014",
+      "rarity": "2-Star",
+      "event": "campaign",
+      "release_date": "",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res038s01_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "Card 90038",
+      "rarity": "2-Star",
+      "event": "",
+      "release_date": "",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res900038_rip/card_normal.png",
+      "trained_image": ""
+    }
+  ]
+}

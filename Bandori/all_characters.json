@@ -1,13 +1,10 @@
 {
-  "generated_at": "2026-07-19T13:14:24.209102+00:00",
+  "generated_at": "2026-07-20T03:10:43.696415+00:00",
   "source": [
     "Bestdori API",
     "Bandori Party API"
   ],
-  "excluded_bands": [
-    "MyGO!!!!!",
-    "Ave Mujica"
-  ],
+  "excluded_bands": [],
   "bands": [
     "Poppin'Party",
     "Afterglow",
@@ -15,9 +12,11 @@
     "Pastel＊Palettes",
     "Roselia",
     "RAISE A SUILEN",
-    "Morfonica"
+    "Morfonica",
+    "MyGO!!!!!",
+    "Ave Mujica"
   ],
-  "character_count": 35,
+  "character_count": 40,
   "characters": [
     {
       "character_id": 1,
@@ -508,6 +507,76 @@
       "cards_untrained_path": "RaiseASuilen/珠手知由/Cards/Untrained",
       "cards_trained_path": "RaiseASuilen/珠手知由/Cards/Trained",
       "card_count": 39
+    },
+    {
+      "character_id": 36,
+      "character_name_cn": "高松 灯",
+      "character_name_jp": "高松 燈",
+      "band": "MyGO!!!!!",
+      "band_folder": "MyGO",
+      "path": "MyGO/高松灯",
+      "metadata_path": "MyGO/高松灯/metadata.json",
+      "standing_path": "MyGO/高松灯/Standing/standing.png",
+      "standing_url": "",
+      "cards_untrained_path": "MyGO/高松灯/Cards/Untrained",
+      "cards_trained_path": "MyGO/高松灯/Cards/Trained",
+      "card_count": 19
+    },
+    {
+      "character_id": 37,
+      "character_name_cn": "千早 爱音",
+      "character_name_jp": "千早 愛音",
+      "band": "MyGO!!!!!",
+      "band_folder": "MyGO",
+      "path": "MyGO/千早爱音",
+      "metadata_path": "MyGO/千早爱音/metadata.json",
+      "standing_path": "MyGO/千早爱音/Standing/standing.png",
+      "standing_url": "",
+      "cards_untrained_path": "MyGO/千早爱音/Cards/Untrained",
+      "cards_trained_path": "MyGO/千早爱音/Cards/Trained",
+      "card_count": 20
+    },
+    {
+      "character_id": 38,
+      "character_name_cn": "要 乐奈",
+      "character_name_jp": "要 楽奈",
+      "band": "MyGO!!!!!",
+      "band_folder": "MyGO",
+      "path": "MyGO/要乐奈",
+      "metadata_path": "MyGO/要乐奈/metadata.json",
+      "standing_path": "MyGO/要乐奈/Standing/standing.png",
+      "standing_url": "",
+      "cards_untrained_path": "MyGO/要乐奈/Cards/Untrained",
+      "cards_trained_path": "MyGO/要乐奈/Cards/Trained",
+      "card_count": 16
+    },
+    {
+      "character_id": 39,
+      "character_name_cn": "长崎 爽世",
+      "character_name_jp": "長崎 そよ",
+      "band": "MyGO!!!!!",
+      "band_folder": "MyGO",
+      "path": "MyGO/长崎爽世",
+      "metadata_path": "MyGO/长崎爽世/metadata.json",
+      "standing_path": "MyGO/长崎爽世/Standing/standing.png",
+      "standing_url": "",
+      "cards_untrained_path": "MyGO/长崎爽世/Cards/Untrained",
+      "cards_trained_path": "MyGO/长崎爽世/Cards/Trained",
+      "card_count": 19
+    },
+    {
+      "character_id": 40,
+      "character_name_cn": "椎名 立希",
+      "character_name_jp": "椎名 立希",
+      "band": "MyGO!!!!!",
+      "band_folder": "MyGO",
+      "path": "MyGO/椎名立希",
+      "metadata_path": "MyGO/椎名立希/metadata.json",
+      "standing_path": "MyGO/椎名立希/Standing/standing.png",
+      "standing_url": "",
+      "cards_untrained_path": "MyGO/椎名立希/Cards/Untrained",
+      "cards_trained_path": "MyGO/椎名立希/Cards/Trained",
+      "card_count": 19
     }
   ]
 }

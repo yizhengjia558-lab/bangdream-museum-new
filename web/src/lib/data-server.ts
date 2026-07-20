@@ -37,9 +37,9 @@ export function getBandWithMembers(slug: string): (BandTheme & { members: Charac
   const band = getBandBySlug(slug);
   if (!band) return undefined;
   const file = path.join(DATA_ROOT, "bands", `${band.folder}.json`);
-  if (!fs.existsSync(file)) return undefined;
+  if (!fs.existsSync(file)) return { ...band, members: [] };
   const data = readJson<{ members: CharacterData[] }>(file);
-  return { ...band, members: data.members };
+  return { ...band, members: data.members ?? [] };
 }
 
 export function getHeroRiverCards(): RiverCardItem[] {

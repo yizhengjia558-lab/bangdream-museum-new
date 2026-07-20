@@ -1,6 +1,6 @@
 "use client";
 
-import { BAND_THEMES } from "@/lib/themes";
+import { MAIN_BAND_THEMES, OTHER_BAND_THEMES } from "@/lib/themes";
 import { BandCard } from "@/components/bands/BandCard";
 import { BandBackButton } from "@/components/bands/BandBackButton";
 import { useLocale } from "@/components/i18n/LocaleProvider";
@@ -18,8 +18,20 @@ export function BandsPageView() {
         </header>
 
         <ul className="band-card-grid">
-          {BAND_THEMES.map((band, i) => (
+          {MAIN_BAND_THEMES.map((band, i) => (
             <BandCard key={band.slug} band={band} index={i} />
+          ))}
+        </ul>
+
+        <header className="mb-12 mt-20 text-center sm:mt-24">
+          <p className="type-eyebrow">{t("bands.otherArchive")}</p>
+          <h2 className="type-section-name mt-4">{t("bands.otherBands")}</h2>
+          <p className="hero-tagline mx-auto mt-4 max-w-lg">{t("bands.otherTagline")}</p>
+        </header>
+
+        <ul className="band-card-grid">
+          {OTHER_BAND_THEMES.map((band, i) => (
+            <BandCard key={band.slug} band={band} index={MAIN_BAND_THEMES.length + i} />
           ))}
         </ul>
       </div>

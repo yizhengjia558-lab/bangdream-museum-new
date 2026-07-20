@@ -1,0 +1,159 @@
+{
+  "character_name_cn": "长崎 爽世",
+  "character_name_jp": "長崎 そよ",
+  "band": "MyGO!!!!!",
+  "cards": [
+    {
+      "card_name": "大家的『妈妈』",
+      "rarity": "1-Star",
+      "event": "Initial Member Card",
+      "release_date": "2024-04-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039001_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "开始吧，一辈子的约定",
+      "rarity": "2-Star",
+      "event": "彻夜回响迷途之子们的呐喊招募",
+      "release_date": "2024-04-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039002_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "冷静的调停者",
+      "rarity": "3-Star",
+      "event": "彻夜回响迷途之子们的呐喊招募",
+      "release_date": "2024-04-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039003_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039003_rip/card_after_training.png"
+    },
+    {
+      "card_name": "我来结束这一切",
+      "rarity": "5-Star",
+      "event": "彻夜回响迷途之子们的呐喊招募",
+      "release_date": "2024-04-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039004_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039004_rip/card_after_training.png"
+    },
+    {
+      "card_name": "放松力气",
+      "rarity": "2-Star",
+      "event": "与君相伴 息息相随",
+      "release_date": "2024-05-15",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039005_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "調停者は心静かに",
+      "rarity": "3-Star",
+      "event": "Other",
+      "release_date": "2100-10-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039003_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039003_rip/card_after_training.png"
+    },
+    {
+      "card_name": "雨一直下",
+      "rarity": "5-Star",
+      "event": "光芒、映射褪色之花招募",
+      "release_date": "2024-09-01",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039007_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039007_rip/card_after_training.png"
+    },
+    {
+      "card_name": "Hopeful birthday！",
+      "rarity": "4-Star",
+      "event": "长崎爽世生日纪念Hopeful birthday！招募",
+      "release_date": "2025-05-26",
+      "untrained_image": "",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039008_rip/card_after_training.png"
+    },
+    {
+      "card_name": "这种关系的名字是",
+      "rarity": "5-Star",
+      "event": "夏之律动Dream Festival 招募",
+      "release_date": "2025-07-16",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039009_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039009_rip/card_after_training.png"
+    },
+    {
+      "card_name": "我们用我们的方法",
+      "rarity": "4-Star",
+      "event": "照亮逝梦的光芒招募",
+      "release_date": "2025-09-04",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039010_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039010_rip/card_after_training.png"
+    },
+    {
+      "card_name": "开幕前的片刻",
+      "rarity": "5-Star",
+      "event": "GIRLS ROCK in FULL BL∞M招募",
+      "release_date": "2025-09-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039011_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039011_rip/card_after_training.png"
+    },
+    {
+      "card_name": "时间长河的尽头",
+      "rarity": "5-Star",
+      "event": "分歧路口，前途漫漫开展纪念招募",
+      "release_date": "2025-10-11",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039012_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039012_rip/card_after_training.png"
+    },
+    {
+      "card_name": "只是过于耀眼",
+      "rarity": "5-Star",
+      "event": "绮丽人偶们的嬉戏招募",
+      "release_date": "2026-01-09",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039013_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039013_rip/card_after_training.png"
+    },
+    {
+      "card_name": "崭新的萌芽",
+      "rarity": "3-Star",
+      "event": "献给分歧路上前行的人们",
+      "release_date": "2026-04-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039014_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039014_rip/card_after_training.png"
+    },
+    {
+      "card_name": "調停者は心静かに",
+      "rarity": "3-Star",
+      "event": "campaign",
+      "release_date": "2100-11-30",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039003_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039003_rip/card_after_training.png"
+    },
+    {
+      "card_name": "Card 5015",
+      "rarity": "2-Star",
+      "event": "campaign",
+      "release_date": "",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res039s01_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "bilibili",
+      "rarity": "2-Star",
+      "event": "campaign",
+      "release_date": "2025-06-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res039001_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "罗森联动2025",
+      "rarity": "2-Star",
+      "event": "campaign",
+      "release_date": "2025-08-11",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res039002_rip/card_normal.png",
+      "trained_image": ""
+    },
+    {
+      "card_name": "Card 90039",
+      "rarity": "2-Star",
+      "event": "",
+      "release_date": "",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res900039_rip/card_normal.png",
+      "trained_image": ""
+    }
+  ]
+}

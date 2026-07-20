@@ -51,6 +51,28 @@ CV_CN: dict[int, str] = {
     33: "夏芽",
     34: "仓知玲凤",
     35: "纺木吏佐",
+    # MyGO!!!!!
+    36: "羊宫妃那",
+    37: "立石凛",
+    38: "青木阳菜",
+    39: "小日向美香",
+    40: "林鼓子",
+}
+
+MYGO_CV_ROMAJI: dict[int, str] = {
+    36: "Youmiya Hina",
+    37: "Tateishi Rin",
+    38: "Aoki Hina",
+    39: "Kohinata Mika",
+    40: "Hayashi Coco",
+}
+
+MYGO_CV_JP: dict[int, str] = {
+    36: "羊宮妃那",
+    37: "立石凛",
+    38: "青木陽菜",
+    39: "小日向美香",
+    40: "林鼓子",
 }
 
 WIKI_TITLES: dict[str, str] = {
@@ -89,6 +111,13 @@ WIKI_TITLES: dict[str, str] = {
     "Natsume": "Natsume_(musician)",
     "Reo Kurachi": "Reo_Kurachi",
     "Risa Tsumugi": "Risa_Tsumugi",
+    # MyGO!!!!!
+    "Yomiya Hina": "Hina_Yomiya",
+    "Youmiya Hina": "Hina_Yomiya",
+    "Tateishi Rin": "Rin_Tateishi",
+    "Aoki Hina": "Hina_Aoki_(voice_actress)",
+    "Kohinata Mika": "Mika_Kohinata",
+    "Hayashi Coco": "Coco_Hayashi",
 }
 
 WIKI_JA: dict[str, str] = {
@@ -124,6 +153,12 @@ WIKI_JA: dict[str, str] = {
     "Riko Kohara": "小原莉子",
     "Reo Kurachi": "倉知玲鳳",
     "Risa Tsumugi": "紡木吏佐",
+    "Yomiya Hina": "羊宮妃那",
+    "Youmiya Hina": "羊宮妃那",
+    "Tateishi Rin": "立石凛",
+    "Aoki Hina": "青木陽菜",
+    "Kohinata Mika": "小日向美香",
+    "Hayashi Coco": "林鼓子",
 }
 
 
@@ -138,7 +173,7 @@ def fetch_members(client: httpx.Client) -> dict[int, dict]:
         payload = client.get(url, timeout=60).json()
         for m in payload.get("results", []):
             cid = m["id"] - 5
-            if 1 <= cid <= 35:
+            if 1 <= cid <= 40:
                 members[cid] = m
         url = payload.get("next")
     return members
@@ -316,10 +351,17 @@ def main() -> int:
     actors: dict[str, dict] = {}
     ok_images = 0
 
-    for char_id in range(1, 36):
+    for char_id in range(1, 41):
         member = members.get(char_id, {})
         romaji = (member.get("romaji_CV") or "").strip()
         cv_jp = (member.get("CV") or "").strip()
+
+        # Fallback known MyGO CV romaji when Bandori Party fields are empty
+        if not romaji and char_id in MYGO_CV_ROMAJI:
+            romaji = MYGO_CV_ROMAJI[char_id]
+        if not cv_jp and char_id in MYGO_CV_JP:
+            cv_jp = MYGO_CV_JP[char_id]
+
         image_rel = existing_image_rel(char_id)
 
         if not image_rel:

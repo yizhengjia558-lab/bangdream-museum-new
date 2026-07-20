@@ -5,7 +5,12 @@ export type BandSlug =
   | "roselia"
   | "hello-happy-world"
   | "morfonica"
-  | "raise-a-suilen";
+  | "raise-a-suilen"
+  | "mygo"
+  | "ave-mujica";
+
+/** Classic GBP bands vs MyGO / Ave Mujica (shown as「其他乐队」). */
+export type BandGroup = "main" | "other";
 
 export interface BandTheme {
   slug: BandSlug;
@@ -19,6 +24,7 @@ export interface BandTheme {
   tagline: string;
   description: string;
   folder: string;
+  group: BandGroup;
   colors: {
     primary: string;
     secondary: string;
@@ -43,6 +49,7 @@ export const BAND_THEMES: BandTheme[] = [
     description:
       "以户山香澄为中心，在 Live House「CiRCLE」相遇的五人少女乐队。用「Pop」与「Party」将日常化为闪耀舞台，传递「キラキラドキドキ」的心跳。",
     folder: "PoppinParty",
+    group: "main",
     colors: {
       primary: "#FF5522",
       secondary: "#FFB347",
@@ -68,6 +75,7 @@ export const BAND_THEMES: BandTheme[] = [
     description:
       " childhood friends who grew up together in the same town. Their music carries the heat of sunset streets and unspoken bonds.",
     folder: "Afterglow",
+    group: "main",
     colors: {
       primary: "#E63946",
       secondary: "#FF6B35",
@@ -93,6 +101,7 @@ export const BAND_THEMES: BandTheme[] = [
     description:
       "由偶像事务所策划打造的五人偶像乐队。在镜头与舞台之间，她们寻找「真正的偶像」与真实的笑容。",
     folder: "PastelPalettes",
+    group: "main",
     colors: {
       primary: "#FF69B4",
       secondary: "#FFB6C1",
@@ -118,6 +127,7 @@ export const BAND_THEMES: BandTheme[] = [
     description:
       "以凑友希那为核心的顶尖乐队，追求「究极的乐队」与玫瑰般凛冽而华美的音乐美学。",
     folder: "Roselia",
+    group: "main",
     colors: {
       primary: "#6B2D5B",
       secondary: "#1A1A2E",
@@ -143,6 +153,7 @@ export const BAND_THEMES: BandTheme[] = [
     description:
       "以弦卷心为领袖，将「让全世界 Happy！」作为使命的奇特乐队。游乐园般的舞台与不可思议的成员构成。",
     folder: "HelloHappyWorld",
+    group: "main",
     colors: {
       primary: "#00CED1",
       secondary: "#FFD700",
@@ -168,6 +179,7 @@ export const BAND_THEMES: BandTheme[] = [
     description:
       "以仓田真白为中心，由古典与流行交织而成的五人乐队。小提琴与水晶般清澈音色描绘幻想世界。",
     folder: "Morfonica",
+    group: "main",
     colors: {
       primary: "#4ECDC4",
       secondary: "#556FB5",
@@ -193,6 +205,7 @@ export const BAND_THEMES: BandTheme[] = [
     description:
       "以和奏瑞依（LAYER）为主唱，融合电子与摇滚的五人乐队。霓虹与赛博美学下，以压倒性音压席卷舞台。",
     folder: "RaiseASuilen",
+    group: "main",
     colors: {
       primary: "#7B2FBE",
       secondary: "#00D4FF",
@@ -207,7 +220,62 @@ export const BAND_THEMES: BandTheme[] = [
       { title: "DRIVE US CRAZY", titleJp: "DRIVE US CRAZY" },
     ],
   },
+  {
+    slug: "mygo",
+    id: "MyGO!!!!!",
+    name: "MyGO!!!!!",
+    nameJp: "マイゴ",
+    sloganEn: "Never Ending Story",
+    bgTitle: "MYGO!!!!!",
+    tagline: "迷途少女，以乐队相遇",
+    description:
+      "由高松灯等人组成的少女乐队。在迷茫与冲突中摸索「想要传达的声音」，以真实而细腻的情感打动听众。卡面主要来自 Girls Band Party 与 Our Notes 联动收录。",
+    folder: "MyGO",
+    group: "other",
+    colors: {
+      primary: "#3D8BFF",
+      secondary: "#7EB8FF",
+      accent: "#FF8FAB",
+      glow: "rgba(61, 139, 255, 0.4)",
+      bg: "#060a12",
+      gradient: "linear-gradient(135deg, #3D8BFF 0%, #7EB8FF 45%, #FF8FAB 100%)",
+    },
+    keywords: ["迷途", "青春", "真实", "灯"],
+    songs: [
+      { title: "春日影", titleJp: "春日影" },
+      { title: "五月雨", titleJp: "五月雨" },
+    ],
+  },
+  {
+    slug: "ave-mujica",
+    id: "Ave Mujica",
+    name: "Ave Mujica",
+    nameJp: "アヴェ・ムジカ",
+    sloganEn: "Oblivionis",
+    bgTitle: "AVE MUJICA",
+    tagline: "假面之下，乐队的另一面",
+    description:
+      "以丰川祥子为中心的神秘假面乐队。与 MyGO!!!!! 命运交错，共同构成「其他乐队」篇章。Bestdori 卡面随 Our Notes / 手游更新逐步同步。",
+    folder: "AveMujica",
+    group: "other",
+    colors: {
+      primary: "#9B1B3A",
+      secondary: "#1A0A12",
+      accent: "#D4AF37",
+      glow: "rgba(155, 27, 58, 0.4)",
+      bg: "#0a0608",
+      gradient: "linear-gradient(135deg, #9B1B3A 0%, #1A0A12 50%, #D4AF37 100%)",
+    },
+    keywords: ["假面", "哥特", "Oblivionis", "命运"],
+    songs: [
+      { title: "Ave Mujica", titleJp: "Ave Mujica" },
+      { title: "神様、バカ", titleJp: "神様、バカ" },
+    ],
+  },
 ];
+
+export const MAIN_BAND_THEMES = BAND_THEMES.filter((b) => b.group === "main");
+export const OTHER_BAND_THEMES = BAND_THEMES.filter((b) => b.group === "other");
 
 export function getBandBySlug(slug: string) {
   return BAND_THEMES.find((b) => b.slug === slug);
