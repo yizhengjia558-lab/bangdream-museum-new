@@ -116,3 +116,16 @@ export function pickIdleMotionKey(motionKeys: string[]) {
     null
   );
 }
+
+/** Prefer flashy Motions for KiraFes showcase, then idle. */
+export function pickShowcaseMotionKeys(motionKeys: string[]) {
+  const prefer = [/jaan/i, /kime/i, /gattsu/i, /niyaniya/i, /oowarai/i, /^idle/i];
+  const picked: string[] = [];
+  for (const re of prefer) {
+    const hit = motionKeys.find((key) => re.test(key) && !picked.includes(key));
+    if (hit) picked.push(hit);
+  }
+  const idle = pickIdleMotionKey(motionKeys);
+  if (idle && !picked.includes(idle)) picked.push(idle);
+  return picked.length ? picked : motionKeys.slice(0, 3);
+}

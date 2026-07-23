@@ -70,6 +70,9 @@ const zh = {
     live2dZoomIn: "放大 Live2D",
     live2dZoomOut: "缩小 Live2D",
     live2dZoomReset: "重置缩放",
+    kirafesPreviewMode: "动态卡预览",
+    staticArt: "静态卡面",
+    dynamicArt: "动态展示",
   },
   common: { members: "成员", cards: "卡面", scrollToTop: "回到顶部", close: "关闭" },
   search: {
@@ -214,6 +217,9 @@ const en = {
     live2dZoomIn: "Zoom in Live2D",
     live2dZoomOut: "Zoom out Live2D",
     live2dZoomReset: "Reset zoom",
+    kirafesPreviewMode: "KiraFes preview",
+    staticArt: "Still Art",
+    dynamicArt: "Dynamic View",
   },
   common: { members: "Members", cards: "Cards", scrollToTop: "Back to Top", close: "Close" },
   search: {
@@ -358,6 +364,9 @@ const ja = {
     live2dZoomIn: "Live2D を拡大",
     live2dZoomOut: "Live2D を縮小",
     live2dZoomReset: "ズームをリセット",
+    kirafesPreviewMode: "キラフェス表示",
+    staticArt: "静止画",
+    dynamicArt: "ダイナミック",
   },
   common: { members: "メンバー", cards: "カード", scrollToTop: "トップへ", close: "閉じる" },
   search: {

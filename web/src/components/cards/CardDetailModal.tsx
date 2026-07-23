@@ -6,6 +6,7 @@ import { AssetImage } from "@/components/ui/AssetImage";
 import { CardFavoriteButton } from "@/components/cards/CardFavoriteButton";
 import { CardPaletteBackground } from "@/components/cards/CardPaletteBackground";
 import { CardLive2DViewer } from "@/components/cards/CardLive2DViewer";
+import { KirafesDynamicStage } from "@/components/cards/KirafesDynamicStage";
 import { useCardPalette } from "@/hooks/useCardPalette";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getCardRarityLabel } from "@/lib/i18n/display";
@@ -17,6 +18,8 @@ import {
   type CardVariant,
 } from "@/lib/cards";
 import { cn } from "@/lib/utils";
+
+type KirafesPreviewMode = "static" | "dynamic";
 
 function displayKey(cardId: string, variant: CardVariant) {
   return `${cardId}-${variant}`;
@@ -107,16 +110,29 @@ export function CardDetailModal({
   const { t } = useLocale();
   const [variant, setVariant] = useState<CardVariant>("untrained");
   const [fullscreen, setFullscreen] = useState(false);
+  const [kirafesMode, setKirafesMode] = useState<KirafesPreviewMode>("dynamic");
 
   const availability = useMemo(
     () => (item ? getCardVariantAvailability(item.card) : { untrained: false, trained: false, both: false }),
     [item]
   );
 
+  const isKirafes = item?.card.card_kind === "kirafes";
+  const showKirafesDynamic = Boolean(isKirafes && kirafesMode === "dynamic");
+
   const activeSrc = item ? getCardVariantSrc(item.card, variant) : "";
   const activeKey = item ? displayKey(item.card.id, variant) : "";
   const characterId = item?.card.character_id ?? 0;
   const palette = useCardPalette(activeSrc, themeColor);
+
+  useEffect(() => {
+    if (!item) return;
+    if (availability.both) setVariant(item.variant);
+    else if (availability.trained) setVariant("trained");
+    else setVariant("untrained");
+    setKirafesMode(item.card.card_kind === "kirafes" ? "dynamic" : "static");
+    setFullscreen(false);
+  }, [item, availability.both, availability.trained, availability.untrained]);
 
   const navIndex = useMemo(
     () => (item && items.length ? items.findIndex((entry) => entry.key === item.key) : -1),
@@ -133,12 +149,6 @@ export function CardDetailModal({
   const goNext = () => {
     if (canGoNext && onSelectItem) onSelectItem(items[navIndex + 1]);
   };
-
-  useEffect(() => {
-    if (!item) return;
-    setVariant(item.variant);
-    setFullscreen(false);
-  }, [item]);
 
   useEffect(() => {
     if (!item) return;
@@ -227,39 +237,79 @@ export function CardDetailModal({
                 ) : null}
               </div>
 
-              <div className="card-detail-visual-row">
+              <div className={cn("card-detail-visual-row", showKirafesDynamic && "card-detail-visual-row--kirafes-dynamic")}>
                 <div className="card-detail-main">
                   <div className="card-detail-image-stack">
-                    <button
-                      type="button"
-                      className="card-detail-image-btn"
-                      onClick={() => setFullscreen(true)}
-                      aria-label={t("card.fullscreenPreview")}
-                    >
-                      <div className="card-detail-image-frame">
-                        <AnimatePresence mode="wait">
-                          <motion.div
-                            key={`${item.key}-${variant}`}
-                            initial={{ opacity: 0, scale: 1.02 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.98 }}
-                            transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-                            className="card-detail-image-layer"
-                          >
-                            <AssetImage
-                              src={activeSrc}
-                              alt={item.card.card_name}
-                              fill
-                              className="card-detail-image object-contain"
-                            />
-                          </motion.div>
-                        </AnimatePresence>
-                        <div className="card-detail-image-glow" aria-hidden />
-                      </div>
-                    </button>
+                    {showKirafesDynamic ? (
+                      <KirafesDynamicStage
+                        cardSrc={activeSrc}
+                        cardName={item.card.card_name}
+                        live2dAssetBundleName={item.card.live2d_asset_bundle_name}
+                        onOpenFullscreen={() => setFullscreen(true)}
+                      />
+                    ) : (
+                      <button
+                        type="button"
+                        className="card-detail-image-btn"
+                        onClick={() => setFullscreen(true)}
+                        aria-label={t("card.fullscreenPreview")}
+                      >
+                        <div className="card-detail-image-frame">
+                          <AnimatePresence mode="wait">
+                            <motion.div
+                              key={`${item.key}-${variant}`}
+                              initial={{ opacity: 0, scale: 1.02 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              exit={{ opacity: 0, scale: 0.98 }}
+                              transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+                              className="card-detail-image-layer"
+                            >
+                              <AssetImage
+                                src={activeSrc}
+                                alt={item.card.card_name}
+                                fill
+                                className="card-detail-image object-contain"
+                              />
+                            </motion.div>
+                          </AnimatePresence>
+                          <div className="card-detail-image-glow" aria-hidden />
+                        </div>
+                      </button>
+                    )}
                   </div>
 
                   <div className="card-detail-controls">
+                    {isKirafes ? (
+                      <div className="card-detail-toggle-wrap card-detail-toggle-wrap--below">
+                        <div className="card-detail-toggle" role="tablist" aria-label={t("card.kirafesPreviewMode")}>
+                          <button
+                            type="button"
+                            role="tab"
+                            aria-selected={kirafesMode === "static" ? "true" : "false"}
+                            className={cn(
+                              "card-detail-toggle-btn",
+                              kirafesMode === "static" && "card-detail-toggle-btn--active"
+                            )}
+                            onClick={() => setKirafesMode("static")}
+                          >
+                            {t("card.staticArt")}
+                          </button>
+                          <button
+                            type="button"
+                            role="tab"
+                            aria-selected={kirafesMode === "dynamic" ? "true" : "false"}
+                            className={cn(
+                              "card-detail-toggle-btn",
+                              kirafesMode === "dynamic" && "card-detail-toggle-btn--active"
+                            )}
+                            onClick={() => setKirafesMode("dynamic")}
+                          >
+                            {t("card.dynamicArt")}
+                          </button>
+                        </div>
+                      </div>
+                    ) : null}
+
                     {showToggle ? (
                       <div className="card-detail-toggle-wrap card-detail-toggle-wrap--below">
                         <div className="card-detail-toggle" role="tablist" aria-label={t("card.viewMode")}>
@@ -305,10 +355,18 @@ export function CardDetailModal({
                   </div>
                 </div>
 
-                {characterId > 0 ? (
+                {characterId > 0 && !showKirafesDynamic ? (
                   <CardLive2DViewer
                     characterId={characterId}
                     live2dAssetBundleName={item.card.live2d_asset_bundle_name}
+                    sdResourceName={item.card.sd_resource_name}
+                    characterName={item.card.card_name}
+                    className="card-detail-sidebar"
+                  />
+                ) : characterId > 0 && showKirafesDynamic ? (
+                  <CardLive2DViewer
+                    characterId={characterId}
+                    live2dAssetBundleName={null}
                     sdResourceName={item.card.sd_resource_name}
                     characterName={item.card.card_name}
                     className="card-detail-sidebar"
@@ -353,26 +411,42 @@ export function CardDetailModal({
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="card-detail-fullscreen-inner"
-              onClick={() => setFullscreen(false)}
+              onClick={(e) => e.stopPropagation()}
             >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`${item.key}-${variant}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.38 }}
-                  className="card-detail-fullscreen-image-wrap"
-                >
-                  <AssetImage
-                    src={activeSrc}
-                    alt={item.card.card_name}
-                    className="card-detail-fullscreen-image max-h-[92vh] w-auto max-w-[min(96vw,1200px)] object-contain"
+              {showKirafesDynamic ? (
+                <div className="card-detail-fullscreen-dynamic">
+                  <KirafesDynamicStage
+                    cardSrc={activeSrc}
+                    cardName={item.card.card_name}
+                    live2dAssetBundleName={item.card.live2d_asset_bundle_name}
                   />
-                </motion.div>
-              </AnimatePresence>
+                </div>
+              ) : (
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`${item.key}-${variant}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.38 }}
+                    className="card-detail-fullscreen-image-wrap"
+                    onClick={() => setFullscreen(false)}
+                  >
+                    <AssetImage
+                      src={activeSrc}
+                      alt={item.card.card_name}
+                      className="card-detail-fullscreen-image max-h-[92vh] w-auto max-w-[min(96vw,1200px)] object-contain"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              )}
               <p className="card-detail-fullscreen-caption">
-                {variant === "trained" ? t("card.afterTraining") : t("card.beforeTraining")} · {item.card.card_name}
+                {isKirafes && showKirafesDynamic
+                  ? t("card.dynamicArt")
+                  : variant === "trained"
+                    ? t("card.afterTraining")
+                    : t("card.beforeTraining")}{" "}
+                · {item.card.card_name}
               </p>
             </motion.div>
           </motion.div>

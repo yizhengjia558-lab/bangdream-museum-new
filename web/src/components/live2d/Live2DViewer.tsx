@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { createBestdoriLive2DModelJson, pickIdleMotionKey } from "@/lib/bestdori-live2d";
+import {
+  createBestdoriLive2DModelJson,
+  pickIdleMotionKey,
+  pickShowcaseMotionKeys,
+} from "@/lib/bestdori-live2d";
 import { cn } from "@/lib/utils";
 
 declare global {
@@ -65,11 +69,14 @@ export function Live2DViewer({
   className,
   onError,
   zoom = 1,
+  motionProfile = "idle",
 }: {
   assetBundleName: string;
   className?: string;
   onError?: () => void;
   zoom?: number;
+  /** idle = loop idle; showcase = cycle flashy Motions for KiraFes */
+  motionProfile?: "idle" | "showcase";
 }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const zoomRef = useRef(zoom);
@@ -84,6 +91,7 @@ export function Live2DViewer({
     let model: import("pixi-live2d-display/cubism2").Live2DModel | null = null;
     let revokeModelJson: (() => void) | null = null;
     let resizeObserver: ResizeObserver | null = null;
+    let showcaseTimer: number | null = null;
 
     async function mount() {
       const host = hostRef.current;
@@ -125,8 +133,26 @@ export function Live2DViewer({
         model = await Live2DModel.from(modelJsonUrl, { autoInteract: true });
 
         const motionGroups = model.internalModel.motionManager.definitions ?? {};
-        const idleKey = pickIdleMotionKey(Object.keys(motionGroups));
+        const keys = Object.keys(motionGroups);
+        const idleKey = pickIdleMotionKey(keys);
         if (idleKey) model.motion(idleKey);
+
+        if (motionProfile === "showcase") {
+          const showcaseKeys = pickShowcaseMotionKeys(keys);
+          let idx = 0;
+          const playNext = () => {
+            if (cancelled || !model || !showcaseKeys.length) return;
+            const key = showcaseKeys[idx % showcaseKeys.length];
+            idx += 1;
+            try {
+              model.motion(key, undefined, 2);
+            } catch {
+              /* ignore missing motion */
+            }
+            showcaseTimer = window.setTimeout(playNext, 5200);
+          };
+          showcaseTimer = window.setTimeout(playNext, 1800);
+        }
 
         const refit = () => {
           if (!app || !model || !host) return;
@@ -153,7 +179,7 @@ export function Live2DViewer({
           const tapKey =
             keys.find((key) => /tap/i.test(key)) ??
             (hitAreas.includes("body") ? keys.find((key) => /body/i.test(key)) : undefined) ??
-            keys.find((key) => /idle/i.test(key));
+            keys.find((key) => /jaan|kime|idle/i.test(key));
           if (tapKey) model?.motion(tapKey, undefined, 2);
         });
 
@@ -175,13 +201,14 @@ export function Live2DViewer({
     return () => {
       cancelled = true;
       refitRef.current = null;
+      if (showcaseTimer != null) window.clearTimeout(showcaseTimer);
       resizeObserver?.disconnect();
       model?.destroy();
       app?.destroy(true, { children: true, texture: true, baseTexture: true });
       revokeModelJson?.();
       if (hostRef.current) hostRef.current.replaceChildren();
     };
-  }, [assetBundleName, onError]);
+  }, [assetBundleName, onError, motionProfile]);
 
   useEffect(() => {
     refitRef.current?.();
