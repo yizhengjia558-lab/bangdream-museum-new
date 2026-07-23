@@ -73,6 +73,8 @@ const zh = {
     kirafesPreviewMode: "动态卡预览",
     staticArt: "静态卡面",
     dynamicArt: "动态展示",
+    playCinema: "播放卡面动画",
+    pauseCinema: "暂停卡面动画",
   },
   common: { members: "成员", cards: "卡面", scrollToTop: "回到顶部", close: "关闭" },
   search: {
@@ -220,6 +222,8 @@ const en = {
     kirafesPreviewMode: "KiraFes preview",
     staticArt: "Still Art",
     dynamicArt: "Dynamic View",
+    playCinema: "Play card cinema",
+    pauseCinema: "Pause card cinema",
   },
   common: { members: "Members", cards: "Cards", scrollToTop: "Back to Top", close: "Close" },
   search: {
@@ -367,6 +371,8 @@ const ja = {
     kirafesPreviewMode: "キラフェス表示",
     staticArt: "静止画",
     dynamicArt: "ダイナミック",
+    playCinema: "カードアニメ再生",
+    pauseCinema: "カードアニメ一時停止",
   },
   common: { members: "メンバー", cards: "カード", scrollToTop: "トップへ", close: "閉じる" },
   search: {

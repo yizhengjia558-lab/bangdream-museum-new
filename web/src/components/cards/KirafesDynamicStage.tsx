@@ -1,76 +1,113 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import { useEffect, useMemo, useState } from "react";
 import { AssetImage } from "@/components/ui/AssetImage";
+import { useLocale } from "@/components/i18n/LocaleProvider";
 import { cn } from "@/lib/utils";
 
-const Live2DViewer = dynamic(
-  () => import("@/components/live2d/Live2DViewer").then((m) => m.Live2DViewer),
-  { ssr: false }
-);
+/** Multi-shot camera tour approximating in-game KiraFes card cinema. */
+const CAMERA_SHOTS = [
+  { scale: 1.05, x: 0, y: 0, duration: 3.2 },
+  { scale: 1.42, x: -10, y: -6, duration: 4.4 },
+  { scale: 1.85, x: 6, y: -14, duration: 3.8 },
+  { scale: 1.55, x: -4, y: 2, duration: 4.0 },
+  { scale: 1.28, x: 4, y: 8, duration: 4.2 },
+  { scale: 1.12, x: 0, y: 4, duration: 3.6 },
+] as const;
+
+type Shot = (typeof CAMERA_SHOTS)[number];
 
 /**
- * KiraFes (动态卡) main-stage preview:
- * animated card art backdrop + Live2D costume when available.
+ * Full-card cinematic stage for KIRAFES (动态卡),
+ * styled after the in-game landscape card movie viewer.
  */
 export function KirafesDynamicStage({
   cardSrc,
   cardName,
-  live2dAssetBundleName,
   className,
-  onOpenFullscreen,
+  compact = false,
 }: {
   cardSrc: string;
   cardName: string;
-  live2dAssetBundleName?: string | null;
   className?: string;
-  onOpenFullscreen?: () => void;
+  compact?: boolean;
 }) {
-  const hasLive2d = Boolean(live2dAssetBundleName);
+  const { t } = useLocale();
+  const [shotIndex, setShotIndex] = useState(0);
+  const [playing, setPlaying] = useState(true);
+  const shot: Shot = CAMERA_SHOTS[shotIndex % CAMERA_SHOTS.length];
+
+  useEffect(() => {
+    setShotIndex(0);
+    setPlaying(true);
+  }, [cardSrc]);
+
+  useEffect(() => {
+    if (!playing) return;
+    const timer = window.setTimeout(() => {
+      setShotIndex((i) => (i + 1) % CAMERA_SHOTS.length);
+    }, shot.duration * 1000);
+    return () => window.clearTimeout(timer);
+  }, [playing, shotIndex, shot.duration]);
+
+  const transform = useMemo(
+    () => `translate3d(${shot.x}%, ${shot.y}%, 0) scale(${shot.scale})`,
+    [shot.x, shot.y, shot.scale]
+  );
 
   return (
-    <div className={cn("kirafes-dynamic-stage", className)}>
-      <div className="kirafes-dynamic-stage__backdrop" aria-hidden>
-        <div className="kirafes-dynamic-stage__kenburns">
-          <AssetImage src={cardSrc} alt="" fill className="object-cover" />
+    <div
+      className={cn(
+        "kirafes-cinema",
+        compact && "kirafes-cinema--compact",
+        className
+      )}
+    >
+      <div className="kirafes-cinema__rail kirafes-cinema__rail--left" aria-hidden />
+      <div className="kirafes-cinema__rail kirafes-cinema__rail--right" aria-hidden />
+
+      <div className="kirafes-cinema__stage">
+        <div
+          className="kirafes-cinema__camera"
+          style={{
+            transform,
+            transitionDuration: `${shot.duration}s`,
+          }}
+        >
+          <AssetImage src={cardSrc} alt={cardName} fill className="object-cover" priority />
         </div>
-        <div className="kirafes-dynamic-stage__scrim" />
+
+        <div className="kirafes-cinema__vignette" aria-hidden />
+        <div className="kirafes-cinema__grain" aria-hidden />
+        <div className="kirafes-cinema__flare" aria-hidden />
+
+        <div className="kirafes-cinema__particles" aria-hidden>
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
       </div>
 
-      <div className="kirafes-dynamic-stage__sparkles" aria-hidden>
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
-
-      {hasLive2d ? (
-        <div className="kirafes-dynamic-stage__live2d">
-          <Live2DViewer
-            assetBundleName={live2dAssetBundleName!}
-            className="kirafes-dynamic-stage__live2d-viewer"
-            motionProfile="showcase"
-          />
-        </div>
-      ) : (
+      <div className="kirafes-cinema__hud">
+        <span className="kirafes-cinema__live">{t("card.dynamicArt")}</span>
         <button
           type="button"
-          className="kirafes-dynamic-stage__art-btn"
-          onClick={onOpenFullscreen}
-          aria-label={cardName}
+          className="kirafes-cinema__play"
+          onClick={() => setPlaying((v) => !v)}
+          aria-label={playing ? t("card.pauseCinema") : t("card.playCinema")}
         >
-          <div className="kirafes-dynamic-stage__art-frame">
-            <div className="kirafes-dynamic-stage__kenburns kirafes-dynamic-stage__kenburns--hero">
-              <AssetImage src={cardSrc} alt={cardName} fill className="object-contain" />
-            </div>
-            <div className="kirafes-dynamic-stage__sheen" aria-hidden />
-          </div>
+          {playing ? "❚❚" : "▶"}
         </button>
-      )}
-
-      <div className="kirafes-dynamic-stage__badge" aria-hidden>
-        LIVE
+        <div className="kirafes-cinema__progress" aria-hidden>
+          {CAMERA_SHOTS.map((_, i) => (
+            <span key={i} className={cn(i === shotIndex && "is-active")} />
+          ))}
+        </div>
       </div>
     </div>
   );
