@@ -261,12 +261,7 @@
       "release_date": "2024-04-19",
       "untrained_image": "",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030034_rip/card_after_training.png",
-      "resource_set_name": "res030034",
-      "bestdori_type": "kirafes",
-      "card_kind": "kirafes",
-      "animation_asset_bundle_name": "mov030001",
-      "trained_file": "Morfonica/八潮瑠唯/Cards/Trained/1833_进入甜美的梦乡_trained.png",
-      "untrained_file": ""
+      "resource_set_name": "res030034"
     },
     {
       "card_id": 1865,

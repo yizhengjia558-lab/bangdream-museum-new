@@ -401,12 +401,7 @@
       "release_date": "2022-01-31",
       "untrained_image": "",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014052_rip/card_after_training.png",
-      "resource_set_name": "res014052",
-      "bestdori_type": "kirafes",
-      "card_kind": "kirafes",
-      "animation_asset_bundle_name": "mov014001",
-      "trained_file": "HelloHappyWorld/松原花音/Cards/Trained/1404_青色散步_trained.png",
-      "untrained_file": ""
+      "resource_set_name": "res014052"
     },
     {
       "card_id": 1115,

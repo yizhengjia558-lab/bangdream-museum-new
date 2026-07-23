@@ -431,12 +431,7 @@
       "release_date": "2022-03-18",
       "untrained_image": "",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021052_rip/card_after_training.png",
-      "resource_set_name": "res021052",
-      "bestdori_type": "kirafes",
-      "card_kind": "kirafes",
-      "animation_asset_bundle_name": "mov021001",
-      "trained_file": "Roselia/凑友希那/Cards/Trained/1476_不变的温暖_trained.png",
-      "untrained_file": ""
+      "resource_set_name": "res021052"
     },
     {
       "card_id": 1178,

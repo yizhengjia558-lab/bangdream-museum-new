@@ -451,12 +451,7 @@
       "release_date": "2022-09-29",
       "untrained_image": "",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012059_rip/card_after_training.png",
-      "resource_set_name": "res012059",
-      "bestdori_type": "kirafes",
-      "card_kind": "kirafes",
-      "animation_asset_bundle_name": "mov012001",
-      "trained_file": "HelloHappyWorld/濑田薰/Cards/Trained/1620_梦幻，倾倒_trained.png",
-      "untrained_file": ""
+      "resource_set_name": "res012059"
     },
     {
       "card_id": 10020,

@@ -491,12 +491,7 @@
       "release_date": "2022-07-31",
       "untrained_image": "",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017060_rip/card_after_training.png",
-      "resource_set_name": "res017060",
-      "bestdori_type": "kirafes",
-      "card_kind": "kirafes",
-      "animation_asset_bundle_name": "mov017001",
-      "trained_file": "PastelPalettes/冰川日菜/Cards/Trained/1591_双眸闪闪发亮_trained.png",
-      "untrained_file": ""
+      "resource_set_name": "res017060"
     },
     {
       "card_id": 1523,
