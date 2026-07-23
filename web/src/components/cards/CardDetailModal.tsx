@@ -237,13 +237,14 @@ export function CardDetailModal({
                 ) : null}
               </div>
 
-              <div className={cn("card-detail-visual-row", showKirafesDynamic && "card-detail-visual-row--kirafes-dynamic")}>
+              <div className="card-detail-visual-row">
                 <div className="card-detail-main">
                   <div className="card-detail-image-stack">
                     {showKirafesDynamic ? (
                       <KirafesDynamicStage
                         cardSrc={activeSrc}
                         cardName={item.card.card_name}
+                        videoSrc={item.card.kirafes_video}
                         bilibiliBvid={item.card.bilibili_bvid}
                       />
                     ) : (
@@ -357,9 +358,7 @@ export function CardDetailModal({
                 {characterId > 0 ? (
                   <CardLive2DViewer
                     characterId={characterId}
-                    live2dAssetBundleName={
-                      showKirafesDynamic ? null : item.card.live2d_asset_bundle_name
-                    }
+                    live2dAssetBundleName={item.card.live2d_asset_bundle_name}
                     sdResourceName={item.card.sd_resource_name}
                     characterName={item.card.card_name}
                     className="card-detail-sidebar"
@@ -411,6 +410,7 @@ export function CardDetailModal({
                   <KirafesDynamicStage
                     cardSrc={activeSrc}
                     cardName={item.card.card_name}
+                    videoSrc={item.card.kirafes_video}
                     bilibiliBvid={item.card.bilibili_bvid}
                   />
                 </div>

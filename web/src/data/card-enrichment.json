@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T09:09:36.627452+00:00",
+  "generated_at": "2026-07-23T09:40:25.550108+00:00",
   "matched": 2253,
   "total": 2319,
   "cards": {
@@ -1988,7 +1988,7 @@
       "release_year": 2018,
       "costume_id": 243,
       "sd_resource_name": "sd002022",
-      "live2d_asset_bundle_name": null,
+      "live2d_asset_bundle_name": "002_live_r_2018",
       "animation_asset_bundle_name": null,
       "bestdori_type": "campaign"
     },
@@ -2040,7 +2040,7 @@
       "release_year": 2020,
       "costume_id": 243,
       "sd_resource_name": "sd002013",
-      "live2d_asset_bundle_name": null,
+      "live2d_asset_bundle_name": "002_live_r_2018",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
@@ -4183,9 +4183,9 @@
       "attribute": "happy",
       "card_kind": "limited",
       "release_year": 2024,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null,
+      "costume_id": 1729,
+      "sd_resource_name": "sd004062",
+      "live2d_asset_bundle_name": "004_dream_festival_3_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
     },
@@ -5069,7 +5069,7 @@
       "release_year": 2023,
       "costume_id": 1521,
       "sd_resource_name": "sd005062",
-      "live2d_asset_bundle_name": "005_birthday_2022",
+      "live2d_asset_bundle_name": null,
       "animation_asset_bundle_name": null,
       "bestdori_type": "birthday"
     },
@@ -10098,9 +10098,9 @@
       "attribute": "pure",
       "card_kind": "limited",
       "release_year": 2019,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null,
+      "costume_id": 208,
+      "sd_resource_name": "sd011018",
+      "live2d_asset_bundle_name": "011_live_event_29_ssr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
     },
@@ -13127,9 +13127,9 @@
       "attribute": "cool",
       "card_kind": "normal",
       "release_year": 2021,
-      "costume_id": 836,
-      "sd_resource_name": "sd014038",
-      "live2d_asset_bundle_name": "014_live_r_2020",
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null,
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
@@ -17534,9 +17534,9 @@
       "attribute": "happy",
       "card_kind": "normal",
       "release_year": 2019,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null,
+      "costume_id": 209,
+      "sd_resource_name": "sd019011",
+      "live2d_asset_bundle_name": "019_live_event_29_sr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
@@ -22578,9 +22578,9 @@
       "attribute": "cool",
       "card_kind": "normal",
       "release_year": 2021,
-      "costume_id": 811,
-      "sd_resource_name": "sd024036",
-      "live2d_asset_bundle_name": "024_3rd_general_election_r",
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null,
       "animation_asset_bundle_name": null,
       "bestdori_type": "campaign"
     },
@@ -22658,7 +22658,7 @@
       "release_year": 2022,
       "costume_id": 1356,
       "sd_resource_name": "sd024053",
-      "live2d_asset_bundle_name": null,
+      "live2d_asset_bundle_name": "024_live_r_2022",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
@@ -22723,7 +22723,7 @@
       "release_year": 2023,
       "costume_id": 1356,
       "sd_resource_name": "sd024053",
-      "live2d_asset_bundle_name": null,
+      "live2d_asset_bundle_name": "024_live_r_2022",
       "animation_asset_bundle_name": null,
       "bestdori_type": "campaign"
     },
@@ -29119,7 +29119,7 @@
       "release_year": 2026,
       "costume_id": 2180,
       "sd_resource_name": "sd035042",
-      "live2d_asset_bundle_name": "035_live_event_298_ur",
+      "live2d_asset_bundle_name": null,
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
@@ -29676,9 +29676,9 @@
       "attribute": "happy",
       "card_kind": "limited",
       "release_year": 2025,
-      "costume_id": 2101,
-      "sd_resource_name": "sd038009",
-      "live2d_asset_bundle_name": "038_live_event_286_ur",
+      "costume_id": null,
+      "sd_resource_name": null,
+      "live2d_asset_bundle_name": null,
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
     },

@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { cn } from "@/lib/utils";
+import { assetUrl, cn } from "@/lib/utils";
 
 /** Multi-shot camera tour fallback when no memorial video is mapped. */
 const CAMERA_SHOTS = [
@@ -30,18 +30,21 @@ function bilibiliPlayerSrc(bvid: string) {
 }
 
 /**
- * Full-card cinematic stage for KIRAFES (动态卡).
- * Prefers mapped Bilibili memorial videos; falls back to camera tour.
+ * KiraFes dynamic art stage.
+ * Prefers local memorial mp4 (same frame size as static card art),
+ * then Bilibili embed, then Ken Burns fallback.
  */
 export function KirafesDynamicStage({
   cardSrc,
   cardName,
+  videoSrc,
   bilibiliBvid,
   className,
   compact = false,
 }: {
   cardSrc: string;
   cardName: string;
+  videoSrc?: string | null;
   bilibiliBvid?: string | null;
   className?: string;
   compact?: boolean;
@@ -49,13 +52,16 @@ export function KirafesDynamicStage({
   const { t } = useLocale();
   const [shotIndex, setShotIndex] = useState(0);
   const [playing, setPlaying] = useState(true);
-  const hasVideo = Boolean(bilibiliBvid);
+  const localSrc = videoSrc ? assetUrl(videoSrc) : "";
+  const hasLocal = Boolean(localSrc);
+  const hasBilibili = Boolean(bilibiliBvid) && !hasLocal;
+  const hasVideo = hasLocal || hasBilibili;
   const shot: Shot = CAMERA_SHOTS[shotIndex % CAMERA_SHOTS.length];
 
   useEffect(() => {
     setShotIndex(0);
     setPlaying(true);
-  }, [cardSrc, bilibiliBvid]);
+  }, [cardSrc, videoSrc, bilibiliBvid]);
 
   useEffect(() => {
     if (!playing || hasVideo) return;
@@ -70,13 +76,32 @@ export function KirafesDynamicStage({
     [shot.x, shot.y, shot.scale]
   );
 
+  if (hasLocal) {
+    return (
+      <div className={cn("card-detail-image-frame kirafes-local-frame", compact && "kirafes-local-frame--compact", className)}>
+        <video
+          key={localSrc}
+          className="kirafes-local-video"
+          src={localSrc}
+          autoPlay
+          loop
+          muted
+          playsInline
+          controls
+          preload="metadata"
+          aria-label={`${cardName} · ${t("card.dynamicArt")}`}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className={cn("kirafes-cinema", compact && "kirafes-cinema--compact", className)}>
       <div className="kirafes-cinema__rail kirafes-cinema__rail--left" aria-hidden />
       <div className="kirafes-cinema__rail kirafes-cinema__rail--right" aria-hidden />
 
       <div className="kirafes-cinema__stage">
-        {hasVideo ? (
+        {hasBilibili ? (
           <iframe
             key={bilibiliBvid}
             className="kirafes-cinema__iframe"
@@ -116,7 +141,7 @@ export function KirafesDynamicStage({
 
       <div className="kirafes-cinema__hud">
         <span className="kirafes-cinema__live">{t("card.dynamicArt")}</span>
-        {hasVideo ? (
+        {hasBilibili ? (
           <a
             className="kirafes-cinema__open"
             href={`https://www.bilibili.com/video/${bilibiliBvid}/`}

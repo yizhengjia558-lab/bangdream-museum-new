@@ -28,6 +28,8 @@ export interface CardData {
   bestdori_type?: string | null;
   /** Bilibili BV id for KiraFes memorial card cinema */
   bilibili_bvid?: string | null;
+  /** Local / public path to KiraFes memorial mp4 */
+  kirafes_video?: string | null;
 }
 
 export interface VoiceActorData {

@@ -1993,7 +1993,44 @@ body.live2d-embed-route main {
   opacity: 0.65;
 }
 
-/* ── KiraFes full-card cinema (in-game style camera tour) ── */
+/* Local KiraFes mp4 uses the same frame as static card art */
+.kirafes-local-frame {
+  display: block;
+}
+
+.kirafes-local-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.2rem;
+}
+
+.kirafes-local-frame--compact {
+  max-height: min(40vh, 340px);
+}
+
+.card-detail-fullscreen-dynamic {
+  width: min(96vw, 1120px);
+  max-height: 88vh;
+}
+
+.card-detail-fullscreen-dynamic .kirafes-local-frame {
+  width: min(96vw, 1120px);
+  height: min(88vh, 700px);
+  max-height: 88vh;
+  aspect-ratio: auto;
+  min-height: 0;
+}
+
+.card-detail-fullscreen-dynamic .kirafes-cinema {
+  min-height: min(78vh, 700px);
+  aspect-ratio: 16 / 9;
+}
+
+/* ── KiraFes cinema fallback (Bilibili / Ken Burns) ── */
 .kirafes-cinema {
   position: relative;
   display: grid;
@@ -2211,20 +2248,6 @@ body.live2d-embed-route main {
     transform: translate3d(8px, 120%, 0);
     opacity: 0;
   }
-}
-
-.card-detail-visual-row--kirafes-dynamic .card-detail-image-stack {
-  min-height: min(52vh, 440px);
-}
-
-.card-detail-fullscreen-dynamic {
-  width: min(96vw, 1120px);
-  max-height: 88vh;
-}
-
-.card-detail-fullscreen-dynamic .kirafes-cinema {
-  min-height: min(78vh, 700px);
-  aspect-ratio: 16 / 9;
 }
 
 @media (max-width: 860px) {

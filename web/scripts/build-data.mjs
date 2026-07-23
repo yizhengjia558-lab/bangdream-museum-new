@@ -38,8 +38,11 @@ const enrichmentRaw = fs.existsSync(enrichmentPath)
 const kirafesVideosRaw = fs.existsSync(kirafesVideosPath)
   ? JSON.parse(fs.readFileSync(kirafesVideosPath, "utf8"))
   : { videos: [] };
-const bilibiliByCardId = new Map(
-  (kirafesVideosRaw.videos || []).map((v) => [String(v.card_id), v.bvid])
+const kirafesByCardId = new Map(
+  (kirafesVideosRaw.videos || []).map((v) => [
+    String(v.card_id),
+    { bvid: v.bvid || null, local_file: v.local_file || null },
+  ])
 );
 
 function normCardName(name) {
@@ -51,10 +54,10 @@ function enrichCardFields(card, entry, meta) {
   const extra = enrichmentRaw.cards?.[key] || {};
   const releaseYear = extra.release_year ?? (card.release_date ? parseInt(card.release_date.slice(0, 4), 10) : null);
   const bestdoriId = extra.bestdori_card_id ?? card.bestdori_card_id ?? null;
-  const bilibiliBvid =
-    (bestdoriId != null ? bilibiliByCardId.get(String(bestdoriId)) : null) ||
-    (card.card_id != null ? bilibiliByCardId.get(String(card.card_id)) : null) ||
-    bilibiliByCardId.get(String(card.id)) ||
+  const kirafesMeta =
+    (bestdoriId != null ? kirafesByCardId.get(String(bestdoriId)) : null) ||
+    (card.card_id != null ? kirafesByCardId.get(String(card.card_id)) : null) ||
+    kirafesByCardId.get(String(card.id)) ||
     null;
   return {
     ...card,
@@ -73,7 +76,8 @@ function enrichCardFields(card, entry, meta) {
     live2d_asset_bundle_name: extra.live2d_asset_bundle_name ?? null,
     animation_asset_bundle_name: extra.animation_asset_bundle_name ?? null,
     bestdori_type: extra.bestdori_type ?? null,
-    bilibili_bvid: bilibiliBvid,
+    bilibili_bvid: kirafesMeta?.bvid ?? null,
+    kirafes_video: kirafesMeta?.local_file ?? null,
   };
 }
 
