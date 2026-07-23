@@ -27,12 +27,20 @@ const BAND_SLUG_BY_FOLDER = {
 };
 const enrichmentScript = path.join(root, "scripts/build-card-enrichment.py");
 const enrichmentPath = path.join(__dirname, "../src/data/card-enrichment.json");
+const kirafesVideosPath = path.join(__dirname, "../src/data/kirafes-videos.json");
 
 spawnSync("python", [enrichmentScript], { cwd: root, stdio: "inherit" });
 
 const enrichmentRaw = fs.existsSync(enrichmentPath)
   ? JSON.parse(fs.readFileSync(enrichmentPath, "utf8"))
   : { cards: {} };
+
+const kirafesVideosRaw = fs.existsSync(kirafesVideosPath)
+  ? JSON.parse(fs.readFileSync(kirafesVideosPath, "utf8"))
+  : { videos: [] };
+const bilibiliByCardId = new Map(
+  (kirafesVideosRaw.videos || []).map((v) => [String(v.card_id), v.bvid])
+);
 
 function normCardName(name) {
   return (name || "").replace(/\s+/g, "").toLowerCase();
@@ -42,6 +50,12 @@ function enrichCardFields(card, entry, meta) {
   const key = `${entry.character_id}|${normCardName(card.card_name)}`;
   const extra = enrichmentRaw.cards?.[key] || {};
   const releaseYear = extra.release_year ?? (card.release_date ? parseInt(card.release_date.slice(0, 4), 10) : null);
+  const bestdoriId = extra.bestdori_card_id ?? card.bestdori_card_id ?? null;
+  const bilibiliBvid =
+    (bestdoriId != null ? bilibiliByCardId.get(String(bestdoriId)) : null) ||
+    (card.card_id != null ? bilibiliByCardId.get(String(card.card_id)) : null) ||
+    bilibiliByCardId.get(String(card.id)) ||
+    null;
   return {
     ...card,
     character_id: entry.character_id,
@@ -53,12 +67,13 @@ function enrichCardFields(card, entry, meta) {
     attribute: extra.attribute || "",
     card_kind: extra.card_kind || "normal",
     release_year: Number.isFinite(releaseYear) ? releaseYear : null,
-    bestdori_card_id: extra.bestdori_card_id ?? card.bestdori_card_id ?? null,
+    bestdori_card_id: bestdoriId,
     costume_id: extra.costume_id ?? null,
     sd_resource_name: extra.sd_resource_name ?? null,
     live2d_asset_bundle_name: extra.live2d_asset_bundle_name ?? null,
     animation_asset_bundle_name: extra.animation_asset_bundle_name ?? null,
     bestdori_type: extra.bestdori_type ?? null,
+    bilibili_bvid: bilibiliBvid,
   };
 }
 

@@ -26,6 +26,8 @@ export interface CardData {
   live2d_asset_bundle_name?: string | null;
   animation_asset_bundle_name?: string | null;
   bestdori_type?: string | null;
+  /** Bilibili BV id for KiraFes memorial card cinema */
+  bilibili_bvid?: string | null;
 }
 
 export interface VoiceActorData {

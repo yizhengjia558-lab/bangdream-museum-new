@@ -75,6 +75,7 @@ const zh = {
     dynamicArt: "动态展示",
     playCinema: "播放卡面动画",
     pauseCinema: "暂停卡面动画",
+    openBilibili: "打开B站原视频",
   },
   common: { members: "成员", cards: "卡面", scrollToTop: "回到顶部", close: "关闭" },
   search: {
@@ -224,6 +225,7 @@ const en = {
     dynamicArt: "Dynamic View",
     playCinema: "Play card cinema",
     pauseCinema: "Pause card cinema",
+    openBilibili: "Open on Bilibili",
   },
   common: { members: "Members", cards: "Cards", scrollToTop: "Back to Top", close: "Close" },
   search: {
@@ -373,6 +375,7 @@ const ja = {
     dynamicArt: "ダイナミック",
     playCinema: "カードアニメ再生",
     pauseCinema: "カードアニメ一時停止",
+    openBilibili: "Bilibiliで開く",
   },
   common: { members: "メンバー", cards: "カード", scrollToTop: "トップへ", close: "閉じる" },
   search: {

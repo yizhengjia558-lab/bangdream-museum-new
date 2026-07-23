@@ -244,6 +244,7 @@ export function CardDetailModal({
                       <KirafesDynamicStage
                         cardSrc={activeSrc}
                         cardName={item.card.card_name}
+                        bilibiliBvid={item.card.bilibili_bvid}
                       />
                     ) : (
                       <button
@@ -410,6 +411,7 @@ export function CardDetailModal({
                   <KirafesDynamicStage
                     cardSrc={activeSrc}
                     cardName={item.card.card_name}
+                    bilibiliBvid={item.card.bilibili_bvid}
                   />
                 </div>
               ) : (
