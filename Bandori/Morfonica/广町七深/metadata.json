@@ -231,7 +231,12 @@
       "release_date": "2023-11-17",
       "untrained_image": "",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res028027_rip/card_after_training.png",
-      "resource_set_name": "res028027"
+      "resource_set_name": "res028027",
+      "bestdori_type": "kirafes",
+      "card_kind": "kirafes",
+      "animation_asset_bundle_name": "mov028001",
+      "trained_file": "Morfonica/广町七深/Cards/Trained/1719_春天就在这里_trained.png",
+      "untrained_file": ""
     },
     {
       "card_id": 1746,

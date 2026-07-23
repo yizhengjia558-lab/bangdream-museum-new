@@ -1,10 +1,10 @@
 import type { CardData, CharacterData } from "./data-types";
 
 export type CardAttribute = "power" | "cool" | "pure" | "happy";
-export type CardKind = "normal" | "limited" | "birthday" | "collab";
+export type CardKind = "normal" | "limited" | "birthday" | "collab" | "kirafes";
 
 export const CARD_ATTRIBUTES: CardAttribute[] = ["power", "cool", "pure", "happy"];
-export const CARD_KINDS: CardKind[] = ["normal", "limited", "birthday", "collab"];
+export const CARD_KINDS: CardKind[] = ["normal", "limited", "kirafes", "birthday", "collab"];
 export const CARD_STARS = [1, 2, 3, 4, 5] as const;
 
 export const BAND_FILTER_IDS = [

@@ -541,7 +541,12 @@
       "release_date": "2024-02-25",
       "untrained_image": "",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018069_rip/card_after_training.png",
-      "resource_set_name": "res018069"
+      "resource_set_name": "res018069",
+      "bestdori_type": "kirafes",
+      "card_kind": "kirafes",
+      "animation_asset_bundle_name": "mov018001",
+      "trained_file": "PastelPalettes/白鹭千圣/Cards/Trained/1785_与那天一样的风和你_trained.png",
+      "untrained_file": ""
     },
     {
       "card_id": 1788,

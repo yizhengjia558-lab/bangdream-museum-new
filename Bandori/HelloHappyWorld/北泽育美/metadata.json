@@ -511,7 +511,12 @@
       "release_date": "2024-04-19",
       "untrained_image": "",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res013066_rip/card_after_training.png",
-      "resource_set_name": "res013066"
+      "resource_set_name": "res013066",
+      "bestdori_type": "kirafes",
+      "card_kind": "kirafes",
+      "animation_asset_bundle_name": "mov013001",
+      "trained_file": "HelloHappyWorld/北泽育美/Cards/Trained/1834_花朵与笑容，轻柔地绽放_trained.png",
+      "untrained_file": ""
     },
     {
       "card_id": 1878,

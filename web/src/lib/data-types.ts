@@ -1,5 +1,5 @@
 export type CardAttribute = "power" | "cool" | "pure" | "happy";
-export type CardKind = "normal" | "limited" | "birthday" | "collab";
+export type CardKind = "normal" | "limited" | "birthday" | "collab" | "kirafes";
 
 export interface CardData {
   id: string;
@@ -24,6 +24,8 @@ export interface CardData {
   costume_id?: number | null;
   sd_resource_name?: string | null;
   live2d_asset_bundle_name?: string | null;
+  animation_asset_bundle_name?: string | null;
+  bestdori_type?: string | null;
 }
 
 export interface VoiceActorData {

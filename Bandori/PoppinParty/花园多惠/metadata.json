@@ -421,7 +421,12 @@
       "release_date": "2022-07-31",
       "untrained_image": "",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res002054_rip/card_after_training.png",
-      "resource_set_name": "res002054"
+      "resource_set_name": "res002054",
+      "bestdori_type": "kirafes",
+      "card_kind": "kirafes",
+      "animation_asset_bundle_name": "mov002001",
+      "trained_file": "PoppinParty/花园多惠/Cards/Trained/1592_夏日，跨越道口_trained.png",
+      "untrained_file": ""
     },
     {
       "card_id": 1488,

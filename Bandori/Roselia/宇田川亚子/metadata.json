@@ -541,7 +541,12 @@
       "release_date": "2023-11-17",
       "untrained_image": "",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res024064_rip/card_after_training.png",
-      "resource_set_name": "res024064"
+      "resource_set_name": "res024064",
+      "bestdori_type": "kirafes",
+      "card_kind": "kirafes",
+      "animation_asset_bundle_name": "mov024001",
+      "trained_file": "Roselia/宇田川亚子/Cards/Trained/1718_像魔法一样绽放！_trained.png",
+      "untrained_file": ""
     },
     {
       "card_id": 1733,

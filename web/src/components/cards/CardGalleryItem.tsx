@@ -24,8 +24,9 @@ export function CardGalleryItem({
   highlight: boolean;
   onClick: () => void;
 }) {
-  const { locale } = useLocale();
+  const { locale, t } = useLocale();
   const rarityLabel = getCardRarityLabel(item.card, locale);
+  const isKirafes = item.card.card_kind === "kirafes";
 
   return (
     <motion.li
@@ -37,12 +38,18 @@ export function CardGalleryItem({
       whileTap={{ scale: 0.985 }}
       className={cn(
         "card-gallery-item scroll-mt-28",
-        highlight && "card-gallery-item--highlight"
+        highlight && "card-gallery-item--highlight",
+        isKirafes && "card-gallery-item--kirafes"
       )}
     >
       <CardTile className="card-tile--uniform card-tile--interactive h-full" onClick={onClick}>
         <CardFavoriteButton displayKey={item.key} />
         <CardVariantBadge variant={item.variant} />
+        {isKirafes ? (
+          <span className="card-kirafes-badge" title={t("filter.kind.kirafes")}>
+            {t("filter.kind.kirafes")}
+          </span>
+        ) : null}
 
         <div className="card-image-wrap card-image-wrap--landscape relative aspect-[4/3]">
           <AssetImage

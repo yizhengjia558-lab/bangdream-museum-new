@@ -91,7 +91,12 @@
       "release_date": "2022-01-31",
       "untrained_image": "",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res034014_rip/card_after_training.png",
-      "resource_set_name": "res034014"
+      "resource_set_name": "res034014",
+      "bestdori_type": "kirafes",
+      "card_kind": "kirafes",
+      "animation_asset_bundle_name": "mov034001",
+      "trained_file": "RaiseASuilen/鳰原令王那/Cards/Trained/1403_Today's_trained.png",
+      "untrained_file": ""
     },
     {
       "card_id": 1123,

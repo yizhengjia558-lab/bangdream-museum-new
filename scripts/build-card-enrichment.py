@@ -23,7 +23,7 @@ ATTR_MAP = {
     "happy": "happy",
 }
 
-KIND_LIMITED_TYPES = {"limited", "dreamfes", "kirafes"}
+KIND_LIMITED_TYPES = {"limited", "dreamfes"}
 _costume_bundle_cache: dict[int, str | None] = {}
 
 
@@ -35,6 +35,9 @@ def norm(text: str | None) -> str:
 
 def card_kind(type_: str, event: str, card_name: str) -> str:
     blob = f"{card_name} {event}"
+    # KIRAFES = 动态卡 / 闪限（Bestdori type=kirafes）
+    if type_ == "kirafes":
+        return "kirafes"
     if type_ == "birthday" or "生日" in blob:
         return "birthday"
     if "联动" in blob or "コラボ" in blob or "Lawson" in blob or "ローソン" in blob:
@@ -78,12 +81,18 @@ def fetch_live_assets(bestdori_card_id: int) -> dict:
         "costume_id": None,
         "sd_resource_name": None,
         "live2d_asset_bundle_name": None,
+        "animation_asset_bundle_name": None,
+        "bestdori_type": None,
     }
 
     try:
         info = Card(bestdori_card_id).get_info()
         payload["costume_id"] = info.get("costumeId")
         payload["sd_resource_name"] = info.get("sdResourceName")
+        payload["bestdori_type"] = info.get("type")
+        anim = info.get("animation") or {}
+        if isinstance(anim, dict):
+            payload["animation_asset_bundle_name"] = anim.get("assetBundleName")
         costume_id = info.get("costumeId")
         if costume_id:
             payload["live2d_asset_bundle_name"] = costume_bundle_name(int(costume_id))
@@ -188,17 +197,24 @@ def main() -> int:
                     "costume_id": None,
                     "sd_resource_name": None,
                     "live2d_asset_bundle_name": None,
+                    "animation_asset_bundle_name": None,
+                    "bestdori_type": None,
                 }
 
     live_asset_cache = prefetch_live_assets([hit["card_id"] for _, _, hit in pending_hits])
 
     for key, base, hit in pending_hits:
         live_assets = live_asset_cache.get(hit["card_id"], {})
+        live_type = live_assets.get("bestdori_type") or hit.get("bestdori_type") or ""
+        kind = "kirafes" if live_type == "kirafes" else base.get("card_kind") or card_kind(live_type, "", "")
         enrichment[key] = {
             **base,
+            "card_kind": kind,
             "costume_id": live_assets.get("costume_id"),
             "sd_resource_name": live_assets.get("sd_resource_name"),
             "live2d_asset_bundle_name": live_assets.get("live2d_asset_bundle_name"),
+            "animation_asset_bundle_name": live_assets.get("animation_asset_bundle_name"),
+            "bestdori_type": live_type or None,
         }
 
     OUT.parent.mkdir(parents=True, exist_ok=True)

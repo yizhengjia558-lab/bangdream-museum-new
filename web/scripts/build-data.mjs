@@ -57,6 +57,8 @@ function enrichCardFields(card, entry, meta) {
     costume_id: extra.costume_id ?? null,
     sd_resource_name: extra.sd_resource_name ?? null,
     live2d_asset_bundle_name: extra.live2d_asset_bundle_name ?? null,
+    animation_asset_bundle_name: extra.animation_asset_bundle_name ?? null,
+    bestdori_type: extra.bestdori_type ?? null,
   };
 }
 

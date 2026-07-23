@@ -101,6 +101,7 @@ const zh = {
     kind: {
       normal: "普通",
       limited: "限定",
+      kirafes: "动态卡",
       birthday: "生日",
       collab: "联动",
     },
@@ -244,6 +245,7 @@ const en = {
     kind: {
       normal: "Normal",
       limited: "Limited",
+      kirafes: "KiraFes",
       birthday: "Birthday",
       collab: "Collab",
     },
@@ -387,6 +389,7 @@ const ja = {
     kind: {
       normal: "通常",
       limited: "限定",
+      kirafes: "キラフェス",
       birthday: "バースデー",
       collab: "コラボ",
     },
