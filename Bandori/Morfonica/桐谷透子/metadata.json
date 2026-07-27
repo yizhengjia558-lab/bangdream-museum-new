@@ -374,16 +374,6 @@
       "resource_set_name": "res027044"
     },
     {
-      "card_id": 2364,
-      "card_name": "ブレイキング・ブルー",
-      "rarity": "2-Star",
-      "event": "あなたを照らすオーバード",
-      "release_date": "2026-01-10",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027047_rip/card_normal.png",
-      "trained_image": "",
-      "resource_set_name": "res027047"
-    },
-    {
       "card_id": 2423,
       "card_name": "勇気をきみに",
       "rarity": "5-Star",
@@ -422,6 +412,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027046_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027046_rip/card_after_training.png",
       "resource_set_name": "res027046"
+    },
+    {
+      "card_id": 2364,
+      "card_name": "Breaking Blue",
+      "rarity": "2-Star",
+      "event": "将你照亮的黎明曲",
+      "release_date": "2026-07-27",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027047_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res027047"
     },
     {
       "card_id": 90027,

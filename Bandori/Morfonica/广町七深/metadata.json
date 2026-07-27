@@ -354,16 +354,6 @@
       "resource_set_name": "res028042"
     },
     {
-      "card_id": 2363,
-      "card_name": "広町センサー発動！",
-      "rarity": "3-Star",
-      "event": "あなたを照らすオーバード",
-      "release_date": "2026-01-10",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res028045_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res028045_rip/card_after_training.png",
-      "resource_set_name": "res028045"
-    },
-    {
       "card_id": 2395,
       "card_name": "星光茶会",
       "rarity": "2-Star",
@@ -432,6 +422,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res028044_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res028044_rip/card_after_training.png",
       "resource_set_name": "res028044"
+    },
+    {
+      "card_id": 2363,
+      "card_name": "广町感应器启动！",
+      "rarity": "3-Star",
+      "event": "将你照亮的黎明曲",
+      "release_date": "2026-07-27",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res028045_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res028045_rip/card_after_training.png",
+      "resource_set_name": "res028045"
     },
     {
       "card_id": 90028,

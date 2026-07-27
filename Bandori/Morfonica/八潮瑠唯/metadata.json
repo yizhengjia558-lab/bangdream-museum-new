@@ -344,16 +344,6 @@
       "resource_set_name": "res030042"
     },
     {
-      "card_id": 2365,
-      "card_name": "決意は音に乗り",
-      "rarity": "4-Star",
-      "event": "輝きを放つ、瑠璃色の光ガチャ",
-      "release_date": "2026-01-10",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030044_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030044_rip/card_after_training.png",
-      "resource_set_name": "res030044"
-    },
-    {
       "card_id": 2387,
       "card_name": "しんしんと降り積もる",
       "rarity": "5-Star",
@@ -392,6 +382,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030047_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030047_rip/card_after_training.png",
       "resource_set_name": "res030047"
+    },
+    {
+      "card_id": 2365,
+      "card_name": "决心寄于乐声",
+      "rarity": "4-Star",
+      "event": "璀璨夺目、琉璃色光芒招募",
+      "release_date": "2026-07-27",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030044_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030044_rip/card_after_training.png",
+      "resource_set_name": "res030044"
     },
     {
       "card_id": 90030,

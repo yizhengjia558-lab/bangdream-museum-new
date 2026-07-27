@@ -344,16 +344,6 @@
       "resource_set_name": "res029040"
     },
     {
-      "card_id": 2361,
-      "card_name": "朝日に照らされた君は",
-      "rarity": "5-Star",
-      "event": "輝きを放つ、瑠璃色の光ガチャ",
-      "release_date": "2026-01-10",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029042_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029042_rip/card_after_training.png",
-      "resource_set_name": "res029042"
-    },
-    {
       "card_id": 2413,
       "card_name": "重ねた手に想いを",
       "rarity": "5-Star",
@@ -402,6 +392,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029046_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res029046"
+    },
+    {
+      "card_id": 2361,
+      "card_name": "被朝阳照亮的你",
+      "rarity": "5-Star",
+      "event": "璀璨夺目、琉璃色光芒招募",
+      "release_date": "2026-07-27",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029042_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029042_rip/card_after_training.png",
+      "resource_set_name": "res029042"
     },
     {
       "card_id": 90029,

@@ -414,16 +414,6 @@
       "resource_set_name": "res026047"
     },
     {
-      "card_id": 2362,
-      "card_name": "ずっと支えてくれた人",
-      "rarity": "5-Star",
-      "event": "輝きを放つ、瑠璃色の光ガチャ",
-      "release_date": "2026-01-10",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026052_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026052_rip/card_after_training.png",
-      "resource_set_name": "res026052"
-    },
-    {
       "card_id": 2246,
       "card_name": "镜头前的羞涩",
       "rarity": "5-Star",
@@ -472,6 +462,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026054_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026054_rip/card_after_training.png",
       "resource_set_name": "res026054"
+    },
+    {
+      "card_id": 2362,
+      "card_name": "一直以来支持我的人",
+      "rarity": "5-Star",
+      "event": "璀璨夺目、琉璃色光芒招募",
+      "release_date": "2026-07-27",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026052_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026052_rip/card_after_training.png",
+      "resource_set_name": "res026052"
     },
     {
       "card_id": 5007,
