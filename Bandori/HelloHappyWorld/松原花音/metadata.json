@@ -704,6 +704,16 @@
       "resource_set_name": "res014082"
     },
     {
+      "card_id": 2493,
+      "card_name": "ぐるぐるパニック",
+      "rarity": "3-Star",
+      "event": "Let's Drive and Sea!",
+      "release_date": "2026-07-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014089_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014089_rip/card_after_training.png",
+      "resource_set_name": "res014089"
+    },
+    {
       "card_id": 5010,
       "card_name": "Card 5010",
       "rarity": "2-Star",

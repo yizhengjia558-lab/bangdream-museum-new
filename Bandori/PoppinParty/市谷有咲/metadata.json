@@ -734,6 +734,16 @@
       "resource_set_name": "res005092"
     },
     {
+      "card_id": 2496,
+      "card_name": "夏、氷が溶けるまで",
+      "rarity": "5-Star",
+      "event": "ドリームフェスティバルガチャ",
+      "release_date": "2026-07-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res005093_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res005093_rip/card_after_training.png",
+      "resource_set_name": "res005093"
+    },
+    {
       "card_id": 90005,
       "card_name": "Card 90005",
       "rarity": "2-Star",

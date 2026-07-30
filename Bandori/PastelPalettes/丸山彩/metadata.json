@@ -794,6 +794,16 @@
       "resource_set_name": "res016100"
     },
     {
+      "card_id": 2494,
+      "card_name": "海辺に咲く一輪",
+      "rarity": "2-Star",
+      "event": "Let's Drive and Sea!",
+      "release_date": "2026-07-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016101_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res016101"
+    },
+    {
       "card_id": 273,
       "card_name": "第2回ガルパ杯",
       "rarity": "4-Star",

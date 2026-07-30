@@ -734,6 +734,16 @@
       "resource_set_name": "res012085"
     },
     {
+      "card_id": 2495,
+      "card_name": "儚いドライブへの誘い",
+      "rarity": "4-Star",
+      "event": "魅惑のラグジュアリーナイトガチャ",
+      "release_date": "2026-07-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012090_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012090_rip/card_after_training.png",
+      "resource_set_name": "res012090"
+    },
+    {
       "card_id": 5004,
       "card_name": "Card 5004",
       "rarity": "2-Star",

@@ -724,6 +724,16 @@
       "resource_set_name": "res017087"
     },
     {
+      "card_id": 2491,
+      "card_name": "あたしたちを繋ぐもの",
+      "rarity": "5-Star",
+      "event": "魅惑のラグジュアリーナイトガチャ",
+      "release_date": "2026-07-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017088_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017088_rip/card_after_training.png",
+      "resource_set_name": "res017088"
+    },
+    {
       "card_id": 90017,
       "card_name": "Card 90017",
       "rarity": "2-Star",

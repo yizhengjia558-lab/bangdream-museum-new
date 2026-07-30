@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T14:05:52.423083+00:00",
+  "generated_at": "2026-07-30T13:54:54.986450+00:00",
   "source": [
     "Bestdori API",
     "Bandori Party API"
@@ -86,7 +86,7 @@
       "standing_url": "",
       "cards_untrained_path": "PoppinParty/市谷有咲/Cards/Untrained",
       "cards_trained_path": "PoppinParty/市谷有咲/Cards/Trained",
-      "card_count": 75
+      "card_count": 76
     },
     {
       "character_id": 6,
@@ -184,7 +184,7 @@
       "standing_url": "",
       "cards_untrained_path": "HelloHappyWorld/濑田薰/Cards/Untrained",
       "cards_trained_path": "HelloHappyWorld/濑田薰/Cards/Trained",
-      "card_count": 76
+      "card_count": 77
     },
     {
       "character_id": 13,
@@ -212,7 +212,7 @@
       "standing_url": "",
       "cards_untrained_path": "HelloHappyWorld/松原花音/Cards/Untrained",
       "cards_trained_path": "HelloHappyWorld/松原花音/Cards/Trained",
-      "card_count": 73
+      "card_count": 74
     },
     {
       "character_id": 15,
@@ -240,7 +240,7 @@
       "standing_url": "",
       "cards_untrained_path": "PastelPalettes/丸山彩/Cards/Untrained",
       "cards_trained_path": "PastelPalettes/丸山彩/Cards/Trained",
-      "card_count": 81
+      "card_count": 82
     },
     {
       "character_id": 17,
@@ -254,7 +254,7 @@
       "standing_url": "",
       "cards_untrained_path": "PastelPalettes/冰川日菜/Cards/Untrained",
       "cards_trained_path": "PastelPalettes/冰川日菜/Cards/Trained",
-      "card_count": 73
+      "card_count": 74
     },
     {
       "character_id": 18,
@@ -310,7 +310,7 @@
       "standing_url": "",
       "cards_untrained_path": "Roselia/凑友希那/Cards/Untrained",
       "cards_trained_path": "Roselia/凑友希那/Cards/Trained",
-      "card_count": 76
+      "card_count": 77
     },
     {
       "character_id": 22,
@@ -394,7 +394,7 @@
       "standing_url": "",
       "cards_untrained_path": "Morfonica/桐谷透子/Cards/Untrained",
       "cards_trained_path": "Morfonica/桐谷透子/Cards/Trained",
-      "card_count": 43
+      "card_count": 44
     },
     {
       "character_id": 28,

@@ -424,6 +424,16 @@
       "resource_set_name": "res027047"
     },
     {
+      "card_id": 2497,
+      "card_name": "夢中の天才",
+      "rarity": "5-Star",
+      "event": "ドリームフェスティバルガチャ",
+      "release_date": "2026-07-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027050_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027050_rip/card_after_training.png",
+      "resource_set_name": "res027050"
+    },
+    {
       "card_id": 90027,
       "card_name": "Card 90027",
       "rarity": "2-Star",

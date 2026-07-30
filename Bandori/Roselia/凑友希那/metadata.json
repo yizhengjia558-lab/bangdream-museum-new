@@ -734,6 +734,16 @@
       "resource_set_name": "res021084"
     },
     {
+      "card_id": 2492,
+      "card_name": "激闘！　真夏の決戦！",
+      "rarity": "5-Star",
+      "event": "魅惑のラグジュアリーナイトガチャ",
+      "release_date": "2026-07-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021087_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021087_rip/card_after_training.png",
+      "resource_set_name": "res021087"
+    },
+    {
       "card_id": 274,
       "card_name": "第2回ガルパ杯",
       "rarity": "4-Star",
