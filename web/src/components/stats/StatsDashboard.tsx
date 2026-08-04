@@ -12,14 +12,17 @@ import {
   type VisitorStatsDetailed,
   type VisitorStatsPublic,
 } from "@/lib/analytics";
+import { fetchCommunityPublicStats, isCommunityEnabled } from "@/lib/community-api";
 
 const TOKEN_STORAGE_KEY = "bd-stats-admin-token";
 
 export function StatsDashboard() {
   const { t } = useLocale();
   const enabled = isVisitorAnalyticsEnabled();
+  const communityEnabled = isCommunityEnabled();
   const [stats, setStats] = useState<VisitorStatsPublic | VisitorStatsDetailed | null>(null);
-  const [loading, setLoading] = useState(enabled);
+  const [users, setUsers] = useState<number | null>(null);
+  const [loading, setLoading] = useState(enabled || communityEnabled);
   const [error, setError] = useState(false);
   const [tokenInput, setTokenInput] = useState("");
   const [token, setToken] = useState("");
@@ -30,6 +33,18 @@ export function StatsDashboard() {
     setToken(saved);
     setTokenInput(saved);
   }, []);
+
+  useEffect(() => {
+    if (!communityEnabled) return;
+    let cancelled = false;
+    fetchCommunityPublicStats().then((result) => {
+      if (cancelled || !result) return;
+      setUsers(result.users);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [communityEnabled]);
 
   const loadStats = useCallback(async (adminToken?: string) => {
     if (!enabled) {
@@ -105,6 +120,12 @@ export function StatsDashboard() {
                 <p className="stats-metric-label">{t("analytics.todayVisitors")}</p>
                 <p className="stats-metric-value">{(stats.today ?? 0).toLocaleString()}</p>
               </GlassPanel>
+              {users !== null && (
+                <GlassPanel className="stats-metric p-6 sm:p-8">
+                  <p className="stats-metric-label">{t("analytics.registeredUsers")}</p>
+                  <p className="stats-metric-value">{users.toLocaleString()}</p>
+                </GlassPanel>
+              )}
             </div>
 
             <GlassPanel className="stats-panel mt-8 p-6 sm:p-8">

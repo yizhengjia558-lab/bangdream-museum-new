@@ -3,39 +3,65 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { fetchVisitorStats, shouldShowVisitorCount } from "@/lib/analytics";
+import { fetchVisitorStats, isVisitorAnalyticsEnabled, shouldShowVisitorCount } from "@/lib/analytics";
+import { fetchCommunityPublicStats, isCommunityEnabled } from "@/lib/community-api";
 
 export function VisitorCount() {
   const { t } = useLocale();
-  const [total, setTotal] = useState<number | null>(null);
+  const [views, setViews] = useState<number | null>(null);
   const [today, setToday] = useState<number | null>(null);
+  const [users, setUsers] = useState<number | null>(null);
 
   useEffect(() => {
-    if (!shouldShowVisitorCount()) return;
-
     let cancelled = false;
-    fetchVisitorStats().then((stats) => {
-      if (cancelled || !stats) return;
-      setTotal(stats.total);
-      setToday(stats.today);
-    });
+
+    if (shouldShowVisitorCount()) {
+      fetchVisitorStats().then((stats) => {
+        if (cancelled || !stats) return;
+        setViews(stats.total);
+        setToday(stats.today);
+      });
+    }
+
+    if (isCommunityEnabled()) {
+      fetchCommunityPublicStats().then((stats) => {
+        if (cancelled || !stats) return;
+        setUsers(stats.users);
+      });
+    }
 
     return () => {
       cancelled = true;
     };
   }, []);
 
-  if (!shouldShowVisitorCount() || total === null) return null;
+  const showViews = shouldShowVisitorCount() && views !== null;
+  const showUsers = isCommunityEnabled() && users !== null;
+  if (!showViews && !showUsers) return null;
+
+  const parts: string[] = [];
+  if (showViews) {
+    parts.push(
+      t("analytics.footerViews")
+        .replace("{total}", views!.toLocaleString())
+        .replace("{today}", (today ?? 0).toLocaleString())
+    );
+  }
+  if (showUsers) {
+    parts.push(t("analytics.footerUsers").replace("{count}", users!.toLocaleString()));
+  }
 
   return (
     <p className="visitor-count mt-6 text-[11px] tracking-wide text-[var(--text-muted)]">
-      {t("analytics.footerCount")
-        .replace("{total}", total.toLocaleString())
-        .replace("{today}", (today ?? 0).toLocaleString())}
-      {" · "}
-      <Link href="/stats/" className="visitor-count-link">
-        {t("analytics.viewStats")}
-      </Link>
+      {parts.join(" · ")}
+      {isVisitorAnalyticsEnabled() && (
+        <>
+          {" · "}
+          <Link href="/stats/" className="visitor-count-link">
+            {t("analytics.viewStats")}
+          </Link>
+        </>
+      )}
     </p>
   );
 }

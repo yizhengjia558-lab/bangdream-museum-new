@@ -206,3 +206,28 @@ export async function createCardComment(
 export async function deleteCardComment(id: string) {
   return request<{ ok: boolean }>(`/cards/comments/${id}`, { method: "DELETE" });
 }
+
+export type CommunityPublicStats = {
+  users: number;
+  posts: number;
+  comments: number;
+  updatedAt?: string;
+};
+
+export async function fetchCommunityPublicStats(): Promise<CommunityPublicStats | null> {
+  const base = communityApiBase();
+  if (!base) return null;
+  try {
+    const res = await fetch(`${base}/stats`, { cache: "no-store" });
+    if (!res.ok) return null;
+    const data = (await res.json()) as CommunityPublicStats;
+    return {
+      users: Number(data.users) || 0,
+      posts: Number(data.posts) || 0,
+      comments: Number(data.comments) || 0,
+      updatedAt: data.updatedAt,
+    };
+  } catch {
+    return null;
+  }
+}

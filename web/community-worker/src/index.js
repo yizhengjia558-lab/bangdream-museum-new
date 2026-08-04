@@ -581,6 +581,22 @@ export default {
         return json({ ok: true }, request, env);
       }
 
+      if (url.pathname === "/stats" && request.method === "GET") {
+        const usersRow = await env.DB.prepare("SELECT COUNT(*) AS c FROM users").first();
+        const postsRow = await env.DB.prepare("SELECT COUNT(*) AS c FROM posts").first();
+        const commentsRow = await env.DB.prepare("SELECT COUNT(*) AS c FROM card_comments").first();
+        return json(
+          {
+            users: Number(usersRow?.c) || 0,
+            posts: Number(postsRow?.c) || 0,
+            comments: Number(commentsRow?.c) || 0,
+            updatedAt: new Date().toISOString(),
+          },
+          request,
+          env
+        );
+      }
+
       if (url.pathname.startsWith("/media/") && request.method === "GET") {
         return handleMediaGet(request, env, url.pathname.slice("/media/".length));
       }
