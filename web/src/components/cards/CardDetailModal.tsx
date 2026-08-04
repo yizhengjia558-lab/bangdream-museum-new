@@ -18,6 +18,7 @@ import {
   type CardDisplayItem,
   type CardVariant,
 } from "@/lib/cards";
+import { isCommunityEnabled, recordCardView } from "@/lib/community-api";
 import { cn } from "@/lib/utils";
 
 type KirafesPreviewMode = "static" | "dynamic";
@@ -134,6 +135,14 @@ export function CardDetailModal({
     setKirafesMode(item.card.card_kind === "kirafes" ? "dynamic" : "static");
     setFullscreen(false);
   }, [item, availability.both, availability.trained, availability.untrained]);
+
+  useEffect(() => {
+    if (!item || !isCommunityEnabled()) return;
+    void recordCardView(item.card.id, {
+      characterId: item.card.character_id ?? characterId,
+      bandFolder: item.card.band_folder ?? "",
+    });
+  }, [item?.card.id, item?.card.character_id, item?.card.band_folder, characterId]);
 
   const navIndex = useMemo(
     () => (item && items.length ? items.findIndex((entry) => entry.key === item.key) : -1),

@@ -250,3 +250,102 @@ export async function recordCommunityVisit(path: string) {
     /* non-blocking */
   }
 }
+
+export type WallComment = {
+  id: string;
+  characterId: number;
+  body: string;
+  createdAt: number;
+  author: CommunityUser;
+};
+
+export async function listCharacterWall(characterId: number, limit = 50) {
+  return request<{ comments: WallComment[] }>(
+    `/characters/${characterId}/wall?limit=${limit}`
+  );
+}
+
+export async function createCharacterWallComment(characterId: number, body: string) {
+  return request<{ id: string }>(`/characters/${characterId}/wall`, {
+    method: "POST",
+    body: JSON.stringify({ body }),
+  });
+}
+
+export async function deleteCharacterWallComment(id: string) {
+  return request<{ ok: boolean }>(`/characters/wall/${id}`, { method: "DELETE" });
+}
+
+export async function recordCardView(
+  cardId: string,
+  meta: { characterId?: number; bandFolder?: string } = {}
+) {
+  const base = communityApiBase();
+  if (!base || typeof window === "undefined") return null;
+  try {
+    const res = await fetch(`${base}/cards/${encodeURIComponent(cardId)}/view`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        characterId: meta.characterId ?? 0,
+        bandFolder: meta.bandFolder ?? "",
+      }),
+      keepalive: true,
+    });
+    if (!res.ok) return null;
+    return (await res.json()) as { ok: boolean; views: number };
+  } catch {
+    return null;
+  }
+}
+
+export type TopCardEntry = { cardId: string; views: number };
+
+export async function fetchCharacterTopCards(
+  characterId: number,
+  options: { limit?: number; month?: string } = {}
+) {
+  const q = new URLSearchParams();
+  if (options.limit) q.set("limit", String(options.limit));
+  if (options.month) q.set("month", options.month);
+  const qs = q.toString();
+  return request<{ cards: TopCardEntry[] }>(
+    `/characters/${characterId}/top-cards${qs ? `?${qs}` : ""}`
+  );
+}
+
+export type TopCharacterEntry = { characterId: number; views: number };
+
+export async function fetchBandTopCharacters(
+  bandFolder: string,
+  options: { limit?: number; month?: string } = {}
+) {
+  const q = new URLSearchParams();
+  if (options.limit) q.set("limit", String(options.limit));
+  if (options.month) q.set("month", options.month);
+  const qs = q.toString();
+  return request<{ characters: TopCharacterEntry[] }>(
+    `/bands/${encodeURIComponent(bandFolder)}/top-characters${qs ? `?${qs}` : ""}`
+  );
+}
+
+export type ChampionshipPayload = {
+  month: string;
+  isFinal: boolean;
+  characterCardChamps: {
+    characterId: number;
+    cardId: string;
+    bandFolder: string;
+    views: number;
+  }[];
+  bandCharacterChamps: {
+    bandFolder: string;
+    characterId: number;
+    views: number;
+  }[];
+};
+
+export async function fetchMonthlyChampionship(month?: string) {
+  const q = month ? `?month=${encodeURIComponent(month)}` : "";
+  return request<ChampionshipPayload>(`/championship${q}`);
+}

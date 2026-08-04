@@ -618,6 +618,266 @@ async function handlePublicStats(request, env) {
   );
 }
 
+function monthKey(date = new Date()) {
+  return date.toISOString().slice(0, 7);
+}
+
+function previousMonthKey() {
+  const d = new Date();
+  d.setUTCDate(1);
+  d.setUTCMonth(d.getUTCMonth() - 1);
+  return d.toISOString().slice(0, 7);
+}
+
+async function handleCharacterWallList(request, env, characterId) {
+  const cid = Number(characterId);
+  if (!Number.isFinite(cid) || cid <= 0) return error("Invalid character id", request, env);
+  const limit = Math.min(100, Math.max(1, Number(new URL(request.url).searchParams.get("limit")) || 50));
+  const rows = await env.DB.prepare(
+    `SELECT w.*, u.username, u.avatar_url, u.signature, u.gender
+     FROM character_wall w JOIN users u ON u.id = w.user_id
+     WHERE w.character_id = ?
+     ORDER BY w.created_at DESC
+     LIMIT ?`
+  )
+    .bind(cid, limit)
+    .all();
+
+  return json(
+    {
+      comments: (rows.results || []).map((c) => ({
+        id: c.id,
+        characterId: c.character_id,
+        body: c.body,
+        createdAt: c.created_at,
+        author: {
+          id: c.user_id,
+          username: c.username,
+          avatarUrl: c.avatar_url || null,
+          signature: c.signature || "",
+          gender: c.gender || "unset",
+        },
+      })),
+    },
+    request,
+    env
+  );
+}
+
+async function handleCharacterWallCreate(request, env, characterId) {
+  const auth = await requireUser(request, env);
+  if (auth.error) return auth.error;
+  const cid = Number(characterId);
+  if (!Number.isFinite(cid) || cid <= 0) return error("Invalid character id", request, env);
+  const body = await readJson(request);
+  const text = typeof body?.body === "string" ? body.body.trim() : "";
+  if (!text || text.length > MAX_COMMENT) return error(`Comment required (max ${MAX_COMMENT})`, request, env);
+
+  const commentId = id();
+  const now = Date.now();
+  await env.DB.prepare(
+    `INSERT INTO character_wall (id, character_id, user_id, body, created_at) VALUES (?, ?, ?, ?, ?)`
+  )
+    .bind(commentId, cid, auth.user.id, text, now)
+    .run();
+  return json({ id: commentId }, request, env, 201);
+}
+
+async function handleCharacterWallDelete(request, env, commentId) {
+  const auth = await requireUser(request, env);
+  if (auth.error) return auth.error;
+  const row = await env.DB.prepare("SELECT * FROM character_wall WHERE id = ?").bind(commentId).first();
+  if (!row) return error("Not found", request, env, 404);
+  if (row.user_id !== auth.user.id) return error("Forbidden", request, env, 403);
+  await env.DB.prepare("DELETE FROM character_wall WHERE id = ?").bind(commentId).run();
+  return json({ ok: true }, request, env);
+}
+
+async function handleCardView(request, env, cardId) {
+  if (!cardId || cardId.length > 120) return error("Invalid card id", request, env);
+  const body = await readJson(request);
+  const characterId = Number(body?.characterId) || 0;
+  const bandFolder = typeof body?.bandFolder === "string" ? body.bandFolder.slice(0, 64) : "";
+  const month = monthKey();
+
+  await env.DB.prepare(
+    `INSERT INTO card_views (card_id, character_id, band_folder, views) VALUES (?, ?, ?, 1)
+     ON CONFLICT(card_id) DO UPDATE SET
+       views = views + 1,
+       character_id = CASE WHEN excluded.character_id > 0 THEN excluded.character_id ELSE card_views.character_id END,
+       band_folder = CASE WHEN excluded.band_folder != '' THEN excluded.band_folder ELSE card_views.band_folder END`
+  )
+    .bind(cardId, characterId, bandFolder)
+    .run();
+
+  await env.DB.prepare(
+    `INSERT INTO card_views_monthly (card_id, month, character_id, band_folder, views) VALUES (?, ?, ?, ?, 1)
+     ON CONFLICT(card_id, month) DO UPDATE SET
+       views = views + 1,
+       character_id = CASE WHEN excluded.character_id > 0 THEN excluded.character_id ELSE card_views_monthly.character_id END,
+       band_folder = CASE WHEN excluded.band_folder != '' THEN excluded.band_folder ELSE card_views_monthly.band_folder END`
+  )
+    .bind(cardId, month, characterId, bandFolder)
+    .run();
+
+  const row = await env.DB.prepare("SELECT views FROM card_views WHERE card_id = ?").bind(cardId).first();
+  return json({ ok: true, views: Number(row?.views) || 1 }, request, env);
+}
+
+async function handleCharacterTopCards(request, env, characterId) {
+  const cid = Number(characterId);
+  if (!Number.isFinite(cid) || cid <= 0) return error("Invalid character id", request, env);
+  const url = new URL(request.url);
+  const limit = Math.min(12, Math.max(1, Number(url.searchParams.get("limit")) || 3));
+  const month = url.searchParams.get("month");
+
+  let rows;
+  if (month && /^\d{4}-\d{2}$/.test(month)) {
+    rows = await env.DB.prepare(
+      `SELECT card_id, views FROM card_views_monthly
+       WHERE character_id = ? AND month = ?
+       ORDER BY views DESC LIMIT ?`
+    )
+      .bind(cid, month, limit)
+      .all();
+  } else {
+    rows = await env.DB.prepare(
+      `SELECT card_id, views FROM card_views
+       WHERE character_id = ?
+       ORDER BY views DESC LIMIT ?`
+    )
+      .bind(cid, limit)
+      .all();
+  }
+
+  return json(
+    {
+      cards: (rows.results || []).map((r) => ({
+        cardId: r.card_id,
+        views: Number(r.views) || 0,
+      })),
+    },
+    request,
+    env
+  );
+}
+
+async function handleBandTopCharacters(request, env, bandFolder) {
+  const folder = decodeURIComponent(bandFolder || "").slice(0, 64);
+  if (!folder) return error("Invalid band", request, env);
+  const url = new URL(request.url);
+  const limit = Math.min(12, Math.max(1, Number(url.searchParams.get("limit")) || 3));
+  const month = url.searchParams.get("month");
+
+  let rows;
+  if (month && /^\d{4}-\d{2}$/.test(month)) {
+    rows = await env.DB.prepare(
+      `SELECT character_id, SUM(views) AS views
+       FROM card_views_monthly
+       WHERE band_folder = ? AND month = ? AND character_id > 0
+       GROUP BY character_id
+       ORDER BY views DESC LIMIT ?`
+    )
+      .bind(folder, month, limit)
+      .all();
+  } else {
+    rows = await env.DB.prepare(
+      `SELECT character_id, SUM(views) AS views
+       FROM card_views
+       WHERE band_folder = ? AND character_id > 0
+       GROUP BY character_id
+       ORDER BY views DESC LIMIT ?`
+    )
+      .bind(folder, limit)
+      .all();
+  }
+
+  return json(
+    {
+      characters: (rows.results || []).map((r) => ({
+        characterId: Number(r.character_id),
+        views: Number(r.views) || 0,
+      })),
+    },
+    request,
+    env
+  );
+}
+
+async function handleMonthlyChampionship(request, env) {
+  const url = new URL(request.url);
+  const now = new Date();
+  const day = now.getUTCDate();
+  // From the 28th onward, highlight previous month as "champions"; otherwise current month leaders.
+  const defaultMonth = day >= 28 ? previousMonthKey() : monthKey();
+  const month = /^\d{4}-\d{2}$/.test(url.searchParams.get("month") || "")
+    ? url.searchParams.get("month")
+    : defaultMonth;
+
+  const cardChamps = await env.DB.prepare(
+    `SELECT cvm.character_id, cvm.card_id, cvm.views, cvm.band_folder
+     FROM card_views_monthly cvm
+     INNER JOIN (
+       SELECT character_id, MAX(views) AS max_views
+       FROM card_views_monthly
+       WHERE month = ? AND character_id > 0
+       GROUP BY character_id
+     ) best ON best.character_id = cvm.character_id AND best.max_views = cvm.views
+     WHERE cvm.month = ?
+     ORDER BY cvm.views DESC`
+  )
+    .bind(month, month)
+    .all();
+
+  const bandChamps = await env.DB.prepare(
+    `SELECT band_folder, character_id, SUM(views) AS views
+     FROM card_views_monthly
+     WHERE month = ? AND band_folder != '' AND character_id > 0
+     GROUP BY band_folder, character_id`
+  )
+    .bind(month)
+    .all();
+
+  /** @type {Map<string, { characterId: number, views: number }>} */
+  const bandBest = new Map();
+  for (const row of bandChamps.results || []) {
+    const folder = row.band_folder;
+    const entry = { characterId: Number(row.character_id), views: Number(row.views) || 0 };
+    const prev = bandBest.get(folder);
+    if (!prev || entry.views > prev.views) bandBest.set(folder, entry);
+  }
+
+  // Deduplicate character champs if multiple cards tie — keep first (highest views order)
+  const seenChar = new Set();
+  const characterCardChamps = [];
+  for (const row of cardChamps.results || []) {
+    const cid = Number(row.character_id);
+    if (seenChar.has(cid)) continue;
+    seenChar.add(cid);
+    characterCardChamps.push({
+      characterId: cid,
+      cardId: row.card_id,
+      bandFolder: row.band_folder || "",
+      views: Number(row.views) || 0,
+    });
+  }
+
+  return json(
+    {
+      month,
+      isFinal: day >= 28 || month === previousMonthKey(),
+      characterCardChamps,
+      bandCharacterChamps: [...bandBest.entries()].map(([bandFolder, v]) => ({
+        bandFolder,
+        characterId: v.characterId,
+        views: v.views,
+      })),
+    },
+    request,
+    env
+  );
+}
+
 export default {
   /** @param {Request} request @param {Env} env */
   async fetch(request, env) {
@@ -692,6 +952,38 @@ export default {
       const commentDeleteMatch = url.pathname.match(/^\/cards\/comments\/([a-zA-Z0-9]+)$/);
       if (commentDeleteMatch && request.method === "DELETE") {
         return handleCardCommentDelete(request, env, commentDeleteMatch[1]);
+      }
+
+      const wallMatch = url.pathname.match(/^\/characters\/(\d+)\/wall$/);
+      if (wallMatch && request.method === "GET") {
+        return handleCharacterWallList(request, env, wallMatch[1]);
+      }
+      if (wallMatch && request.method === "POST") {
+        return handleCharacterWallCreate(request, env, wallMatch[1]);
+      }
+
+      const wallDeleteMatch = url.pathname.match(/^\/characters\/wall\/([a-zA-Z0-9]+)$/);
+      if (wallDeleteMatch && request.method === "DELETE") {
+        return handleCharacterWallDelete(request, env, wallDeleteMatch[1]);
+      }
+
+      const cardViewMatch = url.pathname.match(/^\/cards\/([^/]+)\/view$/);
+      if (cardViewMatch && request.method === "POST") {
+        return handleCardView(request, env, decodeURIComponent(cardViewMatch[1]));
+      }
+
+      const charTopCardsMatch = url.pathname.match(/^\/characters\/(\d+)\/top-cards$/);
+      if (charTopCardsMatch && request.method === "GET") {
+        return handleCharacterTopCards(request, env, charTopCardsMatch[1]);
+      }
+
+      const bandTopCharsMatch = url.pathname.match(/^\/bands\/([^/]+)\/top-characters$/);
+      if (bandTopCharsMatch && request.method === "GET") {
+        return handleBandTopCharacters(request, env, bandTopCharsMatch[1]);
+      }
+
+      if (url.pathname === "/championship" && request.method === "GET") {
+        return handleMonthlyChampionship(request, env);
       }
 
       return error("Not found", request, env, 404);

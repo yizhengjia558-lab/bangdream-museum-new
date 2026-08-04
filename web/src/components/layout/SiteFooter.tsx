@@ -38,6 +38,12 @@ export function SiteFooter() {
               {t("nav.forum")}
             </Link>
             <Link
+              href="/championship/"
+              className="text-[11px] font-semibold tracking-[0.12em] text-[var(--text-muted)] uppercase transition hover:text-[var(--brand-pink)]"
+            >
+              {t("nav.championship")}
+            </Link>
+            <Link
               href="/favorites/"
               className="text-[11px] font-semibold tracking-[0.12em] text-[var(--text-muted)] uppercase transition hover:text-[var(--brand-pink)]"
             >

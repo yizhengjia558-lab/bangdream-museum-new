@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { MemberCard } from "@/components/characters/MemberCard";
 import { CardGallery } from "@/components/cards/CardGallery";
+import { BandHotCharacters } from "@/components/bands/BandHotCharacters";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CinematicBackground } from "@/components/effects/CinematicBackground";
 import { GlassPanel } from "@/components/ui/GlassPanel";
@@ -58,6 +60,22 @@ export function BandDetailView({
               ))}
             </div>
           )}
+          <div className="mt-12">
+            <BandHotCharacters
+              bandFolder={band.folder}
+              members={band.members}
+              accent={band.colors.primary}
+            />
+            <p className="mt-4 text-center text-sm text-[var(--text-muted)]">
+              <Link
+                href="/championship/"
+                className="championship-inline-link"
+                style={{ color: band.colors.primary }}
+              >
+                {t("championship.navHint")}
+              </Link>
+            </p>
+          </div>
         </div>
       </section>
 

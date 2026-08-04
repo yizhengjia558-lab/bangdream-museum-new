@@ -19,6 +19,11 @@ export function SiteHeader() {
     { href: "/", label: t("nav.home"), match: (p: string) => p === "/" || p === "" },
     { href: "/bands/", label: t("nav.bands"), match: (p: string) => p.startsWith("/bands") },
     { href: "/forum/", label: t("nav.forum"), match: (p: string) => p.startsWith("/forum") },
+    {
+      href: "/championship/",
+      label: t("nav.championship"),
+      match: (p: string) => p.startsWith("/championship"),
+    },
     { href: "/favorites/", label: t("nav.favorites"), match: (p: string) => p.startsWith("/favorites") },
   ];
 

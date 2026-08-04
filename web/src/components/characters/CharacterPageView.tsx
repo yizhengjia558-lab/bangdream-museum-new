@@ -1,12 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { expandCardDisplays } from "@/lib/cards";
 import { CharacterCardArchive } from "@/components/characters/CharacterCardArchive";
 import { CardGalleryItem } from "@/components/cards/CardGalleryItem";
 import { CharacterHero } from "@/components/characters/CharacterHero";
 import { CharacterVoiceActorSection } from "@/components/characters/CharacterVoiceActorSection";
+import { CharacterConfessionWall } from "@/components/characters/CharacterConfessionWall";
+import { CharacterHotCards } from "@/components/characters/CharacterHotCards";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BandBackButton } from "@/components/bands/BandBackButton";
 import { useLocale } from "@/components/i18n/LocaleProvider";
@@ -69,6 +72,14 @@ export function CharacterPageView({
     [displays]
   );
 
+  const jumpToCardId = useCallback(
+    (cardId: string) => {
+      const item = displays.find((d) => d.card.id === cardId);
+      if (item) jumpToCard(item.key);
+    },
+    [displays, jumpToCard]
+  );
+
   const openFilters = useCallback(() => {
     document.getElementById("character-archive")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
@@ -91,6 +102,22 @@ export function CharacterPageView({
           <CharacterVoiceActorSection voiceActor={character.voice_actor} accent={primary} />
         </motion.div>
       ) : null}
+
+      <motion.section {...sectionReveal} className="page-section relative py-16 sm:py-20">
+        <div className="relative page-container">
+          <CharacterHotCards
+            characterId={character.id}
+            cards={character.cards}
+            accent={primary}
+            onJump={jumpToCardId}
+          />
+          <p className="mt-4 text-center text-sm text-[var(--text-muted)]">
+            <Link href="/championship/" className="championship-inline-link" style={{ color: primary }}>
+              {t("championship.navHint")}
+            </Link>
+          </p>
+        </div>
+      </motion.section>
 
       <motion.section {...sectionReveal} className="page-section relative py-20">
         <div className="pointer-events-none absolute inset-0 bloom-layer" aria-hidden />
@@ -126,6 +153,12 @@ export function CharacterPageView({
             highlightKey={highlightKey}
             members={archiveMembers}
           />
+        </div>
+      </motion.section>
+
+      <motion.section {...sectionReveal} className="page-section relative py-16 sm:py-20">
+        <div className="relative page-container max-w-3xl">
+          <CharacterConfessionWall characterId={character.id} accent={primary} />
         </div>
       </motion.section>
     </>
