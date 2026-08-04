@@ -5422,7 +5422,7 @@ body.card-detail-open .band-back-btn--fixed {
   color: var(--brand-pink);
 }
 
-/* ©¤©¤ Community auth / forum / card comments ©¤©¤ */
+/* Community auth / forum / card comments */
 .auth-modal-backdrop {
   position: fixed;
   inset: 0;
