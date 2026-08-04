@@ -259,7 +259,7 @@ async function handleMePatch(request, env) {
 
   if ("avatarUrl" in body) {
     if (body.avatarUrl === null || body.avatarUrl === "") avatarUrl = null;
-    else if (typeof body.avatarUrl === "string" && body.avatarUrl.length < 500) avatarUrl = body.avatarUrl;
+    else if (typeof body.avatarUrl === "string" && body.avatarUrl.length < 2000) avatarUrl = body.avatarUrl;
     else return error("Invalid avatarUrl", request, env);
   }
   if ("signature" in body) {

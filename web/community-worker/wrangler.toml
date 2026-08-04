@@ -13,11 +13,13 @@ compatibility_date = "2024-11-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "bangdream-community"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "1b0b5683-f37e-4d66-b562-f71e59847b81"
 
-[[r2_buckets]]
-binding = "MEDIA"
-bucket_name = "bangdream-community-media"
+# R2 需要境外支付方式开通；国内若无法绑卡可先注释掉，论坛文字/评论仍可用。
+# 开通 R2 后取消注释，并执行: npx wrangler r2 bucket create bangdream-community-media
+# [[r2_buckets]]
+# binding = "MEDIA"
+# bucket_name = "bangdream-community-media"
 
 # 可选: 限制 CORS 来源（逗号分隔）
 # [vars]

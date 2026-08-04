@@ -100,7 +100,12 @@ export function AuthModal() {
       const res = await uploadMedia(file);
       setAvatarUrl(res.url);
     } catch (err) {
-      setError(err instanceof Error ? err.message : t("auth.uploadError"));
+      const msg = err instanceof Error ? err.message : "";
+      if (/media storage|not configured/i.test(msg)) {
+        setError(t("auth.uploadDisabled"));
+      } else {
+        setError(msg || t("auth.uploadError"));
+      }
     } finally {
       setUploading(false);
     }
@@ -142,6 +147,17 @@ export function AuthModal() {
                 )}
               </div>
             </div>
+
+            <label className="auth-field">
+              <span>{t("auth.avatarUrl")}</span>
+              <input
+                value={avatarUrl || ""}
+                onChange={(e) => setAvatarUrl(e.target.value.trim() || null)}
+                placeholder={t("auth.avatarUrlPlaceholder")}
+                maxLength={2000}
+              />
+            </label>
+            <p className="auth-modal-desc">{t("auth.avatarUrlHint")}</p>
 
             <label className="auth-field">
               <span>{t("auth.signature")}</span>
