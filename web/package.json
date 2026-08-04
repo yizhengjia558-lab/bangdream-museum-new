@@ -14,6 +14,7 @@
     "open": "npm run build:static && npx --yes serve out -l tcp://0.0.0.0:3000",
     "deploy": "npm run build:static && npx wrangler pages deploy out --project-name=bangdream-museum --branch=main",
     "deploy:analytics": "cd analytics-worker && npx wrangler deploy",
+    "deploy:community": "cd community-worker && npx wrangler deploy",
     "start": "next start",
     "lint": "eslint"
   },

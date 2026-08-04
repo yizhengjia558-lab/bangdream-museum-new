@@ -1,0 +1,24 @@
+name = "bangdream-museum-community"
+main = "src/index.js"
+compatibility_date = "2024-11-01"
+
+# 首次部署前:
+#   npx wrangler d1 create bangdream-community
+#   npx wrangler r2 bucket create bangdream-community-media
+# 将输出的 database_id 填入下方；并设置 Secret: JWT_SECRET
+#   npx wrangler secret put JWT_SECRET
+#   npx wrangler d1 migrations apply bangdream-community --remote
+#   npx wrangler deploy
+
+[[d1_databases]]
+binding = "DB"
+database_name = "bangdream-community"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "bangdream-community-media"
+
+# 可选: 限制 CORS 来源（逗号分隔）
+# [vars]
+# ALLOWED_ORIGINS = "https://yizhengjia558-lab.github.io,http://localhost:3000"

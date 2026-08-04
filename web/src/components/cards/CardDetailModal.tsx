@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { CardFavoriteButton } from "@/components/cards/CardFavoriteButton";
+import { CardCommentsPanel } from "@/components/cards/CardCommentsPanel";
 import { CardPaletteBackground } from "@/components/cards/CardPaletteBackground";
 import { CardLive2DViewer } from "@/components/cards/CardLive2DViewer";
 import { KirafesDynamicStage } from "@/components/cards/KirafesDynamicStage";
@@ -370,6 +371,8 @@ export function CardDetailModal({
                   />
                 ) : null}
               </div>
+
+              <CardCommentsPanel cardId={item.card.id} variant={variant} />
             </motion.div>
           </motion.div>
         )}

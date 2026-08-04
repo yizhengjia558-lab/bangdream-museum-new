@@ -50,8 +50,8 @@ export function GlobalSearchBar({ className }: { className?: string }) {
     return () => document.removeEventListener("pointerdown", onPointerDown);
   }, []);
 
-  const typeLabel = (type: "band" | "character") =>
-    type === "band" ? t("search.typeBand") : t("search.typeMember");
+  const typeLabel = (type: "band" | "character" | "page") =>
+    type === "band" ? t("search.typeBand") : type === "character" ? t("search.typeMember") : t("search.typePage");
 
   return (
     <div ref={rootRef} className={cn("global-search", className)}>

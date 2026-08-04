@@ -10,12 +10,23 @@ interface GlassButtonProps {
   children: ReactNode;
   className?: string;
   variant?: "primary" | "ghost";
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
-export function GlassButton({ href, onClick, children, className, variant = "primary" }: GlassButtonProps) {
+export function GlassButton({
+  href,
+  onClick,
+  children,
+  className,
+  variant = "primary",
+  type = "button",
+  disabled,
+}: GlassButtonProps) {
   const cls = cn(
     "glass-button group relative inline-flex items-center justify-center gap-2 overflow-hidden",
     variant === "ghost" && "glass-button-ghost",
+    disabled && "pointer-events-none opacity-50",
     className
   );
 
@@ -26,7 +37,7 @@ export function GlassButton({ href, onClick, children, className, variant = "pri
     </>
   );
 
-  if (href) {
+  if (href && !disabled) {
     return (
       <Link href={href} className={cls}>
         {inner}
@@ -35,7 +46,7 @@ export function GlassButton({ href, onClick, children, className, variant = "pri
   }
 
   return (
-    <button type="button" onClick={onClick} className={cls}>
+    <button type={type} onClick={onClick} className={cls} disabled={disabled}>
       {inner}
     </button>
   );

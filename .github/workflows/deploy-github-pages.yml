@@ -55,6 +55,7 @@ jobs:
           NODE_OPTIONS: --max-old-space-size=4096
           NEXT_TELEMETRY_DISABLED: 1
           NEXT_PUBLIC_VISITOR_API: ${{ vars.VISITOR_API_URL }}
+          NEXT_PUBLIC_COMMUNITY_API: ${{ vars.COMMUNITY_API_URL }}
         run: npm run build:static
 
       - name: Check output size

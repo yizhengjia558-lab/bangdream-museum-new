@@ -5421,3 +5421,344 @@ body.card-detail-open .band-back-btn--fixed {
 .stats-back-link:hover {
   color: var(--brand-pink);
 }
+
+/* ©¤©¤ Community auth / forum / card comments ©¤©¤ */
+.auth-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(12, 10, 16, 0.55);
+  backdrop-filter: blur(10px);
+}
+
+.auth-modal-panel-wrap {
+  width: min(100%, 420px);
+}
+
+.auth-modal-panel {
+  position: relative;
+  padding: 1.75rem 1.5rem 1.5rem;
+}
+
+.auth-modal-close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.85rem;
+  z-index: 2;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--text-muted);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.auth-modal-title {
+  font-family: var(--font-subtitle-active);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.auth-modal-desc {
+  margin-top: 0.35rem;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+
+.auth-field input,
+.auth-field select,
+.auth-field textarea,
+.card-comments-form textarea,
+.forum-form textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--text-muted) 35%, transparent);
+  background: color-mix(in srgb, var(--glass-bg, #fff) 70%, transparent);
+  color: var(--text-primary);
+  padding: 0.7rem 0.85rem;
+  font-size: 0.875rem;
+  font-family: var(--font-body-active);
+  resize: vertical;
+}
+
+.auth-field input:focus,
+.auth-field select:focus,
+.auth-field textarea:focus,
+.card-comments-form textarea:focus,
+.forum-form textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--brand-pink) 45%, transparent);
+  outline-offset: 1px;
+}
+
+.auth-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.25rem;
+}
+
+.auth-error {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: #e9435e;
+}
+
+.auth-switch {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.auth-text-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--brand-pink);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+.auth-file-label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--brand-pink);
+}
+
+.auth-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e9435e, #ff6b8a);
+  color: #fff;
+  font-weight: 800;
+}
+
+.auth-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.auth-profile-avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.auth-username {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.auth-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-subtitle-active);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.auth-nav-btn:hover {
+  background: var(--glass-hover);
+  color: var(--text-primary);
+}
+
+.auth-nav-name {
+  max-width: 5.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .auth-nav-name {
+    display: none;
+  }
+}
+
+.forum-section-title {
+  font-family: var(--font-subtitle-active);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.forum-post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.forum-post-card {
+  width: 100%;
+  text-align: left;
+  border: 1px solid color-mix(in srgb, var(--text-muted) 22%, transparent);
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+  background: color-mix(in srgb, var(--glass-bg, #fff) 55%, transparent);
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.forum-post-card:hover {
+  border-color: color-mix(in srgb, var(--brand-pink) 45%, transparent);
+  transform: translateY(-1px);
+}
+
+.forum-post-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.forum-post-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.forum-meta {
+  margin: 0.15rem 0 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.forum-body {
+  color: var(--text-primary);
+  line-height: 1.65;
+  font-size: 0.9375rem;
+}
+
+.forum-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.65rem;
+  margin-top: 0.85rem;
+}
+
+.forum-media-image,
+.forum-media-video {
+  width: 100%;
+  border-radius: 12px;
+  max-height: 220px;
+  object-fit: cover;
+  background: #111;
+}
+
+.forum-media-video {
+  object-fit: contain;
+  background: #000;
+}
+
+.forum-upload-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.forum-reply-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.forum-reply-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--text-muted) 18%, transparent);
+}
+
+.card-comments {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--text-muted) 22%, transparent);
+}
+
+.card-comments-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.card-comments-count {
+  display: inline-flex;
+  min-width: 1.4rem;
+  justify-content: center;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand-pink) 18%, transparent);
+  color: var(--brand-pink);
+  font-size: 0.7rem;
+}
+
+.card-comments-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.card-comments-list {
+  list-style: none;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 240px;
+  overflow: auto;
+}
+
+.card-comment-item {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+}

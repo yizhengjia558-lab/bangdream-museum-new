@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { useFavorites } from "@/components/favorites/FavoritesProvider";
 import { GlobalSearchBar } from "@/components/search/GlobalSearchBar";
+import { AuthNavButton } from "@/components/auth/AuthModal";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -17,6 +18,7 @@ export function SiteHeader() {
   const NAV = [
     { href: "/", label: t("nav.home"), match: (p: string) => p === "/" || p === "" },
     { href: "/bands/", label: t("nav.bands"), match: (p: string) => p.startsWith("/bands") },
+    { href: "/forum/", label: t("nav.forum"), match: (p: string) => p.startsWith("/forum") },
     { href: "/favorites/", label: t("nav.favorites"), match: (p: string) => p.startsWith("/favorites") },
   ];
 
@@ -68,6 +70,7 @@ export function SiteHeader() {
                 </Link>
               );
             })}
+            <AuthNavButton className="ml-1" />
           </nav>
         </div>
       </div>

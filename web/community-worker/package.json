@@ -1,0 +1,12 @@
+{
+  "name": "bangdream-museum-community",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "migrate:local": "wrangler d1 migrations apply bangdream-community --local",
+    "migrate:remote": "wrangler d1 migrations apply bangdream-community --remote"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

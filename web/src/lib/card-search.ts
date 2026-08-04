@@ -86,7 +86,7 @@ export function filterCardsBySearch(
 }
 
 export type NavSearchHit = {
-  type: "band" | "character";
+  type: "band" | "character" | "page";
   label: string;
   sublabel: string;
   href: string;
@@ -99,7 +99,15 @@ type NavFuseItem = NavSearchHit & {
 };
 
 function buildNavFuseItems(): NavFuseItem[] {
-  const items: NavFuseItem[] = [];
+  const items: NavFuseItem[] = [
+    {
+      type: "page",
+      label: "社区论坛",
+      sublabel: "Forum",
+      href: "/forum/",
+      keywords: "社区 论坛 forum community コミュニティ",
+    },
+  ];
 
   for (const band of BAND_THEMES) {
     items.push({

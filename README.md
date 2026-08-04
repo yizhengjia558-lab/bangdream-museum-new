@@ -82,6 +82,31 @@ GitHub Pages 是纯静态站点，访客计数通过 **Cloudflare Worker**（免
 
 部署后访问 **`/stats/`** 查看统计；页脚会显示累计与今日访问量。
 
+## 社区论坛与卡面评论（可选）
+
+发帖、回帖、卡面评论、账号系统通过独立的 **Cloudflare Worker + D1 + R2** 实现：
+
+1. 登录 Cloudflare，在 `web/community-worker` 目录执行：
+   ```bat
+   cd web\community-worker
+   npx wrangler login
+   npx wrangler d1 create bangdream-community
+   npx wrangler r2 bucket create bangdream-community-media
+   ```
+2. 把 D1 的 `database_id` 填入 `web/community-worker/wrangler.toml`
+3. 设置 JWT 密钥并应用数据库迁移、部署：
+   ```bat
+   npx wrangler secret put JWT_SECRET
+   npx wrangler d1 migrations apply bangdream-community --remote
+   npm run deploy:community
+   ```
+   （在 `web` 目录执行 `npm run deploy:community`）
+4. 构建时设置环境变量（本地或 GitHub Actions → Settings → Variables）：
+   - `NEXT_PUBLIC_COMMUNITY_API` = Worker 地址，如 `https://bangdream-museum-community.xxx.workers.dev`
+   - GitHub Actions 仓库变量名：`COMMUNITY_API_URL`
+
+部署后站点导航会出现 **社区**；卡面详情弹窗可评论。访客可浏览，发帖/评论需注册（用户名+密码）。
+
 > 若需包含 MyGO / Ave Mujica 等新乐队，需修改 `collect_bandori.py` 中的 `TARGET_BANDS`。
 
 ## 项目结构
