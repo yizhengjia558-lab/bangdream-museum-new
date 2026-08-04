@@ -122,6 +122,8 @@ const zh = {
     add: "加入收藏",
     remove: "取消收藏",
     searchResultCount: "找到 {count} 张匹配卡面",
+    loadError: "收藏卡面暂时加载失败，请稍后再试",
+    unresolved: "收藏记录还在，但卡面数据已更新无法匹配。请重新点一次爱心收藏。",
   },
   footer: {
     title: "BanG Dream! 数字博物馆",
@@ -272,6 +274,8 @@ const en = {
     add: "Add to favorites",
     remove: "Remove from favorites",
     searchResultCount: "{count} matching cards",
+    loadError: "Couldn’t load favorite cards. Please try again shortly.",
+    unresolved: "Your favorites are saved, but card data changed and couldn’t be matched. Please favorite them again.",
   },
   footer: {
     title: "BanG Dream! Digital Museum",
@@ -422,6 +426,8 @@ const ja = {
     add: "お気に入りに追加",
     remove: "お気に入りから削除",
     searchResultCount: "{count} 枚が一致",
+    loadError: "お気に入りの読み込みに失敗しました。しばらくしてから再度お試しください。",
+    unresolved: "お気に入りは残っていますが、カードデータ更新で照合できませんでした。もう一度ハートを押して保存してください。",
   },
   footer: {
     title: "BanG Dream! デジタルミュージアム",

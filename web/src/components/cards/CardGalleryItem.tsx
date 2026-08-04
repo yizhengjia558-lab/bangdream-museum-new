@@ -43,7 +43,7 @@ export function CardGalleryItem({
       )}
     >
       <CardTile className="card-tile--uniform card-tile--interactive h-full" onClick={onClick}>
-        <CardFavoriteButton displayKey={item.key} />
+        <CardFavoriteButton displayKey={item.key} card={item.card} variant={item.variant} />
         <CardVariantBadge variant={item.variant} />
         {isKirafes ? (
           <span className="card-kirafes-badge" title={t("filter.kind.kirafes")}>

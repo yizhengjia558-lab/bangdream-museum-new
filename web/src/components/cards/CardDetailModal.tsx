@@ -227,7 +227,12 @@ export function CardDetailModal({
               </button>
 
               <div className="card-detail-header">
-                <CardFavoriteButton displayKey={activeKey} className="card-detail-favorite" />
+                <CardFavoriteButton
+                  displayKey={activeKey}
+                  card={item.card}
+                  variant={variant}
+                  className="card-detail-favorite"
+                />
                 {canNavigate ? (
                   <p className="card-detail-nav-position">
                     {t("card.navPosition")

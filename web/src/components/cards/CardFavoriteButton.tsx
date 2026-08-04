@@ -2,13 +2,19 @@
 
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { useFavorites } from "@/components/favorites/FavoritesProvider";
+import type { CardData } from "@/lib/data-types";
+import type { CardVariant } from "@/lib/cards";
 import { cn } from "@/lib/utils";
 
 export function CardFavoriteButton({
   displayKey,
+  card,
+  variant,
   className,
 }: {
   displayKey: string;
+  card?: CardData;
+  variant?: CardVariant;
   className?: string;
 }) {
   const { t } = useLocale();
@@ -24,7 +30,7 @@ export function CardFavoriteButton({
       onClick={(e) => {
         e.stopPropagation();
         e.preventDefault();
-        toggleFavorite(displayKey);
+        toggleFavorite(displayKey, card, variant);
       }}
     >
       <svg viewBox="0 0 24 24" className="card-favorite-icon" aria-hidden>

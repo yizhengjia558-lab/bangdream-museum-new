@@ -1,7 +1,7 @@
 /** @type {import('@cloudflare/workers-types').ExportedHandler<{ STATS: KVNamespace; STATS_SECRET?: string; ALLOWED_ORIGINS?: string }>} */
 
 const CORS_HEADERS = {
-  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Methods": "GET, POST, PUT, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
   "Access-Control-Max-Age": "86400",
 };
@@ -80,6 +80,33 @@ function isAuthorized(request, env) {
   return headerToken === env.STATS_SECRET || queryToken === env.STATS_SECRET;
 }
 
+function normalizeFavoritesToken(token) {
+  if (typeof token !== "string") return "";
+  const trimmed = token.trim();
+  if (!trimmed || trimmed.length < 8 || trimmed.length > 128) return "";
+  if (!/^[a-zA-Z0-9_-]+$/.test(trimmed)) return "";
+  return trimmed;
+}
+
+async function readFavorites(env, token) {
+  const raw = await env.STATS.get(`favorites:${token}`);
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw);
+    return {
+      keys: Array.isArray(parsed.keys) ? parsed.keys.filter((k) => typeof k === "string") : [],
+      records: Array.isArray(parsed.records) ? parsed.records : [],
+      updatedAt: typeof parsed.updatedAt === "number" ? parsed.updatedAt : 0,
+    };
+  } catch {
+    return null;
+  }
+}
+
+async function writeFavorites(env, token, payload) {
+  await env.STATS.put(`favorites:${token}`, JSON.stringify(payload));
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -145,6 +172,36 @@ export default {
       }
 
       return json(payload, request, env);
+    }
+
+    if (url.pathname === "/favorites" && request.method === "GET") {
+      const token = normalizeFavoritesToken(url.searchParams.get("token"));
+      if (!token) return json({ error: "Missing token" }, request, env, 400);
+
+      const stored = await readFavorites(env, token);
+      return json(stored || { keys: [], records: [], updatedAt: 0 }, request, env);
+    }
+
+    if (url.pathname === "/favorites" && request.method === "PUT") {
+      let body = {};
+      try {
+        body = await request.json();
+      } catch {
+        body = {};
+      }
+
+      const token = normalizeFavoritesToken(body.token ?? url.searchParams.get("token"));
+      if (!token) return json({ error: "Missing token" }, request, env, 400);
+
+      const keys = Array.isArray(body.keys)
+        ? body.keys.filter((k) => typeof k === "string" && k.length > 0 && k.length < 240).slice(0, 2000)
+        : [];
+      const records = Array.isArray(body.records) ? body.records.slice(0, 2000) : [];
+      const updatedAt = typeof body.updatedAt === "number" ? body.updatedAt : Date.now();
+
+      const payload = { keys, records, updatedAt };
+      await writeFavorites(env, token, payload);
+      return json({ ok: true, count: keys.length, updatedAt }, request, env);
     }
 
     return json({ error: "Not found" }, request, env, 404);

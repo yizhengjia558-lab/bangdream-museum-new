@@ -13,11 +13,12 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 import { expandCardDisplays, type CardDisplayItem } from "@/lib/cards";
 import { buildMemberMap, filterCardsBySearch } from "@/lib/card-search";
 import { fetchCardsCatalog } from "@/lib/data";
+import { resolveFavoriteDisplays } from "@/lib/favorites";
 import type { CardData } from "@/lib/data-types";
 
 export function FavoritesPageView() {
   const { t } = useLocale();
-  const { favorites, count } = useFavorites();
+  const { favorites, records, count, reconcileWithDisplays } = useFavorites();
   const { query, hasQuery } = useGlobalSearch();
   const [visible, setVisible] = useState(48);
   const [lightbox, setLightbox] = useState<CardDisplayItem | null>(null);
@@ -41,10 +42,15 @@ export function FavoritesPageView() {
   const memberMap = useMemo(() => (catalog ? buildMemberMap() : new Map()), [catalog]);
   const allDisplays = useMemo(() => (catalog ? expandCardDisplays(catalog) : []), [catalog]);
 
+  useEffect(() => {
+    if (!allDisplays.length) return;
+    reconcileWithDisplays(allDisplays);
+  }, [allDisplays, reconcileWithDisplays]);
+
   const favoriteDisplays = useMemo(() => {
-    const set = new Set(favorites);
-    return allDisplays.filter((item) => set.has(item.key));
-  }, [allDisplays, favorites]);
+    if (!allDisplays.length) return [];
+    return resolveFavoriteDisplays(favorites, records, allDisplays);
+  }, [allDisplays, favorites, records]);
 
   const filtered = useMemo(() => {
     if (!hasQuery || !catalog) return favoriteDisplays;
@@ -60,6 +66,7 @@ export function FavoritesPageView() {
 
   const shown = filtered.slice(0, visible);
   const loading = count > 0 && !catalog && !catalogError;
+  const unresolved = count > 0 && !loading && !catalogError && favoriteDisplays.length === 0 && !hasQuery;
 
   return (
     <>
@@ -72,7 +79,7 @@ export function FavoritesPageView() {
 
           <GlassPanel className="favorites-summary mb-8 p-6 sm:p-8">
             <p className="favorites-count">
-              {t("favorites.count").replace("{count}", String(count))}
+              {t("favorites.count").replace("{count}", String(favoriteDisplays.length || count))}
             </p>
             {count > 0 && (
               <p className="mt-2 text-sm text-[var(--text-secondary)]">{t("favorites.hint")}</p>
@@ -89,11 +96,15 @@ export function FavoritesPageView() {
             </GlassPanel>
           ) : catalogError ? (
             <GlassPanel className="favorites-empty p-10 text-center">
-              <p className="text-[var(--text-secondary)]">{t("search.noResults")}</p>
+              <p className="text-[var(--text-secondary)]">{t("favorites.loadError")}</p>
             </GlassPanel>
           ) : loading ? (
             <GlassPanel className="favorites-empty p-10 text-center">
               <p className="text-[var(--text-secondary)]">…</p>
+            </GlassPanel>
+          ) : unresolved ? (
+            <GlassPanel className="favorites-empty p-10 text-center">
+              <p className="text-[var(--text-secondary)]">{t("favorites.unresolved")}</p>
             </GlassPanel>
           ) : filtered.length === 0 ? (
             <GlassPanel className="favorites-empty p-10 text-center">
