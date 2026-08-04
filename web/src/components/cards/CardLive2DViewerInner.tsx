@@ -36,13 +36,6 @@ export function CardLive2DViewerInner({
 
   return (
     <div className="card-character-visual">
-      <CardSdFigurePreview
-        characterId={characterId}
-        sdResourceName={sdResourceName}
-        alt={characterName}
-        className="card-character-visual__sd"
-      />
-
       {live2dAssetBundleName ? (
         <Live2DPhoneFrame className="card-character-visual__live2d">
           {(zoom) =>
@@ -64,6 +57,13 @@ export function CardLive2DViewerInner({
           }
         </Live2DPhoneFrame>
       ) : null}
+
+      <CardSdFigurePreview
+        characterId={characterId}
+        sdResourceName={sdResourceName}
+        alt={characterName}
+        className="card-character-visual__sd"
+      />
     </div>
   );
 }

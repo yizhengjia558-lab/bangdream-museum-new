@@ -61,9 +61,12 @@ export function isEmptyFilters(filters: CardFilterState): boolean {
 }
 
 export function collectFilterYears(cards: CardData[]): number[] {
+  const current = new Date().getFullYear();
   const years = new Set<number>();
   for (const card of cards) {
-    if (card.release_year) years.add(card.release_year);
+    const year = card.release_year;
+    if (!year || year < 2015 || year > current) continue;
+    years.add(year);
   }
   return [...years].sort((a, b) => b - a);
 }

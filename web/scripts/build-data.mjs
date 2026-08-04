@@ -29,11 +29,29 @@ const enrichmentScript = path.join(root, "scripts/build-card-enrichment.py");
 const enrichmentPath = path.join(__dirname, "../src/data/card-enrichment.json");
 const kirafesVideosPath = path.join(__dirname, "../src/data/kirafes-videos.json");
 
-spawnSync("python", [enrichmentScript], { cwd: root, stdio: "inherit" });
-
-const enrichmentRaw = fs.existsSync(enrichmentPath)
+const previousEnrichment = fs.existsSync(enrichmentPath)
   ? JSON.parse(fs.readFileSync(enrichmentPath, "utf8"))
   : { cards: {} };
+
+spawnSync("python", [enrichmentScript], { cwd: root, stdio: "inherit" });
+
+let enrichmentRaw = previousEnrichment;
+if (fs.existsSync(enrichmentPath)) {
+  const loaded = JSON.parse(fs.readFileSync(enrichmentPath, "utf8"));
+  const matched = Number(loaded.matched) || 0;
+  const cardCount = loaded.cards ? Object.keys(loaded.cards).length : 0;
+  if (matched > 0 && cardCount > 0) {
+    enrichmentRaw = loaded;
+  } else {
+    console.warn(
+      "[build-data] card-enrichment.json is empty after rebuild; keeping previous enrichment if available."
+    );
+    if ((Number(previousEnrichment.matched) || 0) > 0) {
+      enrichmentRaw = previousEnrichment;
+      fs.writeFileSync(enrichmentPath, JSON.stringify(previousEnrichment, null, 2) + "\n", "utf8");
+    }
+  }
+}
 
 const kirafesVideosRaw = fs.existsSync(kirafesVideosPath)
   ? JSON.parse(fs.readFileSync(kirafesVideosPath, "utf8"))
@@ -49,16 +67,45 @@ function normCardName(name) {
   return (name || "").replace(/\s+/g, "").toLowerCase();
 }
 
+function starsFromRarity(rarity) {
+  const m = /([1-5])/.exec(String(rarity || ""));
+  return m ? Number(m[1]) : null;
+}
+
+function inferCardKind(card, bestdoriType = "") {
+  const blob = `${card.card_name || ""} ${card.event || ""} ${bestdoriType || ""}`.toLowerCase();
+  if (/kirafes|キラフェス|闪耀Fes|kira\s*fes/.test(blob)) return "kirafes";
+  if (/birthday|誕生日|生日/.test(blob)) return "birthday";
+  if (/collab|コラボ|联动|联名/.test(blob)) return "collab";
+  if (/limited|限定/.test(blob) || ["limited", "dreamfes", "special"].includes(String(bestdoriType || "").toLowerCase())) {
+    return "limited";
+  }
+  return "normal";
+}
+
+function sanitizeReleaseYear(year) {
+  const y = Number(year);
+  if (!Number.isFinite(y)) return null;
+  const current = new Date().getUTCFullYear();
+  if (y < 2015 || y > current) return null;
+  return y;
+}
+
 function enrichCardFields(card, entry, meta) {
   const key = `${entry.character_id}|${normCardName(card.card_name)}`;
   const extra = enrichmentRaw.cards?.[key] || {};
-  const releaseYear = extra.release_year ?? (card.release_date ? parseInt(card.release_date.slice(0, 4), 10) : null);
+  const releaseYear = sanitizeReleaseYear(
+    extra.release_year ?? (card.release_date ? parseInt(card.release_date.slice(0, 4), 10) : null)
+  );
   const bestdoriId = extra.bestdori_card_id ?? card.bestdori_card_id ?? null;
   const kirafesMeta =
     (bestdoriId != null ? kirafesByCardId.get(String(bestdoriId)) : null) ||
     (card.card_id != null ? kirafesByCardId.get(String(card.card_id)) : null) ||
     kirafesByCardId.get(String(card.id)) ||
     null;
+  const stars = extra.stars ?? starsFromRarity(card.rarity);
+  const attribute = extra.attribute || "";
+  const cardKind = extra.card_kind || inferCardKind(card, extra.bestdori_type);
   return {
     ...card,
     character_id: entry.character_id,
@@ -66,10 +113,10 @@ function enrichCardFields(card, entry, meta) {
     character_name_jp: meta.character_name_jp,
     band: meta.band,
     band_folder: entry.band_folder,
-    stars: extra.stars ?? null,
-    attribute: extra.attribute || "",
-    card_kind: extra.card_kind || "normal",
-    release_year: Number.isFinite(releaseYear) ? releaseYear : null,
+    stars,
+    attribute,
+    card_kind: cardKind,
+    release_year: releaseYear,
     bestdori_card_id: bestdoriId,
     costume_id: extra.costume_id ?? null,
     sd_resource_name: extra.sd_resource_name ?? null,

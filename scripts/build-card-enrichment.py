@@ -7,6 +7,7 @@ import json
 import re
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime, timezone
 from pathlib import Path
 
 from bestdori.cards import Card, get_all as get_cards
@@ -51,9 +52,14 @@ def release_year(release_date: str) -> int | None:
     if not release_date or len(release_date) < 4:
         return None
     try:
-        return int(release_date[:4])
+        year = int(release_date[:4])
     except ValueError:
         return None
+    # Drop placeholder / garbage years (e.g. 2100) and far-future typos
+    current = datetime.now(timezone.utc).year
+    if year < 2015 or year > current:
+        return None
+    return year
 
 
 def stars_from_rarity(rarity: str) -> int | None:
@@ -146,7 +152,10 @@ def main() -> int:
 
     for entry in index["characters"]:
         cid = entry["character_id"]
-        meta_path = ROOT / "Bandori" / entry["metadata_path"].replace("/", "\\")
+        meta_path = ROOT / "Bandori" / Path(entry["metadata_path"])
+        if not meta_path.is_file():
+            # Also try normalized separators for mixed Windows/Linux metadata paths
+            meta_path = ROOT / "Bandori" / Path(str(entry["metadata_path"]).replace("\\", "/"))
         if not meta_path.is_file():
             continue
         meta = json.loads(meta_path.read_text(encoding="utf-8"))
