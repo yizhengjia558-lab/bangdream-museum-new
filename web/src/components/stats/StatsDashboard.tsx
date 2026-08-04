@@ -40,11 +40,20 @@ export function StatsDashboard() {
     fetchCommunityPublicStats().then((result) => {
       if (cancelled || !result) return;
       setUsers(result.users);
+      // When visitor analytics Worker is missing, still show views from community API.
+      if (!enabled) {
+        setStats({
+          total: result.views,
+          today: result.todayViews,
+          updatedAt: result.updatedAt,
+        });
+        setLoading(false);
+      }
     });
     return () => {
       cancelled = true;
     };
-  }, [communityEnabled]);
+  }, [communityEnabled, enabled]);
 
   const loadStats = useCallback(async (adminToken?: string) => {
     if (!enabled) {
@@ -82,7 +91,7 @@ export function StatsDashboard() {
     void loadStats(trimmed);
   };
 
-  if (!enabled) {
+  if (!enabled && !communityEnabled) {
     return (
       <section className="page-section relative pt-28 pb-20">
         <div className="relative page-container max-w-3xl">
@@ -90,6 +99,38 @@ export function StatsDashboard() {
           <GlassPanel className="p-8 text-center">
             <p className="text-sm leading-relaxed text-[var(--text-secondary)]">{t("analytics.setupSteps")}</p>
           </GlassPanel>
+        </div>
+      </section>
+    );
+  }
+
+  if (!enabled && communityEnabled) {
+    return (
+      <section className="page-section relative pt-28 pb-20">
+        <div className="pointer-events-none absolute inset-0 bloom-layer opacity-40" aria-hidden />
+        <div className="relative page-container max-w-4xl">
+          <SectionHeading title={t("analytics.title")} subtitle={t("analytics.subtitle")} />
+          <div className="stats-summary-grid">
+            <GlassPanel className="stats-metric p-6 sm:p-8">
+              <p className="stats-metric-label">{t("analytics.totalVisitors")}</p>
+              <p className="stats-metric-value">{(stats?.total ?? 0).toLocaleString()}</p>
+            </GlassPanel>
+            <GlassPanel className="stats-metric p-6 sm:p-8">
+              <p className="stats-metric-label">{t("analytics.todayVisitors")}</p>
+              <p className="stats-metric-value">{(stats?.today ?? 0).toLocaleString()}</p>
+            </GlassPanel>
+            {users !== null && (
+              <GlassPanel className="stats-metric p-6 sm:p-8">
+                <p className="stats-metric-label">{t("analytics.registeredUsers")}</p>
+                <p className="stats-metric-value">{users.toLocaleString()}</p>
+              </GlassPanel>
+            )}
+          </div>
+          <div className="mt-10 text-center">
+            <Link href="/" className="stats-back-link">
+              ← {t("nav.home")}
+            </Link>
+          </div>
         </div>
       </section>
     );

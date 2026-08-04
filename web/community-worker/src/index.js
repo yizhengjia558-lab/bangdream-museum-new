@@ -567,6 +567,57 @@ async function handleCardCommentDelete(request, env, commentId) {
   return json({ ok: true }, request, env);
 }
 
+function todayKey() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+async function handleHit(request, env) {
+  let body = {};
+  try {
+    body = await request.json();
+  } catch {
+    body = {};
+  }
+  const path = typeof body.path === "string" && body.path ? body.path.slice(0, 256) : "/";
+  const day = todayKey();
+
+  await env.DB.prepare(
+    `INSERT INTO site_meta (key, value) VALUES ('total_views', 1)
+     ON CONFLICT(key) DO UPDATE SET value = value + 1`
+  ).run();
+  await env.DB.prepare(
+    `INSERT INTO page_views_daily (day, count) VALUES (?, 1)
+     ON CONFLICT(day) DO UPDATE SET count = count + 1`
+  )
+    .bind(day)
+    .run();
+
+  return json({ ok: true, path }, request, env);
+}
+
+async function handlePublicStats(request, env) {
+  const usersRow = await env.DB.prepare("SELECT COUNT(*) AS c FROM users").first();
+  const postsRow = await env.DB.prepare("SELECT COUNT(*) AS c FROM posts").first();
+  const commentsRow = await env.DB.prepare("SELECT COUNT(*) AS c FROM card_comments").first();
+  const viewsRow = await env.DB.prepare("SELECT value AS c FROM site_meta WHERE key = 'total_views'").first();
+  const todayRow = await env.DB.prepare("SELECT count AS c FROM page_views_daily WHERE day = ?")
+    .bind(todayKey())
+    .first();
+
+  return json(
+    {
+      users: Number(usersRow?.c) || 0,
+      posts: Number(postsRow?.c) || 0,
+      comments: Number(commentsRow?.c) || 0,
+      views: Number(viewsRow?.c) || 0,
+      todayViews: Number(todayRow?.c) || 0,
+      updatedAt: new Date().toISOString(),
+    },
+    request,
+    env
+  );
+}
+
 export default {
   /** @param {Request} request @param {Env} env */
   async fetch(request, env) {
@@ -581,20 +632,12 @@ export default {
         return json({ ok: true }, request, env);
       }
 
+      if (url.pathname === "/hit" && request.method === "POST") {
+        return handleHit(request, env);
+      }
+
       if (url.pathname === "/stats" && request.method === "GET") {
-        const usersRow = await env.DB.prepare("SELECT COUNT(*) AS c FROM users").first();
-        const postsRow = await env.DB.prepare("SELECT COUNT(*) AS c FROM posts").first();
-        const commentsRow = await env.DB.prepare("SELECT COUNT(*) AS c FROM card_comments").first();
-        return json(
-          {
-            users: Number(usersRow?.c) || 0,
-            posts: Number(postsRow?.c) || 0,
-            comments: Number(commentsRow?.c) || 0,
-            updatedAt: new Date().toISOString(),
-          },
-          request,
-          env
-        );
+        return handlePublicStats(request, env);
       }
 
       if (url.pathname.startsWith("/media/") && request.method === "GET") {

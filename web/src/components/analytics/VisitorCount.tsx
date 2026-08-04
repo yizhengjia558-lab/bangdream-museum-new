@@ -15,28 +15,32 @@ export function VisitorCount() {
   useEffect(() => {
     let cancelled = false;
 
-    if (shouldShowVisitorCount()) {
-      fetchVisitorStats().then((stats) => {
+    async function load() {
+      if (isCommunityEnabled()) {
+        const community = await fetchCommunityPublicStats();
+        if (cancelled || !community) return;
+        setUsers(community.users);
+        setViews(community.views);
+        setToday(community.todayViews);
+        return;
+      }
+
+      if (shouldShowVisitorCount()) {
+        const stats = await fetchVisitorStats();
         if (cancelled || !stats) return;
         setViews(stats.total);
         setToday(stats.today);
-      });
+      }
     }
 
-    if (isCommunityEnabled()) {
-      fetchCommunityPublicStats().then((stats) => {
-        if (cancelled || !stats) return;
-        setUsers(stats.users);
-      });
-    }
-
+    void load();
     return () => {
       cancelled = true;
     };
   }, []);
 
-  const showViews = shouldShowVisitorCount() && views !== null;
-  const showUsers = isCommunityEnabled() && users !== null;
+  const showViews = views !== null;
+  const showUsers = users !== null;
   if (!showViews && !showUsers) return null;
 
   const parts: string[] = [];
@@ -54,7 +58,7 @@ export function VisitorCount() {
   return (
     <p className="visitor-count mt-6 text-[11px] tracking-wide text-[var(--text-muted)]">
       {parts.join(" · ")}
-      {isVisitorAnalyticsEnabled() && (
+      {(isVisitorAnalyticsEnabled() || isCommunityEnabled()) && (
         <>
           {" · "}
           <Link href="/stats/" className="visitor-count-link">

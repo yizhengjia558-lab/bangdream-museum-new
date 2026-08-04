@@ -211,6 +211,8 @@ export type CommunityPublicStats = {
   users: number;
   posts: number;
   comments: number;
+  views: number;
+  todayViews: number;
   updatedAt?: string;
 };
 
@@ -220,14 +222,31 @@ export async function fetchCommunityPublicStats(): Promise<CommunityPublicStats 
   try {
     const res = await fetch(`${base}/stats`, { cache: "no-store" });
     if (!res.ok) return null;
-    const data = (await res.json()) as CommunityPublicStats;
+    const data = (await res.json()) as Partial<CommunityPublicStats>;
     return {
       users: Number(data.users) || 0,
       posts: Number(data.posts) || 0,
       comments: Number(data.comments) || 0,
+      views: Number(data.views) || 0,
+      todayViews: Number(data.todayViews) || 0,
       updatedAt: data.updatedAt,
     };
   } catch {
     return null;
+  }
+}
+
+export async function recordCommunityVisit(path: string) {
+  const base = communityApiBase();
+  if (!base || typeof window === "undefined") return;
+  try {
+    await fetch(`${base}/hit`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ path }),
+      keepalive: true,
+    });
+  } catch {
+    /* non-blocking */
   }
 }
