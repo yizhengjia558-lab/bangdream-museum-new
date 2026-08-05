@@ -92,6 +92,7 @@ export function Live2DViewer({
     let revokeModelJson: (() => void) | null = null;
     let resizeObserver: ResizeObserver | null = null;
     let showcaseTimer: number | null = null;
+    let detachViewport: (() => void) | null = null;
 
     async function mount() {
       const host = hostRef.current;
@@ -186,6 +187,19 @@ export function Live2DViewer({
         resizeObserver = new ResizeObserver(refit);
         resizeObserver.observe(host);
 
+        const onOrientationOrViewport = () => {
+          requestAnimationFrame(() => {
+            refit();
+            requestAnimationFrame(refit);
+          });
+        };
+        window.addEventListener("orientationchange", onOrientationOrViewport);
+        window.visualViewport?.addEventListener("resize", onOrientationOrViewport);
+        detachViewport = () => {
+          window.removeEventListener("orientationchange", onOrientationOrViewport);
+          window.visualViewport?.removeEventListener("resize", onOrientationOrViewport);
+        };
+
         if (!cancelled) setStatus("ready");
       } catch {
         if (!cancelled) {
@@ -196,10 +210,11 @@ export function Live2DViewer({
     }
 
     setStatus("loading");
-    mount();
+    void mount();
 
     return () => {
       cancelled = true;
+      detachViewport?.();
       refitRef.current = null;
       if (showcaseTimer != null) window.clearTimeout(showcaseTimer);
       resizeObserver?.disconnect();

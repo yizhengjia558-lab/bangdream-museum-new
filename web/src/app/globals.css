@@ -105,6 +105,9 @@ html[data-locale="ja"] {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   transition: background-color var(--theme-transition), color var(--theme-transition);
 }
 
@@ -1545,9 +1548,11 @@ button.glass-frame.card-tile:active {
 .card-live2d-phone__screen {
   position: relative;
   flex: 0 0 auto;
-  width: 100%;
+  width: min(100%, calc(min(52dvh, 26rem) * 9 / 16));
+  max-width: 100%;
   aspect-ratio: 9 / 16;
-  min-height: min(52vw, 320px);
+  height: auto;
+  margin-inline: auto;
   overflow: hidden;
   border-radius: 18px;
   background: transparent;
@@ -1982,6 +1987,8 @@ body.live2d-embed-route main {
 
 .card-detail-image {
   padding: 0.2rem;
+  object-fit: contain;
+  object-position: center;
 }
 
 .card-detail-image-glow {
@@ -2431,7 +2438,11 @@ body.live2d-embed-route main {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(1rem, 3vw, 2rem);
+  padding:
+    max(clamp(0.75rem, 3vw, 2rem), env(safe-area-inset-top, 0px))
+    max(clamp(0.75rem, 3vw, 2rem), env(safe-area-inset-right, 0px))
+    max(clamp(0.75rem, 3vw, 2rem), env(safe-area-inset-bottom, 0px))
+    max(clamp(0.75rem, 3vw, 2rem), env(safe-area-inset-left, 0px));
   overflow: hidden;
   background: transparent;
   cursor: zoom-out;
@@ -2475,6 +2486,19 @@ body.live2d-embed-route main {
 .card-detail-fullscreen-image-wrap {
   display: flex;
   justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.card-detail-fullscreen-image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(96vw, 1200px);
+  max-height: min(92dvh, 100%);
+  object-fit: contain;
+  object-position: center;
 }
 
 .card-detail-fullscreen-caption {
@@ -4740,10 +4764,15 @@ body.card-detail-open .band-back-btn--fixed {
   .card-detail-image-frame {
     flex: none;
     width: 100%;
-    height: clamp(12rem, 45dvh, 22rem);
-    min-height: clamp(12rem, 45dvh, 22rem);
-    max-height: clamp(12rem, 45dvh, 22rem);
-    aspect-ratio: auto;
+    height: auto;
+    min-height: 0;
+    max-height: min(48dvh, 22rem);
+    aspect-ratio: 3 / 4;
+  }
+
+  .card-detail-image-frame .card-detail-image {
+    object-fit: contain;
+    object-position: center;
   }
 
   .card-detail-controls {
@@ -4838,6 +4867,7 @@ body.card-detail-open .band-back-btn--fixed {
 
   .card-live2d-phone {
     flex: 0 0 auto;
+    width: 100%;
     height: auto;
     padding: 6px;
     border-radius: 16px;
@@ -4861,58 +4891,76 @@ body.card-detail-open .band-back-btn--fixed {
 
   .card-live2d-phone__screen {
     flex: 0 0 auto;
-    width: 100%;
-    height: clamp(17.5rem, 38dvh, 20rem);
-    min-height: clamp(17.5rem, 38dvh, 20rem);
-    max-height: clamp(17.5rem, 38dvh, 20rem);
-    aspect-ratio: unset;
+    width: min(100%, calc(min(42dvh, 20rem) * 9 / 16));
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    margin-inline: auto;
   }
 
   .card-sd-preview__frame.sd-sprite-frame {
-    width: 100%;
+    width: min(100%, 8.5rem);
     max-width: 8.5rem;
     height: auto;
-    max-height: clamp(9rem, 22dvh, 11rem);
+    max-height: none;
     aspect-ratio: 1;
     margin-inline: auto;
   }
 }
 
-@media (max-width: 959px) and (orientation: landscape) {
+/* Phone + iPad landscape: side-by-side, no stretch, safe-area aware */
+@media (orientation: landscape) and (max-height: 500px),
+  (orientation: landscape) and (max-width: 1400px) and (hover: none) {
   .card-detail-backdrop {
-    align-items: center;
+    align-items: stretch;
+    justify-content: stretch;
     padding:
-      max(0.35rem, env(safe-area-inset-top, 0px))
-      max(1rem, env(safe-area-inset-right, 0px))
-      max(0.35rem, env(safe-area-inset-bottom, 0px))
-      max(1rem, env(safe-area-inset-left, 0px));
+      max(0.25rem, env(safe-area-inset-top, 0px))
+      max(0.65rem, env(safe-area-inset-right, 0px))
+      max(0.25rem, env(safe-area-inset-bottom, 0px))
+      max(0.65rem, env(safe-area-inset-left, 0px));
     overflow: hidden;
   }
 
   .card-detail-panel-wrap {
+    display: flex;
+    flex: 1;
+    min-height: 0;
     width: 100%;
     max-width: 100%;
   }
 
   .card-detail-panel {
-    max-height: calc(100dvh - 0.5rem);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
+    max-width: none;
+    max-height: 100dvh;
+    margin: 0;
     padding:
-      max(0.35rem, env(safe-area-inset-top, 0px))
-      max(0.75rem, env(safe-area-inset-right, 0px))
+      max(0.3rem, env(safe-area-inset-top, 0px))
+      max(0.65rem, env(safe-area-inset-right, 0px))
       max(0.35rem, env(safe-area-inset-bottom, 0px))
-      max(0.75rem, env(safe-area-inset-left, 0px));
-    border-radius: 16px;
-    overflow: hidden;
+      max(0.65rem, env(safe-area-inset-left, 0px));
+    border-radius: 14px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .card-detail-close {
-    top: max(0.75rem, env(safe-area-inset-top, 0px));
-    right: max(1rem, env(safe-area-inset-right, 0px));
+    top: max(0.55rem, env(safe-area-inset-top, 0px));
+    right: max(0.75rem, env(safe-area-inset-right, 0px));
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.05rem;
   }
 
   .card-detail-header {
+    flex-shrink: 0;
     margin-bottom: 0.15rem;
-    min-height: 1.25rem;
+    min-height: 1.15rem;
   }
 
   .card-detail-nav-position {
@@ -4921,20 +4969,23 @@ body.card-detail-open .band-back-btn--fixed {
   }
 
   .card-detail-visual-row {
-    flex: 1;
+    flex: 1 1 auto;
     flex-direction: row;
     align-items: stretch;
-    gap: 0.45rem;
+    gap: 0.5rem;
     min-height: 0;
+    max-height: calc(100dvh - 3.75rem);
     overflow: hidden;
   }
 
   .card-detail-main {
-    flex: 0 1 66%;
+    flex: 1 1 58%;
     min-width: 0;
     min-height: 0;
     gap: 0.25rem;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   .card-detail-image-stack {
@@ -4945,23 +4996,28 @@ body.card-detail-open .band-back-btn--fixed {
   }
 
   .card-detail-image-btn {
-    flex: 1;
+    flex: 1 1 auto;
     min-height: 0;
     display: flex;
     flex-direction: column;
   }
 
   .card-detail-image-frame {
-    flex: 1;
+    flex: 1 1 auto;
     width: 100%;
-    height: 100%;
-    max-height: none;
+    height: auto;
     min-height: 0;
+    max-height: none;
     aspect-ratio: auto;
     box-shadow:
       0 0 0 1px color-mix(in srgb, var(--card-accent, #e9435e) 30%, transparent),
       0 16px 48px rgba(0, 0, 0, 0.5),
       0 0 56px color-mix(in srgb, var(--card-accent, #e9435e) 18%, transparent);
+  }
+
+  .card-detail-image-frame .card-detail-image {
+    object-fit: contain;
+    object-position: center;
   }
 
   .card-detail-image-glow {
@@ -4981,10 +5037,11 @@ body.card-detail-open .band-back-btn--fixed {
   .card-detail-toggle-wrap--below {
     order: 2;
     margin-top: 0.15rem;
+    max-width: 100%;
   }
 
   .card-detail-name {
-    font-size: 0.8125rem;
+    font-size: clamp(0.75rem, 1.6vh, 0.9rem);
     line-height: 1.2;
   }
 
@@ -5013,12 +5070,8 @@ body.card-detail-open .band-back-btn--fixed {
     font-size: 0.5rem;
   }
 
-  .card-detail-toggle-wrap--below {
-    max-width: 100%;
-  }
-
   .card-detail-toggle-btn {
-    padding: 0.35rem 0.45rem;
+    padding: 0.3rem 0.4rem;
     font-size: 0.46875rem;
     letter-spacing: 0.05em;
   }
@@ -5028,78 +5081,101 @@ body.card-detail-open .band-back-btn--fixed {
   }
 
   .card-detail-sidebar {
-    flex: 0 1 34%;
-    min-width: 0;
+    flex: 0 1 38%;
+    min-width: min(28vw, 11.5rem);
+    max-width: min(36vw, 15rem);
     min-height: 0;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
 
   .card-detail-sidebar__scroll {
-    flex: 1;
+    flex: 1 1 auto;
     max-height: none;
     min-height: 0;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   .card-character-visual {
     flex-direction: row;
     align-items: stretch;
+    justify-content: center;
     gap: 0.35rem;
-    flex: 1;
+    flex: 1 1 auto;
     min-height: 0;
     height: 100%;
   }
 
   .card-character-visual__sd.card-sd-preview {
-    flex: 1 1 52%;
+    flex: 0 1 auto;
     min-width: 0;
     min-height: 0;
-    align-self: stretch;
+    align-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0.25rem;
+    padding: 0.2rem;
+    width: auto;
+    max-width: 42%;
   }
 
   .card-character-visual__sd:only-child {
-    flex: 1 1 100%;
+    flex: 0 1 auto;
+    max-width: 70%;
   }
 
   .card-sd-preview__frame.sd-sprite-frame {
-    flex: 0 1 auto;
-    max-width: 90%;
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    aspect-ratio: unset;
+    flex: none;
+    width: min(5.5rem, 100%);
+    max-width: 5.5rem;
+    height: auto;
+    max-height: min(5.5rem, 70dvh);
+    aspect-ratio: 1;
   }
 
   .card-character-visual__live2d {
-    flex: 0 1 43%;
+    flex: 0 1 auto;
     min-width: 0;
     min-height: 0;
     width: auto;
+    max-width: 58%;
+    display: flex;
+    justify-content: center;
   }
 
   .card-live2d-phone {
-    flex: 1;
-    min-height: 0;
-    height: 100%;
-    width: 90%;
+    flex: none;
+    width: min(100%, calc((100dvh - 5.5rem) * 9 / 16));
+    max-width: 100%;
+    height: auto;
+    max-height: calc(100dvh - 4.5rem);
     margin-inline: auto;
     display: flex;
     flex-direction: column;
-    padding: 5px;
+    padding: 4px;
+  }
+
+  .card-live2d-phone__toolbar {
+    margin-bottom: 0.2rem;
   }
 
   .card-live2d-phone__screen {
-    flex: 1;
-    min-height: 0;
-    max-height: none;
-    aspect-ratio: unset;
+    flex: none;
+    width: 100%;
+    max-width: 100%;
     height: auto;
+    max-height: calc(100dvh - 6.5rem);
+    aspect-ratio: 9 / 16;
+  }
+
+  .card-comments {
+    flex: 0 0 auto;
+    max-height: min(28dvh, 160px);
+    overflow: auto;
   }
 
   .card-detail-nav-btn {
@@ -5116,34 +5192,67 @@ body.card-detail-open .band-back-btn--fixed {
   }
 
   .card-detail-nav-btn--prev {
-    left: max(1rem, env(safe-area-inset-left, 0px));
+    left: max(0.65rem, env(safe-area-inset-left, 0px));
   }
 
   .card-detail-nav-btn--next {
-    right: max(1rem, env(safe-area-inset-right, 0px));
+    right: max(0.65rem, env(safe-area-inset-right, 0px));
   }
 
-  .card-detail-close {
-    transition:
-      background 0.25s ease,
-      transform 0.25s ease,
-      box-shadow 0.25s ease,
-      border-color 0.25s ease;
+  .card-detail-fullscreen-image {
+    max-width: min(92vw, 1200px);
+    max-height: min(86dvh, 100%);
   }
 
-  .card-detail-close:hover {
-    transform: scale(1.08);
-    border-color: rgba(255, 255, 255, 0.32);
-    box-shadow:
-      0 0 20px rgba(255, 255, 255, 0.12),
-      0 4px 16px rgba(0, 0, 0, 0.35);
+  .card-detail-fullscreen-dynamic {
+    width: min(94vw, 1120px);
+    max-height: 86dvh;
   }
 
-  .card-detail-favorite.card-favorite-btn:hover {
-    transform: scale(1.1);
-    box-shadow:
-      0 0 22px rgba(255, 255, 255, 0.14),
-      0 4px 14px rgba(0, 0, 0, 0.3);
+  .card-detail-fullscreen-dynamic .kirafes-local-frame {
+    width: min(94vw, 1120px);
+    height: min(82dvh, 640px);
+    max-height: 82dvh;
+  }
+}
+
+/* iPad portrait: keep Live2D phone frame proportional in sidebar */
+@media (min-width: 768px) and (max-width: 1180px) and (orientation: portrait) {
+  .card-detail-sidebar {
+    flex: 0 0 min(32%, 220px);
+    max-width: 220px;
+  }
+
+  .card-detail-sidebar__scroll {
+    max-height: min(70dvh, 560px);
+  }
+
+  .card-live2d-phone__screen {
+    width: min(100%, calc(min(48dvh, 22rem) * 9 / 16));
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16;
+  }
+
+  .card-detail-image-frame {
+    max-height: min(42dvh, 360px);
+  }
+}
+
+/* Short landscape pages (home / bands) — avoid oversized hero blocks */
+@media (orientation: landscape) and (max-height: 500px) {
+  .page-hero-band {
+    padding-top: 4.5rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .global-header-dock {
+    max-width: min(96vw, 56rem);
+  }
+
+  .character-hot-cards-grid,
+  .band-hot-chars-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

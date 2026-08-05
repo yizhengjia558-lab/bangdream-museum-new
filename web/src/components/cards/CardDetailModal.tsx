@@ -445,7 +445,7 @@ export function CardDetailModal({
                     <AssetImage
                       src={activeSrc}
                       alt={item.card.card_name}
-                      className="card-detail-fullscreen-image max-h-[92vh] w-auto max-w-[min(96vw,1200px)] object-contain"
+                      className="card-detail-fullscreen-image"
                     />
                   </motion.div>
                 </AnimatePresence>

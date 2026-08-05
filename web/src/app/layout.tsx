@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit, Plus_Jakarta_Sans, Inter, M_PLUS_Rounded_1c, Noto_Sans_SC } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -16,6 +16,16 @@ import { ScrollToTopButton } from "@/components/layout/ScrollToTopButton";
 import { VisitTracker } from "@/components/analytics/VisitTracker";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import { AuthModal } from "@/components/auth/AuthModal";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fff9fc" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d1020" },
+  ],
+};
 
 const fontTitle = Outfit({
   variable: "--font-title",

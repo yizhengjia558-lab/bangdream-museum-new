@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-/** Match phones / tablets in portrait and coarse-pointer touch devices. */
-const MOBILE_MEDIA = "(max-width: 768px), (hover: none) and (pointer: coarse)";
+/** Match phones / tablets in any orientation, and coarse-pointer touch devices. */
+const MOBILE_MEDIA =
+  "(max-width: 1024px), (max-height: 500px) and (orientation: landscape), (hover: none) and (pointer: coarse)";
 
 export function useMobilePerf() {
   const [mobile, setMobile] = useState(false);
