@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T11:27:38.693745+00:00",
+  "generated_at": "2026-08-05T14:05:51.790083+00:00",
   "matched": 2260,
   "total": 2326,
   "cards": {
@@ -21228,7 +21228,7 @@
       "release_year": 2017,
       "costume_id": 1630,
       "sd_resource_name": "sd023001",
-      "live2d_asset_bundle_name": null,
+      "live2d_asset_bundle_name": "023_live_r_2023",
       "animation_asset_bundle_name": null,
       "bestdori_type": "initial"
     },
@@ -29054,7 +29054,7 @@
       "release_year": 2023,
       "costume_id": 1421,
       "sd_resource_name": "sd035020",
-      "live2d_asset_bundle_name": null,
+      "live2d_asset_bundle_name": "035_live_event_187_ssr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
     },
