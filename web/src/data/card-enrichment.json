@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T14:03:23.639160+00:00",
+  "generated_at": "2026-08-07T12:59:37.475830+00:00",
   "matched": 2260,
   "total": 2326,
   "cards": {
@@ -27251,19 +27251,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "31|runawaystar": {
-      "character_id": 31,
-      "bestdori_card_id": 2376,
-      "stars": 5,
-      "attribute": "cool",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2300,
-      "sd_resource_name": "sd031046",
-      "live2d_asset_bundle_name": "031_live_event_319_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "31|回忆闪闪发光": {
       "character_id": 31,
       "bestdori_card_id": 2270,
@@ -27328,6 +27315,19 @@
       "live2d_asset_bundle_name": "bili_031_collabo_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "special"
+    },
+    "31|runawaystar": {
+      "character_id": 31,
+      "bestdori_card_id": 2376,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2300,
+      "sd_resource_name": "sd031046",
+      "live2d_asset_bundle_name": "031_live_event_319_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
     },
     "32|不屈不挠的吉他手": {
       "character_id": 32,
@@ -27797,19 +27797,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "32|stellarfrontline": {
-      "character_id": 32,
-      "bestdori_card_id": 2379,
-      "stars": 2,
-      "attribute": "power",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2303,
-      "sd_resource_name": "sd032046",
-      "live2d_asset_bundle_name": "032_live_event_319_r",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "event"
-    },
     "32|淡淡的夏日回忆": {
       "character_id": 32,
       "bestdori_card_id": 2261,
@@ -27861,6 +27848,19 @@
       "live2d_asset_bundle_name": "032_dream_festival_4_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
+    },
+    "32|stellarfrontline": {
+      "character_id": 32,
+      "bestdori_card_id": 2379,
+      "stars": 2,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2303,
+      "sd_resource_name": "sd032046",
+      "live2d_asset_bundle_name": "032_live_event_319_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
     },
     "33|狂犬鼓手": {
       "character_id": 33,
@@ -28278,19 +28278,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "33|nostarhere": {
-      "character_id": 33,
-      "bestdori_card_id": 2377,
-      "stars": 5,
-      "attribute": "cool",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2301,
-      "sd_resource_name": "sd033043",
-      "live2d_asset_bundle_name": "033_live_event_319_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "33|晴空的雨滴": {
       "character_id": 33,
       "bestdori_card_id": 2263,
@@ -28355,6 +28342,19 @@
       "live2d_asset_bundle_name": "033_live_event_335_sr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
+    },
+    "33|nostarhere": {
+      "character_id": 33,
+      "bestdori_card_id": 2377,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2301,
+      "sd_resource_name": "sd033043",
+      "live2d_asset_bundle_name": "033_live_event_319_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
     },
     "34|梦幻可爱♪女仆": {
       "character_id": 34,
@@ -28746,19 +28746,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "34|焦がれるステージ": {
-      "character_id": 34,
-      "bestdori_card_id": 2378,
-      "stars": 3,
-      "attribute": "power",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2302,
-      "sd_resource_name": "sd034042",
-      "live2d_asset_bundle_name": "034_live_event_319_sr",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "event"
-    },
     "34|混ぜてくださ～いっ": {
       "character_id": 34,
       "bestdori_card_id": 2444,
@@ -28810,6 +28797,19 @@
       "live2d_asset_bundle_name": "034_dream_festival_4_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
+    },
+    "34|向往的舞台": {
+      "character_id": 34,
+      "bestdori_card_id": 2378,
+      "stars": 3,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2302,
+      "sd_resource_name": "sd034042",
+      "live2d_asset_bundle_name": "034_live_event_319_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
     },
     "35|猫耳制作人": {
       "character_id": 35,
@@ -29214,19 +29214,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "35|inthemirror": {
-      "character_id": 35,
-      "bestdori_card_id": 2380,
-      "stars": 4,
-      "attribute": "cool",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2304,
-      "sd_resource_name": "sd035044",
-      "live2d_asset_bundle_name": "035_live_event_319_ssr",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "35|こんな休日の過ごし方": {
       "character_id": 35,
       "bestdori_card_id": 2422,
@@ -29265,6 +29252,19 @@
       "live2d_asset_bundle_name": "035_live_event_308_ssr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
+    },
+    "35|inthemirror": {
+      "character_id": 35,
+      "bestdori_card_id": 2380,
+      "stars": 4,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2304,
+      "sd_resource_name": "sd035044",
+      "live2d_asset_bundle_name": "035_live_event_319_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
     },
     "36|のんびりダイアログ": {
       "character_id": 36,

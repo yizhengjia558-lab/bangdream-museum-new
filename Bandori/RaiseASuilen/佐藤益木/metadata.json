@@ -324,16 +324,6 @@
       "resource_set_name": "res033040"
     },
     {
-      "card_id": 2377,
-      "card_name": "NO STAR HERE",
-      "rarity": "5-Star",
-      "event": "MOONFALL//GEARガチャ",
-      "release_date": "2026-01-21",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res033043_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res033043_rip/card_after_training.png",
-      "resource_set_name": "res033043"
-    },
-    {
       "card_id": 2263,
       "card_name": "晴空的雨滴",
       "rarity": "5-Star",
@@ -382,6 +372,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res033046_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res033046_rip/card_after_training.png",
       "resource_set_name": "res033046"
+    },
+    {
+      "card_id": 2377,
+      "card_name": "NO STAR HERE",
+      "rarity": "5-Star",
+      "event": "MOONFALL//GEAR招募",
+      "release_date": "2026-08-07",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res033043_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res033043_rip/card_after_training.png",
+      "resource_set_name": "res033043"
     },
     {
       "card_id": 90033,

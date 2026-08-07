@@ -304,16 +304,6 @@
       "resource_set_name": "res034039"
     },
     {
-      "card_id": 2378,
-      "card_name": "焦がれるステージ",
-      "rarity": "3-Star",
-      "event": "Radiance and Eclipse",
-      "release_date": "2026-01-21",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res034042_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res034042_rip/card_after_training.png",
-      "resource_set_name": "res034042"
-    },
-    {
       "card_id": 2444,
       "card_name": "混ぜてくださ～いっ",
       "rarity": "4-Star",
@@ -352,6 +342,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res034041_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res034041_rip/card_after_training.png",
       "resource_set_name": "res034041"
+    },
+    {
+      "card_id": 2378,
+      "card_name": "向往的舞台",
+      "rarity": "3-Star",
+      "event": "Radiance and Eclipse",
+      "release_date": "2026-08-07",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res034042_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res034042_rip/card_after_training.png",
+      "resource_set_name": "res034042"
     },
     {
       "card_id": 5011,

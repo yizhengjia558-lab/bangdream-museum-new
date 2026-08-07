@@ -334,16 +334,6 @@
       "resource_set_name": "res031043"
     },
     {
-      "card_id": 2376,
-      "card_name": "RUNAWAY STAR",
-      "rarity": "5-Star",
-      "event": "MOONFALL//GEARガチャ",
-      "release_date": "2026-01-21",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res031046_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res031046_rip/card_after_training.png",
-      "resource_set_name": "res031046"
-    },
-    {
       "card_id": 2270,
       "card_name": "回忆闪闪发光",
       "rarity": "5-Star",
@@ -392,6 +382,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res031001_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res031001_rip/card_after_training.png",
       "resource_set_name": "bili_res031001"
+    },
+    {
+      "card_id": 2376,
+      "card_name": "RUNAWAY STAR",
+      "rarity": "5-Star",
+      "event": "MOONFALL//GEAR招募",
+      "release_date": "2026-08-07",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res031046_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res031046_rip/card_after_training.png",
+      "resource_set_name": "res031046"
     },
     {
       "card_id": 90031,

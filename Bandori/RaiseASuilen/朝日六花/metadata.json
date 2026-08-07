@@ -364,16 +364,6 @@
       "resource_set_name": "res032042"
     },
     {
-      "card_id": 2379,
-      "card_name": "Stellar Frontline",
-      "rarity": "2-Star",
-      "event": "Radiance and Eclipse",
-      "release_date": "2026-01-21",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032046_rip/card_normal.png",
-      "trained_image": "",
-      "resource_set_name": "res032046"
-    },
-    {
       "card_id": 2261,
       "card_name": "淡淡的夏日回忆",
       "rarity": "2-Star",
@@ -412,6 +402,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032048_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032048_rip/card_after_training.png",
       "resource_set_name": "res032048"
+    },
+    {
+      "card_id": 2379,
+      "card_name": "Stellar Frontline",
+      "rarity": "2-Star",
+      "event": "Radiance and Eclipse",
+      "release_date": "2026-08-07",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032046_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res032046"
     },
     {
       "card_id": 5009,

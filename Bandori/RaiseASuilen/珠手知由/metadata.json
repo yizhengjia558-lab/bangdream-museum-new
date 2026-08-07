@@ -314,16 +314,6 @@
       "resource_set_name": "res035042"
     },
     {
-      "card_id": 2380,
-      "card_name": "in the mirror",
-      "rarity": "4-Star",
-      "event": "MOONFALL//GEARガチャ",
-      "release_date": "2026-01-21",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res035044_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res035044_rip/card_after_training.png",
-      "resource_set_name": "res035044"
-    },
-    {
       "card_id": 2422,
       "card_name": "こんな休日の過ごし方",
       "rarity": "5-Star",
@@ -352,6 +342,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res035043_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res035043_rip/card_after_training.png",
       "resource_set_name": "res035043"
+    },
+    {
+      "card_id": 2380,
+      "card_name": "in the mirror",
+      "rarity": "4-Star",
+      "event": "MOONFALL//GEAR招募",
+      "release_date": "2026-08-07",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res035044_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res035044_rip/card_after_training.png",
+      "resource_set_name": "res035044"
     },
     {
       "card_id": 90035,
