@@ -354,6 +354,16 @@
       "resource_set_name": "res034042"
     },
     {
+      "card_id": 2499,
+      "card_name": "一番近くて遠いひと",
+      "rarity": "5-Star",
+      "event": "ゆめみるおとめは♡おめかしちゅうガチャ",
+      "release_date": "2026-08-11",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res034044_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res034044_rip/card_after_training.png",
+      "resource_set_name": "res034044"
+    },
+    {
       "card_id": 5011,
       "card_name": "Card 5011",
       "rarity": "2-Star",

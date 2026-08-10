@@ -354,6 +354,16 @@
       "resource_set_name": "res035044"
     },
     {
+      "card_id": 2500,
+      "card_name": "Don't wake up！",
+      "rarity": "3-Star",
+      "event": "parallel in the mirror",
+      "release_date": "2026-08-11",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res035047_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res035047_rip/card_after_training.png",
+      "resource_set_name": "res035047"
+    },
+    {
       "card_id": 90035,
       "card_name": "Card 90035",
       "rarity": "2-Star",

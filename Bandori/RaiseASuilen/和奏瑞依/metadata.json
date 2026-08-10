@@ -394,6 +394,16 @@
       "resource_set_name": "res031046"
     },
     {
+      "card_id": 2501,
+      "card_name": "乙女のひみつルーム",
+      "rarity": "2-Star",
+      "event": "parallel in the mirror",
+      "release_date": "2026-08-11",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res031049_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res031049"
+    },
+    {
       "card_id": 90031,
       "card_name": "Card 90031",
       "rarity": "2-Star",

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-09T12:46:49.449732+00:00",
-  "matched": 2260,
-  "total": 2326,
+  "generated_at": "2026-08-10T13:04:34.992655+00:00",
+  "matched": 2265,
+  "total": 2331,
   "cards": {
     "1|card5001": {
       "character_id": 1,
@@ -27329,6 +27329,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
+    "31|乙女のひみつルーム": {
+      "character_id": 31,
+      "bestdori_card_id": 2501,
+      "stars": 2,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2420,
+      "sd_resource_name": "sd031049",
+      "live2d_asset_bundle_name": "031_live_event_339_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
     "32|不屈不挠的吉他手": {
       "character_id": 32,
       "bestdori_card_id": 1030,
@@ -27862,6 +27875,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
+    "32|魅惑のエスニック": {
+      "character_id": 32,
+      "bestdori_card_id": 2502,
+      "stars": 4,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2421,
+      "sd_resource_name": "sd032049",
+      "live2d_asset_bundle_name": "032_live_event_339_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "33|狂犬鼓手": {
       "character_id": 33,
       "bestdori_card_id": 1031,
@@ -28356,6 +28382,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
+    "33|やってやろうぜ": {
+      "character_id": 33,
+      "bestdori_card_id": 2498,
+      "stars": 5,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2417,
+      "sd_resource_name": "sd033047",
+      "live2d_asset_bundle_name": "033_live_event_339_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "34|梦幻可爱♪女仆": {
       "character_id": 34,
       "bestdori_card_id": 1032,
@@ -28811,6 +28850,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
+    "34|一番近くて遠いひと": {
+      "character_id": 34,
+      "bestdori_card_id": 2499,
+      "stars": 5,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2418,
+      "sd_resource_name": "sd034044",
+      "live2d_asset_bundle_name": "034_live_event_339_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "35|猫耳制作人": {
       "character_id": 35,
       "bestdori_card_id": 1033,
@@ -29265,6 +29317,19 @@
       "live2d_asset_bundle_name": "035_live_event_319_ssr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "35|don'twakeup！": {
+      "character_id": 35,
+      "bestdori_card_id": 2500,
+      "stars": 3,
+      "attribute": "happy",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2419,
+      "sd_resource_name": "sd035047",
+      "live2d_asset_bundle_name": "035_live_event_339_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
     },
     "36|のんびりダイアログ": {
       "character_id": 36,

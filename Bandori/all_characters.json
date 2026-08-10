@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-09T12:45:44.029793+00:00",
+  "generated_at": "2026-08-10T13:03:25.456835+00:00",
   "source": [
     "Bestdori API",
     "Bandori Party API"
@@ -450,7 +450,7 @@
       "standing_url": "",
       "cards_untrained_path": "RaiseASuilen/和奏瑞依/Cards/Untrained",
       "cards_trained_path": "RaiseASuilen/和奏瑞依/Cards/Trained",
-      "card_count": 40
+      "card_count": 41
     },
     {
       "character_id": 32,
@@ -464,7 +464,7 @@
       "standing_url": "",
       "cards_untrained_path": "RaiseASuilen/朝日六花/Cards/Untrained",
       "cards_trained_path": "RaiseASuilen/朝日六花/Cards/Trained",
-      "card_count": 43
+      "card_count": 44
     },
     {
       "character_id": 33,
@@ -478,7 +478,7 @@
       "standing_url": "",
       "cards_untrained_path": "RaiseASuilen/佐藤益木/Cards/Untrained",
       "cards_trained_path": "RaiseASuilen/佐藤益木/Cards/Trained",
-      "card_count": 39
+      "card_count": 40
     },
     {
       "character_id": 34,
@@ -492,7 +492,7 @@
       "standing_url": "",
       "cards_untrained_path": "RaiseASuilen/鳰原令王那/Cards/Untrained",
       "cards_trained_path": "RaiseASuilen/鳰原令王那/Cards/Trained",
-      "card_count": 37
+      "card_count": 38
     },
     {
       "character_id": 35,
@@ -506,7 +506,7 @@
       "standing_url": "",
       "cards_untrained_path": "RaiseASuilen/珠手知由/Cards/Untrained",
       "cards_trained_path": "RaiseASuilen/珠手知由/Cards/Trained",
-      "card_count": 36
+      "card_count": 37
     },
     {
       "character_id": 36,
