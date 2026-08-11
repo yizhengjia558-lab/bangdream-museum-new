@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-10T13:04:34.992655+00:00",
+  "generated_at": "2026-08-11T13:01:35.920240+00:00",
   "matched": 2265,
   "total": 2331,
   "cards": {
@@ -1873,7 +1873,7 @@
       "sd_resource_name": "bili_sd001003",
       "live2d_asset_bundle_name": "bili_001_collabo_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "limited"
     },
     "1|第2回ガルパ杯": {
       "character_id": 1,
@@ -6332,7 +6332,7 @@
       "sd_resource_name": "bili_sd006001",
       "live2d_asset_bundle_name": "bili_006_collabo_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "limited"
     },
     "6|凝视之处": {
       "character_id": 6,
@@ -10895,7 +10895,7 @@
       "sd_resource_name": "bili_sd011001",
       "live2d_asset_bundle_name": "bili_011_collabo_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "limited"
     },
     "11|第2回ガルパ杯": {
       "character_id": 11,
@@ -11864,13 +11864,13 @@
       "bestdori_card_id": 2495,
       "stars": 4,
       "attribute": "happy",
-      "card_kind": "normal",
+      "card_kind": "limited",
       "release_year": 2026,
       "costume_id": 2414,
       "sd_resource_name": "sd012090",
       "live2d_asset_bundle_name": "012_live_event_338_ssr",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "limited"
     },
     "13|微笑队长": {
       "character_id": 13,
@@ -16570,13 +16570,13 @@
       "bestdori_card_id": 2491,
       "stars": 5,
       "attribute": "happy",
-      "card_kind": "normal",
+      "card_kind": "limited",
       "release_year": 2026,
       "costume_id": 2410,
       "sd_resource_name": "sd017088",
       "live2d_asset_bundle_name": "017_live_event_338_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "limited"
     },
     "18|铁壁的微笑": {
       "character_id": 18,
@@ -20262,13 +20262,13 @@
       "bestdori_card_id": 2492,
       "stars": 5,
       "attribute": "happy",
-      "card_kind": "normal",
+      "card_kind": "limited",
       "release_year": 2026,
       "costume_id": 2411,
       "sd_resource_name": "sd021087",
       "live2d_asset_bundle_name": "021_live_event_338_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "limited"
     },
     "21|第2回ガルパ杯": {
       "character_id": 21,
@@ -27314,7 +27314,7 @@
       "sd_resource_name": "bili_sd031001",
       "live2d_asset_bundle_name": "bili_031_collabo_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "limited"
     },
     "31|runawaystar": {
       "character_id": 31,
@@ -27886,7 +27886,7 @@
       "sd_resource_name": "sd032049",
       "live2d_asset_bundle_name": "032_live_event_339_ssr",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "33|狂犬鼓手": {
       "character_id": 33,
@@ -28393,7 +28393,7 @@
       "sd_resource_name": "sd033047",
       "live2d_asset_bundle_name": "033_live_event_339_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "34|梦幻可爱♪女仆": {
       "character_id": 34,
@@ -28861,7 +28861,7 @@
       "sd_resource_name": "sd034044",
       "live2d_asset_bundle_name": "034_live_event_339_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "35|猫耳制作人": {
       "character_id": 35,
@@ -29524,7 +29524,7 @@
       "sd_resource_name": "bili_sd036001",
       "live2d_asset_bundle_name": "bili_036_collabo_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "limited"
     },
     "37|乐队的主心骨": {
       "character_id": 37,
