@@ -634,16 +634,6 @@
       "resource_set_name": "res007076"
     },
     {
-      "card_id": 2382,
-      "card_name": "力作をご賞味あれ～",
-      "rarity": "5-Star",
-      "event": "煌めく思い出のショコラコレクションガチャ",
-      "release_date": "2026-01-31",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007079_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007079_rip/card_after_training.png",
-      "resource_set_name": "res007079"
-    },
-    {
       "card_id": 2394,
       "card_name": "星光茶会",
       "rarity": "2-Star",
@@ -682,6 +672,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007082_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007082_rip/card_after_training.png",
       "resource_set_name": "res007082"
+    },
+    {
+      "card_id": 2382,
+      "card_name": "请品尝我的精心之作~",
+      "rarity": "5-Star",
+      "event": "闪耀回忆中的巧克力珍藏招募",
+      "release_date": "2026-08-17",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007079_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007079_rip/card_after_training.png",
+      "resource_set_name": "res007079"
     },
     {
       "card_id": 90007,

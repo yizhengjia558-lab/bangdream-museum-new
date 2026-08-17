@@ -684,16 +684,6 @@
       "resource_set_name": "res006085"
     },
     {
-      "card_id": 2385,
-      "card_name": "飾り付けは真心込めて",
-      "rarity": "4-Star",
-      "event": "煌めく思い出のショコラコレクションガチャ",
-      "release_date": "2026-01-31",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res006089_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res006089_rip/card_after_training.png",
-      "resource_set_name": "res006089"
-    },
-    {
       "card_id": 2241,
       "card_name": "水面上跃动的阳光",
       "rarity": "5-Star",
@@ -752,6 +742,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res006088_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res006088_rip/card_after_training.png",
       "resource_set_name": "res006088"
+    },
+    {
+      "card_id": 2385,
+      "card_name": "装饰时要满怀心意",
+      "rarity": "4-Star",
+      "event": "闪耀回忆中的巧克力珍藏招募",
+      "release_date": "2026-08-17",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res006089_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res006089_rip/card_after_training.png",
+      "resource_set_name": "res006089"
     },
     {
       "card_id": 272,

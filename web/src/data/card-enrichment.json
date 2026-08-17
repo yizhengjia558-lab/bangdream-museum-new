@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-16T12:37:26.409581+00:00",
+  "generated_at": "2026-08-17T12:41:02.659198+00:00",
   "matched": 2265,
   "total": 2331,
   "cards": {
@@ -6256,19 +6256,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "6|飾り付けは真心込めて": {
-      "character_id": 6,
-      "bestdori_card_id": 2385,
-      "stars": 4,
-      "attribute": "happy",
-      "card_kind": "limited",
-      "release_year": 2026,
-      "costume_id": 2309,
-      "sd_resource_name": "sd006089",
-      "live2d_asset_bundle_name": "006_live_event_320_ssr",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "limited"
-    },
     "6|水面上跃动的阳光": {
       "character_id": 6,
       "bestdori_card_id": 2241,
@@ -6346,6 +6333,19 @@
       "live2d_asset_bundle_name": "006_dream_festival_4_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
+    },
+    "6|装饰时要满怀心意": {
+      "character_id": 6,
+      "bestdori_card_id": 2385,
+      "stars": 4,
+      "attribute": "happy",
+      "card_kind": "limited",
+      "release_year": 2026,
+      "costume_id": 2309,
+      "sd_resource_name": "sd006089",
+      "live2d_asset_bundle_name": "006_live_event_320_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "limited"
     },
     "6|第2回ガルパ杯": {
       "character_id": 6,
@@ -7179,19 +7179,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "7|力作をご賞味あれ～": {
-      "character_id": 7,
-      "bestdori_card_id": 2382,
-      "stars": 5,
-      "attribute": "happy",
-      "card_kind": "limited",
-      "release_year": 2026,
-      "costume_id": 2306,
-      "sd_resource_name": "sd007079",
-      "live2d_asset_bundle_name": "007_live_event_320_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "limited"
-    },
     "7|星光茶会": {
       "character_id": 7,
       "bestdori_card_id": 2394,
@@ -7243,6 +7230,19 @@
       "live2d_asset_bundle_name": "007_live_event_336_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "7|请品尝我的精心之作~": {
+      "character_id": 7,
+      "bestdori_card_id": 2382,
+      "stars": 5,
+      "attribute": "happy",
+      "card_kind": "limited",
+      "release_year": 2026,
+      "costume_id": 2306,
+      "sd_resource_name": "sd007079",
+      "live2d_asset_bundle_name": "007_live_event_320_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "limited"
     },
     "8|大家的队长！": {
       "character_id": 8,
@@ -8089,19 +8089,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
     },
-    "8|最高のくちどけ！": {
-      "character_id": 8,
-      "bestdori_card_id": 2383,
-      "stars": 3,
-      "attribute": "cool",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2307,
-      "sd_resource_name": "sd008081",
-      "live2d_asset_bundle_name": "008_live_event_320_sr",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "event"
-    },
     "8|绽放的笑容与水花": {
       "character_id": 8,
       "bestdori_card_id": 2245,
@@ -8164,6 +8151,19 @@
       "costume_id": 2403,
       "sd_resource_name": "sd008084",
       "live2d_asset_bundle_name": "008_live_event_336_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
+    "8|最棒的口感！": {
+      "character_id": 8,
+      "bestdori_card_id": 2383,
+      "stars": 3,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2307,
+      "sd_resource_name": "sd008081",
+      "live2d_asset_bundle_name": "008_live_event_320_sr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
@@ -8947,19 +8947,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "9|スウィートプレゼント": {
-      "character_id": 9,
-      "bestdori_card_id": 2384,
-      "stars": 2,
-      "attribute": "cool",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2308,
-      "sd_resource_name": "sd009079",
-      "live2d_asset_bundle_name": "009_live_event_320_r",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "event"
-    },
     "9|熱い演奏に！": {
       "character_id": 9,
       "bestdori_card_id": 2415,
@@ -9024,6 +9011,19 @@
       "live2d_asset_bundle_name": "009_live_event_336_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "9|甜蜜礼物": {
+      "character_id": 9,
+      "bestdori_card_id": 2384,
+      "stars": 2,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2308,
+      "sd_resource_name": "sd009079",
+      "live2d_asset_bundle_name": "009_live_event_320_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
     },
     "10|大家的支柱": {
       "character_id": 10,
@@ -9883,19 +9883,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "10|夕焼けが頬を染めて": {
-      "character_id": 10,
-      "bestdori_card_id": 2381,
-      "stars": 5,
-      "attribute": "happy",
-      "card_kind": "limited",
-      "release_year": 2026,
-      "costume_id": 2305,
-      "sd_resource_name": "sd010083",
-      "live2d_asset_bundle_name": "010_live_event_320_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "limited"
-    },
     "10|青春街头少女": {
       "character_id": 10,
       "bestdori_card_id": 2283,
@@ -9947,6 +9934,19 @@
       "live2d_asset_bundle_name": "010_live_event_336_ssr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "10|晚霞染红脸颊": {
+      "character_id": 10,
+      "bestdori_card_id": 2381,
+      "stars": 5,
+      "attribute": "happy",
+      "card_kind": "limited",
+      "release_year": 2026,
+      "costume_id": 2305,
+      "sd_resource_name": "sd010083",
+      "live2d_asset_bundle_name": "010_live_event_320_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "limited"
     },
     "11|花咲川的异空间": {
       "character_id": 11,
@@ -21141,19 +21141,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "22|温かな風に乗せて": {
-      "character_id": 22,
-      "bestdori_card_id": 2386,
-      "stars": 5,
-      "attribute": "happy",
-      "card_kind": "limited",
-      "release_year": 2026,
-      "costume_id": 2310,
-      "sd_resource_name": "sd022083",
-      "live2d_asset_bundle_name": "022_dream_festival_4_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "dreamfes"
-    },
     "22|約束の場所への一歩": {
       "character_id": 22,
       "bestdori_card_id": 2400,
@@ -21218,6 +21205,19 @@
       "live2d_asset_bundle_name": "022_live_event_314_r",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
+    },
+    "22|乘着温暖的风": {
+      "character_id": 22,
+      "bestdori_card_id": 2386,
+      "stars": 5,
+      "attribute": "happy",
+      "card_kind": "limited",
+      "release_year": 2026,
+      "costume_id": 2310,
+      "sd_resource_name": "sd022083",
+      "live2d_asset_bundle_name": "022_dream_festival_4_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "dreamfes"
     },
     "23|气氛活跃者☆": {
       "character_id": 23,
@@ -26757,19 +26757,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "30|しんしんと降り積もる": {
-      "character_id": 30,
-      "bestdori_card_id": 2387,
-      "stars": 5,
-      "attribute": "happy",
-      "card_kind": "limited",
-      "release_year": 2026,
-      "costume_id": 2311,
-      "sd_resource_name": "sd030045",
-      "live2d_asset_bundle_name": "030_dream_festival_4_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "dreamfes"
-    },
     "30|見透かされる心": {
       "character_id": 30,
       "bestdori_card_id": 2427,
@@ -26821,6 +26808,19 @@
       "live2d_asset_bundle_name": "030_live_event_318_ssr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "30|静静飘落堆积的雪": {
+      "character_id": 30,
+      "bestdori_card_id": 2387,
+      "stars": 5,
+      "attribute": "happy",
+      "card_kind": "limited",
+      "release_year": 2026,
+      "costume_id": 2311,
+      "sd_resource_name": "sd030045",
+      "live2d_asset_bundle_name": "030_dream_festival_4_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "dreamfes"
     },
     "31|冷静与热情的主唱": {
       "character_id": 31,

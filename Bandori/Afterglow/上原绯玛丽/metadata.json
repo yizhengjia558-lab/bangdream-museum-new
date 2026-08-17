@@ -654,16 +654,6 @@
       "resource_set_name": "res008078"
     },
     {
-      "card_id": 2383,
-      "card_name": "最高のくちどけ！",
-      "rarity": "3-Star",
-      "event": "Our Sweetest Valentine！",
-      "release_date": "2026-01-31",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008081_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008081_rip/card_after_training.png",
-      "resource_set_name": "res008081"
-    },
-    {
       "card_id": 2245,
       "card_name": "绽放的笑容与水花",
       "rarity": "4-Star",
@@ -712,6 +702,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008084_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res008084"
+    },
+    {
+      "card_id": 2383,
+      "card_name": "最棒的口感！",
+      "rarity": "3-Star",
+      "event": "Our Sweetest Valentine！",
+      "release_date": "2026-08-17",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008081_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008081_rip/card_after_training.png",
+      "resource_set_name": "res008081"
     },
     {
       "card_id": 90008,

@@ -604,16 +604,6 @@
       "resource_set_name": "res009076"
     },
     {
-      "card_id": 2384,
-      "card_name": "スウィートプレゼント",
-      "rarity": "2-Star",
-      "event": "Our Sweetest Valentine！",
-      "release_date": "2026-01-31",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009079_rip/card_normal.png",
-      "trained_image": "",
-      "resource_set_name": "res009079"
-    },
-    {
       "card_id": 2415,
       "card_name": "熱い演奏に！",
       "rarity": "5-Star",
@@ -662,6 +652,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009082_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009082_rip/card_after_training.png",
       "resource_set_name": "res009082"
+    },
+    {
+      "card_id": 2384,
+      "card_name": "甜蜜礼物",
+      "rarity": "2-Star",
+      "event": "Our Sweetest Valentine！",
+      "release_date": "2026-08-17",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009079_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res009079"
     },
     {
       "card_id": 90009,

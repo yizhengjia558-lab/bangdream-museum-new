@@ -344,16 +344,6 @@
       "resource_set_name": "res030042"
     },
     {
-      "card_id": 2387,
-      "card_name": "しんしんと降り積もる",
-      "rarity": "5-Star",
-      "event": "ドリームフェスティバルガチャ",
-      "release_date": "2026-01-31",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030045_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030045_rip/card_after_training.png",
-      "resource_set_name": "res030045"
-    },
-    {
       "card_id": 2427,
       "card_name": "見透かされる心",
       "rarity": "4-Star",
@@ -392,6 +382,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030044_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030044_rip/card_after_training.png",
       "resource_set_name": "res030044"
+    },
+    {
+      "card_id": 2387,
+      "card_name": "静静飘落堆积的雪",
+      "rarity": "5-Star",
+      "event": "盛夏纪念Dream Festival招募",
+      "release_date": "2026-08-17",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030045_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030045_rip/card_after_training.png",
+      "resource_set_name": "res030045"
     },
     {
       "card_id": 90030,

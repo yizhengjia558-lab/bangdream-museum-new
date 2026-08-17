@@ -664,16 +664,6 @@
       "resource_set_name": "res010080"
     },
     {
-      "card_id": 2381,
-      "card_name": "夕焼けが頬を染めて",
-      "rarity": "5-Star",
-      "event": "煌めく思い出のショコラコレクションガチャ",
-      "release_date": "2026-01-31",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010083_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010083_rip/card_after_training.png",
-      "resource_set_name": "res010083"
-    },
-    {
       "card_id": 2283,
       "card_name": "青春街头少女",
       "rarity": "2-Star",
@@ -712,6 +702,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010085_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010085_rip/card_after_training.png",
       "resource_set_name": "res010085"
+    },
+    {
+      "card_id": 2381,
+      "card_name": "晚霞染红脸颊",
+      "rarity": "5-Star",
+      "event": "闪耀回忆中的巧克力珍藏招募",
+      "release_date": "2026-08-17",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010083_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010083_rip/card_after_training.png",
+      "resource_set_name": "res010083"
     },
     {
       "card_id": 90010,
