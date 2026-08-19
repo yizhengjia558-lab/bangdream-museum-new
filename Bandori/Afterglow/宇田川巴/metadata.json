@@ -664,6 +664,16 @@
       "resource_set_name": "res009079"
     },
     {
+      "card_id": 2507,
+      "card_name": "お祭りエンジョイ中！",
+      "rarity": "4-Star",
+      "event": "夏の夜、涼風に吹かれてガチャ",
+      "release_date": "2026-08-20",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009083_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009083_rip/card_after_training.png",
+      "resource_set_name": "res009083"
+    },
+    {
       "card_id": 90009,
       "card_name": "Card 90009",
       "rarity": "2-Star",

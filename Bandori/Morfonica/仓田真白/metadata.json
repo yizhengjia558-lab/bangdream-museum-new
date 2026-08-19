@@ -474,6 +474,16 @@
       "resource_set_name": "res026052"
     },
     {
+      "card_id": 2504,
+      "card_name": "ヨーヨー釣りに挑戦！",
+      "rarity": "5-Star",
+      "event": "夏の夜、涼風に吹かれてガチャ",
+      "release_date": "2026-08-20",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026055_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026055_rip/card_after_training.png",
+      "resource_set_name": "res026055"
+    },
+    {
       "card_id": 5007,
       "card_name": "Card 5007",
       "rarity": "2-Star",

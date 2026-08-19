@@ -404,6 +404,16 @@
       "resource_set_name": "res029042"
     },
     {
+      "card_id": 2506,
+      "card_name": "涼やかに、淑やかに",
+      "rarity": "2-Star",
+      "event": "夏の終わりの忘れ物",
+      "release_date": "2026-08-20",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029047_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res029047"
+    },
+    {
       "card_id": 90029,
       "card_name": "Card 90029",
       "rarity": "2-Star",

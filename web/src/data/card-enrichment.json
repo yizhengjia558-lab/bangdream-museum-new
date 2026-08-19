@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-18T12:45:50.722618+00:00",
-  "matched": 2265,
-  "total": 2331,
+  "generated_at": "2026-08-19T12:43:38.579266+00:00",
+  "matched": 2270,
+  "total": 2336,
   "cards": {
     "1|card5001": {
       "character_id": 1,
@@ -9024,6 +9024,19 @@
       "live2d_asset_bundle_name": "009_live_event_320_r",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
+    },
+    "9|お祭りエンジョイ中！": {
+      "character_id": 9,
+      "bestdori_card_id": 2507,
+      "stars": 4,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2426,
+      "sd_resource_name": "sd009083",
+      "live2d_asset_bundle_name": "009_live_event_340_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "10|大家的支柱": {
       "character_id": 10,
@@ -21219,6 +21232,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
     },
+    "22|華やぐ夜空の下で": {
+      "character_id": 22,
+      "bestdori_card_id": 2503,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2422,
+      "sd_resource_name": "sd022086",
+      "live2d_asset_bundle_name": "022_live_event_340_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "23|气氛活跃者☆": {
       "character_id": 23,
       "bestdori_card_id": 89,
@@ -23156,6 +23182,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
+    "24|魔弾の射手": {
+      "character_id": 24,
+      "bestdori_card_id": 2505,
+      "stars": 3,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2424,
+      "sd_resource_name": "sd024088",
+      "live2d_asset_bundle_name": "024_live_event_340_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
     "25|讨厌嘈杂和拥挤": {
       "character_id": 25,
       "bestdori_card_id": 97,
@@ -24676,6 +24715,19 @@
       "live2d_asset_bundle_name": "026_live_event_318_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "26|ヨーヨー釣りに挑戦！": {
+      "character_id": 26,
+      "bestdori_card_id": 2504,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2423,
+      "sd_resource_name": "sd026055",
+      "live2d_asset_bundle_name": "026_live_event_340_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "27|纯真振翅": {
       "character_id": 27,
@@ -26314,6 +26366,19 @@
       "live2d_asset_bundle_name": "029_live_event_318_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "29|涼やかに、淑やかに": {
+      "character_id": 29,
+      "bestdori_card_id": 2506,
+      "stars": 2,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2425,
+      "sd_resource_name": "sd029047",
+      "live2d_asset_bundle_name": "029_live_event_340_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
     },
     "30|纯真振翅": {
       "character_id": 30,

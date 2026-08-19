@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-18T12:44:42.371851+00:00",
+  "generated_at": "2026-08-19T12:42:30.864593+00:00",
   "source": [
     "Bestdori API",
     "Bandori Party API"
@@ -142,7 +142,7 @@
       "standing_url": "",
       "cards_untrained_path": "Afterglow/宇田川巴/Cards/Untrained",
       "cards_trained_path": "Afterglow/宇田川巴/Cards/Trained",
-      "card_count": 67
+      "card_count": 68
     },
     {
       "character_id": 10,
@@ -324,7 +324,7 @@
       "standing_url": "",
       "cards_untrained_path": "Roselia/冰川纱夜/Cards/Untrained",
       "cards_trained_path": "Roselia/冰川纱夜/Cards/Trained",
-      "card_count": 73
+      "card_count": 74
     },
     {
       "character_id": 23,
@@ -352,7 +352,7 @@
       "standing_url": "",
       "cards_untrained_path": "Roselia/宇田川亚子/Cards/Untrained",
       "cards_trained_path": "Roselia/宇田川亚子/Cards/Trained",
-      "card_count": 76
+      "card_count": 77
     },
     {
       "character_id": 25,
@@ -380,7 +380,7 @@
       "standing_url": "",
       "cards_untrained_path": "Morfonica/仓田真白/Cards/Untrained",
       "cards_trained_path": "Morfonica/仓田真白/Cards/Trained",
-      "card_count": 49
+      "card_count": 50
     },
     {
       "character_id": 27,
@@ -422,7 +422,7 @@
       "standing_url": "",
       "cards_untrained_path": "Morfonica/二叶筑紫/Cards/Untrained",
       "cards_trained_path": "Morfonica/二叶筑紫/Cards/Trained",
-      "card_count": 41
+      "card_count": 42
     },
     {
       "character_id": 30,

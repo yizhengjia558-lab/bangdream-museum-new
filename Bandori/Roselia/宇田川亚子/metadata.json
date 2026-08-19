@@ -754,6 +754,16 @@
       "resource_set_name": "res024082"
     },
     {
+      "card_id": 2505,
+      "card_name": "魔弾の射手",
+      "rarity": "3-Star",
+      "event": "夏の終わりの忘れ物",
+      "release_date": "2026-08-20",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res024088_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res024088_rip/card_after_training.png",
+      "resource_set_name": "res024088"
+    },
+    {
       "card_id": 90024,
       "card_name": "Card 90024",
       "rarity": "2-Star",

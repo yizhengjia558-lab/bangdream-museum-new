@@ -724,6 +724,16 @@
       "resource_set_name": "res022083"
     },
     {
+      "card_id": 2503,
+      "card_name": "華やぐ夜空の下で",
+      "rarity": "5-Star",
+      "event": "夏の夜、涼風に吹かれてガチャ",
+      "release_date": "2026-08-20",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res022086_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res022086_rip/card_after_training.png",
+      "resource_set_name": "res022086"
+    },
+    {
       "card_id": 90022,
       "card_name": "Card 90022",
       "rarity": "2-Star",
