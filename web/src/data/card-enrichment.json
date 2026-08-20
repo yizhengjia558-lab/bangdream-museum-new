@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19T12:43:38.579266+00:00",
+  "generated_at": "2026-08-20T12:44:56.837860+00:00",
   "matched": 2270,
   "total": 2336,
   "cards": {
@@ -9030,13 +9030,13 @@
       "bestdori_card_id": 2507,
       "stars": 4,
       "attribute": "cool",
-      "card_kind": "normal",
+      "card_kind": "limited",
       "release_year": 2026,
       "costume_id": 2426,
       "sd_resource_name": "sd009083",
       "live2d_asset_bundle_name": "009_live_event_340_ssr",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "limited"
     },
     "10|大家的支柱": {
       "character_id": 10,
@@ -21237,13 +21237,13 @@
       "bestdori_card_id": 2503,
       "stars": 5,
       "attribute": "cool",
-      "card_kind": "normal",
+      "card_kind": "limited",
       "release_year": 2026,
       "costume_id": 2422,
       "sd_resource_name": "sd022086",
       "live2d_asset_bundle_name": "022_live_event_340_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "limited"
     },
     "23|气氛活跃者☆": {
       "character_id": 23,
@@ -24721,13 +24721,13 @@
       "bestdori_card_id": 2504,
       "stars": 5,
       "attribute": "cool",
-      "card_kind": "normal",
+      "card_kind": "limited",
       "release_year": 2026,
       "costume_id": 2423,
       "sd_resource_name": "sd026055",
       "live2d_asset_bundle_name": "026_live_event_340_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "limited"
     },
     "27|纯真振翅": {
       "character_id": 27,
