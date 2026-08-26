@@ -594,16 +594,6 @@
       "resource_set_name": "res004075"
     },
     {
-      "card_id": 2390,
-      "card_name": "作戦大成功！",
-      "rarity": "3-Star",
-      "event": "約束重ねて、また明日",
-      "release_date": "2026-02-09",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res004079_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res004079_rip/card_after_training.png",
-      "resource_set_name": "res004079"
-    },
-    {
       "card_id": 2414,
       "card_name": "これが私の音！",
       "rarity": "5-Star",
@@ -642,6 +632,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res004078_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res004078_rip/card_after_training.png",
       "resource_set_name": "res004078"
+    },
+    {
+      "card_id": 2390,
+      "card_name": "作战大成功！",
+      "rarity": "3-Star",
+      "event": "再次许下约定，明天再见",
+      "release_date": "2026-08-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res004079_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res004079_rip/card_after_training.png",
+      "resource_set_name": "res004079"
     },
     {
       "card_id": 5005,

@@ -614,16 +614,6 @@
       "resource_set_name": "res002077"
     },
     {
-      "card_id": 2392,
-      "card_name": "ひみつの作戦会議",
-      "rarity": "4-Star",
-      "event": "カラフル☆ガーリーストリートガチャ",
-      "release_date": "2026-02-09",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res002081_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res002081_rip/card_after_training.png",
-      "resource_set_name": "res002081"
-    },
-    {
       "card_id": 2300,
       "card_name": "你终将跑过的天空",
       "rarity": "5-Star",
@@ -652,6 +642,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res002080_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res002080"
+    },
+    {
+      "card_id": 2392,
+      "card_name": "秘密作战会议",
+      "rarity": "4-Star",
+      "event": "缤纷色彩☆Girly Street招募",
+      "release_date": "2026-08-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res002081_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res002081_rip/card_after_training.png",
+      "resource_set_name": "res002081"
     },
     {
       "card_id": 90002,

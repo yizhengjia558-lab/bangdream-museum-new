@@ -684,16 +684,6 @@
       "resource_set_name": "res005085"
     },
     {
-      "card_id": 2389,
-      "card_name": "ツイン♡フレーバー",
-      "rarity": "5-Star",
-      "event": "カラフル☆ガーリーストリートガチャ",
-      "release_date": "2026-02-09",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res005091_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res005091_rip/card_after_training.png",
-      "resource_set_name": "res005091"
-    },
-    {
       "card_id": 2242,
       "card_name": "向着大海展翅的天马",
       "rarity": "5-Star",
@@ -742,6 +732,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res005093_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res005093_rip/card_after_training.png",
       "resource_set_name": "res005093"
+    },
+    {
+      "card_id": 2389,
+      "card_name": "双重♡风味",
+      "rarity": "5-Star",
+      "event": "缤纷色彩☆Girly Street招募",
+      "release_date": "2026-08-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res005091_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res005091_rip/card_after_training.png",
+      "resource_set_name": "res005091"
     },
     {
       "card_id": 90005,

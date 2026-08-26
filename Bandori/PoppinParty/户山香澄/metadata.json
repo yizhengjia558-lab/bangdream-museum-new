@@ -704,16 +704,6 @@
       "resource_set_name": "res001090"
     },
     {
-      "card_id": 2388,
-      "card_name": "ありさとかすみ",
-      "rarity": "5-Star",
-      "event": "カラフル☆ガーリーストリートガチャ",
-      "release_date": "2026-02-09",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res001097_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res001097_rip/card_after_training.png",
-      "resource_set_name": "res001097"
-    },
-    {
       "card_id": 2243,
       "card_name": "不能输的战斗",
       "rarity": "3-Star",
@@ -782,6 +772,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res001003_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/bili_res001003_rip/card_after_training.png",
       "resource_set_name": "bili_res001003"
+    },
+    {
+      "card_id": 2388,
+      "card_name": "有咲和香澄",
+      "rarity": "5-Star",
+      "event": "缤纷色彩☆Girly Street招募",
+      "release_date": "2026-08-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res001097_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res001097_rip/card_after_training.png",
+      "resource_set_name": "res001097"
     },
     {
       "card_id": 271,

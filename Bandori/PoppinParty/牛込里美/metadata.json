@@ -604,16 +604,6 @@
       "resource_set_name": "res003075"
     },
     {
-      "card_id": 2391,
-      "card_name": "街角フォトジェニック",
-      "rarity": "2-Star",
-      "event": "約束重ねて、また明日",
-      "release_date": "2026-02-09",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res003080_rip/card_normal.png",
-      "trained_image": "",
-      "resource_set_name": "res003080"
-    },
-    {
       "card_id": 2247,
       "card_name": "放学后，雨天和好友",
       "rarity": "5-Star",
@@ -652,6 +642,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res003079_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res003079_rip/card_after_training.png",
       "resource_set_name": "res003079"
+    },
+    {
+      "card_id": 2391,
+      "card_name": "街角拍照点",
+      "rarity": "2-Star",
+      "event": "再次许下约定，明天再见",
+      "release_date": "2026-08-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res003080_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res003080"
     },
     {
       "card_id": 90003,

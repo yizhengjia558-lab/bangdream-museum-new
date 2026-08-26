@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-25T12:44:54.317025+00:00",
+  "generated_at": "2026-08-26T12:47:54.057451+00:00",
   "matched": 2270,
   "total": 2336,
   "cards": {
@@ -1771,19 +1771,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "1|ありさとかすみ": {
-      "character_id": 1,
-      "bestdori_card_id": 2388,
-      "stars": 5,
-      "attribute": "cool",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2312,
-      "sd_resource_name": "sd001097",
-      "live2d_asset_bundle_name": "001_live_event_321_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "1|不能输的战斗": {
       "character_id": 1,
       "bestdori_card_id": 2243,
@@ -1874,6 +1861,19 @@
       "live2d_asset_bundle_name": "bili_001_collabo_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
+    },
+    "1|有咲和香澄": {
+      "character_id": 1,
+      "bestdori_card_id": 2388,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2312,
+      "sd_resource_name": "sd001097",
+      "live2d_asset_bundle_name": "001_live_event_321_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
     },
     "1|第2回ガルパ杯": {
       "character_id": 1,
@@ -2681,19 +2681,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "2|ひみつの作戦会議": {
-      "character_id": 2,
-      "bestdori_card_id": 2392,
-      "stars": 4,
-      "attribute": "cool",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2316,
-      "sd_resource_name": "sd002081",
-      "live2d_asset_bundle_name": "002_live_event_321_ssr",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "2|你终将跑过的天空": {
       "character_id": 2,
       "bestdori_card_id": 2300,
@@ -2732,6 +2719,19 @@
       "live2d_asset_bundle_name": "002_live_event_317_r",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
+    },
+    "2|秘密作战会议": {
+      "character_id": 2,
+      "bestdori_card_id": 2392,
+      "stars": 4,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2316,
+      "sd_resource_name": "sd002081",
+      "live2d_asset_bundle_name": "002_live_event_321_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
     },
     "3|最喜欢巧克力了": {
       "character_id": 3,
@@ -3513,19 +3513,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "3|街角フォトジェニック": {
-      "character_id": 3,
-      "bestdori_card_id": 2391,
-      "stars": 2,
-      "attribute": "pure",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2315,
-      "sd_resource_name": "sd003080",
-      "live2d_asset_bundle_name": "003_live_event_321_r",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "event"
-    },
     "3|放学后，雨天和好友": {
       "character_id": 3,
       "bestdori_card_id": 2247,
@@ -3577,6 +3564,19 @@
       "live2d_asset_bundle_name": "003_live_event_315_ssr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
+    },
+    "3|街角拍照点": {
+      "character_id": 3,
+      "bestdori_card_id": 2391,
+      "stars": 2,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2315,
+      "sd_resource_name": "sd003080",
+      "live2d_asset_bundle_name": "003_live_event_321_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
     },
     "4|大家的姐姐": {
       "character_id": 4,
@@ -4345,19 +4345,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "4|作戦大成功！": {
-      "character_id": 4,
-      "bestdori_card_id": 2390,
-      "stars": 3,
-      "attribute": "power",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2314,
-      "sd_resource_name": "sd004079",
-      "live2d_asset_bundle_name": "004_live_event_321_sr",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "event"
-    },
     "4|これが私の音！": {
       "character_id": 4,
       "bestdori_card_id": 2414,
@@ -4409,6 +4396,19 @@
       "live2d_asset_bundle_name": "004_dream_festival_4_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
+    },
+    "4|作战大成功！": {
+      "character_id": 4,
+      "bestdori_card_id": 2390,
+      "stars": 3,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2314,
+      "sd_resource_name": "sd004079",
+      "live2d_asset_bundle_name": "004_live_event_321_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
     },
     "5|故作乖巧的优等生": {
       "character_id": 5,
@@ -5294,19 +5294,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "5|ツイン♡フレーバー": {
-      "character_id": 5,
-      "bestdori_card_id": 2389,
-      "stars": 5,
-      "attribute": "cool",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2313,
-      "sd_resource_name": "sd005091",
-      "live2d_asset_bundle_name": "005_live_event_321_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "5|向着大海展翅的天马": {
       "character_id": 5,
       "bestdori_card_id": 2242,
@@ -5371,6 +5358,19 @@
       "live2d_asset_bundle_name": "005_dream_festival_5_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
+    },
+    "5|双重♡风味": {
+      "character_id": 5,
+      "bestdori_card_id": 2389,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2313,
+      "sd_resource_name": "sd005091",
+      "live2d_asset_bundle_name": "005_live_event_321_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
     },
     "6|为朋友着想的气魄": {
       "character_id": 6,
