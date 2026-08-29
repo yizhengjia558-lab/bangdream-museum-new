@@ -744,6 +744,16 @@
       "resource_set_name": "res012090"
     },
     {
+      "card_id": 2509,
+      "card_name": "エレガントハイカー",
+      "rarity": "5-Star",
+      "event": "こころの一筆！マジカルスマイルガチャ",
+      "release_date": "2026-08-30",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012091_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012091_rip/card_after_training.png",
+      "resource_set_name": "res012091"
+    },
+    {
       "card_id": 5004,
       "card_name": "Card 5004",
       "rarity": "2-Star",

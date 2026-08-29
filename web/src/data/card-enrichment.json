@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-28T21:46:22.738249+00:00",
-  "matched": 2270,
-  "total": 2336,
+  "generated_at": "2026-08-29T16:14:33.280715+00:00",
+  "matched": 2275,
+  "total": 2341,
   "cards": {
     "1|card5001": {
       "character_id": 1,
@@ -10910,6 +10910,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
     },
+    "11|スマイルハイカー": {
+      "character_id": 11,
+      "bestdori_card_id": 2508,
+      "stars": 5,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2427,
+      "sd_resource_name": "sd011095",
+      "live2d_asset_bundle_name": "011_live_event_341_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "11|第2回ガルパ杯": {
       "character_id": 11,
       "bestdori_card_id": 275,
@@ -11885,6 +11898,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
     },
+    "12|エレガントハイカー": {
+      "character_id": 12,
+      "bestdori_card_id": 2509,
+      "stars": 5,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2428,
+      "sd_resource_name": "sd012091",
+      "live2d_asset_bundle_name": "012_live_event_341_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "13|微笑队长": {
       "character_id": 13,
       "bestdori_card_id": 49,
@@ -12755,6 +12781,19 @@
       "live2d_asset_bundle_name": "013_live_event_316_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "13|ピュアハイカー": {
+      "character_id": 13,
+      "bestdori_card_id": 2511,
+      "stars": 2,
+      "attribute": "happy",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2430,
+      "sd_resource_name": "sd013086",
+      "live2d_asset_bundle_name": "013_live_event_341_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
     },
     "14|稳重的少女": {
       "character_id": 14,
@@ -13679,6 +13718,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
+    "14|ハートフルハイカー": {
+      "character_id": 14,
+      "bestdori_card_id": 2512,
+      "stars": 4,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2431,
+      "sd_resource_name": "sd014090",
+      "live2d_asset_bundle_name": "014_live_event_341_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "15|凡事皆须适度": {
       "character_id": 15,
       "bestdori_card_id": 57,
@@ -14599,6 +14651,19 @@
       "costume_id": 2284,
       "sd_resource_name": "sd015085",
       "live2d_asset_bundle_name": "015_live_event_316_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
+    "15|サポーティブハイカー": {
+      "character_id": 15,
+      "bestdori_card_id": 2510,
+      "stars": 3,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2429,
+      "sd_resource_name": "sd015089",
+      "live2d_asset_bundle_name": "015_live_event_341_sr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },

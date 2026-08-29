@@ -714,6 +714,16 @@
       "resource_set_name": "res015085"
     },
     {
+      "card_id": 2510,
+      "card_name": "サポーティブハイカー",
+      "rarity": "3-Star",
+      "event": "爆熱！スーパーハイクバトラーズ！",
+      "release_date": "2026-08-30",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res015089_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res015089_rip/card_after_training.png",
+      "resource_set_name": "res015089"
+    },
+    {
       "card_id": 90015,
       "card_name": "Card 90015",
       "rarity": "2-Star",

@@ -734,6 +734,16 @@
       "resource_set_name": "bili_res011001"
     },
     {
+      "card_id": 2508,
+      "card_name": "スマイルハイカー",
+      "rarity": "5-Star",
+      "event": "こころの一筆！マジカルスマイルガチャ",
+      "release_date": "2026-08-30",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res011095_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res011095_rip/card_after_training.png",
+      "resource_set_name": "res011095"
+    },
+    {
       "card_id": 275,
       "card_name": "第2回ガルパ杯",
       "rarity": "4-Star",

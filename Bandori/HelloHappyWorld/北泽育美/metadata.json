@@ -684,6 +684,16 @@
       "resource_set_name": "res013082"
     },
     {
+      "card_id": 2511,
+      "card_name": "ピュアハイカー",
+      "rarity": "2-Star",
+      "event": "爆熱！スーパーハイクバトラーズ！",
+      "release_date": "2026-08-30",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res013086_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res013086"
+    },
+    {
       "card_id": 90013,
       "card_name": "Card 90013",
       "rarity": "2-Star",

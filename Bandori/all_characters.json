@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-28T21:45:15.193115+00:00",
+  "generated_at": "2026-08-29T16:13:26.269573+00:00",
   "source": [
     "Bestdori API",
     "Bandori Party API"
@@ -170,7 +170,7 @@
       "standing_url": "",
       "cards_untrained_path": "HelloHappyWorld/弦卷心/Cards/Untrained",
       "cards_trained_path": "HelloHappyWorld/弦卷心/Cards/Trained",
-      "card_count": 76
+      "card_count": 77
     },
     {
       "character_id": 12,
@@ -184,7 +184,7 @@
       "standing_url": "",
       "cards_untrained_path": "HelloHappyWorld/濑田薰/Cards/Untrained",
       "cards_trained_path": "HelloHappyWorld/濑田薰/Cards/Trained",
-      "card_count": 77
+      "card_count": 78
     },
     {
       "character_id": 13,
@@ -198,7 +198,7 @@
       "standing_url": "",
       "cards_untrained_path": "HelloHappyWorld/北泽育美/Cards/Untrained",
       "cards_trained_path": "HelloHappyWorld/北泽育美/Cards/Trained",
-      "card_count": 70
+      "card_count": 71
     },
     {
       "character_id": 14,
@@ -212,7 +212,7 @@
       "standing_url": "",
       "cards_untrained_path": "HelloHappyWorld/松原花音/Cards/Untrained",
       "cards_trained_path": "HelloHappyWorld/松原花音/Cards/Trained",
-      "card_count": 74
+      "card_count": 75
     },
     {
       "character_id": 15,
@@ -226,7 +226,7 @@
       "standing_url": "",
       "cards_untrained_path": "HelloHappyWorld/米歇尔/Cards/Untrained",
       "cards_trained_path": "HelloHappyWorld/米歇尔/Cards/Trained",
-      "card_count": 73
+      "card_count": 74
     },
     {
       "character_id": 16,
