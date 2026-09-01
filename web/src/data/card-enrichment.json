@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T18:49:22.035710+00:00",
+  "generated_at": "2026-09-01T16:10:11.495151+00:00",
   "matched": 2275,
   "total": 2341,
   "cards": {
@@ -10921,7 +10921,7 @@
       "sd_resource_name": "sd011095",
       "live2d_asset_bundle_name": "011_live_event_341_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "11|第2回ガルパ杯": {
       "character_id": 11,
@@ -11909,7 +11909,7 @@
       "sd_resource_name": "sd012091",
       "live2d_asset_bundle_name": "012_live_event_341_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "13|微笑队长": {
       "character_id": 13,
@@ -13729,7 +13729,7 @@
       "sd_resource_name": "sd014090",
       "live2d_asset_bundle_name": "014_live_event_341_ssr",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "15|凡事皆须适度": {
       "character_id": 15,
