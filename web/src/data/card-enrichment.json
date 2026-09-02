@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-01T16:10:11.495151+00:00",
+  "generated_at": "2026-09-02T16:01:31.098924+00:00",
   "matched": 2275,
   "total": 2341,
   "cards": {
@@ -9008,7 +9008,7 @@
       "release_year": 2026,
       "costume_id": 2400,
       "sd_resource_name": "sd009082",
-      "live2d_asset_bundle_name": "009_live_event_336_ur",
+      "live2d_asset_bundle_name": null,
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
