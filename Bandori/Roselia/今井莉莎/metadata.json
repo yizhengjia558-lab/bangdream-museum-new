@@ -684,16 +684,6 @@
       "resource_set_name": "res023083"
     },
     {
-      "card_id": 2398,
-      "card_name": "DEAR MY LIKE",
-      "rarity": "5-Star",
-      "event": "Petals in the Lightガチャ",
-      "release_date": "2026-02-18",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res023088_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res023088_rip/card_after_training.png",
-      "resource_set_name": "res023088"
-    },
-    {
       "card_id": 2255,
       "card_name": "欣喜的评价",
       "rarity": "3-Star",
@@ -742,6 +732,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res023087_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res023087_rip/card_after_training.png",
       "resource_set_name": "res023087"
+    },
+    {
+      "card_id": 2398,
+      "card_name": "DEAR MY LIKE",
+      "rarity": "5-Star",
+      "event": "Petals in the Light招募",
+      "release_date": "2026-09-04",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res023088_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res023088_rip/card_after_training.png",
+      "resource_set_name": "res023088"
     },
     {
       "card_id": 5008,

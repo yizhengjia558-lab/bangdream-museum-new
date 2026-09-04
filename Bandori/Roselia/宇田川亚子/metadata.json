@@ -664,16 +664,6 @@
       "resource_set_name": "res024080"
     },
     {
-      "card_id": 2399,
-      "card_name": "Re:VENGER",
-      "rarity": "5-Star",
-      "event": "Petals in the Lightガチャ",
-      "release_date": "2026-02-18",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res024083_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res024083_rip/card_after_training.png",
-      "resource_set_name": "res024083"
-    },
-    {
       "card_id": 2256,
       "card_name": "荣耀骑士",
       "rarity": "2-Star",
@@ -762,6 +752,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res024088_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res024088_rip/card_after_training.png",
       "resource_set_name": "res024088"
+    },
+    {
+      "card_id": 2399,
+      "card_name": "Re:VENGER",
+      "rarity": "5-Star",
+      "event": "Petals in the Light招募",
+      "release_date": "2026-09-04",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res024083_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res024083_rip/card_after_training.png",
+      "resource_set_name": "res024083"
     },
     {
       "card_id": 90024,

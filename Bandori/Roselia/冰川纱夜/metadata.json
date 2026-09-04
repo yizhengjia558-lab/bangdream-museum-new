@@ -664,16 +664,6 @@
       "resource_set_name": "res022079"
     },
     {
-      "card_id": 2400,
-      "card_name": "約束の場所への一歩",
-      "rarity": "3-Star",
-      "event": "Re:Like Re:Live",
-      "release_date": "2026-02-18",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res022084_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res022084_rip/card_after_training.png",
-      "resource_set_name": "res022084"
-    },
-    {
       "card_id": 2253,
       "card_name": "迂回的尽头",
       "rarity": "5-Star",
@@ -732,6 +722,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res022086_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res022086_rip/card_after_training.png",
       "resource_set_name": "res022086"
+    },
+    {
+      "card_id": 2400,
+      "card_name": "迈向约定之地的一步",
+      "rarity": "3-Star",
+      "event": "Re:Like Re:Live",
+      "release_date": "2026-09-04",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res022084_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res022084_rip/card_after_training.png",
+      "resource_set_name": "res022084"
     },
     {
       "card_id": 90022,

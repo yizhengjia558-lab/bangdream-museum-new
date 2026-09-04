@@ -674,16 +674,6 @@
       "resource_set_name": "res021080"
     },
     {
-      "card_id": 2402,
-      "card_name": "はじまりの一弦",
-      "rarity": "4-Star",
-      "event": "Petals in the Lightガチャ",
-      "release_date": "2026-02-18",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021085_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021085_rip/card_after_training.png",
-      "resource_set_name": "res021085"
-    },
-    {
       "card_id": 2254,
       "card_name": "坚不可摧的信任",
       "rarity": "5-Star",
@@ -742,6 +732,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021087_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021087_rip/card_after_training.png",
       "resource_set_name": "res021087"
+    },
+    {
+      "card_id": 2402,
+      "card_name": "起始之弦",
+      "rarity": "4-Star",
+      "event": "Petals in the Light招募",
+      "release_date": "2026-09-04",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021085_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021085_rip/card_after_training.png",
+      "resource_set_name": "res021085"
     },
     {
       "card_id": 274,

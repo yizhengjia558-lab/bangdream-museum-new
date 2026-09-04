@@ -644,16 +644,6 @@
       "resource_set_name": "res025080"
     },
     {
-      "card_id": 2401,
-      "card_name": "Blanc Resonance",
-      "rarity": "2-Star",
-      "event": "Re:Like Re:Live",
-      "release_date": "2026-02-18",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res025081_rip/card_normal.png",
-      "trained_image": "",
-      "resource_set_name": "res025081"
-    },
-    {
       "card_id": 2257,
       "card_name": "暮色中的誓言",
       "rarity": "4-Star",
@@ -702,6 +692,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res025079_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res025079_rip/card_after_training.png",
       "resource_set_name": "res025079"
+    },
+    {
+      "card_id": 2401,
+      "card_name": "Blanc Resonance",
+      "rarity": "2-Star",
+      "event": "Re:Like Re:Live",
+      "release_date": "2026-09-04",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res025081_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res025081"
     },
     {
       "card_id": 5006,

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-03T15:52:43.275158+00:00",
+  "generated_at": "2026-09-04T15:47:37.685428+00:00",
   "matched": 2275,
   "total": 2341,
   "cards": {
@@ -20257,19 +20257,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "21|はじまりの一弦": {
-      "character_id": 21,
-      "bestdori_card_id": 2402,
-      "stars": 4,
-      "attribute": "power",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2321,
-      "sd_resource_name": "sd021085",
-      "live2d_asset_bundle_name": "021_live_event_322_ssr",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "21|坚不可摧的信任": {
       "character_id": 21,
       "bestdori_card_id": 2254,
@@ -20347,6 +20334,19 @@
       "live2d_asset_bundle_name": "021_live_event_338_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
+    },
+    "21|起始之弦": {
+      "character_id": 21,
+      "bestdori_card_id": 2402,
+      "stars": 4,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2321,
+      "sd_resource_name": "sd021085",
+      "live2d_asset_bundle_name": "021_live_event_322_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
     },
     "21|第2回ガルパ杯": {
       "character_id": 21,
@@ -21219,19 +21219,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "22|約束の場所への一歩": {
-      "character_id": 22,
-      "bestdori_card_id": 2400,
-      "stars": 3,
-      "attribute": "happy",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2319,
-      "sd_resource_name": "sd022084",
-      "live2d_asset_bundle_name": "022_live_event_322_sr",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "event"
-    },
     "22|迂回的尽头": {
       "character_id": 22,
       "bestdori_card_id": 2253,
@@ -21309,6 +21296,19 @@
       "live2d_asset_bundle_name": "022_live_event_340_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
+    },
+    "22|迈向约定之地的一步": {
+      "character_id": 22,
+      "bestdori_card_id": 2400,
+      "stars": 3,
+      "attribute": "happy",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2319,
+      "sd_resource_name": "sd022084",
+      "live2d_asset_bundle_name": "022_live_event_322_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
     },
     "23|气氛活跃者☆": {
       "character_id": 23,
@@ -22194,19 +22194,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "23|dearmylike": {
-      "character_id": 23,
-      "bestdori_card_id": 2398,
-      "stars": 5,
-      "attribute": "power",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2317,
-      "sd_resource_name": "sd023088",
-      "live2d_asset_bundle_name": "023_live_event_322_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "23|欣喜的评价": {
       "character_id": 23,
       "bestdori_card_id": 2255,
@@ -22271,6 +22258,19 @@
       "live2d_asset_bundle_name": "023_live_event_315_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
+    },
+    "23|dearmylike": {
+      "character_id": 23,
+      "bestdori_card_id": 2398,
+      "stars": 5,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2317,
+      "sd_resource_name": "sd023088",
+      "live2d_asset_bundle_name": "023_live_event_322_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
     },
     "24|帅气！鼓手": {
       "character_id": 24,
@@ -23130,19 +23130,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "24|re:venger": {
-      "character_id": 24,
-      "bestdori_card_id": 2399,
-      "stars": 5,
-      "attribute": "power",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2318,
-      "sd_resource_name": "sd024083",
-      "live2d_asset_bundle_name": "024_live_event_322_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "24|荣耀骑士": {
       "character_id": 24,
       "bestdori_card_id": 2256,
@@ -23259,6 +23246,19 @@
       "live2d_asset_bundle_name": "024_live_event_340_sr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
+    },
+    "24|re:venger": {
+      "character_id": 24,
+      "bestdori_card_id": 2399,
+      "stars": 5,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2318,
+      "sd_resource_name": "sd024083",
+      "live2d_asset_bundle_name": "024_live_event_322_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
     },
     "25|讨厌嘈杂和拥挤": {
       "character_id": 25,
@@ -24092,19 +24092,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "campaign"
     },
-    "25|blancresonance": {
-      "character_id": 25,
-      "bestdori_card_id": 2401,
-      "stars": 2,
-      "attribute": "happy",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2320,
-      "sd_resource_name": "sd025081",
-      "live2d_asset_bundle_name": "025_live_event_322_r",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "event"
-    },
     "25|暮色中的誓言": {
       "character_id": 25,
       "bestdori_card_id": 2257,
@@ -24169,6 +24156,19 @@
       "live2d_asset_bundle_name": "025_live_event_314_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "25|blancresonance": {
+      "character_id": 25,
+      "bestdori_card_id": 2401,
+      "stars": 2,
+      "attribute": "happy",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2320,
+      "sd_resource_name": "sd025081",
+      "live2d_asset_bundle_name": "025_live_event_322_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
     },
     "26|纯真振翅": {
       "character_id": 26,
