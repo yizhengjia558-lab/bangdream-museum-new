@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-10T15:55:29.207345+00:00",
-  "matched": 2275,
-  "total": 2341,
+  "generated_at": "2026-09-11T15:54:29.959736+00:00",
+  "matched": 2282,
+  "total": 2348,
   "cards": {
     "1|card5001": {
       "character_id": 1,
@@ -7243,6 +7243,19 @@
       "live2d_asset_bundle_name": "007_live_event_320_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
+    },
+    "7|微睡みのプロローグ": {
+      "character_id": 7,
+      "bestdori_card_id": 2518,
+      "stars": 5,
+      "attribute": "power",
+      "card_kind": "kirafes",
+      "release_year": 2026,
+      "costume_id": 2437,
+      "sd_resource_name": "sd007083",
+      "live2d_asset_bundle_name": "007_dream_festival_5_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "kirafes"
     },
     "8|大家的队长！": {
       "character_id": 8,
@@ -14667,6 +14680,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
+    "15|clutchplay！": {
+      "character_id": 15,
+      "bestdori_card_id": 2519,
+      "stars": 5,
+      "attribute": "pure",
+      "card_kind": "kirafes",
+      "release_year": 2026,
+      "costume_id": 2438,
+      "sd_resource_name": "sd015090",
+      "live2d_asset_bundle_name": "015_dream_festival_5_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "kirafes"
+    },
     "16|粉色代表☆": {
       "character_id": 16,
       "bestdori_card_id": 61,
@@ -20348,6 +20374,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
+    "21|猫へとまっしぐら！": {
+      "character_id": 21,
+      "bestdori_card_id": 2515,
+      "stars": 3,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2434,
+      "sd_resource_name": "sd021088",
+      "live2d_asset_bundle_name": "021_live_event_342_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
     "21|第2回ガルパ杯": {
       "character_id": 21,
       "bestdori_card_id": 274,
@@ -21307,6 +21346,19 @@
       "costume_id": 2319,
       "sd_resource_name": "sd022084",
       "live2d_asset_bundle_name": "022_live_event_322_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
+    "22|サロン・ド・ビブリオ": {
+      "character_id": 22,
+      "bestdori_card_id": 2516,
+      "stars": 2,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2435,
+      "sd_resource_name": "sd022087",
+      "live2d_asset_bundle_name": "022_live_event_342_r",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
@@ -22271,6 +22323,19 @@
       "live2d_asset_bundle_name": "023_live_event_322_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "23|彼女の選ぶ未来": {
+      "character_id": 23,
+      "bestdori_card_id": 2514,
+      "stars": 5,
+      "attribute": "happy",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2433,
+      "sd_resource_name": "sd023090",
+      "live2d_asset_bundle_name": "023_live_event_342_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "24|帅气！鼓手": {
       "character_id": 24,
@@ -23260,6 +23325,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
+    "24|純白に滲む色彩": {
+      "character_id": 24,
+      "bestdori_card_id": 2517,
+      "stars": 4,
+      "attribute": "happy",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2436,
+      "sd_resource_name": "sd024089",
+      "live2d_asset_bundle_name": "024_live_event_342_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "25|讨厌嘈杂和拥挤": {
       "character_id": 25,
       "bestdori_card_id": 97,
@@ -24169,6 +24247,19 @@
       "live2d_asset_bundle_name": "025_live_event_322_r",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
+    },
+    "25|truebrillante": {
+      "character_id": 25,
+      "bestdori_card_id": 2513,
+      "stars": 5,
+      "attribute": "happy",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2432,
+      "sd_resource_name": "sd025084",
+      "live2d_asset_bundle_name": "025_live_event_342_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "26|纯真振翅": {
       "character_id": 26,

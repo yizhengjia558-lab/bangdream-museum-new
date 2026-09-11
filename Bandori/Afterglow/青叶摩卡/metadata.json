@@ -684,6 +684,16 @@
       "resource_set_name": "res007079"
     },
     {
+      "card_id": 2518,
+      "card_name": "微睡みのプロローグ",
+      "rarity": "5-Star",
+      "event": "9.5周年記念ドリーム＆キラメキフェスティバルガチャ",
+      "release_date": "2026-09-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007083_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007083_rip/card_after_training.png",
+      "resource_set_name": "res007083"
+    },
+    {
       "card_id": 90007,
       "card_name": "Card 90007",
       "rarity": "2-Star",

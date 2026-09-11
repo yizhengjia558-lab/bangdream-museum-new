@@ -734,6 +734,16 @@
       "resource_set_name": "res022084"
     },
     {
+      "card_id": 2516,
+      "card_name": "サロン・ド・ビブリオ",
+      "rarity": "2-Star",
+      "event": "未来想送曲",
+      "release_date": "2026-09-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res022087_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res022087"
+    },
+    {
       "card_id": 90022,
       "card_name": "Card 90022",
       "rarity": "2-Star",

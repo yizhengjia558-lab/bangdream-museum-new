@@ -744,6 +744,16 @@
       "resource_set_name": "res021085"
     },
     {
+      "card_id": 2515,
+      "card_name": "猫へとまっしぐら！",
+      "rarity": "3-Star",
+      "event": "未来想送曲",
+      "release_date": "2026-09-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021088_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021088_rip/card_after_training.png",
+      "resource_set_name": "res021088"
+    },
+    {
       "card_id": 274,
       "card_name": "第2回ガルパ杯",
       "rarity": "4-Star",

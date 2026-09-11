@@ -704,6 +704,16 @@
       "resource_set_name": "res025081"
     },
     {
+      "card_id": 2513,
+      "card_name": "True brillante",
+      "rarity": "5-Star",
+      "event": "深窓の有閑紀行ガチャ",
+      "release_date": "2026-09-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res025084_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res025084_rip/card_after_training.png",
+      "resource_set_name": "res025084"
+    },
+    {
       "card_id": 5006,
       "card_name": "Card 5006",
       "rarity": "2-Star",

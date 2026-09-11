@@ -724,6 +724,16 @@
       "resource_set_name": "res015089"
     },
     {
+      "card_id": 2519,
+      "card_name": "Clutch Play！",
+      "rarity": "5-Star",
+      "event": "9.5周年記念ドリーム＆キラメキフェスティバルガチャ",
+      "release_date": "2026-09-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res015090_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res015090_rip/card_after_training.png",
+      "resource_set_name": "res015090"
+    },
+    {
       "card_id": 90015,
       "card_name": "Card 90015",
       "rarity": "2-Star",
