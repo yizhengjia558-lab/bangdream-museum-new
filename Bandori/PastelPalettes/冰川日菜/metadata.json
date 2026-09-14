@@ -664,16 +664,6 @@
       "resource_set_name": "res017080"
     },
     {
-      "card_id": 2404,
-      "card_name": "るんっ♪とする歌詞",
-      "rarity": "5-Star",
-      "event": "綺雲たなびく楼閣への誘いガチャ",
-      "release_date": "2026-02-27",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017085_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017085_rip/card_after_training.png",
-      "resource_set_name": "res017085"
-    },
-    {
       "card_id": 2274,
       "card_name": "夏日祭典，雀跃的心",
       "rarity": "4-Star",
@@ -732,6 +722,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017088_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017088_rip/card_after_training.png",
       "resource_set_name": "res017088"
+    },
+    {
+      "card_id": 2404,
+      "card_name": "让人感到噜♪的歌词",
+      "rarity": "5-Star",
+      "event": "绮云舒展楼阁邀约招募",
+      "release_date": "2026-09-14",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017085_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017085_rip/card_after_training.png",
+      "resource_set_name": "res017085"
     },
     {
       "card_id": 90017,

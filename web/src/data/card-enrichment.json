@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T15:38:09.035972+00:00",
+  "generated_at": "2026-09-14T17:42:59.767547+00:00",
   "matched": 2282,
   "total": 2348,
   "cards": {
@@ -7249,13 +7249,13 @@
       "bestdori_card_id": 2518,
       "stars": 5,
       "attribute": "power",
-      "card_kind": "kirafes",
+      "card_kind": "limited",
       "release_year": 2026,
       "costume_id": 2437,
       "sd_resource_name": "sd007083",
       "live2d_asset_bundle_name": "007_dream_festival_5_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "kirafes"
+      "bestdori_type": "dreamfes"
     },
     "8|大家的队长！": {
       "character_id": 8,
@@ -14685,13 +14685,13 @@
       "bestdori_card_id": 2519,
       "stars": 5,
       "attribute": "pure",
-      "card_kind": "kirafes",
+      "card_kind": "limited",
       "release_year": 2026,
       "costume_id": 2438,
       "sd_resource_name": "sd015090",
       "live2d_asset_bundle_name": "015_dream_festival_5_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "kirafes"
+      "bestdori_type": "dreamfes"
     },
     "16|粉色代表☆": {
       "character_id": 16,
@@ -15616,19 +15616,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "16|胸に響くもの": {
-      "character_id": 16,
-      "bestdori_card_id": 2405,
-      "stars": 3,
-      "attribute": "happy",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2324,
-      "sd_resource_name": "sd016097",
-      "live2d_asset_bundle_name": "016_live_event_323_sr",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "event"
-    },
     "16|心跳加速☆水上滑梯": {
       "character_id": 16,
       "bestdori_card_id": 2259,
@@ -15730,6 +15717,19 @@
       "costume_id": 2413,
       "sd_resource_name": "sd016101",
       "live2d_asset_bundle_name": "016_live_event_338_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
+    "16|触动心弦之物": {
+      "character_id": 16,
+      "bestdori_card_id": 2405,
+      "stars": 3,
+      "attribute": "happy",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2324,
+      "sd_resource_name": "sd016097",
+      "live2d_asset_bundle_name": "016_live_event_323_sr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
@@ -16591,19 +16591,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "17|るんっ♪とする歌詞": {
-      "character_id": 17,
-      "bestdori_card_id": 2404,
-      "stars": 5,
-      "attribute": "cool",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2323,
-      "sd_resource_name": "sd017085",
-      "live2d_asset_bundle_name": "017_live_event_323_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "17|夏日祭典，雀跃的心": {
       "character_id": 17,
       "bestdori_card_id": 2274,
@@ -16681,6 +16668,19 @@
       "live2d_asset_bundle_name": "017_live_event_338_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
+    },
+    "17|让人感到噜♪的歌词": {
+      "character_id": 17,
+      "bestdori_card_id": 2404,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2323,
+      "sd_resource_name": "sd017085",
+      "live2d_asset_bundle_name": "017_live_event_323_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
     },
     "18|铁壁的微笑": {
       "character_id": 18,
@@ -17527,19 +17527,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "18|私の気持ち": {
-      "character_id": 18,
-      "bestdori_card_id": 2403,
-      "stars": 5,
-      "attribute": "cool",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2322,
-      "sd_resource_name": "sd018083",
-      "live2d_asset_bundle_name": "018_live_event_323_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "18|落としたもの": {
       "character_id": 18,
       "bestdori_card_id": 2431,
@@ -17602,6 +17589,19 @@
       "costume_id": 2406,
       "sd_resource_name": "sd018086",
       "live2d_asset_bundle_name": "018_live_event_337_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
+    },
+    "18|我的心意": {
+      "character_id": 18,
+      "bestdori_card_id": 2403,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2322,
+      "sd_resource_name": "sd018083",
+      "live2d_asset_bundle_name": "018_live_event_323_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
@@ -18385,19 +18385,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "19|魅惑のお団子": {
-      "character_id": 19,
-      "bestdori_card_id": 2406,
-      "stars": 2,
-      "attribute": "power",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2325,
-      "sd_resource_name": "sd019081",
-      "live2d_asset_bundle_name": "019_live_event_323_r",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "event"
-    },
     "19|心交わすひととき": {
       "character_id": 19,
       "bestdori_card_id": 2416,
@@ -18486,6 +18473,19 @@
       "costume_id": 2407,
       "sd_resource_name": "sd019086",
       "live2d_asset_bundle_name": "019_live_event_337_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
+    "19|魅惑的团子": {
+      "character_id": 19,
+      "bestdori_card_id": 2406,
+      "stars": 2,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2325,
+      "sd_resource_name": "sd019081",
+      "live2d_asset_bundle_name": "019_live_event_323_r",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
@@ -19334,19 +19334,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "20|言葉を探して": {
-      "character_id": 20,
-      "bestdori_card_id": 2407,
-      "stars": 4,
-      "attribute": "cool",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2326,
-      "sd_resource_name": "sd020086",
-      "live2d_asset_bundle_name": "020_live_event_323_ssr",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "20|自然微笑": {
       "character_id": 20,
       "bestdori_card_id": 2264,
@@ -19409,6 +19396,19 @@
       "costume_id": 2409,
       "sd_resource_name": "sd020088",
       "live2d_asset_bundle_name": "020_live_event_337_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
+    },
+    "20|寻觅话语": {
+      "character_id": 20,
+      "bestdori_card_id": 2407,
+      "stars": 4,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2326,
+      "sd_resource_name": "sd020086",
+      "live2d_asset_bundle_name": "020_live_event_323_ssr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
@@ -22335,7 +22335,7 @@
       "sd_resource_name": "sd023090",
       "live2d_asset_bundle_name": "023_live_event_342_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "24|帅气！鼓手": {
       "character_id": 24,
@@ -23336,7 +23336,7 @@
       "sd_resource_name": "sd024089",
       "live2d_asset_bundle_name": "024_live_event_342_ssr",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "25|讨厌嘈杂和拥挤": {
       "character_id": 25,
@@ -24259,7 +24259,7 @@
       "sd_resource_name": "sd025084",
       "live2d_asset_bundle_name": "025_live_event_342_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "26|纯真振翅": {
       "character_id": 26,

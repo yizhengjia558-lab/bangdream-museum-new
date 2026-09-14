@@ -714,16 +714,6 @@
       "resource_set_name": "res016090"
     },
     {
-      "card_id": 2405,
-      "card_name": "胸に響くもの",
-      "rarity": "3-Star",
-      "event": "千の言葉でも足りないくらい",
-      "release_date": "2026-02-27",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016097_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016097_rip/card_after_training.png",
-      "resource_set_name": "res016097"
-    },
-    {
       "card_id": 2259,
       "card_name": "心跳加速☆水上滑梯",
       "rarity": "5-Star",
@@ -802,6 +792,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016101_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res016101"
+    },
+    {
+      "card_id": 2405,
+      "card_name": "触动心弦之物",
+      "rarity": "3-Star",
+      "event": "纵使千言万语亦不足以表达",
+      "release_date": "2026-09-14",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016097_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016097_rip/card_after_training.png",
+      "resource_set_name": "res016097"
     },
     {
       "card_id": 273,

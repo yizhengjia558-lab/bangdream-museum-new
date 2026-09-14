@@ -654,16 +654,6 @@
       "resource_set_name": "res018079"
     },
     {
-      "card_id": 2403,
-      "card_name": "私の気持ち",
-      "rarity": "5-Star",
-      "event": "綺雲たなびく楼閣への誘いガチャ",
-      "release_date": "2026-02-27",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018083_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018083_rip/card_after_training.png",
-      "resource_set_name": "res018083"
-    },
-    {
       "card_id": 2431,
       "card_name": "落としたもの",
       "rarity": "5-Star",
@@ -712,6 +702,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018086_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018086_rip/card_after_training.png",
       "resource_set_name": "res018086"
+    },
+    {
+      "card_id": 2403,
+      "card_name": "我的心意",
+      "rarity": "5-Star",
+      "event": "绮云舒展楼阁邀约招募",
+      "release_date": "2026-09-14",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018083_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018083_rip/card_after_training.png",
+      "resource_set_name": "res018083"
     },
     {
       "card_id": 5003,

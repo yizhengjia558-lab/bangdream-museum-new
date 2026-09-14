@@ -604,16 +604,6 @@
       "resource_set_name": "res019078"
     },
     {
-      "card_id": 2406,
-      "card_name": "魅惑のお団子",
-      "rarity": "2-Star",
-      "event": "千の言葉でも足りないくらい",
-      "release_date": "2026-02-27",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019081_rip/card_normal.png",
-      "trained_image": "",
-      "resource_set_name": "res019081"
-    },
-    {
       "card_id": 2416,
       "card_name": "心交わすひととき",
       "rarity": "5-Star",
@@ -682,6 +672,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019086_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019086_rip/card_after_training.png",
       "resource_set_name": "res019086"
+    },
+    {
+      "card_id": 2406,
+      "card_name": "魅惑的团子",
+      "rarity": "2-Star",
+      "event": "纵使千言万语亦不足以表达",
+      "release_date": "2026-09-14",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019081_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res019081"
     },
     {
       "card_id": 90019,
