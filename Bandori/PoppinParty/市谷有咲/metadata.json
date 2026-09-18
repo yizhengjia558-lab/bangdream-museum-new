@@ -744,6 +744,16 @@
       "resource_set_name": "res005091"
     },
     {
+      "card_id": 2523,
+      "card_name": "フリル・ド・メロディ",
+      "rarity": "2-Star",
+      "event": "君に歌う等身大のハーモニー",
+      "release_date": "2026-09-19",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res005094_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res005094"
+    },
+    {
       "card_id": 90005,
       "card_name": "Card 90005",
       "rarity": "2-Star",

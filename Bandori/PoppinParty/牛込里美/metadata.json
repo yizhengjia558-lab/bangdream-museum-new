@@ -654,6 +654,16 @@
       "resource_set_name": "res003080"
     },
     {
+      "card_id": 2520,
+      "card_name": "あたたかな手のひら",
+      "rarity": "5-Star",
+      "event": "弾む心、緑光を追いかけてガチャ",
+      "release_date": "2026-09-19",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res003082_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res003082_rip/card_after_training.png",
+      "resource_set_name": "res003082"
+    },
+    {
       "card_id": 90003,
       "card_name": "Card 90003",
       "rarity": "2-Star",

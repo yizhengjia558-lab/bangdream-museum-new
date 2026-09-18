@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-17T16:15:38.248273+00:00",
+  "generated_at": "2026-09-18T15:50:26.892507+00:00",
   "source": [
     "Bestdori API",
     "Bandori Party API"
@@ -30,7 +30,7 @@
       "standing_url": "",
       "cards_untrained_path": "PoppinParty/户山香澄/Cards/Untrained",
       "cards_trained_path": "PoppinParty/户山香澄/Cards/Trained",
-      "card_count": 82
+      "card_count": 83
     },
     {
       "character_id": 2,
@@ -44,7 +44,7 @@
       "standing_url": "",
       "cards_untrained_path": "PoppinParty/花园多惠/Cards/Untrained",
       "cards_trained_path": "PoppinParty/花园多惠/Cards/Trained",
-      "card_count": 67
+      "card_count": 68
     },
     {
       "character_id": 3,
@@ -58,7 +58,7 @@
       "standing_url": "",
       "cards_untrained_path": "PoppinParty/牛込里美/Cards/Untrained",
       "cards_trained_path": "PoppinParty/牛込里美/Cards/Trained",
-      "card_count": 67
+      "card_count": 68
     },
     {
       "character_id": 4,
@@ -72,7 +72,7 @@
       "standing_url": "",
       "cards_untrained_path": "PoppinParty/山吹沙绫/Cards/Untrained",
       "cards_trained_path": "PoppinParty/山吹沙绫/Cards/Trained",
-      "card_count": 67
+      "card_count": 68
     },
     {
       "character_id": 5,
@@ -86,7 +86,7 @@
       "standing_url": "",
       "cards_untrained_path": "PoppinParty/市谷有咲/Cards/Untrained",
       "cards_trained_path": "PoppinParty/市谷有咲/Cards/Trained",
-      "card_count": 76
+      "card_count": 77
     },
     {
       "character_id": 6,

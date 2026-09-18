@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-17T16:16:45.841563+00:00",
-  "matched": 2282,
-  "total": 2348,
+  "generated_at": "2026-09-18T15:51:39.262719+00:00",
+  "matched": 2287,
+  "total": 2353,
   "cards": {
     "1|card5001": {
       "character_id": 1,
@@ -1875,6 +1875,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
+    "1|空からの贈り物": {
+      "character_id": 1,
+      "bestdori_card_id": 2521,
+      "stars": 5,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2440,
+      "sd_resource_name": "sd001101",
+      "live2d_asset_bundle_name": "001_live_event_343_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "1|第2回ガルパ杯": {
       "character_id": 1,
       "bestdori_card_id": 271,
@@ -2733,6 +2746,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
+    "2|街角うさぎ発見録": {
+      "character_id": 2,
+      "bestdori_card_id": 2522,
+      "stars": 3,
+      "attribute": "happy",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2441,
+      "sd_resource_name": "sd002083",
+      "live2d_asset_bundle_name": "002_live_event_343_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
     "3|最喜欢巧克力了": {
       "character_id": 3,
       "bestdori_card_id": 9,
@@ -3578,6 +3604,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
+    "3|あたたかな手のひら": {
+      "character_id": 3,
+      "bestdori_card_id": 2520,
+      "stars": 5,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2439,
+      "sd_resource_name": "sd003082",
+      "live2d_asset_bundle_name": "003_live_event_343_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "4|大家的姐姐": {
       "character_id": 4,
       "bestdori_card_id": 13,
@@ -4409,6 +4448,19 @@
       "live2d_asset_bundle_name": "004_live_event_321_sr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
+    },
+    "4|特大エール！": {
+      "character_id": 4,
+      "bestdori_card_id": 2524,
+      "stars": 4,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2443,
+      "sd_resource_name": "sd004082",
+      "live2d_asset_bundle_name": "004_live_event_343_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "5|故作乖巧的优等生": {
       "character_id": 5,
@@ -5371,6 +5423,19 @@
       "live2d_asset_bundle_name": "005_live_event_321_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "5|フリル・ド・メロディ": {
+      "character_id": 5,
+      "bestdori_card_id": 2523,
+      "stars": 2,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2442,
+      "sd_resource_name": "sd005094",
+      "live2d_asset_bundle_name": "005_live_event_343_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
     },
     "6|为朋友着想的气魄": {
       "character_id": 6,

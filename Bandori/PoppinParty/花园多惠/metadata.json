@@ -654,6 +654,16 @@
       "resource_set_name": "res002081"
     },
     {
+      "card_id": 2522,
+      "card_name": "街角うさぎ発見録",
+      "rarity": "3-Star",
+      "event": "君に歌う等身大のハーモニー",
+      "release_date": "2026-09-19",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res002083_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res002083_rip/card_after_training.png",
+      "resource_set_name": "res002083"
+    },
+    {
       "card_id": 90002,
       "card_name": "Card 90002",
       "rarity": "2-Star",

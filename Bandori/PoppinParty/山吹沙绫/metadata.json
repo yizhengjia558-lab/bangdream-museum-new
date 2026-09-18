@@ -644,6 +644,16 @@
       "resource_set_name": "res004079"
     },
     {
+      "card_id": 2524,
+      "card_name": "特大エール！",
+      "rarity": "4-Star",
+      "event": "弾む心、緑光を追いかけてガチャ",
+      "release_date": "2026-09-19",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res004082_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res004082_rip/card_after_training.png",
+      "resource_set_name": "res004082"
+    },
+    {
       "card_id": 5005,
       "card_name": "Card 5005",
       "rarity": "2-Star",
