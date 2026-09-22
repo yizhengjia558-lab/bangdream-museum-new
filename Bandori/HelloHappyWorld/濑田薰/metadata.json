@@ -664,16 +664,6 @@
       "resource_set_name": "res012081"
     },
     {
-      "card_id": 2411,
-      "card_name": "ファンシーユニコーン",
-      "rarity": "2-Star",
-      "event": "ほっとひと息、ハロハピ温泉旅情",
-      "release_date": "2026-03-07",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012087_rip/card_normal.png",
-      "trained_image": "",
-      "resource_set_name": "res012087"
-    },
-    {
       "card_id": 2267,
       "card_name": "每球298日元",
       "rarity": "3-Star",
@@ -752,6 +742,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012091_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012091_rip/card_after_training.png",
       "resource_set_name": "res012091"
+    },
+    {
+      "card_id": 2411,
+      "card_name": "梦幻独角兽",
+      "rarity": "2-Star",
+      "event": "悠然一刻、HelloHappy温泉之旅",
+      "release_date": "2026-09-22",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012087_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res012087"
     },
     {
       "card_id": 5004,

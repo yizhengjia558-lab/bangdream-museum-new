@@ -664,16 +664,6 @@
       "resource_set_name": "res011086"
     },
     {
-      "card_id": 2410,
-      "card_name": "ゆっくりお昼寝",
-      "rarity": "3-Star",
-      "event": "ほっとひと息、ハロハピ温泉旅情",
-      "release_date": "2026-03-07",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res011092_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res011092_rip/card_after_training.png",
-      "resource_set_name": "res011092"
-    },
-    {
       "card_id": 2266,
       "card_name": "倾谈之夜",
       "rarity": "5-Star",
@@ -742,6 +732,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res011095_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res011095_rip/card_after_training.png",
       "resource_set_name": "res011095"
+    },
+    {
+      "card_id": 2410,
+      "card_name": "悠闲午睡",
+      "rarity": "3-Star",
+      "event": "悠然一刻、HelloHappy温泉之旅",
+      "release_date": "2026-09-22",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res011092_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res011092_rip/card_after_training.png",
+      "resource_set_name": "res011092"
     },
     {
       "card_id": 275,

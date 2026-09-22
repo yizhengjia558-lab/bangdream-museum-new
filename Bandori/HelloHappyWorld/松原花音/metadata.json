@@ -624,16 +624,6 @@
       "resource_set_name": "res014080"
     },
     {
-      "card_id": 2408,
-      "card_name": "心地良いスペース",
-      "rarity": "5-Star",
-      "event": "お目覚めドリーミーアニマルガチャ",
-      "release_date": "2026-03-07",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014084_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014084_rip/card_after_training.png",
-      "resource_set_name": "res014084"
-    },
-    {
       "card_id": 2418,
       "card_name": "穏やかな時間を共に",
       "rarity": "3-Star",
@@ -722,6 +712,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014090_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014090_rip/card_after_training.png",
       "resource_set_name": "res014090"
+    },
+    {
+      "card_id": 2408,
+      "card_name": "惬意的空间",
+      "rarity": "5-Star",
+      "event": "苏醒吧梦幻小动物招募",
+      "release_date": "2026-09-22",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014084_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014084_rip/card_after_training.png",
+      "resource_set_name": "res014084"
     },
     {
       "card_id": 5010,

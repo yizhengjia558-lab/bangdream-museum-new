@@ -644,16 +644,6 @@
       "resource_set_name": "res013080"
     },
     {
-      "card_id": 2412,
-      "card_name": "お菓子がいっぱい！",
-      "rarity": "4-Star",
-      "event": "お目覚めドリーミーアニマルガチャ",
-      "release_date": "2026-03-07",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res013084_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res013084_rip/card_after_training.png",
-      "resource_set_name": "res013084"
-    },
-    {
       "card_id": 2265,
       "card_name": "少女的呐喊划破盛夏",
       "rarity": "5-Star",
@@ -692,6 +682,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res013086_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res013086"
+    },
+    {
+      "card_id": 2412,
+      "card_name": "好多点心！",
+      "rarity": "4-Star",
+      "event": "苏醒吧梦幻小动物招募",
+      "release_date": "2026-09-22",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res013084_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res013084_rip/card_after_training.png",
+      "resource_set_name": "res013084"
     },
     {
       "card_id": 90013,

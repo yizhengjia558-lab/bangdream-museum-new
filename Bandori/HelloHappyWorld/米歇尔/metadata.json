@@ -654,16 +654,6 @@
       "resource_set_name": "res015081"
     },
     {
-      "card_id": 2409,
-      "card_name": "極上のリラックス",
-      "rarity": "5-Star",
-      "event": "お目覚めドリーミーアニマルガチャ",
-      "release_date": "2026-03-07",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res015087_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res015087_rip/card_after_training.png",
-      "resource_set_name": "res015087"
-    },
-    {
       "card_id": 2269,
       "card_name": "被托付的祈愿",
       "rarity": "4-Star",
@@ -732,6 +722,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res015090_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res015090_rip/card_after_training.png",
       "resource_set_name": "res015090"
+    },
+    {
+      "card_id": 2409,
+      "card_name": "极致的放松",
+      "rarity": "5-Star",
+      "event": "苏醒吧梦幻小动物招募",
+      "release_date": "2026-09-22",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res015087_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res015087_rip/card_after_training.png",
+      "resource_set_name": "res015087"
     },
     {
       "card_id": 90015,
