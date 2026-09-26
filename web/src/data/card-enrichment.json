@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25T16:34:09.824709+00:00",
+  "generated_at": "2026-09-26T15:48:02.505838+00:00",
   "matched": 2287,
   "total": 2353,
   "cards": {
@@ -9396,9 +9396,9 @@
       "attribute": "power",
       "card_kind": "normal",
       "release_year": 2020,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null,
+      "costume_id": 552,
+      "sd_resource_name": "sd010030",
+      "live2d_asset_bundle_name": "010_live_event_69_sr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
