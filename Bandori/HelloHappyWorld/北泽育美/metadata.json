@@ -694,6 +694,16 @@
       "resource_set_name": "res013084"
     },
     {
+      "card_id": 2531,
+      "card_name": "どきどき★サプライズ",
+      "rarity": "5-Star",
+      "event": "小悪魔たちのとっておき♡晩餐会ガチャ",
+      "release_date": "2026-09-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res013087_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res013087_rip/card_after_training.png",
+      "resource_set_name": "res013087"
+    },
+    {
       "card_id": 90013,
       "card_name": "Card 90013",
       "rarity": "2-Star",

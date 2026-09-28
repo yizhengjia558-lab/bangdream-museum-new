@@ -714,6 +714,16 @@
       "resource_set_name": "res018083"
     },
     {
+      "card_id": 2530,
+      "card_name": "For One Night Only",
+      "rarity": "5-Star",
+      "event": "小悪魔たちのとっておき♡晩餐会ガチャ",
+      "release_date": "2026-09-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018087_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018087_rip/card_after_training.png",
+      "resource_set_name": "res018087"
+    },
+    {
       "card_id": 5003,
       "card_name": "Card 5003",
       "rarity": "2-Star",

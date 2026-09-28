@@ -714,6 +714,16 @@
       "resource_set_name": "res010083"
     },
     {
+      "card_id": 2533,
+      "card_name": "宵闇トリートパーティ",
+      "rarity": "2-Star",
+      "event": "A Little Magical Me",
+      "release_date": "2026-09-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010086_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res010086"
+    },
+    {
       "card_id": 90010,
       "card_name": "Card 90010",
       "rarity": "2-Star",

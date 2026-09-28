@@ -754,6 +754,16 @@
       "resource_set_name": "res021088"
     },
     {
+      "card_id": 2536,
+      "card_name": "誰も知らない私",
+      "rarity": "5-Star",
+      "event": "ドリームフェスティバルガチャ",
+      "release_date": "2026-09-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021090_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021090_rip/card_after_training.png",
+      "resource_set_name": "res021090"
+    },
+    {
       "card_id": 274,
       "card_name": "第2回ガルパ杯",
       "rarity": "4-Star",

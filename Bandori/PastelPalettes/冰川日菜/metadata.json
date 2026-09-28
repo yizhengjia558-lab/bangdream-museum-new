@@ -734,6 +734,16 @@
       "resource_set_name": "res017085"
     },
     {
+      "card_id": 2532,
+      "card_name": "お任せデコレーション",
+      "rarity": "3-Star",
+      "event": "A Little Magical Me",
+      "release_date": "2026-09-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017089_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017089_rip/card_after_training.png",
+      "resource_set_name": "res017089"
+    },
+    {
       "card_id": 90017,
       "card_name": "Card 90017",
       "rarity": "2-Star",
