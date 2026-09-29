@@ -624,16 +624,6 @@
       "resource_set_name": "res014080"
     },
     {
-      "card_id": 2418,
-      "card_name": "穏やかな時間を共に",
-      "rarity": "3-Star",
-      "event": "All☆Stars CiRCRiNG Fes!",
-      "release_date": "2026-03-13",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014085_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014085_rip/card_after_training.png",
-      "resource_set_name": "res014085"
-    },
-    {
       "card_id": 2268,
       "card_name": "箱庭世界的冒险者",
       "rarity": "2-Star",
@@ -722,6 +712,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014084_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014084_rip/card_after_training.png",
       "resource_set_name": "res014084"
+    },
+    {
+      "card_id": 2418,
+      "card_name": "共度宁静时光",
+      "rarity": "3-Star",
+      "event": "All☆Stars CiRCRiNG Fes!",
+      "release_date": "2026-09-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014085_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014085_rip/card_after_training.png",
+      "resource_set_name": "res014085"
     },
     {
       "card_id": 2534,

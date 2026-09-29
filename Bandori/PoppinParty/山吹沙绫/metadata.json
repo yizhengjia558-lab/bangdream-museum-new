@@ -594,16 +594,6 @@
       "resource_set_name": "res004075"
     },
     {
-      "card_id": 2414,
-      "card_name": "これが私の音！",
-      "rarity": "5-Star",
-      "event": "祝福のガールズ・トゥ・レディガチャ",
-      "release_date": "2026-03-13",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res004080_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res004080_rip/card_after_training.png",
-      "resource_set_name": "res004080"
-    },
-    {
       "card_id": 2302,
       "card_name": "通往明天的旅行",
       "rarity": "2-Star",
@@ -652,6 +642,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res004082_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res004082_rip/card_after_training.png",
       "resource_set_name": "res004082"
+    },
+    {
+      "card_id": 2414,
+      "card_name": "这就是我的声音！",
+      "rarity": "5-Star",
+      "event": "祝福的Girls to Lady招募",
+      "release_date": "2026-09-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res004080_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res004080_rip/card_after_training.png",
+      "resource_set_name": "res004080"
     },
     {
       "card_id": 5005,

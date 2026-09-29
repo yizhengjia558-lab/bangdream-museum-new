@@ -724,16 +724,6 @@
       "resource_set_name": "res016091"
     },
     {
-      "card_id": 2421,
-      "card_name": "鏡には映らないもの",
-      "rarity": "5-Star",
-      "event": "9周年記念ドリーム＆キラメキフェスティバルガチャ",
-      "release_date": "2026-03-13",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016098_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016098_rip/card_after_training.png",
-      "resource_set_name": "res016098"
-    },
-    {
       "card_id": 2272,
       "card_name": "目标只有一个！",
       "rarity": "3-Star",
@@ -802,6 +792,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016097_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016097_rip/card_after_training.png",
       "resource_set_name": "res016097"
+    },
+    {
+      "card_id": 2421,
+      "card_name": "镜中无法映照之物",
+      "rarity": "5-Star",
+      "event": "黄金周纪念·前篇Dream＆KIRAMEKI Festival招募",
+      "release_date": "2026-09-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016098_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016098_rip/card_after_training.png",
+      "resource_set_name": "res016098"
     },
     {
       "card_id": 273,

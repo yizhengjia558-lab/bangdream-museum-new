@@ -604,16 +604,6 @@
       "resource_set_name": "res009076"
     },
     {
-      "card_id": 2415,
-      "card_name": "熱い演奏に！",
-      "rarity": "5-Star",
-      "event": "祝福のガールズ・トゥ・レディガチャ",
-      "release_date": "2026-03-13",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009080_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009080_rip/card_after_training.png",
-      "resource_set_name": "res009080"
-    },
-    {
       "card_id": 2282,
       "card_name": "演奏后的一杯！",
       "rarity": "3-Star",
@@ -672,6 +662,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009083_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009083_rip/card_after_training.png",
       "resource_set_name": "res009083"
+    },
+    {
+      "card_id": 2415,
+      "card_name": "为了热情的演奏！",
+      "rarity": "5-Star",
+      "event": "祝福的Girls to Lady招募",
+      "release_date": "2026-09-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009080_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009080_rip/card_after_training.png",
+      "resource_set_name": "res009080"
     },
     {
       "card_id": 90009,

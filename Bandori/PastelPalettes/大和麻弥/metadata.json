@@ -604,16 +604,6 @@
       "resource_set_name": "res019078"
     },
     {
-      "card_id": 2416,
-      "card_name": "心交わすひととき",
-      "rarity": "5-Star",
-      "event": "祝福のガールズ・トゥ・レディガチャ",
-      "release_date": "2026-03-13",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019082_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019082_rip/card_after_training.png",
-      "resource_set_name": "res019082"
-    },
-    {
       "card_id": 2432,
       "card_name": "まなざす体温",
       "rarity": "3-Star",
@@ -682,6 +672,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019081_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res019081"
+    },
+    {
+      "card_id": 2416,
+      "card_name": "心意相通的瞬间",
+      "rarity": "5-Star",
+      "event": "祝福的Girls to Lady招募",
+      "release_date": "2026-09-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019082_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019082_rip/card_after_training.png",
+      "resource_set_name": "res019082"
     },
     {
       "card_id": 90019,

@@ -344,16 +344,6 @@
       "resource_set_name": "res029040"
     },
     {
-      "card_id": 2413,
-      "card_name": "重ねた手に想いを",
-      "rarity": "5-Star",
-      "event": "祝福のガールズ・トゥ・レディガチャ",
-      "release_date": "2026-03-13",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029043_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029043_rip/card_after_training.png",
-      "resource_set_name": "res029043"
-    },
-    {
       "card_id": 2425,
       "card_name": "素敵な私の色",
       "rarity": "3-Star",
@@ -412,6 +402,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029047_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res029047"
+    },
+    {
+      "card_id": 2413,
+      "card_name": "将心意寄于交叠的手中",
+      "rarity": "5-Star",
+      "event": "祝福的Girls to Lady招募",
+      "release_date": "2026-09-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029043_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029043_rip/card_after_training.png",
+      "resource_set_name": "res029043"
     },
     {
       "card_id": 90029,
