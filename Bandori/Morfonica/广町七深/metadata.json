@@ -434,6 +434,16 @@
       "resource_set_name": "res028045"
     },
     {
+      "card_id": 2540,
+      "card_name": "空を舞う灯り",
+      "rarity": "2-Star",
+      "event": "時を繋ぐノクターン",
+      "release_date": "2026-10-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res028051_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res028051"
+    },
+    {
       "card_id": 90028,
       "card_name": "Card 90028",
       "rarity": "2-Star",

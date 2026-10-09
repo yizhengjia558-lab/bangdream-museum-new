@@ -434,6 +434,16 @@
       "resource_set_name": "res027050"
     },
     {
+      "card_id": 2537,
+      "card_name": "過ぎにし時に想い馳せ",
+      "rarity": "5-Star",
+      "event": "夜空に浮かぶ想いの灯ガチャ",
+      "release_date": "2026-10-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027051_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027051_rip/card_after_training.png",
+      "resource_set_name": "res027051"
+    },
+    {
       "card_id": 90027,
       "card_name": "Card 90027",
       "rarity": "2-Star",

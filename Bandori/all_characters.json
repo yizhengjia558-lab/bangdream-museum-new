@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T18:27:25.736900+00:00",
+  "generated_at": "2026-10-09T17:59:34.969843+00:00",
   "source": [
     "Bestdori API",
     "Bandori Party API"
@@ -380,7 +380,7 @@
       "standing_url": "",
       "cards_untrained_path": "Morfonica/仓田真白/Cards/Untrained",
       "cards_trained_path": "Morfonica/仓田真白/Cards/Trained",
-      "card_count": 50
+      "card_count": 51
     },
     {
       "character_id": 27,
@@ -394,7 +394,7 @@
       "standing_url": "",
       "cards_untrained_path": "Morfonica/桐谷透子/Cards/Untrained",
       "cards_trained_path": "Morfonica/桐谷透子/Cards/Trained",
-      "card_count": 44
+      "card_count": 45
     },
     {
       "character_id": 28,
@@ -408,7 +408,7 @@
       "standing_url": "",
       "cards_untrained_path": "Morfonica/广町七深/Cards/Untrained",
       "cards_trained_path": "Morfonica/广町七深/Cards/Trained",
-      "card_count": 44
+      "card_count": 45
     },
     {
       "character_id": 29,
@@ -422,7 +422,7 @@
       "standing_url": "",
       "cards_untrained_path": "Morfonica/二叶筑紫/Cards/Untrained",
       "cards_trained_path": "Morfonica/二叶筑紫/Cards/Trained",
-      "card_count": 42
+      "card_count": 43
     },
     {
       "character_id": 30,
@@ -436,7 +436,7 @@
       "standing_url": "",
       "cards_untrained_path": "Morfonica/八潮瑠唯/Cards/Untrained",
       "cards_trained_path": "Morfonica/八潮瑠唯/Cards/Trained",
-      "card_count": 40
+      "card_count": 41
     },
     {
       "character_id": 31,

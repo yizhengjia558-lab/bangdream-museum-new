@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-08T18:28:58.914501+00:00",
-  "matched": 2294,
-  "total": 2360,
+  "generated_at": "2026-10-09T18:00:52.398956+00:00",
+  "matched": 2299,
+  "total": 2365,
   "cards": {
     "1|card5001": {
       "character_id": 1,
@@ -25041,6 +25041,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
     },
+    "26|輝きを空に放って": {
+      "character_id": 26,
+      "bestdori_card_id": 2539,
+      "stars": 3,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2458,
+      "sd_resource_name": "sd026056",
+      "live2d_asset_bundle_name": "026_live_event_345_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
     "27|纯真振翅": {
       "character_id": 27,
       "bestdori_card_id": 898,
@@ -25599,6 +25612,19 @@
       "live2d_asset_bundle_name": "027_dream_festival_5_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
+    },
+    "27|過ぎにし時に想い馳せ": {
+      "character_id": 27,
+      "bestdori_card_id": 2537,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2456,
+      "sd_resource_name": "sd027051",
+      "live2d_asset_bundle_name": "027_live_event_345_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "28|纯真振翅": {
       "character_id": 28,
@@ -26159,6 +26185,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
+    "28|空を舞う灯り": {
+      "character_id": 28,
+      "bestdori_card_id": 2540,
+      "stars": 2,
+      "attribute": "happy",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2459,
+      "sd_resource_name": "sd028051",
+      "live2d_asset_bundle_name": "028_live_event_345_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
     "29|纯真振翅": {
       "character_id": 29,
       "bestdori_card_id": 900,
@@ -26692,6 +26731,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
     },
+    "29|月ノ森のみんなで！": {
+      "character_id": 29,
+      "bestdori_card_id": 2538,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2457,
+      "sd_resource_name": "sd029048",
+      "live2d_asset_bundle_name": "029_live_event_345_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "30|纯真振翅": {
       "character_id": 30,
       "bestdori_card_id": 901,
@@ -27198,6 +27250,19 @@
       "live2d_asset_bundle_name": "030_dream_festival_4_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
+    },
+    "30|ドキュメントマイスター": {
+      "character_id": 30,
+      "bestdori_card_id": 2541,
+      "stars": 4,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2460,
+      "sd_resource_name": "sd030048",
+      "live2d_asset_bundle_name": "030_live_event_345_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "31|冷静与热情的主唱": {
       "character_id": 31,

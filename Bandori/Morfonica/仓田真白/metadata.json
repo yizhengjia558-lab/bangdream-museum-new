@@ -484,6 +484,16 @@
       "resource_set_name": "res026055"
     },
     {
+      "card_id": 2539,
+      "card_name": "輝きを空に放って",
+      "rarity": "3-Star",
+      "event": "時を繋ぐノクターン",
+      "release_date": "2026-10-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026056_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026056_rip/card_after_training.png",
+      "resource_set_name": "res026056"
+    },
+    {
       "card_id": 5007,
       "card_name": "Card 5007",
       "rarity": "2-Star",

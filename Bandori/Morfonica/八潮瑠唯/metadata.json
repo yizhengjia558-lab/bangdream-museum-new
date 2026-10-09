@@ -394,6 +394,16 @@
       "resource_set_name": "res030045"
     },
     {
+      "card_id": 2541,
+      "card_name": "ドキュメントマイスター",
+      "rarity": "4-Star",
+      "event": "夜空に浮かぶ想いの灯ガチャ",
+      "release_date": "2026-10-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030048_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030048_rip/card_after_training.png",
+      "resource_set_name": "res030048"
+    },
+    {
       "card_id": 90030,
       "card_name": "Card 90030",
       "rarity": "2-Star",
