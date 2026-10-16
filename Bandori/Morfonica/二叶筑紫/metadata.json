@@ -344,16 +344,6 @@
       "resource_set_name": "res029040"
     },
     {
-      "card_id": 2425,
-      "card_name": "素敵な私の色",
-      "rarity": "3-Star",
-      "event": "広がる世界へのリベラメンテ",
-      "release_date": "2026-03-31",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029044_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029044_rip/card_after_training.png",
-      "resource_set_name": "res029044"
-    },
-    {
       "card_id": 2279,
       "card_name": "正因为是共同度过的时光",
       "rarity": "4-Star",
@@ -422,6 +412,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029048_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029048_rip/card_after_training.png",
       "resource_set_name": "res029048"
+    },
+    {
+      "card_id": 2425,
+      "card_name": "属于我的美好颜色",
+      "rarity": "3-Star",
+      "event": "迈向广阔世界的自由变奏",
+      "release_date": "2026-10-16",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029044_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029044_rip/card_after_training.png",
+      "resource_set_name": "res029044"
     },
     {
       "card_id": 90029,

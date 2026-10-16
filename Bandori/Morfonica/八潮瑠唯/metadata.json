@@ -344,16 +344,6 @@
       "resource_set_name": "res030042"
     },
     {
-      "card_id": 2427,
-      "card_name": "見透かされる心",
-      "rarity": "4-Star",
-      "event": "世界を彩るジュエルライトガチャ",
-      "release_date": "2026-03-31",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030046_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030046_rip/card_after_training.png",
-      "resource_set_name": "res030046"
-    },
-    {
       "card_id": 2276,
       "card_name": "自那以后，我们……",
       "rarity": "5-Star",
@@ -402,6 +392,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030048_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030048_rip/card_after_training.png",
       "resource_set_name": "res030048"
+    },
+    {
+      "card_id": 2427,
+      "card_name": "被看穿的内心",
+      "rarity": "4-Star",
+      "event": "为世界增添色彩的宝石之光招募",
+      "release_date": "2026-10-16",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030046_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030046_rip/card_after_training.png",
+      "resource_set_name": "res030046"
     },
     {
       "card_id": 90030,

@@ -374,16 +374,6 @@
       "resource_set_name": "res027044"
     },
     {
-      "card_id": 2423,
-      "card_name": "勇気をきみに",
-      "rarity": "5-Star",
-      "event": "世界を彩るジュエルライトガチャ",
-      "release_date": "2026-03-31",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027048_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027048_rip/card_after_training.png",
-      "resource_set_name": "res027048"
-    },
-    {
       "card_id": 2275,
       "card_name": "能将未来拉近的是……",
       "rarity": "5-Star",
@@ -442,6 +432,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027051_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027051_rip/card_after_training.png",
       "resource_set_name": "res027051"
+    },
+    {
+      "card_id": 2423,
+      "card_name": "将勇气赠予你",
+      "rarity": "5-Star",
+      "event": "为世界增添色彩的宝石之光招募",
+      "release_date": "2026-10-16",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027048_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res027048_rip/card_after_training.png",
+      "resource_set_name": "res027048"
     },
     {
       "card_id": 90027,

@@ -664,16 +664,6 @@
       "resource_set_name": "res025078"
     },
     {
-      "card_id": 2428,
-      "card_name": "薄紅の差す窓際で",
-      "rarity": "5-Star",
-      "event": "ドリームフェスティバルガチャ",
-      "release_date": "2026-03-31",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res025082_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res025082_rip/card_after_training.png",
-      "resource_set_name": "res025082"
-    },
-    {
       "card_id": 2467,
       "card_name": "ピュア・ノーブル",
       "rarity": "2-Star",
@@ -712,6 +702,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res025084_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res025084_rip/card_after_training.png",
       "resource_set_name": "res025084"
+    },
+    {
+      "card_id": 2428,
+      "card_name": "浅粉掩映的窗边",
+      "rarity": "5-Star",
+      "event": "黄金周纪念·后篇Dream Festival招募",
+      "release_date": "2026-10-16",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res025082_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res025082_rip/card_after_training.png",
+      "resource_set_name": "res025082"
     },
     {
       "card_id": 5006,

@@ -344,16 +344,6 @@
       "resource_set_name": "res031044"
     },
     {
-      "card_id": 2429,
-      "card_name": "視界を埋める桜色",
-      "rarity": "5-Star",
-      "event": "ドリームフェスティバルガチャ",
-      "release_date": "2026-03-31",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res031047_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res031047_rip/card_after_training.png",
-      "resource_set_name": "res031047"
-    },
-    {
       "card_id": 2442,
       "card_name": "きみがいてくれて",
       "rarity": "3-Star",
@@ -402,6 +392,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res031049_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res031049"
+    },
+    {
+      "card_id": 2429,
+      "card_name": "填满视野的樱粉色",
+      "rarity": "5-Star",
+      "event": "黄金周纪念·后篇Dream Festival招募",
+      "release_date": "2026-10-16",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res031047_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res031047_rip/card_after_training.png",
+      "resource_set_name": "res031047"
     },
     {
       "card_id": 90031,

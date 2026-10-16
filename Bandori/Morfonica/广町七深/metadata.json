@@ -364,16 +364,6 @@
       "resource_set_name": "res028046"
     },
     {
-      "card_id": 2424,
-      "card_name": "私を導く色彩",
-      "rarity": "5-Star",
-      "event": "世界を彩るジュエルライトガチャ",
-      "release_date": "2026-03-31",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res028047_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res028047_rip/card_after_training.png",
-      "resource_set_name": "res028047"
-    },
-    {
       "card_id": 2278,
       "card_name": "Don't miss it！",
       "rarity": "2-Star",
@@ -442,6 +432,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res028051_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res028051"
+    },
+    {
+      "card_id": 2424,
+      "card_name": "指引我的色彩",
+      "rarity": "5-Star",
+      "event": "为世界增添色彩的宝石之光招募",
+      "release_date": "2026-10-16",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res028047_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res028047_rip/card_after_training.png",
+      "resource_set_name": "res028047"
     },
     {
       "card_id": 90028,

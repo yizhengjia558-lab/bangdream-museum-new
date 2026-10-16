@@ -434,16 +434,6 @@
       "resource_set_name": "res026049"
     },
     {
-      "card_id": 2426,
-      "card_name": "カラーオブマインド",
-      "rarity": "2-Star",
-      "event": "広がる世界へのリベラメンテ",
-      "release_date": "2026-03-31",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026053_rip/card_normal.png",
-      "trained_image": "",
-      "resource_set_name": "res026053"
-    },
-    {
       "card_id": 2277,
       "card_name": "动人心弦的旋律",
       "rarity": "3-Star",
@@ -492,6 +482,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026056_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026056_rip/card_after_training.png",
       "resource_set_name": "res026056"
+    },
+    {
+      "card_id": 2426,
+      "card_name": "心灵的色彩",
+      "rarity": "2-Star",
+      "event": "迈向广阔世界的自由变奏",
+      "release_date": "2026-10-16",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026053_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res026053"
     },
     {
       "card_id": 5007,
