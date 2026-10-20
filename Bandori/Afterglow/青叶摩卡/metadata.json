@@ -694,6 +694,16 @@
       "resource_set_name": "res007083"
     },
     {
+      "card_id": 2545,
+      "card_name": "こあら・うぃず・みー",
+      "rarity": "2-Star",
+      "event": "夕日の先に羽を広げて",
+      "release_date": "2026-10-21",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007084_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res007084"
+    },
+    {
       "card_id": 90007,
       "card_name": "Card 90007",
       "rarity": "2-Star",

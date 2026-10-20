@@ -724,6 +724,16 @@
       "resource_set_name": "res010086"
     },
     {
+      "card_id": 2544,
+      "card_name": "ワールドワイドツグり",
+      "rarity": "3-Star",
+      "event": "夕日の先に羽を広げて",
+      "release_date": "2026-10-21",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010087_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010087_rip/card_after_training.png",
+      "resource_set_name": "res010087"
+    },
+    {
       "card_id": 90010,
       "card_name": "Card 90010",
       "rarity": "2-Star",

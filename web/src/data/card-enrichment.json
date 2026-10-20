@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-19T18:21:52.901101+00:00",
-  "matched": 2299,
-  "total": 2365,
+  "generated_at": "2026-10-20T16:22:43.643485+00:00",
+  "matched": 2304,
+  "total": 2370,
   "cards": {
     "1|card5001": {
       "character_id": 1,
@@ -6412,6 +6412,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
     },
+    "6|甘い洗礼": {
+      "character_id": 6,
+      "bestdori_card_id": 2546,
+      "stars": 4,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2465,
+      "sd_resource_name": "sd006092",
+      "live2d_asset_bundle_name": "006_live_event_346_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "6|第2回ガルパ杯": {
       "character_id": 6,
       "bestdori_card_id": 272,
@@ -7321,6 +7334,19 @@
       "live2d_asset_bundle_name": "007_dream_festival_5_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
+    },
+    "7|こあら・うぃず・みー": {
+      "character_id": 7,
+      "bestdori_card_id": 2545,
+      "stars": 2,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2464,
+      "sd_resource_name": "sd007084",
+      "live2d_asset_bundle_name": "007_live_event_346_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
     },
     "8|大家的队长！": {
       "character_id": 8,
@@ -8245,6 +8271,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
+    "8|永遠の絆": {
+      "character_id": 8,
+      "bestdori_card_id": 2542,
+      "stars": 5,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2461,
+      "sd_resource_name": "sd008085",
+      "live2d_asset_bundle_name": "008_live_event_346_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "9|能够依靠的果断大姐姐": {
       "character_id": 9,
       "bestdori_card_id": 33,
@@ -9115,6 +9154,19 @@
       "live2d_asset_bundle_name": "009_live_event_325_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
+    },
+    "9|夜はこれから！": {
+      "character_id": 9,
+      "bestdori_card_id": 2543,
+      "stars": 5,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2462,
+      "sd_resource_name": "sd009084",
+      "live2d_asset_bundle_name": "009_live_event_346_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "10|大家的支柱": {
       "character_id": 10,
@@ -10049,6 +10101,19 @@
       "costume_id": 2452,
       "sd_resource_name": "sd010086",
       "live2d_asset_bundle_name": "010_live_event_344_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
+    "10|ワールドワイドツグり": {
+      "character_id": 10,
+      "bestdori_card_id": 2544,
+      "stars": 3,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2463,
+      "sd_resource_name": "sd010087",
+      "live2d_asset_bundle_name": "010_live_event_346_sr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
