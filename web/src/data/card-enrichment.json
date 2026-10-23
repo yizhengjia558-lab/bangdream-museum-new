@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T16:40:01.559060+00:00",
+  "generated_at": "2026-10-23T16:29:37.207454+00:00",
   "matched": 2304,
   "total": 2370,
   "cards": {
@@ -1886,7 +1886,7 @@
       "sd_resource_name": "sd001101",
       "live2d_asset_bundle_name": "001_live_event_343_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "1|第2回ガルパ杯": {
       "character_id": 1,
@@ -3615,7 +3615,7 @@
       "sd_resource_name": "sd003082",
       "live2d_asset_bundle_name": "003_live_event_343_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "4|大家的姐姐": {
       "character_id": 4,
@@ -4447,7 +4447,7 @@
       "sd_resource_name": "sd004082",
       "live2d_asset_bundle_name": "004_live_event_343_ssr",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "4|这就是我的声音！": {
       "character_id": 4,
@@ -6423,7 +6423,7 @@
       "sd_resource_name": "sd006092",
       "live2d_asset_bundle_name": "006_live_event_346_ssr",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "6|第2回ガルパ杯": {
       "character_id": 6,
@@ -8282,7 +8282,7 @@
       "sd_resource_name": "sd008085",
       "live2d_asset_bundle_name": "008_live_event_346_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "9|能够依靠的果断大姐姐": {
       "character_id": 9,
@@ -9166,7 +9166,7 @@
       "sd_resource_name": "sd009084",
       "live2d_asset_bundle_name": "009_live_event_346_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "10|大家的支柱": {
       "character_id": 10,
@@ -12956,13 +12956,13 @@
       "bestdori_card_id": 2531,
       "stars": 5,
       "attribute": "happy",
-      "card_kind": "normal",
+      "card_kind": "limited",
       "release_year": 2026,
       "costume_id": 2450,
       "sd_resource_name": "sd013087",
       "live2d_asset_bundle_name": "013_live_event_344_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "limited"
     },
     "14|稳重的少女": {
       "character_id": 14,
@@ -13905,13 +13905,13 @@
       "bestdori_card_id": 2534,
       "stars": 4,
       "attribute": "happy",
-      "card_kind": "normal",
+      "card_kind": "limited",
       "release_year": 2026,
       "costume_id": 2453,
       "sd_resource_name": "sd014091",
       "live2d_asset_bundle_name": "014_live_event_344_ssr",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "limited"
     },
     "15|凡事皆须适度": {
       "character_id": 15,
@@ -17792,13 +17792,13 @@
       "bestdori_card_id": 2530,
       "stars": 5,
       "attribute": "happy",
-      "card_kind": "normal",
+      "card_kind": "limited",
       "release_year": 2026,
       "costume_id": 2449,
       "sd_resource_name": "sd018087",
       "live2d_asset_bundle_name": "018_live_event_344_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "limited"
     },
     "19|乐器宅鼓手": {
       "character_id": 19,
@@ -25676,7 +25676,7 @@
       "sd_resource_name": "sd027051",
       "live2d_asset_bundle_name": "027_live_event_345_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "27|将勇气赠予你": {
       "character_id": 27,
@@ -26794,7 +26794,7 @@
       "sd_resource_name": "sd029048",
       "live2d_asset_bundle_name": "029_live_event_345_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "29|属于我的美好颜色": {
       "character_id": 29,
@@ -27314,7 +27314,7 @@
       "sd_resource_name": "sd030048",
       "live2d_asset_bundle_name": "030_live_event_345_ssr",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "30|被看穿的内心": {
       "character_id": 30,
