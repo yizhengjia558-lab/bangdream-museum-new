@@ -604,16 +604,6 @@
       "resource_set_name": "res019078"
     },
     {
-      "card_id": 2432,
-      "card_name": "まなざす体温",
-      "rarity": "3-Star",
-      "event": "黎明のスタン・バイ",
-      "release_date": "2026-04-10",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019083_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019083_rip/card_after_training.png",
-      "resource_set_name": "res019083"
-    },
-    {
       "card_id": 2448,
       "card_name": "嬉しい言葉の数々",
       "rarity": "5-Star",
@@ -682,6 +672,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019082_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019082_rip/card_after_training.png",
       "resource_set_name": "res019082"
+    },
+    {
+      "card_id": 2432,
+      "card_name": "凝视的温度",
+      "rarity": "3-Star",
+      "event": "黎明的Stand By",
+      "release_date": "2026-10-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019083_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019083_rip/card_after_training.png",
+      "resource_set_name": "res019083"
     },
     {
       "card_id": 90019,

@@ -684,16 +684,6 @@
       "resource_set_name": "res012083"
     },
     {
-      "card_id": 2430,
-      "card_name": "一度きりの革命",
-      "rarity": "5-Star",
-      "event": "あの誓いに手を伸ばしてガチャ",
-      "release_date": "2026-04-10",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012088_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012088_rip/card_after_training.png",
-      "resource_set_name": "res012088"
-    },
-    {
       "card_id": 2454,
       "card_name": "瀬田薫にお任せあれ！",
       "rarity": "3-Star",
@@ -752,6 +742,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012087_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res012087"
+    },
+    {
+      "card_id": 2430,
+      "card_name": "仅此一次的革命",
+      "rarity": "5-Star",
+      "event": "向那个誓言伸出双手招募",
+      "release_date": "2026-10-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012088_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012088_rip/card_after_training.png",
+      "resource_set_name": "res012088"
     },
     {
       "card_id": 5004,

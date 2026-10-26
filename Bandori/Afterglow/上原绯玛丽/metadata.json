@@ -664,16 +664,6 @@
       "resource_set_name": "res008079"
     },
     {
-      "card_id": 2433,
-      "card_name": "革命前夜の光たち",
-      "rarity": "2-Star",
-      "event": "黎明のスタン・バイ",
-      "release_date": "2026-04-10",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008082_rip/card_normal.png",
-      "trained_image": "",
-      "resource_set_name": "res008082"
-    },
-    {
       "card_id": 2284,
       "card_name": "中意的日常？",
       "rarity": "4-Star",
@@ -722,6 +712,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008085_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008085_rip/card_after_training.png",
       "resource_set_name": "res008085"
+    },
+    {
+      "card_id": 2433,
+      "card_name": "革命前夜的缕缕光芒",
+      "rarity": "2-Star",
+      "event": "黎明的Stand By",
+      "release_date": "2026-10-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008082_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res008082"
     },
     {
       "card_id": 90008,

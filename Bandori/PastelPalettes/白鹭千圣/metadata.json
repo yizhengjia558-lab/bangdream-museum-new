@@ -654,16 +654,6 @@
       "resource_set_name": "res018079"
     },
     {
-      "card_id": 2431,
-      "card_name": "落としたもの",
-      "rarity": "5-Star",
-      "event": "あの誓いに手を伸ばしてガチャ",
-      "release_date": "2026-04-10",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018084_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018084_rip/card_after_training.png",
-      "resource_set_name": "res018084"
-    },
-    {
       "card_id": 2449,
       "card_name": "断崖絶壁の告白",
       "rarity": "3-Star",
@@ -722,6 +712,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018087_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018087_rip/card_after_training.png",
       "resource_set_name": "res018087"
+    },
+    {
+      "card_id": 2431,
+      "card_name": "遗落之物",
+      "rarity": "5-Star",
+      "event": "向那个誓言伸出双手招募",
+      "release_date": "2026-10-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018084_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018084_rip/card_after_training.png",
+      "resource_set_name": "res018084"
     },
     {
       "card_id": 5003,

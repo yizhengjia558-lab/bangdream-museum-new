@@ -634,16 +634,6 @@
       "resource_set_name": "res014079"
     },
     {
-      "card_id": 2434,
-      "card_name": "ほほえむ体温",
-      "rarity": "4-Star",
-      "event": "あの誓いに手を伸ばしてガチャ",
-      "release_date": "2026-04-10",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014086_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014086_rip/card_after_training.png",
-      "resource_set_name": "res014086"
-    },
-    {
       "card_id": 2445,
       "card_name": "街角ファッショニスタ",
       "rarity": "5-Star",
@@ -732,6 +722,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014091_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014091_rip/card_after_training.png",
       "resource_set_name": "res014091"
+    },
+    {
+      "card_id": 2434,
+      "card_name": "微笑的温度",
+      "rarity": "4-Star",
+      "event": "向那个誓言伸出双手招募",
+      "release_date": "2026-10-26",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014086_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014086_rip/card_after_training.png",
+      "resource_set_name": "res014086"
     },
     {
       "card_id": 5010,
