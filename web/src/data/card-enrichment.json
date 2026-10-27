@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T18:21:36.345598+00:00",
+  "generated_at": "2026-10-27T17:29:42.858994+00:00",
   "matched": 2304,
   "total": 2370,
   "cards": {
@@ -2612,7 +2612,7 @@
       "release_year": 2025,
       "costume_id": 1966,
       "sd_resource_name": "sd002070",
-      "live2d_asset_bundle_name": null,
+      "live2d_asset_bundle_name": "002_live_event_263_r",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
@@ -3418,7 +3418,7 @@
       "release_year": 2024,
       "costume_id": 1744,
       "sd_resource_name": "sd003062",
-      "live2d_asset_bundle_name": null,
+      "live2d_asset_bundle_name": "003_live_event_227_ssr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
@@ -8993,9 +8993,9 @@
       "attribute": "cool",
       "card_kind": "normal",
       "release_year": 2025,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null,
+      "costume_id": 1958,
+      "sd_resource_name": "sd009071",
+      "live2d_asset_bundle_name": "009_live_event_262_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
@@ -10787,9 +10787,9 @@
       "attribute": "power",
       "card_kind": "normal",
       "release_year": 2023,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null,
+      "costume_id": 1680,
+      "sd_resource_name": "sd011069",
+      "live2d_asset_bundle_name": "011_live_event_217_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
@@ -17508,9 +17508,9 @@
       "attribute": "power",
       "card_kind": "limited",
       "release_year": 2023,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null,
+      "costume_id": 1568,
+      "sd_resource_name": "sd018061",
+      "live2d_asset_bundle_name": "018_dream_festival_2",
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
     },
@@ -22320,7 +22320,7 @@
       "release_year": 2023,
       "costume_id": 1686,
       "sd_resource_name": "sd023069",
-      "live2d_asset_bundle_name": null,
+      "live2d_asset_bundle_name": "023_dream_festival_3_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
     },
@@ -23241,9 +23241,9 @@
       "attribute": "power",
       "card_kind": "normal",
       "release_year": 2023,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null,
+      "costume_id": 1593,
+      "sd_resource_name": "sd024061",
+      "live2d_asset_bundle_name": "024_live_event_214_ssr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
