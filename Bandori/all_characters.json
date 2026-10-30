@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T18:03:48.608451+00:00",
+  "generated_at": "2026-10-30T17:43:34.850876+00:00",
   "source": [
     "Bestdori API",
     "Bandori Party API"
@@ -30,7 +30,7 @@
       "standing_url": "",
       "cards_untrained_path": "PoppinParty/户山香澄/Cards/Untrained",
       "cards_trained_path": "PoppinParty/户山香澄/Cards/Trained",
-      "card_count": 83
+      "card_count": 84
     },
     {
       "character_id": 2,
@@ -44,7 +44,7 @@
       "standing_url": "",
       "cards_untrained_path": "PoppinParty/花园多惠/Cards/Untrained",
       "cards_trained_path": "PoppinParty/花园多惠/Cards/Trained",
-      "card_count": 68
+      "card_count": 69
     },
     {
       "character_id": 3,
@@ -156,7 +156,7 @@
       "standing_url": "",
       "cards_untrained_path": "Afterglow/羽泽鸫/Cards/Untrained",
       "cards_trained_path": "Afterglow/羽泽鸫/Cards/Trained",
-      "card_count": 74
+      "card_count": 75
     },
     {
       "character_id": 11,
@@ -198,7 +198,7 @@
       "standing_url": "",
       "cards_untrained_path": "HelloHappyWorld/北泽育美/Cards/Untrained",
       "cards_trained_path": "HelloHappyWorld/北泽育美/Cards/Trained",
-      "card_count": 72
+      "card_count": 73
     },
     {
       "character_id": 14,
@@ -226,7 +226,7 @@
       "standing_url": "",
       "cards_untrained_path": "HelloHappyWorld/米歇尔/Cards/Untrained",
       "cards_trained_path": "HelloHappyWorld/米歇尔/Cards/Trained",
-      "card_count": 75
+      "card_count": 76
     },
     {
       "character_id": 16,
@@ -296,7 +296,7 @@
       "standing_url": "",
       "cards_untrained_path": "PastelPalettes/若宫伊芙/Cards/Untrained",
       "cards_trained_path": "PastelPalettes/若宫伊芙/Cards/Trained",
-      "card_count": 73
+      "card_count": 74
     },
     {
       "character_id": 21,
@@ -380,7 +380,7 @@
       "standing_url": "",
       "cards_untrained_path": "Morfonica/仓田真白/Cards/Untrained",
       "cards_trained_path": "Morfonica/仓田真白/Cards/Trained",
-      "card_count": 51
+      "card_count": 52
     },
     {
       "character_id": 27,

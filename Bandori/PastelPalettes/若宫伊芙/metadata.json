@@ -724,6 +724,16 @@
       "resource_set_name": "res020089"
     },
     {
+      "card_id": 2551,
+      "card_name": "気分は大冒険！",
+      "rarity": "4-Star",
+      "event": "午後は気ままにリラックスガチャ",
+      "release_date": "2026-10-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res020090_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res020090_rip/card_after_training.png",
+      "resource_set_name": "res020090"
+    },
+    {
       "card_id": 90020,
       "card_name": "Card 90020",
       "rarity": "2-Star",

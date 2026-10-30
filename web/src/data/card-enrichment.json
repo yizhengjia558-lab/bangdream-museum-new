@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-29T18:05:29.113824+00:00",
-  "matched": 2304,
-  "total": 2370,
+  "generated_at": "2026-10-30T17:44:27.952221+00:00",
+  "matched": 2311,
+  "total": 2377,
   "cards": {
     "1|card5001": {
       "character_id": 1,
@@ -1888,6 +1888,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
+    "1|シーサーだぞ！": {
+      "character_id": 1,
+      "bestdori_card_id": 2549,
+      "stars": 3,
+      "attribute": "happy",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2468,
+      "sd_resource_name": "sd001102",
+      "live2d_asset_bundle_name": "001_live_event_347_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
     "1|第2回ガルパ杯": {
       "character_id": 1,
       "bestdori_card_id": 271,
@@ -2758,6 +2771,19 @@
       "live2d_asset_bundle_name": "002_live_event_343_sr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
+    },
+    "2|レッツカチャーシー！": {
+      "character_id": 2,
+      "bestdori_card_id": 2547,
+      "stars": 5,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2466,
+      "sd_resource_name": "sd002084",
+      "live2d_asset_bundle_name": "002_live_event_347_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "3|最喜欢巧克力了": {
       "character_id": 3,
@@ -10117,6 +10143,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
+    "10|極上、楽園気分": {
+      "character_id": 10,
+      "bestdori_card_id": 2552,
+      "stars": 5,
+      "attribute": "happy",
+      "card_kind": "limited",
+      "release_year": 2026,
+      "costume_id": 2471,
+      "sd_resource_name": "sd010088",
+      "live2d_asset_bundle_name": "010_dream_festival_5_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "dreamfes"
+    },
     "11|花咲川的异空间": {
       "character_id": 11,
       "bestdori_card_id": 41,
@@ -12964,6 +13003,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
     },
+    "13|アイスと君と": {
+      "character_id": 13,
+      "bestdori_card_id": 2550,
+      "stars": 2,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2469,
+      "sd_resource_name": "sd013088",
+      "live2d_asset_bundle_name": "013_live_event_347_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
     "14|稳重的少女": {
       "character_id": 14,
       "bestdori_card_id": 53,
@@ -14861,6 +14913,19 @@
       "live2d_asset_bundle_name": "015_live_event_324_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "15|あたたかさを感じて": {
+      "character_id": 15,
+      "bestdori_card_id": 2548,
+      "stars": 5,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2467,
+      "sd_resource_name": "sd015091",
+      "live2d_asset_bundle_name": "015_live_event_347_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "16|粉色代表☆": {
       "character_id": 16,
@@ -19620,6 +19685,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
     },
+    "20|気分は大冒険！": {
+      "character_id": 20,
+      "bestdori_card_id": 2551,
+      "stars": 4,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2470,
+      "sd_resource_name": "sd020090",
+      "live2d_asset_bundle_name": "020_live_event_347_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "21|孤高的歌姬": {
       "character_id": 21,
       "bestdori_card_id": 81,
@@ -21824,9 +21902,9 @@
       "attribute": "pure",
       "card_kind": "normal",
       "release_year": 2020,
-      "costume_id": null,
-      "sd_resource_name": null,
-      "live2d_asset_bundle_name": null,
+      "costume_id": 609,
+      "sd_resource_name": "sd023032",
+      "live2d_asset_bundle_name": "023_live_r_2019",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
@@ -25119,6 +25197,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
+    "26|未知へと踏み出して": {
+      "character_id": 26,
+      "bestdori_card_id": 2553,
+      "stars": 5,
+      "attribute": "power",
+      "card_kind": "limited",
+      "release_year": 2026,
+      "costume_id": 2472,
+      "sd_resource_name": "sd026057",
+      "live2d_asset_bundle_name": "026_dream_festival_5_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "dreamfes"
+    },
     "27|纯真振翅": {
       "character_id": 27,
       "bestdori_card_id": 898,
@@ -27351,7 +27442,7 @@
       "release_year": 2021,
       "costume_id": 1130,
       "sd_resource_name": "sd031011",
-      "live2d_asset_bundle_name": null,
+      "live2d_asset_bundle_name": "031_live_event_151_ssr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },

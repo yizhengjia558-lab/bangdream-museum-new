@@ -734,6 +734,16 @@
       "resource_set_name": "res010087"
     },
     {
+      "card_id": 2552,
+      "card_name": "極上、楽園気分",
+      "rarity": "5-Star",
+      "event": "ドリームフェスティバルガチャ",
+      "release_date": "2026-10-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010088_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010088_rip/card_after_training.png",
+      "resource_set_name": "res010088"
+    },
+    {
       "card_id": 90010,
       "card_name": "Card 90010",
       "rarity": "2-Star",

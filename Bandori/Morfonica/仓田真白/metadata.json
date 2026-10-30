@@ -494,6 +494,16 @@
       "resource_set_name": "res026053"
     },
     {
+      "card_id": 2553,
+      "card_name": "未知へと踏み出して",
+      "rarity": "5-Star",
+      "event": "ドリームフェスティバルガチャ",
+      "release_date": "2026-10-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026057_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026057_rip/card_after_training.png",
+      "resource_set_name": "res026057"
+    },
+    {
       "card_id": 5007,
       "card_name": "Card 5007",
       "rarity": "2-Star",

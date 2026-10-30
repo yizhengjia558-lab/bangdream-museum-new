@@ -704,6 +704,16 @@
       "resource_set_name": "res013087"
     },
     {
+      "card_id": 2550,
+      "card_name": "アイスと君と",
+      "rarity": "2-Star",
+      "event": "みんなの笑顔をかき混ぜて",
+      "release_date": "2026-10-31",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res013088_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res013088"
+    },
+    {
       "card_id": 90013,
       "card_name": "Card 90013",
       "rarity": "2-Star",
