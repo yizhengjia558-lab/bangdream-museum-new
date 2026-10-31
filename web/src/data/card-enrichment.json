@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T17:44:27.952221+00:00",
+  "generated_at": "2026-10-31T16:52:40.606908+00:00",
   "matched": 2311,
   "total": 2377,
   "cards": {
@@ -2783,7 +2783,7 @@
       "sd_resource_name": "sd002084",
       "live2d_asset_bundle_name": "002_live_event_347_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "3|最喜欢巧克力了": {
       "character_id": 3,
@@ -14925,7 +14925,7 @@
       "sd_resource_name": "sd015091",
       "live2d_asset_bundle_name": "015_live_event_347_ur",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "16|粉色代表☆": {
       "character_id": 16,
@@ -19696,7 +19696,7 @@
       "sd_resource_name": "sd020090",
       "live2d_asset_bundle_name": "020_live_event_347_ssr",
       "animation_asset_bundle_name": null,
-      "bestdori_type": "special"
+      "bestdori_type": "permanent"
     },
     "21|孤高的歌姬": {
       "character_id": 21,
