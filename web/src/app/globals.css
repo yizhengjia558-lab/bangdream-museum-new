@@ -6230,7 +6230,7 @@ body.card-detail-open .band-back-btn--fixed {
   color: inherit;
   text-decoration: none;
 }
-/* ©¤©¤ High-refresh (120Hz) compositor path ©¤©¤ */
+/* High-refresh (120Hz) compositor path */
 html[data-perf="hi"] {
   scroll-behavior: auto;
 }
