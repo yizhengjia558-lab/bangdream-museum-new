@@ -109,7 +109,7 @@ async function main() {
   let skipped = 0;
   let failed = 0;
 
-  const batchSize = 8;
+  const batchSize = Math.max(4, Number(process.env.THUMB_CONCURRENCY || 8) || 8);
   for (let i = 0; i < files.length; i += batchSize) {
     const batch = files.slice(i, i + batchSize);
     const results = await Promise.all(

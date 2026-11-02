@@ -63,6 +63,7 @@ const fontZh = Noto_Sans_SC({
   subsets: ["latin"],
   weight: ["400", "700"],
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {

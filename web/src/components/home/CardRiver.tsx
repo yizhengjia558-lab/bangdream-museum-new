@@ -5,7 +5,7 @@ import { AssetImage } from "@/components/ui/AssetImage";
 import type { RiverCardItem } from "@/lib/data-types";
 import { cn } from "@/lib/utils";
 
-const MAX_CARDS = 12;
+const MAX_CARDS = 8;
 
 /**
  * CSS marquee auto-scroll (transform, seamless loop).
@@ -47,7 +47,7 @@ export function CardRiver({
                   alt=""
                   fill
                   variant="mobile"
-                  priority={index < 3}
+                  priority={index < 2}
                   className="object-cover"
                 />
               </div>

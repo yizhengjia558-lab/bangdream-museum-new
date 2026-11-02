@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -45,6 +45,24 @@ jobs:
           echo "Bandori files: $(find Bandori -type f | wc -l)"
           echo "public/assets files: $(find web/public/assets -type f | wc -l)"
 
+      - name: Restore WebP thumbnail cache
+        uses: actions/cache@v4
+        id: thumb-cache
+        with:
+          path: .ci-thumb-cache.tar
+          key: bandori-thumbs-v1-${{ hashFiles('Bandori/all_characters.json', 'web/scripts/generate-thumbnails.mjs') }}
+          restore-keys: |
+            bandori-thumbs-v1-
+
+      - name: Extract WebP thumbnails
+        run: |
+          if [ -f .ci-thumb-cache.tar ]; then
+            tar -xf .ci-thumb-cache.tar
+            echo "Restored thumbs: $(find Bandori -path '*/.thumbs/*' -type f | wc -l)"
+          else
+            echo "No thumb archive to extract"
+          fi
+
       - name: Install dependencies
         working-directory: web
         run: npm ci
@@ -54,9 +72,17 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=4096
           NEXT_TELEMETRY_DISABLED: 1
+          THUMB_CONCURRENCY: "16"
           NEXT_PUBLIC_VISITOR_API: ${{ vars.VISITOR_API_URL }}
           NEXT_PUBLIC_COMMUNITY_API: ${{ vars.COMMUNITY_API_URL }}
         run: npm run build:static
+
+      - name: Pack WebP thumbnail cache
+        if: steps.thumb-cache.outputs.cache-hit != 'true'
+        run: |
+          find Bandori -type d -name .thumbs -print0 | tar --null -T - -cf .ci-thumb-cache.tar
+          ls -lh .ci-thumb-cache.tar
+          echo "Packed thumbs: $(find Bandori -path '*/.thumbs/*' -type f | wc -l)"
 
       - name: Check output size
         working-directory: web

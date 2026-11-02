@@ -5285,6 +5285,15 @@ body.card-detail-open .band-back-btn--fixed {
 }
 
 /* CSS marquee: reliable auto-scroll without JS timers */
+.card-river--marquee,
+.card-river-strip.card-river--marquee {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+}
+
 .card-river-marquee-viewport {
   width: 100%;
   overflow: hidden;
@@ -5293,10 +5302,12 @@ body.card-detail-open .band-back-btn--fixed {
 
 .card-river-marquee-track {
   display: flex;
+  flex-wrap: nowrap;
   align-items: stretch;
   gap: clamp(12px, 1.4vw, 18px);
   width: max-content;
-  animation: card-river-marquee 40s linear infinite;
+  will-change: transform;
+  animation: card-river-marquee 28s linear infinite !important;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
 }
@@ -5312,7 +5323,7 @@ body.card-detail-open .band-back-btn--fixed {
 
 @media (prefers-reduced-motion: reduce) {
   .card-river-marquee-track {
-    animation: none;
+    animation: none !important;
   }
 }
 

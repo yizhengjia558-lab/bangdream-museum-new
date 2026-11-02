@@ -99,7 +99,13 @@ function HomeBandCard({
     <Link href={href} className="group block">
       <article
         className="band-showcase-card relative min-h-[clamp(520px,85vh,700px)] cursor-pointer overflow-hidden rounded-[36px]"
-        style={{ "--band-color": band.colors.primary } as CSSProperties}
+        style={
+          {
+            "--band-color": band.colors.primary,
+            contentVisibility: index > 0 ? "auto" : undefined,
+            containIntrinsicSize: index > 0 ? "auto 640px" : undefined,
+          } as CSSProperties
+        }
       >
         <div className="band-showcase-bg absolute inset-0 overflow-hidden">
           {coverImage ? (
