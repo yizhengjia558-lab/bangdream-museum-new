@@ -209,10 +209,10 @@ export function CardDetailModal({
         {item && !fullscreen && (
           <motion.div
             key="card-detail-backdrop"
-            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            animate={{ opacity: 1, backdropFilter: "blur(14px)" }}
-            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            transition={{ duration: 0.38 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22 }}
             className="card-detail-backdrop"
             onClick={onClose}
           >

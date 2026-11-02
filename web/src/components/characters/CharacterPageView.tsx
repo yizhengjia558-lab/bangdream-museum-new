@@ -1,8 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { expandCardDisplays } from "@/lib/cards";
 import { CharacterCardArchive } from "@/components/characters/CharacterCardArchive";
 import { CardGalleryItem } from "@/components/cards/CardGalleryItem";
@@ -15,14 +14,6 @@ import { BandBackButton } from "@/components/bands/BandBackButton";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import type { CharacterData, CharacterSummary } from "@/lib/data-types";
 import type { BandTheme } from "@/lib/themes";
-import { useMobilePerf } from "@/hooks/useMobilePerf";
-
-const sectionReveal = {
-  initial: { opacity: 0, y: 28 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-8%" as const },
-  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
-};
 
 export function CharacterPageView({
   character,
@@ -38,14 +29,9 @@ export function CharacterPageView({
   bandMembers?: CharacterSummary[];
 }) {
   const { t } = useLocale();
-  const mobile = useMobilePerf();
   const displays = useMemo(() => expandCardDisplays(character.cards), [character.cards]);
-  const [visible, setVisible] = useState(mobile ? 24 : 48);
+  const [visible, setVisible] = useState(24);
   const [highlightKey, setHighlightKey] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (mobile) setVisible((v) => Math.min(v, 24));
-  }, [mobile]);
 
   const featuredCards = character.cards.filter((c) => c.rarity.includes("4") || c.rarity.includes("5")).slice(0, 6);
   const featured = expandCardDisplays(featuredCards);
@@ -98,12 +84,10 @@ export function CharacterPageView({
       />
 
       {character.voice_actor?.image ? (
-        <motion.div {...sectionReveal}>
-          <CharacterVoiceActorSection voiceActor={character.voice_actor} accent={primary} />
-        </motion.div>
+        <CharacterVoiceActorSection voiceActor={character.voice_actor} accent={primary} />
       ) : null}
 
-      <motion.section {...sectionReveal} className="page-section relative py-16 sm:py-20">
+      <section className="page-section relative py-16 sm:py-20">
         <div className="relative page-container">
           <CharacterHotCards
             characterId={character.id}
@@ -117,10 +101,9 @@ export function CharacterPageView({
             </Link>
           </p>
         </div>
-      </motion.section>
+      </section>
 
-      <motion.section {...sectionReveal} className="page-section relative py-20">
-        <div className="pointer-events-none absolute inset-0 bloom-layer" aria-hidden />
+      <section className="page-section relative py-20">
         <div className="relative page-container">
           <SectionHeading title={t("character.featured")} subtitle={t("character.featuredSubtitle")} />
           <ul className="card-gallery-grid card-gallery-grid--featured">
@@ -136,10 +119,9 @@ export function CharacterPageView({
             ))}
           </ul>
         </div>
-      </motion.section>
+      </section>
 
-      <motion.section
-        {...sectionReveal}
+      <section
         id="character-archive"
         className="character-archive-section page-section relative scroll-mt-28 py-20"
       >
@@ -154,13 +136,13 @@ export function CharacterPageView({
             members={archiveMembers}
           />
         </div>
-      </motion.section>
+      </section>
 
-      <motion.section {...sectionReveal} className="page-section relative py-16 sm:py-20">
+      <section className="page-section relative py-16 sm:py-20">
         <div className="relative page-container max-w-3xl">
           <CharacterConfessionWall characterId={character.id} accent={primary} />
         </div>
-      </motion.section>
+      </section>
     </>
   );
 }

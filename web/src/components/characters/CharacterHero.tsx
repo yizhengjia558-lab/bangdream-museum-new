@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { CinematicBackground } from "@/components/effects/CinematicBackground";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { GlassPanel } from "@/components/ui/GlassPanel";
@@ -13,7 +12,6 @@ import type { CardDisplayItem } from "@/lib/cards";
 import type { CharacterData } from "@/lib/data-types";
 import type { BandTheme } from "@/lib/themes";
 import { getCharacterBackdrop, getCharacterPortrait } from "@/lib/character-utils";
-import { useMobilePerf } from "@/hooks/useMobilePerf";
 import { cn } from "@/lib/utils";
 
 export function CharacterHero({
@@ -30,7 +28,6 @@ export function CharacterHero({
   onOpenFilters?: () => void;
 }) {
   const { t, locale } = useLocale();
-  const mobile = useMobilePerf();
   const accent = theme?.colors.primary ?? "#e9435e";
   const backdrop = getCharacterBackdrop(character);
   const portrait = getCharacterPortrait(character);
@@ -48,35 +45,22 @@ export function CharacterHero({
       />
 
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-end page-container-wide pb-16 pt-28 lg:flex-row lg:items-end lg:justify-between lg:gap-12 lg:pb-20 lg:pt-32">
-        <motion.div
-          initial={{ opacity: 0, y: mobile ? 20 : 40, scale: mobile ? 1 : 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: mobile ? 0.65 : 1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative h-[65vh] w-full max-w-lg overflow-hidden lg:h-[80vh] lg:max-w-xl lg:flex-1"
-        >
+        <div className="relative h-[65vh] w-full max-w-lg overflow-hidden lg:h-[80vh] lg:max-w-xl lg:flex-1">
           <div
-            className="absolute inset-x-[15%] bottom-[5%] h-[15%] rounded-full blur-3xl"
-            style={{ background: `${accent}40` }}
+            className="absolute inset-x-[18%] bottom-[6%] h-[10%] rounded-full opacity-70"
+            style={{ background: `${accent}35` }}
           />
           <AssetImage
             src={portrait}
             alt={displayName}
             fill
             priority
-            variant={mobile ? "mobile" : "full"}
-            className={cn(
-              "object-contain object-bottom drop-shadow-[0_48px_96px_rgba(0,0,0,0.6)]",
-              !mobile && "animate-float-soft"
-            )}
+            variant="mobile"
+            className={cn("object-contain object-bottom drop-shadow-[0_32px_64px_rgba(0,0,0,0.55)]")}
           />
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, x: mobile ? 0 : 30, filter: mobile ? "blur(0px)" : "blur(8px)" }}
-          animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-          transition={{ duration: mobile ? 0.55 : 0.9, delay: mobile ? 0.08 : 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-20 mt-8 w-full max-w-md lg:mt-0 lg:mb-12"
-        >
+        <div className="relative z-20 mt-8 w-full max-w-md lg:mt-0 lg:mb-12">
           <GlassPanel className="character-hero-panel" glow={`radial-gradient(circle, ${accent}40, transparent)`}>
             {theme && (
               <Link
@@ -124,7 +108,7 @@ export function CharacterHero({
               onFilterClick={onOpenFilters}
             />
           </GlassPanel>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

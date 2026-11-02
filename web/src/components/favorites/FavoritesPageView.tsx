@@ -20,7 +20,7 @@ export function FavoritesPageView() {
   const { t } = useLocale();
   const { favorites, records, count, reconcileWithDisplays } = useFavorites();
   const { query, hasQuery } = useGlobalSearch();
-  const [visible, setVisible] = useState(48);
+  const [visible, setVisible] = useState(24);
   const [lightbox, setLightbox] = useState<CardDisplayItem | null>(null);
   const [catalog, setCatalog] = useState<CardData[] | null>(null);
   const [catalogError, setCatalogError] = useState(false);
@@ -61,7 +61,7 @@ export function FavoritesPageView() {
   }, [catalog, favoriteDisplays, hasQuery, memberMap, query]);
 
   useEffect(() => {
-    setVisible(48);
+    setVisible(24);
   }, [query]);
 
   const shown = filtered.slice(0, visible);
@@ -127,7 +127,7 @@ export function FavoritesPageView() {
 
               {visible < filtered.length && (
                 <div className="mt-12 flex justify-center">
-                  <GlassButton variant="ghost" onClick={() => setVisible(visible + 48)}>
+                  <GlassButton variant="ghost" onClick={() => setVisible(visible + 24)}>
                     {t("card.loadMore")}
                   </GlassButton>
                 </div>

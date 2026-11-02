@@ -13,8 +13,8 @@ export function GlassPanel({ children, className, style, glow }: GlassPanelProps
     <div className={cn("glass-panel", className)} style={style}>
       {glow && (
         <div
-          className="pointer-events-none absolute -inset-px rounded-[inherit] opacity-60"
-          style={{ background: glow, filter: "blur(40px)" }}
+          className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-35"
+          style={{ background: glow }}
           aria-hidden
         />
       )}
