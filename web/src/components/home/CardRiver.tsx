@@ -8,8 +8,8 @@ import { cn } from "@/lib/utils";
 const MAX_CARDS = 12;
 
 /**
- * CSS marquee auto-scroll — no rAF / scrollLeft.
- * Duplicates the strip once and translates -50% for a seamless loop.
+ * CSS marquee auto-scroll (transform, seamless loop).
+ * Keeps moving by default — no hover-pause, so a full-bleed strip won't look "stuck".
  */
 export function CardRiver({
   cards,

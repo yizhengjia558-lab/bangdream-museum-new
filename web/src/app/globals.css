@@ -5296,14 +5296,9 @@ body.card-detail-open .band-back-btn--fixed {
   align-items: stretch;
   gap: clamp(12px, 1.4vw, 18px);
   width: max-content;
-  will-change: transform;
-  animation: card-river-marquee 48s linear infinite;
+  animation: card-river-marquee 40s linear infinite;
   transform: translate3d(0, 0, 0);
-}
-
-.card-river--marquee:hover .card-river-marquee-track,
-.card-river--marquee:focus-within .card-river-marquee-track {
-  animation-play-state: paused;
+  backface-visibility: hidden;
 }
 
 @keyframes card-river-marquee {
