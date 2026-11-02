@@ -5301,6 +5301,11 @@ body.card-detail-open .band-back-btn--fixed {
   user-select: none;
 }
 
+.card-river--auto .card-river-static-row {
+  scroll-snap-type: none;
+  scrollbar-width: thin;
+}
+
 .card-river-static-row::-webkit-scrollbar {
   height: 10px;
 }
