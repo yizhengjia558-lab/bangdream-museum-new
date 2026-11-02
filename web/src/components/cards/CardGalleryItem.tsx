@@ -1,8 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { AssetImage } from "@/components/ui/AssetImage";
-import { FitText } from "@/components/ui/FitText";
 import { CardFavoriteButton } from "@/components/cards/CardFavoriteButton";
 import { CardTile } from "@/components/cards/CardTile";
 import { CardVariantBadge } from "@/components/cards/CardVariantBadge";
@@ -29,18 +27,14 @@ export function CardGalleryItem({
   const isKirafes = item.card.card_kind === "kirafes";
 
   return (
-    <motion.li
+    <li
       id={`card-tile-${item.key}`}
-      initial={{ opacity: 0, y: 32, scale: 0.96 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ delay: (index % 12) * 0.04, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-      whileTap={{ scale: 0.985 }}
       className={cn(
-        "card-gallery-item scroll-mt-28",
+        "card-gallery-item scroll-mt-28 card-gallery-item--static",
         highlight && "card-gallery-item--highlight",
         isKirafes && "card-gallery-item--kirafes"
       )}
+      style={{ animationDelay: `${(index % 12) * 30}ms` }}
     >
       <CardTile className="card-tile--uniform card-tile--interactive h-full" onClick={onClick}>
         <CardFavoriteButton displayKey={item.key} card={item.card} variant={item.variant} />
@@ -59,23 +53,17 @@ export function CardGalleryItem({
             variant="thumb"
             className="card-image object-cover"
           />
-          <div className="glass-reflection" />
         </div>
 
         <div className="card-caption card-caption--uniform">
           <p className="card-caption-rarity" style={{ color: themeColor }}>
             {rarityLabel}
           </p>
-          <FitText
-            text={item.card.card_name}
-            className="card-caption-name"
-            boxClassName="card-caption-name-box"
-            minPx={11}
-            maxPx={17}
-            maxLines={2}
-          />
+          <div className="card-caption-name-box">
+            <p className="fit-text card-caption-name">{item.card.card_name}</p>
+          </div>
         </div>
       </CardTile>
-    </motion.li>
+    </li>
   );
 }

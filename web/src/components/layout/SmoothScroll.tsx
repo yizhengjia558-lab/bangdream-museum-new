@@ -1,8 +1,7 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import Lenis from "lenis";
-import { useMobilePerf } from "@/hooks/useMobilePerf";
+import { createContext, useContext, type ReactNode } from "react";
+import type Lenis from "lenis";
 
 const LenisContext = createContext<Lenis | null>(null);
 
@@ -10,34 +9,7 @@ export function useLenis() {
   return useContext(LenisContext);
 }
 
+/** Native scroll only — Lenis rAF loop was a constant desktop cost. */
 export function SmoothScroll({ children }: { children: ReactNode }) {
-  const [lenis, setLenis] = useState<Lenis | null>(null);
-  const mobile = useMobilePerf();
-
-  useEffect(() => {
-    if (mobile) {
-      setLenis(null);
-      return;
-    }
-
-    const instance = new Lenis({
-      lerp: 0.08,
-      smoothWheel: true,
-    });
-
-    setLenis(instance);
-
-    function raf(time: number) {
-      instance.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-    return () => {
-      instance.destroy();
-      setLenis(null);
-    };
-  }, [mobile]);
-
-  return <LenisContext.Provider value={lenis}>{children}</LenisContext.Provider>;
+  return <LenisContext.Provider value={null}>{children}</LenisContext.Provider>;
 }

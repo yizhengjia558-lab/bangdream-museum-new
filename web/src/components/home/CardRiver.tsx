@@ -2,7 +2,6 @@
 
 import { useMemo, type CSSProperties } from "react";
 import { AssetImage } from "@/components/ui/AssetImage";
-import { useMobilePerf } from "@/hooks/useMobilePerf";
 import type { RiverCardItem } from "@/lib/data-types";
 import { cn } from "@/lib/utils";
 
@@ -11,23 +10,13 @@ type LaneConfig = {
   duration: number;
   depth: number;
   cardW: number;
-  floatDuration: number;
-  rotateRange: number;
 };
 
+/** Keep 2 slow lanes — enough motion, far fewer animated images. */
 const LANES: LaneConfig[] = [
-  { direction: "left", duration: 80, depth: 0.45, cardW: 80, floatDuration: 5, rotateRange: 5 },
-  { direction: "right", duration: 62, depth: 0.75, cardW: 96, floatDuration: 4.2, rotateRange: 4 },
-  { direction: "left", duration: 48, depth: 1, cardW: 112, floatDuration: 3.5, rotateRange: 3 },
-  { direction: "right", duration: 72, depth: 0.6, cardW: 88, floatDuration: 4.6, rotateRange: 6 },
-  { direction: "left", duration: 88, depth: 0.35, cardW: 72, floatDuration: 5.5, rotateRange: 7 },
+  { direction: "left", duration: 90, depth: 0.85, cardW: 96 },
+  { direction: "right", duration: 110, depth: 0.7, cardW: 88 },
 ];
-
-function hashSeed(s: string) {
-  let h = 0;
-  for (let i = 0; i < s.length; i++) h = (h << 5) - h + s.charCodeAt(i);
-  return Math.abs(h);
-}
 
 export function CardRiver({
   cards,
@@ -36,33 +25,24 @@ export function CardRiver({
   cards: RiverCardItem[];
   variant?: "strip";
 }) {
-  const mobile = useMobilePerf();
-
   const lanes = useMemo(() => {
     if (!cards.length) return [];
 
-    const activeLanes = mobile ? LANES.slice(0, 2) : LANES;
-
-    return activeLanes.map((lane, laneIdx) => {
-      const laneCards: (RiverCardItem & { rotate: number; floatDelay: number })[] = [];
+    return LANES.map((lane, laneIdx) => {
+      const laneCards: RiverCardItem[] = [];
       for (let i = 0; i < cards.length; i++) {
-        if (i % activeLanes.length !== laneIdx) continue;
-        const card = cards[i];
-        const seed = hashSeed(`${card.src}-${i}`);
-        laneCards.push({
-          ...card,
-          rotate: mobile ? 0 : ((seed % 200) / 100 - 1) * lane.rotateRange,
-          floatDelay: (seed % 400) / 100,
-        });
+        if (i % LANES.length !== laneIdx) continue;
+        laneCards.push(cards[i]);
       }
-      return { ...lane, cards: mobile ? laneCards : [...laneCards, ...laneCards] };
+      // Duplicate once for seamless CSS loop.
+      return { ...lane, cards: [...laneCards, ...laneCards] };
     });
-  }, [cards, mobile]);
+  }, [cards]);
 
   if (!lanes.length) return null;
 
   return (
-    <div className={cn("card-river", variant === "strip" && "card-river-strip", mobile && "card-river--lite")}>
+    <div className={cn("card-river", "card-river--lite", variant === "strip" && "card-river-strip")}>
       <div className="card-river-strip-fade-top pointer-events-none absolute inset-x-0 top-0 z-10 h-12" aria-hidden />
       <div className="card-river-strip-fade-bottom pointer-events-none absolute inset-x-0 bottom-0 z-10 h-16" aria-hidden />
 
@@ -81,14 +61,14 @@ export function CardRiver({
                     {
                       "--depth": lane.depth,
                       "--card-w": `${lane.cardW}px`,
-                      "--float-dur": `${lane.floatDuration}s`,
-                      "--float-delay": `${card.floatDelay}s`,
-                      "--rotate": `${card.rotate}deg`,
+                      "--float-dur": "0s",
+                      "--float-delay": "0s",
+                      "--rotate": "0deg",
                     } as CSSProperties
                   }
                 >
                   <div className="card-river-frame">
-                    <AssetImage src={card.src} alt="" fill variant={mobile ? "mobile" : "thumb"} className="object-cover" />
+                    <AssetImage src={card.src} alt="" fill variant="mobile" className="object-cover" />
                   </div>
                 </div>
               ))}
