@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { ImageLightbox } from "@/components/ui/ImageLightbox";
@@ -29,12 +28,6 @@ export function CharacterVoiceActorSection({
   return (
     <section className="character-voice-section page-section relative py-12 md:py-16">
       <div className="relative page-container">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
           <GlassPanel
             className="character-voice-section-panel"
             glow={`radial-gradient(circle at 20% 50%, ${accent}35, transparent 65%)`}
@@ -85,7 +78,6 @@ export function CharacterVoiceActorSection({
               </div>
             </div>
           </GlassPanel>
-        </motion.div>
       </div>
 
       {voiceActor.image ? (

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { CardTile } from "@/components/cards/CardTile";
 import { useLocale } from "@/components/i18n/LocaleProvider";
@@ -13,11 +12,10 @@ import { getCharacterPortrait } from "@/lib/character-utils";
 export function MemberCard({
   member,
   theme,
-  index,
 }: {
   member: CharacterSummary;
   theme: BandTheme;
-  index: number;
+  index?: number;
 }) {
   const { locale } = useLocale();
   const displayName = getCharacterName(member, locale);
@@ -25,13 +23,7 @@ export function MemberCard({
   const portrait = getCharacterPortrait(member);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="p-1"
-    >
+    <div className="p-1">
       <Link href={`/characters/${member.slug}/`} className="group block">
         <CardTile className="h-full">
           <div className="card-image-wrap relative aspect-[3/4]">
@@ -43,10 +35,9 @@ export function MemberCard({
               src={portrait}
               alt={displayName}
               fill
-              variant="thumb"
+              variant="mobile"
               className="card-image object-cover object-top"
             />
-            <div className="glass-reflection" />
           </div>
           <div className="card-caption text-center">
             <p className="card-caption-jp">{altName}</p>
@@ -54,6 +45,6 @@ export function MemberCard({
           </div>
         </CardTile>
       </Link>
-    </motion.div>
+    </div>
   );
 }

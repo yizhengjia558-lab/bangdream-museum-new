@@ -2,7 +2,6 @@
 
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { BandLogo } from "@/components/ui/BandLogo";
 import { useLocale } from "@/components/i18n/LocaleProvider";
@@ -19,36 +18,11 @@ export function HomeBandsSection({ bands }: { bands: HomeBandEntry[] }) {
 
   return (
     <section className="home-bands-section relative page-section pt-10 pb-16 lg:pt-12 lg:pb-24">
-      <div className="pointer-events-none absolute inset-0 bloom-layer opacity-40" aria-hidden />
       <div className="relative page-container">
         <header className="mb-12 text-center sm:mb-14">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="hero-eyebrow text-[var(--text-muted)]"
-          >
-            {t("home.collection")}
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
-            className="section-display mt-5"
-          >
-            {t("home.sectionTitle")}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-            className="hero-tagline mx-auto mt-4 max-w-lg"
-          >
-            {t("home.sectionTagline")}
-          </motion.p>
+          <p className="hero-eyebrow text-[var(--text-muted)]">{t("home.collection")}</p>
+          <h2 className="section-display mt-5">{t("home.sectionTitle")}</h2>
+          <p className="hero-tagline mx-auto mt-4 max-w-lg">{t("home.sectionTagline")}</p>
         </header>
 
         <div className="flex flex-col gap-14 lg:gap-20">
@@ -72,33 +46,9 @@ export function HomeBandsSection({ bands }: { bands: HomeBandEntry[] }) {
         {otherEntries.length > 0 ? (
           <div className="mt-20 lg:mt-28">
             <header className="mb-12 text-center sm:mb-14">
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="hero-eyebrow text-[var(--text-muted)]"
-              >
-                {t("home.otherCollection")}
-              </motion.p>
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.8, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
-                className="section-display mt-5"
-              >
-                {t("home.otherSectionTitle")}
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.8, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-                className="hero-tagline mx-auto mt-4 max-w-lg"
-              >
-                {t("home.otherSectionTagline")}
-              </motion.p>
+              <p className="hero-eyebrow text-[var(--text-muted)]">{t("home.otherCollection")}</p>
+              <h2 className="section-display mt-5">{t("home.otherSectionTitle")}</h2>
+              <p className="hero-tagline mx-auto mt-4 max-w-lg">{t("home.otherSectionTagline")}</p>
             </header>
 
             <div className="flex flex-col gap-14 lg:gap-20">
@@ -147,11 +97,7 @@ function HomeBandCard({
 
   return (
     <Link href={href} className="group block">
-      <motion.article
-        initial={{ opacity: 0, y: 70 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.9, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+      <article
         className="band-showcase-card relative min-h-[clamp(520px,85vh,700px)] cursor-pointer overflow-hidden rounded-[36px]"
         style={{ "--band-color": band.colors.primary } as CSSProperties}
       >
@@ -161,15 +107,14 @@ function HomeBandCard({
               src={coverImage}
               alt=""
               fill
-              variant="thumb"
-              className="band-showcase-bg-img object-cover object-center transition-all duration-700 ease-out group-hover:scale-105"
+              variant="mobile"
+              className="band-showcase-bg-img object-cover object-center"
             />
           ) : (
             <div className="h-full w-full" style={{ background: band.colors.gradient }} />
           )}
         </div>
 
-        <div className="band-showcase-blur pointer-events-none absolute inset-0 transition-all duration-700 group-hover:opacity-70" />
         <div className="band-showcase-gradient pointer-events-none absolute inset-0" />
 
         <div className="relative z-10 grid h-full min-h-[clamp(520px,85vh,700px)] grid-cols-1 items-end lg:grid-cols-[1.15fr_0.85fr]">
@@ -180,8 +125,8 @@ function HomeBandCard({
                   src={representative.portrait || representative.standing}
                   alt={band.name}
                   fill
-                  variant="thumb"
-                  className="card-image object-contain object-bottom drop-shadow-[0_48px_80px_rgba(0,0,0,0.35)] transition-all duration-700 ease-out"
+                  variant="mobile"
+                  className="card-image object-contain object-bottom"
                   priority={index < 1}
                 />
               </div>
@@ -190,16 +135,10 @@ function HomeBandCard({
 
           <div className="band-showcase-panel-col relative z-20 flex items-center">
             <div className="glass-panel band-showcase-panel relative w-full">
-              <div className="glass-reflection pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
               <div className="band-showcase-panel-inner">
-                <motion.div
-                  className="band-logo-float"
-                  animate={{ y: [0, -6, 0] }}
-                  transition={{ duration: 4 + index * 0.3, repeat: Infinity, ease: "easeInOut" }}
-                >
+                <div className="band-logo-float">
                   <BandLogo band={band} size="lg" />
-                </motion.div>
+                </div>
 
                 <h2 className="band-showcase-name mt-10" style={{ color: band.colors.primary }}>
                   {bandName}
@@ -233,7 +172,7 @@ function HomeBandCard({
             </div>
           </div>
         </div>
-      </motion.article>
+      </article>
     </Link>
   );
 }

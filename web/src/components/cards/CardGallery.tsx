@@ -35,7 +35,7 @@ export function CardGallery({
   const { t } = useLocale();
   const { query, hasQuery } = useGlobalSearch();
   const [filters, setFilters] = useState<CardFilterState>(EMPTY_CARD_FILTERS);
-  const [internalVisible, setInternalVisible] = useState(24);
+  const [internalVisible, setInternalVisible] = useState(16);
   const [lightbox, setLightbox] = useState<CardDisplayItem | null>(null);
 
   const visible = controlledVisible ?? internalVisible;
@@ -50,7 +50,7 @@ export function CardGallery({
   const displays = useMemo(() => expandCardDisplays(filteredCards), [filteredCards]);
 
   useEffect(() => {
-    setVisible(24);
+    setVisible(16);
   }, [filters, query, setVisible]);
 
   const shown = displays.slice(0, visible);
@@ -92,7 +92,7 @@ export function CardGallery({
 
       {visible < displays.length && (
         <div className="mt-12 flex justify-center">
-          <GlassButton variant="ghost" onClick={() => setVisible(visible + 24)}>
+          <GlassButton variant="ghost" onClick={() => setVisible(visible + 16)}>
             {t("card.loadMore")}
           </GlassButton>
         </div>

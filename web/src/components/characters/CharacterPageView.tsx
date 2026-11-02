@@ -30,7 +30,7 @@ export function CharacterPageView({
 }) {
   const { t } = useLocale();
   const displays = useMemo(() => expandCardDisplays(character.cards), [character.cards]);
-  const [visible, setVisible] = useState(24);
+  const [visible, setVisible] = useState(16);
   const [highlightKey, setHighlightKey] = useState<string | null>(null);
 
   const featuredCards = character.cards.filter((c) => c.rarity.includes("4") || c.rarity.includes("5")).slice(0, 6);

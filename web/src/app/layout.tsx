@@ -21,6 +21,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  // Hint browsers on high-refresh displays to keep input/compositor responsive.
+  interactiveWidget: "resizes-content",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#fff9fc" },
     { media: "(prefers-color-scheme: dark)", color: "#0d1020" },
@@ -69,9 +71,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${fontTitle.variable} ${fontSubtitle.variable} ${fontBody.variable} ${fontJp.variable} ${fontZh.variable} h-full`}
       data-theme="light"
       data-locale="zh"
+      data-perf="hi"
       suppressHydrationWarning
     >
-      <body className="theme-body flex min-h-full flex-col font-[family-name:var(--font-body-active)] antialiased">
+      <body className="theme-body flex min-h-full flex-col font-[family-name:var(--font-body-active)]">
         <BangDreamPageBackground />
         <LocaleProvider>
           <DocumentLocale />
