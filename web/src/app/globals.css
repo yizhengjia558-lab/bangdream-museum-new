@@ -351,7 +351,12 @@ body {
   }
 
   .hero-river-strip {
-    height: clamp(140px, 22vh, 200px);
+    height: auto;
+  }
+
+  .card-river-item--static {
+    width: min(58vw, 220px);
+    flex-basis: min(58vw, 220px);
   }
 
   .band-showcase-card {
@@ -2550,14 +2555,16 @@ body.live2d-embed-route main {
   padding-top: 0.5rem;
 }
 
-/* Card river — fills gap between intro & collection */
+/* Card river — full-bleed landscape strip under hero copy */
 .hero-river-strip {
   position: relative;
   z-index: 1;
-  width: 100%;
-  height: clamp(220px, 30vh, 340px);
-  overflow: hidden;
-  position: relative;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  height: auto;
+  overflow: visible;
 }
 
 .card-river-strip {
@@ -2566,12 +2573,9 @@ body.live2d-embed-route main {
   width: 100%;
 }
 
-.card-river-strip-fade-top {
-  background: linear-gradient(to bottom, color-mix(in srgb, var(--museum-bg) 75%, transparent), transparent);
-}
-
+.card-river-strip-fade-top,
 .card-river-strip-fade-bottom {
-  background: linear-gradient(to top, color-mix(in srgb, var(--museum-bg-soft) 75%, transparent), transparent);
+  display: none;
 }
 
 .card-river-lanes-strip {
@@ -5269,31 +5273,47 @@ body.card-detail-open .band-back-btn--fixed {
 
 .card-river-static-row {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: flex-start;
-  gap: 12px;
-  height: 100%;
-  padding: 0 1rem;
+  gap: clamp(10px, 1.2vw, 16px);
+  width: 100%;
+  padding: 0.35rem 0 0.85rem;
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-snap-type: x proximity;
+  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--brand-pink) 55%, transparent) transparent;
 }
 
 .card-river-static-row::-webkit-scrollbar {
-  display: none;
+  height: 8px;
+}
+
+.card-river-static-row::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card-river-static-row::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand-pink) 55%, transparent);
 }
 
 .card-river-item--static {
-  width: 88px;
-  flex-shrink: 0;
+  width: min(42vw, 280px);
+  flex: 0 0 min(42vw, 280px);
   scroll-snap-align: start;
 }
 
 .card-river-item--static .card-river-frame {
-  width: 88px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.card-river--landscape .card-river-frame {
+  aspect-ratio: 4 / 3;
 }
 
 .card-gallery-item--static {
