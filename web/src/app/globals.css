@@ -354,9 +354,9 @@ body {
     height: auto;
   }
 
+  .card-river--landscape .card-river-item,
   .card-river-item--static {
-    width: min(58vw, 220px);
-    flex-basis: min(58vw, 220px);
+    --card-w: clamp(200px, 72vw, 300px);
   }
 
   .band-showcase-card {
@@ -5275,45 +5275,67 @@ body.card-detail-open .band-back-btn--fixed {
   display: flex;
   align-items: stretch;
   justify-content: flex-start;
-  gap: clamp(10px, 1.2vw, 16px);
+  gap: clamp(12px, 1.4vw, 18px);
   width: 100%;
-  padding: 0.35rem 0 0.85rem;
-  overflow-x: auto;
+  max-width: 100vw;
+  padding: 0.5rem max(12px, env(safe-area-inset-right)) 1rem max(12px, env(safe-area-inset-left));
+  overflow-x: scroll;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: color-mix(in srgb, var(--brand-pink) 55%, transparent) transparent;
+  scrollbar-gutter: stable;
+  scrollbar-width: auto;
+  scrollbar-color: color-mix(in srgb, var(--brand-pink) 70%, #fff) color-mix(in srgb, var(--text-muted) 18%, transparent);
+  outline: none;
+  cursor: grab;
+}
+
+.card-river-static-row:active,
+.card-river-static-row.is-dragging {
+  cursor: grabbing;
+}
+
+.card-river-static-row.is-dragging {
+  scroll-snap-type: none;
+  user-select: none;
 }
 
 .card-river-static-row::-webkit-scrollbar {
-  height: 8px;
+  height: 10px;
 }
 
 .card-river-static-row::-webkit-scrollbar-track {
-  background: transparent;
+  background: color-mix(in srgb, var(--text-muted) 14%, transparent);
+  border-radius: 999px;
 }
 
 .card-river-static-row::-webkit-scrollbar-thumb {
   border-radius: 999px;
-  background: color-mix(in srgb, var(--brand-pink) 55%, transparent);
+  background: color-mix(in srgb, var(--brand-pink) 75%, #fff);
 }
 
+.card-river--landscape .card-river-item,
 .card-river-item--static {
-  width: min(42vw, 280px);
-  flex: 0 0 min(42vw, 280px);
+  --card-w: clamp(240px, 34vw, 360px);
+  width: var(--card-w) !important;
+  flex: 0 0 var(--card-w) !important;
+  max-width: none;
   scroll-snap-align: start;
+  animation: none !important;
 }
 
+.card-river--landscape .card-river-frame,
 .card-river-item--static .card-river-frame {
-  width: 100%;
-  aspect-ratio: 4 / 3;
+  width: 100% !important;
+  aspect-ratio: 16 / 10 !important;
   border-radius: 14px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-}
-
-.card-river--landscape .card-river-frame {
-  aspect-ratio: 4 / 3;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
 }
 
 .card-gallery-item--static {
