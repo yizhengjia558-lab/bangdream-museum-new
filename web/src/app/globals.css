@@ -5279,45 +5279,46 @@ body.card-detail-open .band-back-btn--fixed {
   width: 100%;
   max-width: 100vw;
   padding: 0.5rem max(12px, env(safe-area-inset-right)) 1rem max(12px, env(safe-area-inset-left));
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-gutter: stable;
-  scrollbar-width: auto;
-  scrollbar-color: color-mix(in srgb, var(--brand-pink) 70%, #fff) color-mix(in srgb, var(--text-muted) 18%, transparent);
   outline: none;
-  cursor: grab;
 }
 
-.card-river-static-row:active,
-.card-river-static-row.is-dragging {
-  cursor: grabbing;
+/* CSS marquee: reliable auto-scroll without JS timers */
+.card-river-marquee-viewport {
+  width: 100%;
+  overflow: hidden;
+  padding: 0.5rem 0 0.85rem;
 }
 
-.card-river-static-row.is-dragging {
-  scroll-snap-type: none;
-  user-select: none;
+.card-river-marquee-track {
+  display: flex;
+  align-items: stretch;
+  gap: clamp(12px, 1.4vw, 18px);
+  width: max-content;
+  will-change: transform;
+  animation: card-river-marquee 48s linear infinite;
+  transform: translate3d(0, 0, 0);
 }
 
-.card-river--auto .card-river-static-row {
-  scroll-snap-type: none;
-  scrollbar-width: thin;
+.card-river--marquee:hover .card-river-marquee-track,
+.card-river--marquee:focus-within .card-river-marquee-track {
+  animation-play-state: paused;
 }
 
-.card-river-static-row::-webkit-scrollbar {
-  height: 10px;
+@keyframes card-river-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
-.card-river-static-row::-webkit-scrollbar-track {
-  background: color-mix(in srgb, var(--text-muted) 14%, transparent);
-  border-radius: 999px;
-}
-
-.card-river-static-row::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--brand-pink) 75%, #fff);
+@media (prefers-reduced-motion: reduce) {
+  .card-river-marquee-track {
+    animation: none;
+  }
 }
 
 .card-river--landscape .card-river-item,

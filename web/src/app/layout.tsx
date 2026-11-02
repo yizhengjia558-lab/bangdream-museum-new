@@ -33,30 +33,36 @@ const fontTitle = Outfit({
   variable: "--font-title",
   subsets: ["latin"],
   weight: ["700", "800"],
+  display: "swap",
 });
 
 const fontSubtitle = Plus_Jakarta_Sans({
   variable: "--font-subtitle",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["600", "700"],
+  display: "swap",
 });
 
 const fontBody = Inter({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500"],
+  display: "swap",
 });
 
 const fontJp = M_PLUS_Rounded_1c({
   variable: "--font-jp",
   subsets: ["latin"],
   weight: ["400", "700"],
+  display: "swap",
+  preload: false,
 });
 
 const fontZh = Noto_Sans_SC({
   variable: "--font-zh",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {

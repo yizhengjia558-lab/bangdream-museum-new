@@ -108,6 +108,7 @@ function HomeBandCard({
               alt=""
               fill
               variant="mobile"
+              priority={index < 1}
               className="band-showcase-bg-img object-cover object-center"
             />
           ) : (
