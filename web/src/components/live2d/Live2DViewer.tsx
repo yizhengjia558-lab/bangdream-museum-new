@@ -42,29 +42,31 @@ function loadLive2DCore() {
 }
 
 /**
- * Bandori costume Live2D is thigh-up (no full legs). Center-fitting left a
- * empty gap under the hem that looked like floating — pin the model bottom
- * to the stage floor instead.
+ * Bandori costume Live2D is thigh-up. Model bounds often include empty canvas
+ * below the hem, so pinning bounds.bottom still floats — treat ~72% down the
+ * bounds as the visual hem and pin that to the stage floor.
  */
 function fitModelToStage(
   model: import("pixi-live2d-display/cubism2").Live2DModel,
   stageWidth: number,
   stageHeight: number,
-  padding = 0.92
+  padding = 0.96
 ) {
   model.scale.set(1);
   const bounds = model.getLocalBounds();
   if (!bounds.width || !bounds.height) return;
 
+  const VISUAL_BOTTOM = 0.72;
   const scale = Math.min(
     (stageWidth / bounds.width) * padding,
-    (stageHeight / bounds.height) * padding
+    (stageHeight / (bounds.height * VISUAL_BOTTOM)) * padding
   );
   model.scale.set(scale);
   model.x = stageWidth / 2 - (bounds.x + bounds.width / 2) * scale;
 
-  const bottomInset = Math.max(2, stageHeight * 0.012);
-  model.y = stageHeight - bottomInset - (bounds.y + bounds.height) * scale;
+  const visualBottom = (bounds.y + bounds.height * VISUAL_BOTTOM) * scale;
+  const bottomInset = Math.max(1, stageHeight * 0.008);
+  model.y = stageHeight - bottomInset - visualBottom;
 }
 
 function scheduleModelRefit(refit: () => void) {
@@ -171,7 +173,7 @@ export function Live2DViewer({
           const h = host.clientHeight || height;
           if (w <= 0 || h <= 0) return;
           app.renderer.resize(w, h);
-          fitModelToStage(model, w, h, 0.94 / zoomRef.current);
+          fitModelToStage(model, w, h, 0.98 / zoomRef.current);
         };
 
         refitRef.current = refit;

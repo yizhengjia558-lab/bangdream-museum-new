@@ -21,13 +21,24 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
   return `${origin}${basePath}/live2d-embed/?bundle=${encodeURIComponent(assetBundleName)}`;
 }
 
+/**
+ * Bestdori's studio page composites thigh-up Live2D over a full room, so a
+ * naive cover-center crop leaves a floor gap under the hem. Punch into the
+ * character band and pin that hem to the phone bottom.
+ */
 function computeBestdoriCover(containerW: number, containerH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  const baseScale = Math.max(containerW / contentW, containerH / PAGE_HEIGHT);
-  const scale = baseScale * zoom;
-  const scaledPageH = PAGE_HEIGHT * scale;
+  // Approx. vertical span of the character on Bestdori's 1280×960 tool page.
+  const CHAR_TOP = 0.06;
+  const CHAR_BOTTOM = 0.64;
+  const charSpan = CHAR_BOTTOM - CHAR_TOP;
+
+  const scaleH = containerH / (PAGE_HEIGHT * charSpan);
+  const scaleW = containerW / contentW;
+  const scale = Math.max(scaleH, scaleW) * zoom;
+
   const left = -SIDEBAR_WIDTH * scale + (containerW - contentW * scale) / 2;
-  const top = (containerH - scaledPageH) / 2;
+  const top = containerH - PAGE_HEIGHT * CHAR_BOTTOM * scale;
   return { scale, left, top };
 }
 
