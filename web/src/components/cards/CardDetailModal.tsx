@@ -283,6 +283,8 @@ export function CardDetailModal({
                                 src={activeSrc}
                                 alt={item.card.card_name}
                                 fill
+                                variant="thumb"
+                                progressive
                                 className="card-detail-image object-contain"
                               />
                             </motion.div>
@@ -445,6 +447,8 @@ export function CardDetailModal({
                     <AssetImage
                       src={activeSrc}
                       alt={item.card.card_name}
+                      variant="full"
+                      progressive
                       className="card-detail-fullscreen-image"
                     />
                   </motion.div>

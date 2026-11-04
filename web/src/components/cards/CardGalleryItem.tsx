@@ -50,7 +50,7 @@ export function CardGalleryItem({
             src={item.src}
             alt={item.card.card_name}
             fill
-            variant="thumb"
+            variant="mobile"
             className="card-image object-cover"
           />
         </div>

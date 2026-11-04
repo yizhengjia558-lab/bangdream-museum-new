@@ -11,6 +11,8 @@ interface AssetImageProps {
   fill?: boolean;
   priority?: boolean;
   variant?: "thumb" | "mobile" | "full";
+  /** Show a small WebP first, then swap up to `variant` when ready. */
+  progressive?: boolean;
   onError?: ImgHTMLAttributes<HTMLImageElement>["onError"];
 }
 
@@ -22,13 +24,42 @@ export function AssetImage({
   fill,
   priority,
   variant = "full",
+  progressive = false,
   onError,
 }: AssetImageProps) {
-  const [resolvedSrc, setResolvedSrc] = useState(() => cardImageUrl(src, variant));
+  const hqSrc = cardImageUrl(src, variant);
+  const lqSrc = cardImageUrl(src, "mobile");
+  const [resolvedSrc, setResolvedSrc] = useState(() =>
+    progressive && variant !== "mobile" ? lqSrc : hqSrc
+  );
 
   useEffect(() => {
-    setResolvedSrc(cardImageUrl(src, variant));
-  }, [src, variant]);
+    const nextHq = cardImageUrl(src, variant);
+    const nextLq = cardImageUrl(src, "mobile");
+
+    if (!progressive || variant === "mobile" || nextHq === nextLq) {
+      setResolvedSrc(nextHq);
+      return;
+    }
+
+    setResolvedSrc(nextLq);
+    let cancelled = false;
+    const preload = new window.Image();
+    preload.decoding = "async";
+    preload.onload = () => {
+      if (!cancelled) setResolvedSrc(nextHq);
+    };
+    preload.onerror = () => {
+      if (!cancelled) setResolvedSrc(nextHq);
+    };
+    preload.src = nextHq;
+
+    return () => {
+      cancelled = true;
+      preload.onload = null;
+      preload.onerror = null;
+    };
+  }, [src, variant, progressive]);
 
   const handleError: ImgHTMLAttributes<HTMLImageElement>["onError"] = (event) => {
     if (variant === "mobile") {
