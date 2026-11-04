@@ -41,20 +41,30 @@ function loadLive2DCore() {
   return live2dCorePromise;
 }
 
-function fitModelContain(
+/**
+ * Bandori costume Live2D is thigh-up (no full legs). Center-fitting left a
+ * empty gap under the hem that looked like floating — pin the model bottom
+ * to the stage floor instead.
+ */
+function fitModelToStage(
   model: import("pixi-live2d-display/cubism2").Live2DModel,
   stageWidth: number,
   stageHeight: number,
-  padding = 0.78
+  padding = 0.92
 ) {
   model.scale.set(1);
   const bounds = model.getLocalBounds();
   if (!bounds.width || !bounds.height) return;
 
-  const scale = Math.min((stageWidth / bounds.width) * padding, (stageHeight / bounds.height) * padding);
+  const scale = Math.min(
+    (stageWidth / bounds.width) * padding,
+    (stageHeight / bounds.height) * padding
+  );
   model.scale.set(scale);
   model.x = stageWidth / 2 - (bounds.x + bounds.width / 2) * scale;
-  model.y = stageHeight / 2 - (bounds.y + bounds.height / 2) * scale;
+
+  const bottomInset = Math.max(2, stageHeight * 0.012);
+  model.y = stageHeight - bottomInset - (bounds.y + bounds.height) * scale;
 }
 
 function scheduleModelRefit(refit: () => void) {
@@ -161,7 +171,7 @@ export function Live2DViewer({
           const h = host.clientHeight || height;
           if (w <= 0 || h <= 0) return;
           app.renderer.resize(w, h);
-          fitModelContain(model, w, h, 0.78 / zoomRef.current);
+          fitModelToStage(model, w, h, 0.94 / zoomRef.current);
         };
 
         refitRef.current = refit;
