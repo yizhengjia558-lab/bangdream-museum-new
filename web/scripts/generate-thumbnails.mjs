@@ -11,10 +11,10 @@ const indexPath = path.join(bandori, "all_characters.json");
 const IMAGE_EXT = /\.(png|jpe?g)$/i;
 
 const PROFILES = [
-  { name: "card", match: (rel) => rel.includes("/Cards/"), width: 480, quality: 82 },
-  { name: "standing", match: (rel) => /\/Standing\//i.test(rel) || /standing/i.test(path.basename(rel)), width: 640, quality: 84 },
-  { name: "voice", match: (rel) => rel.includes("/VoiceActor/"), width: 320, quality: 82 },
-  { name: "default", match: () => true, width: 720, quality: 82 },
+  { name: "card", match: (rel) => rel.includes("/Cards/"), width: 720, quality: 84 },
+  { name: "standing", match: (rel) => /\/Standing\//i.test(rel) || /standing/i.test(path.basename(rel)), width: 960, quality: 86 },
+  { name: "voice", match: (rel) => rel.includes("/VoiceActor/"), width: 480, quality: 84 },
+  { name: "default", match: () => true, width: 960, quality: 84 },
 ];
 
 function profileFor(relPath) {
@@ -65,8 +65,8 @@ function mobileThumbAbsFor(absPath) {
   return path.join(dir, ".thumbs", "m", `${base}.webp`);
 }
 
-const MOBILE_WIDTH = 320;
-const MOBILE_QUALITY = 78;
+const MOBILE_WIDTH = 480;
+const MOBILE_QUALITY = 80;
 
 async function writeWebp(absPath, outPath, width, quality) {
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
