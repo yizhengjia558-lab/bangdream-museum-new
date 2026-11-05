@@ -77,16 +77,9 @@ async function writeWebp(absPath, outPath, width, quality) {
     .toFile(outPath);
 }
 
-async function needsRebuild(outPath, srcMtime, width) {
+function needsRebuild(outPath, srcMtime) {
   if (!fs.existsSync(outPath)) return true;
-  if (fs.statSync(outPath).mtimeMs < srcMtime) return true;
-  try {
-    const meta = await sharp(outPath).metadata();
-    // Rebuild undersized leftovers from older mobile/thumb profiles.
-    return (meta.width ?? 0) + 8 < width;
-  } catch {
-    return true;
-  }
+  return fs.statSync(outPath).mtimeMs < srcMtime;
 }
 
 async function ensureThumb(absPath) {
@@ -102,7 +95,7 @@ async function ensureThumb(absPath) {
     [thumbAbs, profile.width, profile.quality],
     [mobileAbs, Math.min(MOBILE_WIDTH, profile.width), MOBILE_QUALITY],
   ]) {
-    if (!(await needsRebuild(outPath, srcMtime, width))) continue;
+    if (!needsRebuild(outPath, srcMtime)) continue;
     await writeWebp(absPath, outPath, width, quality);
     created += 1;
   }
