@@ -654,16 +654,6 @@
       "resource_set_name": "res007077"
     },
     {
-      "card_id": 2439,
-      "card_name": "真剣なダメ出し？",
-      "rarity": "4-Star",
-      "event": "暁の空へ、輝く希望の船出ガチャ",
-      "release_date": "2026-04-20",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007081_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007081_rip/card_after_training.png",
-      "resource_set_name": "res007081"
-    },
-    {
       "card_id": 2482,
       "card_name": "初めての熱を浴びて",
       "rarity": "5-Star",
@@ -702,6 +692,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007084_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res007084"
+    },
+    {
+      "card_id": 2439,
+      "card_name": "认真的指正？",
+      "rarity": "4-Star",
+      "event": "驶向拂晓之空，闪耀着希望的启航招募",
+      "release_date": "2026-11-05",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007081_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res007081_rip/card_after_training.png",
+      "resource_set_name": "res007081"
     },
     {
       "card_id": 90007,

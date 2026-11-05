@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-04T19:23:17.455629+00:00",
+  "generated_at": "2026-11-05T19:30:51.026850+00:00",
   "matched": 2311,
   "total": 2377,
   "cards": {
@@ -6373,19 +6373,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "6|小指を交わして": {
-      "character_id": 6,
-      "bestdori_card_id": 2435,
-      "stars": 5,
-      "attribute": "cool",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2354,
-      "sd_resource_name": "sd006090",
-      "live2d_asset_bundle_name": "006_live_event_328_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "6|今日は、ありがと": {
       "character_id": 6,
       "bestdori_card_id": 2483,
@@ -6448,6 +6435,19 @@
       "costume_id": 2465,
       "sd_resource_name": "sd006092",
       "live2d_asset_bundle_name": "006_live_event_346_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
+    },
+    "6|勾指起誓": {
+      "character_id": 6,
+      "bestdori_card_id": 2435,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2354,
+      "sd_resource_name": "sd006090",
+      "live2d_asset_bundle_name": "006_live_event_328_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
@@ -7309,19 +7309,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "7|真剣なダメ出し？": {
-      "character_id": 7,
-      "bestdori_card_id": 2439,
-      "stars": 4,
-      "attribute": "cool",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2358,
-      "sd_resource_name": "sd007081",
-      "live2d_asset_bundle_name": "007_live_event_328_ssr",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "7|初めての熱を浴びて": {
       "character_id": 7,
       "bestdori_card_id": 2482,
@@ -7373,6 +7360,19 @@
       "live2d_asset_bundle_name": "007_live_event_346_r",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
+    },
+    "7|认真的指正？": {
+      "character_id": 7,
+      "bestdori_card_id": 2439,
+      "stars": 4,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2358,
+      "sd_resource_name": "sd007081",
+      "live2d_asset_bundle_name": "007_live_event_328_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
     },
     "8|大家的队长！": {
       "character_id": 8,
@@ -8245,19 +8245,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "8|夕暮れ時の約束": {
-      "character_id": 8,
-      "bestdori_card_id": 2436,
-      "stars": 5,
-      "attribute": "cool",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2355,
-      "sd_resource_name": "sd008083",
-      "live2d_asset_bundle_name": "008_live_event_328_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "8|忘れえぬ夕焼け": {
       "character_id": 8,
       "bestdori_card_id": 2484,
@@ -8309,6 +8296,19 @@
       "live2d_asset_bundle_name": "008_live_event_327_r",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
+    },
+    "8|傍晚时的约定": {
+      "character_id": 8,
+      "bestdori_card_id": 2436,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2355,
+      "sd_resource_name": "sd008083",
+      "live2d_asset_bundle_name": "008_live_event_328_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
     },
     "9|能够依靠的果断大姐姐": {
       "character_id": 9,
@@ -9103,19 +9103,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "9|鮮やかな手さばき": {
-      "character_id": 9,
-      "bestdori_card_id": 2437,
-      "stars": 3,
-      "attribute": "power",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2356,
-      "sd_resource_name": "sd009081",
-      "live2d_asset_bundle_name": "009_live_event_328_sr",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "event"
-    },
     "9|寻找属于我的颜色": {
       "character_id": 9,
       "bestdori_card_id": 2314,
@@ -9193,6 +9180,19 @@
       "live2d_asset_bundle_name": "009_live_event_346_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "9|利落的手法": {
+      "character_id": 9,
+      "bestdori_card_id": 2437,
+      "stars": 3,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2356,
+      "sd_resource_name": "sd009081",
+      "live2d_asset_bundle_name": "009_live_event_328_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
     },
     "10|大家的支柱": {
       "character_id": 10,
@@ -10065,19 +10065,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "10|爽風マリンスタイル": {
-      "character_id": 10,
-      "bestdori_card_id": 2438,
-      "stars": 2,
-      "attribute": "pure",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2357,
-      "sd_resource_name": "sd010084",
-      "live2d_asset_bundle_name": "010_live_event_328_r",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "event"
-    },
     "10|两人，彼此分享": {
       "character_id": 10,
       "bestdori_card_id": 2298,
@@ -10155,6 +10142,19 @@
       "live2d_asset_bundle_name": "010_dream_festival_5_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
+    },
+    "10|清爽水手风": {
+      "character_id": 10,
+      "bestdori_card_id": 2438,
+      "stars": 2,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2357,
+      "sd_resource_name": "sd010084",
+      "live2d_asset_bundle_name": "010_live_event_328_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
     },
     "11|花咲川的异空间": {
       "character_id": 11,

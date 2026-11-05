@@ -674,16 +674,6 @@
       "resource_set_name": "res010081"
     },
     {
-      "card_id": 2438,
-      "card_name": "爽風マリンスタイル",
-      "rarity": "2-Star",
-      "event": "芽生えた想い、夕陽に交わして",
-      "release_date": "2026-04-20",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010084_rip/card_normal.png",
-      "trained_image": "",
-      "resource_set_name": "res010084"
-    },
-    {
       "card_id": 2298,
       "card_name": "两人，彼此分享",
       "rarity": "5-Star",
@@ -742,6 +732,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010088_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010088_rip/card_after_training.png",
       "resource_set_name": "res010088"
+    },
+    {
+      "card_id": 2438,
+      "card_name": "清爽水手风",
+      "rarity": "2-Star",
+      "event": "萌生的心意，交织于夕阳下",
+      "release_date": "2026-11-05",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res010084_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res010084"
     },
     {
       "card_id": 90010,

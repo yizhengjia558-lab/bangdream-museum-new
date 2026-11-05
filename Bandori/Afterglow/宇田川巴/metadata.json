@@ -614,16 +614,6 @@
       "resource_set_name": "res009077"
     },
     {
-      "card_id": 2437,
-      "card_name": "鮮やかな手さばき",
-      "rarity": "3-Star",
-      "event": "芽生えた想い、夕陽に交わして",
-      "release_date": "2026-04-20",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009081_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009081_rip/card_after_training.png",
-      "resource_set_name": "res009081"
-    },
-    {
       "card_id": 2314,
       "card_name": "寻找属于我的颜色",
       "rarity": "5-Star",
@@ -682,6 +672,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009084_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009084_rip/card_after_training.png",
       "resource_set_name": "res009084"
+    },
+    {
+      "card_id": 2437,
+      "card_name": "利落的手法",
+      "rarity": "3-Star",
+      "event": "萌生的心意，交织于夕阳下",
+      "release_date": "2026-11-05",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009081_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res009081_rip/card_after_training.png",
+      "resource_set_name": "res009081"
     },
     {
       "card_id": 90009,

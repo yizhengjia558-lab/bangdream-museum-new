@@ -674,16 +674,6 @@
       "resource_set_name": "res008080"
     },
     {
-      "card_id": 2436,
-      "card_name": "夕暮れ時の約束",
-      "rarity": "5-Star",
-      "event": "暁の空へ、輝く希望の船出ガチャ",
-      "release_date": "2026-04-20",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008083_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008083_rip/card_after_training.png",
-      "resource_set_name": "res008083"
-    },
-    {
       "card_id": 2484,
       "card_name": "忘れえぬ夕焼け",
       "rarity": "2-Star",
@@ -722,6 +712,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008082_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res008082"
+    },
+    {
+      "card_id": 2436,
+      "card_name": "傍晚时的约定",
+      "rarity": "5-Star",
+      "event": "驶向拂晓之空，闪耀着希望的启航招募",
+      "release_date": "2026-11-05",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008083_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res008083_rip/card_after_training.png",
+      "resource_set_name": "res008083"
     },
     {
       "card_id": 90008,

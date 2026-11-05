@@ -704,16 +704,6 @@
       "resource_set_name": "res006087"
     },
     {
-      "card_id": 2435,
-      "card_name": "小指を交わして",
-      "rarity": "5-Star",
-      "event": "暁の空へ、輝く希望の船出ガチャ",
-      "release_date": "2026-04-20",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res006090_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res006090_rip/card_after_training.png",
-      "resource_set_name": "res006090"
-    },
-    {
       "card_id": 2483,
       "card_name": "今日は、ありがと",
       "rarity": "3-Star",
@@ -762,6 +752,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res006092_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res006092_rip/card_after_training.png",
       "resource_set_name": "res006092"
+    },
+    {
+      "card_id": 2435,
+      "card_name": "勾指起誓",
+      "rarity": "5-Star",
+      "event": "驶向拂晓之空，闪耀着希望的启航招募",
+      "release_date": "2026-11-05",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res006090_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res006090_rip/card_after_training.png",
+      "resource_set_name": "res006090"
     },
     {
       "card_id": 272,
