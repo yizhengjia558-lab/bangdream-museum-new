@@ -1719,16 +1719,35 @@ button.glass-frame.card-tile:active {
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.55rem 0.45rem 0.5rem;
+  padding: 0.55rem 0.45rem 0.55rem;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.sd-pose-overview__frame.sd-sprite-frame {
+.sd-pose-overview__frame {
   width: min(100%, 180px);
   aspect-ratio: 1;
   border-radius: 12px;
+  overflow: hidden;
+}
+
+.sd-pose-overview__frame--transparent {
+  background-color: #1a1a22;
+  background-image:
+    linear-gradient(45deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.07) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.07) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.07) 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+
+.sd-pose-overview__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .sd-pose-overview__label {
@@ -1737,6 +1756,51 @@ button.glass-frame.card-tile:active {
   font-weight: 600;
   letter-spacing: 0.04em;
   color: rgba(255, 255, 255, 0.7);
+}
+
+.sd-pose-overview__save {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 0.28rem 0.75rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.sd-pose-overview__save:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.sd-pose-overview__save:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.sd-pose-overview__loading {
+  width: min(100%, 220px);
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.08) 8%,
+    rgba(255, 255, 255, 0.22) 18%,
+    rgba(255, 255, 255, 0.08) 33%
+  );
+  background-size: 200% 100%;
+  animation: card-live2d-shimmer 1.4s ease-in-out infinite;
+}
+
+.sd-pose-overview__error {
+  margin: 0;
+  text-align: center;
+  color: rgba(255, 180, 180, 0.9);
+  font-size: 0.85rem;
 }
 
 .sd-pose-overview__source {

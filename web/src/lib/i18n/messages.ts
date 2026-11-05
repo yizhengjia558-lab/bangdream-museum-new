@@ -81,7 +81,9 @@ const zh = {
     sdPose2: "状态 2",
     sdPose3: "状态 3",
     sdPose4: "状态 4",
-    sdSource: "资源来自 Bestdori LIVE SD",
+    sdSource: "资源来自 Bestdori LIVE SD · 透明底 PNG",
+    sdSave: "保存图片",
+    sdExtractFailed: "Q版状态图提取失败，请稍后重试",
   },
   common: { members: "成员", cards: "卡面", scrollToTop: "回到顶部", close: "关闭" },
   search: {
@@ -354,7 +356,9 @@ const en = {
     sdPose2: "Pose 2",
     sdPose3: "Pose 3",
     sdPose4: "Pose 4",
-    sdSource: "Assets from Bestdori LIVE SD",
+    sdSource: "Bestdori LIVE SD · transparent PNG",
+    sdSave: "Save image",
+    sdExtractFailed: "Could not extract SD poses. Please try again.",
   },
   common: { members: "Members", cards: "Cards", scrollToTop: "Back to Top", close: "Close" },
   search: {
@@ -627,7 +631,9 @@ const ja = {
     sdPose2: "ポーズ 2",
     sdPose3: "ポーズ 3",
     sdPose4: "ポーズ 4",
-    sdSource: "素材：Bestdori LIVE SD",
+    sdSource: "素材：Bestdori LIVE SD · 透明PNG",
+    sdSave: "画像を保存",
+    sdExtractFailed: "SDポーズの抽出に失敗しました。再試行してください。",
   },
   common: { members: "メンバー", cards: "カード", scrollToTop: "トップへ", close: "閉じる" },
   search: {
