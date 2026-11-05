@@ -1640,73 +1640,46 @@ button.glass-frame.card-tile:active {
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
-  background-repeat: no-repeat;
-  /* 2×2 sheet — one cell = 200% */
-  background-size: 200% 200%;
-  background-position: 0% 100%;
+  isolation: isolate;
+  background: rgba(0, 0, 0, 0.2);
 }
 
-.sd-sprite-frame--tl {
-  background-position: 0% 0%;
-}
-
-.sd-sprite-frame--tr {
-  background-position: 100% 0%;
-}
-
-.sd-sprite-frame--bl {
-  background-position: 0% 100%;
-}
-
-.sd-sprite-frame--br {
-  background-position: 100% 100%;
-}
-
-.sd-sprite-frame__probe {
+.sd-sprite-frame__sheet {
   position: absolute;
-  width: 0;
-  height: 0;
-  opacity: 0;
+  left: var(--sd-x, 0%);
+  top: var(--sd-y, -100%);
+  width: 200%;
+  height: 200%;
+  max-width: none;
+  object-fit: fill;
   pointer-events: none;
+  user-select: none;
+  transform-origin: var(--sd-ox, 25%) var(--sd-oy, 75%);
 }
 
-.sd-sprite-frame--contain {
-  background-size: 280% 280%;
+/* Pull in ~10% from each cell edge so neighbor sprites never bleed in. */
+.sd-sprite-frame--inset .sd-sprite-frame__sheet {
+  transform: scale(1.14);
 }
 
-.sd-sprite-frame--contain.sd-sprite-frame--tl {
-  background-position: 8% 8%;
-}
-
-.sd-sprite-frame--contain.sd-sprite-frame--tr {
-  background-position: 92% 8%;
-}
-
-.sd-sprite-frame--contain.sd-sprite-frame--bl {
-  background-position: 8% 92%;
-}
-
-.sd-sprite-frame--contain.sd-sprite-frame--br {
-  background-position: 92% 92%;
+/* Thumbnail "contain": slightly less aggressive so guitars still fit. */
+.sd-sprite-frame--contain.sd-sprite-frame--inset .sd-sprite-frame__sheet {
+  transform: scale(1.06);
 }
 
 .sd-pose-overview {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.85rem;
-  width: min(94vw, 720px);
+  gap: 0.9rem;
+  width: min(94vw, 640px);
   max-height: min(92dvh, 900px);
-  padding: 1.1rem 1rem 1rem;
+  padding: 1.15rem 1rem 1rem;
   border-radius: 22px;
   background: rgba(10, 12, 20, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 28px 64px rgba(0, 0, 0, 0.55);
   overflow: auto;
-}
-
-.sd-pose-overview--sheet {
-  gap: 0.75rem;
 }
 
 .sd-pose-overview__header {
@@ -1731,23 +1704,39 @@ button.glass-frame.card-tile:active {
   color: rgba(255, 255, 255, 0.92);
 }
 
-.sd-pose-overview__sheet {
-  display: block;
+.sd-pose-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
   width: 100%;
-  max-width: 680px;
-  height: auto;
-  aspect-ratio: 1;
-  object-fit: contain;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sd-pose-overview__cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.45rem 0.5rem;
   border-radius: 16px;
-  background:
-    linear-gradient(45deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%),
-    linear-gradient(-45deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.04) 75%),
-    linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.04) 75%);
-  background-size: 24px 24px;
-  background-position: 0 0, 0 12px, 12px -12px, -12px 0;
-  background-color: rgba(0, 0, 0, 0.35);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sd-pose-overview__frame.sd-sprite-frame {
+  width: min(100%, 180px);
+  aspect-ratio: 1;
+  border-radius: 12px;
+}
+
+.sd-pose-overview__label {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .sd-pose-overview__source {

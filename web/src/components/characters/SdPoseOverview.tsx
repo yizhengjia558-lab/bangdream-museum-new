@@ -2,13 +2,18 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
+import { SdSpriteFrame, SD_POSES, type SdPose } from "@/components/characters/SdSpriteFrame";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { cn } from "@/lib/utils";
 
-/**
- * Bestdori LIVE SD overview — show the full sdchara.png sheet (2×2 poses)
- * as one large image so every state is visible at once.
- */
+const POSE_LABEL_KEY: Record<SdPose, "card.sdPose1" | "card.sdPose2" | "card.sdPose3" | "card.sdPose4"> = {
+  tl: "card.sdPose1",
+  tr: "card.sdPose2",
+  bl: "card.sdPose3",
+  br: "card.sdPose4",
+};
+
+/** Overview of all 4 Bestdori LIVE SD poses — each cell tightly cropped to one chibi. */
 export function SdPoseOverview({
   src,
   alt = "",
@@ -51,7 +56,7 @@ export function SdPoseOverview({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.96 }}
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="sd-pose-overview sd-pose-overview--sheet"
+          className="sd-pose-overview"
           onClick={(e) => e.stopPropagation()}
         >
           <header className="sd-pose-overview__header">
@@ -59,13 +64,20 @@ export function SdPoseOverview({
             {caption ? <h3 className="sd-pose-overview__title">{caption}</h3> : null}
           </header>
 
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={src}
-            alt={alt ? `${alt} — ${t("card.sdOverview")}` : t("card.sdOverview")}
-            className="sd-pose-overview__sheet"
-            decoding="async"
-          />
+          <ul className="sd-pose-overview__grid" aria-label={t("card.sdOverview")}>
+            {SD_POSES.map((pose) => (
+              <li key={pose} className="sd-pose-overview__cell">
+                <SdSpriteFrame
+                  src={src}
+                  alt={`${alt} ${t(POSE_LABEL_KEY[pose])}`}
+                  pose={pose}
+                  inset
+                  className="sd-pose-overview__frame"
+                />
+                <p className="sd-pose-overview__label">{t(POSE_LABEL_KEY[pose])}</p>
+              </li>
+            ))}
+          </ul>
 
           <p className="sd-pose-overview__source">{t("card.sdSource")}</p>
         </motion.div>
