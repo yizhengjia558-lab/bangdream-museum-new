@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { SdPoseOverview } from "@/components/characters/SdPoseOverview";
 import { SdSpriteFrame } from "@/components/characters/SdSpriteFrame";
-import { ImagePreviewOverlay } from "@/components/ui/ImagePreviewOverlay";
 import { getCharacterSdCandidates, getSchoolUniformSdCandidates } from "@/lib/bestdori-assets";
 import { cn } from "@/lib/utils";
 
@@ -51,7 +51,7 @@ export function CharacterChibiAvatar({
         <button
           type="button"
           className="character-chibi__zoom"
-          aria-label={alt ? `${alt} Q版放大` : "Q版放大"}
+          aria-label={alt ? `${alt} Q版总览` : "Q版总览"}
           onClick={() => setPreviewOpen(true)}
         >
           🔍
@@ -59,19 +59,13 @@ export function CharacterChibiAvatar({
       </div>
 
       {previewOpen ? (
-        <ImagePreviewOverlay
-          src={activeUrl}
-          alt={alt}
-          caption={alt}
-          cropSprite
-          onClose={() => setPreviewOpen(false)}
-        />
+        <SdPoseOverview src={activeUrl} alt={alt} caption={alt} onClose={() => setPreviewOpen(false)} />
       ) : null}
     </>
   );
 }
 
-/** 卡面详情 Q 版 standing — 默认展示，可点击放大 */
+/** 卡面详情 Q 版 — 默认站姿，点击查看 Bestdori 四态总览 */
 export function CardSdFigurePreview({
   characterId,
   sdResourceName,
@@ -111,7 +105,7 @@ export function CardSdFigurePreview({
         <button
           type="button"
           className="card-sd-preview__zoom"
-          aria-label={alt ? `${alt} Q版放大` : "Q版放大"}
+          aria-label={alt ? `${alt} Q版总览` : "Q版总览"}
           onClick={() => setPreviewOpen(true)}
         >
           🔍
@@ -119,13 +113,11 @@ export function CardSdFigurePreview({
       </div>
 
       {previewOpen ? (
-        <ImagePreviewOverlay
+        <SdPoseOverview
           src={activeUrl}
           alt={alt}
           caption={alt}
-          cropSprite
           onClose={() => setPreviewOpen(false)}
-          className="image-preview-overlay--sd"
         />
       ) : null}
     </>

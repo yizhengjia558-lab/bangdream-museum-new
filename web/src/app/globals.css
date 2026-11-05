@@ -1641,9 +1641,25 @@ button.glass-frame.card-tile:active {
   overflow: hidden;
   flex-shrink: 0;
   background-repeat: no-repeat;
-  /* 2×2 sheet — one cell = 200%, standing frame bottom-left */
+  /* 2×2 sheet — one cell = 200% */
   background-size: 200% 200%;
   background-position: 0% 100%;
+}
+
+.sd-sprite-frame--tl {
+  background-position: 0% 0%;
+}
+
+.sd-sprite-frame--tr {
+  background-position: 100% 0%;
+}
+
+.sd-sprite-frame--bl {
+  background-position: 0% 100%;
+}
+
+.sd-sprite-frame--br {
+  background-position: 100% 100%;
 }
 
 .sd-sprite-frame__probe {
@@ -1656,7 +1672,100 @@ button.glass-frame.card-tile:active {
 
 .sd-sprite-frame--contain {
   background-size: 280% 280%;
-  background-position: 0% 100%;
+}
+
+.sd-sprite-frame--contain.sd-sprite-frame--tl {
+  background-position: 8% 8%;
+}
+
+.sd-sprite-frame--contain.sd-sprite-frame--tr {
+  background-position: 92% 8%;
+}
+
+.sd-sprite-frame--contain.sd-sprite-frame--bl {
+  background-position: 8% 92%;
+}
+
+.sd-sprite-frame--contain.sd-sprite-frame--br {
+  background-position: 92% 92%;
+}
+
+.sd-pose-overview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: min(92vw, 560px);
+  padding: 1.25rem 1.1rem 1.1rem;
+  border-radius: 22px;
+  background: rgba(10, 12, 20, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 28px 64px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
+}
+
+.sd-pose-overview__header {
+  text-align: center;
+}
+
+.sd-pose-overview__eyebrow {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.sd-pose-overview__title {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-title-active);
+  font-size: clamp(1.05rem, 3vw, 1.35rem);
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.sd-pose-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sd-pose-overview__cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.45rem 0.5rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sd-pose-overview__frame.sd-sprite-frame {
+  width: min(100%, 168px);
+  aspect-ratio: 1;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.sd-pose-overview__label {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sd-pose-overview__source {
+  margin: 0;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.42);
 }
 
 .character-chibi__frame.sd-sprite-frame {
