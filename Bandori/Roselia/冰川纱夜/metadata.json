@@ -744,6 +744,16 @@
       "resource_set_name": "res022087"
     },
     {
+      "card_id": 2526,
+      "card_name": "糾弾する正義",
+      "rarity": "5-Star",
+      "event": "魔法少女ノ魔女裁判コラボガチャpart1",
+      "release_date": "2026-11-06",
+      "untrained_image": "",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res022088_rip/card_after_training.png",
+      "resource_set_name": "res022088"
+    },
+    {
       "card_id": 90022,
       "card_name": "Card 90022",
       "rarity": "2-Star",

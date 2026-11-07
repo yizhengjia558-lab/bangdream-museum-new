@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-05T19:30:51.026850+00:00",
-  "matched": 2311,
-  "total": 2377,
+  "generated_at": "2026-11-07T17:26:53.011690+00:00",
+  "matched": 2313,
+  "total": 2379,
   "cards": {
     "1|card5001": {
       "character_id": 1,
@@ -20686,6 +20686,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
     },
+    "21|惑う現身": {
+      "character_id": 21,
+      "bestdori_card_id": 2525,
+      "stars": 5,
+      "attribute": "power",
+      "card_kind": "collab",
+      "release_year": 2026,
+      "costume_id": 2444,
+      "sd_resource_name": "sd021089",
+      "live2d_asset_bundle_name": "021_collabo_m_1",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "limited"
+    },
     "21|第2回ガルパ杯": {
       "character_id": 21,
       "bestdori_card_id": 274,
@@ -21660,6 +21673,19 @@
       "live2d_asset_bundle_name": "022_live_event_342_r",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
+    },
+    "22|糾弾する正義": {
+      "character_id": 22,
+      "bestdori_card_id": 2526,
+      "stars": 5,
+      "attribute": "power",
+      "card_kind": "collab",
+      "release_year": 2026,
+      "costume_id": 2445,
+      "sd_resource_name": "sd022088",
+      "live2d_asset_bundle_name": "022_collabo_m_1",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "limited"
     },
     "23|气氛活跃者☆": {
       "character_id": 23,

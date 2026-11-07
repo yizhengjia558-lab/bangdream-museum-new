@@ -764,6 +764,16 @@
       "resource_set_name": "res021090"
     },
     {
+      "card_id": 2525,
+      "card_name": "惑う現身",
+      "rarity": "5-Star",
+      "event": "魔法少女ノ魔女裁判コラボガチャpart1",
+      "release_date": "2026-11-06",
+      "untrained_image": "",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021089_rip/card_after_training.png",
+      "resource_set_name": "res021089"
+    },
+    {
       "card_id": 274,
       "card_name": "第2回ガルパ杯",
       "rarity": "4-Star",

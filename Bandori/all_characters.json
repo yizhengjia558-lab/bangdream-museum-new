@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T19:30:10.722321+00:00",
+  "generated_at": "2026-11-07T17:26:09.488360+00:00",
   "source": [
     "Bestdori API",
     "Bandori Party API"
@@ -310,7 +310,7 @@
       "standing_url": "",
       "cards_untrained_path": "Roselia/凑友希那/Cards/Untrained",
       "cards_trained_path": "Roselia/凑友希那/Cards/Trained",
-      "card_count": 79
+      "card_count": 80
     },
     {
       "character_id": 22,
@@ -324,7 +324,7 @@
       "standing_url": "",
       "cards_untrained_path": "Roselia/冰川纱夜/Cards/Untrained",
       "cards_trained_path": "Roselia/冰川纱夜/Cards/Trained",
-      "card_count": 75
+      "card_count": 76
     },
     {
       "character_id": 23,
