@@ -394,6 +394,16 @@
       "resource_set_name": "res033044"
     },
     {
+      "card_id": 2556,
+      "card_name": "感動のクライマックス",
+      "rarity": "3-Star",
+      "event": "Rock!Lock!Rock!",
+      "release_date": "2026-11-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res033048_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res033048_rip/card_after_training.png",
+      "resource_set_name": "res033048"
+    },
+    {
       "card_id": 90033,
       "card_name": "Card 90033",
       "rarity": "2-Star",

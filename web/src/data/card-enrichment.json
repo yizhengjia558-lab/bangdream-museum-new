@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-08T17:37:40.376720+00:00",
-  "matched": 2313,
-  "total": 2379,
+  "generated_at": "2026-11-09T21:58:30.511395+00:00",
+  "matched": 2318,
+  "total": 2384,
   "cards": {
     "1|card5001": {
       "character_id": 1,
@@ -27966,6 +27966,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
     },
+    "31|一番星の名は": {
+      "character_id": 31,
+      "bestdori_card_id": 2555,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2474,
+      "sd_resource_name": "sd031050",
+      "live2d_asset_bundle_name": "031_live_event_348_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "32|不屈不挠的吉他手": {
       "character_id": 32,
       "bestdori_card_id": 1030,
@@ -28512,6 +28525,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
+    "32|きらめく星々の詩": {
+      "character_id": 32,
+      "bestdori_card_id": 2554,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2473,
+      "sd_resource_name": "sd032050",
+      "live2d_asset_bundle_name": "032_live_event_348_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "33|狂犬鼓手": {
       "character_id": 33,
       "bestdori_card_id": 1031,
@@ -29019,6 +29045,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
     },
+    "33|感動のクライマックス": {
+      "character_id": 33,
+      "bestdori_card_id": 2556,
+      "stars": 3,
+      "attribute": "happy",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2475,
+      "sd_resource_name": "sd033048",
+      "live2d_asset_bundle_name": "033_live_event_348_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
     "34|梦幻可爱♪女仆": {
       "character_id": 34,
       "bestdori_card_id": 1032,
@@ -29487,6 +29526,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
+    "34|blackriot": {
+      "character_id": 34,
+      "bestdori_card_id": 2557,
+      "stars": 2,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2476,
+      "sd_resource_name": "sd034045",
+      "live2d_asset_bundle_name": "034_live_event_348_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
     "35|猫耳制作人": {
       "character_id": 35,
       "bestdori_card_id": 1033,
@@ -29954,6 +30006,19 @@
       "live2d_asset_bundle_name": "035_dream_festival_5_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
+    },
+    "35|gomydino！": {
+      "character_id": 35,
+      "bestdori_card_id": 2558,
+      "stars": 4,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2477,
+      "sd_resource_name": "sd035048",
+      "live2d_asset_bundle_name": "035_live_event_348_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "36|のんびりダイアログ": {
       "character_id": 36,

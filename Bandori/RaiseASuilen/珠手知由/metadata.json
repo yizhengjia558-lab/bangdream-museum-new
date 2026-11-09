@@ -364,6 +364,16 @@
       "resource_set_name": "res035045"
     },
     {
+      "card_id": 2558,
+      "card_name": "Go my Dino！",
+      "rarity": "4-Star",
+      "event": "夜空に響く魂のRock！ガチャ",
+      "release_date": "2026-11-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res035048_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res035048_rip/card_after_training.png",
+      "resource_set_name": "res035048"
+    },
+    {
       "card_id": 90035,
       "card_name": "Card 90035",
       "rarity": "2-Star",

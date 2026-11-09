@@ -364,6 +364,16 @@
       "resource_set_name": "res034044"
     },
     {
+      "card_id": 2557,
+      "card_name": "Black Riot",
+      "rarity": "2-Star",
+      "event": "Rock!Lock!Rock!",
+      "release_date": "2026-11-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res034045_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res034045"
+    },
+    {
       "card_id": 5011,
       "card_name": "Card 5011",
       "rarity": "2-Star",

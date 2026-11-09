@@ -424,6 +424,16 @@
       "resource_set_name": "res032049"
     },
     {
+      "card_id": 2554,
+      "card_name": "きらめく星々の詩",
+      "rarity": "5-Star",
+      "event": "夜空に響く魂のRock！ガチャ",
+      "release_date": "2026-11-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032050_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032050_rip/card_after_training.png",
+      "resource_set_name": "res032050"
+    },
+    {
       "card_id": 5009,
       "card_name": "Card 5009",
       "rarity": "2-Star",

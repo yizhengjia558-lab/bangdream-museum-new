@@ -404,6 +404,16 @@
       "resource_set_name": "res031047"
     },
     {
+      "card_id": 2555,
+      "card_name": "一番星の名は",
+      "rarity": "5-Star",
+      "event": "夜空に響く魂のRock！ガチャ",
+      "release_date": "2026-11-10",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res031050_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res031050_rip/card_after_training.png",
+      "resource_set_name": "res031050"
+    },
+    {
       "card_id": 90031,
       "card_name": "Card 90031",
       "rarity": "2-Star",
