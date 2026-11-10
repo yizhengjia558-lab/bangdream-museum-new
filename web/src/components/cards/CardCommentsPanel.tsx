@@ -55,14 +55,8 @@ export function CardCommentsPanel({
     void load();
   }, [load]);
 
-  if (!enabled) {
-    return (
-      <div className="card-comments">
-        <h3 className="card-comments-title">{t("comments.title")}</h3>
-        <p className="text-sm text-[var(--text-muted)]">{t("forum.disabled")}</p>
-      </div>
-    );
-  }
+  // Keep the Live2D / card modal uncluttered when community API is offline.
+  if (!enabled) return null;
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();

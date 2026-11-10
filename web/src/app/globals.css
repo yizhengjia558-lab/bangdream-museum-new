@@ -1491,6 +1491,104 @@ button.glass-frame.card-tile:active {
   border: 1px dashed var(--glass-border);
 }
 
+.favorites-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.favorites-group__title {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-subtitle-active);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+}
+
+.mobile-bottom-nav {
+  display: none;
+}
+
+.global-header-nav--mobile-auth {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .global-header-nav--desktop {
+    display: none !important;
+  }
+
+  .global-header-nav--mobile-auth {
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-bottom-nav {
+    position: fixed;
+    left: 50%;
+    bottom: max(0.55rem, env(safe-area-inset-bottom, 0px));
+    z-index: 60;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.2rem;
+    width: min(calc(100vw - 1.2rem), 26rem);
+    transform: translateX(-50%);
+    padding: 0.35rem;
+    border-radius: 1.15rem;
+    border: 1px solid var(--glass-border);
+    background: color-mix(in srgb, var(--glass-bg) 92%, transparent);
+    box-shadow: var(--glass-shadow-soft);
+    backdrop-filter: blur(16px);
+  }
+
+  .mobile-bottom-nav__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.55rem;
+    padding: 0.4rem 0.2rem;
+    border-radius: 0.85rem;
+    color: var(--text-secondary);
+    font-family: var(--font-subtitle-active);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+
+  .mobile-bottom-nav__item--active {
+    color: var(--text-primary);
+    background: var(--glass-active);
+  }
+
+  .mobile-bottom-nav__label {
+    position: relative;
+  }
+
+  .mobile-bottom-nav__badge {
+    position: absolute;
+    top: -0.45rem;
+    right: -0.7rem;
+    min-width: 1rem;
+    padding: 0.05rem 0.28rem;
+    border-radius: 999px;
+    background: #e9435e;
+    color: #fff;
+    font-size: 0.55rem;
+    line-height: 1.2;
+  }
+
+  body {
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .scroll-top-btn {
+    bottom: calc(4.6rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 /* ── Card detail modal ── */
 
 .card-detail-backdrop {
@@ -1959,6 +2057,15 @@ button.glass-frame.card-tile:active {
   min-height: 100%;
 }
 
+.card-live2d-phone__screen:not(.card-live2d-phone__screen--pan) {
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.card-live2d-phone__screen--pan {
+  touch-action: pan-x pan-y;
+}
+
 .card-live2d-stage {
   position: absolute;
   inset: 0;
@@ -1971,12 +2078,12 @@ button.glass-frame.card-tile:active {
   background: #0a0a10;
 }
 
+/* Fill the zoomed scroll-body once — do not multiply --live2d-zoom again. */
 .live2d-viewer {
   position: absolute;
   inset: 0;
   width: 100%;
-  height: calc(100% * var(--live2d-zoom, 1));
-  min-height: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -2225,7 +2332,10 @@ button.glass-frame.card-tile:active {
   position: absolute;
   top: 0;
   left: 0;
+  overflow: hidden !important;
   will-change: transform;
+  /* Keep model interactive, but avoid nested document scroll stealing pans. */
+  overscroll-behavior: none;
 }
 
 /* ── Live2D embed route (iframe target) ── */
@@ -3085,7 +3195,11 @@ body.live2d-embed-route main {
 .hero-intro {
   position: relative;
   z-index: 1;
-  padding: 4.25rem clamp(1.5rem, 5vw, 3.5rem) 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: min(62dvh, 36rem);
+  padding: 4.25rem clamp(1.5rem, 5vw, 3.5rem) 1.5rem;
   text-align: center;
 }
 
@@ -5123,7 +5237,8 @@ body.card-detail-open header,
 body.card-detail-open .lang-toggle-fixed,
 body.card-detail-open .theme-toggle-fixed,
 body.card-detail-open .scroll-top-btn,
-body.card-detail-open .band-back-btn--fixed {
+body.card-detail-open .band-back-btn--fixed,
+body.card-detail-open .mobile-bottom-nav {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;

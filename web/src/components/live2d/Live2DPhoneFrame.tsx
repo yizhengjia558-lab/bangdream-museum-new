@@ -51,7 +51,14 @@ export function Live2DPhoneFrame({
           ↺
         </button>
       </div>
-      <div className="card-live2d-phone__screen card-live2d-phone__screen--pan">
+      <div
+        className={cn(
+          "card-live2d-phone__screen",
+          // Only enable internal pan when zoomed; at 100% vertical swipes
+          // must scroll the card modal instead of getting trapped here.
+          zoom > 1.01 && "card-live2d-phone__screen--pan"
+        )}
+      >
         <div className="card-live2d-phone__scroll-body">{children(zoom)}</div>
       </div>
     </div>

@@ -92,6 +92,9 @@ export function BestdoriLive2DEmbed({
       <iframe
         src={src}
         title="Live2D"
+        // Prevent Bestdori's own page chrome (comments / side panels) from
+        // capturing vertical pan inside the phone frame.
+        scrolling="no"
         className={cn(
           "bestdori-live2d-embed__iframe",
           mode === "local" ? "bestdori-live2d-embed__iframe--fill" : "bestdori-live2d-embed__iframe--bestdori"
@@ -101,10 +104,11 @@ export function BestdoriLive2DEmbed({
             ? {
                 width: PAGE_WIDTH,
                 height: PAGE_HEIGHT,
+                overflow: "hidden",
                 transform: `translate(${layout.left}px, ${layout.top}px) scale(${layout.scale})`,
                 transformOrigin: "top left",
               }
-            : undefined
+            : { overflow: "hidden" }
         }
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"

@@ -64,7 +64,29 @@ export function FavoritesPageView() {
     setVisible(24);
   }, [query]);
 
-  const shown = filtered.slice(0, visible);
+  const grouped = useMemo(() => {
+    const map = new Map<string, CardDisplayItem[]>();
+    for (const item of filtered) {
+      const key = item.card.band || item.card.band_folder || t("favorites.ungrouped");
+      const list = map.get(key) ?? [];
+      list.push(item);
+      map.set(key, list);
+    }
+    return [...map.entries()];
+  }, [filtered, t]);
+
+  const shownGroups = useMemo(() => {
+    let remaining = visible;
+    const out: Array<[string, CardDisplayItem[]]> = [];
+    for (const [band, items] of grouped) {
+      if (remaining <= 0) break;
+      const slice = items.slice(0, remaining);
+      remaining -= slice.length;
+      out.push([band, slice]);
+    }
+    return out;
+  }, [grouped, visible]);
+
   const loading = count > 0 && !catalog && !catalogError;
   const unresolved = count > 0 && !loading && !catalogError && favoriteDisplays.length === 0 && !hasQuery;
 
@@ -112,18 +134,25 @@ export function FavoritesPageView() {
             </GlassPanel>
           ) : (
             <>
-              <ul className="card-gallery-grid">
-                {shown.map((item, i) => (
-                  <CardGalleryItem
-                    key={item.key}
-                    item={item}
-                    index={i}
-                    themeColor="#e9435e"
-                    highlight={false}
-                    onClick={() => setLightbox(item)}
-                  />
+              <div className="favorites-groups">
+                {shownGroups.map(([band, items]) => (
+                  <section key={band} className="favorites-group">
+                    <h3 className="favorites-group__title">{band}</h3>
+                    <ul className="card-gallery-grid">
+                      {items.map((item, i) => (
+                        <CardGalleryItem
+                          key={item.key}
+                          item={item}
+                          index={i}
+                          themeColor="#e9435e"
+                          highlight={false}
+                          onClick={() => setLightbox(item)}
+                        />
+                      ))}
+                    </ul>
+                  </section>
                 ))}
-              </ul>
+              </div>
 
               {visible < filtered.length && (
                 <div className="mt-12 flex justify-center">

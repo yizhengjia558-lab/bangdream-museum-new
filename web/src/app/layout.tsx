@@ -13,6 +13,7 @@ import { GlobalSearchProvider } from "@/components/search/GlobalSearchProvider";
 import { DocumentLocale } from "@/components/i18n/DocumentLocale";
 import { BangDreamPageBackground } from "@/components/effects/BangDreamPageBackground";
 import { ScrollToTopButton } from "@/components/layout/ScrollToTopButton";
+import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import { VisitTracker } from "@/components/analytics/VisitTracker";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import { AuthModal } from "@/components/auth/AuthModal";
@@ -97,6 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <SiteHeader />
                     <main className="relative flex-1">{children}</main>
                     <SiteFooter />
+                    <MobileBottomNav />
                     <AuthModal />
                   </SmoothScroll>
                 </ThemeProvider>

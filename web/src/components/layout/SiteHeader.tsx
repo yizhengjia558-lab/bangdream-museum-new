@@ -54,7 +54,7 @@ export function SiteHeader() {
 
           <GlobalSearchBar className="global-search--header" />
 
-          <nav className="global-header-nav flex shrink-0 items-center gap-0.5 sm:gap-1">
+          <nav className="global-header-nav global-header-nav--desktop flex shrink-0 items-center gap-0.5 sm:gap-1">
             {NAV.map((item) => {
               const active = item.match(pathname);
               const isFavorites = item.href === "/favorites/";
@@ -78,6 +78,9 @@ export function SiteHeader() {
             })}
             <AuthNavButton className="ml-1" />
           </nav>
+          <div className="global-header-nav--mobile-auth">
+            <AuthNavButton />
+          </div>
         </div>
       </div>
     </header>
