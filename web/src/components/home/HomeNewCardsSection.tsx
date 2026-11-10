@@ -48,8 +48,8 @@ export function HomeNewCardsSection({ recent }: { recent: RecentCardsResult }) {
             <p className="hero-tagline mt-3 max-w-lg">{subtitle}</p>
           </div>
           <div className="home-new-cards__actions">
-            <Link href="/costumes/" className="home-new-cards__link">
-              {t("newCards.costumesLink")}
+            <Link href="/costumes/" className="home-new-cards__cta">
+              <span className="home-new-cards__cta-label">{t("newCards.costumesLink")}</span>
             </Link>
           </div>
         </header>

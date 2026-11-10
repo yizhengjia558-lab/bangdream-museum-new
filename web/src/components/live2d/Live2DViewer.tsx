@@ -56,8 +56,8 @@ function fitModelToStage(
   const bounds = model.getLocalBounds();
   if (!bounds.width || !bounds.height) return;
 
-  // Lower than before: 0.72 left a floor gap under opaque model canvases.
-  const VISUAL_BOTTOM = 0.58;
+  // Pin near the visual hem without shoving the model off-canvas.
+  const VISUAL_BOTTOM = 0.66;
   const scale = Math.min(
     (stageWidth / bounds.width) * padding,
     (stageHeight / (bounds.height * VISUAL_BOTTOM)) * padding
@@ -93,10 +93,12 @@ export function Live2DViewer({
 }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const zoomRef = useRef(zoom);
+  const onErrorRef = useRef(onError);
   const refitRef = useRef<(() => void) | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "failed">("loading");
 
   zoomRef.current = zoom;
+  onErrorRef.current = onError;
 
   useEffect(() => {
     let cancelled = false;
@@ -121,8 +123,11 @@ export function Live2DViewer({
         Live2DModel.registerTicker(PIXI.Ticker);
 
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        const width = host.clientWidth || 220;
-        const height = host.clientHeight || 240;
+        // Wait one frame so percentage/aspect-ratio parents have real box size.
+        await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+        if (cancelled) return;
+        const width = Math.max(host.clientWidth || 0, 160);
+        const height = Math.max(host.clientHeight || 0, 220);
 
         app = new PIXI.Application({
           backgroundAlpha: 0,
@@ -217,7 +222,7 @@ export function Live2DViewer({
       } catch {
         if (!cancelled) {
           setStatus("failed");
-          onError?.();
+          onErrorRef.current?.();
         }
       }
     }
@@ -236,7 +241,7 @@ export function Live2DViewer({
       revokeModelJson?.();
       if (hostRef.current) hostRef.current.replaceChildren();
     };
-  }, [assetBundleName, onError, motionProfile]);
+  }, [assetBundleName, motionProfile]);
 
   useEffect(() => {
     refitRef.current?.();

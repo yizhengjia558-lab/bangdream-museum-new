@@ -98,10 +98,10 @@ export function CharacterPageView({
           <p className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center text-sm text-[var(--text-muted)]">
             <Link
               href={`/costumes/?character=${character.id}`}
-              className="championship-inline-link"
-              style={{ color: primary }}
+              className="home-new-cards__cta character-costumes-cta"
+              style={{ ["--cta-accent" as string]: primary }}
             >
-              {t("character.costumesLink")}
+              <span className="home-new-cards__cta-label">{t("character.costumesLink")}</span>
             </Link>
             <Link href="/championship/" className="championship-inline-link" style={{ color: primary }}>
               {t("championship.navHint")}

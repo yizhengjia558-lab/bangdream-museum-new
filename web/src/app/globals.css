@@ -840,20 +840,50 @@ button.glass-frame.card-tile:active {
   margin-bottom: 1.25rem;
 }
 
-.home-new-cards__link {
+.home-new-cards__cta {
   display: inline-flex;
   align-items: center;
-  font-family: var(--font-subtitle-active);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  transition: color 0.2s ease;
+  justify-content: center;
+  min-height: 2.55rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--cta-accent, var(--brand-pink)) 55%, var(--glass-border));
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--cta-accent, var(--brand-pink)) 88%, #fff) 0%,
+      color-mix(in srgb, var(--cta-accent, var(--brand-pink)) 70%, #ff9db3) 100%
+    );
+  box-shadow:
+    0 10px 28px color-mix(in srgb, var(--cta-accent, var(--brand-pink)) 28%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
-.home-new-cards__link:hover {
-  color: var(--brand-pink);
+.home-new-cards__cta-label {
+  font-family: var(--font-subtitle-active);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.home-new-cards__cta:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow:
+    0 14px 34px color-mix(in srgb, var(--cta-accent, var(--brand-pink)) 34%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34);
+}
+
+.home-new-cards__cta:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.character-costumes-cta {
+  margin-inline: 0.15rem;
 }
 
 .home-new-cards__rail {
@@ -1972,46 +2002,59 @@ button.glass-frame.card-tile:active {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
   flex: 0 0 auto;
-  margin-bottom: 0.35rem;
-  padding: 0 0.15rem;
+  margin-bottom: 0.4rem;
+  padding: 0.28rem 0.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .card-live2d-phone__tool-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.45rem;
-  height: 1.45rem;
+  width: 1.85rem;
+  height: 1.85rem;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.85rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.1));
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
   line-height: 1;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 }
 
 .card-live2d-phone__tool-btn--reset {
-  font-size: 0.72rem;
+  font-size: 0.85rem;
 }
 
 .card-live2d-phone__tool-btn:hover {
-  background: rgba(255, 255, 255, 0.16);
-  border-color: rgba(255, 255, 255, 0.28);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.16));
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-1px);
+}
+
+.card-live2d-phone__tool-btn:active {
+  transform: scale(0.96);
 }
 
 .card-live2d-phone__zoom-label {
-  min-width: 2.75rem;
+  min-width: 3.1rem;
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28);
   font-family: var(--font-subtitle-active);
-  font-size: 0.58rem;
-  font-weight: 700;
+  font-size: 0.68rem;
+  font-weight: 800;
   letter-spacing: 0.06em;
   text-align: center;
-  color: rgba(255, 255, 255, 0.62);
+  color: #fff;
 }
 
 @media (min-width: 640px) {
@@ -2051,9 +2094,10 @@ button.glass-frame.card-tile:active {
 }
 
 .card-live2d-phone__scroll-body {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: calc(100% * var(--live2d-zoom, 1));
+  height: 100%;
   min-height: 100%;
 }
 
@@ -2064,6 +2108,12 @@ button.glass-frame.card-tile:active {
 
 .card-live2d-phone__screen--pan {
   touch-action: pan-x pan-y;
+}
+
+.card-live2d-phone__screen--pan .card-live2d-phone__scroll-body {
+  position: relative;
+  inset: auto;
+  height: calc(100% * var(--live2d-zoom, 1));
 }
 
 .card-live2d-stage {
@@ -5550,19 +5600,21 @@ body.card-detail-open .mobile-bottom-nav {
   }
 
   .card-live2d-phone__toolbar {
-    margin-bottom: 0.25rem;
-    gap: 0.25rem;
+    margin-bottom: 0.3rem;
+    gap: 0.35rem;
+    padding: 0.22rem 0.3rem;
   }
 
   .card-live2d-phone__tool-btn {
-    width: 1.25rem;
-    height: 1.25rem;
-    font-size: 0.75rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    font-size: 0.95rem;
   }
 
   .card-live2d-phone__zoom-label {
-    min-width: 2.25rem;
-    font-size: 0.5rem;
+    min-width: 2.85rem;
+    padding: 0.16rem 0.4rem;
+    font-size: 0.62rem;
   }
 
   .card-live2d-phone__screen {

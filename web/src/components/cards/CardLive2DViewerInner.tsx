@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { CardSdFigurePreview } from "@/components/characters/CharacterChibiAvatar";
 import { Live2DPhoneFrame } from "@/components/live2d/Live2DPhoneFrame";
@@ -34,6 +34,23 @@ export function CardLive2DViewerInner({
     setLive2dMode("widget");
   }, [live2dAssetBundleName]);
 
+  // If local iframe also fails silently, fall back to Bestdori's official viewer.
+  useEffect(() => {
+    if (live2dMode !== "local") return;
+    const timer = window.setTimeout(() => {
+      setLive2dMode((mode) => (mode === "local" ? "bestdori" : mode));
+    }, 8000);
+    return () => window.clearTimeout(timer);
+  }, [live2dMode, live2dAssetBundleName]);
+
+  const handleWidgetError = useCallback(() => {
+    setLive2dMode((mode) => {
+      if (mode === "widget") return "local";
+      if (mode === "local") return "bestdori";
+      return mode;
+    });
+  }, []);
+
   return (
     <div className="card-character-visual">
       {live2dAssetBundleName ? (
@@ -44,7 +61,7 @@ export function CardLive2DViewerInner({
                 assetBundleName={live2dAssetBundleName}
                 zoom={zoom}
                 className="card-live2d-stage card-live2d-stage--live2d"
-                onError={() => setLive2dMode("local")}
+                onError={handleWidgetError}
               />
             ) : (
               <BestdoriLive2DEmbed
