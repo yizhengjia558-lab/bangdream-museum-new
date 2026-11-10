@@ -25,17 +25,21 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
  * Bestdori's studio page composites thigh-up Live2D over a full room, so a
  * naive cover-center crop leaves a floor gap under the hem. Punch into the
  * character band and pin that hem to the phone bottom.
+ *
+ * The Live2D canvas on Bestdori sits mid-upper page with opaque white backing;
+ * CHAR_BOTTOM must match that canvas hem — too high leaves floating floor gap.
  */
 function computeBestdoriCover(containerW: number, containerH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  // Approx. vertical span of the character on Bestdori's 1280×960 tool page.
-  const CHAR_TOP = 0.06;
-  const CHAR_BOTTOM = 0.64;
+  // Character + white Live2D panel on Bestdori's 1280×960 tool page.
+  const CHAR_TOP = 0.04;
+  const CHAR_BOTTOM = 0.54;
   const charSpan = CHAR_BOTTOM - CHAR_TOP;
 
   const scaleH = containerH / (PAGE_HEIGHT * charSpan);
   const scaleW = containerW / contentW;
-  const scale = Math.max(scaleH, scaleW) * zoom;
+  // Prefer filling the phone; slight overscan hides room floor under the hem.
+  const scale = Math.max(scaleH, scaleW) * zoom * 1.06;
 
   const left = -SIDEBAR_WIDTH * scale + (containerW - contentW * scale) / 2;
   const top = containerH - PAGE_HEIGHT * CHAR_BOTTOM * scale;

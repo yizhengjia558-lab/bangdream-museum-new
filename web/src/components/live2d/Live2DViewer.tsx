@@ -43,7 +43,7 @@ function loadLive2DCore() {
 
 /**
  * Bandori costume Live2D is thigh-up. Model bounds often include empty canvas
- * below the hem, so pinning bounds.bottom still floats — treat ~72% down the
+ * below the hem, so pinning bounds.bottom still floats — treat ~58% down the
  * bounds as the visual hem and pin that to the stage floor.
  */
 function fitModelToStage(
@@ -56,7 +56,8 @@ function fitModelToStage(
   const bounds = model.getLocalBounds();
   if (!bounds.width || !bounds.height) return;
 
-  const VISUAL_BOTTOM = 0.72;
+  // Lower than before: 0.72 left a floor gap under opaque model canvases.
+  const VISUAL_BOTTOM = 0.58;
   const scale = Math.min(
     (stageWidth / bounds.width) * padding,
     (stageHeight / (bounds.height * VISUAL_BOTTOM)) * padding
@@ -65,7 +66,7 @@ function fitModelToStage(
   model.x = stageWidth / 2 - (bounds.x + bounds.width / 2) * scale;
 
   const visualBottom = (bounds.y + bounds.height * VISUAL_BOTTOM) * scale;
-  const bottomInset = Math.max(1, stageHeight * 0.008);
+  const bottomInset = Math.max(0, stageHeight * 0.002);
   model.y = stageHeight - bottomInset - visualBottom;
 }
 

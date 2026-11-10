@@ -15,7 +15,7 @@ const BestdoriLive2DEmbed = dynamic(
   { ssr: false }
 );
 
-type Live2DMode = "widget" | "bestdori";
+type Live2DMode = "widget" | "local" | "bestdori";
 
 export function CardLive2DViewerInner({
   characterId,
@@ -44,12 +44,12 @@ export function CardLive2DViewerInner({
                 assetBundleName={live2dAssetBundleName}
                 zoom={zoom}
                 className="card-live2d-stage card-live2d-stage--live2d"
-                onError={() => setLive2dMode("bestdori")}
+                onError={() => setLive2dMode("local")}
               />
             ) : (
               <BestdoriLive2DEmbed
                 assetBundleName={live2dAssetBundleName}
-                mode="bestdori"
+                mode={live2dMode === "local" ? "local" : "bestdori"}
                 zoom={zoom}
                 className="card-live2d-stage card-live2d-stage--live2d"
               />

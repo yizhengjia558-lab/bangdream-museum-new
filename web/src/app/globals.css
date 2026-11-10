@@ -1133,9 +1133,9 @@ button.glass-frame.card-tile:active {
 }
 
 .costume-detail-live2d {
-  min-height: 280px;
+  min-height: 320px;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 }
 
@@ -1149,6 +1149,19 @@ button.glass-frame.card-tile:active {
   border: none;
   background: transparent;
   box-shadow: none;
+}
+
+.costume-detail-live2d .card-character-visual {
+  width: 100%;
+  align-items: center;
+}
+
+.costume-detail-live2d .card-live2d-phone {
+  width: min(100%, 17rem);
+}
+
+.costume-detail-live2d .card-live2d-phone__screen {
+  width: 100%;
 }
 
 .costume-detail-empty {
