@@ -8,6 +8,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: sync-cards
@@ -16,6 +18,8 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
 
@@ -34,6 +38,7 @@ jobs:
         run: python sync_cards.py
 
       - name: Commit and push if updated
+        id: commit
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
@@ -45,7 +50,16 @@ jobs:
             web/src/data/card-enrichment.json
           if git diff --staged --quiet; then
             echo "No new cards — nothing to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "Auto-sync: update cards from Bestdori"
             git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+  # GITHUB_TOKEN commits do not fire on.push, so deploy explicitly after sync.
+  deploy:
+    needs: sync
+    if: needs.sync.outputs.changed == 'true'
+    uses: ./.github/workflows/deploy-github-pages.yml
+    secrets: inherit
