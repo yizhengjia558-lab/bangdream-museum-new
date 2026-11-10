@@ -15,7 +15,7 @@ const BestdoriLive2DEmbed = dynamic(
   { ssr: false }
 );
 
-type Live2DMode = "widget" | "local" | "bestdori";
+type Live2DMode = "widget" | "local";
 
 export function CardLive2DViewerInner({
   characterId,
@@ -34,21 +34,10 @@ export function CardLive2DViewerInner({
     setLive2dMode("widget");
   }, [live2dAssetBundleName]);
 
-  // If local iframe also fails silently, fall back to Bestdori's official viewer.
-  useEffect(() => {
-    if (live2dMode !== "local") return;
-    const timer = window.setTimeout(() => {
-      setLive2dMode((mode) => (mode === "local" ? "bestdori" : mode));
-    }, 8000);
-    return () => window.clearTimeout(timer);
-  }, [live2dMode, live2dAssetBundleName]);
-
+  // Never fall back to Bestdori's official tool page — it injects "More Live2D"
+  // / Asset chrome. Keep rendering inside our own Pixi viewer only.
   const handleWidgetError = useCallback(() => {
-    setLive2dMode((mode) => {
-      if (mode === "widget") return "local";
-      if (mode === "local") return "bestdori";
-      return mode;
-    });
+    setLive2dMode((mode) => (mode === "widget" ? "local" : mode));
   }, []);
 
   return (
@@ -66,7 +55,7 @@ export function CardLive2DViewerInner({
             ) : (
               <BestdoriLive2DEmbed
                 assetBundleName={live2dAssetBundleName}
-                mode={live2dMode === "local" ? "local" : "bestdori"}
+                mode="local"
                 zoom={zoom}
                 className="card-live2d-stage card-live2d-stage--live2d"
               />

@@ -2063,6 +2063,14 @@ button.glass-frame.card-tile:active {
   }
 }
 
+.card-live2d-phone__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .card-live2d-phone__screen {
   position: relative;
   flex: 0 0 auto;
@@ -2074,6 +2082,62 @@ button.glass-frame.card-tile:active {
   overflow: hidden;
   border-radius: 18px;
   background: transparent;
+}
+
+.card-live2d-phone__pan-rail {
+  position: absolute;
+  right: 0.35rem;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transform: translateY(-50%);
+  padding: 0.3rem 0.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(12, 12, 18, 0.72);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.card-live2d-phone__pan-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.1));
+  color: #fff;
+  font-size: 0.7rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+}
+
+.card-live2d-phone__pan-btn:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0.16));
+}
+
+.card-live2d-phone__pan-btn:active {
+  transform: scale(0.96);
+}
+
+.card-live2d-phone__pan-track {
+  width: 0.28rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.38),
+    rgba(255, 255, 255, 0.12)
+  );
 }
 
 .card-live2d-phone__screen--pan {
@@ -2394,7 +2458,8 @@ body.live2d-embed-route header,
 body.live2d-embed-route footer,
 body.live2d-embed-route .lang-toggle-fixed,
 body.live2d-embed-route .theme-toggle-fixed,
-body.live2d-embed-route .scroll-top-btn {
+body.live2d-embed-route .scroll-top-btn,
+body.live2d-embed-route .mobile-bottom-nav {
   display: none !important;
 }
 

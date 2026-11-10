@@ -42,31 +42,33 @@ function loadLive2DCore() {
 }
 
 /**
- * Bandori costume Live2D is thigh-up. Model bounds often include empty canvas
- * below the hem, so pinning bounds.bottom still floats — treat ~58% down the
- * bounds as the visual hem and pin that to the stage floor.
+ * Bandori costume Live2D is thigh-up. Bounds include empty canvas below the
+ * hem — use a high visual-bottom so default framing shows head→hem ("全身"
+ * for this asset type) instead of a face crop.
  */
 function fitModelToStage(
   model: import("pixi-live2d-display/cubism2").Live2DModel,
   stageWidth: number,
   stageHeight: number,
-  padding = 0.96
+  padding = 0.9
 ) {
   model.scale.set(1);
   const bounds = model.getLocalBounds();
   if (!bounds.width || !bounds.height) return;
 
-  // Pin near the visual hem without shoving the model off-canvas.
-  const VISUAL_BOTTOM = 0.66;
+  // ~90% of bounds height ≈ hairline to hem for most costume models.
+  const VISUAL_TOP = 0.02;
+  const VISUAL_BOTTOM = 0.9;
+  const visualSpan = Math.max(0.5, VISUAL_BOTTOM - VISUAL_TOP);
   const scale = Math.min(
     (stageWidth / bounds.width) * padding,
-    (stageHeight / (bounds.height * VISUAL_BOTTOM)) * padding
+    (stageHeight / (bounds.height * visualSpan)) * padding
   );
   model.scale.set(scale);
   model.x = stageWidth / 2 - (bounds.x + bounds.width / 2) * scale;
 
   const visualBottom = (bounds.y + bounds.height * VISUAL_BOTTOM) * scale;
-  const bottomInset = Math.max(0, stageHeight * 0.002);
+  const bottomInset = Math.max(0, stageHeight * 0.01);
   model.y = stageHeight - bottomInset - visualBottom;
 }
 
@@ -179,7 +181,11 @@ export function Live2DViewer({
           const h = host.clientHeight || height;
           if (w <= 0 || h <= 0) return;
           app.renderer.resize(w, h);
-          fitModelToStage(model, w, h, 0.98 / zoomRef.current);
+          // Zoom-out (<1) shrinks padding. Zoom-in (>1) grows the scroll-body
+          // host instead, so keep padding stable and let the taller stage enlarge the model.
+          const zoom = zoomRef.current || 1;
+          const padding = 0.9 * (zoom <= 1 ? zoom : 1);
+          fitModelToStage(model, w, h, padding);
         };
 
         refitRef.current = refit;

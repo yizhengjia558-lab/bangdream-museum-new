@@ -31,15 +31,15 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
  */
 function computeBestdoriCover(containerW: number, containerH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  // Character + white Live2D panel on Bestdori's 1280×960 tool page.
-  const CHAR_TOP = 0.04;
-  const CHAR_BOTTOM = 0.54;
+  // Skip Bestdori tool chrome ("More Live2D" / Asset header) and show head→hem.
+  const CHAR_TOP = 0.14;
+  const CHAR_BOTTOM = 0.72;
   const charSpan = CHAR_BOTTOM - CHAR_TOP;
 
   const scaleH = containerH / (PAGE_HEIGHT * charSpan);
   const scaleW = containerW / contentW;
-  // Prefer filling the phone; slight overscan hides room floor under the hem.
-  const scale = Math.max(scaleH, scaleW) * zoom * 1.06;
+  // Contain-ish fit so the model isn't punched into a face crop.
+  const scale = Math.max(scaleH, scaleW) * zoom * 0.98;
 
   const left = -SIDEBAR_WIDTH * scale + (containerW - contentW * scale) / 2;
   const top = containerH - PAGE_HEIGHT * CHAR_BOTTOM * scale;
