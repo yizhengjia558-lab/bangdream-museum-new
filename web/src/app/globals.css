@@ -829,6 +829,367 @@ button.glass-frame.card-tile:active {
   background: transparent;
 }
 
+/* ── Home: new / recent cards rail ── */
+
+.home-new-cards__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.home-new-cards__link {
+  display: inline-flex;
+  align-items: center;
+  font-[family-name:var(--font-subtitle-active)];
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.home-new-cards__link:hover {
+  color: var(--brand-pink);
+}
+
+.home-new-cards__rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(11.5rem, 14rem);
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0.15rem 0.75rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.home-new-cards__item {
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+.home-new-cards__card {
+  width: 100%;
+  text-align: left;
+  overflow: hidden;
+}
+
+.home-new-cards__badge {
+  position: absolute;
+  top: 0.65rem;
+  left: 0.65rem;
+  z-index: 3;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  background: linear-gradient(135deg, #e9435e, #ff7a93);
+  color: #fff;
+  font-[family-name:var(--font-subtitle-active)];
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  box-shadow: 0 6px 16px rgba(233, 67, 94, 0.35);
+}
+
+.home-new-cards__image-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.home-new-cards__image {
+  transition: transform 0.45s ease;
+}
+
+.home-new-cards__card:hover .home-new-cards__image {
+  transform: scale(1.04);
+}
+
+.home-new-cards__meta {
+  padding: 0.7rem 0.8rem 0.85rem;
+}
+
+.home-new-cards__rarity {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--brand-pink);
+}
+
+.home-new-cards__name {
+  margin-top: 0.2rem;
+  font-[family-name:var(--font-subtitle-active)];
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.home-new-cards__sub {
+  margin-top: 0.3rem;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Costume / Live2D gallery ── */
+
+.costumes-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.85rem 1rem;
+}
+
+.costumes-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 9rem;
+  flex: 1 1 10rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.costumes-filter select {
+  appearance: none;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-primary);
+  padding: 0.55rem 2rem 0.55rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.costumes-count {
+  margin-left: auto;
+  padding-bottom: 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.costume-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .costume-gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .costume-gallery-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.costume-tile {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1.1rem;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  text-align: left;
+  box-shadow: var(--glass-shadow-soft);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.costume-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glass-shadow);
+}
+
+.costume-tile__badge {
+  position: absolute;
+  top: 0.65rem;
+  left: 0.65rem;
+  z-index: 2;
+  border-radius: 999px;
+  padding: 0.18rem 0.5rem;
+  background: rgba(12, 16, 32, 0.72);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.costume-tile__image-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.costume-tile__meta {
+  padding: 0.75rem 0.85rem 0.9rem;
+}
+
+.costume-tile__name {
+  font-[family-name:var(--font-subtitle-active)];
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.costume-tile__sub {
+  margin-top: 0.3rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.costume-detail-backdrop {
+  z-index: 80;
+}
+
+.costume-detail-panel {
+  position: relative;
+  width: min(1080px, calc(100vw - 1.5rem));
+  max-height: min(92vh, 920px);
+  overflow: auto;
+  margin: auto;
+  border-radius: 1.35rem;
+  border: 1px solid var(--glass-border);
+  background: color-mix(in srgb, var(--glass-bg) 92%, transparent);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(18px);
+}
+
+.costume-detail-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 3;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.costume-detail-grid {
+  display: grid;
+  gap: 1rem;
+  padding: 1.1rem;
+}
+
+@media (min-width: 900px) {
+  .costume-detail-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-rows: auto auto;
+    padding: 1.35rem;
+  }
+
+  .costume-detail-art {
+    grid-row: 1 / span 2;
+  }
+}
+
+.costume-detail-art {
+  position: relative;
+  min-height: 220px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.costume-detail-live2d {
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.costume-detail-live2d__viewer {
+  width: 100%;
+}
+
+.costume-detail-live2d .card-detail-sidebar {
+  width: 100%;
+  max-width: none;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.costume-detail-empty {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.costume-detail-info {
+  padding: 0.25rem 0.15rem 0.5rem;
+}
+
+.costume-detail-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.costume-detail-title {
+  margin-top: 0.35rem;
+  font-[family-name:var(--font-subtitle-active)];
+  font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.costume-detail-sub,
+.costume-detail-event {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.costume-detail-actions {
+  margin-top: 1rem;
+}
+
+.costume-detail-cta {
+  display: inline-flex;
+}
+
 /* ── Home visual effects ── */
 
 .home-fx-layer {
@@ -2061,6 +2422,28 @@ body.live2d-embed-route main {
   align-items: center;
   gap: 1rem;
   margin-bottom: 0.25rem;
+}
+
+.character-hero-card-frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  max-height: min(72vh, 560px);
+  border-radius: 1.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 28px 64px rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.character-hero-card-thumb {
+  position: relative;
+  flex: 0 0 auto;
+  width: 4.25rem;
+  height: 3.2rem;
+  overflow: hidden;
+  border-radius: 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .character-hero-identity {

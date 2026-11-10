@@ -1,7 +1,14 @@
 import type { Locale } from "./types";
 
 const zh = {
-  nav: { home: "首页", bands: "乐队", forum: "社区", championship: "冠军榜", favorites: "我的收藏" },
+  nav: {
+    home: "首页",
+    bands: "乐队",
+    costumes: "服装",
+    forum: "社区",
+    championship: "冠军榜",
+    favorites: "我的收藏",
+  },
   back: "返回",
   theme: { light: "浅色", dark: "深色" },
   lang: { switch: "切换语言", current: "当前语言" },
@@ -24,6 +31,30 @@ const zh = {
     otherCollection: "其他乐队",
     otherSectionTitle: "MyGO!!!!! & Ave Mujica",
     otherSectionTagline: "两团联动卡面合并收录——迷途与假面，同一篇章。",
+  },
+  newCards: {
+    eyebrow: "新到馆",
+    weekTitle: "本周新卡",
+    weekSubtitle: "官方本周上线的卡面，同步收录于此。",
+    latestTitle: "最新上架",
+    latestSubtitle: "最近同步到馆的新卡面，持续更新中。",
+    badge: "NEW",
+    costumesLink: "服装 / Live2D 图鉴 →",
+  },
+  costumes: {
+    title: "服装 / Live2D 图鉴",
+    subtitle: "按乐队与成员浏览卡面服装，点击即可预览 Live2D",
+    filterBand: "乐队",
+    filterMember: "成员",
+    allBands: "全部乐队",
+    allMembers: "全部成员",
+    count: "共 {count} 套服装",
+    loading: "正在加载服装图鉴…",
+    loadError: "服装图鉴暂时加载失败，请稍后再试",
+    empty: "没有符合条件的服装",
+    live2dBadge: "Live2D",
+    noLive2d: "暂无 Live2D 资源",
+    viewCharacter: "查看角色页",
   },
   bands: {
     archive: "档案馆",
@@ -50,6 +81,7 @@ const zh = {
     band: "所属乐队",
     voiceActor: "声优",
     viewVoiceActorPhoto: "查看声优大图",
+    costumesLink: "查看该成员服装 / Live2D →",
   },
   card: {
     untrained: "特训前",
@@ -276,7 +308,14 @@ const zh = {
 } as const;
 
 const en = {
-  nav: { home: "Home", bands: "Bands", forum: "Forum", championship: "Champions", favorites: "Favorites" },
+  nav: {
+    home: "Home",
+    bands: "Bands",
+    costumes: "Costumes",
+    forum: "Forum",
+    championship: "Champions",
+    favorites: "Favorites",
+  },
   back: "Back",
   theme: { light: "Light", dark: "Dark" },
   lang: { switch: "Switch language", current: "Current language" },
@@ -299,6 +338,30 @@ const en = {
     otherCollection: "Other Bands",
     otherSectionTitle: "MyGO!!!!! & Ave Mujica",
     otherSectionTagline: "Shared / dual cards from the new chapter, archived as one section.",
+  },
+  newCards: {
+    eyebrow: "New Arrivals",
+    weekTitle: "This Week's Cards",
+    weekSubtitle: "Official cards released this week, synced into the museum.",
+    latestTitle: "Latest Arrivals",
+    latestSubtitle: "The newest cards synced into the collection.",
+    badge: "NEW",
+    costumesLink: "Costume / Live2D gallery →",
+  },
+  costumes: {
+    title: "Costume / Live2D Gallery",
+    subtitle: "Browse card costumes by band and member, then preview Live2D",
+    filterBand: "Band",
+    filterMember: "Member",
+    allBands: "All bands",
+    allMembers: "All members",
+    count: "{count} costumes",
+    loading: "Loading costume gallery…",
+    loadError: "Couldn't load costumes. Please try again later.",
+    empty: "No costumes match the current filters",
+    live2dBadge: "Live2D",
+    noLive2d: "Live2D unavailable",
+    viewCharacter: "View character",
   },
   bands: {
     archive: "Archive",
@@ -325,6 +388,7 @@ const en = {
     band: "Band",
     voiceActor: "Voice Actor",
     viewVoiceActorPhoto: "View full photo",
+    costumesLink: "View this member's costumes / Live2D →",
   },
   card: {
     untrained: "Before Training",
@@ -551,7 +615,14 @@ const en = {
 } as const;
 
 const ja = {
-  nav: { home: "ホーム", bands: "バンド", forum: "コミュニティ", championship: "チャンピオン", favorites: "お気に入り" },
+  nav: {
+    home: "ホーム",
+    bands: "バンド",
+    costumes: "衣装",
+    forum: "コミュニティ",
+    championship: "チャンピオン",
+    favorites: "お気に入り",
+  },
   back: "戻る",
   theme: { light: "ライト", dark: "ダーク" },
   lang: { switch: "言語を切り替え", current: "現在の言語" },
@@ -574,6 +645,30 @@ const ja = {
     otherCollection: "その他のバンド",
     otherSectionTitle: "MyGO!!!!! & Ave Mujica",
     otherSectionTagline: "連携カードを一つのセクションにまとめて収録。",
+  },
+  newCards: {
+    eyebrow: "新着",
+    weekTitle: "今週の新カード",
+    weekSubtitle: "今週公開されたカードをミュージアムに同期しています。",
+    latestTitle: "最新の入荷",
+    latestSubtitle: "最近同期された新しいカードです。",
+    badge: "NEW",
+    costumesLink: "衣装 / Live2D 図鑑 →",
+  },
+  costumes: {
+    title: "衣装 / Live2D 図鑑",
+    subtitle: "バンドとメンバーで衣装を探し、Live2D をプレビュー",
+    filterBand: "バンド",
+    filterMember: "メンバー",
+    allBands: "すべてのバンド",
+    allMembers: "すべてのメンバー",
+    count: "全 {count} 衣装",
+    loading: "衣装図鑑を読み込み中…",
+    loadError: "衣装図鑑の読み込みに失敗しました。しばらくしてから再度お試しください。",
+    empty: "条件に一致する衣装がありません",
+    live2dBadge: "Live2D",
+    noLive2d: "Live2D がありません",
+    viewCharacter: "キャラクターページへ",
   },
   bands: {
     archive: "アーカイブ",
@@ -600,6 +695,7 @@ const ja = {
     band: "所属バンド",
     voiceActor: "声優",
     viewVoiceActorPhoto: "声優写真を拡大",
+    costumesLink: "このメンバーの衣装 / Live2D を見る →",
   },
   card: {
     untrained: "特訓前",

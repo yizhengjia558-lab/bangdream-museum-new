@@ -5,7 +5,6 @@ import { CinematicBackground } from "@/components/effects/CinematicBackground";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { CardNameSearch } from "@/components/cards/CardNameSearch";
-import { CharacterChibiAvatar } from "@/components/characters/CharacterChibiAvatar";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getBandName, getCharacterAltName, getCharacterName, getVoiceActorName } from "@/lib/i18n/display";
 import type { CardDisplayItem } from "@/lib/cards";
@@ -45,18 +44,14 @@ export function CharacterHero({
       />
 
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-end page-container-wide pb-16 pt-28 lg:flex-row lg:items-end lg:justify-between lg:gap-12 lg:pb-20 lg:pt-32">
-        <div className="relative h-[65vh] w-full max-w-lg overflow-hidden lg:h-[80vh] lg:max-w-xl lg:flex-1">
-          <div
-            className="absolute inset-x-[18%] bottom-[6%] h-[10%] rounded-full opacity-70"
-            style={{ background: `${accent}35` }}
-          />
+        <div className="character-hero-card-frame relative w-full max-w-xl overflow-hidden lg:mb-8 lg:flex-1">
           <AssetImage
             src={portrait}
             alt={displayName}
             fill
             priority
             variant="mobile"
-            className={cn("object-contain object-bottom drop-shadow-[0_32px_64px_rgba(0,0,0,0.55)]")}
+            className={cn("object-cover object-center drop-shadow-[0_28px_56px_rgba(0,0,0,0.5)]")}
           />
         </div>
 
@@ -73,7 +68,15 @@ export function CharacterHero({
             )}
 
             <div className="character-hero-identity">
-              <CharacterChibiAvatar characterId={character.id} size="lg" alt={displayName} />
+              <div className="character-hero-card-thumb">
+                <AssetImage
+                  src={portrait}
+                  alt={displayName}
+                  fill
+                  variant="thumb"
+                  className="object-cover object-center"
+                />
+              </div>
               <div className="character-hero-title-copy">
                 <h1 className="character-hero-name">{displayName}</h1>
                 {altName ? <p className="character-hero-alt-name">{altName}</p> : null}

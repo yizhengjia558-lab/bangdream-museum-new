@@ -379,7 +379,7 @@ const characters = index.characters.map((entry) => {
       : undefined;
 
   const standing = toAssetPath(entry.standing_path);
-  const portrait = pickPortraitImage(allCards, standing);
+  const portrait = pickPortraitImage(allCards, standing, entry.character_id);
 
   return {
     id: entry.character_id,
@@ -405,16 +405,33 @@ function cardScore(card) {
   return s;
 }
 
-/** Prefer trained card CG for member grid / hero (avoids MyGO SD standing sprites). */
-function pickPortraitImage(cards, standing) {
-  const ranked = [...cards].sort((a, b) => cardScore(b) - cardScore(a));
-  for (const card of ranked) {
-    if (card.trained_file) return card.trained_file;
+function hashSeed(value) {
+  const text = String(value ?? "");
+  let hash = 2166136261;
+  for (let i = 0; i < text.length; i++) {
+    hash ^= text.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
   }
-  for (const card of ranked) {
-    if (card.untrained_file) return card.untrained_file;
-  }
-  return standing || "";
+  return hash >>> 0;
+}
+
+/** Random card CG for member grid / hero (never fall back to SD standing when cards exist). */
+function pickPortraitImage(cards, standing, seedKey = "") {
+  const withArt = cards
+    .map((card) => ({
+      src: card.trained_file || card.untrained_file,
+      trained: Boolean(card.trained_file),
+      score: cardScore(card),
+    }))
+    .filter((entry) => entry.src);
+
+  if (!withArt.length) return standing || "";
+
+  const preferred = withArt.filter((entry) => entry.trained && entry.score >= 35);
+  const trained = withArt.filter((entry) => entry.trained);
+  const pool = preferred.length ? preferred : trained.length ? trained : withArt;
+  const index = hashSeed(seedKey) % pool.length;
+  return pool[index].src;
 }
 
 function toSummary(character) {

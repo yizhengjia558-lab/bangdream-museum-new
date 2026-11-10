@@ -95,7 +95,14 @@ export function CharacterPageView({
             accent={primary}
             onJump={jumpToCardId}
           />
-          <p className="mt-4 text-center text-sm text-[var(--text-muted)]">
+          <p className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center text-sm text-[var(--text-muted)]">
+            <Link
+              href={`/costumes/?character=${character.id}`}
+              className="championship-inline-link"
+              style={{ color: primary }}
+            >
+              {t("character.costumesLink")}
+            </Link>
             <Link href="/championship/" className="championship-inline-link" style={{ color: primary }}>
               {t("championship.navHint")}
             </Link>

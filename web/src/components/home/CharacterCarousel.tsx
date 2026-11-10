@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { AssetImage } from "@/components/ui/AssetImage";
+import { getCharacterPortrait } from "@/lib/character-utils";
 import type { CharacterSummary } from "@/lib/data-types";
 
 export function CharacterCarousel({ characters }: { characters: CharacterSummary[] }) {
@@ -32,10 +33,10 @@ export function CharacterCarousel({ characters }: { characters: CharacterSummary
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.12),transparent_55%)]" />
             <div className="absolute inset-0">
               <AssetImage
-                src={current.standing}
+                src={getCharacterPortrait(current)}
                 alt={current.name_cn}
                 fill
-                className="object-contain object-bottom-right p-8 drop-shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
+                className="object-cover object-center drop-shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
                 priority
               />
             </div>

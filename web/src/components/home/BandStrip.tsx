@@ -5,6 +5,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BAND_THEMES } from "@/lib/themes";
 import { getCharactersByBand } from "@/lib/data";
+import { getCharacterPortrait } from "@/lib/character-utils";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -58,12 +59,12 @@ export function BandStrip() {
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
               {members.map((m) => (
                 <Link key={m.id} href={`/characters/${m.slug}`} className="official-card card-shine group overflow-hidden">
-                  <div className="relative aspect-[3/4] bg-gradient-to-b from-[#fff5f8] to-white">
+                  <div className="relative aspect-[4/3] bg-gradient-to-b from-[#fff5f8] to-white">
                     <AssetImage
-                      src={m.standing}
+                      src={getCharacterPortrait(m)}
                       alt={m.name_cn}
                       fill
-                      className="object-contain object-bottom p-2 transition group-hover:scale-105"
+                      className="object-cover object-center transition group-hover:scale-105"
                     />
                   </div>
                   <div className="border-t border-[#f0e0e4] p-3 text-center">

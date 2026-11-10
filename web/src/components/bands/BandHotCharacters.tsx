@@ -79,7 +79,7 @@ export function BandHotCharacters({
                       alt={name}
                       fill
                       variant="thumb"
-                      className="object-cover object-top"
+                      className="object-cover object-center"
                     />
                   ) : null}
                 </div>

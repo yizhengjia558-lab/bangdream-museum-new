@@ -107,6 +107,13 @@ function buildNavFuseItems(): NavFuseItem[] {
       href: "/forum/",
       keywords: "社区 论坛 forum community コミュニティ",
     },
+    {
+      type: "page",
+      label: "服装 / Live2D 图鉴",
+      sublabel: "Costumes",
+      href: "/costumes/",
+      keywords: "服装 衣装 costume live2d 图鉴 図鑑 gallery 衣装図鑑",
+    },
   ];
 
   for (const band of BAND_THEMES) {
@@ -160,6 +167,7 @@ export function searchNavigation(query: string, limit = 8): NavSearchHit[] {
 export function isCardListPath(pathname: string) {
   return (
     pathname.startsWith("/favorites") ||
+    pathname.startsWith("/costumes") ||
     /^\/bands\/[^/]+\/?$/.test(pathname) ||
     /^\/characters\/[^/]+\/?$/.test(pathname)
   );

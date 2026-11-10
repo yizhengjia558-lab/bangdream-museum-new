@@ -6,6 +6,7 @@ import siteIndex from "@/data/site-index.json";
 import heroCards from "@/data/hero-cards.json";
 import homeBands from "@/data/home-bands.json";
 import { getBandByFolder, getBandBySlug, type BandTheme } from "./themes";
+import { selectCostumeCards, selectRecentCards } from "./recent-cards";
 import type { CardData, CharacterData, CharacterSummary, HomeBandEntry, RiverCardItem } from "./data-types";
 
 const DATA_ROOT = path.join(process.cwd(), "public/data");
@@ -54,6 +55,14 @@ export function getAllSiteCards(): CardData[] {
   const file = path.join(DATA_ROOT, "cards-catalog.json");
   if (!fs.existsSync(file)) return [];
   return readJson<{ cards: CardData[] }>(file).cards;
+}
+
+export function getRecentCards(limit = 12) {
+  return selectRecentCards(getAllSiteCards(), { limit });
+}
+
+export function getCostumeCards() {
+  return selectCostumeCards(getAllSiteCards());
 }
 
 export function getCharacterTheme(character: CharacterSummary) {

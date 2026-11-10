@@ -26,7 +26,7 @@ export function MemberCard({
     <div className="p-1">
       <Link href={`/characters/${member.slug}/`} className="group block">
         <CardTile className="h-full">
-          <div className="card-image-wrap relative aspect-[3/4]">
+          <div className="card-image-wrap relative aspect-[4/3]">
             <div
               className="absolute inset-x-0 top-0 z-10 h-0.5"
               style={{ background: theme.colors.gradient }}
@@ -36,7 +36,7 @@ export function MemberCard({
               alt={displayName}
               fill
               variant="mobile"
-              className="card-image object-cover object-top"
+              className="card-image object-cover object-center"
             />
           </div>
           <div className="card-caption text-center">

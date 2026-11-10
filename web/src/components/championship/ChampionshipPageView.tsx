@@ -142,7 +142,7 @@ export function ChampionshipPageView() {
                             alt={card?.card_name || row.cardId}
                             fill
                             variant="thumb"
-                            className="object-cover object-top"
+                            className="object-cover object-center"
                           />
                         ) : null}
                       </div>
@@ -190,7 +190,7 @@ export function ChampionshipPageView() {
                               alt={member ? getCharacterName(member, locale) : ""}
                               fill
                               variant="thumb"
-                              className="object-cover object-top"
+                              className="object-cover object-center"
                             />
                           ) : null}
                         </div>
