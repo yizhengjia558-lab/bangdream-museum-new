@@ -67,6 +67,11 @@
 :root {
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
   --theme-transition: 220ms var(--ease-premium);
+  --font-title: "Outfit";
+  --font-subtitle: "Plus Jakarta Sans";
+  --font-body: "Inter";
+  --font-jp: "M PLUS Rounded 1c";
+  --font-zh: "Noto Sans SC";
   --font-title-active: var(--font-title), sans-serif;
   --font-subtitle-active: var(--font-subtitle), sans-serif;
   --font-body-active: var(--font-body), sans-serif;

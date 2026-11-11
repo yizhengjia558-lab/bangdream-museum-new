@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Plus_Jakarta_Sans, Inter, M_PLUS_Rounded_1c, Noto_Sans_SC } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -30,58 +29,23 @@ export const viewport: Viewport = {
   ],
 };
 
-const fontTitle = Outfit({
-  variable: "--font-title",
-  subsets: ["latin"],
-  weight: ["700", "800"],
-  display: "swap",
-});
-
-const fontSubtitle = Plus_Jakarta_Sans({
-  variable: "--font-subtitle",
-  subsets: ["latin"],
-  weight: ["600", "700"],
-  display: "swap",
-});
-
-const fontBody = Inter({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  display: "swap",
-});
-
-const fontJp = M_PLUS_Rounded_1c({
-  variable: "--font-jp",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  display: "swap",
-  preload: false,
-});
-
-const fontZh = Noto_Sans_SC({
-  variable: "--font-zh",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  display: "swap",
-  preload: false,
-});
-
 export const metadata: Metadata = {
   title: "BanG Dream! — Digital Character Museum",
   description: "An immersive digital museum for BanG Dream! Girls Band Party!",
 };
 
+const GOOGLE_FONTS_HREF =
+  "https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=M+PLUS+Rounded+1c:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@600;700&display=swap";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="zh-CN"
-      className={`${fontTitle.variable} ${fontSubtitle.variable} ${fontBody.variable} ${fontJp.variable} ${fontZh.variable} h-full`}
-      data-theme="light"
-      data-locale="zh"
-      data-perf="hi"
-      suppressHydrationWarning
-    >
+    <html lang="zh-CN" className="h-full" data-theme="light" data-locale="zh" data-perf="hi" suppressHydrationWarning>
+      <head>
+        {/* Load fonts in the browser — avoid next/font/google build-time fetches that break CI. */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="stylesheet" href={GOOGLE_FONTS_HREF} />
+      </head>
       <body className="theme-body flex min-h-full flex-col font-[family-name:var(--font-body-active)]">
         <BangDreamPageBackground />
         <LocaleProvider>
