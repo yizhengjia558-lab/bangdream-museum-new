@@ -13,7 +13,6 @@ type FitLayout = {
   scale: number;
   left: number;
   top: number;
-  /** Full head→hem strip height — taller than the phone so users can scroll. */
   contentHeight: number;
 };
 
@@ -24,23 +23,32 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 }
 
 /**
- * Width-fill the Live2D character band (no side letterbox). The strip is taller
- * than the phone viewport so the scrollbar can reveal head → hem.
+ * Make Bestdori's Live2D panel fill the phone viewport (no black letterbox).
+ * Scale large enough that one screen shows part of the figure; the full
+ * head→hem strip is taller so the scrollbar can reveal the rest.
  */
-function computeBestdoriCover(viewportW: number, zoom: number): FitLayout {
+function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
   // Skip More Live2D / Asset chrome; include thigh-up hem.
-  const CHAR_TOP = 0.17;
-  const CHAR_BOTTOM = 0.78;
+  const CHAR_TOP = 0.165;
+  const CHAR_BOTTOM = 0.8;
   const charSpan = Math.max(0.45, CHAR_BOTTOM - CHAR_TOP);
 
-  const safeW = Math.max(viewportW, 120);
-  // Fill the frame width so the figure stays large with no black side bars.
-  const scale = (safeW / contentW) * zoom * 1.03;
+  const safeW = Math.max(viewportW, 100);
+  const safeH = Math.max(viewportH, 160);
+
+  // One viewport shows ~50% of the character band → figure stays large & fills frame.
+  // Remaining band is reached by scrolling (no empty black gap under the panel).
+  const VIEWPORT_FRACTION = 0.5;
+  const scaleToFillHeight = safeH / (PAGE_HEIGHT * charSpan * VIEWPORT_FRACTION);
+  const scaleToFillWidth = safeW / contentW;
+  const scale = Math.max(scaleToFillHeight, scaleToFillWidth) * zoom * 1.02;
 
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
   const top = -PAGE_HEIGHT * CHAR_TOP * scale;
-  const contentHeight = Math.ceil(PAGE_HEIGHT * charSpan * scale);
+  const bandHeight = PAGE_HEIGHT * charSpan * scale;
+  // Must be taller than the phone so overflow-y scroll works and no black void.
+  const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * 1.02));
 
   return { scale, left, top, contentHeight };
 }
@@ -59,7 +67,7 @@ export function BestdoriLive2DEmbed({
   zoom?: number;
 }) {
   const hostRef = useRef<HTMLDivElement>(null);
-  const [layout, setLayout] = useState<FitLayout>(() => computeBestdoriCover(280, zoom));
+  const [layout, setLayout] = useState<FitLayout>(() => computeBestdoriCover(200, 630, zoom));
 
   const src =
     mode === "local"
@@ -73,8 +81,9 @@ export function BestdoriLive2DEmbed({
 
     const update = () => {
       const screen = host.closest(".card-live2d-phone__screen") as HTMLElement | null;
-      const w = screen?.clientWidth || host.clientWidth || 280;
-      if (w > 0) setLayout(computeBestdoriCover(w, zoom));
+      const w = screen?.clientWidth || host.clientWidth || 200;
+      const h = screen?.clientHeight || 630;
+      if (w > 0 && h > 0) setLayout(computeBestdoriCover(w, h, zoom));
     };
 
     update();

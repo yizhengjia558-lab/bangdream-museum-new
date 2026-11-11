@@ -57,8 +57,8 @@ export function Live2DPhoneFrame({
       </div>
       <div className="card-live2d-phone__stage">
         {/*
-          Scrollbar pans head→hem. Clicks on the model still go to Bestdori;
-          use the right scrollbar (or touch drag on the track) to scroll.
+          6:19 frame is filled by a magnified Bestdori strip (no black gap).
+          Scrollbar pans head→hem; clicks still go to the official viewer.
         */}
         <div ref={screenRef} className="card-live2d-phone__screen card-live2d-phone__screen--pan">
           <div className="card-live2d-phone__scroll-body card-live2d-phone__scroll-body--flow">
