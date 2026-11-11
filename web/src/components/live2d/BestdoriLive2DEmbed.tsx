@@ -37,18 +37,18 @@ function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number
   const safeW = Math.max(viewportW, 100);
   const safeH = Math.max(viewportH, 160);
 
-  // One screen ≈ half the studio band → figure stays large and fills the frame.
-  // The remaining half is reached by scrolling (full official Live2D panel).
-  const VIEWPORT_FRACTION = 0.5;
+  // Half the previous magnification: one screen covers the full studio band
+  // (still cover-fills the phone — no letterbox). Zoom in to scroll detail.
+  const VIEWPORT_FRACTION = 1;
   const scaleToFillHeight = safeH / (PAGE_HEIGHT * charSpan * VIEWPORT_FRACTION);
   const scaleToFillWidth = safeW / contentW;
-  const scale = Math.max(scaleToFillHeight, scaleToFillWidth) * Math.max(zoom, 0.75) * 1.02;
+  const scale = Math.max(scaleToFillHeight, scaleToFillWidth) * Math.max(zoom, 0.75);
 
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
   const top = -PAGE_HEIGHT * CHAR_TOP * scale;
   const bandHeight = PAGE_HEIGHT * charSpan * scale;
-  // Must exceed the phone height so overflow-y scroll can reveal the lower half.
-  const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * 2));
+  // At 100% band ≈ phone height (fills frame). Zoom stretches the scroll strip.
+  const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * Math.max(zoom, 1)));
 
   return { scale, left, top, contentHeight };
 }
