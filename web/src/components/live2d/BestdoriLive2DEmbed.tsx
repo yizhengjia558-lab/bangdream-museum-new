@@ -23,13 +23,13 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 }
 
 /**
- * Crop the official Bestdori Live2D studio into a tall strip that fills the
- * phone width/height. One viewport shows part of the panel; scrolling reveals
- * the rest of the official Live2D display (head → hem).
+ * Official Bestdori Live2D studio, cover-fit into the phone.
+ * One viewport ≈ half the studio (fills the frame); scroll reveals the rest.
+ * Iframe keeps pointer events so the model stays clickable.
  */
 function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  // Skip left “More Live2D” sidebar + top tool chrome; keep the studio to hem.
+  // Skip left “More Live2D” sidebar + top tool chrome; keep studio to hem.
   const CHAR_TOP = 0.165;
   const CHAR_BOTTOM = 0.82;
   const charSpan = Math.max(0.45, CHAR_BOTTOM - CHAR_TOP);
@@ -37,18 +37,16 @@ function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number
   const safeW = Math.max(viewportW, 100);
   const safeH = Math.max(viewportH, 160);
 
-  // Half the previous magnification: one screen covers the full studio band
-  // (still cover-fills the phone — no letterbox). Zoom in to scroll detail.
-  const VIEWPORT_FRACTION = 1;
+  // Half-band per screen → strip is ~2× phone height (scrollbar always useful).
+  const VIEWPORT_FRACTION = 0.5;
   const scaleToFillHeight = safeH / (PAGE_HEIGHT * charSpan * VIEWPORT_FRACTION);
   const scaleToFillWidth = safeW / contentW;
-  const scale = Math.max(scaleToFillHeight, scaleToFillWidth) * Math.max(zoom, 0.75);
+  const scale = Math.max(scaleToFillHeight, scaleToFillWidth) * Math.max(zoom, 0.75) * 1.02;
 
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
   const top = -PAGE_HEIGHT * CHAR_TOP * scale;
   const bandHeight = PAGE_HEIGHT * charSpan * scale;
-  // At 100% band ≈ phone height (fills frame). Zoom stretches the scroll strip.
-  const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * Math.max(zoom, 1)));
+  const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * 2));
 
   return { scale, left, top, contentHeight };
 }
@@ -127,14 +125,12 @@ export function BestdoriLive2DEmbed({
         src={src}
         title="Live2D"
         scrolling="no"
-        tabIndex={-1}
         className={cn("bestdori-live2d-embed__iframe", "bestdori-live2d-embed__iframe--bestdori")}
         style={{
           width: PAGE_WIDTH,
           height: PAGE_HEIGHT,
           overflow: "hidden",
-          // Let wheel / touch pan the phone frame (cross-origin iframe would eat scroll).
-          pointerEvents: "none",
+          pointerEvents: "auto",
           transform: `translate(${layout.left}px, ${layout.top}px) scale(${layout.scale})`,
           transformOrigin: "top left",
         }}
