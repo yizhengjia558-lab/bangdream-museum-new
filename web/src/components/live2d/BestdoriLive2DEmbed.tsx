@@ -13,6 +13,8 @@ type FitLayout = {
   scale: number;
   left: number;
   top: number;
+  /** Full head→hem strip height — taller than the phone so users can scroll. */
+  contentHeight: number;
 };
 
 function getLocalLive2DEmbedUrl(assetBundleName: string) {
@@ -22,30 +24,25 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 }
 
 /**
- * Cover-fit the Live2D character band into the phone frame — fill edge-to-edge
- * (no letterbox), keep the figure large and roughly centered.
+ * Width-fill the Live2D character band (no side letterbox). The strip is taller
+ * than the phone viewport so the scrollbar can reveal head → hem.
  */
-function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number): FitLayout {
+function computeBestdoriCover(viewportW: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  // Skip More Live2D / Asset chrome; cover studio Live2D panel to hem.
-  const CHAR_TOP = 0.175;
-  const CHAR_BOTTOM = 0.7;
-  const charSpan = Math.max(0.4, CHAR_BOTTOM - CHAR_TOP);
+  // Skip More Live2D / Asset chrome; include thigh-up hem.
+  const CHAR_TOP = 0.17;
+  const CHAR_BOTTOM = 0.78;
+  const charSpan = Math.max(0.45, CHAR_BOTTOM - CHAR_TOP);
 
   const safeW = Math.max(viewportW, 120);
-  const safeH = Math.max(viewportH, 160);
-
-  // COVER: fill the whole frame (no black bars). Mild overscan keeps hem pinned.
-  const scaleH = safeH / (PAGE_HEIGHT * charSpan);
-  const scaleW = safeW / contentW;
-  const scale = Math.max(scaleH, scaleW) * zoom * 1.04;
+  // Fill the frame width so the figure stays large with no black side bars.
+  const scale = (safeW / contentW) * zoom * 1.03;
 
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
-  // Vertically center the character band, with a slight bias toward the hem.
-  const bandH = PAGE_HEIGHT * charSpan * scale;
-  const top = (safeH - bandH) / 2 - PAGE_HEIGHT * CHAR_TOP * scale + safeH * 0.01;
+  const top = -PAGE_HEIGHT * CHAR_TOP * scale;
+  const contentHeight = Math.ceil(PAGE_HEIGHT * charSpan * scale);
 
-  return { scale, left, top };
+  return { scale, left, top, contentHeight };
 }
 
 /** Bestdori Live2D — local Pixi embed or official Bestdori viewer (cover-fit). */
@@ -62,7 +59,7 @@ export function BestdoriLive2DEmbed({
   zoom?: number;
 }) {
   const hostRef = useRef<HTMLDivElement>(null);
-  const [layout, setLayout] = useState<FitLayout>(() => computeBestdoriCover(280, 350, zoom));
+  const [layout, setLayout] = useState<FitLayout>(() => computeBestdoriCover(280, zoom));
 
   const src =
     mode === "local"
@@ -75,14 +72,16 @@ export function BestdoriLive2DEmbed({
     if (!host) return;
 
     const update = () => {
-      const w = host.clientWidth || 280;
-      const h = host.clientHeight || 350;
-      if (w > 0 && h > 0) setLayout(computeBestdoriCover(w, h, zoom));
+      const screen = host.closest(".card-live2d-phone__screen") as HTMLElement | null;
+      const w = screen?.clientWidth || host.clientWidth || 280;
+      if (w > 0) setLayout(computeBestdoriCover(w, zoom));
     };
 
     update();
     const ro = new ResizeObserver(update);
-    ro.observe(host);
+    const screen = host.closest(".card-live2d-phone__screen");
+    if (screen) ro.observe(screen);
+    else ro.observe(host);
     return () => ro.disconnect();
   }, [mode, zoom, assetBundleName]);
 
@@ -105,7 +104,14 @@ export function BestdoriLive2DEmbed({
   return (
     <div
       ref={hostRef}
-      className={cn("bestdori-live2d-embed", "bestdori-live2d-embed--fill", className)}
+      className={cn(
+        "bestdori-live2d-embed",
+        "bestdori-live2d-embed--scroll",
+        "card-live2d-stage",
+        "card-live2d-stage--live2d",
+        className
+      )}
+      style={{ height: `${layout.contentHeight}px` }}
     >
       <iframe
         key={assetBundleName}

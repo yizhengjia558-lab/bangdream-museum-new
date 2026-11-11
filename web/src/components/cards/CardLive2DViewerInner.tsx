@@ -29,7 +29,6 @@ export function CardLive2DViewerInner({
               assetBundleName={live2dAssetBundleName}
               mode="bestdori"
               zoom={zoom}
-              className="card-live2d-stage card-live2d-stage--live2d"
             />
           )}
         </Live2DPhoneFrame>

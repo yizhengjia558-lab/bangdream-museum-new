@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties, type ReactNode } from "react";
+import { useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { cn } from "@/lib/utils";
 
@@ -21,6 +21,7 @@ export function Live2DPhoneFrame({
 }) {
   const { t } = useLocale();
   const [zoom, setZoom] = useState(1);
+  const screenRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className={cn("card-live2d-phone", className)} style={{ "--live2d-zoom": zoom } as CSSProperties}>
@@ -46,17 +47,24 @@ export function Live2DPhoneFrame({
           type="button"
           className="card-live2d-phone__tool-btn card-live2d-phone__tool-btn--reset"
           aria-label={t("card.live2dZoomReset")}
-          onClick={() => setZoom(1)}
+          onClick={() => {
+            setZoom(1);
+            if (screenRef.current) screenRef.current.scrollTop = 0;
+          }}
         >
           ↺
         </button>
       </div>
       <div className="card-live2d-phone__stage">
         {/*
-          Frame aspect matches Bestdori's Live2D panel (~4:5). Cover-fit fill
-          removes letterbox; clicks go through to the official viewer.
+          Scrollbar pans head→hem. Clicks on the model still go to Bestdori;
+          use the right scrollbar (or touch drag on the track) to scroll.
         */}
-        <div className="card-live2d-phone__screen">{children(zoom)}</div>
+        <div ref={screenRef} className="card-live2d-phone__screen card-live2d-phone__screen--pan">
+          <div className="card-live2d-phone__scroll-body card-live2d-phone__scroll-body--flow">
+            {children(zoom)}
+          </div>
+        </div>
       </div>
     </div>
   );

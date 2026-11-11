@@ -2091,6 +2091,22 @@ button.glass-frame.card-tile:active {
   background: #0a0a10;
 }
 
+/* Tall Live2D strip inside the phone — height comes from inline px, not absolute fill. */
+.bestdori-live2d-embed--scroll {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  background: #0a0a10;
+}
+
+.bestdori-live2d-embed--scroll.card-live2d-stage {
+  position: relative;
+  inset: auto;
+  height: auto;
+}
+
 .card-live2d-phone__screen--pan {
   overflow-x: hidden;
   overflow-y: scroll;
