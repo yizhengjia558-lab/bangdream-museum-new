@@ -23,30 +23,32 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 }
 
 /**
- * Cover-fit Bestdori Live2D into the phone: crop chrome, fill the frame
- * (no letterbox). Zoom grows a tall strip so head↔hem can be scrolled.
+ * Crop the official Bestdori Live2D studio into a tall strip that fills the
+ * phone width/height. One viewport shows part of the panel; scrolling reveals
+ * the rest of the official Live2D display (head → hem).
  */
 function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  // Skip More Live2D / Asset chrome; keep head → mid-thigh studio band.
-  const CHAR_TOP = 0.16;
-  const CHAR_BOTTOM = 0.72;
-  const charSpan = Math.max(0.4, CHAR_BOTTOM - CHAR_TOP);
+  // Skip left “More Live2D” sidebar + top tool chrome; keep the studio to hem.
+  const CHAR_TOP = 0.165;
+  const CHAR_BOTTOM = 0.82;
+  const charSpan = Math.max(0.45, CHAR_BOTTOM - CHAR_TOP);
 
-  const safeW = Math.max(viewportW, 120);
-  const safeH = Math.max(viewportH, 180);
+  const safeW = Math.max(viewportW, 100);
+  const safeH = Math.max(viewportH, 160);
 
-  // Cover the phone — prefer filling the frame over letterboxing.
-  const scaleH = safeH / (PAGE_HEIGHT * charSpan);
-  const scaleW = safeW / contentW;
-  const baseScale = Math.max(scaleW, scaleH);
-  const scale = baseScale * Math.max(zoom, 0.75);
+  // One screen ≈ half the studio band → figure stays large and fills the frame.
+  // The remaining half is reached by scrolling (full official Live2D panel).
+  const VIEWPORT_FRACTION = 0.5;
+  const scaleToFillHeight = safeH / (PAGE_HEIGHT * charSpan * VIEWPORT_FRACTION);
+  const scaleToFillWidth = safeW / contentW;
+  const scale = Math.max(scaleToFillHeight, scaleToFillWidth) * Math.max(zoom, 0.75) * 1.02;
 
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
   const top = -PAGE_HEIGHT * CHAR_TOP * scale;
   const bandHeight = PAGE_HEIGHT * charSpan * scale;
-  // Always at least the phone height; zoom stretches the scroll strip.
-  const contentHeight = Math.ceil(Math.max(bandHeight, safeH));
+  // Must exceed the phone height so overflow-y scroll can reveal the lower half.
+  const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * 2));
 
   return { scale, left, top, contentHeight };
 }
@@ -108,7 +110,6 @@ export function BestdoriLive2DEmbed({
     );
   }
 
-  // Always use a sized scroll strip so cover-fill never letterboxes, and zoom can pan.
   return (
     <div
       ref={hostRef}
@@ -126,12 +127,14 @@ export function BestdoriLive2DEmbed({
         src={src}
         title="Live2D"
         scrolling="no"
+        tabIndex={-1}
         className={cn("bestdori-live2d-embed__iframe", "bestdori-live2d-embed__iframe--bestdori")}
         style={{
           width: PAGE_WIDTH,
           height: PAGE_HEIGHT,
           overflow: "hidden",
-          pointerEvents: "auto",
+          // Let wheel / touch pan the phone frame (cross-origin iframe would eat scroll).
+          pointerEvents: "none",
           transform: `translate(${layout.left}px, ${layout.top}px) scale(${layout.scale})`,
           transformOrigin: "top left",
         }}

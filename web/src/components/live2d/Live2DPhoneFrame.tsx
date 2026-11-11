@@ -57,7 +57,8 @@ export function Live2DPhoneFrame({
       </div>
       <div className="card-live2d-phone__stage">
         {/*
-          Phone 9:16. Cover-fills Bestdori (no top letterbox). Scroll + zoom to pan.
+          Phone 9:16. Official Live2D studio is magnified into a tall strip —
+          scroll to see the full panel; +/- zoom changes scale.
         */}
         <div ref={screenRef} className="card-live2d-phone__screen card-live2d-phone__screen--pan">
           <div className="card-live2d-phone__scroll-body card-live2d-phone__scroll-body--flow">
