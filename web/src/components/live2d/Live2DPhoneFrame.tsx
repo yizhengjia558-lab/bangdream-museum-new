@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { cn } from "@/lib/utils";
 
@@ -22,17 +22,6 @@ export function Live2DPhoneFrame({
   const { t } = useLocale();
   const [zoom, setZoom] = useState(1);
   const screenRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const screen = screenRef.current;
-    if (!screen) return;
-    const onWheel = (event: WheelEvent) => {
-      event.preventDefault();
-      screen.scrollTop += event.deltaY;
-    };
-    screen.addEventListener("wheel", onWheel, { passive: false });
-    return () => screen.removeEventListener("wheel", onWheel);
-  }, []);
 
   return (
     <div className={cn("card-live2d-phone", className)} style={{ "--live2d-zoom": zoom } as CSSProperties}>
@@ -67,6 +56,11 @@ export function Live2DPhoneFrame({
         </button>
       </div>
       <div className="card-live2d-phone__stage">
+        {/*
+          Native scrollbar pans the Live2D frame. Wheel over the iframe goes to
+          Bestdori (needed for click/drag interactivity); use the right scrollbar
+          or zoom buttons to move the frame.
+        */}
         <div ref={screenRef} className="card-live2d-phone__screen card-live2d-phone__screen--pan">
           <div className="card-live2d-phone__scroll-body card-live2d-phone__scroll-body--flow">
             {children(zoom)}

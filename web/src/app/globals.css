@@ -2176,7 +2176,7 @@ button.glass-frame.card-tile:active {
 }
 
 .bestdori-live2d-embed--scroll .bestdori-live2d-embed__iframe--bestdori {
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .card-live2d-stage {
