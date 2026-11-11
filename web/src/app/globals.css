@@ -2170,19 +2170,36 @@ button.glass-frame.card-tile:active {
   min-height: 100%;
 }
 
-.card-live2d-phone__screen:not(.card-live2d-phone__screen--pan) {
-  overflow: hidden;
-  touch-action: pan-y;
+.card-live2d-phone__scroll-body--flow {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
 }
 
 .card-live2d-phone__screen--pan {
-  touch-action: pan-x pan-y;
+  overflow: auto;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
 }
 
-.card-live2d-phone__screen--pan .card-live2d-phone__scroll-body {
-  position: relative;
-  inset: auto;
-  height: calc(100% * var(--live2d-zoom, 1));
+.bestdori-live2d-embed--scroll {
+  position: relative !important;
+  inset: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  width: 100%;
+  height: auto !important;
+  min-height: 100%;
+  overflow: hidden;
+  background: #0a0a10;
+}
+
+.bestdori-live2d-embed--scroll .bestdori-live2d-embed__iframe--bestdori {
+  pointer-events: none;
 }
 
 .card-live2d-stage {

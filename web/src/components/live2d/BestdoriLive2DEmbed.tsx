@@ -13,6 +13,8 @@ type FitLayout = {
   scale: number;
   left: number;
   top: number;
+  /** Scrollable content height in CSS px (taller than the phone viewport). */
+  contentHeight: number;
 };
 
 function getLocalLive2DEmbedUrl(assetBundleName: string) {
@@ -22,28 +24,28 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 }
 
 /**
- * Bestdori's studio page composites thigh-up Live2D over a full room, so a
- * naive cover-center crop leaves a floor gap under the hem. Punch into the
- * character band and pin that hem to the phone bottom.
- *
- * The Live2D canvas on Bestdori sits mid-upper page with opaque white backing;
- * CHAR_BOTTOM must match that canvas hem — too high leaves floating floor gap.
+ * Fit the Live2D character band (skip "More Live2D" / Asset chrome) so the
+ * thigh-up model is mostly visible, then expose extra vertical room for pan.
  */
 function computeBestdoriCover(containerW: number, containerH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  // Character + white Live2D panel on Bestdori's 1280×960 tool page.
-  const CHAR_TOP = 0.04;
-  const CHAR_BOTTOM = 0.54;
+  // Skip Bestdori tool chrome; cover head → hem of the studio Live2D panel.
+  const CHAR_TOP = 0.145;
+  const CHAR_BOTTOM = 0.73;
   const charSpan = CHAR_BOTTOM - CHAR_TOP;
 
-  const scaleH = containerH / (PAGE_HEIGHT * charSpan);
-  const scaleW = containerW / contentW;
-  // Prefer filling the phone; slight overscan hides room floor under the hem.
-  const scale = Math.max(scaleH, scaleW) * zoom * 1.06;
+  // Height-fit the full character band (~90% of the phone) so head→hem shows.
+  // Prefer vertical fit over width; side crop of the studio room is fine.
+  const scale = ((containerH * 0.9) / (PAGE_HEIGHT * charSpan)) * zoom;
 
   const left = -SIDEBAR_WIDTH * scale + (containerW - contentW * scale) / 2;
-  const top = containerH - PAGE_HEIGHT * CHAR_BOTTOM * scale;
-  return { scale, left, top };
+  const bandHeight = PAGE_HEIGHT * charSpan * scale;
+  // Extra headroom above/below so mouse-wheel / pan rail can browse.
+  const scrollPad = Math.max(containerH * 0.28, bandHeight * 0.2);
+  const contentHeight = bandHeight + scrollPad * 2;
+  const top = scrollPad - PAGE_HEIGHT * CHAR_TOP * scale;
+
+  return { scale, left, top, contentHeight };
 }
 
 /** Bestdori Live2D — local Pixi embed or official Bestdori viewer (cover-fit). */
@@ -73,43 +75,57 @@ export function BestdoriLive2DEmbed({
     if (!el) return;
 
     const update = () => {
-      const w = el.clientWidth;
-      const h = el.clientHeight;
+      // Fit against the phone viewport (offsetParent / screen), not the tall scroll body.
+      const viewport = el.parentElement;
+      const w = viewport?.clientWidth || el.clientWidth;
+      const h = viewport?.clientHeight || el.clientHeight;
       if (w > 0 && h > 0) setLayout(computeBestdoriCover(w, h, zoom));
     };
 
     update();
     const ro = new ResizeObserver(update);
-    ro.observe(el);
+    ro.observe(el.parentElement ?? el);
     return () => ro.disconnect();
   }, [mode, zoom]);
+
+  if (mode === "local") {
+    return (
+      <div className={cn("bestdori-live2d-embed", "bestdori-live2d-embed--fill", className)}>
+        <iframe
+          src={src}
+          title="Live2D"
+          scrolling="no"
+          className={cn("bestdori-live2d-embed__iframe", "bestdori-live2d-embed__iframe--fill")}
+          style={{ overflow: "hidden" }}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </div>
+    );
+  }
 
   return (
     <div
       ref={containerRef}
-      className={cn("bestdori-live2d-embed", "bestdori-live2d-embed--fill", className)}
+      className={cn("bestdori-live2d-embed", "bestdori-live2d-embed--scroll", className)}
+      style={{ height: layout.contentHeight }}
     >
       <iframe
         src={src}
         title="Live2D"
-        // Prevent Bestdori's own page chrome (comments / side panels) from
-        // capturing vertical pan inside the phone frame.
+        // Cross-origin page would steal wheel events; keep viewing-only so the
+        // phone frame can scroll with mouse wheel / trackpad.
         scrolling="no"
-        className={cn(
-          "bestdori-live2d-embed__iframe",
-          mode === "local" ? "bestdori-live2d-embed__iframe--fill" : "bestdori-live2d-embed__iframe--bestdori"
-        )}
-        style={
-          mode === "bestdori"
-            ? {
-                width: PAGE_WIDTH,
-                height: PAGE_HEIGHT,
-                overflow: "hidden",
-                transform: `translate(${layout.left}px, ${layout.top}px) scale(${layout.scale})`,
-                transformOrigin: "top left",
-              }
-            : { overflow: "hidden" }
-        }
+        tabIndex={-1}
+        className={cn("bestdori-live2d-embed__iframe", "bestdori-live2d-embed__iframe--bestdori")}
+        style={{
+          width: PAGE_WIDTH,
+          height: PAGE_HEIGHT,
+          overflow: "hidden",
+          pointerEvents: "none",
+          transform: `translate(${layout.left}px, ${layout.top}px) scale(${layout.scale})`,
+          transformOrigin: "top left",
+        }}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
       />
