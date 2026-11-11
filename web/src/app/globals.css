@@ -2089,77 +2089,54 @@ button.glass-frame.card-tile:active {
   background: transparent;
 }
 
-.card-live2d-phone__pan-rail {
-  position: absolute;
-  right: 0.35rem;
-  top: 50%;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  transform: translateY(-50%);
-  padding: 0.3rem 0.2rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  background: rgba(12, 12, 18, 0.72);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
-}
-
-.card-live2d-phone__pan-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.7rem;
-  height: 1.7rem;
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 999px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.1));
-  color: #fff;
-  font-size: 0.7rem;
-  line-height: 1;
-  cursor: pointer;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
-}
-
-.card-live2d-phone__pan-btn:hover {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0.16));
-}
-
-.card-live2d-phone__pan-btn:active {
-  transform: scale(0.96);
-}
-
-.card-live2d-phone__pan-track {
-  width: 0.28rem;
-  height: 2.4rem;
-  border-radius: 999px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.12),
-    rgba(255, 255, 255, 0.38),
-    rgba(255, 255, 255, 0.12)
-  );
-}
-
 .card-live2d-phone__screen--pan {
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  touch-action: pan-y;
   overscroll-behavior: contain;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+  /* Firefox — white track + grey thumb like system scrollbar */
+  scrollbar-width: auto;
+  scrollbar-color: #8e8e8e #ffffff;
 }
 
 .card-live2d-phone__screen--pan::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 14px;
+}
+
+.card-live2d-phone__screen--pan::-webkit-scrollbar-button {
+  display: block;
+  height: 14px;
+  background-color: #ffffff;
+}
+
+.card-live2d-phone__screen--pan::-webkit-scrollbar-button:single-button:vertical:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23a0a0a0' d='M5 3L2 7h6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.card-live2d-phone__screen--pan::-webkit-scrollbar-button:single-button:vertical:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23a0a0a0' d='M2 3h6L5 7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.card-live2d-phone__screen--pan::-webkit-scrollbar-track {
+  background: #ffffff;
 }
 
 .card-live2d-phone__screen--pan::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.22);
+  background: #9a9a9a;
+  border-radius: 6px;
+  border: 3px solid #ffffff;
+  background-clip: padding-box;
+  min-height: 36px;
+}
+
+.card-live2d-phone__screen--pan::-webkit-scrollbar-thumb:hover {
+  background: #7a7a7a;
+  border: 3px solid #ffffff;
+  background-clip: padding-box;
 }
 
 .card-live2d-phone__scroll-body {
@@ -2178,24 +2155,24 @@ button.glass-frame.card-tile:active {
   min-height: 100%;
 }
 
-.card-live2d-phone__screen--pan {
-  overflow: auto;
-  touch-action: pan-y;
-  overscroll-behavior: contain;
-}
-
+/* Must NOT use height:auto !important — that overrode the inline px height and caused a black frame. */
 .bestdori-live2d-embed--scroll {
-  position: relative !important;
-  inset: auto !important;
-  top: auto !important;
-  right: auto !important;
-  bottom: auto !important;
-  left: auto !important;
+  position: relative;
+  inset: auto;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
   width: 100%;
-  height: auto !important;
   min-height: 100%;
   overflow: hidden;
   background: #0a0a10;
+}
+
+.bestdori-live2d-embed--scroll.card-live2d-stage {
+  position: relative;
+  inset: auto;
+  height: auto;
 }
 
 .bestdori-live2d-embed--scroll .bestdori-live2d-embed__iframe--bestdori {

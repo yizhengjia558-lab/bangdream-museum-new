@@ -13,7 +13,6 @@ type FitLayout = {
   scale: number;
   left: number;
   top: number;
-  /** Scrollable content height in CSS px (taller than the phone viewport). */
   contentHeight: number;
 };
 
@@ -24,25 +23,26 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 }
 
 /**
- * Fit the Live2D character band (skip "More Live2D" / Asset chrome) so the
- * thigh-up model is mostly visible, then expose extra vertical room for pan.
+ * Crop Bestdori's tool page to the Live2D character band (skip chrome) and
+ * size it so head→hem fits the phone, with extra scroll room above/below.
  */
-function computeBestdoriCover(containerW: number, containerH: number, zoom: number): FitLayout {
+function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  // Skip Bestdori tool chrome; cover head → hem of the studio Live2D panel.
+  // Skip "More Live2D" / Asset header; cover studio Live2D panel to hem.
   const CHAR_TOP = 0.145;
   const CHAR_BOTTOM = 0.73;
-  const charSpan = CHAR_BOTTOM - CHAR_TOP;
+  const charSpan = Math.max(0.4, CHAR_BOTTOM - CHAR_TOP);
 
-  // Height-fit the full character band (~90% of the phone) so head→hem shows.
-  // Prefer vertical fit over width; side crop of the studio room is fine.
-  const scale = ((containerH * 0.9) / (PAGE_HEIGHT * charSpan)) * zoom;
+  const safeW = Math.max(viewportW, 120);
+  const safeH = Math.max(viewportH, 160);
 
-  const left = -SIDEBAR_WIDTH * scale + (containerW - contentW * scale) / 2;
+  // Fit the character band to ~92% of the phone height (full-body-ish).
+  const scale = ((safeH * 0.92) / (PAGE_HEIGHT * charSpan)) * zoom;
+
+  const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
   const bandHeight = PAGE_HEIGHT * charSpan * scale;
-  // Extra headroom above/below so mouse-wheel / pan rail can browse.
-  const scrollPad = Math.max(containerH * 0.28, bandHeight * 0.2);
-  const contentHeight = bandHeight + scrollPad * 2;
+  const scrollPad = Math.max(safeH * 0.2, 48);
+  const contentHeight = Math.max(bandHeight + scrollPad * 2, safeH + 1);
   const top = scrollPad - PAGE_HEIGHT * CHAR_TOP * scale;
 
   return { scale, left, top, contentHeight };
@@ -61,7 +61,7 @@ export function BestdoriLive2DEmbed({
   mode?: "local" | "bestdori";
   zoom?: number;
 }) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const hostRef = useRef<HTMLDivElement>(null);
   const [layout, setLayout] = useState<FitLayout>(() => computeBestdoriCover(224, 398, zoom));
 
   const src =
@@ -71,22 +71,23 @@ export function BestdoriLive2DEmbed({
 
   useEffect(() => {
     if (mode === "local") return;
-    const el = containerRef.current;
-    if (!el) return;
+    const host = hostRef.current;
+    if (!host) return;
 
     const update = () => {
-      // Fit against the phone viewport (offsetParent / screen), not the tall scroll body.
-      const viewport = el.parentElement;
-      const w = viewport?.clientWidth || el.clientWidth;
-      const h = viewport?.clientHeight || el.clientHeight;
+      const screen = host.closest(".card-live2d-phone__screen") as HTMLElement | null;
+      const w = screen?.clientWidth || host.clientWidth || 224;
+      const h = screen?.clientHeight || 398;
       if (w > 0 && h > 0) setLayout(computeBestdoriCover(w, h, zoom));
     };
 
     update();
     const ro = new ResizeObserver(update);
-    ro.observe(el.parentElement ?? el);
+    const screen = host.closest(".card-live2d-phone__screen");
+    if (screen) ro.observe(screen);
+    else ro.observe(host);
     return () => ro.disconnect();
-  }, [mode, zoom]);
+  }, [mode, zoom, assetBundleName]);
 
   if (mode === "local") {
     return (
@@ -97,7 +98,7 @@ export function BestdoriLive2DEmbed({
           scrolling="no"
           className={cn("bestdori-live2d-embed__iframe", "bestdori-live2d-embed__iframe--fill")}
           style={{ overflow: "hidden" }}
-          loading="lazy"
+          loading="eager"
           referrerPolicy="no-referrer-when-downgrade"
         />
       </div>
@@ -106,15 +107,14 @@ export function BestdoriLive2DEmbed({
 
   return (
     <div
-      ref={containerRef}
+      ref={hostRef}
       className={cn("bestdori-live2d-embed", "bestdori-live2d-embed--scroll", className)}
-      style={{ height: layout.contentHeight }}
+      style={{ height: `${layout.contentHeight}px` }}
     >
       <iframe
+        key={assetBundleName}
         src={src}
         title="Live2D"
-        // Cross-origin page would steal wheel events; keep viewing-only so the
-        // phone frame can scroll with mouse wheel / trackpad.
         scrolling="no"
         tabIndex={-1}
         className={cn("bestdori-live2d-embed__iframe", "bestdori-live2d-embed__iframe--bestdori")}
@@ -126,8 +126,9 @@ export function BestdoriLive2DEmbed({
           transform: `translate(${layout.left}px, ${layout.top}px) scale(${layout.scale})`,
           transformOrigin: "top left",
         }}
-        loading="lazy"
+        loading="eager"
         referrerPolicy="no-referrer-when-downgrade"
+        allow="autoplay; fullscreen"
       />
     </div>
   );
