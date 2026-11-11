@@ -1192,11 +1192,12 @@ button.glass-frame.card-tile:active {
 }
 
 .costume-detail-live2d .card-live2d-phone {
-  width: min(100%, 17rem);
+  width: min(100%, 20rem);
 }
 
 .costume-detail-live2d .card-live2d-phone__screen {
   width: 100%;
+  aspect-ratio: 4 / 5;
 }
 
 .costume-detail-empty {
@@ -2079,14 +2080,15 @@ button.glass-frame.card-tile:active {
 .card-live2d-phone__screen {
   position: relative;
   flex: 0 0 auto;
-  width: min(100%, calc(min(52dvh, 26rem) * 9 / 16));
+  /* Wider frame closer to Bestdori Live2D panel — avoids tall letterbox. */
+  width: min(100%, min(46dvh, 22rem));
   max-width: 100%;
-  aspect-ratio: 9 / 16;
+  aspect-ratio: 4 / 5;
   height: auto;
   margin-inline: auto;
   overflow: hidden;
   border-radius: 18px;
-  background: transparent;
+  background: #0a0a10;
 }
 
 .card-live2d-phone__screen--pan {
@@ -2153,30 +2155,6 @@ button.glass-frame.card-tile:active {
   width: 100%;
   height: auto;
   min-height: 100%;
-}
-
-/* Must NOT use height:auto !important — that overrode the inline px height and caused a black frame. */
-.bestdori-live2d-embed--scroll {
-  position: relative;
-  inset: auto;
-  top: auto;
-  right: auto;
-  bottom: auto;
-  left: auto;
-  width: 100%;
-  min-height: 100%;
-  overflow: hidden;
-  background: #0a0a10;
-}
-
-.bestdori-live2d-embed--scroll.card-live2d-stage {
-  position: relative;
-  inset: auto;
-  height: auto;
-}
-
-.bestdori-live2d-embed--scroll .bestdori-live2d-embed__iframe--bestdori {
-  pointer-events: auto;
 }
 
 .card-live2d-stage {
@@ -5683,10 +5661,10 @@ body.card-detail-open .mobile-bottom-nav {
 
   .card-live2d-phone__screen {
     flex: 0 0 auto;
-    width: min(100%, calc(min(42dvh, 20rem) * 9 / 16));
+    width: min(100%, min(40dvh, 18rem));
     max-width: 100%;
     height: auto;
-    aspect-ratio: 9 / 16;
+    aspect-ratio: 4 / 5;
     margin-inline: auto;
   }
 
@@ -5941,7 +5919,7 @@ body.card-detail-open .mobile-bottom-nav {
 
   .card-live2d-phone {
     flex: none;
-    width: min(100%, calc((100dvh - 5.5rem) * 9 / 16));
+    width: min(100%, min(52dvh, 20rem));
     max-width: 100%;
     height: auto;
     max-height: calc(100dvh - 4.5rem);
@@ -5961,7 +5939,7 @@ body.card-detail-open .mobile-bottom-nav {
     max-width: 100%;
     height: auto;
     max-height: calc(100dvh - 6.5rem);
-    aspect-ratio: 9 / 16;
+    aspect-ratio: 4 / 5;
   }
 
   .card-comments {
@@ -6020,10 +5998,10 @@ body.card-detail-open .mobile-bottom-nav {
   }
 
   .card-live2d-phone__screen {
-    width: min(100%, calc(min(48dvh, 22rem) * 9 / 16));
+    width: min(100%, min(44dvh, 20rem));
     max-width: 100%;
     height: auto;
-    aspect-ratio: 9 / 16;
+    aspect-ratio: 4 / 5;
   }
 
   .card-detail-image-frame {

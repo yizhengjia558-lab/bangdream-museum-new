@@ -13,7 +13,6 @@ type FitLayout = {
   scale: number;
   left: number;
   top: number;
-  contentHeight: number;
 };
 
 function getLocalLive2DEmbedUrl(assetBundleName: string) {
@@ -23,33 +22,30 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 }
 
 /**
- * Crop Bestdori's tool page to the Live2D studio panel (skip chrome) and fit
- * head→hem into the phone. Content is taller than the viewport so the scrollbar
- * can reveal the rest of the frame.
+ * Cover-fit the Live2D character band into the phone frame — fill edge-to-edge
+ * (no letterbox), keep the figure large and roughly centered.
  */
 function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  // Skip More Live2D / Asset title; include thigh-up hem + a little floor.
-  const CHAR_TOP = 0.17;
-  const CHAR_BOTTOM = 0.84;
-  const charSpan = Math.max(0.45, CHAR_BOTTOM - CHAR_TOP);
+  // Skip More Live2D / Asset chrome; cover studio Live2D panel to hem.
+  const CHAR_TOP = 0.175;
+  const CHAR_BOTTOM = 0.7;
+  const charSpan = Math.max(0.4, CHAR_BOTTOM - CHAR_TOP);
 
   const safeW = Math.max(viewportW, 120);
   const safeH = Math.max(viewportH, 160);
 
-  // Fit the whole character band into the phone height so hem is on-screen at 100%.
-  const scaleH = (safeH * 0.94) / (PAGE_HEIGHT * charSpan);
-  const scaleW = (safeW * 1.08) / contentW;
-  const scale = Math.min(scaleH, scaleW * 1.2) * zoom;
+  // COVER: fill the whole frame (no black bars). Mild overscan keeps hem pinned.
+  const scaleH = safeH / (PAGE_HEIGHT * charSpan);
+  const scaleW = safeW / contentW;
+  const scale = Math.max(scaleH, scaleW) * zoom * 1.04;
 
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
-  const bandHeight = PAGE_HEIGHT * charSpan * scale;
-  // Enough scroll room to move past header chrome / lower floor when zoomed.
-  const scrollPad = Math.max(safeH * 0.45, bandHeight * 0.35);
-  const contentHeight = Math.ceil(bandHeight + scrollPad * 2);
-  const top = scrollPad - PAGE_HEIGHT * CHAR_TOP * scale;
+  // Vertically center the character band, with a slight bias toward the hem.
+  const bandH = PAGE_HEIGHT * charSpan * scale;
+  const top = (safeH - bandH) / 2 - PAGE_HEIGHT * CHAR_TOP * scale + safeH * 0.01;
 
-  return { scale, left, top, contentHeight };
+  return { scale, left, top };
 }
 
 /** Bestdori Live2D — local Pixi embed or official Bestdori viewer (cover-fit). */
@@ -66,7 +62,7 @@ export function BestdoriLive2DEmbed({
   zoom?: number;
 }) {
   const hostRef = useRef<HTMLDivElement>(null);
-  const [layout, setLayout] = useState<FitLayout>(() => computeBestdoriCover(224, 398, zoom));
+  const [layout, setLayout] = useState<FitLayout>(() => computeBestdoriCover(280, 350, zoom));
 
   const src =
     mode === "local"
@@ -79,25 +75,14 @@ export function BestdoriLive2DEmbed({
     if (!host) return;
 
     const update = () => {
-      const screen = host.closest(".card-live2d-phone__screen") as HTMLElement | null;
-      const w = screen?.clientWidth || host.clientWidth || 224;
-      const h = screen?.clientHeight || 398;
+      const w = host.clientWidth || 280;
+      const h = host.clientHeight || 350;
       if (w > 0 && h > 0) setLayout(computeBestdoriCover(w, h, zoom));
     };
 
     update();
-    // Start near the character (below the upper scroll pad).
-    requestAnimationFrame(() => {
-      const screen = host.closest(".card-live2d-phone__screen") as HTMLElement | null;
-      if (!screen) return;
-      const pad = Math.max(screen.clientHeight * 0.45, 48);
-      screen.scrollTop = Math.max(0, pad * 0.55);
-    });
-
     const ro = new ResizeObserver(update);
-    const screen = host.closest(".card-live2d-phone__screen");
-    if (screen) ro.observe(screen);
-    else ro.observe(host);
+    ro.observe(host);
     return () => ro.disconnect();
   }, [mode, zoom, assetBundleName]);
 
@@ -120,8 +105,7 @@ export function BestdoriLive2DEmbed({
   return (
     <div
       ref={hostRef}
-      className={cn("bestdori-live2d-embed", "bestdori-live2d-embed--scroll", className)}
-      style={{ height: `${layout.contentHeight}px` }}
+      className={cn("bestdori-live2d-embed", "bestdori-live2d-embed--fill", className)}
     >
       <iframe
         key={assetBundleName}
@@ -133,7 +117,6 @@ export function BestdoriLive2DEmbed({
           width: PAGE_WIDTH,
           height: PAGE_HEIGHT,
           overflow: "hidden",
-          // Keep Live2D click / drag interactivity from Bestdori's viewer.
           pointerEvents: "auto",
           transform: `translate(${layout.left}px, ${layout.top}px) scale(${layout.scale})`,
           transformOrigin: "top left",
