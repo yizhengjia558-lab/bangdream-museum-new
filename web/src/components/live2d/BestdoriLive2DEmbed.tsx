@@ -23,33 +23,38 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 }
 
 /**
- * Make Bestdori's Live2D panel fill the phone viewport (no black letterbox).
- * Scale large enough that one screen shows part of the figure; the full
- * head→hem strip is taller so the scrollbar can reveal the rest.
+ * Fit Bestdori Live2D head→hem into a normal phone frame.
+ * Hem is pinned to the bottom (no floating). At 100% the full figure fits;
+ * zooming in grows a scrollable strip so you can pan.
  */
 function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  // Skip More Live2D / Asset chrome; include thigh-up hem.
-  const CHAR_TOP = 0.165;
-  const CHAR_BOTTOM = 0.8;
-  const charSpan = Math.max(0.45, CHAR_BOTTOM - CHAR_TOP);
+  // Skip More Live2D / Asset chrome; cover studio panel to visual hem.
+  const CHAR_TOP = 0.18;
+  const CHAR_BOTTOM = 0.7;
+  const charSpan = Math.max(0.4, CHAR_BOTTOM - CHAR_TOP);
 
-  const safeW = Math.max(viewportW, 100);
-  const safeH = Math.max(viewportH, 160);
+  const safeW = Math.max(viewportW, 120);
+  const safeH = Math.max(viewportH, 180);
 
-  // One viewport shows ~50% of the character band → figure stays large & fills frame.
-  // Remaining band is reached by scrolling (no empty black gap under the panel).
-  const VIEWPORT_FRACTION = 0.5;
-  const scaleToFillHeight = safeH / (PAGE_HEIGHT * charSpan * VIEWPORT_FRACTION);
-  const scaleToFillWidth = safeW / contentW;
-  const scale = Math.max(scaleToFillHeight, scaleToFillWidth) * zoom * 1.02;
+  // Fit the whole character band into the phone (contain) so the figure is complete.
+  const scaleH = (safeH * 0.98) / (PAGE_HEIGHT * charSpan);
+  const scaleW = (safeW * 1.02) / contentW;
+  const baseScale = Math.min(scaleH, scaleW);
+  const scale = baseScale * zoom;
 
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
-  const top = -PAGE_HEIGHT * CHAR_TOP * scale;
-  const bandHeight = PAGE_HEIGHT * charSpan * scale;
-  // Must be taller than the phone so overflow-y scroll works and no black void.
-  const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * 1.02));
 
+  // Pin hem to the bottom of the visible phone — avoids “悬空”.
+  if (zoom <= 1.01) {
+    const top = safeH - PAGE_HEIGHT * CHAR_BOTTOM * scale;
+    return { scale, left, top, contentHeight: safeH };
+  }
+
+  // Zoomed: make a tall scroll strip of the full band so users can pan head↔hem.
+  const bandHeight = PAGE_HEIGHT * charSpan * scale;
+  const contentHeight = Math.ceil(Math.max(bandHeight, safeH * zoom));
+  const top = -PAGE_HEIGHT * CHAR_TOP * scale;
   return { scale, left, top, contentHeight };
 }
 
@@ -67,12 +72,14 @@ export function BestdoriLive2DEmbed({
   zoom?: number;
 }) {
   const hostRef = useRef<HTMLDivElement>(null);
-  const [layout, setLayout] = useState<FitLayout>(() => computeBestdoriCover(200, 630, zoom));
+  const [layout, setLayout] = useState<FitLayout>(() => computeBestdoriCover(220, 390, zoom));
 
   const src =
     mode === "local"
       ? getLocalLive2DEmbedUrl(assetBundleName)
       : getBestdoriLive2DViewerUrl(assetBundleName);
+
+  const zoomed = zoom > 1.01;
 
   useEffect(() => {
     if (mode === "local") return;
@@ -81,8 +88,8 @@ export function BestdoriLive2DEmbed({
 
     const update = () => {
       const screen = host.closest(".card-live2d-phone__screen") as HTMLElement | null;
-      const w = screen?.clientWidth || host.clientWidth || 200;
-      const h = screen?.clientHeight || 630;
+      const w = screen?.clientWidth || host.clientWidth || 220;
+      const h = screen?.clientHeight || 390;
       if (w > 0 && h > 0) setLayout(computeBestdoriCover(w, h, zoom));
     };
 
@@ -115,12 +122,12 @@ export function BestdoriLive2DEmbed({
       ref={hostRef}
       className={cn(
         "bestdori-live2d-embed",
-        "bestdori-live2d-embed--scroll",
+        zoomed ? "bestdori-live2d-embed--scroll" : "bestdori-live2d-embed--fill",
         "card-live2d-stage",
         "card-live2d-stage--live2d",
         className
       )}
-      style={{ height: `${layout.contentHeight}px` }}
+      style={zoomed ? { height: `${layout.contentHeight}px` } : undefined}
     >
       <iframe
         key={assetBundleName}

@@ -1192,12 +1192,12 @@ button.glass-frame.card-tile:active {
 }
 
 .costume-detail-live2d .card-live2d-phone {
-  width: min(100%, 14rem);
+  width: min(100%, 16rem);
 }
 
 .costume-detail-live2d .card-live2d-phone__screen {
   width: 100%;
-  aspect-ratio: 6 / 19;
+  aspect-ratio: 9 / 16;
 }
 
 .costume-detail-empty {
@@ -2080,10 +2080,10 @@ button.glass-frame.card-tile:active {
 .card-live2d-phone__screen {
   position: relative;
   flex: 0 0 auto;
-  /* Tall phone frame (6:19) — official Live2D fills via cover-scale + scroll. */
-  width: min(100%, calc(min(72dvh, 36rem) * 6 / 19));
+  /* Standard phone proportion. */
+  width: min(100%, calc(min(52dvh, 24rem) * 9 / 16));
   max-width: 100%;
-  aspect-ratio: 6 / 19;
+  aspect-ratio: 9 / 16;
   height: auto;
   margin-inline: auto;
   overflow: hidden;
@@ -5677,10 +5677,10 @@ body.card-detail-open .mobile-bottom-nav {
 
   .card-live2d-phone__screen {
     flex: 0 0 auto;
-    width: min(100%, calc(min(68dvh, 32rem) * 6 / 19));
+    width: min(100%, calc(min(42dvh, 18rem) * 9 / 16));
     max-width: 100%;
     height: auto;
-    aspect-ratio: 6 / 19;
+    aspect-ratio: 9 / 16;
     margin-inline: auto;
   }
 
@@ -5935,7 +5935,7 @@ body.card-detail-open .mobile-bottom-nav {
 
   .card-live2d-phone {
     flex: none;
-    width: min(100%, calc((100dvh - 5.5rem) * 6 / 19));
+    width: min(100%, calc((100dvh - 5.5rem) * 9 / 16));
     max-width: 100%;
     height: auto;
     max-height: calc(100dvh - 4.5rem);
@@ -5955,7 +5955,7 @@ body.card-detail-open .mobile-bottom-nav {
     max-width: 100%;
     height: auto;
     max-height: calc(100dvh - 6.5rem);
-    aspect-ratio: 6 / 19;
+    aspect-ratio: 9 / 16;
   }
 
   .card-comments {
@@ -6014,10 +6014,10 @@ body.card-detail-open .mobile-bottom-nav {
   }
 
   .card-live2d-phone__screen {
-    width: min(100%, calc(min(70dvh, 34rem) * 6 / 19));
+    width: min(100%, calc(min(48dvh, 22rem) * 9 / 16));
     max-width: 100%;
     height: auto;
-    aspect-ratio: 6 / 19;
+    aspect-ratio: 9 / 16;
   }
 
   .card-detail-image-frame {

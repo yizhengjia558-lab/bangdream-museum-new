@@ -4,8 +4,8 @@ import { useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { cn } from "@/lib/utils";
 
-const MIN_ZOOM = 0.7;
-const MAX_ZOOM = 2.2;
+const MIN_ZOOM = 0.75;
+const MAX_ZOOM = 2;
 const ZOOM_STEP = 0.12;
 
 function clampZoom(value: number) {
@@ -22,6 +22,7 @@ export function Live2DPhoneFrame({
   const { t } = useLocale();
   const [zoom, setZoom] = useState(1);
   const screenRef = useRef<HTMLDivElement>(null);
+  const canPan = zoom > 1.01;
 
   return (
     <div className={cn("card-live2d-phone", className)} style={{ "--live2d-zoom": zoom } as CSSProperties}>
@@ -57,11 +58,19 @@ export function Live2DPhoneFrame({
       </div>
       <div className="card-live2d-phone__stage">
         {/*
-          6:19 frame is filled by a magnified Bestdori strip (no black gap).
-          Scrollbar pans head→hem; clicks still go to the official viewer.
+          Normal phone 9:16. At 100% the full thigh-up figure fits with hem pinned.
+          Zoom in to pan with the scrollbar.
         */}
-        <div ref={screenRef} className="card-live2d-phone__screen card-live2d-phone__screen--pan">
-          <div className="card-live2d-phone__scroll-body card-live2d-phone__scroll-body--flow">
+        <div
+          ref={screenRef}
+          className={cn("card-live2d-phone__screen", canPan && "card-live2d-phone__screen--pan")}
+        >
+          <div
+            className={cn(
+              "card-live2d-phone__scroll-body",
+              canPan && "card-live2d-phone__scroll-body--flow"
+            )}
+          >
             {children(zoom)}
           </div>
         </div>
