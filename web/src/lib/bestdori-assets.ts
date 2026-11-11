@@ -50,30 +50,59 @@ export function getCharacterSdCandidates(characterId: number, sdResourceName?: s
   return names.flatMap((name) => getLivesdImageCandidates(name));
 }
 
+/**
+ * Pick CDN/tool region for a Live2D bundle.
+ * Bilibili collab costumes (`bili_*`) are on CN; JP tool page shows "Not available".
+ */
+export function preferLive2DRegion(assetBundleName: string): BestdoriRegion {
+  if (/^bili_/i.test(assetBundleName)) return "cn";
+  return "jp";
+}
+
 /** Bestdori 官方 Live2D Viewer（图 3 动态立绘） */
-export function getBestdoriLive2DViewerUrl(assetBundleName: string, region: BestdoriRegion = "jp") {
-  return `https://bestdori.com/tool/live2d/asset/${region}/live2d/chara/${assetBundleName}`;
+export function getBestdoriLive2DViewerUrl(assetBundleName: string, region?: BestdoriRegion) {
+  const resolved = region ?? preferLive2DRegion(assetBundleName);
+  return `https://bestdori.com/tool/live2d/asset/${resolved}/live2d/chara/${assetBundleName}`;
 }
 
 export function getLive2DBuildDataUrl(assetBundleName: string, region: BestdoriRegion = "jp") {
   return `${assetBase(region)}/live2d/chara/${assetBundleName}_rip/buildData.asset`;
 }
 
-/** 探测 Live2D 资源是否存在（buildData.asset） */
+async function buildDataLooksValid(assetBundleName: string, region: BestdoriRegion) {
+  try {
+    const res = await fetch(getLive2DBuildDataUrl(assetBundleName, region), {
+      headers: { Accept: "application/octet-stream,application/json,*/*" },
+    });
+    if (!res.ok) return false;
+    const contentType = res.headers.get("Content-Type") ?? "";
+    // Bestdori SPA returns 200 text/html for missing JP assets — treat as absent.
+    if (contentType.includes("text/html")) return false;
+    const text = (await res.text()).trimStart();
+    return text.startsWith("{") && text.includes('"Base"');
+  } catch {
+    return false;
+  }
+}
+
+/** 探测 Live2D 资源是否存在（buildData.asset，校验真实 JSON） */
 export async function probeLive2DAsset(assetBundleName: string): Promise<boolean> {
-  for (const region of ["jp", "cn"] as BestdoriRegion[]) {
-    try {
-      const res = await fetch(getLive2DBuildDataUrl(assetBundleName, region), { method: "HEAD" });
-      if (res.ok) return true;
-    } catch {
-      /* try next region */
-    }
+  const preferred = preferLive2DRegion(assetBundleName);
+  const regions = [preferred, ...(["jp", "cn"] as BestdoriRegion[]).filter((r) => r !== preferred)];
+  for (const region of regions) {
+    if (await buildDataLooksValid(assetBundleName, region)) return true;
   }
   return false;
 }
 
 export async function resolveLive2DViewerUrl(assetBundleName: string | null | undefined): Promise<string | null> {
   if (!assetBundleName) return null;
-  const ok = await probeLive2DAsset(assetBundleName);
-  return ok ? getBestdoriLive2DViewerUrl(assetBundleName) : null;
+  const preferred = preferLive2DRegion(assetBundleName);
+  const regions = [preferred, ...(["jp", "cn"] as BestdoriRegion[]).filter((r) => r !== preferred)];
+  for (const region of regions) {
+    if (await buildDataLooksValid(assetBundleName, region)) {
+      return getBestdoriLive2DViewerUrl(assetBundleName, region);
+    }
+  }
+  return null;
 }

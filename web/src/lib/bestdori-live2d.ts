@@ -40,7 +40,10 @@ function refToProxyUrl(ref: BundleRef, region: BestdoriRegion) {
 async function fetchBuildData(
   assetBundleName: string
 ): Promise<{ base: BuildDataBase; region: BestdoriRegion }> {
-  const regions: BestdoriRegion[] = ["jp", "cn", "en"];
+  // Prefer CN first for bili_* collab bundles — JP often serves SPA HTML instead.
+  const regions: BestdoriRegion[] = /^bili_/i.test(assetBundleName)
+    ? ["cn", "jp", "en"]
+    : ["jp", "cn", "en"];
   let lastError: Error | null = null;
 
   for (const region of regions) {
