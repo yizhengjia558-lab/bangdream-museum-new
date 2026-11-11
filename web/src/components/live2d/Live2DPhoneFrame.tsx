@@ -22,7 +22,6 @@ export function Live2DPhoneFrame({
   const { t } = useLocale();
   const [zoom, setZoom] = useState(1);
   const screenRef = useRef<HTMLDivElement>(null);
-  const canPan = zoom > 1.01;
 
   return (
     <div className={cn("card-live2d-phone", className)} style={{ "--live2d-zoom": zoom } as CSSProperties}>
@@ -58,19 +57,10 @@ export function Live2DPhoneFrame({
       </div>
       <div className="card-live2d-phone__stage">
         {/*
-          Normal phone 9:16. At 100% the full thigh-up figure fits with hem pinned.
-          Zoom in to pan with the scrollbar.
+          Phone 9:16. Cover-fills Bestdori (no top letterbox). Scroll + zoom to pan.
         */}
-        <div
-          ref={screenRef}
-          className={cn("card-live2d-phone__screen", canPan && "card-live2d-phone__screen--pan")}
-        >
-          <div
-            className={cn(
-              "card-live2d-phone__scroll-body",
-              canPan && "card-live2d-phone__scroll-body--flow"
-            )}
-          >
+        <div ref={screenRef} className="card-live2d-phone__screen card-live2d-phone__screen--pan">
+          <div className="card-live2d-phone__scroll-body card-live2d-phone__scroll-body--flow">
             {children(zoom)}
           </div>
         </div>

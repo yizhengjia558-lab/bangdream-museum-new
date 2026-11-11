@@ -23,38 +23,31 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 }
 
 /**
- * Fit Bestdori Live2D head→hem into a normal phone frame.
- * Hem is pinned to the bottom (no floating). At 100% the full figure fits;
- * zooming in grows a scrollable strip so you can pan.
+ * Cover-fit Bestdori Live2D into the phone: crop chrome, fill the frame
+ * (no letterbox). Zoom grows a tall strip so head↔hem can be scrolled.
  */
 function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  // Skip More Live2D / Asset chrome; cover studio panel to visual hem.
-  const CHAR_TOP = 0.18;
-  const CHAR_BOTTOM = 0.7;
+  // Skip More Live2D / Asset chrome; keep head → mid-thigh studio band.
+  const CHAR_TOP = 0.16;
+  const CHAR_BOTTOM = 0.72;
   const charSpan = Math.max(0.4, CHAR_BOTTOM - CHAR_TOP);
 
   const safeW = Math.max(viewportW, 120);
   const safeH = Math.max(viewportH, 180);
 
-  // Fit the whole character band into the phone (contain) so the figure is complete.
-  const scaleH = (safeH * 0.98) / (PAGE_HEIGHT * charSpan);
-  const scaleW = (safeW * 1.02) / contentW;
-  const baseScale = Math.min(scaleH, scaleW);
-  const scale = baseScale * zoom;
+  // Cover the phone — prefer filling the frame over letterboxing.
+  const scaleH = safeH / (PAGE_HEIGHT * charSpan);
+  const scaleW = safeW / contentW;
+  const baseScale = Math.max(scaleW, scaleH);
+  const scale = baseScale * Math.max(zoom, 0.75);
 
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
-
-  // Pin hem to the bottom of the visible phone — avoids “悬空”.
-  if (zoom <= 1.01) {
-    const top = safeH - PAGE_HEIGHT * CHAR_BOTTOM * scale;
-    return { scale, left, top, contentHeight: safeH };
-  }
-
-  // Zoomed: make a tall scroll strip of the full band so users can pan head↔hem.
-  const bandHeight = PAGE_HEIGHT * charSpan * scale;
-  const contentHeight = Math.ceil(Math.max(bandHeight, safeH * zoom));
   const top = -PAGE_HEIGHT * CHAR_TOP * scale;
+  const bandHeight = PAGE_HEIGHT * charSpan * scale;
+  // Always at least the phone height; zoom stretches the scroll strip.
+  const contentHeight = Math.ceil(Math.max(bandHeight, safeH));
+
   return { scale, left, top, contentHeight };
 }
 
@@ -78,8 +71,6 @@ export function BestdoriLive2DEmbed({
     mode === "local"
       ? getLocalLive2DEmbedUrl(assetBundleName)
       : getBestdoriLive2DViewerUrl(assetBundleName);
-
-  const zoomed = zoom > 1.01;
 
   useEffect(() => {
     if (mode === "local") return;
@@ -117,17 +108,18 @@ export function BestdoriLive2DEmbed({
     );
   }
 
+  // Always use a sized scroll strip so cover-fill never letterboxes, and zoom can pan.
   return (
     <div
       ref={hostRef}
       className={cn(
         "bestdori-live2d-embed",
-        zoomed ? "bestdori-live2d-embed--scroll" : "bestdori-live2d-embed--fill",
+        "bestdori-live2d-embed--scroll",
         "card-live2d-stage",
         "card-live2d-stage--live2d",
         className
       )}
-      style={zoomed ? { height: `${layout.contentHeight}px` } : undefined}
+      style={{ height: `${layout.contentHeight}px` }}
     >
       <iframe
         key={assetBundleName}
