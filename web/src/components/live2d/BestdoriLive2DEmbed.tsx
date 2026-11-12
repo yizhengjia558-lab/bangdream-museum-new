@@ -5,12 +5,15 @@ import { getBestdoriLive2DViewerUrl } from "@/lib/bestdori-assets";
 import { cn } from "@/lib/utils";
 
 /**
- * Bestdori Live2D tool is a responsive SPA: a short iframe crops the studio
- * mid-thigh. Use a tall iframe so the official stage can lay out the full panel.
+ * Tall iframe so Bestdori’s responsive Live2D stage can lay out a full figure.
+ * Visual scale is locked to the previous (75%) generation so it doesn’t look enlarged.
  */
 const PAGE_WIDTH = 1280;
-const PAGE_HEIGHT = 1680;
+const PAGE_HEIGHT = 1800;
 const SIDEBAR_WIDTH = 272;
+/** Previous-generation framing used a 960-tall page with this fit span (75% size). */
+const PREV_PAGE_HEIGHT = 960;
+const PREV_FIT_SPAN = 0.64 / 0.75;
 
 type FitLayout = {
   scale: number;
@@ -26,30 +29,28 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 }
 
 /**
- * Cover-fit the tall official Live2D studio into the phone (9:16, no letterbox).
- * One screen shows part of the panel; scroll reaches the rest of the official UI.
+ * Same on-screen size as the last 75% framing; tall strip (~2×+ phone) so the
+ * scrollbar can reach the full official Live2D panel / body. No letterbox.
  */
 function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  // Skip top nav/chrome; include through the bottom of the tall studio iframe.
-  const CHAR_TOP = 0.04;
+  const CHAR_TOP = 0.03;
   const CHAR_BOTTOM = 1;
   const fullSpan = Math.max(0.5, CHAR_BOTTOM - CHAR_TOP);
 
   const safeW = Math.max(viewportW, 100);
   const safeH = Math.max(viewportH, 160);
 
-  // ~55% of the tall studio per screen → fills the phone and leaves scroll room
-  // for the lower half of the official Live2D interface.
-  const FIT_SPAN = 0.55;
-  const scaleToFillHeight = safeH / (PAGE_HEIGHT * FIT_SPAN);
+  // Lock visual size to the previous generation (not the recent face-zoom).
+  const scaleToMatchPrev = safeH / (PREV_PAGE_HEIGHT * PREV_FIT_SPAN);
   const scaleToFillWidth = safeW / contentW;
-  const scale = Math.max(scaleToFillHeight, scaleToFillWidth) * Math.max(zoom, 0.75);
+  const scale = Math.max(scaleToMatchPrev, scaleToFillWidth) * Math.max(zoom, 0.75);
 
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
   const top = -PAGE_HEIGHT * CHAR_TOP * scale;
   const bandHeight = PAGE_HEIGHT * fullSpan * scale;
-  const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * (fullSpan / FIT_SPAN)));
+  // Wide scroll range: full tall studio, at least ~2.2× the phone height.
+  const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * 2.2));
 
   return { scale, left, top, contentHeight };
 }
