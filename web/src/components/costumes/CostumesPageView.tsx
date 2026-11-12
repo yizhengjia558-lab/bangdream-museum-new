@@ -8,6 +8,7 @@ import {
   CostumeExhibitTile,
   costumeTileKey,
 } from "@/components/costumes/CostumeExhibitTile";
+import { CostumeStillCaptureHost } from "@/components/costumes/CostumeStillCaptureHost";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useLocale } from "@/components/i18n/LocaleProvider";
@@ -168,6 +169,7 @@ export function CostumesPageView() {
   return (
     <>
       <BandBackButton color={themeColor} fallbackHref="/" />
+      <CostumeStillCaptureHost />
 
       <section className="page-section relative pt-28 pb-20">
         <div className="pointer-events-none absolute inset-0 bloom-layer opacity-40" aria-hidden />

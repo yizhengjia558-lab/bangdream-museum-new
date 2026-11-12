@@ -1247,10 +1247,37 @@ button.glass-frame.card-tile:active {
   pointer-events: none;
 }
 
-.costume-tile__still-fallback-live {
+.costume-tile__still-thumb {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: min(72%, 9.5rem);
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.45));
+  pointer-events: none;
+  user-select: none;
+}
+
+/* One shared offscreen Live2D capturer — tiles only show <img> stills. */
+.costume-still-capture-host {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 220px;
+  height: 390px;
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.costume-still-capture-host__viewer {
   position: absolute;
   inset: 0;
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
 }
 
 .costume-tile__still-viewer,

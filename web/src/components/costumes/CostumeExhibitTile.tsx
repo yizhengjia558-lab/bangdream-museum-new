@@ -7,8 +7,8 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 import type { CardData } from "@/lib/data-types";
 import { cn } from "@/lib/utils";
 
-const Live2DViewer = dynamic(
-  () => import("@/components/live2d/Live2DViewer").then((m) => m.Live2DViewer),
+const BestdoriLive2DEmbed = dynamic(
+  () => import("@/components/live2d/BestdoriLive2DEmbed").then((m) => m.BestdoriLive2DEmbed),
   { ssr: false }
 );
 
@@ -82,11 +82,12 @@ export function CostumeExhibitTile({
 
         <div className="costume-tile__phone-shell">
           <Live2DPhoneFrame className="costume-tile__phone" showToolbar={false} fixedZoom={1}>
-            {() => (
+            {(zoom) => (
               <div className="costume-tile__stage">
                 {bundle ? (
                   <CostumeLiveStillPoster
                     assetBundleName={bundle}
+                    costumeId={card.costume_id}
                     enabled={!liveActive}
                     className={cn(liveActive && "costume-tile__still--dim")}
                   />
@@ -96,10 +97,10 @@ export function CostumeExhibitTile({
 
                 {liveActive && bundle ? (
                   <div className="costume-tile__live-stage">
-                    <Live2DViewer
+                    <BestdoriLive2DEmbed
                       assetBundleName={bundle}
-                      motionProfile="idle"
-                      className="costume-tile__live-viewer"
+                      mode="bestdori"
+                      zoom={zoom}
                     />
                   </div>
                 ) : null}
