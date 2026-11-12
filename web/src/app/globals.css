@@ -1133,6 +1133,19 @@ button.glass-frame.card-tile:active {
   box-shadow: none;
 }
 
+.costume-band-chip--logo {
+  min-height: 2.6rem;
+  padding: 0.35rem 0.75rem;
+}
+
+.costume-band-chip--logo .band-logo {
+  pointer-events: none;
+}
+
+.costume-band-chip--active.costume-band-chip--logo .band-logo__mark {
+  filter: brightness(0) invert(1);
+}
+
 .costumes-filter-meta {
   display: flex;
   flex-wrap: wrap;
@@ -2204,13 +2217,104 @@ button.glass-frame.card-tile:active {
   gap: 2rem;
 }
 
+.favorites-group {
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--fav-accent, var(--brand-pink));
+}
+
+.favorites-group__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
 .favorites-group__title {
-  margin: 0 0 0.85rem;
+  margin: 0;
   font-family: var(--font-subtitle-active);
   font-size: 0.95rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   color: var(--text-primary);
+}
+
+.favorites-group__count {
+  flex: 0 0 auto;
+  min-width: 1.6rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--fav-accent, var(--brand-pink)) 18%, transparent);
+  color: var(--fav-accent, var(--brand-pink));
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* Official Bestdori band wordmarks */
+.band-logo {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+
+.band-logo__mark {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28));
+}
+
+.band-logo__pattern {
+  position: absolute;
+  inset: auto 0 -18% auto;
+  width: 72%;
+  max-width: 11rem;
+  opacity: 0.22;
+  pointer-events: none;
+  filter: blur(0.2px);
+  transform: translate(18%, 10%);
+}
+
+.band-logo--sm .band-logo__mark {
+  height: 1.15rem;
+}
+
+.band-logo--md .band-logo__mark {
+  height: 1.7rem;
+}
+
+.band-logo--lg .band-logo__mark {
+  height: clamp(2rem, 4vw, 2.85rem);
+}
+
+.band-logo--fallback {
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.band-logo__bar {
+  width: 2.5rem;
+  height: 0.25rem;
+  border-radius: 999px;
+}
+
+.band-logo__text {
+  font-family: var(--font-title-active);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.band-card-logo {
+  min-height: 2.8rem;
 }
 
 .mobile-bottom-nav {
@@ -2252,14 +2356,16 @@ button.glass-frame.card-tile:active {
   .mobile-bottom-nav__item {
     position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 2.55rem;
-    padding: 0.4rem 0.2rem;
+    gap: 0.18rem;
+    min-height: 2.85rem;
+    padding: 0.35rem 0.2rem 0.4rem;
     border-radius: 0.85rem;
     color: var(--text-secondary);
     font-family: var(--font-subtitle-active);
-    font-size: 0.62rem;
+    font-size: 0.58rem;
     font-weight: 700;
     letter-spacing: 0.04em;
     text-align: center;
@@ -2270,14 +2376,27 @@ button.glass-frame.card-tile:active {
     background: var(--glass-active);
   }
 
+  .mobile-bottom-nav__icon-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-bottom-nav__icon {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
   .mobile-bottom-nav__label {
     position: relative;
+    line-height: 1.1;
   }
 
   .mobile-bottom-nav__badge {
     position: absolute;
-    top: -0.45rem;
-    right: -0.7rem;
+    top: -0.4rem;
+    right: -0.55rem;
     min-width: 1rem;
     padding: 0.05rem 0.28rem;
     border-radius: 999px;
@@ -2680,10 +2799,11 @@ button.glass-frame.card-tile:active {
   padding: 8px;
   border-radius: 22px;
   background: linear-gradient(145deg, rgba(28, 28, 34, 0.96), rgba(12, 12, 16, 0.98));
-  border: 2px solid rgba(255, 255, 255, 0.14);
+  border: 2px solid color-mix(in srgb, var(--card-accent, #fff) 28%, rgba(255, 255, 255, 0.14));
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 18px 40px rgba(0, 0, 0, 0.42);
+    0 18px 40px rgba(0, 0, 0, 0.42),
+    0 0 0 1px color-mix(in srgb, var(--card-accent, transparent) 18%, transparent);
 }
 
 .card-live2d-phone__toolbar {
@@ -2771,6 +2891,33 @@ button.glass-frame.card-tile:active {
   overflow: hidden;
   border-radius: 18px;
   background: #0a0a10;
+}
+
+.card-live2d-phone__notch {
+  position: absolute;
+  top: 0.45rem;
+  left: 50%;
+  z-index: 4;
+  width: 28%;
+  height: 0.38rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.card-live2d-phone__home {
+  position: absolute;
+  bottom: 0.4rem;
+  left: 50%;
+  z-index: 4;
+  width: 34%;
+  height: 0.22rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.34);
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
 /* Tall Live2D strip inside the phone — height comes from inline px, not absolute fill. */

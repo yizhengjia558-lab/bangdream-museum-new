@@ -110,3 +110,20 @@ export async function resolveLive2DViewerUrl(assetBundleName: string | null | un
   }
   return null;
 }
+
+export type BandLogoSize = "L" | "S";
+
+/** Official Bestdori band wordmark (`logoL.png` / `logoS.png`). */
+export function getBandLogoUrl(
+  logoId: string,
+  size: BandLogoSize = "L",
+  region: BestdoriRegion = "jp"
+) {
+  const file = size === "S" ? "logoS.png" : "logoL.png";
+  return `${assetBase(region)}/band/logo/${logoId}_rip/${file}`;
+}
+
+/** Soft catch-copy graphic used as a band pattern accent. */
+export function getBandCatchCopyUrl(logoId: string, region: BestdoriRegion = "jp") {
+  return `${assetBase(region)}/band/catchcopy/${logoId}_rip/catchCopy_${logoId}.png`;
+}

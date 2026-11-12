@@ -7,6 +7,7 @@ import { BandHotCharacters } from "@/components/bands/BandHotCharacters";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CinematicBackground } from "@/components/effects/CinematicBackground";
 import { GlassPanel } from "@/components/ui/GlassPanel";
+import { BandLogo } from "@/components/ui/BandLogo";
 import { BandBackButton } from "@/components/bands/BandBackButton";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getBandName, getBandSlogan } from "@/lib/i18n/display";
@@ -39,9 +40,8 @@ export function BandDetailView({
             className="max-w-2xl p-10 sm:p-12"
             glow={`radial-gradient(circle, ${band.colors.primary}35, transparent)`}
           >
-            <h1 className="type-band-name text-[var(--text-primary)]" style={{ color: band.colors.primary }}>
-              {bandName}
-            </h1>
+            <h1 className="sr-only">{bandName}</h1>
+            <BandLogo band={band} size="lg" showPattern />
             <p className="type-slogan mt-5 text-base sm:text-lg text-[var(--text-secondary)]">&ldquo;{slogan}&rdquo;</p>
           </GlassPanel>
         </div>

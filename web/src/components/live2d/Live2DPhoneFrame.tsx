@@ -67,7 +67,9 @@ export function Live2DPhoneFrame({
       <div className="card-live2d-phone__stage">
         {/* Fixed phone framing — no side scrollbar; +/- still zooms in place. */}
         <div ref={screenRef} className="card-live2d-phone__screen">
+          <span className="card-live2d-phone__notch" aria-hidden />
           <div className="card-live2d-phone__scroll-body">{children(activeZoom)}</div>
+          <span className="card-live2d-phone__home" aria-hidden />
         </div>
       </div>
     </div>

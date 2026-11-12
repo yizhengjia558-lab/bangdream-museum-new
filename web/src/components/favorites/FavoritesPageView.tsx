@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { CardGalleryItem } from "@/components/cards/CardGalleryItem";
 import { CardDetailModal } from "@/components/cards/CardDetailModal";
 import { useFavorites } from "@/components/favorites/FavoritesProvider";
@@ -8,13 +8,22 @@ import { useGlobalSearch } from "@/components/search/GlobalSearchProvider";
 import { BandBackButton } from "@/components/bands/BandBackButton";
 import { GlassButton } from "@/components/ui/GlassButton";
 import { GlassPanel } from "@/components/ui/GlassPanel";
+import { BandLogo } from "@/components/ui/BandLogo";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { expandCardDisplays, type CardDisplayItem } from "@/lib/cards";
 import { buildMemberMap, filterCardsBySearch } from "@/lib/card-search";
 import { fetchCardsCatalog } from "@/lib/data";
 import { resolveFavoriteDisplays } from "@/lib/favorites";
+import { getBandByFolder, getBandByName, type BandTheme } from "@/lib/themes";
 import type { CardData } from "@/lib/data-types";
+
+function resolveFavoriteBand(item: CardDisplayItem): BandTheme | undefined {
+  return (
+    (item.card.band_folder ? getBandByFolder(item.card.band_folder) : undefined) ??
+    (item.card.band ? getBandByName(item.card.band) : undefined)
+  );
+}
 
 export function FavoritesPageView() {
   const { t } = useLocale();
@@ -65,30 +74,34 @@ export function FavoritesPageView() {
   }, [query]);
 
   const grouped = useMemo(() => {
-    const map = new Map<string, CardDisplayItem[]>();
+    const map = new Map<string, { band?: BandTheme; label: string; items: CardDisplayItem[] }>();
     for (const item of filtered) {
-      const key = item.card.band || item.card.band_folder || t("favorites.ungrouped");
-      const list = map.get(key) ?? [];
-      list.push(item);
-      map.set(key, list);
+      const band = resolveFavoriteBand(item);
+      const key = band?.slug ?? (item.card.band || item.card.band_folder || t("favorites.ungrouped"));
+      const label = band?.name ?? (item.card.band || item.card.band_folder || t("favorites.ungrouped"));
+      const entry = map.get(key) ?? { band, label, items: [] };
+      entry.items.push(item);
+      map.set(key, entry);
     }
     return [...map.entries()];
   }, [filtered, t]);
 
   const shownGroups = useMemo(() => {
     let remaining = visible;
-    const out: Array<[string, CardDisplayItem[]]> = [];
-    for (const [band, items] of grouped) {
+    const out: Array<[string, { band?: BandTheme; label: string; items: CardDisplayItem[] }]> = [];
+    for (const [key, group] of grouped) {
       if (remaining <= 0) break;
-      const slice = items.slice(0, remaining);
+      const slice = group.items.slice(0, remaining);
       remaining -= slice.length;
-      out.push([band, slice]);
+      out.push([key, { ...group, items: slice }]);
     }
     return out;
   }, [grouped, visible]);
 
   const loading = count > 0 && !catalog && !catalogError;
   const unresolved = count > 0 && !loading && !catalogError && favoriteDisplays.length === 0 && !hasQuery;
+  const detailAccent =
+    (lightbox && resolveFavoriteBand(lightbox)?.colors.primary) || "#e9435e";
 
   return (
     <>
@@ -135,23 +148,37 @@ export function FavoritesPageView() {
           ) : (
             <>
               <div className="favorites-groups">
-                {shownGroups.map(([band, items]) => (
-                  <section key={band} className="favorites-group">
-                    <h3 className="favorites-group__title">{band}</h3>
-                    <ul className="card-gallery-grid">
-                      {items.map((item, i) => (
-                        <CardGalleryItem
-                          key={item.key}
-                          item={item}
-                          index={i}
-                          themeColor="#e9435e"
-                          highlight={false}
-                          onClick={() => setLightbox(item)}
-                        />
-                      ))}
-                    </ul>
-                  </section>
-                ))}
+                {shownGroups.map(([key, group]) => {
+                  const accent = group.band?.colors.primary ?? "#e9435e";
+                  return (
+                    <section
+                      key={key}
+                      className="favorites-group"
+                      style={{ "--fav-accent": accent } as CSSProperties}
+                    >
+                      <header className="favorites-group__header">
+                        {group.band ? (
+                          <BandLogo band={group.band} size="sm" />
+                        ) : (
+                          <h3 className="favorites-group__title">{group.label}</h3>
+                        )}
+                        <span className="favorites-group__count">{group.items.length}</span>
+                      </header>
+                      <ul className="card-gallery-grid">
+                        {group.items.map((item, i) => (
+                          <CardGalleryItem
+                            key={item.key}
+                            item={item}
+                            index={i}
+                            themeColor={accent}
+                            highlight={false}
+                            onClick={() => setLightbox(item)}
+                          />
+                        ))}
+                      </ul>
+                    </section>
+                  );
+                })}
               </div>
 
               {visible < filtered.length && (
@@ -171,7 +198,7 @@ export function FavoritesPageView() {
         items={filtered}
         onSelectItem={setLightbox}
         onClose={() => setLightbox(null)}
-        themeColor="#e9435e"
+        themeColor={detailAccent}
       />
     </>
   );

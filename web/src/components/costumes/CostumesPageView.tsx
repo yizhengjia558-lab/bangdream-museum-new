@@ -10,6 +10,7 @@ import {
 } from "@/components/costumes/CostumeExhibitTile";
 import { CostumeStillCaptureHost } from "@/components/costumes/CostumeStillCaptureHost";
 import { GlassPanel } from "@/components/ui/GlassPanel";
+import { BandLogo } from "@/components/ui/BandLogo";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { useGlobalSearch } from "@/components/search/GlobalSearchProvider";
@@ -200,21 +201,27 @@ export function CostumesPageView() {
                 </button>
                 {BAND_THEMES.map((band) => {
                   const active = bandSlug === band.slug;
+                  const label = getBandName(band, locale);
                   return (
                     <button
                       key={band.slug}
                       type="button"
                       role="tab"
                       aria-selected={active}
-                      className={cn("costume-band-chip", active && "costume-band-chip--active")}
+                      aria-label={label}
+                      title={label}
+                      className={cn(
+                        "costume-band-chip",
+                        "costume-band-chip--logo",
+                        active && "costume-band-chip--active"
+                      )}
                       style={{ "--chip-color": band.colors.primary } as CSSProperties}
                       onClick={() => {
                         setBandSlug(band.slug);
                         setCharacterId("all");
                       }}
                     >
-                      <span className="costume-band-chip__dot" aria-hidden />
-                      <span>{getBandName(band, locale)}</span>
+                      <BandLogo band={band} size="sm" />
                     </button>
                   );
                 })}

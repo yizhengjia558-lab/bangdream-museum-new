@@ -145,14 +145,12 @@ function HomeBandCard({
             <div className="glass-panel band-showcase-panel relative w-full">
               <div className="band-showcase-panel-inner">
                 <div className="band-logo-float">
-                  <BandLogo band={band} size="lg" />
+                  <BandLogo band={band} size="lg" showPattern />
                 </div>
 
-                <h2 className="band-showcase-name mt-10" style={{ color: band.colors.primary }}>
-                  {bandName}
-                </h2>
+                <h2 className="sr-only">{bandName}</h2>
 
-                <p className="band-showcase-slogan mt-5">&ldquo;{slogan}&rdquo;</p>
+                <p className="band-showcase-slogan mt-6">&ldquo;{slogan}&rdquo;</p>
 
                 <div className="band-showcase-stats mt-10 flex gap-8 border-t border-[var(--glass-border)] pt-8 sm:gap-10">
                   <div>

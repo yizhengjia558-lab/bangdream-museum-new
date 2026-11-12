@@ -50,10 +50,10 @@ export function HeroBannerCarousel({ slides }: { slides: HeroBannerSlide[] }) {
         <div className="hero-banner-overlay" />
         <div className="hero-banner-content">
           <div className="hero-banner-logo-float">
-            <BandLogo band={slide.band} size="lg" />
+            <BandLogo band={slide.band} size="lg" showPattern />
           </div>
           <p className="hero-banner-eyebrow">{t("bands.enterBand")}</p>
-          <h2 className="hero-banner-title">{getBandName(slide.band, locale)}</h2>
+          <h2 className="sr-only">{getBandName(slide.band, locale)}</h2>
           <p className="hero-banner-slogan">&ldquo;{getBandSlogan(slide.band, locale)}&rdquo;</p>
           <Link href={slide.href} className="hero-banner-link">
             {t("bands.enterBand")} →

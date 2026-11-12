@@ -24,6 +24,8 @@ export interface BandTheme {
   description: string;
   folder: string;
   group: BandGroup;
+  /** Bestdori `band/logo/{id}` folder id (e.g. "001"). */
+  bestdoriLogoId: string;
   colors: {
     primary: string;
     secondary: string;
@@ -49,6 +51,7 @@ export const BAND_THEMES: BandTheme[] = [
       "以户山香澄为中心，在 Live House「CiRCLE」相遇的五人少女乐队。用「Pop」与「Party」将日常化为闪耀舞台，传递「キラキラドキドキ」的心跳。",
     folder: "PoppinParty",
     group: "main",
+    bestdoriLogoId: "001",
     colors: {
       primary: "#FF5522",
       secondary: "#FFB347",
@@ -75,6 +78,7 @@ export const BAND_THEMES: BandTheme[] = [
       " childhood friends who grew up together in the same town. Their music carries the heat of sunset streets and unspoken bonds.",
     folder: "Afterglow",
     group: "main",
+    bestdoriLogoId: "002",
     colors: {
       primary: "#E63946",
       secondary: "#FF6B35",
@@ -101,6 +105,7 @@ export const BAND_THEMES: BandTheme[] = [
       "由偶像事务所策划打造的五人偶像乐队。在镜头与舞台之间，她们寻找「真正的偶像」与真实的笑容。",
     folder: "PastelPalettes",
     group: "main",
+    bestdoriLogoId: "004",
     colors: {
       primary: "#FF69B4",
       secondary: "#FFB6C1",
@@ -127,6 +132,7 @@ export const BAND_THEMES: BandTheme[] = [
       "以凑友希那为核心的顶尖乐队，追求「究极的乐队」与玫瑰般凛冽而华美的音乐美学。",
     folder: "Roselia",
     group: "main",
+    bestdoriLogoId: "005",
     colors: {
       primary: "#6B2D5B",
       secondary: "#1A1A2E",
@@ -153,6 +159,7 @@ export const BAND_THEMES: BandTheme[] = [
       "以弦卷心为领袖，将「让全世界 Happy！」作为使命的奇特乐队。游乐园般的舞台与不可思议的成员构成。",
     folder: "HelloHappyWorld",
     group: "main",
+    bestdoriLogoId: "003",
     colors: {
       primary: "#00CED1",
       secondary: "#FFD700",
@@ -179,6 +186,7 @@ export const BAND_THEMES: BandTheme[] = [
       "以仓田真白为中心，由古典与流行交织而成的五人乐队。小提琴与水晶般清澈音色描绘幻想世界。",
     folder: "Morfonica",
     group: "main",
+    bestdoriLogoId: "021",
     colors: {
       primary: "#4ECDC4",
       secondary: "#556FB5",
@@ -205,6 +213,7 @@ export const BAND_THEMES: BandTheme[] = [
       "以和奏瑞依（LAYER）为主唱，融合电子与摇滚的五人乐队。霓虹与赛博美学下，以压倒性音压席卷舞台。",
     folder: "RaiseASuilen",
     group: "main",
+    bestdoriLogoId: "018",
     colors: {
       primary: "#7B2FBE",
       secondary: "#00D4FF",
@@ -231,6 +240,7 @@ export const BAND_THEMES: BandTheme[] = [
       "MyGO!!!!! 与 Ave Mujica 命运交错。手游卡面多为两团联动收录，故在本馆合并为「其他乐队」统一展示。卡面来自 Girls Band Party 与 Our Notes。",
     folder: "MyGO",
     group: "other",
+    bestdoriLogoId: "045",
     colors: {
       primary: "#3D8BFF",
       secondary: "#7EB8FF",
