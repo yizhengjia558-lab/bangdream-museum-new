@@ -4,9 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import { getBestdoriLive2DViewerUrl } from "@/lib/bestdori-assets";
 import { cn } from "@/lib/utils";
 
-/** Bestdori Live2D tool page layout (approximate). */
+/**
+ * Bestdori Live2D tool is a responsive SPA: a short iframe crops the studio
+ * mid-thigh. Use a tall iframe so the official stage can lay out the full panel.
+ */
 const PAGE_WIDTH = 1280;
-const PAGE_HEIGHT = 960;
+const PAGE_HEIGHT = 1680;
 const SIDEBAR_WIDTH = 272;
 
 type FitLayout = {
@@ -23,33 +26,29 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 }
 
 /**
- * Official Bestdori Live2D studio, cover-fit into the phone (9:16, no letterbox).
- * Default size is 75% of the previous half-scale framing; the strip stays taller
- * than one screen so the dark scrollbar can still pan head → hem.
+ * Cover-fit the tall official Live2D studio into the phone (9:16, no letterbox).
+ * One screen shows part of the panel; scroll reaches the rest of the official UI.
  */
 function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  // Wide vertical crop of the official studio so 75% size still has scroll room.
-  const CHAR_TOP = 0.08;
-  const CHAR_BOTTOM = 0.98;
+  // Skip top nav/chrome; include through the bottom of the tall studio iframe.
+  const CHAR_TOP = 0.04;
+  const CHAR_BOTTOM = 1;
   const fullSpan = Math.max(0.5, CHAR_BOTTOM - CHAR_TOP);
 
   const safeW = Math.max(viewportW, 100);
   const safeH = Math.max(viewportH, 160);
 
-  // Previous framing used FIT_SPAN 0.64; 75% size ⇒ show more page per screen.
-  const PREV_FIT_SPAN = 0.64;
-  const SIZE_FACTOR = 0.75;
-  const FIT_SPAN = PREV_FIT_SPAN / SIZE_FACTOR;
+  // ~55% of the tall studio per screen → fills the phone and leaves scroll room
+  // for the lower half of the official Live2D interface.
+  const FIT_SPAN = 0.55;
   const scaleToFillHeight = safeH / (PAGE_HEIGHT * FIT_SPAN);
   const scaleToFillWidth = safeW / contentW;
-  // Cover: never letterbox; width/height max keeps the frame filled.
   const scale = Math.max(scaleToFillHeight, scaleToFillWidth) * Math.max(zoom, 0.75);
 
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
   const top = -PAGE_HEIGHT * CHAR_TOP * scale;
   const bandHeight = PAGE_HEIGHT * fullSpan * scale;
-  // Taller than one screen when fullSpan > FIT_SPAN — scrollbar without letterbox.
   const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * (fullSpan / FIT_SPAN)));
 
   return { scale, left, top, contentHeight };
