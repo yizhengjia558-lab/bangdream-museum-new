@@ -1,22 +1,39 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { AssetImage } from "@/components/ui/AssetImage";
+import { CardDetailModal } from "@/components/cards/CardDetailModal";
 import { BandBackButton } from "@/components/bands/BandBackButton";
-import { CostumeDetailModal } from "@/components/costumes/CostumeDetailModal";
+import {
+  CostumeExhibitTile,
+  costumeTileKey,
+} from "@/components/costumes/CostumeExhibitTile";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { useGlobalSearch } from "@/components/search/GlobalSearchProvider";
 import { getBandName } from "@/lib/i18n/display";
 import { fetchCardsCatalog } from "@/lib/data";
-import { costumePreviewSrc, selectCostumeCards } from "@/lib/recent-cards";
+import { selectCostumeCards } from "@/lib/recent-cards";
 import { BAND_THEMES } from "@/lib/themes";
+import type { CardDisplayItem } from "@/lib/cards";
 import type { CardData } from "@/lib/data-types";
 import { cn } from "@/lib/utils";
 
 const PAGE_SIZE = 24;
+const PREVIEW_LEAVE_MS = 180;
+
+function toDisplayItem(card: CardData): CardDisplayItem | null {
+  const trained = card.trained_file || card.trained_image;
+  const untrained = card.untrained_file || card.untrained_image;
+  if (trained) {
+    return { key: `${card.id}-trained`, card, variant: "trained", src: trained };
+  }
+  if (untrained) {
+    return { key: `${card.id}-untrained`, card, variant: "untrained", src: untrained };
+  }
+  return null;
+}
 
 export function CostumesPageView() {
   const { t, locale } = useLocale();
@@ -27,7 +44,9 @@ export function CostumesPageView() {
   const [bandSlug, setBandSlug] = useState<string>("all");
   const [characterId, setCharacterId] = useState<string>("all");
   const [visible, setVisible] = useState(PAGE_SIZE);
-  const [active, setActive] = useState<CardData | null>(null);
+  const [detail, setDetail] = useState<CardDisplayItem | null>(null);
+  const [previewKey, setPreviewKey] = useState<string | null>(null);
+  const leaveTimer = useRef<number | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -49,6 +68,12 @@ export function CostumesPageView() {
     if (band) setBandSlug(band);
     if (character) setCharacterId(character);
   }, [searchParams]);
+
+  useEffect(() => {
+    return () => {
+      if (leaveTimer.current != null) window.clearTimeout(leaveTimer.current);
+    };
+  }, []);
 
   const costumes = useMemo(() => (catalog ? selectCostumeCards(catalog) : []), [catalog]);
 
@@ -106,6 +131,7 @@ export function CostumesPageView() {
 
   useEffect(() => {
     setVisible(PAGE_SIZE);
+    setPreviewKey(null);
   }, [bandSlug, characterId, query]);
 
   const characterOptions = useMemo(() => {
@@ -116,8 +142,28 @@ export function CostumesPageView() {
   }, [characters, bandSlug]);
 
   const shown = filtered.slice(0, visible);
+  const detailItems = useMemo(
+    () => shown.map(toDisplayItem).filter((item): item is CardDisplayItem => Boolean(item)),
+    [shown]
+  );
   const themeColor =
     BAND_THEMES.find((entry) => entry.slug === bandSlug)?.colors.primary ?? "#e9435e";
+
+  const activatePreview = (key: string) => {
+    if (leaveTimer.current != null) {
+      window.clearTimeout(leaveTimer.current);
+      leaveTimer.current = null;
+    }
+    setPreviewKey(key);
+  };
+
+  const scheduleDeactivate = (key: string) => {
+    if (leaveTimer.current != null) window.clearTimeout(leaveTimer.current);
+    leaveTimer.current = window.setTimeout(() => {
+      setPreviewKey((current) => (current === key ? null : current));
+      leaveTimer.current = null;
+    }, PREVIEW_LEAVE_MS);
+  };
 
   return (
     <>
@@ -167,10 +213,14 @@ export function CostumesPageView() {
           </GlassPanel>
 
           {!catalog && !error ? (
-            <ul className="costume-gallery-grid costume-gallery-grid--skeleton" aria-busy="true" aria-label={t("costumes.loading")}>
+            <ul
+              className="costume-gallery-grid costume-gallery-grid--skeleton"
+              aria-busy="true"
+              aria-label={t("costumes.loading")}
+            >
               {Array.from({ length: 8 }).map((_, i) => (
                 <li key={`sk-${i}`} className="costume-gallery-item">
-                  <div className="costume-tile costume-tile--skeleton" />
+                  <div className="costume-tile costume-tile--skeleton costume-tile--phone" />
                 </li>
               ))}
             </ul>
@@ -184,41 +234,24 @@ export function CostumesPageView() {
             </GlassPanel>
           ) : (
             <>
-              <ul className="costume-gallery-grid">
+              <ul className="costume-gallery-grid costume-gallery-grid--phones">
                 {shown.map((card, index) => {
-                  const src = costumePreviewSrc(card);
+                  const key = costumeTileKey(card);
                   return (
-                    <li key={`${card.id}-${card.costume_id}`} className="costume-gallery-item">
-                      <button
-                        type="button"
-                        className="costume-tile costume-tile--exhibit"
-                        onClick={() => setActive(card)}
-                        style={{ animationDelay: `${(index % 12) * 36}ms` }}
-                      >
-                        <span className="costume-tile__badge">{t("costumes.live2dBadge")}</span>
-                        <div className="costume-tile__image-wrap">
-                          {src ? (
-                            <AssetImage
-                              src={src}
-                              alt={card.card_name}
-                              fill
-                              variant="mobile"
-                              className="object-cover costume-tile__image"
-                            />
-                          ) : (
-                            <div className="costume-tile__placeholder" />
-                          )}
-                        </div>
-                        <div className="costume-tile__meta">
-                          <p className="costume-tile__name">{card.card_name}</p>
-                          <p className="costume-tile__sub">
-                            {[card.character_name_cn || card.character_name_jp, card.band]
-                              .filter(Boolean)
-                              .join(" · ")}
-                          </p>
-                        </div>
-                      </button>
-                    </li>
+                    <CostumeExhibitTile
+                      key={key}
+                      card={card}
+                      index={index}
+                      liveActive={previewKey === key}
+                      onActivate={() => activatePreview(key)}
+                      onDeactivate={() => scheduleDeactivate(key)}
+                      onOpenDetail={() => {
+                        const item = toDisplayItem(card);
+                        if (!item) return;
+                        setPreviewKey(null);
+                        setDetail(item);
+                      }}
+                    />
                   );
                 })}
               </ul>
@@ -239,7 +272,13 @@ export function CostumesPageView() {
         </div>
       </section>
 
-      <CostumeDetailModal card={active} onClose={() => setActive(null)} themeColor={themeColor} />
+      <CardDetailModal
+        item={detail}
+        items={detailItems}
+        onSelectItem={setDetail}
+        onClose={() => setDetail(null)}
+        themeColor={themeColor}
+      />
     </>
   );
 }

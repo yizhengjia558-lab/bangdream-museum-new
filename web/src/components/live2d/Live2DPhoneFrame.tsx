@@ -15,47 +15,59 @@ function clampZoom(value: number) {
 export function Live2DPhoneFrame({
   children,
   className,
+  showToolbar = true,
+  fixedZoom = 1,
 }: {
   children: (zoom: number) => ReactNode;
   className?: string;
+  /** Gallery tiles hide zoom chrome; detail keeps controls. */
+  showToolbar?: boolean;
+  /** Used when toolbar is hidden. */
+  fixedZoom?: number;
 }) {
   const { t } = useLocale();
   const [zoom, setZoom] = useState(1);
   const screenRef = useRef<HTMLDivElement>(null);
+  const activeZoom = showToolbar ? zoom : clampZoom(fixedZoom);
 
   return (
-    <div className={cn("card-live2d-phone", className)} style={{ "--live2d-zoom": zoom } as CSSProperties}>
-      <div className="card-live2d-phone__toolbar">
-        <button
-          type="button"
-          className="card-live2d-phone__tool-btn"
-          aria-label={t("card.live2dZoomOut")}
-          onClick={() => setZoom((z) => clampZoom(z - ZOOM_STEP))}
-        >
-          −
-        </button>
-        <span className="card-live2d-phone__zoom-label">{Math.round(zoom * 100)}%</span>
-        <button
-          type="button"
-          className="card-live2d-phone__tool-btn"
-          aria-label={t("card.live2dZoomIn")}
-          onClick={() => setZoom((z) => clampZoom(z + ZOOM_STEP))}
-        >
-          +
-        </button>
-        <button
-          type="button"
-          className="card-live2d-phone__tool-btn card-live2d-phone__tool-btn--reset"
-          aria-label={t("card.live2dZoomReset")}
-          onClick={() => setZoom(1)}
-        >
-          ↺
-        </button>
-      </div>
+    <div
+      className={cn("card-live2d-phone", !showToolbar && "card-live2d-phone--compact", className)}
+      style={{ "--live2d-zoom": activeZoom } as CSSProperties}
+    >
+      {showToolbar ? (
+        <div className="card-live2d-phone__toolbar">
+          <button
+            type="button"
+            className="card-live2d-phone__tool-btn"
+            aria-label={t("card.live2dZoomOut")}
+            onClick={() => setZoom((z) => clampZoom(z - ZOOM_STEP))}
+          >
+            −
+          </button>
+          <span className="card-live2d-phone__zoom-label">{Math.round(zoom * 100)}%</span>
+          <button
+            type="button"
+            className="card-live2d-phone__tool-btn"
+            aria-label={t("card.live2dZoomIn")}
+            onClick={() => setZoom((z) => clampZoom(z + ZOOM_STEP))}
+          >
+            +
+          </button>
+          <button
+            type="button"
+            className="card-live2d-phone__tool-btn card-live2d-phone__tool-btn--reset"
+            aria-label={t("card.live2dZoomReset")}
+            onClick={() => setZoom(1)}
+          >
+            ↺
+          </button>
+        </div>
+      ) : null}
       <div className="card-live2d-phone__stage">
         {/* Fixed phone framing — no side scrollbar; +/- still zooms in place. */}
         <div ref={screenRef} className="card-live2d-phone__screen">
-          <div className="card-live2d-phone__scroll-body">{children(zoom)}</div>
+          <div className="card-live2d-phone__scroll-body">{children(activeZoom)}</div>
         </div>
       </div>
     </div>
