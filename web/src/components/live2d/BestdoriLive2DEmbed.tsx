@@ -23,31 +23,31 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 }
 
 /**
- * Official Bestdori Live2D studio, cover-fit into the phone.
- * One viewport ≈ half the studio (fills the frame); scroll reveals the rest.
- * Iframe keeps pointer events so the model stays clickable.
+ * Official Bestdori Live2D studio, cover-fit into the phone (9:16, no letterbox).
+ * Default size matches the half-scale look (not face-zoom). The scroll strip is
+ * taller than one screen so the dark scrollbar can pan head → hem.
  */
 function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  // Skip left “More Live2D” sidebar + top tool chrome; keep studio to hem.
-  const CHAR_TOP = 0.165;
-  const CHAR_BOTTOM = 0.82;
-  const charSpan = Math.max(0.45, CHAR_BOTTOM - CHAR_TOP);
+  // Skip sidebar / tool chrome; include down to hem for full-figure pan.
+  const CHAR_TOP = 0.155;
+  const CHAR_BOTTOM = 0.9;
+  const fullSpan = Math.max(0.5, CHAR_BOTTOM - CHAR_TOP);
 
   const safeW = Math.max(viewportW, 100);
   const safeH = Math.max(viewportH, 160);
 
-  // Cover-fill the phone (no letterbox). One screen ≈ half the studio band so the
-  // strip is ~2× tall — scrollbar can reach head → hem while 9:16 stays unchanged.
-  const VIEWPORT_FRACTION = 0.5;
-  const scaleToFillHeight = safeH / (PAGE_HEIGHT * charSpan * VIEWPORT_FRACTION);
+  // One phone ≈ this page span (same overall size as the earlier “缩小一半” fit).
+  // fullSpan is a bit taller → overflow-y scroll can reach the rest of the body.
+  const FIT_SPAN = 0.64;
+  const scaleToFillHeight = safeH / (PAGE_HEIGHT * FIT_SPAN);
   const scaleToFillWidth = safeW / contentW;
   const scale = Math.max(scaleToFillHeight, scaleToFillWidth) * Math.max(zoom, 0.75);
 
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
   const top = -PAGE_HEIGHT * CHAR_TOP * scale;
-  const bandHeight = PAGE_HEIGHT * charSpan * scale;
-  const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * 2));
+  const bandHeight = PAGE_HEIGHT * fullSpan * scale;
+  const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * (fullSpan / FIT_SPAN)));
 
   return { scale, left, top, contentHeight };
 }
