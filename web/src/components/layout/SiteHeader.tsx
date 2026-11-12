@@ -63,11 +63,12 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "relative rounded-full px-2.5 py-2 font-[family-name:var(--font-subtitle-active)] text-[9px] font-semibold tracking-[0.06em] uppercase transition-all duration-300 sm:px-3.5 sm:text-[10px] sm:tracking-[0.08em] lg:px-4 lg:text-[11px]",
+                    "global-header-link relative rounded-full px-2.5 py-2 font-[family-name:var(--font-subtitle-active)] text-[9px] font-semibold tracking-[0.06em] uppercase transition-all duration-300 sm:px-3.5 sm:text-[10px] sm:tracking-[0.08em] lg:px-4 lg:text-[11px]",
                     active
-                      ? "bg-[var(--glass-active)] text-[var(--text-primary)] shadow-inner"
+                      ? "global-header-link--active bg-[var(--glass-active)] text-[var(--text-primary)] shadow-inner"
                       : "text-[var(--text-secondary)] hover:bg-[var(--glass-hover)] hover:text-[var(--text-primary)]"
                   )}
+                  aria-current={active ? "page" : undefined}
                 >
                   {item.label}
                   {isFavorites && favoriteCount > 0 && (

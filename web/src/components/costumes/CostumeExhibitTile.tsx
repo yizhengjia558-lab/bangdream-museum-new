@@ -124,10 +124,9 @@ export function CostumeExhibitTile({
         </div>
 
         <div className="costume-tile__meta">
+          <p className="costume-tile__character">{characterLabel || card.band}</p>
           <p className="costume-tile__name">{card.card_name}</p>
-          <p className="costume-tile__sub">
-            {[characterLabel, card.band].filter(Boolean).join(" · ")}
-          </p>
+          <p className="costume-tile__sub">{card.band}</p>
         </div>
       </div>
     </li>

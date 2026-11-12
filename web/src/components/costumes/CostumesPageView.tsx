@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { useSearchParams } from "next/navigation";
 import { CardDetailModal } from "@/components/cards/CardDetailModal";
 import { BandBackButton } from "@/components/bands/BandBackButton";
@@ -33,7 +33,6 @@ function toDisplayItem(card: CardData): CardDisplayItem {
   if (untrained) {
     return { key: `${card.id}-untrained`, card, variant: "untrained", src: untrained };
   }
-  // Still open detail even if catalog image paths are empty (Live2D / meta remain).
   return { key: `${card.id}-trained`, card, variant: "trained", src: "" };
 }
 
@@ -145,8 +144,8 @@ export function CostumesPageView() {
 
   const shown = filtered.slice(0, visible);
   const detailItems = useMemo(() => shown.map(toDisplayItem), [shown]);
-  const themeColor =
-    BAND_THEMES.find((entry) => entry.slug === bandSlug)?.colors.primary ?? "#e9435e";
+  const activeBand = BAND_THEMES.find((entry) => entry.slug === bandSlug);
+  const themeColor = activeBand?.colors.primary ?? "#e9435e";
 
   const activatePreview = (key: string) => {
     if (leaveTimer.current != null) {
@@ -175,46 +174,67 @@ export function CostumesPageView() {
           <SectionHeading title={t("costumes.title")} subtitle={t("costumes.subtitle")} />
 
           <GlassPanel className="costumes-toolbar mb-8 p-4 sm:p-5">
-            <div className="costumes-filters">
-              <label className="costumes-filter">
-                <span>{t("costumes.filterBand")}</span>
-                <select
-                  value={bandSlug}
-                  onChange={(e) => {
-                    setBandSlug(e.target.value);
+            <div className="costumes-filters costumes-filters--chips">
+              <div className="costumes-chip-row" role="tablist" aria-label={t("costumes.filterBand")}>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={bandSlug === "all"}
+                  className={cn("costume-band-chip", bandSlug === "all" && "costume-band-chip--active")}
+                  style={{ "--chip-color": "#e9435e" } as CSSProperties}
+                  onClick={() => {
+                    setBandSlug("all");
                     setCharacterId("all");
                   }}
                 >
-                  <option value="all">{t("costumes.allBands")}</option>
-                  {BAND_THEMES.map((band) => (
-                    <option key={band.slug} value={band.slug}>
-                      {getBandName(band, locale)}
-                    </option>
-                  ))}
-                </select>
-              </label>
+                  <span className="costume-band-chip__dot" aria-hidden />
+                  <span>{t("costumes.allBands")}</span>
+                </button>
+                {BAND_THEMES.map((band) => {
+                  const active = bandSlug === band.slug;
+                  return (
+                    <button
+                      key={band.slug}
+                      type="button"
+                      role="tab"
+                      aria-selected={active}
+                      className={cn("costume-band-chip", active && "costume-band-chip--active")}
+                      style={{ "--chip-color": band.colors.primary } as CSSProperties}
+                      onClick={() => {
+                        setBandSlug(band.slug);
+                        setCharacterId("all");
+                      }}
+                    >
+                      <span className="costume-band-chip__dot" aria-hidden />
+                      <span>{getBandName(band, locale)}</span>
+                    </button>
+                  );
+                })}
+              </div>
 
-              <label className="costumes-filter">
-                <span>{t("costumes.filterMember")}</span>
-                <select value={characterId} onChange={(e) => setCharacterId(e.target.value)}>
-                  <option value="all">{t("costumes.allMembers")}</option>
-                  {characterOptions.map((member) => (
-                    <option key={member.id} value={String(member.id)}>
-                      {member.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
+              <div className="costumes-filter-meta">
+                <label className="costumes-filter costumes-filter--member">
+                  <span>{t("costumes.filterMember")}</span>
+                  <select value={characterId} onChange={(e) => setCharacterId(e.target.value)}>
+                    <option value="all">{t("costumes.allMembers")}</option>
+                    {characterOptions.map((member) => (
+                      <option key={member.id} value={String(member.id)}>
+                        {member.name}
+                      </option>
+                    ))}
+                  </select>
+                </label>
 
-              <p className="costumes-count">
-                {t("costumes.count").replace("{count}", String(filtered.length))}
-              </p>
+                <p className="costumes-count">
+                  {t("costumes.count").replace("{count}", String(filtered.length))}
+                </p>
+              </div>
             </div>
           </GlassPanel>
 
           {!catalog && !error ? (
             <ul
-              className="costume-gallery-grid costume-gallery-grid--skeleton"
+              className="costume-gallery-grid costume-gallery-grid--phones costume-gallery-grid--skeleton"
               aria-busy="true"
               aria-label={t("costumes.loading")}
             >
@@ -225,12 +245,15 @@ export function CostumesPageView() {
               ))}
             </ul>
           ) : error ? (
-            <GlassPanel className="p-10 text-center">
-              <p className="text-[var(--text-secondary)]">{t("costumes.loadError")}</p>
+            <GlassPanel className="p-10 text-center costumes-empty costumes-empty--error">
+              <div className="costumes-empty__cabinet" aria-hidden />
+              <p className="costumes-empty__title">{t("costumes.loadError")}</p>
             </GlassPanel>
           ) : filtered.length === 0 ? (
             <GlassPanel className="p-10 text-center costumes-empty">
+              <div className="costumes-empty__cabinet" aria-hidden />
               <p className="costumes-empty__title">{t("costumes.empty")}</p>
+              <p className="costumes-empty__hint">{t("costumes.emptyHint")}</p>
             </GlassPanel>
           ) : (
             <>

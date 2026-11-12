@@ -1040,6 +1040,77 @@ button.glass-frame.card-tile:active {
   gap: 0.85rem 1rem;
 }
 
+.costumes-filters--chips {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.95rem;
+}
+
+.costumes-chip-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.55rem;
+  overflow-x: auto;
+  padding: 0.15rem 0.1rem 0.35rem;
+  scrollbar-width: thin;
+}
+
+.costume-band-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex: 0 0 auto;
+  min-height: 2.35rem;
+  padding: 0.4rem 0.85rem 0.4rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--chip-color, var(--brand-pink)) 28%, var(--glass-border));
+  background: color-mix(in srgb, var(--chip-color, var(--brand-pink)) 10%, var(--glass-bg));
+  color: var(--text-primary);
+  font-family: var(--font-subtitle-active);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.costume-band-chip__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--chip-color, var(--brand-pink));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--chip-color, var(--brand-pink)) 22%, transparent);
+}
+
+.costume-band-chip:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--chip-color, var(--brand-pink)) 18%, var(--glass-bg));
+}
+
+.costume-band-chip--active {
+  border-color: color-mix(in srgb, var(--chip-color, var(--brand-pink)) 55%, var(--glass-border));
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--chip-color, var(--brand-pink)) 82%, #fff) 0%,
+      color-mix(in srgb, var(--chip-color, var(--brand-pink)) 68%, #111) 100%
+    );
+  color: #fff;
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--chip-color, var(--brand-pink)) 28%, transparent);
+}
+
+.costume-band-chip--active .costume-band-chip__dot {
+  background: #fff;
+  box-shadow: none;
+}
+
+.costumes-filter-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.85rem 1rem;
+}
+
 .costumes-filter {
   display: flex;
   flex-direction: column;
@@ -1051,6 +1122,11 @@ button.glass-frame.card-tile:active {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-muted);
+}
+
+.costumes-filter--member {
+  flex: 0 1 14rem;
+  max-width: 18rem;
 }
 
 .costumes-filter select {
@@ -1147,11 +1223,25 @@ button.glass-frame.card-tile:active {
     0 18px 40px color-mix(in srgb, var(--brand-pink) 16%, transparent);
 }
 
-.costume-tile:hover {
-  transform: translateY(-4px);
+.costume-tile:hover,
+.costume-tile--live {
+  transform: translateY(-3px);
   box-shadow:
     var(--glass-shadow),
-    0 16px 36px color-mix(in srgb, var(--brand-pink) 14%, transparent);
+    0 0 0 1px color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 28%, transparent),
+    0 18px 40px color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 22%, transparent);
+}
+
+.costume-tile--phone:hover .costume-tile__phone,
+.costume-tile--live .costume-tile__phone {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 16px 34px color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 24%, rgba(0, 0, 0, 0.28));
+}
+
+.costume-tile__phone {
+  transition: transform 0.3s var(--ease-premium), box-shadow 0.3s var(--ease-premium);
 }
 
 .costume-tile--skeleton {
@@ -1324,6 +1414,16 @@ button.glass-frame.card-tile:active {
   inset: 0;
   pointer-events: none;
   background: transparent;
+  animation: costume-live-fade 0.35s ease both;
+}
+
+@keyframes costume-live-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .costume-tile__live-stage iframe,
@@ -1452,6 +1552,78 @@ button.glass-frame.card-tile:active {
 
 .costume-tile--phone .costume-tile__meta {
   text-align: center;
+  min-height: 2.6rem;
+}
+
+.costume-tile__character {
+  font-family: var(--font-subtitle-active);
+  font-size: 0.84rem;
+  font-weight: 750;
+  line-height: 1.3;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.costume-tile__name,
+.costume-tile__sub {
+  max-height: 0;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(4px);
+  transition: opacity 0.25s ease, transform 0.25s ease, max-height 0.25s ease, margin 0.25s ease;
+}
+
+.costume-tile:hover .costume-tile__name,
+.costume-tile--live .costume-tile__name,
+.costume-tile:focus-visible .costume-tile__name {
+  max-height: 2.6em;
+  margin-top: 0.2rem;
+  opacity: 1;
+  transform: none;
+  font-family: var(--font-subtitle-active);
+  font-size: 0.74rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.costume-tile:hover .costume-tile__sub,
+.costume-tile--live .costume-tile__sub,
+.costume-tile:focus-visible .costume-tile__sub {
+  max-height: 1.4em;
+  margin-top: 0.15rem;
+  opacity: 1;
+  transform: none;
+  font-size: 0.66rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.costumes-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.costumes-empty__cabinet {
+  width: min(100%, 12rem);
+  aspect-ratio: 4 / 3;
+  border-radius: 1.1rem;
+  border: 1px dashed color-mix(in srgb, var(--brand-pink) 35%, var(--glass-border));
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--brand-pink) 10%, transparent), transparent 55%),
+    color-mix(in srgb, var(--glass-bg) 80%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .costumes-empty__title {
@@ -1461,25 +1633,10 @@ button.glass-frame.card-tile:active {
   color: var(--text-secondary);
 }
 
-.costume-tile__name {
-  font-family: var(--font-subtitle-active);
-  font-size: 0.88rem;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--text-primary);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.costume-tile__sub {
-  margin-top: 0.3rem;
-  font-size: 0.7rem;
+.costumes-empty__hint {
+  margin: 0;
+  font-size: 0.78rem;
   color: var(--text-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .costume-detail-backdrop {
@@ -7624,4 +7781,97 @@ html[data-perf="hi"] .hero-copy--enter,
 html[data-perf="hi"] .home-new-cards__item--enter,
 html[data-perf="hi"] .costume-tile--exhibit {
   animation: none !important;
+}
+
+/* ── Museum polish: nav / detail / home exhibit language ── */
+
+.global-header-link--active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0.28rem;
+  width: 1.1rem;
+  height: 0.18rem;
+  border-radius: 999px;
+  background: var(--brand-pink);
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--brand-pink) 45%, transparent);
+}
+
+.mobile-bottom-nav__item--active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0.28rem;
+  width: 1rem;
+  height: 0.16rem;
+  border-radius: 999px;
+  background: var(--brand-pink);
+  transform: translateX(-50%);
+}
+
+.card-detail-sidebar .card-live2d-phone {
+  border-color: color-mix(in srgb, var(--card-accent, var(--brand-pink)) 30%, rgba(255, 255, 255, 0.14));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 18px 40px color-mix(in srgb, var(--card-accent, var(--brand-pink)) 16%, rgba(0, 0, 0, 0.35));
+}
+
+.card-detail-sidebar .card-live2d-phone__screen {
+  background:
+    radial-gradient(
+      70% 55% at 50% 40%,
+      color-mix(in srgb, var(--card-accent, var(--brand-pink)) 16%, transparent),
+      transparent 70%
+    ),
+    rgba(0, 0, 0, 0.42);
+}
+
+.home-new-cards__card--exhibit,
+.costume-tile--phone {
+  border-radius: 1.15rem;
+}
+
+.home-new-cards__meta {
+  border-top: 1px solid color-mix(in srgb, var(--glass-border) 65%, transparent);
+}
+
+.home-new-cards__name {
+  font-size: 0.84rem;
+  letter-spacing: -0.01em;
+}
+
+.home-new-cards__image-wrap {
+  background:
+    radial-gradient(
+      70% 55% at 50% 40%,
+      color-mix(in srgb, var(--brand-pink) 12%, transparent),
+      transparent 70%
+    ),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.08), transparent 45%),
+    rgba(0, 0, 0, 0.1);
+}
+
+.card-river-strip .card-river-item,
+.card-river-item--static {
+  border-radius: 1rem;
+}
+
+.card-river--landscape .card-river-frame,
+.card-river-item--static .card-river-frame {
+  border-radius: 1rem;
+  box-shadow:
+    0 calc(8px * var(--depth, 1)) calc(28px * var(--depth, 1)) rgba(0, 0, 0, calc(0.2 + (1 - var(--depth, 1)) * 0.15)),
+    0 0 0 1px color-mix(in srgb, var(--brand-pink) 12%, transparent),
+    0 0 calc(24px * var(--depth, 1)) rgba(233, 67, 94, calc(0.08 * var(--depth, 1)));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .costume-tile__live-stage,
+  .costume-tile__name,
+  .costume-tile__sub,
+  .costume-tile__phone {
+    transition: none !important;
+    animation: none !important;
+  }
 }
