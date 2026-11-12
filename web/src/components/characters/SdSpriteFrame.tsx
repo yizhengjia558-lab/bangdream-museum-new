@@ -56,7 +56,15 @@ export function SdSpriteFrame({
       }
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt="" className="sd-sprite-frame__sheet" draggable={false} onError={onError} />
+      <img
+        src={src}
+        alt=""
+        className="sd-sprite-frame__sheet"
+        draggable={false}
+        decoding="async"
+        referrerPolicy="no-referrer"
+        onError={onError}
+      />
     </div>
   );
 }

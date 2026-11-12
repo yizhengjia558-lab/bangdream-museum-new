@@ -1941,6 +1941,7 @@ button.glass-frame.card-tile:active {
   justify-content: center;
   width: 100%;
   flex: 0 0 auto;
+  min-height: 8.5rem;
   padding: 0.4rem;
   border-radius: 14px;
   background: rgba(0, 0, 0, 0.24);
@@ -1948,10 +1949,14 @@ button.glass-frame.card-tile:active {
 }
 
 .card-sd-preview__frame.sd-sprite-frame {
-  width: 100%;
+  /* Explicit box — absolute sheet crop collapses if width/height stay indefinite. */
+  flex: none;
+  width: 7.5rem;
+  min-width: 7.5rem;
+  height: 7.5rem;
+  min-height: 7.5rem;
   max-width: 7.5rem;
   aspect-ratio: 1;
-  height: auto;
   margin-inline: auto;
 }
 
@@ -5685,10 +5690,12 @@ body.card-detail-open .mobile-bottom-nav {
   }
 
   .card-sd-preview__frame.sd-sprite-frame {
-    width: min(100%, 8.5rem);
+    flex: none;
+    width: 8.5rem;
+    min-width: 8.5rem;
+    height: 8.5rem;
+    min-height: 8.5rem;
     max-width: 8.5rem;
-    height: auto;
-    max-height: none;
     aspect-ratio: 1;
     margin-inline: auto;
   }
@@ -5896,30 +5903,31 @@ body.card-detail-open .mobile-bottom-nav {
   }
 
   .card-character-visual__sd.card-sd-preview {
-    flex: 0 1 auto;
-    min-width: 0;
-    min-height: 0;
+    flex: 0 0 auto;
     align-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0.2rem;
+    padding: 0.35rem;
     width: auto;
+    min-width: 6.25rem;
+    min-height: 6.25rem;
     max-width: 42%;
   }
 
   .card-character-visual__sd:only-child {
-    flex: 0 1 auto;
+    flex: 0 0 auto;
     max-width: 70%;
   }
 
   .card-sd-preview__frame.sd-sprite-frame {
     flex: none;
-    width: min(5.5rem, 100%);
+    width: 5.5rem;
+    min-width: 5.5rem;
+    height: 5.5rem;
+    min-height: 5.5rem;
     max-width: 5.5rem;
-    height: auto;
-    max-height: min(5.5rem, 70dvh);
     aspect-ratio: 1;
   }
 

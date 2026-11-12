@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SdPoseOverview } from "@/components/characters/SdPoseOverview";
 import { SdSpriteFrame } from "@/components/characters/SdSpriteFrame";
 import { getCharacterSdCandidates, getSchoolUniformSdCandidates } from "@/lib/bestdori-assets";
@@ -30,6 +30,11 @@ export function CharacterChibiAvatar({
   const [urlIndex, setUrlIndex] = useState(0);
   const [hidden, setHidden] = useState(false);
   const [previewOpen, setPreviewOpen] = useState(false);
+
+  useEffect(() => {
+    setUrlIndex(0);
+    setHidden(false);
+  }, [characterId, urls]);
 
   if (hidden || urlIndex >= urls.length) return null;
 
@@ -85,6 +90,11 @@ export function CardSdFigurePreview({
   const [hidden, setHidden] = useState(false);
   const [previewOpen, setPreviewOpen] = useState(false);
 
+  useEffect(() => {
+    setUrlIndex(0);
+    setHidden(false);
+  }, [characterId, sdResourceName, urls]);
+
   if (hidden || urlIndex >= urls.length) return null;
 
   const activeUrl = urls[urlIndex];
@@ -93,6 +103,7 @@ export function CardSdFigurePreview({
     <>
       <div className={cn("card-sd-preview", className)}>
         <SdSpriteFrame
+          key={activeUrl}
           src={activeUrl}
           alt={alt}
           contain
