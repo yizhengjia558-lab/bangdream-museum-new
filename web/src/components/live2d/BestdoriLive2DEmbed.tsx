@@ -11,8 +11,12 @@ import { cn } from "@/lib/utils";
 const PAGE_WIDTH = 1280;
 const PAGE_HEIGHT = 1600;
 const SIDEBAR_WIDTH = 272;
-/** Live2D character panel width as a fraction of the phone — keeps the figure smaller. */
+/**
+ * Previous UI needed ~184% to fill the phone with no letterbox.
+ * Bake that into base scale so the toolbar’s 100% matches that framing.
+ */
 const CHARACTER_STAGE_WIDTH = 0.75;
+const FORMER_FILL_ZOOM = 1.84;
 
 type FitLayout = {
   scale: number;
@@ -28,9 +32,8 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 }
 
 /**
- * Shrink the Live2D character display to ~75% of the phone width (figure looks
- * smaller), keep the stage horizontally complete, and use a tall strip so the
- * side scrollbar can pan head → hem.
+ * Default 100% = former 184% fill (no black edges, like the reference shot).
+ * Tall strip keeps the side scrollbar for head → hem.
  */
 function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
@@ -42,9 +45,9 @@ function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number
   const safeW = Math.max(viewportW, 100);
   const safeH = Math.max(viewportH, 160);
 
-  // Character stage = 75% of phone width (not a whole-page “website shrink”).
+  // Remap: old 184% fill → new 100%. Further +/- still multiplies from here.
   const scale =
-    ((safeW * CHARACTER_STAGE_WIDTH) / contentW) * Math.max(zoom, 0.75);
+    ((safeW * CHARACTER_STAGE_WIDTH * FORMER_FILL_ZOOM) / contentW) * Math.max(zoom, 0.75);
 
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
   const top = -PAGE_HEIGHT * CHAR_TOP * scale;
