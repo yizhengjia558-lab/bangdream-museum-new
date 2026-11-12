@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils";
 const PAGE_SIZE = 24;
 const PREVIEW_LEAVE_MS = 180;
 
-function toDisplayItem(card: CardData): CardDisplayItem | null {
+function toDisplayItem(card: CardData): CardDisplayItem {
   const trained = card.trained_file || card.trained_image;
   const untrained = card.untrained_file || card.untrained_image;
   if (trained) {
@@ -33,7 +33,8 @@ function toDisplayItem(card: CardData): CardDisplayItem | null {
   if (untrained) {
     return { key: `${card.id}-untrained`, card, variant: "untrained", src: untrained };
   }
-  return null;
+  // Still open detail even if catalog image paths are empty (Live2D / meta remain).
+  return { key: `${card.id}-trained`, card, variant: "trained", src: "" };
 }
 
 export function CostumesPageView() {
@@ -143,10 +144,7 @@ export function CostumesPageView() {
   }, [characters, bandSlug]);
 
   const shown = filtered.slice(0, visible);
-  const detailItems = useMemo(
-    () => shown.map(toDisplayItem).filter((item): item is CardDisplayItem => Boolean(item)),
-    [shown]
-  );
+  const detailItems = useMemo(() => shown.map(toDisplayItem), [shown]);
   const themeColor =
     BAND_THEMES.find((entry) => entry.slug === bandSlug)?.colors.primary ?? "#e9435e";
 
@@ -248,10 +246,8 @@ export function CostumesPageView() {
                       onActivate={() => activatePreview(key)}
                       onDeactivate={() => scheduleDeactivate(key)}
                       onOpenDetail={() => {
-                        const item = toDisplayItem(card);
-                        if (!item) return;
                         setPreviewKey(null);
-                        setDetail(item);
+                        setDetail(toDisplayItem(card));
                       }}
                     />
                   );

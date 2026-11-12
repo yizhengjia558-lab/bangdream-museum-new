@@ -1,9 +1,11 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import type { CSSProperties } from "react";
 import { CostumeLiveStillPoster } from "@/components/costumes/CostumeLiveStillPoster";
 import { Live2DPhoneFrame } from "@/components/live2d/Live2DPhoneFrame";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { getBandByFolder, getBandByName } from "@/lib/themes";
 import type { CardData } from "@/lib/data-types";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +16,12 @@ const BestdoriLive2DEmbed = dynamic(
 
 export function costumeTileKey(card: CardData) {
   return `${card.id}-${card.costume_id ?? "x"}`;
+}
+
+function resolveAccent(card: CardData) {
+  const byFolder = card.band_folder ? getBandByFolder(card.band_folder) : undefined;
+  const byName = card.band ? getBandByName(card.band) : undefined;
+  return byFolder?.colors.primary ?? byName?.colors.primary ?? "#e9435e";
 }
 
 export function CostumeExhibitTile({
@@ -34,23 +42,17 @@ export function CostumeExhibitTile({
   const { t } = useLocale();
   const bundle = card.live2d_asset_bundle_name;
   const characterLabel = card.character_name_cn || card.character_name_jp || "";
-
-  const openOrPreview = () => {
-    // Touch: first tap activates Live2D; second tap opens card detail.
-    const isCoarse =
-      typeof window !== "undefined" &&
-      window.matchMedia("(hover: none), (pointer: coarse)").matches;
-    if (isCoarse && bundle && !liveActive) {
-      onActivate();
-      return;
-    }
-    onOpenDetail();
-  };
+  const accent = resolveAccent(card);
 
   return (
     <li
       className={cn("costume-gallery-item", liveActive && "costume-gallery-item--live")}
-      style={{ animationDelay: `${(index % 12) * 36}ms` }}
+      style={
+        {
+          animationDelay: `${(index % 12) * 36}ms`,
+          "--costume-accent": accent,
+        } as CSSProperties
+      }
     >
       <div
         className={cn(
@@ -63,16 +65,16 @@ export function CostumeExhibitTile({
         tabIndex={0}
         onMouseEnter={onActivate}
         onMouseLeave={onDeactivate}
-        onFocus={onActivate}
-        onBlur={onDeactivate}
-        onClick={openOrPreview}
+        onClick={(e) => {
+          e.preventDefault();
+          onOpenDetail();
+        }}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            openOrPreview();
+            onOpenDetail();
           }
         }}
-        aria-pressed={liveActive}
         aria-label={`${card.card_name}. ${t("costumes.openCardDetail")}`}
       >
         <span className="costume-tile__badge">{t("costumes.live2dBadge")}</span>
@@ -104,6 +106,9 @@ export function CostumeExhibitTile({
                     />
                   </div>
                 ) : null}
+
+                {/* Catch clicks above the Bestdori iframe so detail always opens. */}
+                <div className="costume-tile__click-catch" aria-hidden />
               </div>
             )}
           </Live2DPhoneFrame>

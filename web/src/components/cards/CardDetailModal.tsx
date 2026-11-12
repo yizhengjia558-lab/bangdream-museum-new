@@ -198,7 +198,9 @@ export function CardDetailModal({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [item, fullscreen, onClose, canNavigate, navIndex, items, onSelectItem]);
 
-  if (!item || !activeSrc) return null;
+  // Allow opening from costume gallery even when image paths are missing but Live2D exists.
+  if (!item) return null;
+  if (!activeSrc && !item.card.live2d_asset_bundle_name) return null;
 
   const showToggle = availability.both;
 
