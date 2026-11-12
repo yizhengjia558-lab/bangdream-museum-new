@@ -32,15 +32,13 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 }
 
 /**
- * Default 100% = former 184% fill (no black edges, like the reference shot).
- * Tall strip keeps the side scrollbar for head → hem.
+ * Default 100% = former 184% fill (no black edges). Framing is fixed in the
+ * phone — no side scrollbar; zoom only scales in place.
  */
 function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
   // Skip top chrome; keep the Live2D stage through the hem.
   const CHAR_TOP = 0.14;
-  const CHAR_BOTTOM = 0.96;
-  const fullSpan = Math.max(0.5, CHAR_BOTTOM - CHAR_TOP);
 
   const safeW = Math.max(viewportW, 100);
   const safeH = Math.max(viewportH, 160);
@@ -51,10 +49,8 @@ function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number
 
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
   const top = -PAGE_HEIGHT * CHAR_TOP * scale;
-  const bandHeight = PAGE_HEIGHT * fullSpan * scale;
-  const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * 2.2));
 
-  return { scale, left, top, contentHeight };
+  return { scale, left, top, contentHeight: safeH };
 }
 
 /** Bestdori Live2D — local Pixi embed or official Bestdori viewer (cover-fit). */
@@ -119,12 +115,11 @@ export function BestdoriLive2DEmbed({
       ref={hostRef}
       className={cn(
         "bestdori-live2d-embed",
-        "bestdori-live2d-embed--scroll",
+        "bestdori-live2d-embed--fill",
         "card-live2d-stage",
         "card-live2d-stage--live2d",
         className
       )}
-      style={{ height: `${layout.contentHeight}px` }}
     >
       <iframe
         key={assetBundleName}

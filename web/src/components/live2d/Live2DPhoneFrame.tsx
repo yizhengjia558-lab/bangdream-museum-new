@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { cn } from "@/lib/utils";
 
@@ -22,18 +22,6 @@ export function Live2DPhoneFrame({
   const { t } = useLocale();
   const [zoom, setZoom] = useState(1);
   const screenRef = useRef<HTMLDivElement>(null);
-
-  // Wheel over the phone chrome / padding still pans; iframe keeps clicks.
-  useEffect(() => {
-    const screen = screenRef.current;
-    if (!screen) return;
-    const onWheel = (event: WheelEvent) => {
-      if (Math.abs(event.deltaY) < 0.5) return;
-      screen.scrollTop += event.deltaY;
-    };
-    screen.addEventListener("wheel", onWheel, { passive: true });
-    return () => screen.removeEventListener("wheel", onWheel);
-  }, []);
 
   return (
     <div className={cn("card-live2d-phone", className)} style={{ "--live2d-zoom": zoom } as CSSProperties}>
@@ -59,23 +47,15 @@ export function Live2DPhoneFrame({
           type="button"
           className="card-live2d-phone__tool-btn card-live2d-phone__tool-btn--reset"
           aria-label={t("card.live2dZoomReset")}
-          onClick={() => {
-            setZoom(1);
-            if (screenRef.current) screenRef.current.scrollTop = 0;
-          }}
+          onClick={() => setZoom(1)}
         >
           ↺
         </button>
       </div>
       <div className="card-live2d-phone__stage">
-        {/*
-          Phone 9:16. Tall cover strip (~2× height) so the scrollbar can reveal
-          the full official Live2D panel; iframe stays clickable.
-        */}
-        <div ref={screenRef} className="card-live2d-phone__screen card-live2d-phone__screen--pan">
-          <div className="card-live2d-phone__scroll-body card-live2d-phone__scroll-body--flow">
-            {children(zoom)}
-          </div>
+        {/* Fixed phone framing — no side scrollbar; +/- still zooms in place. */}
+        <div ref={screenRef} className="card-live2d-phone__screen">
+          <div className="card-live2d-phone__scroll-body">{children(zoom)}</div>
         </div>
       </div>
     </div>
