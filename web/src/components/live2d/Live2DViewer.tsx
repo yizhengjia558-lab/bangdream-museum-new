@@ -83,24 +83,30 @@ export function Live2DViewer({
   assetBundleName,
   className,
   onError,
+  onStillFrame,
   zoom = 1,
   motionProfile = "idle",
 }: {
   assetBundleName: string;
   className?: string;
   onError?: () => void;
+  /** Fired once after a paused idle pose is painted (still mode). */
+  onStillFrame?: (dataUrl: string) => void;
   zoom?: number;
-  /** idle = loop idle; showcase = cycle flashy Motions for KiraFes */
-  motionProfile?: "idle" | "showcase";
+  /** idle = loop idle; showcase = cycle flashy Motions for KiraFes; still = one frozen frame */
+  motionProfile?: "idle" | "showcase" | "still";
 }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const zoomRef = useRef(zoom);
   const onErrorRef = useRef(onError);
+  const onStillFrameRef = useRef(onStillFrame);
   const refitRef = useRef<(() => void) | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "failed">("loading");
+  const still = motionProfile === "still";
 
   zoomRef.current = zoom;
   onErrorRef.current = onError;
+  onStillFrameRef.current = onStillFrame;
 
   useEffect(() => {
     let cancelled = false;
@@ -138,6 +144,8 @@ export function Live2DViewer({
           height,
           resolution: dpr,
           autoDensity: true,
+          // Needed so still-mode can snapshot the WebGL canvas.
+          preserveDrawingBuffer: still,
         });
 
         const canvas = app.view as HTMLCanvasElement;
@@ -151,7 +159,7 @@ export function Live2DViewer({
         host.replaceChildren();
         host.appendChild(canvas);
 
-        model = await Live2DModel.from(modelJsonUrl, { autoInteract: true });
+        model = await Live2DModel.from(modelJsonUrl, { autoInteract: !still });
 
         const motionGroups = model.internalModel.motionManager.definitions ?? {};
         const keys = Object.keys(motionGroups);
@@ -192,21 +200,23 @@ export function Live2DViewer({
         scheduleModelRefit(refit);
         app.stage.addChild(model);
 
-        app.stage.interactive = true;
-        app.stage.hitArea = app.screen;
-        app.stage.on("pointermove", (event) => {
-          model?.focus(event.global.x, event.global.y);
-        });
+        if (!still) {
+          app.stage.interactive = true;
+          app.stage.hitArea = app.screen;
+          app.stage.on("pointermove", (event) => {
+            model?.focus(event.global.x, event.global.y);
+          });
 
-        model.on("hit", (hitAreas: string[]) => {
-          const motionGroups = model?.internalModel.motionManager.definitions ?? {};
-          const keys = Object.keys(motionGroups);
-          const tapKey =
-            keys.find((key) => /tap/i.test(key)) ??
-            (hitAreas.includes("body") ? keys.find((key) => /body/i.test(key)) : undefined) ??
-            keys.find((key) => /jaan|kime|idle/i.test(key));
-          if (tapKey) model?.motion(tapKey, undefined, 2);
-        });
+          model.on("hit", (hitAreas: string[]) => {
+            const groups = model?.internalModel.motionManager.definitions ?? {};
+            const motionKeys = Object.keys(groups);
+            const tapKey =
+              motionKeys.find((key) => /tap/i.test(key)) ??
+              (hitAreas.includes("body") ? motionKeys.find((key) => /body/i.test(key)) : undefined) ??
+              motionKeys.find((key) => /jaan|kime|idle/i.test(key));
+            if (tapKey) model?.motion(tapKey, undefined, 2);
+          });
+        }
 
         resizeObserver = new ResizeObserver(refit);
         resizeObserver.observe(host);
@@ -225,6 +235,26 @@ export function Live2DViewer({
         };
 
         if (!cancelled) setStatus("ready");
+
+        if (still && !cancelled) {
+          // Let idle motion settle, then freeze + snapshot for gallery posters.
+          await new Promise<void>((resolve) => window.setTimeout(resolve, 220));
+          if (cancelled || !app || !model) return;
+          refit();
+          app.render();
+          app.ticker.stop();
+          try {
+            const dataUrl = canvas.toDataURL("image/webp", 0.86);
+            if (dataUrl.startsWith("data:image")) onStillFrameRef.current?.(dataUrl);
+          } catch {
+            try {
+              const dataUrl = canvas.toDataURL("image/png");
+              if (dataUrl.startsWith("data:image")) onStillFrameRef.current?.(dataUrl);
+            } catch {
+              /* ignore snapshot failure */
+            }
+          }
+        }
       } catch {
         if (!cancelled) {
           setStatus("failed");
@@ -247,7 +277,7 @@ export function Live2DViewer({
       revokeModelJson?.();
       if (hostRef.current) hostRef.current.replaceChildren();
     };
-  }, [assetBundleName, motionProfile]);
+  }, [assetBundleName, motionProfile, still]);
 
   useEffect(() => {
     refitRef.current?.();

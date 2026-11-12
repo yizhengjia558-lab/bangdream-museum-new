@@ -43,7 +43,7 @@ const zh = {
   },
   costumes: {
     title: "服装 / Live2D 图鉴",
-    subtitle: "竖屏展柜浏览 Live2D 服装：悬停预览，点击进入卡牌详情",
+    subtitle: "默认显示 Live2D 静态帧，悬停激活动态，点击进入卡牌详情",
     filterBand: "乐队",
     filterMember: "成员",
     allBands: "全部乐队",
@@ -355,7 +355,7 @@ const en = {
   },
   costumes: {
     title: "Costume / Live2D Gallery",
-    subtitle: "Portrait Live2D exhibit cases — hover to preview, click for card detail",
+    subtitle: "Frozen Live2D frames by default — hover to animate, click for card detail",
     filterBand: "Band",
     filterMember: "Member",
     allBands: "All bands",
@@ -667,7 +667,7 @@ const ja = {
   },
   costumes: {
     title: "衣装 / Live2D 図鑑",
-    subtitle: "縦型ショーケースで Live2D 衣装を見る：ホバーでプレビュー、クリックでカード詳細",
+    subtitle: "通常は Live2D 静止フレーム、ホバーで動かし、クリックでカード詳細",
     filterBand: "バンド",
     filterMember: "メンバー",
     allBands: "すべてのバンド",

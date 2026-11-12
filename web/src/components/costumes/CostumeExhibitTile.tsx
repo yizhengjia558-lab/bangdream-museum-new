@@ -1,15 +1,14 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { AssetImage } from "@/components/ui/AssetImage";
+import { CostumeLiveStillPoster } from "@/components/costumes/CostumeLiveStillPoster";
 import { Live2DPhoneFrame } from "@/components/live2d/Live2DPhoneFrame";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { costumePreviewSrc } from "@/lib/recent-cards";
 import type { CardData } from "@/lib/data-types";
 import { cn } from "@/lib/utils";
 
-const BestdoriLive2DEmbed = dynamic(
-  () => import("@/components/live2d/BestdoriLive2DEmbed").then((m) => m.BestdoriLive2DEmbed),
+const Live2DViewer = dynamic(
+  () => import("@/components/live2d/Live2DViewer").then((m) => m.Live2DViewer),
   { ssr: false }
 );
 
@@ -33,7 +32,6 @@ export function CostumeExhibitTile({
   onOpenDetail: () => void;
 }) {
   const { t } = useLocale();
-  const src = costumePreviewSrc(card);
   const bundle = card.live2d_asset_bundle_name;
   const characterLabel = card.character_name_cn || card.character_name_jp || "";
 
@@ -84,28 +82,29 @@ export function CostumeExhibitTile({
 
         <div className="costume-tile__phone-shell">
           <Live2DPhoneFrame className="costume-tile__phone" showToolbar={false} fixedZoom={1}>
-            {(zoom) =>
-              liveActive && bundle ? (
-                <div className="costume-tile__live-stage">
-                  <BestdoriLive2DEmbed assetBundleName={bundle} mode="bestdori" zoom={zoom} />
-                </div>
-              ) : (
-                <div className="costume-tile__poster">
-                  {src ? (
-                    <AssetImage
-                      src={src}
-                      alt=""
-                      fill
-                      variant="mobile"
-                      className="object-cover costume-tile__poster-image"
+            {() => (
+              <div className="costume-tile__stage">
+                {bundle ? (
+                  <CostumeLiveStillPoster
+                    assetBundleName={bundle}
+                    enabled={!liveActive}
+                    className={cn(liveActive && "costume-tile__still--dim")}
+                  />
+                ) : (
+                  <div className="costume-tile__still-fallback costume-tile__still-fallback--failed" />
+                )}
+
+                {liveActive && bundle ? (
+                  <div className="costume-tile__live-stage">
+                    <Live2DViewer
+                      assetBundleName={bundle}
+                      motionProfile="idle"
+                      className="costume-tile__live-viewer"
                     />
-                  ) : (
-                    <div className="costume-tile__placeholder" />
-                  )}
-                  <div className="costume-tile__poster-veil" />
-                </div>
-              )
-            }
+                  </div>
+                ) : null}
+              </div>
+            )}
           </Live2DPhoneFrame>
         </div>
 
