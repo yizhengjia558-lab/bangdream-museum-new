@@ -18,10 +18,16 @@ export function costumeTileKey(card: CardData) {
   return `${card.id}-${card.costume_id ?? "x"}`;
 }
 
-function resolveAccent(card: CardData) {
+function resolveBandColors(card: CardData) {
   const byFolder = card.band_folder ? getBandByFolder(card.band_folder) : undefined;
   const byName = card.band ? getBandByName(card.band) : undefined;
-  return byFolder?.colors.primary ?? byName?.colors.primary ?? "#e9435e";
+  const theme = byFolder ?? byName;
+  return {
+    primary: theme?.colors.primary ?? "#e9435e",
+    secondary: theme?.colors.secondary ?? "#ff9db3",
+    accent: theme?.colors.accent ?? "#ffd0dc",
+    gradient: theme?.colors.gradient ?? "linear-gradient(135deg, #e9435e, #ff9db3)",
+  };
 }
 
 export function CostumeExhibitTile({
@@ -42,17 +48,12 @@ export function CostumeExhibitTile({
   const { t } = useLocale();
   const bundle = card.live2d_asset_bundle_name;
   const characterLabel = card.character_name_cn || card.character_name_jp || "";
-  const accent = resolveAccent(card);
+  const bandColors = resolveBandColors(card);
 
   return (
     <li
       className={cn("costume-gallery-item", liveActive && "costume-gallery-item--live")}
-      style={
-        {
-          animationDelay: `${(index % 12) * 36}ms`,
-          "--costume-accent": accent,
-        } as CSSProperties
-      }
+      style={{ animationDelay: `${(index % 12) * 36}ms` }}
     >
       <div
         className={cn(
@@ -61,6 +62,14 @@ export function CostumeExhibitTile({
           "costume-tile--phone",
           liveActive && "costume-tile--live"
         )}
+        style={
+          {
+            "--costume-accent": bandColors.primary,
+            "--costume-secondary": bandColors.secondary,
+            "--costume-highlight": bandColors.accent,
+            "--costume-gradient": bandColors.gradient,
+          } as CSSProperties
+        }
         role="button"
         tabIndex={0}
         onMouseEnter={onActivate}

@@ -1198,21 +1198,32 @@ button.glass-frame.card-tile:active {
   overflow: hidden;
   background:
     radial-gradient(
-      120% 90% at 50% 18%,
-      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 42%, #fff5f8) 0%,
-      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 22%, #f7e9ef) 38%,
-      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 14%, #ebe4f4) 100%
-    ),
-    linear-gradient(165deg, #fff7fa 0%, #efe8f6 100%);
+      120% 85% at 50% 12%,
+      color-mix(in srgb, var(--costume-highlight, var(--costume-accent)) 55%, #ffffff) 0%,
+      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 38%, #ffffff) 36%,
+      color-mix(in srgb, var(--costume-secondary, var(--costume-accent)) 28%, #f3f4f7) 100%
+    );
 }
 
 .costume-tile__phone .card-live2d-phone__screen {
   background:
     radial-gradient(
-      100% 80% at 50% 20%,
-      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 34%, #ffffff) 0%,
-      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 16%, #f4ecf5) 100%
+      110% 90% at 50% 18%,
+      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 48%, #ffffff) 0%,
+      color-mix(in srgb, var(--costume-secondary, var(--costume-accent)) 32%, #f7f8fb) 55%,
+      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 18%, #eef0f5) 100%
     );
+}
+
+.costume-tile--phone::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.55;
+  background: var(--costume-gradient, linear-gradient(135deg, var(--costume-accent), var(--costume-secondary)));
+  mix-blend-mode: soft-light;
 }
 
 .costume-tile__still {
@@ -1242,7 +1253,7 @@ button.glass-frame.card-tile:active {
   background:
     radial-gradient(
       circle at 50% 38%,
-      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 28%, transparent),
+      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 36%, transparent),
       transparent 58%
     );
 }
@@ -1252,9 +1263,9 @@ button.glass-frame.card-tile:active {
   background-image:
     linear-gradient(
       110deg,
-      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 12%, #fff5f8) 22%,
-      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 28%, #ffe8ef) 40%,
-      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 12%, #fff5f8) 58%
+      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 16%, #ffffff) 22%,
+      color-mix(in srgb, var(--costume-secondary, var(--costume-accent)) 34%, #ffffff) 40%,
+      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 16%, #ffffff) 58%
     );
   animation: shimmer 1.35s ease-in-out infinite;
 }
@@ -1337,10 +1348,15 @@ button.glass-frame.card-tile:active {
   background:
     radial-gradient(
       120% 90% at 50% 16%,
-      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 38%, #2a1520) 0%,
-      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 18%, #1a1424) 42%,
-      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 10%, #12101a) 100%
+      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 42%, #1b1218) 0%,
+      color-mix(in srgb, var(--costume-secondary, var(--costume-accent)) 24%, #141018) 46%,
+      color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 12%, #0e0c12) 100%
     );
+}
+
+[data-theme="dark"] .costume-tile--phone::before {
+  opacity: 0.35;
+  mix-blend-mode: screen;
 }
 
 /* Remove leftover card-art poster styles from gallery tiles */

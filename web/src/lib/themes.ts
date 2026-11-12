@@ -260,9 +260,20 @@ export function getBandBySlug(slug: string) {
 }
 
 export function getBandByFolder(folder: string) {
-  return BAND_THEMES.find((b) => b.folder === folder);
+  if (!folder) return undefined;
+  const exact = BAND_THEMES.find((b) => b.folder === folder);
+  if (exact) return exact;
+  const normalized = folder.replace(/[\s_\-]/g, "").toLowerCase();
+  return BAND_THEMES.find((b) => b.folder.replace(/[\s_\-]/g, "").toLowerCase() === normalized);
 }
 
 export function getBandByName(name: string) {
-  return BAND_THEMES.find((b) => b.id === name);
+  if (!name) return undefined;
+  const exact = BAND_THEMES.find((b) => b.id === name || b.name === name || b.nameJp === name);
+  if (exact) return exact;
+  const normalized = name.replace(/[\s*！!！,，]/g, "").toLowerCase();
+  return BAND_THEMES.find((b) => {
+    const keys = [b.id, b.name, b.nameJp, b.slug, ...b.keywords];
+    return keys.some((key) => key.replace(/[\s*！!！,，\-]/g, "").toLowerCase() === normalized);
+  });
 }
