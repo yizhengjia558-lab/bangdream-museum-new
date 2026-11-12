@@ -30,7 +30,7 @@ export function HeroBannerCarousel({ slides }: { slides: HeroBannerSlide[] }) {
     <section className="hero-banner" aria-label={t("hero.featuredCards")}>
       <div
         key={slide.band.slug}
-        className="hero-banner-slide hero-banner-slide--static"
+        className="hero-banner-slide hero-banner-slide--enter"
         style={{ "--band-color": slide.band.colors.primary } as CSSProperties}
       >
         <div className="hero-banner-bg-wrap">
@@ -61,11 +61,13 @@ export function HeroBannerCarousel({ slides }: { slides: HeroBannerSlide[] }) {
         </div>
       </div>
 
-      <div className="hero-banner-dots">
+      <div className="hero-banner-dots" role="tablist" aria-label={t("hero.featuredCards")}>
         {slides.map((s, i) => (
           <button
             key={s.band.slug}
             type="button"
+            role="tab"
+            aria-selected={i === index}
             className={`hero-banner-dot${i === index ? " hero-banner-dot--active" : ""}`}
             aria-label={getBandName(s.band, locale)}
             onClick={() => setIndex(i)}

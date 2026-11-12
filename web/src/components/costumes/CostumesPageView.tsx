@@ -167,16 +167,20 @@ export function CostumesPageView() {
           </GlassPanel>
 
           {!catalog && !error ? (
-            <GlassPanel className="p-10 text-center">
-              <p className="text-[var(--text-secondary)]">{t("costumes.loading")}</p>
-            </GlassPanel>
+            <ul className="costume-gallery-grid costume-gallery-grid--skeleton" aria-busy="true" aria-label={t("costumes.loading")}>
+              {Array.from({ length: 8 }).map((_, i) => (
+                <li key={`sk-${i}`} className="costume-gallery-item">
+                  <div className="costume-tile costume-tile--skeleton" />
+                </li>
+              ))}
+            </ul>
           ) : error ? (
             <GlassPanel className="p-10 text-center">
               <p className="text-[var(--text-secondary)]">{t("costumes.loadError")}</p>
             </GlassPanel>
           ) : filtered.length === 0 ? (
-            <GlassPanel className="p-10 text-center">
-              <p className="text-[var(--text-secondary)]">{t("costumes.empty")}</p>
+            <GlassPanel className="p-10 text-center costumes-empty">
+              <p className="costumes-empty__title">{t("costumes.empty")}</p>
             </GlassPanel>
           ) : (
             <>
@@ -187,9 +191,9 @@ export function CostumesPageView() {
                     <li key={`${card.id}-${card.costume_id}`} className="costume-gallery-item">
                       <button
                         type="button"
-                        className="costume-tile"
+                        className="costume-tile costume-tile--exhibit"
                         onClick={() => setActive(card)}
-                        style={{ animationDelay: `${(index % 12) * 28}ms` }}
+                        style={{ animationDelay: `${(index % 12) * 36}ms` }}
                       >
                         <span className="costume-tile__badge">{t("costumes.live2dBadge")}</span>
                         <div className="costume-tile__image-wrap">
@@ -199,9 +203,11 @@ export function CostumesPageView() {
                               alt={card.card_name}
                               fill
                               variant="mobile"
-                              className="object-cover"
+                              className="object-cover costume-tile__image"
                             />
-                          ) : null}
+                          ) : (
+                            <div className="costume-tile__placeholder" />
+                          )}
                         </div>
                         <div className="costume-tile__meta">
                           <p className="costume-tile__name">{card.card_name}</p>

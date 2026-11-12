@@ -21,11 +21,10 @@ export function HeroMainVisual({
       <HeroBannerCarousel slides={bannerSlides} />
 
       <section className="hero-intro">
-        <div className="hero-copy">
+        <div className="hero-copy hero-copy--enter">
           <p className="hero-eyebrow">{t("hero.eyebrow")}</p>
           <h1 className="hero-mega-title hero-mega-title-compact">{t("hero.title")}</h1>
           <p className="hero-subtitle">{t("hero.subtitle")}</p>
-          <p className="hero-tagline max-w-sm">{t("hero.tagline")}</p>
           <div className="hero-cta-wrap">
             <GlassButton href="/bands/">{t("hero.explore")}</GlassButton>
           </div>

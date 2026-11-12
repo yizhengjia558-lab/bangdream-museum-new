@@ -842,7 +842,11 @@ button.glass-frame.card-tile:active {
   align-items: flex-end;
   justify-content: space-between;
   gap: 1rem 1.5rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.4rem;
+}
+
+.home-new-cards__heading .hero-eyebrow {
+  color: var(--brand-pink);
 }
 
 .home-new-cards__cta {
@@ -850,7 +854,7 @@ button.glass-frame.card-tile:active {
   align-items: center;
   justify-content: center;
   min-height: 2.55rem;
-  padding: 0.65rem 1.15rem;
+  padding: 0.65rem 1.2rem;
   border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--cta-accent, var(--brand-pink)) 55%, var(--glass-border));
   background:
@@ -894,11 +898,11 @@ button.glass-frame.card-tile:active {
 .home-new-cards__rail {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(11.5rem, 14rem);
-  gap: 1rem;
+  grid-auto-columns: minmax(12rem, 14.5rem);
+  gap: 1.1rem;
   list-style: none;
   margin: 0;
-  padding: 0.25rem 0.15rem 0.75rem;
+  padding: 0.35rem 0.15rem 1rem;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
@@ -910,10 +914,29 @@ button.glass-frame.card-tile:active {
   min-width: 0;
 }
 
+.home-new-cards__item--enter {
+  animation: exhibit-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 .home-new-cards__card {
   width: 100%;
   text-align: left;
   overflow: hidden;
+}
+
+.home-new-cards__card--exhibit {
+  border-radius: 1.15rem;
+  box-shadow:
+    var(--glass-shadow-soft),
+    0 0 0 1px color-mix(in srgb, var(--brand-pink) 10%, transparent);
+  transition: transform 0.35s var(--ease-premium), box-shadow 0.35s var(--ease-premium);
+}
+
+.home-new-cards__card--exhibit:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    var(--glass-shadow),
+    0 18px 40px color-mix(in srgb, var(--brand-pink) 16%, transparent);
 }
 
 .home-new-cards__badge {
@@ -922,7 +945,7 @@ button.glass-frame.card-tile:active {
   left: 0.65rem;
   z-index: 3;
   border-radius: 999px;
-  padding: 0.2rem 0.55rem;
+  padding: 0.22rem 0.6rem;
   background: linear-gradient(135deg, #e9435e, #ff7a93);
   color: #fff;
   font-family: var(--font-subtitle-active);
@@ -936,19 +959,47 @@ button.glass-frame.card-tile:active {
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.08);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.08), transparent 45%),
+    rgba(0, 0, 0, 0.1);
+}
+
+.home-new-cards__shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 62%
+  );
+  background-size: 220% 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.home-new-cards__card:hover .home-new-cards__shine {
+  opacity: 1;
+  animation: shimmer 1.15s ease;
 }
 
 .home-new-cards__image {
-  transition: transform 0.45s ease;
+  transition: transform 0.55s var(--ease-premium);
 }
 
 .home-new-cards__card:hover .home-new-cards__image {
-  transform: scale(1.04);
+  transform: scale(1.055);
 }
 
 .home-new-cards__meta {
-  padding: 0.7rem 0.8rem 0.85rem;
+  padding: 0.75rem 0.85rem 0.9rem;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--glass-bg) 70%, transparent),
+    color-mix(in srgb, var(--glass-bg) 92%, transparent)
+  );
 }
 
 .home-new-cards__rarity {
@@ -1050,17 +1101,41 @@ button.glass-frame.card-tile:active {
   position: relative;
   width: 100%;
   overflow: hidden;
-  border-radius: 1.1rem;
+  border-radius: 1.15rem;
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
   text-align: left;
   box-shadow: var(--glass-shadow-soft);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.3s var(--ease-premium), box-shadow 0.3s var(--ease-premium);
+}
+
+.costume-tile--exhibit {
+  animation: exhibit-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  box-shadow:
+    var(--glass-shadow-soft),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .costume-tile:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--glass-shadow);
+  transform: translateY(-4px);
+  box-shadow:
+    var(--glass-shadow),
+    0 16px 36px color-mix(in srgb, var(--brand-pink) 14%, transparent);
+}
+
+.costume-tile--skeleton {
+  min-height: 14rem;
+  border: 0;
+  background:
+    linear-gradient(
+      110deg,
+      color-mix(in srgb, var(--glass-bg) 70%, transparent) 25%,
+      color-mix(in srgb, var(--text-muted) 12%, transparent) 37%,
+      color-mix(in srgb, var(--glass-bg) 70%, transparent) 63%
+    );
+  background-size: 200% 100%;
+  animation: shimmer 1.35s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .costume-tile__badge {
@@ -1069,22 +1144,50 @@ button.glass-frame.card-tile:active {
   left: 0.65rem;
   z-index: 2;
   border-radius: 999px;
-  padding: 0.18rem 0.5rem;
-  background: rgba(12, 16, 32, 0.72);
+  padding: 0.2rem 0.55rem;
+  background: color-mix(in srgb, #0c1020 78%, var(--brand-pink));
   color: #fff;
   font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.1em;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28);
 }
 
 .costume-tile__image-wrap {
   position: relative;
   aspect-ratio: 4 / 3;
-  background: rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.06), transparent 50%),
+    rgba(0, 0, 0, 0.1);
+}
+
+.costume-tile__image {
+  transition: transform 0.55s var(--ease-premium);
+}
+
+.costume-tile:hover .costume-tile__image {
+  transform: scale(1.05);
+}
+
+.costume-tile__placeholder {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--brand-pink) 18%, transparent), transparent 55%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.12));
 }
 
 .costume-tile__meta {
-  padding: 0.75rem 0.85rem 0.9rem;
+  padding: 0.8rem 0.9rem 0.95rem;
+  border-top: 1px solid color-mix(in srgb, var(--glass-border) 70%, transparent);
+}
+
+.costumes-empty__title {
+  font-family: var(--font-subtitle-active);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-secondary);
 }
 
 .costume-tile__name {
@@ -1298,16 +1401,25 @@ button.glass-frame.card-tile:active {
 .hero-banner {
   position: relative;
   z-index: 1;
-  margin: 5.5rem clamp(1rem, 4vw, 2rem) 0;
-  height: clamp(280px, 42vh, 420px);
-  border-radius: 32px;
+  margin: 5.25rem clamp(1rem, 4vw, 2rem) 0;
+  height: clamp(300px, 46vh, 460px);
+  border-radius: 28px;
   overflow: hidden;
-  box-shadow: var(--glass-shadow);
+  isolation: isolate;
+  border: 1px solid color-mix(in srgb, var(--glass-border) 70%, transparent);
+  box-shadow:
+    var(--glass-shadow),
+    0 0 0 1px color-mix(in srgb, var(--brand-pink) 12%, transparent),
+    0 28px 80px color-mix(in srgb, var(--band-color, #e9435e) 14%, transparent);
 }
 
 .hero-banner-slide {
   position: absolute;
   inset: 0;
+}
+
+.hero-banner-slide--enter {
+  animation: hero-banner-enter 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .hero-banner-bg-wrap {
@@ -1323,28 +1435,41 @@ button.glass-frame.card-tile:active {
 }
 
 .hero-banner-bg {
-  filter: blur(8px) brightness(0.82) saturate(1.15);
-  transform: scale(1.08);
+  filter: blur(6px) brightness(0.78) saturate(1.2);
+  transform: scale(1.1);
+  animation: hero-banner-drift 18s ease-in-out infinite alternate;
 }
 
 .hero-banner-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    115deg,
-    color-mix(in srgb, var(--museum-bg) 82%, transparent) 0%,
-    color-mix(in srgb, var(--museum-bg-soft) 35%, transparent) 42%,
-    color-mix(in srgb, var(--band-color, #e9435e) 22%, transparent) 100%
-  );
+  background:
+    linear-gradient(
+      115deg,
+      color-mix(in srgb, var(--museum-bg) 86%, transparent) 0%,
+      color-mix(in srgb, var(--museum-bg-soft) 28%, transparent) 46%,
+      color-mix(in srgb, var(--band-color, #e9435e) 26%, transparent) 100%
+    ),
+    radial-gradient(
+      120% 80% at 85% 20%,
+      color-mix(in srgb, var(--band-color, #e9435e) 18%, transparent),
+      transparent 55%
+    );
 }
 
 [data-theme="dark"] .hero-banner-overlay {
-  background: linear-gradient(
-    115deg,
-    rgba(13, 16, 32, 0.88) 0%,
-    rgba(17, 24, 39, 0.45) 50%,
-    color-mix(in srgb, var(--band-color, #e9435e) 28%, transparent) 100%
-  );
+  background:
+    linear-gradient(
+      115deg,
+      rgba(13, 16, 32, 0.9) 0%,
+      rgba(17, 24, 39, 0.48) 50%,
+      color-mix(in srgb, var(--band-color, #e9435e) 30%, transparent) 100%
+    ),
+    radial-gradient(
+      120% 80% at 85% 20%,
+      color-mix(in srgb, var(--band-color, #e9435e) 22%, transparent),
+      transparent 55%
+    );
 }
 
 .hero-banner-content {
@@ -1421,7 +1546,11 @@ button.glass-frame.card-tile:active {
   bottom: 1.25rem;
   z-index: 3;
   display: flex;
-  gap: 0.5rem;
+  gap: 0.45rem;
+  padding: 0.35rem 0.45rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--museum-bg) 42%, transparent);
+  backdrop-filter: blur(10px);
 }
 
 .hero-banner-dot {
@@ -1429,14 +1558,15 @@ button.glass-frame.card-tile:active {
   height: 0.5rem;
   border-radius: 999px;
   border: 0;
-  background: rgba(255, 255, 255, 0.35);
+  background: color-mix(in srgb, var(--text-primary) 28%, transparent);
   cursor: pointer;
   transition: transform 0.25s ease, background 0.25s ease, width 0.25s ease;
 }
 
 .hero-banner-dot--active {
-  width: 1.5rem;
+  width: 1.55rem;
   background: var(--brand-pink);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--brand-pink) 45%, transparent);
 }
 
 .band-logo-float {
@@ -3311,8 +3441,8 @@ body.live2d-embed-route main {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: min(62dvh, 36rem);
-  padding: 4.25rem clamp(1.5rem, 5vw, 3.5rem) 1.5rem;
+  min-height: min(42dvh, 24rem);
+  padding: 2.75rem clamp(1.5rem, 5vw, 3.5rem) 1.25rem;
   text-align: center;
 }
 
@@ -3320,14 +3450,34 @@ body.live2d-embed-route main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.35rem;
-  max-width: 40rem;
+  gap: 0.45rem;
+  max-width: 38rem;
   margin: 0 auto;
 }
 
+.hero-copy--enter {
+  animation: hero-copy-enter 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-copy--enter .hero-eyebrow {
+  animation: hero-line-enter 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+}
+
+.hero-copy--enter .hero-mega-title {
+  animation: hero-line-enter 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.hero-copy--enter .hero-subtitle {
+  animation: hero-line-enter 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+.hero-copy--enter .hero-cta-wrap {
+  animation: hero-line-enter 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
+}
+
 .hero-cta-wrap {
-  margin-top: 1.25rem;
-  padding-top: 0.5rem;
+  margin-top: 1.1rem;
+  padding-top: 0.35rem;
 }
 
 /* Card river — full-bleed landscape strip under hero copy */
@@ -7091,4 +7241,116 @@ html[data-perf="hi"] .band-showcase-card:hover {
   html[data-perf="hi"] .animate-float-soft {
     animation: none !important;
   }
+}
+
+/* ── High-ROI polish: hero / new cards / detail / costumes ── */
+
+@keyframes hero-banner-enter {
+  from {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-banner-drift {
+  from {
+    transform: scale(1.1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.16) translate3d(-1.2%, -0.6%, 0);
+  }
+}
+
+@keyframes hero-copy-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-line-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes exhibit-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.card-detail-image-frame--exhibit {
+  background:
+    radial-gradient(
+      70% 55% at 50% 42%,
+      color-mix(in srgb, var(--card-accent, var(--brand-pink)) 18%, transparent),
+      transparent 70%
+    ),
+    rgba(0, 0, 0, 0.38);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 12px 36px rgba(0, 0, 0, 0.28);
+}
+
+.card-detail-meta--inline .card-detail-name {
+  letter-spacing: -0.01em;
+}
+
+.card-detail-fullscreen-btn {
+  letter-spacing: 0.08em;
+}
+
+.costume-gallery-grid--skeleton .costume-gallery-item {
+  min-height: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner-slide--enter,
+  .hero-banner-bg,
+  .hero-copy--enter,
+  .hero-copy--enter .hero-eyebrow,
+  .hero-copy--enter .hero-mega-title,
+  .hero-copy--enter .hero-subtitle,
+  .hero-copy--enter .hero-cta-wrap,
+  .home-new-cards__item--enter,
+  .home-new-cards__card:hover .home-new-cards__shine,
+  .costume-tile--exhibit,
+  .costume-tile--skeleton {
+    animation: none !important;
+  }
+
+  .home-new-cards__card--exhibit:hover,
+  .costume-tile:hover {
+    transform: none;
+  }
+
+  .home-new-cards__card:hover .home-new-cards__image,
+  .costume-tile:hover .costume-tile__image {
+    transform: none;
+  }
+}
+
+html[data-perf="hi"] .hero-banner-bg,
+html[data-perf="hi"] .hero-banner-slide--enter,
+html[data-perf="hi"] .hero-copy--enter,
+html[data-perf="hi"] .home-new-cards__item--enter,
+html[data-perf="hi"] .costume-tile--exhibit {
+  animation: none !important;
 }

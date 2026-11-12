@@ -268,14 +268,14 @@ export function CardDetailModal({
                         onClick={() => setFullscreen(true)}
                         aria-label={t("card.fullscreenPreview")}
                       >
-                        <div className="card-detail-image-frame">
+                        <div className="card-detail-image-frame card-detail-image-frame--exhibit">
                           <AnimatePresence mode="wait">
                             <motion.div
                               key={`${item.key}-${variant}`}
-                              initial={{ opacity: 0, scale: 1.02 }}
+                              initial={{ opacity: 0, scale: 1.025 }}
                               animate={{ opacity: 1, scale: 1 }}
-                              exit={{ opacity: 0, scale: 0.98 }}
-                              transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+                              exit={{ opacity: 0, scale: 0.985 }}
+                              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                               className="card-detail-image-layer"
                             >
                               <AssetImage
@@ -366,7 +366,7 @@ export function CardDetailModal({
                     </div>
 
                     <button type="button" className="card-detail-fullscreen-btn" onClick={() => setFullscreen(true)}>
-                      {t("card.fullscreenPreview")} <span aria-hidden>🔍</span>
+                      {t("card.fullscreenPreview")}
                     </button>
                   </div>
                 </div>

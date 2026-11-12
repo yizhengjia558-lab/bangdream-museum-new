@@ -42,10 +42,10 @@ export function HomeNewCardsSection({ recent }: { recent: RecentCardsResult }) {
     <section className="home-new-cards page-section relative pt-6 pb-4 lg:pt-8 lg:pb-6">
       <div className="relative page-container">
         <header className="home-new-cards__header">
-          <div>
-            <p className="hero-eyebrow text-[var(--text-muted)]">{t("newCards.eyebrow")}</p>
-            <h2 className="section-display mt-3">{title}</h2>
-            <p className="hero-tagline mt-3 max-w-lg">{subtitle}</p>
+          <div className="home-new-cards__heading">
+            <p className="hero-eyebrow">{t("newCards.eyebrow")}</p>
+            <h2 className="section-display mt-2">{title}</h2>
+            <p className="hero-tagline mt-2 max-w-lg">{subtitle}</p>
           </div>
           <div className="home-new-cards__actions">
             <Link href="/costumes/" className="home-new-cards__cta">
@@ -99,10 +99,10 @@ function NewCardTile({
 }) {
   return (
     <li
-      className="home-new-cards__item"
-      style={{ animationDelay: `${Math.min(index, 10) * 40}ms` }}
+      className="home-new-cards__item home-new-cards__item--enter"
+      style={{ animationDelay: `${Math.min(index, 10) * 48}ms` }}
     >
-      <CardTile className="home-new-cards__card card-tile--interactive" onClick={onOpen}>
+      <CardTile className="home-new-cards__card home-new-cards__card--exhibit card-tile--interactive" onClick={onOpen}>
         <CardFavoriteButton displayKey={item.key} card={item.card} variant={item.variant} />
         <span className="home-new-cards__badge">{newLabel}</span>
         <div className="home-new-cards__image-wrap">
@@ -113,6 +113,7 @@ function NewCardTile({
             variant="mobile"
             className="home-new-cards__image object-cover"
           />
+          <span className="home-new-cards__shine" aria-hidden />
         </div>
         <div className="home-new-cards__meta">
           <p className="home-new-cards__rarity">{rarityLabel}</p>
