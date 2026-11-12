@@ -5,15 +5,14 @@ import { getBestdoriLive2DViewerUrl } from "@/lib/bestdori-assets";
 import { cn } from "@/lib/utils";
 
 /**
- * Tall iframe so Bestdori’s Live2D stage can lay out a full figure.
- * Scale never exceeds phone width (left/right stay complete).
+ * Normal Bestdori layout width; tall height so the Live2D stage can show a
+ * full thigh-up figure. We scale the *character stage* (not “shrink the site”).
  */
 const PAGE_WIDTH = 1280;
-const PAGE_HEIGHT = 3600;
+const PAGE_HEIGHT = 1600;
 const SIDEBAR_WIDTH = 272;
-/** Previous on-screen size reference (before this 75% shrink). */
-const PREV_PAGE_HEIGHT = 960;
-const PREV_FIT_SPAN = 0.64 / 0.75;
+/** Live2D character panel width as a fraction of the phone — keeps the figure smaller. */
+const CHARACTER_STAGE_WIDTH = 0.75;
 
 type FitLayout = {
   scale: number;
@@ -29,24 +28,24 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 }
 
 /**
- * 75% of the previous framing, capped so the studio width always fits the phone
- * (no left/right crop). Tall strip keeps the side scrollbar useful for full body.
+ * Shrink the Live2D character display to ~75% of the phone width (figure looks
+ * smaller), keep the stage horizontally complete, and use a tall strip so the
+ * side scrollbar can pan head → hem.
  */
 function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  const CHAR_TOP = 0.02;
-  const CHAR_BOTTOM = 1;
+  // Skip top chrome; keep the Live2D stage through the hem.
+  const CHAR_TOP = 0.14;
+  const CHAR_BOTTOM = 0.96;
   const fullSpan = Math.max(0.5, CHAR_BOTTOM - CHAR_TOP);
 
   const safeW = Math.max(viewportW, 100);
   const safeH = Math.max(viewportH, 160);
 
-  const scalePrev = safeH / (PREV_PAGE_HEIGHT * PREV_FIT_SPAN);
-  const scaleTarget = scalePrev * 0.75; // “再缩小到原来的 75%”
-  const scaleFitWidth = safeW / contentW; // left/right complete
-  const scale = Math.min(scaleTarget, scaleFitWidth) * Math.max(zoom, 0.75);
+  // Character stage = 75% of phone width (not a whole-page “website shrink”).
+  const scale =
+    ((safeW * CHARACTER_STAGE_WIDTH) / contentW) * Math.max(zoom, 0.75);
 
-  // Studio flush to the phone width when width-capped; otherwise centered.
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
   const top = -PAGE_HEIGHT * CHAR_TOP * scale;
   const bandHeight = PAGE_HEIGHT * fullSpan * scale;
