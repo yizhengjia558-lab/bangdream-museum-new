@@ -24,29 +24,32 @@ function getLocalLive2DEmbedUrl(assetBundleName: string) {
 
 /**
  * Official Bestdori Live2D studio, cover-fit into the phone (9:16, no letterbox).
- * Default size matches the half-scale look (not face-zoom). The scroll strip is
- * taller than one screen so the dark scrollbar can pan head → hem.
+ * Default size is 75% of the previous half-scale framing; the strip stays taller
+ * than one screen so the dark scrollbar can still pan head → hem.
  */
 function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number): FitLayout {
   const contentW = PAGE_WIDTH - SIDEBAR_WIDTH;
-  // Skip sidebar / tool chrome; include down to hem for full-figure pan.
-  const CHAR_TOP = 0.155;
-  const CHAR_BOTTOM = 0.9;
+  // Wide vertical crop of the official studio so 75% size still has scroll room.
+  const CHAR_TOP = 0.08;
+  const CHAR_BOTTOM = 0.98;
   const fullSpan = Math.max(0.5, CHAR_BOTTOM - CHAR_TOP);
 
   const safeW = Math.max(viewportW, 100);
   const safeH = Math.max(viewportH, 160);
 
-  // One phone ≈ this page span (same overall size as the earlier “缩小一半” fit).
-  // fullSpan is a bit taller → overflow-y scroll can reach the rest of the body.
-  const FIT_SPAN = 0.64;
+  // Previous framing used FIT_SPAN 0.64; 75% size ⇒ show more page per screen.
+  const PREV_FIT_SPAN = 0.64;
+  const SIZE_FACTOR = 0.75;
+  const FIT_SPAN = PREV_FIT_SPAN / SIZE_FACTOR;
   const scaleToFillHeight = safeH / (PAGE_HEIGHT * FIT_SPAN);
   const scaleToFillWidth = safeW / contentW;
+  // Cover: never letterbox; width/height max keeps the frame filled.
   const scale = Math.max(scaleToFillHeight, scaleToFillWidth) * Math.max(zoom, 0.75);
 
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
   const top = -PAGE_HEIGHT * CHAR_TOP * scale;
   const bandHeight = PAGE_HEIGHT * fullSpan * scale;
+  // Taller than one screen when fullSpan > FIT_SPAN — scrollbar without letterbox.
   const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * (fullSpan / FIT_SPAN)));
 
   return { scale, left, top, contentHeight };
