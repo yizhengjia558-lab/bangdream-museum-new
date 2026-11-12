@@ -2112,48 +2112,48 @@ button.glass-frame.card-tile:active {
   overflow-y: scroll;
   touch-action: pan-y;
   overscroll-behavior: contain;
-  /* Firefox — white track + grey thumb like system scrollbar */
-  scrollbar-width: auto;
-  scrollbar-color: #8e8e8e #ffffff;
+  /* Dark rounded scrollbar (matches system dark chrome). */
+  scrollbar-width: thin;
+  scrollbar-color: #9a9a9a #1a1a1e;
 }
 
 .card-live2d-phone__screen--pan::-webkit-scrollbar {
-  width: 14px;
+  width: 11px;
 }
 
 .card-live2d-phone__screen--pan::-webkit-scrollbar-button {
   display: block;
-  height: 14px;
-  background-color: #ffffff;
+  height: 12px;
+  background-color: #1a1a1e;
 }
 
 .card-live2d-phone__screen--pan::-webkit-scrollbar-button:single-button:vertical:decrement {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23a0a0a0' d='M5 3L2 7h6z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%239a9a9a' d='M5 3L2 7h6z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .card-live2d-phone__screen--pan::-webkit-scrollbar-button:single-button:vertical:increment {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23a0a0a0' d='M2 3h6L5 7z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%239a9a9a' d='M2 3h6L5 7z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .card-live2d-phone__screen--pan::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: #1a1a1e;
 }
 
 .card-live2d-phone__screen--pan::-webkit-scrollbar-thumb {
   background: #9a9a9a;
-  border-radius: 6px;
-  border: 3px solid #ffffff;
+  border-radius: 999px;
+  border: 2px solid #1a1a1e;
   background-clip: padding-box;
-  min-height: 36px;
+  min-height: 40px;
 }
 
 .card-live2d-phone__screen--pan::-webkit-scrollbar-thumb:hover {
-  background: #7a7a7a;
-  border: 3px solid #ffffff;
+  background: #b0b0b0;
+  border: 2px solid #1a1a1e;
   background-clip: padding-box;
 }
 

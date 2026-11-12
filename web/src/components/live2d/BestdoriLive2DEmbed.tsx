@@ -37,9 +37,9 @@ function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number
   const safeW = Math.max(viewportW, 100);
   const safeH = Math.max(viewportH, 160);
 
-  // Half previous size: one screen covers the full studio band and still fills the frame.
-  // Zoom > 100% grows a taller strip so the scrollbar comes back for detail.
-  const VIEWPORT_FRACTION = 1;
+  // Cover-fill the phone (no letterbox). One screen ≈ half the studio band so the
+  // strip is ~2× tall — scrollbar can reach head → hem while 9:16 stays unchanged.
+  const VIEWPORT_FRACTION = 0.5;
   const scaleToFillHeight = safeH / (PAGE_HEIGHT * charSpan * VIEWPORT_FRACTION);
   const scaleToFillWidth = safeW / contentW;
   const scale = Math.max(scaleToFillHeight, scaleToFillWidth) * Math.max(zoom, 0.75);
@@ -47,7 +47,7 @@ function computeBestdoriCover(viewportW: number, viewportH: number, zoom: number
   const left = -SIDEBAR_WIDTH * scale + (safeW - contentW * scale) / 2;
   const top = -PAGE_HEIGHT * CHAR_TOP * scale;
   const bandHeight = PAGE_HEIGHT * charSpan * scale;
-  const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * Math.max(zoom, 1)));
+  const contentHeight = Math.max(Math.ceil(bandHeight), Math.ceil(safeH * 2));
 
   return { scale, left, top, contentHeight };
 }
