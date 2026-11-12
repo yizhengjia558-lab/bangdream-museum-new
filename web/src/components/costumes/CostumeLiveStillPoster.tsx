@@ -9,6 +9,11 @@ const Live2DViewer = dynamic(
   { ssr: false }
 );
 
+const BestdoriLive2DEmbed = dynamic(
+  () => import("@/components/live2d/BestdoriLive2DEmbed").then((m) => m.BestdoriLive2DEmbed),
+  { ssr: false }
+);
+
 const stillCache = new Map<string, string>();
 const MAX_CONCURRENT_CAPTURES = 2;
 let activeCaptures = 0;
@@ -34,8 +39,8 @@ function releaseCaptureSlot() {
 }
 
 /**
- * Idle costume poster: a frozen Live2D frame (never card art).
- * Captures once per bundle, then reuses the snapshot.
+ * Idle costume poster: frozen Live2D frame (never card art).
+ * Falls back to a Bestdori embed if local snapshot fails.
  */
 export function CostumeLiveStillPoster({
   assetBundleName,
@@ -43,7 +48,6 @@ export function CostumeLiveStillPoster({
   className,
 }: {
   assetBundleName: string;
-  /** When false, tear down the capture viewer (e.g. while hover Live2D is active). */
   enabled: boolean;
   className?: string;
 }) {
@@ -58,8 +62,8 @@ export function CostumeLiveStillPoster({
   useEffect(() => {
     if (!hostEl) return;
     const io = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting && entry.intersectionRatio > 0.12),
-      { rootMargin: "120px 0px", threshold: [0, 0.12, 0.35] }
+      ([entry]) => setInView(Boolean(entry?.isIntersecting)),
+      { rootMargin: "160px 0px", threshold: 0.01 }
     );
     io.observe(hostEl);
     return () => io.disconnect();
@@ -102,23 +106,20 @@ export function CostumeLiveStillPoster({
     releaseCaptureSlot();
   };
 
+  const showCapture = slotReady && !frame && !failed;
+  const showBestdoriFallback = failed && enabled && inView;
+
   return (
     <div ref={setHostEl} className={cn("costume-tile__still", className)}>
       {frame ? (
         // eslint-disable-next-line @next/next/no-img-element -- data-URL snapshot from canvas
         <img src={frame} alt="" className="costume-tile__still-image" draggable={false} />
-      ) : (
-        <div
-          className={cn(
-            "costume-tile__still-fallback",
-            failed && "costume-tile__still-fallback--failed",
-            !failed && "costume-tile__still-fallback--loading"
-          )}
-        />
-      )}
+      ) : !showCapture && !showBestdoriFallback ? (
+        <div className="costume-tile__still-fallback costume-tile__still-fallback--loading" />
+      ) : null}
 
-      {slotReady && !frame && !failed ? (
-        <div className="costume-tile__still-capture" aria-hidden>
+      {showCapture ? (
+        <div className="costume-tile__still-capture">
           <Live2DViewer
             assetBundleName={assetBundleName}
             motionProfile="still"
@@ -135,6 +136,12 @@ export function CostumeLiveStillPoster({
               releaseHeldSlot();
             }}
           />
+        </div>
+      ) : null}
+
+      {showBestdoriFallback ? (
+        <div className="costume-tile__still-fallback-live">
+          <BestdoriLive2DEmbed assetBundleName={assetBundleName} mode="bestdori" zoom={1} />
         </div>
       ) : null}
     </div>

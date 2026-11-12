@@ -1243,7 +1243,13 @@ button.glass-frame.card-tile:active {
 .costume-tile__still-capture {
   position: absolute;
   inset: 0;
-  opacity: 0;
+  /* Must stay visible: opacity:0 WebGL snapshots often read as blank → black tiles. */
+  pointer-events: none;
+}
+
+.costume-tile__still-fallback-live {
+  position: absolute;
+  inset: 0;
   pointer-events: none;
 }
 

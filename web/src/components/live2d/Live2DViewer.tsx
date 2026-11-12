@@ -79,6 +79,37 @@ function scheduleModelRefit(refit: () => void) {
   window.setTimeout(refit, 480);
 }
 
+/** Reject empty/transparent WebGL reads so gallery doesn't cache a black frame. */
+function snapshotCanvas(canvas: HTMLCanvasElement): string | null {
+  try {
+    const probe = document.createElement("canvas");
+    const maxW = 64;
+    const scale = Math.min(1, maxW / Math.max(canvas.width, 1));
+    probe.width = Math.max(1, Math.round(canvas.width * scale));
+    probe.height = Math.max(1, Math.round(canvas.height * scale));
+    const ctx = probe.getContext("2d", { willReadFrequently: true });
+    if (!ctx) return null;
+    ctx.drawImage(canvas, 0, 0, probe.width, probe.height);
+    const { data } = ctx.getImageData(0, 0, probe.width, probe.height);
+    let opaque = 0;
+    for (let i = 3; i < data.length; i += 16) {
+      if (data[i] > 12) opaque += 1;
+    }
+    if (opaque < 8) return null;
+
+    try {
+      const webp = canvas.toDataURL("image/webp", 0.88);
+      if (webp.startsWith("data:image/webp")) return webp;
+    } catch {
+      /* fall through */
+    }
+    const png = canvas.toDataURL("image/png");
+    return png.startsWith("data:image") ? png : null;
+  } catch {
+    return null;
+  }
+}
+
 export function Live2DViewer({
   assetBundleName,
   className,
@@ -237,22 +268,21 @@ export function Live2DViewer({
         if (!cancelled) setStatus("ready");
 
         if (still && !cancelled) {
-          // Let idle motion settle, then freeze + snapshot for gallery posters.
-          await new Promise<void>((resolve) => window.setTimeout(resolve, 220));
+          // Wait for layout + idle pose, then freeze and snapshot.
+          await new Promise<void>((resolve) => window.setTimeout(resolve, 480));
           if (cancelled || !app || !model) return;
           refit();
-          app.render();
+          app.renderer.render(app.stage);
           app.ticker.stop();
-          try {
-            const dataUrl = canvas.toDataURL("image/webp", 0.86);
-            if (dataUrl.startsWith("data:image")) onStillFrameRef.current?.(dataUrl);
-          } catch {
-            try {
-              const dataUrl = canvas.toDataURL("image/png");
-              if (dataUrl.startsWith("data:image")) onStillFrameRef.current?.(dataUrl);
-            } catch {
-              /* ignore snapshot failure */
-            }
+          // One more paint after ticker stop so preserveDrawingBuffer is filled.
+          app.renderer.render(app.stage);
+
+          const snapshot = snapshotCanvas(canvas);
+          if (snapshot) {
+            onStillFrameRef.current?.(snapshot);
+          } else if (!cancelled) {
+            setStatus("failed");
+            onErrorRef.current?.();
           }
         }
       } catch {
