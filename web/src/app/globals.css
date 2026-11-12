@@ -400,12 +400,22 @@ body {
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
   box-shadow: var(--glass-shadow-soft), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  transition: background 0.35s var(--ease-premium), box-shadow 0.35s var(--ease-premium);
+  transition:
+    background 0.35s var(--ease-premium),
+    border-color 0.35s var(--ease-premium),
+    box-shadow 0.35s var(--ease-premium),
+    backdrop-filter 0.35s var(--ease-premium);
 }
 
 .glass-dock-scrolled {
-  background: var(--glass-bg-strong);
-  transform: scale(0.97);
+  background: color-mix(in srgb, var(--glass-bg-strong) 94%, transparent);
+  border-color: color-mix(in srgb, var(--brand-pink) 22%, var(--glass-border-strong));
+  box-shadow:
+    var(--glass-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 12px 36px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 /* ── Global header + search ── */
@@ -902,11 +912,26 @@ button.glass-frame.card-tile:active {
   gap: 1.1rem;
   list-style: none;
   margin: 0;
-  padding: 0.35rem 0.15rem 1rem;
+  padding: 0.35rem 1.1rem 1rem;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
+  scroll-padding-inline: 1.1rem;
   scrollbar-width: thin;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 1.1rem,
+    #000 calc(100% - 1.1rem),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 1.1rem,
+    #000 calc(100% - 1.1rem),
+    transparent 100%
+  );
 }
 
 .home-new-cards__item {
@@ -926,17 +951,19 @@ button.glass-frame.card-tile:active {
 
 .home-new-cards__card--exhibit {
   border-radius: 1.15rem;
+  border: 1px solid color-mix(in srgb, var(--card-accent, var(--brand-pink)) 22%, var(--glass-border));
   box-shadow:
     var(--glass-shadow-soft),
-    0 0 0 1px color-mix(in srgb, var(--brand-pink) 10%, transparent);
-  transition: transform 0.35s var(--ease-premium), box-shadow 0.35s var(--ease-premium);
+    0 0 0 1px color-mix(in srgb, var(--card-accent, var(--brand-pink)) 10%, transparent);
+  transition: transform 0.35s var(--ease-premium), box-shadow 0.35s var(--ease-premium), border-color 0.35s ease;
 }
 
 .home-new-cards__card--exhibit:hover {
   transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--card-accent, var(--brand-pink)) 42%, var(--glass-border));
   box-shadow:
     var(--glass-shadow),
-    0 18px 40px color-mix(in srgb, var(--brand-pink) 16%, transparent);
+    0 18px 40px color-mix(in srgb, var(--card-accent, var(--brand-pink)) 18%, transparent);
 }
 
 .home-new-cards__badge {
@@ -946,13 +973,17 @@ button.glass-frame.card-tile:active {
   z-index: 3;
   border-radius: 999px;
   padding: 0.22rem 0.6rem;
-  background: linear-gradient(135deg, #e9435e, #ff7a93);
+  background: linear-gradient(
+    135deg,
+    var(--card-accent, #e9435e),
+    color-mix(in srgb, var(--card-accent, #e9435e) 55%, #fff)
+  );
   color: #fff;
   font-family: var(--font-subtitle-active);
   font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.12em;
-  box-shadow: 0 6px 16px rgba(233, 67, 94, 0.35);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--card-accent, #e9435e) 35%, transparent);
 }
 
 .home-new-cards__image-wrap {
@@ -1006,7 +1037,7 @@ button.glass-frame.card-tile:active {
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: var(--brand-pink);
+  color: var(--card-accent, var(--brand-pink));
 }
 
 .home-new-cards__name {
@@ -1048,11 +1079,9 @@ button.glass-frame.card-tile:active {
 
 .costumes-chip-row {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 0.55rem;
-  overflow-x: auto;
-  padding: 0.15rem 0.1rem 0.35rem;
-  scrollbar-width: thin;
+  padding: 0.15rem 0.1rem 0.1rem;
 }
 
 .costume-band-chip {
@@ -1133,13 +1162,28 @@ button.glass-frame.card-tile:active {
   appearance: none;
   border-radius: 999px;
   border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
+  background-color: var(--glass-bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%239aa3b5' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 0.7rem 0.45rem;
   color: var(--text-primary);
-  padding: 0.55rem 2rem 0.55rem 0.9rem;
+  padding: 0.55rem 2.1rem 0.55rem 0.9rem;
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.01em;
   text-transform: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.costumes-filter select:hover {
+  border-color: color-mix(in srgb, var(--brand-pink) 35%, var(--glass-border));
+}
+
+.costumes-filter select:focus-visible {
+  outline: none;
+  border-color: color-mix(in srgb, var(--brand-pink) 55%, var(--glass-border));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-pink) 22%, transparent);
 }
 
 .costumes-count {
@@ -1216,11 +1260,11 @@ button.glass-frame.card-tile:active {
 }
 
 .costume-tile--phone.costume-tile--live {
-  border-color: color-mix(in srgb, var(--brand-pink) 45%, var(--glass-border));
+  border-color: color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 45%, var(--glass-border));
   box-shadow:
     var(--glass-shadow),
-    0 0 0 1px color-mix(in srgb, var(--brand-pink) 22%, transparent),
-    0 18px 40px color-mix(in srgb, var(--brand-pink) 16%, transparent);
+    0 0 0 1px color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 22%, transparent),
+    0 18px 40px color-mix(in srgb, var(--costume-accent, var(--brand-pink)) 16%, transparent);
 }
 
 .costume-tile:hover,
@@ -1246,22 +1290,49 @@ button.glass-frame.card-tile:active {
 
 .costume-tile--skeleton {
   min-height: 18rem;
-  border: 0;
-  background:
-    linear-gradient(
-      110deg,
-      color-mix(in srgb, var(--glass-bg) 70%, transparent) 25%,
-      color-mix(in srgb, var(--text-muted) 12%, transparent) 37%,
-      color-mix(in srgb, var(--glass-bg) 70%, transparent) 63%
-    );
-  background-size: 200% 100%;
-  animation: shimmer 1.35s ease-in-out infinite;
+  border: 1px solid color-mix(in srgb, var(--glass-border) 80%, transparent);
+  background: color-mix(in srgb, var(--glass-bg) 88%, transparent);
+  box-shadow: var(--glass-shadow-soft);
   pointer-events: none;
 }
 
 .costume-tile--skeleton.costume-tile--phone {
-  aspect-ratio: 9 / 16;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  aspect-ratio: auto;
   min-height: 0;
+  padding: 0.55rem 0.55rem 0.7rem;
+}
+
+.costume-tile--skeleton::before {
+  content: "";
+  display: block;
+  flex: 1 1 auto;
+  min-height: 12rem;
+  aspect-ratio: 9 / 16;
+  border-radius: 18px;
+  background:
+    linear-gradient(
+      110deg,
+      color-mix(in srgb, var(--glass-bg) 55%, transparent) 25%,
+      color-mix(in srgb, var(--text-muted) 14%, transparent) 37%,
+      color-mix(in srgb, var(--glass-bg) 55%, transparent) 63%
+    );
+  background-size: 200% 100%;
+  animation: shimmer 1.35s ease-in-out infinite;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.costume-tile--skeleton::after {
+  content: "";
+  display: block;
+  width: 58%;
+  height: 0.7rem;
+  margin: 0.15rem auto 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text-muted) 18%, transparent);
+  animation: shimmer 1.35s ease-in-out infinite;
 }
 
 .costume-tile__phone-shell {
@@ -1608,6 +1679,36 @@ button.glass-frame.card-tile:active {
   text-overflow: ellipsis;
 }
 
+@media (hover: none) {
+  .costume-tile__name,
+  .costume-tile__sub {
+    max-height: none;
+    margin-top: 0.2rem;
+    opacity: 1;
+    transform: none;
+    overflow: hidden;
+  }
+
+  .costume-tile__name {
+    font-family: var(--font-subtitle-active);
+    font-size: 0.74rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text-secondary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .costume-tile__sub {
+    margin-top: 0.12rem;
+    font-size: 0.66rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
 .costumes-empty {
   display: flex;
   flex-direction: column;
@@ -1616,14 +1717,26 @@ button.glass-frame.card-tile:active {
 }
 
 .costumes-empty__cabinet {
-  width: min(100%, 12rem);
-  aspect-ratio: 4 / 3;
-  border-radius: 1.1rem;
-  border: 1px dashed color-mix(in srgb, var(--brand-pink) 35%, var(--glass-border));
+  position: relative;
+  width: min(100%, 7.5rem);
+  aspect-ratio: 9 / 16;
+  border-radius: 1.35rem;
+  border: 1px solid color-mix(in srgb, var(--brand-pink) 28%, var(--glass-border));
   background:
-    linear-gradient(160deg, color-mix(in srgb, var(--brand-pink) 10%, transparent), transparent 55%),
-    color-mix(in srgb, var(--glass-bg) 80%, transparent);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    radial-gradient(70% 50% at 50% 38%, color-mix(in srgb, var(--brand-pink) 16%, transparent), transparent 70%),
+    color-mix(in srgb, var(--glass-bg) 82%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 16px 36px color-mix(in srgb, var(--brand-pink) 12%, transparent);
+}
+
+.costumes-empty__cabinet::before {
+  content: "";
+  position: absolute;
+  inset: 0.45rem;
+  border-radius: 1.05rem;
+  border: 1px dashed color-mix(in srgb, var(--brand-pink) 30%, var(--glass-border));
+  background: color-mix(in srgb, var(--glass-bg) 40%, transparent);
 }
 
 .costumes-empty__title {
@@ -2250,14 +2363,20 @@ button.glass-frame.card-tile:active {
   padding: clamp(1rem, 2.5vw, 1.5rem);
   overflow-x: hidden;
   overflow-y: auto;
-  border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--card-accent, #e9435e) 28%, var(--glass-border));
   background:
-    linear-gradient(160deg, rgba(18, 22, 38, 0.96) 0%, rgba(10, 12, 22, 0.98) 100%);
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--card-accent, #e9435e) 10%, var(--glass-bg-strong)) 0%,
+      color-mix(in srgb, var(--glass-bg-strong) 88%, #0a0c16) 100%
+    );
   box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--card-accent, #e9435e) 35%, transparent),
-    0 24px 80px rgba(0, 0, 0, 0.55),
-    0 0 60px color-mix(in srgb, var(--card-accent, #e9435e) 18%, transparent);
+    0 0 0 1px color-mix(in srgb, var(--card-accent, #e9435e) 28%, transparent),
+    0 24px 80px rgba(0, 0, 0, 0.5),
+    0 0 60px color-mix(in srgb, var(--card-accent, #e9435e) 16%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .card-detail-panel::before {

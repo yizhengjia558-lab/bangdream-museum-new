@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { CardDetailModal } from "@/components/cards/CardDetailModal";
@@ -8,8 +8,17 @@ import { CardFavoriteButton } from "@/components/cards/CardFavoriteButton";
 import { CardTile } from "@/components/cards/CardTile";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getCardRarityLabel } from "@/lib/i18n/display";
+import { getBandByFolder, getBandByName } from "@/lib/themes";
 import type { CardDisplayItem } from "@/lib/cards";
+import type { CardData } from "@/lib/data-types";
 import type { RecentCardsResult } from "@/lib/recent-cards";
+
+function resolveCardAccent(card: CardData) {
+  const theme =
+    (card.band_folder ? getBandByFolder(card.band_folder) : undefined) ??
+    (card.band ? getBandByName(card.band) : undefined);
+  return theme?.colors.primary ?? "#e9435e";
+}
 
 export function HomeNewCardsSection({ recent }: { recent: RecentCardsResult }) {
   const { t, locale } = useLocale();
@@ -37,6 +46,7 @@ export function HomeNewCardsSection({ recent }: { recent: RecentCardsResult }) {
   const title = recent.mode === "week" ? t("newCards.weekTitle") : t("newCards.latestTitle");
   const subtitle =
     recent.mode === "week" ? t("newCards.weekSubtitle") : t("newCards.latestSubtitle");
+  const detailAccent = lightbox ? resolveCardAccent(lightbox.card) : "#e9435e";
 
   return (
     <section className="home-new-cards page-section relative pt-6 pb-4 lg:pt-8 lg:pb-6">
@@ -60,6 +70,7 @@ export function HomeNewCardsSection({ recent }: { recent: RecentCardsResult }) {
               key={item.card.id}
               item={item}
               index={index}
+              accent={resolveCardAccent(item.card)}
               dateLabel={formatReleaseDate(item.card.release_date, locale)}
               rarityLabel={getCardRarityLabel(item.card, locale)}
               newLabel={t("newCards.badge")}
@@ -75,6 +86,7 @@ export function HomeNewCardsSection({ recent }: { recent: RecentCardsResult }) {
         items={uniqueDisplays}
         onSelectItem={setLightbox}
         onClose={() => setLightbox(null)}
+        themeColor={detailAccent}
       />
     </section>
   );
@@ -83,6 +95,7 @@ export function HomeNewCardsSection({ recent }: { recent: RecentCardsResult }) {
 function NewCardTile({
   item,
   index,
+  accent,
   dateLabel,
   rarityLabel,
   newLabel,
@@ -91,6 +104,7 @@ function NewCardTile({
 }: {
   item: CardDisplayItem;
   index: number;
+  accent: string;
   dateLabel: string;
   rarityLabel: string;
   newLabel: string;
@@ -102,7 +116,11 @@ function NewCardTile({
       className="home-new-cards__item home-new-cards__item--enter"
       style={{ animationDelay: `${Math.min(index, 10) * 48}ms` }}
     >
-      <CardTile className="home-new-cards__card home-new-cards__card--exhibit card-tile--interactive" onClick={onOpen}>
+      <CardTile
+        className="home-new-cards__card home-new-cards__card--exhibit card-tile--interactive"
+        style={{ "--card-accent": accent } as CSSProperties}
+        onClick={onOpen}
+      >
         <CardFavoriteButton displayKey={item.key} card={item.card} variant={item.variant} />
         <span className="home-new-cards__badge">{newLabel}</span>
         <div className="home-new-cards__image-wrap">

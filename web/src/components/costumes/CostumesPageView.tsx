@@ -146,6 +146,14 @@ export function CostumesPageView() {
   const detailItems = useMemo(() => shown.map(toDisplayItem), [shown]);
   const activeBand = BAND_THEMES.find((entry) => entry.slug === bandSlug);
   const themeColor = activeBand?.colors.primary ?? "#e9435e";
+  const detailAccent = detail
+    ? BAND_THEMES.find(
+        (entry) =>
+          entry.folder === detail.card.band_folder ||
+          entry.id === detail.card.band ||
+          entry.name === detail.card.band
+      )?.colors.primary ?? themeColor
+    : themeColor;
 
   const activatePreview = (key: string) => {
     if (leaveTimer.current != null) {
@@ -298,7 +306,7 @@ export function CostumesPageView() {
         items={detailItems}
         onSelectItem={setDetail}
         onClose={() => setDetail(null)}
-        themeColor={themeColor}
+        themeColor={detailAccent}
       />
     </>
   );

@@ -1,13 +1,15 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 export function CardTile({
   children,
   className,
+  style,
   onClick,
 }: {
   children: ReactNode;
   className?: string;
+  style?: CSSProperties;
   onClick?: () => void;
 }) {
   const shellClass = cn(
@@ -19,11 +21,15 @@ export function CardTile({
 
   if (onClick) {
     return (
-      <button type="button" className={shellClass} onClick={onClick}>
+      <button type="button" className={shellClass} style={style} onClick={onClick}>
         {inner}
       </button>
     );
   }
 
-  return <div className={shellClass}>{inner}</div>;
+  return (
+    <div className={shellClass} style={style}>
+      {inner}
+    </div>
+  );
 }

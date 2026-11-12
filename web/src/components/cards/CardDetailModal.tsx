@@ -18,12 +18,21 @@ import {
   type CardVariant,
 } from "@/lib/cards";
 import { isCommunityEnabled, recordCardView } from "@/lib/community-api";
+import { getBandByFolder, getBandByName } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 
 type KirafesPreviewMode = "static" | "dynamic";
 
 function displayKey(cardId: string, variant: CardVariant) {
   return `${cardId}-${variant}`;
+}
+
+function resolveCardAccent(card: CardData | null | undefined, fallback = "#e9435e") {
+  if (!card) return fallback;
+  const theme =
+    (card.band_folder ? getBandByFolder(card.band_folder) : undefined) ??
+    (card.band ? getBandByName(card.band) : undefined);
+  return theme?.colors.primary ?? fallback;
 }
 
 function CardDetailInfoChips({ card }: { card: CardData }) {
@@ -124,7 +133,8 @@ export function CardDetailModal({
   const activeSrc = item ? getCardVariantSrc(item.card, variant) : "";
   const activeKey = item ? displayKey(item.card.id, variant) : "";
   const characterId = item?.card.character_id ?? 0;
-  const palette = useCardPalette(activeSrc, themeColor);
+  const accentColor = resolveCardAccent(item?.card, themeColor);
+  const palette = useCardPalette(activeSrc, accentColor);
 
   useEffect(() => {
     if (!item) return;
@@ -230,7 +240,7 @@ export function CardDetailModal({
               exit={{ opacity: 0, y: 16, scale: 0.98 }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className={cn("card-detail-panel-wrap", "card-detail-panel")}
-              style={{ "--card-accent": themeColor } as CSSProperties}
+              style={{ "--card-accent": accentColor } as CSSProperties}
               onClick={(e) => e.stopPropagation()}
             >
               <button type="button" className="card-detail-close" onClick={onClose} aria-label={t("common.close")}>
