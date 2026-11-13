@@ -997,14 +997,15 @@ button.glass-frame.card-tile:active {
   margin: 0;
   padding: 0.15rem max(1rem, env(safe-area-inset-left));
   will-change: transform;
-  animation: home-new-cards-marquee var(--new-cards-duration, 36s) linear infinite;
+  /* !important: site defaults to html[data-perf="hi"] which otherwise kills animations */
+  animation: home-new-cards-marquee var(--new-cards-duration, 36s) linear infinite !important;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
 }
 
 .home-new-cards__marquee:hover .home-new-cards__marquee-track,
 .home-new-cards__marquee:focus-within .home-new-cards__marquee-track {
-  animation-play-state: paused;
+  animation-play-state: paused !important;
 }
 
 @keyframes home-new-cards-marquee {
@@ -8443,7 +8444,6 @@ html[data-perf="hi"] .band-showcase-card:hover {
 html[data-perf="hi"] .hero-banner-bg,
 html[data-perf="hi"] .hero-banner-slide--enter,
 html[data-perf="hi"] .hero-copy--enter,
-html[data-perf="hi"] .home-new-cards__marquee-track,
 html[data-perf="hi"] .costume-tile--exhibit {
   animation: none !important;
 }
