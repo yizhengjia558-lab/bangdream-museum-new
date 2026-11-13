@@ -12,7 +12,6 @@ export function SiteFooter() {
     { href: "/bands/", label: t("nav.bands") },
     { href: "/costumes/", label: t("nav.costumes") },
     { href: "/events/", label: t("nav.events") },
-    { href: "/forum/", label: t("nav.forum") },
     { href: "/championship/", label: t("nav.championship") },
     { href: "/favorites/", label: t("nav.favorites") },
   ];

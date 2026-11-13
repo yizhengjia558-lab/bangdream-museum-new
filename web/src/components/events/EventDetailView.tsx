@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { CardCornerBadges } from "@/components/cards/CardCornerBadges";
 import { CardDetailModal } from "@/components/cards/CardDetailModal";
@@ -49,19 +49,40 @@ function attrLabel(attr: string, locale: Locale) {
   return locale === "zh" ? entry.zh : locale === "ja" ? entry.ja : entry.en;
 }
 
+function pickInitialServer(event: ResolvedEvent, query: string | null): "cn" | "jp" {
+  if (query === "jp" && event.schedules.jp) return "jp";
+  if (query === "cn" && event.schedules.cn) return "cn";
+  if (event.schedules.cn) {
+    const now = Date.now();
+    const start = Date.parse(event.schedules.cn.startAt);
+    const end = Date.parse(event.schedules.cn.endAt);
+    if (now >= start && now <= end) return "cn";
+  }
+  if (event.schedules.jp) return "jp";
+  return event.schedules.cn ? "cn" : "jp";
+}
+
 export function EventDetailView({ event }: { event: ResolvedEvent }) {
   const { t, locale } = useLocale();
   const search = useSearchParams();
-  const initial =
-    search.get("server") === "jp"
-      ? "jp"
-      : search.get("server") === "cn"
-        ? "cn"
-        : event.schedules.cn
-          ? "cn"
-          : "jp";
-  const [server, setServer] = useState<"cn" | "jp">(initial);
+  const router = useRouter();
+  const pathname = usePathname();
+  const [server, setServer] = useState<"cn" | "jp">(() => pickInitialServer(event, search.get("server")));
   const [lightbox, setLightbox] = useState<CardDisplayItem | null>(null);
+
+  const queryServer = search.get("server");
+
+  useEffect(() => {
+    setServer(pickInitialServer(event, queryServer));
+  }, [event.id, queryServer]);
+
+  const switchServer = (next: "cn" | "jp") => {
+    if (!event.schedules[next] || next === server) return;
+    setServer(next);
+    const params = new URLSearchParams(search.toString());
+    params.set("server", next);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
 
   const schedule = event.schedules[server];
   const displays = useMemo(() => {
@@ -93,65 +114,75 @@ export function EventDetailView({ event }: { event: ResolvedEvent }) {
             <div className="event-detail__banner">
               {event.banner ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={event.banner} alt="" />
+                <img src={event.banner} alt={localizeName(event.name, locale)} />
               ) : (
-                <span className="home-pulse__event-fallback" />
+                <span className="home-pulse__event-fallback" aria-hidden />
               )}
+              <span className="event-detail__server-chip">{server.toUpperCase()}</span>
             </div>
-            <div className="event-detail__intro">
-              <p className="hero-eyebrow">{t("events.detailEyebrow")}</p>
-              <h1 className="event-detail__title">{localizeName(event.name, locale)}</h1>
-              <p className="event-detail__type">
-                {event.eventType
-                  ? t(
-                      (EVENT_TYPE_KEYS.has(event.eventType)
-                        ? `events.type.${event.eventType}`
-                        : "events.type.other") as MessageKey
-                    )
-                  : null}
-              </p>
 
-              <div className="home-pulse__tabs home-pulse__tabs--lg" role="tablist">
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={server === "cn"}
-                  disabled={!event.schedules.cn}
-                  className={cn("home-pulse__tab", server === "cn" && "home-pulse__tab--active")}
-                  onClick={() => setServer("cn")}
-                >
-                  {t("pulse.serverCn")}
-                </button>
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={server === "jp"}
-                  disabled={!event.schedules.jp}
-                  className={cn("home-pulse__tab", server === "jp" && "home-pulse__tab--active")}
-                  onClick={() => setServer("jp")}
-                >
-                  {t("pulse.serverJp")}
-                </button>
+            <div className="event-detail__intro">
+              <div className="event-detail__intro-main">
+                <p className="hero-eyebrow">{t("events.detailEyebrow")}</p>
+                <h1 className="event-detail__title">{localizeName(event.name, locale)}</h1>
+                <p className="event-detail__type">
+                  {event.eventType
+                    ? t(
+                        (EVENT_TYPE_KEYS.has(event.eventType)
+                          ? `events.type.${event.eventType}`
+                          : "events.type.other") as MessageKey
+                      )
+                    : null}
+                </p>
               </div>
 
-              {schedule ? (
-                <dl className="event-detail__schedule">
-                  <div>
-                    <dt>{t("events.starts")}</dt>
-                    <dd>{formatDateTime(schedule.startAt, locale)}</dd>
-                  </div>
-                  <div>
-                    <dt>{t("events.ends")}</dt>
-                    <dd>{formatDateTime(schedule.endAt, locale)}</dd>
-                  </div>
-                </dl>
-              ) : (
-                <p className="home-pulse__empty">{t("events.noSchedule")}</p>
-              )}
+              <div className="event-detail__intro-side">
+                <div className="home-pulse__tabs home-pulse__tabs--lg" role="tablist" aria-label={t("pulse.serverSwitchTitle")}>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={server === "cn"}
+                    disabled={!event.schedules.cn}
+                    className={cn("home-pulse__tab", server === "cn" && "home-pulse__tab--active")}
+                    onClick={() => switchServer("cn")}
+                  >
+                    {t("pulse.serverCn")}
+                  </button>
+                  <button
+                    type="button"
+                    role="tab"
+                    aria-selected={server === "jp"}
+                    disabled={!event.schedules.jp}
+                    className={cn("home-pulse__tab", server === "jp" && "home-pulse__tab--active")}
+                    onClick={() => switchServer("jp")}
+                  >
+                    {t("pulse.serverJp")}
+                  </button>
+                </div>
 
-              {event.schedules.jp && event.schedules.cn ? (
-                <p className="event-detail__lag">{t("pulse.serverLagHint")}</p>
-              ) : null}
+                {schedule ? (
+                  <dl className="event-detail__schedule">
+                    <div>
+                      <dt>{t("events.starts")}</dt>
+                      <dd>{formatDateTime(schedule.startAt, locale)}</dd>
+                    </div>
+                    <div>
+                      <dt>{t("events.ends")}</dt>
+                      <dd>{formatDateTime(schedule.endAt, locale)}</dd>
+                    </div>
+                  </dl>
+                ) : (
+                  <p className="home-pulse__empty">{t("events.noSchedule")}</p>
+                )}
+
+                {event.schedules.jp && event.schedules.cn ? (
+                  <p className="event-detail__lag">{t("pulse.serverLagHint")}</p>
+                ) : !event.schedules.cn && event.schedules.jp ? (
+                  <p className="event-detail__lag">{t("events.cnNotYet")}</p>
+                ) : !event.schedules.jp && event.schedules.cn ? (
+                  <p className="event-detail__lag">{t("events.jpOnlyMissing")}</p>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>

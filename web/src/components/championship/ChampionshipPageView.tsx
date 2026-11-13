@@ -62,7 +62,7 @@ export function ChampionshipPageView() {
   useEffect(() => {
     if (!isCommunityEnabled()) {
       setLoading(false);
-      setError(t("forum.disabled"));
+      setError(t("championship.disabled"));
       return;
     }
     let cancelled = false;
@@ -122,7 +122,7 @@ export function ChampionshipPageView() {
       {!isCommunityEnabled() || error ? (
         <div className="cute-empty mt-8">
           <div className="cute-empty__doodle cute-empty__doodle--star" aria-hidden />
-          <p className="cute-empty__title">{error || t("forum.disabled")}</p>
+          <p className="cute-empty__title">{error || t("championship.disabled")}</p>
         </div>
       ) : loading ? (
         <div className="cute-loader mt-10" aria-hidden>

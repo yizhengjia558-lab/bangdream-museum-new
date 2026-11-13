@@ -20,7 +20,6 @@ export function SiteHeader() {
     { href: "/bands/", label: t("nav.bands"), match: (p: string) => p.startsWith("/bands") },
     { href: "/costumes/", label: t("nav.costumes"), match: (p: string) => p.startsWith("/costumes") },
     { href: "/events/", label: t("nav.events"), match: (p: string) => p.startsWith("/events") },
-    { href: "/forum/", label: t("nav.forum"), match: (p: string) => p.startsWith("/forum") },
     {
       href: "/championship/",
       label: t("nav.championship"),

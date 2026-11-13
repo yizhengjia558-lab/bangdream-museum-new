@@ -112,13 +112,6 @@ function buildNavFuseItems(): NavFuseItem[] {
   const items: NavFuseItem[] = [
     {
       type: "page",
-      label: "社区论坛",
-      sublabel: "Forum",
-      href: "/forum/",
-      keywords: "社区 论坛 forum community コミュニティ",
-    },
-    {
-      type: "page",
       label: "服装 / Live2D 图鉴",
       sublabel: "Costumes",
       href: "/costumes/",
@@ -215,13 +208,6 @@ export function searchNavigation(query: string, limit = 8, locale: Locale = "zh"
       }
     }
     if (hit.type === "page") {
-      if (hit.href.includes("forum")) {
-        return {
-          ...hit,
-          label: locale === "ja" ? "コミュニティ" : locale === "en" ? "Forum" : "社区论坛",
-          sublabel: locale === "en" ? "Community" : "Forum",
-        };
-      }
       if (hit.href.includes("costumes")) {
         return {
           ...hit,

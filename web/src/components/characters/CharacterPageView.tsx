@@ -7,7 +7,6 @@ import { CharacterCardArchive } from "@/components/characters/CharacterCardArchi
 import { CardGalleryItem } from "@/components/cards/CardGalleryItem";
 import { CharacterHero } from "@/components/characters/CharacterHero";
 import { CharacterVoiceActorSection } from "@/components/characters/CharacterVoiceActorSection";
-import { CharacterConfessionWall } from "@/components/characters/CharacterConfessionWall";
 import { CharacterHotCards } from "@/components/characters/CharacterHotCards";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BandBackButton } from "@/components/bands/BandBackButton";
@@ -145,11 +144,6 @@ export function CharacterPageView({
         </div>
       </section>
 
-      <section className="page-section relative py-16 sm:py-20">
-        <div className="relative page-container max-w-3xl">
-          <CharacterConfessionWall characterId={character.id} accent={primary} />
-        </div>
-      </section>
     </>
   );
 }

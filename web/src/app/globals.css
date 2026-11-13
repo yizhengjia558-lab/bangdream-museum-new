@@ -7702,9 +7702,7 @@ body.card-detail-open .mobile-bottom-nav {
 
 .auth-field input,
 .auth-field select,
-.auth-field textarea,
-.card-comments-form textarea,
-.forum-form textarea {
+.auth-field textarea {
   width: 100%;
   border-radius: 12px;
   border: 1px solid color-mix(in srgb, var(--text-muted) 35%, transparent);
@@ -7718,9 +7716,7 @@ body.card-detail-open .mobile-bottom-nav {
 
 .auth-field input:focus,
 .auth-field select:focus,
-.auth-field textarea:focus,
-.card-comments-form textarea:focus,
-.forum-form textarea:focus {
+.auth-field textarea:focus {
   outline: 2px solid color-mix(in srgb, var(--brand-pink) 45%, transparent);
   outline-offset: 1px;
 }
@@ -7825,147 +7821,6 @@ body.card-detail-open .mobile-bottom-nav {
   .auth-nav-name {
     display: none;
   }
-}
-
-.forum-section-title {
-  font-family: var(--font-subtitle-active);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.forum-post-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.forum-post-card {
-  width: 100%;
-  text-align: left;
-  border: 1px solid color-mix(in srgb, var(--text-muted) 22%, transparent);
-  border-radius: 18px;
-  padding: 1rem 1.1rem;
-  background: color-mix(in srgb, var(--glass-bg, #fff) 55%, transparent);
-  cursor: pointer;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.forum-post-card:hover {
-  border-color: color-mix(in srgb, var(--brand-pink) 45%, transparent);
-  transform: translateY(-1px);
-}
-
-.forum-post-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
-}
-
-.forum-post-title {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.forum-meta {
-  margin: 0.15rem 0 0;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-.forum-body {
-  color: var(--text-primary);
-  line-height: 1.65;
-  font-size: 0.9375rem;
-}
-
-.forum-post-thumbs {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.7rem;
-}
-
-.forum-post-thumb {
-  width: 3.1rem;
-  height: 3.1rem;
-  border-radius: 10px;
-  object-fit: cover;
-  border: 1px solid color-mix(in srgb, var(--text-muted) 20%, transparent);
-  background: #111;
-}
-
-.forum-post-thumb--video {
-  display: inline-flex;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-}
-
-.forum-post-thumb--video video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.forum-post-thumb--more {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-subtitle-active);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--text-secondary);
-  background: color-mix(in srgb, var(--brand-pink) 10%, var(--glass-bg));
-}
-
-.forum-media-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 0.65rem;
-  margin-top: 0.85rem;
-}
-
-.forum-media-image,
-.forum-media-video {
-  width: 100%;
-  border-radius: 12px;
-  max-height: 220px;
-  object-fit: cover;
-  background: #111;
-}
-
-.forum-media-video {
-  object-fit: contain;
-  background: #000;
-}
-
-.forum-upload-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.forum-reply-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.forum-reply-item {
-  display: flex;
-  gap: 0.75rem;
-  padding: 0.75rem 0;
-  border-top: 1px solid color-mix(in srgb, var(--text-muted) 18%, transparent);
 }
 
 .card-comments {
@@ -9580,8 +9435,7 @@ html[data-locale="en"] .type-hero-title {
 }
 
 .home-pulse__event-banner,
-.events-page__banner,
-.event-detail__banner {
+.events-page__banner {
   position: relative;
   display: block;
   aspect-ratio: 21 / 8;
@@ -9591,7 +9445,6 @@ html[data-locale="en"] .type-hero-title {
 
 .home-pulse__event-banner img,
 .events-page__banner img,
-.event-detail__banner img,
 .home-pulse__event-fallback {
   width: 100%;
   height: 100%;
@@ -9867,22 +9720,66 @@ html[data-locale="en"] .type-hero-title {
 }
 
 .event-detail__hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.9fr);
-  gap: 1rem 1.25rem;
-  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
 }
 
 .event-detail__banner {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 21 / 8;
+  overflow: hidden;
   border-radius: 1.2rem;
   border: 1px solid color-mix(in srgb, #fff 10%, transparent);
+  background: #120e18;
+}
+
+.event-detail__banner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.event-detail__banner .home-pulse__event-fallback {
+  position: absolute;
+  inset: 0;
+}
+
+.event-detail__server-chip {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  z-index: 2;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
 }
 
 .event-detail__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(14rem, 0.8fr);
+  gap: 0.9rem 1.25rem;
+  align-items: start;
+  min-width: 0;
+}
+
+.event-detail__intro-main,
+.event-detail__intro-side {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
-  justify-content: center;
+  gap: 0.65rem;
+  min-width: 0;
 }
 
 .event-detail__title {
@@ -10038,7 +9935,7 @@ html[data-locale="en"] .type-hero-title {
   .home-pulse__event-grid,
   .home-pulse__row,
   .events-page__grid,
-  .event-detail__hero,
+  .event-detail__intro,
   .event-detail__panels {
     grid-template-columns: 1fr;
   }
@@ -10090,7 +9987,7 @@ html[data-locale="en"] .type-hero-title {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .event-detail__hero {
+  .event-detail__intro {
     grid-template-columns: 1fr;
   }
 }
@@ -10106,12 +10003,13 @@ html[data-locale="en"] .type-hero-title {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  .event-detail__hero {
+  .event-detail__intro {
     grid-template-columns: minmax(0, 1.2fr) minmax(14rem, 0.8fr);
   }
 
   .home-pulse__event-banner,
-  .events-page__banner {
+  .events-page__banner,
+  .event-detail__banner {
     aspect-ratio: 24 / 8;
   }
 }
@@ -10128,7 +10026,7 @@ html[data-locale="en"] .type-hero-title {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .event-detail__hero {
+  .event-detail__intro {
     grid-template-columns: minmax(0, 1.4fr) minmax(12rem, 0.8fr);
   }
 }
