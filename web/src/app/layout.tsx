@@ -24,8 +24,8 @@ export const viewport: Viewport = {
   // Hint browsers on high-refresh displays to keep input/compositor responsive.
   interactiveWidget: "resizes-content",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fff9fc" },
-    { media: "(prefers-color-scheme: dark)", color: "#0d1020" },
+    { media: "(prefers-color-scheme: light)", color: "#fff7fb" },
+    { media: "(prefers-color-scheme: dark)", color: "#14101c" },
   ],
 };
 
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 };
 
 const GOOGLE_FONTS_HREF =
-  "https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=M+PLUS+Rounded+1c:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@600;700&display=swap";
+  "https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=M+PLUS+Rounded+1c:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Nunito:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700&display=swap";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
