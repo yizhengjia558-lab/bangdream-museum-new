@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { AssetImage } from "@/components/ui/AssetImage";
+import { BandLogo } from "@/components/ui/BandLogo";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getBandName, getCharacterName } from "@/lib/i18n/display";
@@ -15,6 +16,7 @@ import {
   type ChampionshipPayload,
 } from "@/lib/community-api";
 import type { CardData, CharacterSummary } from "@/lib/data-types";
+import { cn } from "@/lib/utils";
 
 function previousMonthKey() {
   const d = new Date();
@@ -91,6 +93,10 @@ export function ChampionshipPageView() {
     return opts;
   }, []);
 
+  const cardChamps = data?.characterCardChamps ?? [];
+  const podium = cardChamps.slice(0, 3);
+  const restCards = cardChamps.slice(3);
+
   return (
     <div className="museum-page championship-page page-container py-24 sm:py-28">
       <SectionHeading title={t("championship.title")} subtitle={t("championship.subtitle")} />
@@ -114,57 +120,128 @@ export function ChampionshipPageView() {
       </div>
 
       {!isCommunityEnabled() || error ? (
-        <p className="mt-8 text-[var(--text-muted)]">{error || t("forum.disabled")}</p>
+        <div className="cute-empty mt-8">
+          <div className="cute-empty__doodle cute-empty__doodle--star" aria-hidden />
+          <p className="cute-empty__title">{error || t("forum.disabled")}</p>
+        </div>
       ) : loading ? (
-        <p className="mt-8 text-[var(--text-muted)]">…</p>
+        <div className="cute-loader mt-10" aria-hidden>
+          <span />
+          <span />
+          <span />
+        </div>
       ) : (
         <>
           <section className="championship-section">
             <h2 className="championship-section-title">{t("championship.cardChamps")}</h2>
             <p className="championship-section-sub">{t("championship.cardChampsSub")}</p>
-            {(data?.characterCardChamps.length ?? 0) === 0 ? (
-              <p className="mt-4 text-sm text-[var(--text-muted)]">{t("championship.empty")}</p>
+            {cardChamps.length === 0 ? (
+              <div className="cute-empty mt-4">
+                <div className="cute-empty__doodle cute-empty__doodle--star" aria-hidden />
+                <p className="cute-empty__title">{t("championship.empty")}</p>
+              </div>
             ) : (
-              <ul className="championship-card-grid">
-                {data!.characterCardChamps.map((row) => {
-                  const member = memberMap.get(row.characterId);
-                  const card = cardMap.get(row.cardId);
-                  const band = getBandByFolder(row.bandFolder || member?.band_folder || "");
-                  const src = card
-                    ? getCardVariantSrc(card, "trained") || getCardVariantSrc(card, "untrained")
-                    : "";
-                  return (
-                    <li key={`${row.characterId}-${row.cardId}`} className="championship-card-item">
-                      <div className="championship-card-thumb">
-                        {src ? (
-                          <AssetImage
-                            src={src}
-                            alt={card?.card_name || row.cardId}
-                            fill
-                            variant="thumb"
-                            className="object-cover object-center"
-                          />
-                        ) : null}
-                      </div>
-                      <div className="min-w-0">
-                        <p className="championship-label">
-                          {member ? getCharacterName(member, locale) : `#${row.characterId}`}
-                          {band ? ` · ${getBandName(band, locale)}` : ""}
-                        </p>
-                        <p className="championship-name">{card?.card_name || row.cardId}</p>
-                        <p className="character-hot-views">
-                          {t("hotCards.views").replace("{count}", row.views.toLocaleString())}
-                        </p>
-                        {member ? (
-                          <Link href={`/characters/${member.slug}/`} className="championship-link">
-                            {t("championship.viewCharacter")}
-                          </Link>
-                        ) : null}
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
+              <>
+                <ol className="championship-podium">
+                  {podium.map((row, index) => {
+                    const rank = index + 1;
+                    const member = memberMap.get(row.characterId);
+                    const card = cardMap.get(row.cardId);
+                    const band = getBandByFolder(row.bandFolder || member?.band_folder || "");
+                    const src = card
+                      ? getCardVariantSrc(card, "trained") || getCardVariantSrc(card, "untrained")
+                      : "";
+                    return (
+                      <li
+                        key={`${row.characterId}-${row.cardId}`}
+                        className={cn(
+                          "championship-podium__slot",
+                          `championship-podium__slot--${rank}`
+                        )}
+                        style={
+                          {
+                            "--champ-accent": band?.colors.primary ?? "var(--brand-pink)",
+                          } as CSSProperties
+                        }
+                      >
+                        <span className="championship-podium__medal" aria-hidden>
+                          {rank === 1 ? "🥇" : rank === 2 ? "🥈" : "🥉"}
+                        </span>
+                        <div className="championship-podium__frame">
+                          {src ? (
+                            <AssetImage
+                              src={src}
+                              alt={card?.card_name || row.cardId}
+                              fill
+                              variant="thumb"
+                              className="object-cover object-center"
+                            />
+                          ) : null}
+                        </div>
+                        <div className="championship-podium__meta">
+                          {band ? <BandLogo band={band} size="sm" /> : null}
+                          <p className="championship-label">
+                            {member ? getCharacterName(member, locale) : `#${row.characterId}`}
+                          </p>
+                          <p className="championship-name">{card?.card_name || row.cardId}</p>
+                          <p className="character-hot-views">
+                            {t("hotCards.views").replace("{count}", row.views.toLocaleString())}
+                          </p>
+                          {member ? (
+                            <Link href={`/characters/${member.slug}/`} className="championship-link">
+                              {t("championship.viewCharacter")}
+                            </Link>
+                          ) : null}
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ol>
+
+                {restCards.length > 0 ? (
+                  <ul className="championship-card-grid mt-8">
+                    {restCards.map((row, index) => {
+                      const member = memberMap.get(row.characterId);
+                      const card = cardMap.get(row.cardId);
+                      const band = getBandByFolder(row.bandFolder || member?.band_folder || "");
+                      const src = card
+                        ? getCardVariantSrc(card, "trained") || getCardVariantSrc(card, "untrained")
+                        : "";
+                      return (
+                        <li key={`${row.characterId}-${row.cardId}`} className="championship-card-item">
+                          <span className="championship-rank">{index + 4}</span>
+                          <div className="championship-card-thumb">
+                            {src ? (
+                              <AssetImage
+                                src={src}
+                                alt={card?.card_name || row.cardId}
+                                fill
+                                variant="thumb"
+                                className="object-cover object-center"
+                              />
+                            ) : null}
+                          </div>
+                          <div className="min-w-0">
+                            <p className="championship-label">
+                              {member ? getCharacterName(member, locale) : `#${row.characterId}`}
+                              {band ? ` · ${getBandName(band, locale)}` : ""}
+                            </p>
+                            <p className="championship-name">{card?.card_name || row.cardId}</p>
+                            <p className="character-hot-views">
+                              {t("hotCards.views").replace("{count}", row.views.toLocaleString())}
+                            </p>
+                            {member ? (
+                              <Link href={`/characters/${member.slug}/`} className="championship-link">
+                                {t("championship.viewCharacter")}
+                              </Link>
+                            ) : null}
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                ) : null}
+              </>
             )}
           </section>
 
@@ -172,7 +249,10 @@ export function ChampionshipPageView() {
             <h2 className="championship-section-title">{t("championship.bandChamps")}</h2>
             <p className="championship-section-sub">{t("championship.bandChampsSub")}</p>
             {(data?.bandCharacterChamps.length ?? 0) === 0 ? (
-              <p className="mt-4 text-sm text-[var(--text-muted)]">{t("championship.empty")}</p>
+              <div className="cute-empty mt-4">
+                <div className="cute-empty__doodle cute-empty__doodle--star" aria-hidden />
+                <p className="cute-empty__title">{t("championship.empty")}</p>
+              </div>
             ) : (
               <ul className="championship-band-grid">
                 {BAND_THEMES.map((theme) => {
@@ -181,9 +261,13 @@ export function ChampionshipPageView() {
                   const member = memberMap.get(champ.characterId) as CharacterSummary | undefined;
                   const portrait = member ? getCharacterPortrait(member) : "";
                   return (
-                    <li key={theme.folder} className="championship-band-item">
+                    <li
+                      key={theme.folder}
+                      className="championship-band-item"
+                      style={{ "--champ-accent": theme.colors.primary } as CSSProperties}
+                    >
                       <Link href={`/bands/${theme.slug}/`} className="championship-band-link">
-                        <div className="band-hot-thumb">
+                        <div className="band-hot-thumb championship-band-thumb">
                           {portrait ? (
                             <AssetImage
                               src={portrait}
@@ -195,10 +279,8 @@ export function ChampionshipPageView() {
                           ) : null}
                         </div>
                         <div>
-                          <p className="championship-label" style={{ color: theme.colors.primary }}>
-                            {getBandName(theme, locale)}
-                          </p>
-                          <p className="championship-name">
+                          <BandLogo band={theme} size="sm" />
+                          <p className="championship-name mt-2">
                             {member ? getCharacterName(member, locale) : `#${champ.characterId}`}
                           </p>
                           <p className="character-hot-views">

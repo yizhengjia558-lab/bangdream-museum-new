@@ -122,30 +122,37 @@ export function CharacterConfessionWall({
       {error && <p className="auth-error mt-2">{error}</p>}
 
       {loading ? (
-        <p className="mt-4 text-sm text-[var(--text-muted)]">…</p>
+        <div className="cute-loader" aria-hidden>
+          <span />
+          <span />
+          <span />
+        </div>
       ) : comments.length === 0 ? (
-        <p className="mt-4 text-sm text-[var(--text-muted)]">{t("wall.empty")}</p>
+        <div className="cute-empty cute-empty--wall">
+          <div className="cute-empty__doodle cute-empty__doodle--star" aria-hidden />
+          <p className="cute-empty__title">{t("wall.empty")}</p>
+        </div>
       ) : (
         <ul className="character-wall-list">
           {comments.map((c) => (
-            <li key={c.id} className="card-comment-item">
+            <li key={c.id} className="wall-bubble-item">
               <UserAvatar username={c.author.username} avatarUrl={c.author.avatarUrl} size={36} />
-              <div className="min-w-0 flex-1">
+              <div className="wall-bubble">
                 <p className="forum-meta">
                   {c.author.username} · {formatTime(c.createdAt, locale)}
                 </p>
-                <p className="whitespace-pre-wrap text-sm text-[var(--text-primary)]">{c.body}</p>
+                <p className="wall-bubble__body">{c.body}</p>
+                {user?.id === c.author.id ? (
+                  <button
+                    type="button"
+                    className="auth-text-btn wall-bubble__delete"
+                    disabled={busy}
+                    onClick={() => onDelete(c.id)}
+                  >
+                    {t("wall.delete")}
+                  </button>
+                ) : null}
               </div>
-              {user?.id === c.author.id && (
-                <button
-                  type="button"
-                  className="auth-text-btn"
-                  disabled={busy}
-                  onClick={() => onDelete(c.id)}
-                >
-                  {t("wall.delete")}
-                </button>
-              )}
             </li>
           ))}
         </ul>

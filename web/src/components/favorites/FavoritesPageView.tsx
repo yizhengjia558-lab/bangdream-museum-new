@@ -122,28 +122,36 @@ export function FavoritesPageView() {
           </GlassPanel>
 
           {count === 0 ? (
-            <GlassPanel className="favorites-empty p-12 text-center">
-              <p className="text-lg font-semibold text-[var(--text-primary)]">{t("favorites.empty")}</p>
-              <p className="mt-3 text-sm text-[var(--text-secondary)]">{t("favorites.emptyHint")}</p>
+            <GlassPanel className="favorites-empty cute-empty p-12 text-center">
+              <div className="cute-empty__doodle cute-empty__doodle--heart" aria-hidden />
+              <p className="cute-empty__title">{t("favorites.empty")}</p>
+              <p className="cute-empty__hint">{t("favorites.emptyHint")}</p>
               <div className="mt-8">
                 <GlassButton href="/bands/">{t("hero.explore")}</GlassButton>
               </div>
             </GlassPanel>
           ) : catalogError ? (
-            <GlassPanel className="favorites-empty p-10 text-center">
-              <p className="text-[var(--text-secondary)]">{t("favorites.loadError")}</p>
+            <GlassPanel className="favorites-empty cute-empty p-10 text-center">
+              <div className="cute-empty__doodle cute-empty__doodle--star" aria-hidden />
+              <p className="cute-empty__title">{t("favorites.loadError")}</p>
             </GlassPanel>
           ) : loading ? (
             <GlassPanel className="favorites-empty p-10 text-center">
-              <p className="text-[var(--text-secondary)]">…</p>
+              <div className="cute-loader" aria-hidden>
+                <span />
+                <span />
+                <span />
+              </div>
             </GlassPanel>
           ) : unresolved ? (
-            <GlassPanel className="favorites-empty p-10 text-center">
-              <p className="text-[var(--text-secondary)]">{t("favorites.unresolved")}</p>
+            <GlassPanel className="favorites-empty cute-empty p-10 text-center">
+              <div className="cute-empty__doodle cute-empty__doodle--star" aria-hidden />
+              <p className="cute-empty__title">{t("favorites.unresolved")}</p>
             </GlassPanel>
           ) : filtered.length === 0 ? (
-            <GlassPanel className="favorites-empty p-10 text-center">
-              <p className="text-[var(--text-secondary)]">{t("search.noResults")}</p>
+            <GlassPanel className="favorites-empty cute-empty p-10 text-center">
+              <div className="cute-empty__doodle cute-empty__doodle--star" aria-hidden />
+              <p className="cute-empty__title">{t("search.noResults")}</p>
             </GlassPanel>
           ) : (
             <>

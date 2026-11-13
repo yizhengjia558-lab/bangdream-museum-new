@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { useFavorites } from "@/components/favorites/FavoritesProvider";
 import type { CardData } from "@/lib/data-types";
@@ -20,17 +21,30 @@ export function CardFavoriteButton({
   const { t } = useLocale();
   const { isFavorite, toggleFavorite } = useFavorites();
   const active = isFavorite(displayKey);
+  const [burstKey, setBurstKey] = useState(0);
 
   return (
     <button
       type="button"
-      className={cn("card-favorite-btn", active && "card-favorite-btn--active", className)}
+      className={cn(
+        "card-favorite-btn",
+        active && "card-favorite-btn--active",
+        burstKey > 0 && "card-favorite-btn--pop",
+        className
+      )}
       aria-label={active ? t("favorites.remove") : t("favorites.add")}
       aria-pressed={active}
       onClick={(e) => {
         e.stopPropagation();
         e.preventDefault();
+        const next = !active;
         toggleFavorite(displayKey, card, variant);
+        if (next) setBurstKey((k) => k + 1);
+      }}
+      onAnimationEnd={(e) => {
+        if (e.animationName.includes("favorite-pop")) {
+          setBurstKey(0);
+        }
       }}
     >
       <svg viewBox="0 0 24 24" className="card-favorite-icon" aria-hidden>
@@ -46,6 +60,15 @@ export function CardFavoriteButton({
           />
         )}
       </svg>
+      {burstKey > 0 ? (
+        <span className="card-favorite-burst" aria-hidden key={burstKey}>
+          <i />
+          <i />
+          <i />
+          <i />
+          <i />
+        </span>
+      ) : null}
     </button>
   );
 }

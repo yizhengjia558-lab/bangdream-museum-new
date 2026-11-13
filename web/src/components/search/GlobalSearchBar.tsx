@@ -102,7 +102,10 @@ export function GlobalSearchBar({ className }: { className?: string }) {
       {showDropdown && (
         <ul id={`${inputId}-results`} className="global-search-results" role="listbox">
           {navHits.length === 0 ? (
-            <li className="global-search-empty">{t("search.noResults")}</li>
+            <li className="global-search-empty cute-empty cute-empty--inline">
+              <span className="cute-empty__doodle cute-empty__doodle--star" aria-hidden />
+              <span className="cute-empty__title">{t("search.noResults")}</span>
+            </li>
           ) : (
             navHits.map((hit) => (
               <li key={`${hit.type}-${hit.href}`} role="option">

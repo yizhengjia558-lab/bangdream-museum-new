@@ -5,24 +5,6 @@ import { useLenis } from "@/components/layout/SmoothScroll";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { cn } from "@/lib/utils";
 
-function TopIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      className="h-4 w-4 shrink-0"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 19V5" />
-      <path d="M5 12l7-7 7 7" />
-    </svg>
-  );
-}
-
 export function ScrollToTopButton() {
   const lenis = useLenis();
   const { t } = useLocale();
@@ -64,10 +46,15 @@ export function ScrollToTopButton() {
       onClick={scrollToTop}
       aria-label={t("common.scrollToTop")}
       title={t("common.scrollToTop")}
-      className={cn("scroll-top-btn chrome-pill-btn", visible && "scroll-top-btn--visible")}
+      className={cn(
+        "scroll-top-btn chrome-sticker-btn",
+        visible && "scroll-top-btn--visible"
+      )}
     >
-      <TopIcon />
-      <span className="chrome-pill-btn-label">{t("common.scrollToTop")}</span>
+      <span className="chrome-sticker-btn__glyph" aria-hidden>
+        ★
+      </span>
+      <span className="chrome-sticker-btn__label">{t("common.scrollToTop")}</span>
     </button>
   );
 }
