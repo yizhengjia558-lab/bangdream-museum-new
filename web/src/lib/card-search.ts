@@ -90,6 +90,10 @@ export type NavSearchHit = {
   label: string;
   sublabel: string;
   href: string;
+  /** Optional thumb: character portrait path or band logo id. */
+  thumb?: string;
+  thumbKind?: "image" | "band-logo";
+  bandSlug?: string;
 };
 
 let navFuse: Fuse<NavFuseItem> | null = null;
@@ -123,6 +127,8 @@ function buildNavFuseItems(): NavFuseItem[] {
       sublabel: band.nameJp,
       href: `/bands/${band.slug}/`,
       keywords: [band.name, band.nameJp, band.id, band.slug].join(" "),
+      thumbKind: "band-logo",
+      bandSlug: band.slug,
     });
   }
 
@@ -143,6 +149,8 @@ function buildNavFuseItems(): NavFuseItem[] {
       ]
         .filter(Boolean)
         .join(" "),
+      thumb: member.portrait || member.standing || "",
+      thumbKind: "image",
     });
   }
 

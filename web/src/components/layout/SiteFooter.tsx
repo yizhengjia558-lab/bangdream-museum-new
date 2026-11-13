@@ -1,68 +1,45 @@
 "use client";
 
 import Link from "next/link";
-import { GlassPanel } from "@/components/ui/GlassPanel";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { VisitorCount } from "@/components/analytics/VisitorCount";
 
 export function SiteFooter() {
   const { t } = useLocale();
 
+  const links = [
+    { href: "/", label: t("nav.home") },
+    { href: "/bands/", label: t("nav.bands") },
+    { href: "/costumes/", label: t("nav.costumes") },
+    { href: "/forum/", label: t("nav.forum") },
+    { href: "/championship/", label: t("nav.championship") },
+    { href: "/favorites/", label: t("nav.favorites") },
+  ];
+
   return (
-    <footer className="relative mt-auto page-section pb-10 pt-16">
-      <div className="page-container max-w-4xl">
-        <GlassPanel className="px-10 py-10 text-center sm:px-12 sm:py-12">
-          <p className="font-[family-name:var(--font-subtitle-active)] text-sm font-bold tracking-[0.15em] text-[var(--text-primary)]">
-            {t("footer.title")}
-          </p>
-          <p className="mt-2 font-[family-name:var(--font-body-active)] text-xs text-[var(--text-muted)]">
-            {t("footer.subtitle")}
-          </p>
-          <nav className="mt-6 flex justify-center gap-6">
-            <Link
-              href="/"
-              className="text-[11px] font-semibold tracking-[0.12em] text-[var(--text-muted)] uppercase transition hover:text-[var(--brand-pink)]"
-            >
-              {t("nav.home")}
+    <footer className="site-footer">
+      <div className="site-footer__inner page-container">
+        <div className="site-footer__brand">
+          <p className="site-footer__title">{t("footer.title")}</p>
+          <p className="site-footer__subtitle">{t("footer.subtitle")}</p>
+        </div>
+
+        <nav className="site-footer__nav" aria-label={t("footer.title")}>
+          {links.map((link) => (
+            <Link key={link.href} href={link.href} className="site-footer__link">
+              {link.label}
             </Link>
-            <Link
-              href="/bands/"
-              className="text-[11px] font-semibold tracking-[0.12em] text-[var(--text-muted)] uppercase transition hover:text-[var(--brand-pink)]"
-            >
-              {t("nav.bands")}
-            </Link>
-            <Link
-              href="/costumes/"
-              className="text-[11px] font-semibold tracking-[0.12em] text-[var(--text-muted)] uppercase transition hover:text-[var(--brand-pink)]"
-            >
-              {t("nav.costumes")}
-            </Link>
-            <Link
-              href="/forum/"
-              className="text-[11px] font-semibold tracking-[0.12em] text-[var(--text-muted)] uppercase transition hover:text-[var(--brand-pink)]"
-            >
-              {t("nav.forum")}
-            </Link>
-            <Link
-              href="/championship/"
-              className="text-[11px] font-semibold tracking-[0.12em] text-[var(--text-muted)] uppercase transition hover:text-[var(--brand-pink)]"
-            >
-              {t("nav.championship")}
-            </Link>
-            <Link
-              href="/favorites/"
-              className="text-[11px] font-semibold tracking-[0.12em] text-[var(--text-muted)] uppercase transition hover:text-[var(--brand-pink)]"
-            >
-              {t("nav.favorites")}
-            </Link>
-          </nav>
+          ))}
+        </nav>
+
+        <div className="site-footer__meta">
           <VisitorCount />
-          <p className="mt-8 text-[10px] leading-relaxed text-[var(--text-muted)]">
+          <p className="site-footer__disclaimer">
             {t("footer.disclaimer")}
             <br />
             ©BanG Dream! Project ©Bushiroad
           </p>
-        </GlassPanel>
+        </div>
       </div>
     </footer>
   );

@@ -136,6 +136,8 @@ const zh = {
   filter: {
     title: "卡面筛选",
     clearAll: "清空全部筛选",
+    expand: "展开筛选",
+    collapse: "收起筛选",
     resultCount: "显示 {shown} / {total} 张卡面",
     band: "乐队",
     member: "成员",
@@ -449,6 +451,8 @@ const en = {
   filter: {
     title: "Card Filters",
     clearAll: "Clear all filters",
+    expand: "Show filters",
+    collapse: "Hide filters",
     resultCount: "Showing {shown} / {total} cards",
     band: "Band",
     member: "Member",
@@ -762,6 +766,8 @@ const ja = {
   filter: {
     title: "カードフィルター",
     clearAll: "フィルターをすべて解除",
+    expand: "フィルターを開く",
+    collapse: "フィルターを閉じる",
     resultCount: "{total} 枚中 {shown} 枚を表示",
     band: "バンド",
     member: "メンバー",

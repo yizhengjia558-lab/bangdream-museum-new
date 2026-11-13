@@ -6,7 +6,10 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { useGlobalSearch } from "@/components/search/GlobalSearchProvider";
-import { isCardListPath, searchNavigation } from "@/lib/card-search";
+import { AssetImage } from "@/components/ui/AssetImage";
+import { BandLogo } from "@/components/ui/BandLogo";
+import { isCardListPath, searchNavigation, type NavSearchHit } from "@/lib/card-search";
+import { getBandBySlug } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 
 function SearchIcon() {
@@ -23,6 +26,33 @@ function ClearIcon() {
     <svg viewBox="0 0 24 24" className="global-search-clear-icon" aria-hidden>
       <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
     </svg>
+  );
+}
+
+function SearchHitThumb({ hit }: { hit: NavSearchHit }) {
+  if (hit.thumbKind === "band-logo" && hit.bandSlug) {
+    const band = getBandBySlug(hit.bandSlug);
+    if (band) {
+      return (
+        <span className="global-search-result-thumb global-search-result-thumb--logo">
+          <BandLogo band={band} size="sm" />
+        </span>
+      );
+    }
+  }
+
+  if (hit.thumbKind === "image" && hit.thumb) {
+    return (
+      <span className="global-search-result-thumb">
+        <AssetImage src={hit.thumb} alt="" variant="thumb" className="global-search-result-thumb__img" />
+      </span>
+    );
+  }
+
+  return (
+    <span className="global-search-result-thumb global-search-result-thumb--fallback" aria-hidden>
+      {hit.type === "page" ? "✦" : hit.label.slice(0, 1)}
+    </span>
   );
 }
 
@@ -116,11 +146,12 @@ export function GlobalSearchBar({ className }: { className?: string }) {
                     setOpen(false);
                   }}
                 >
-                  <span className="global-search-result-type">{typeLabel(hit.type)}</span>
+                  <SearchHitThumb hit={hit} />
                   <span className="global-search-result-body">
                     <span className="global-search-result-label">{hit.label}</span>
                     <span className="global-search-result-sub">{hit.sublabel}</span>
                   </span>
+                  <span className="global-search-result-type">{typeLabel(hit.type)}</span>
                 </Link>
               </li>
             ))

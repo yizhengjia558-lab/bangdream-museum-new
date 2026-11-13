@@ -10,7 +10,15 @@ import type { HeroBannerSlide } from "@/lib/hero-banner";
 
 const INTERVAL_MS = 6500;
 
-export function HeroBannerCarousel({ slides }: { slides: HeroBannerSlide[] }) {
+export function HeroBannerCarousel({
+  slides,
+  museumTitle,
+  museumSubtitle,
+}: {
+  slides: HeroBannerSlide[];
+  museumTitle?: string;
+  museumSubtitle?: string;
+}) {
   const { t, locale } = useLocale();
   const [index, setIndex] = useState(0);
 
@@ -27,7 +35,7 @@ export function HeroBannerCarousel({ slides }: { slides: HeroBannerSlide[] }) {
   const slide = slides[index];
 
   return (
-    <section className="hero-banner" aria-label={t("hero.featuredCards")}>
+    <section className="hero-banner hero-banner--unified" aria-label={t("hero.featuredCards")}>
       <div
         key={slide.band.slug}
         className="hero-banner-slide hero-banner-slide--enter"
@@ -48,16 +56,30 @@ export function HeroBannerCarousel({ slides }: { slides: HeroBannerSlide[] }) {
           )}
         </div>
         <div className="hero-banner-overlay" />
-        <div className="hero-banner-content">
-          <div className="hero-banner-logo-float">
-            <BandLogo band={slide.band} size="lg" showPattern />
+        <div className="hero-banner-content hero-banner-content--unified">
+          {museumTitle ? (
+            <div className="hero-banner-museum">
+              <p className="hero-banner-eyebrow">{t("hero.eyebrow")}</p>
+              <h1 className="hero-banner-museum-title">{museumTitle}</h1>
+              {museumSubtitle ? <p className="hero-banner-museum-sub">{museumSubtitle}</p> : null}
+            </div>
+          ) : null}
+
+          <div className="hero-banner-band-block">
+            <div className="hero-banner-logo-float">
+              <BandLogo band={slide.band} size="lg" showPattern />
+            </div>
+            <h2 className="sr-only">{getBandName(slide.band, locale)}</h2>
+            <p className="hero-banner-slogan">&ldquo;{getBandSlogan(slide.band, locale)}&rdquo;</p>
+            <div className="hero-banner-cta-row">
+              <Link href="/bands/" className="hero-banner-link hero-banner-link--museum">
+                {t("hero.explore")}
+              </Link>
+              <Link href={slide.href} className="hero-banner-link hero-banner-link--band">
+                {t("bands.enterBand")}
+              </Link>
+            </div>
           </div>
-          <p className="hero-banner-eyebrow">{t("bands.enterBand")}</p>
-          <h2 className="sr-only">{getBandName(slide.band, locale)}</h2>
-          <p className="hero-banner-slogan">&ldquo;{getBandSlogan(slide.band, locale)}&rdquo;</p>
-          <Link href={slide.href} className="hero-banner-link">
-            {t("bands.enterBand")} →
-          </Link>
         </div>
       </div>
 

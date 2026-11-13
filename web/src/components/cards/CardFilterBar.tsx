@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState, type CSSProperties, type ReactNode } from "react";
 import { GlassButton } from "@/components/ui/GlassButton";
 import { GlassPanel } from "@/components/ui/GlassPanel";
+import { BandLogo } from "@/components/ui/BandLogo";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getBandName, getCharacterName } from "@/lib/i18n/display";
 import {
@@ -22,6 +23,13 @@ import type { CardData, CharacterSummary } from "@/lib/data-types";
 import { BAND_THEMES } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 
+const ATTR_COLORS: Record<CardAttribute, string> = {
+  power: "#e9435e",
+  cool: "#4f7cff",
+  pure: "#3ecf8e",
+  happy: "#ffb02e",
+};
+
 function toggle<T>(list: T[], value: T): T[] {
   return list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
 }
@@ -31,33 +39,44 @@ function FilterChip({
   label,
   onClick,
   accent,
+  dot,
+  children,
 }: {
   active: boolean;
-  label: string;
+  label?: string;
   onClick: () => void;
   accent: string;
+  dot?: string;
+  children?: ReactNode;
 }) {
   return (
     <button
       type="button"
-      className={cn("card-filter-chip", active && "card-filter-chip--active")}
+      className={cn("card-filter-chip", active && "card-filter-chip--active", children && "card-filter-chip--logo")}
       style={
-        active
-          ? {
-              borderColor: `${accent}88`,
-              background: `${accent}22`,
-              boxShadow: `0 0 20px ${accent}25`,
-            }
-          : undefined
+        {
+          "--chip-accent": accent,
+          ...(active
+            ? {
+                borderColor: `${accent}88`,
+                background: `${accent}22`,
+                boxShadow: `0 0 20px ${accent}25`,
+              }
+            : undefined),
+        } as CSSProperties
       }
       onClick={onClick}
+      aria-pressed={active}
+      aria-label={label}
+      title={label}
     >
-      {label}
+      {dot ? <span className="card-filter-chip__dot" style={{ background: dot }} aria-hidden /> : null}
+      {children ?? label}
     </button>
   );
 }
 
-function FilterGroup({ title, children }: { title: string; children: React.ReactNode }) {
+function FilterGroup({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div className="card-filter-group">
       <p className="card-filter-group-title">{title}</p>
@@ -84,6 +103,7 @@ export function CardFilterBar({
   totalCount: number;
 }) {
   const { t, locale } = useLocale();
+  const [expanded, setExpanded] = useState(false);
   const years = useMemo(() => collectFilterYears(cards), [cards]);
 
   const bandsInCards = useMemo(() => {
@@ -106,11 +126,16 @@ export function CardFilterBar({
 
   const showBand = bandsInCards.length > 1;
   const showMember = membersInCards.length > 1;
-
   const bandTheme = (bandId: BandFilterId) => BAND_THEMES.find((b) => b.id === bandId);
-
   const attributeLabel = (attr: CardAttribute) => t(`filter.attr.${attr}`);
   const kindLabel = (kind: CardKind) => t(`filter.kind.${kind}`);
+  const activeCount =
+    filters.bands.length +
+    filters.members.length +
+    filters.stars.length +
+    filters.attributes.length +
+    filters.kinds.length +
+    filters.years.length;
 
   return (
     <GlassPanel className="card-filter-bar mb-10" glow={`radial-gradient(circle, ${themeColor}25, transparent)`}>
@@ -123,14 +148,25 @@ export function CardFilterBar({
               .replace("{total}", String(totalCount))}
           </p>
         </div>
-        {!isEmptyFilters(filters) && (
-          <GlassButton variant="ghost" className="card-filter-clear" onClick={() => onChange(EMPTY_CARD_FILTERS)}>
-            {t("filter.clearAll")}
-          </GlassButton>
-        )}
+        <div className="card-filter-bar-actions">
+          <button
+            type="button"
+            className="card-filter-toggle"
+            aria-expanded={expanded}
+            onClick={() => setExpanded((v) => !v)}
+          >
+            {expanded ? t("filter.collapse") : t("filter.expand")}
+            {activeCount > 0 ? <span className="card-filter-toggle__count">{activeCount}</span> : null}
+          </button>
+          {!isEmptyFilters(filters) && (
+            <GlassButton variant="ghost" className="card-filter-clear" onClick={() => onChange(EMPTY_CARD_FILTERS)}>
+              {t("filter.clearAll")}
+            </GlassButton>
+          )}
+        </div>
       </div>
 
-      <div className="card-filter-groups">
+      <div className={cn("card-filter-groups", expanded && "card-filter-groups--expanded")}>
         {showBand && (
           <FilterGroup title={t("filter.band")}>
             {bandsInCards.map((band) => {
@@ -140,9 +176,11 @@ export function CardFilterBar({
                   key={band}
                   label={theme ? getBandName(theme, locale) : band}
                   active={filters.bands.includes(band)}
-                  accent={themeColor}
+                  accent={theme?.colors.primary ?? themeColor}
                   onClick={() => onChange({ ...filters, bands: toggle(filters.bands, band) })}
-                />
+                >
+                  {theme ? <BandLogo band={theme} size="sm" /> : band}
+                </FilterChip>
               );
             })}
           </FilterGroup>
@@ -180,37 +218,40 @@ export function CardFilterBar({
               key={attr}
               label={attributeLabel(attr)}
               active={filters.attributes.includes(attr)}
-              accent={themeColor}
+              accent={ATTR_COLORS[attr]}
+              dot={ATTR_COLORS[attr]}
               onClick={() => onChange({ ...filters, attributes: toggle(filters.attributes, attr) })}
             />
           ))}
         </FilterGroup>
 
-        <FilterGroup title={t("filter.kindGroup")}>
-          {CARD_KINDS.map((kind) => (
-            <FilterChip
-              key={kind}
-              label={kindLabel(kind)}
-              active={filters.kinds.includes(kind)}
-              accent={themeColor}
-              onClick={() => onChange({ ...filters, kinds: toggle(filters.kinds, kind) })}
-            />
-          ))}
-        </FilterGroup>
-
-        {years.length > 0 && (
-          <FilterGroup title={t("filter.year")}>
-            {years.map((year) => (
+        <div className="card-filter-more">
+          <FilterGroup title={t("filter.kindGroup")}>
+            {CARD_KINDS.map((kind) => (
               <FilterChip
-                key={year}
-                label={String(year)}
-                active={filters.years.includes(year)}
+                key={kind}
+                label={kindLabel(kind)}
+                active={filters.kinds.includes(kind)}
                 accent={themeColor}
-                onClick={() => onChange({ ...filters, years: toggle(filters.years, year) })}
+                onClick={() => onChange({ ...filters, kinds: toggle(filters.kinds, kind) })}
               />
             ))}
           </FilterGroup>
-        )}
+
+          {years.length > 0 && (
+            <FilterGroup title={t("filter.year")}>
+              {years.map((year) => (
+                <FilterChip
+                  key={year}
+                  label={String(year)}
+                  active={filters.years.includes(year)}
+                  accent={themeColor}
+                  onClick={() => onChange({ ...filters, years: toggle(filters.years, year) })}
+                />
+              ))}
+            </FilterGroup>
+          )}
+        </div>
       </div>
     </GlassPanel>
   );

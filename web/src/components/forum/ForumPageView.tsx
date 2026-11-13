@@ -45,6 +45,37 @@ function MediaGallery({ media }: { media: MediaItem[] }) {
   );
 }
 
+function PostMediaThumbs({ media }: { media: MediaItem[] }) {
+  if (!media.length) return null;
+  const thumbs = media.slice(0, 3);
+  const extra = media.length - thumbs.length;
+  return (
+    <div className="forum-post-thumbs" aria-hidden>
+      {thumbs.map((m, i) =>
+        m.kind === "video" ? (
+          <span key={m.url + i} className="forum-post-thumb forum-post-thumb--video">
+            <video src={m.url} muted playsInline preload="metadata" />
+          </span>
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img key={m.url + i} src={m.url} alt="" className="forum-post-thumb" />
+        )
+      )}
+      {extra > 0 ? <span className="forum-post-thumb forum-post-thumb--more">+{extra}</span> : null}
+    </div>
+  );
+}
+
+function CuteLoader() {
+  return (
+    <div className="cute-loader" aria-hidden>
+      <span />
+      <span />
+      <span />
+    </div>
+  );
+}
+
 export function ForumPageView() {
   const { t, locale } = useLocale();
   const { enabled, user, requireAuth } = useAuth();
@@ -274,7 +305,7 @@ export function ForumPageView() {
                 ← {t("forum.backToList")}
               </button>
               {detailLoading || !detail ? (
-                <p className="text-[var(--text-secondary)]">…</p>
+                <CuteLoader />
               ) : (
                 <>
                   <div className="forum-post-header">
@@ -347,17 +378,23 @@ export function ForumPageView() {
               )}
             </GlassPanel>
           ) : loading ? (
-            <GlassPanel className="p-10 text-center">
-              <p className="text-[var(--text-secondary)]">…</p>
+            <GlassPanel className="forum-list-skeleton p-6">
+              <CuteLoader />
+              <div className="cute-skeleton-stack" aria-hidden>
+                <div className="cute-skeleton cute-skeleton--row" />
+                <div className="cute-skeleton cute-skeleton--row" />
+                <div className="cute-skeleton cute-skeleton--row" />
+              </div>
             </GlassPanel>
           ) : error ? (
             <GlassPanel className="p-10 text-center">
               <p className="text-[var(--text-secondary)]">{error}</p>
             </GlassPanel>
           ) : posts.length === 0 ? (
-            <GlassPanel className="p-12 text-center">
-              <p className="text-lg font-semibold text-[var(--text-primary)]">{t("forum.empty")}</p>
-              <p className="mt-3 text-sm text-[var(--text-secondary)]">{t("forum.emptyHint")}</p>
+            <GlassPanel className="cute-empty p-12 text-center">
+              <span className="cute-empty__doodle cute-empty__doodle--heart" aria-hidden />
+              <p className="cute-empty__title">{t("forum.empty")}</p>
+              <p className="cute-empty__hint">{t("forum.emptyHint")}</p>
             </GlassPanel>
           ) : (
             <ul className="forum-post-list">
@@ -377,13 +414,9 @@ export function ForumPageView() {
                           {t("forum.replyCount").replace("{count}", String(post.replyCount))}
                         </p>
                         <p className="mt-2 line-clamp-2 text-sm text-[var(--text-secondary)]">{post.body}</p>
+                        <PostMediaThumbs media={post.media} />
                       </div>
                     </div>
-                    {post.media.length > 0 && (
-                      <p className="mt-2 text-left text-xs text-[var(--text-muted)]">
-                        {t("forum.mediaCount").replace("{count}", String(post.media.length))}
-                      </p>
-                    )}
                   </button>
                 </li>
               ))}
