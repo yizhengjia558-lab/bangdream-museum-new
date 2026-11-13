@@ -334,16 +334,6 @@
       "resource_set_name": "res033041"
     },
     {
-      "card_id": 2443,
-      "card_name": "高雅管弦乐",
-      "rarity": "2-Star",
-      "event": "Beyond my Imagination",
-      "release_date": "2026-11-13",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res033045_rip/card_normal.png",
-      "trained_image": "",
-      "resource_set_name": "res033045"
-    },
-    {
       "card_id": 2294,
       "card_name": "万圣节机遇",
       "rarity": "3-Star",
@@ -402,6 +392,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res033048_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res033048_rip/card_after_training.png",
       "resource_set_name": "res033048"
+    },
+    {
+      "card_id": 2443,
+      "card_name": "高雅管弦乐",
+      "rarity": "2-Star",
+      "event": "Beyond my Imagination",
+      "release_date": "2026-11-13",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res033045_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res033045"
     },
     {
       "card_id": 90033,

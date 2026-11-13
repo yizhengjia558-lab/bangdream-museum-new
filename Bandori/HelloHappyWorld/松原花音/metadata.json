@@ -634,16 +634,6 @@
       "resource_set_name": "res014079"
     },
     {
-      "card_id": 2445,
-      "card_name": "街角时尚达人",
-      "rarity": "5-Star",
-      "event": "ドリームフェスティバルガチャ",
-      "release_date": "2026-11-13",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014087_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014087_rip/card_after_training.png",
-      "resource_set_name": "res014087"
-    },
-    {
       "card_id": 2455,
       "card_name": "Future Nurse",
       "rarity": "2-Star",
@@ -732,6 +722,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014086_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014086_rip/card_after_training.png",
       "resource_set_name": "res014086"
+    },
+    {
+      "card_id": 2445,
+      "card_name": "街角时尚达人",
+      "rarity": "5-Star",
+      "event": "7.5周年纪念Dream Festival 招募",
+      "release_date": "2026-11-13",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014087_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014087_rip/card_after_training.png",
+      "resource_set_name": "res014087"
     },
     {
       "card_id": 5010,

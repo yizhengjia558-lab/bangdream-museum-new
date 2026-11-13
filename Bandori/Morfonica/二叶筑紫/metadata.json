@@ -354,16 +354,6 @@
       "resource_set_name": "res029041"
     },
     {
-      "card_id": 2446,
-      "card_name": "炸裂扣杀！",
-      "rarity": "5-Star",
-      "event": "ドリームフェスティバルガチャ",
-      "release_date": "2026-11-13",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029045_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029045_rip/card_after_training.png",
-      "resource_set_name": "res029045"
-    },
-    {
       "card_id": 2472,
       "card_name": "Poppin' Flap",
       "rarity": "2-Star",
@@ -422,6 +412,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029044_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029044_rip/card_after_training.png",
       "resource_set_name": "res029044"
+    },
+    {
+      "card_id": 2446,
+      "card_name": "炸裂扣杀！",
+      "rarity": "5-Star",
+      "event": "7.5周年纪念Dream Festival 招募",
+      "release_date": "2026-11-13",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029045_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res029045_rip/card_after_training.png",
+      "resource_set_name": "res029045"
     },
     {
       "card_id": 90029,

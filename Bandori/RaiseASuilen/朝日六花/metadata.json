@@ -374,16 +374,6 @@
       "resource_set_name": "res032043"
     },
     {
-      "card_id": 2440,
-      "card_name": "坦率的『喜欢』",
-      "rarity": "5-Star",
-      "event": "光差す世界に羽ばたくコンダクターガチャ",
-      "release_date": "2026-11-13",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032047_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032047_rip/card_after_training.png",
-      "resource_set_name": "res032047"
-    },
-    {
       "card_id": 2292,
       "card_name": "予黑暗以光明",
       "rarity": "5-Star",
@@ -432,6 +422,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032050_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032050_rip/card_after_training.png",
       "resource_set_name": "res032050"
+    },
+    {
+      "card_id": 2440,
+      "card_name": "坦率的『喜欢』",
+      "rarity": "5-Star",
+      "event": "向光耀的世界展翅翱翔的指挥家招募",
+      "release_date": "2026-11-13",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032047_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032047_rip/card_after_training.png",
+      "resource_set_name": "res032047"
     },
     {
       "card_id": 5009,
