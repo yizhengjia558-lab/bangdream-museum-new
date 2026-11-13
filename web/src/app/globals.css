@@ -9264,40 +9264,39 @@ html[data-locale="en"] .type-hero-title {
 }
 
 .band-member-strip__img {
-  object-position: var(--strip-face-x, 50%) var(--strip-face-y, 12%);
-  transform: scale(1.06);
-  transform-origin: var(--strip-face-x, 50%) var(--strip-face-y, 12%);
+  object-position: var(--strip-face-x, 50%) var(--strip-face-y, 18%);
+  transform: scale(1.22);
+  transform-origin: var(--strip-face-x, 50%) var(--strip-face-y, 18%);
   transition: transform 0.45s var(--ease-premium);
-  /* Prefer sharp full-res assets over soft upscales. */
   image-rendering: auto;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
 .band-member-strip--card .band-member-strip__img {
-  /* Mild zoom into the face region — avoid extreme crops that hide heads. */
-  transform: scale(1.18);
-  object-position: var(--strip-face-x, 50%) var(--strip-face-y, 12%);
-  transform-origin: var(--strip-face-x, 50%) var(--strip-face-y, 12%);
+  /* Afterglow-style: fill the tall strip with a waist-up card bust. */
+  transform: scale(1.32);
+  object-position: var(--strip-face-x, 50%) var(--strip-face-y, 18%);
+  transform-origin: var(--strip-face-x, 50%) var(--strip-face-y, 18%);
 }
 
 .band-member-strip--standing .band-member-strip__img {
-  /* Standing sprites are already tall; keep the head near the top. */
-  transform: scale(1.08);
-  object-position: var(--strip-face-x, 50%) 4%;
-  transform-origin: var(--strip-face-x, 50%) 8%;
+  /* Fallback only — avoid tiny Q sprites floating in the frame. */
+  transform: scale(1.35);
+  object-position: var(--strip-face-x, 50%) 8%;
+  transform-origin: var(--strip-face-x, 50%) 10%;
 }
 
 .band-member-strip:hover .band-member-strip__img {
-  transform: scale(1.12);
+  transform: scale(1.28);
 }
 
 .band-member-strip--card:hover .band-member-strip__img {
-  transform: scale(1.24);
+  transform: scale(1.38);
 }
 
 .band-member-strip--standing:hover .band-member-strip__img {
-  transform: scale(1.12);
+  transform: scale(1.4);
 }
 
 .band-member-strip__fade {
