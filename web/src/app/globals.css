@@ -959,42 +959,83 @@ button.glass-frame.card-tile:active {
   margin-inline: 0.15rem;
 }
 
-.home-new-cards__rail {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(12rem, 14.5rem);
-  gap: 1.1rem;
-  list-style: none;
-  margin: 0;
-  padding: 0.35rem 1.1rem 1rem;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: 1.1rem;
-  scrollbar-width: thin;
+.home-new-cards__marquee {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+}
+
+.home-new-cards__marquee-viewport {
+  width: 100%;
+  overflow: hidden;
+  padding: 0.45rem 0 0.85rem;
   -webkit-mask-image: linear-gradient(
     90deg,
     transparent 0,
-    #000 1.1rem,
-    #000 calc(100% - 1.1rem),
+    #000 2.5%,
+    #000 97.5%,
     transparent 100%
   );
   mask-image: linear-gradient(
     90deg,
     transparent 0,
-    #000 1.1rem,
-    #000 calc(100% - 1.1rem),
+    #000 2.5%,
+    #000 97.5%,
     transparent 100%
   );
 }
 
-.home-new-cards__item {
-  scroll-snap-align: start;
-  min-width: 0;
+.home-new-cards__marquee-track {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 1.1rem;
+  width: max-content;
+  list-style: none;
+  margin: 0;
+  padding: 0.15rem max(1rem, env(safe-area-inset-left));
+  will-change: transform;
+  animation: home-new-cards-marquee var(--new-cards-duration, 36s) linear infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
-.home-new-cards__item--enter {
-  animation: exhibit-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+.home-new-cards__marquee:hover .home-new-cards__marquee-track,
+.home-new-cards__marquee:focus-within .home-new-cards__marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes home-new-cards-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.home-new-cards__item {
+  flex: 0 0 clamp(12rem, 42vw, 14.5rem);
+  min-width: 0;
+  width: clamp(12rem, 42vw, 14.5rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-new-cards__marquee-track {
+    animation: none !important;
+  }
+
+  .home-new-cards__marquee-viewport {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .home-new-cards__marquee-viewport::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .home-new-cards__card {
@@ -8381,7 +8422,7 @@ html[data-perf="hi"] .band-showcase-card:hover {
   .hero-copy--enter .hero-mega-title,
   .hero-copy--enter .hero-subtitle,
   .hero-copy--enter .hero-cta-wrap,
-  .home-new-cards__item--enter,
+  .home-new-cards__marquee-track,
   .home-new-cards__card:hover .home-new-cards__shine,
   .costume-tile--exhibit,
   .costume-tile--skeleton {
@@ -8402,7 +8443,7 @@ html[data-perf="hi"] .band-showcase-card:hover {
 html[data-perf="hi"] .hero-banner-bg,
 html[data-perf="hi"] .hero-banner-slide--enter,
 html[data-perf="hi"] .hero-copy--enter,
-html[data-perf="hi"] .home-new-cards__item--enter,
+html[data-perf="hi"] .home-new-cards__marquee-track,
 html[data-perf="hi"] .costume-tile--exhibit {
   animation: none !important;
 }

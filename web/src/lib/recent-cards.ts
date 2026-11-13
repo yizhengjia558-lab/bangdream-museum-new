@@ -51,14 +51,18 @@ export function selectRecentCards(
     return { cards: [], mode: "latest", newestDate: null };
   }
 
-  const weekMs = 7 * 24 * 60 * 60 * 1000;
+  // ~10 calendar days keeps “本周” stocked across timezone edges (UTC vs JST/CST).
+  const weekMs = 10 * 24 * 60 * 60 * 1000;
   const weekCards = dated
     .filter((entry) => now.getTime() - entry.date.getTime() <= weekMs)
     .map((entry) => entry.card);
 
   if (weekCards.length >= weekMinCount) {
+    const weekIds = new Set(weekCards.map((card) => card.id));
+    const filler = dated.map((entry) => entry.card).filter((card) => !weekIds.has(card.id));
+    const cards = [...weekCards, ...filler].slice(0, limit);
     return {
-      cards: weekCards.slice(0, limit),
+      cards,
       mode: "week",
       newestDate: weekCards[0]?.release_date || null,
     };

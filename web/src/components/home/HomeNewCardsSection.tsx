@@ -41,12 +41,18 @@ export function HomeNewCardsSection({ recent }: { recent: RecentCardsResult }) {
     return out;
   }, [recent.cards]);
 
+  const loopDisplays = useMemo(
+    () => (uniqueDisplays.length ? [...uniqueDisplays, ...uniqueDisplays] : []),
+    [uniqueDisplays]
+  );
+
   if (!uniqueDisplays.length) return null;
 
   const title = recent.mode === "week" ? t("newCards.weekTitle") : t("newCards.latestTitle");
   const subtitle =
     recent.mode === "week" ? t("newCards.weekSubtitle") : t("newCards.latestSubtitle");
   const detailAccent = lightbox ? resolveCardAccent(lightbox.card) : "#e9435e";
+  const durationSec = Math.max(28, uniqueDisplays.length * 4.5);
 
   return (
     <section className="home-new-cards page-section relative pt-6 pb-4 lg:pt-8 lg:pb-6">
@@ -63,22 +69,30 @@ export function HomeNewCardsSection({ recent }: { recent: RecentCardsResult }) {
             </Link>
           </div>
         </header>
+      </div>
 
-        <ul className="home-new-cards__rail">
-          {uniqueDisplays.map((item, index) => (
-            <NewCardTile
-              key={item.card.id}
-              item={item}
-              index={index}
-              accent={resolveCardAccent(item.card)}
-              dateLabel={formatReleaseDate(item.card.release_date, locale)}
-              rarityLabel={getCardRarityLabel(item.card, locale)}
-              newLabel={t("newCards.badge")}
-              characterLabel={item.card.character_name_cn || item.card.character_name_jp || ""}
-              onOpen={() => setLightbox(item)}
-            />
-          ))}
-        </ul>
+      <div
+        className="home-new-cards__marquee"
+        style={{ "--new-cards-duration": `${durationSec}s` } as CSSProperties}
+      >
+        <div className="home-new-cards__marquee-viewport" role="list" aria-label={title}>
+          <ul className="home-new-cards__marquee-track">
+            {loopDisplays.map((item, index) => (
+              <NewCardTile
+                key={`${item.card.id}-${index}`}
+                item={item}
+                index={index}
+                accent={resolveCardAccent(item.card)}
+                dateLabel={formatReleaseDate(item.card.release_date, locale)}
+                rarityLabel={getCardRarityLabel(item.card, locale)}
+                newLabel={t("newCards.badge")}
+                characterLabel={item.card.character_name_cn || item.card.character_name_jp || ""}
+                ariaHidden={index >= uniqueDisplays.length}
+                onOpen={() => setLightbox(item)}
+              />
+            ))}
+          </ul>
+        </div>
       </div>
 
       <CardDetailModal
@@ -100,6 +114,7 @@ function NewCardTile({
   rarityLabel,
   newLabel,
   characterLabel,
+  ariaHidden,
   onOpen,
 }: {
   item: CardDisplayItem;
@@ -109,12 +124,14 @@ function NewCardTile({
   rarityLabel: string;
   newLabel: string;
   characterLabel: string;
+  ariaHidden?: boolean;
   onOpen: () => void;
 }) {
   return (
     <li
-      className="home-new-cards__item home-new-cards__item--enter"
-      style={{ animationDelay: `${Math.min(index, 10) * 48}ms` }}
+      className="home-new-cards__item"
+      role="listitem"
+      aria-hidden={ariaHidden || undefined}
     >
       <CardTile
         className="home-new-cards__card home-new-cards__card--exhibit card-tile--interactive"
@@ -126,9 +143,10 @@ function NewCardTile({
         <div className="home-new-cards__image-wrap">
           <AssetImage
             src={item.src}
-            alt={item.card.card_name}
+            alt={ariaHidden ? "" : item.card.card_name}
             fill
             variant="mobile"
+            priority={index < 2}
             className="home-new-cards__image object-cover"
           />
           <span className="home-new-cards__shine" aria-hidden />
