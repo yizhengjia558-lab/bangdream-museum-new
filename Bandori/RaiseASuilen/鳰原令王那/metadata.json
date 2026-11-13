@@ -305,10 +305,10 @@
     },
     {
       "card_id": 2444,
-      "card_name": "混ぜてくださ～いっ",
+      "card_name": "请让我们也加入吧～",
       "rarity": "4-Star",
       "event": "光差す世界に羽ばたくコンダクターガチャ",
-      "release_date": "2026-04-29",
+      "release_date": "2026-11-13",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res034043_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res034043_rip/card_after_training.png",
       "resource_set_name": "res034043"
@@ -375,17 +375,17 @@
     },
     {
       "card_id": 5011,
-      "card_name": "Card 5011",
+      "card_name": "輕柔可愛",
       "rarity": "2-Star",
       "event": "campaign",
-      "release_date": "",
+      "release_date": "2023-01-15",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res034s01_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res034s01"
     },
     {
       "card_id": 90034,
-      "card_name": "Card 90034",
+      "card_name": "Rampage!!!",
       "rarity": "2-Star",
       "event": "",
       "release_date": "",

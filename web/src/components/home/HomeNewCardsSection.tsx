@@ -52,7 +52,7 @@ export function HomeNewCardsSection({ recent }: { recent: RecentCardsResult }) {
   const subtitle =
     recent.mode === "week" ? t("newCards.weekSubtitle") : t("newCards.latestSubtitle");
   const detailAccent = lightbox ? resolveCardAccent(lightbox.card) : "#e9435e";
-  const durationSec = Math.max(28, uniqueDisplays.length * 4.5);
+  const durationSec = Math.max(14, uniqueDisplays.length * 2.25);
 
   return (
     <section className="home-new-cards page-section relative pt-6 pb-4 lg:pt-8 lg:pb-6">

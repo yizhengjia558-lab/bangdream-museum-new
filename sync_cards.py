@@ -56,11 +56,15 @@ def main() -> int:
     log(f"Before: {before_cards} cards in index, {before_pngs} PNG files")
     log("")
 
-    log("[1/2] Fetching new assets (skip existing files)...")
+    log("[1/3] Fetching new assets (skip existing files)...")
     subprocess.check_call([sys.executable, str(ROOT / "collect_bandori.py")])
 
     log("")
-    log("[2/2] Rebuilding site data JSON...")
+    log("[2/3] Refreshing CN card names / release dates from Bestdori...")
+    subprocess.check_call(["node", str(ROOT / "scripts" / "refresh-card-metadata.mjs")])
+
+    log("")
+    log("[3/3] Rebuilding site data JSON...")
     subprocess.check_call(["node", str(BUILD_DATA)])
 
     after_cards = card_total()

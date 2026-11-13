@@ -255,7 +255,7 @@
     },
     {
       "card_id": 1917,
-      "card_name": "スウィートなささやき",
+      "card_name": "甜蜜的耳語",
       "rarity": "5-Star",
       "event": "ホロライブ＆ガールズバンドパーティPart3ガチャ",
       "release_date": "2024-01-13",
@@ -445,7 +445,7 @@
     },
     {
       "card_id": 2469,
-      "card_name": "それは星空のようで",
+      "card_name": "那就像是星空一般",
       "rarity": "5-Star",
       "event": "心弾む夢のひとときガチャ",
       "release_date": "2026-06-21",
@@ -505,17 +505,17 @@
     },
     {
       "card_id": 5007,
-      "card_name": "Card 5007",
+      "card_name": "輕柔可愛",
       "rarity": "2-Star",
       "event": "campaign",
-      "release_date": "",
+      "release_date": "2023-01-15",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res026s01_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res026s01"
     },
     {
       "card_id": 90026,
-      "card_name": "Card 90026",
+      "card_name": "Stella Polaris",
       "rarity": "2-Star",
       "event": "",
       "release_date": "",

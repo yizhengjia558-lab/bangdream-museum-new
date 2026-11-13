@@ -375,10 +375,10 @@
     },
     {
       "card_id": 2440,
-      "card_name": "まっすぐな『好き』",
+      "card_name": "坦率的『喜欢』",
       "rarity": "5-Star",
       "event": "光差す世界に羽ばたくコンダクターガチャ",
-      "release_date": "2026-04-29",
+      "release_date": "2026-11-13",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032047_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032047_rip/card_after_training.png",
       "resource_set_name": "res032047"
@@ -435,17 +435,17 @@
     },
     {
       "card_id": 5009,
-      "card_name": "Card 5009",
+      "card_name": "輕柔可愛",
       "rarity": "2-Star",
       "event": "campaign",
-      "release_date": "",
+      "release_date": "2023-01-15",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res032s01_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res032s01"
     },
     {
       "card_id": 90032,
-      "card_name": "Card 90032",
+      "card_name": "Rampage!!!",
       "rarity": "2-Star",
       "event": "",
       "release_date": "",

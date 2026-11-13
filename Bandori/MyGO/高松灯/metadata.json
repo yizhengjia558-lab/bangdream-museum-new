@@ -5,7 +5,7 @@
   "cards": [
     {
       "card_id": 1918,
-      "card_name": "のんびりダイアログ",
+      "card_name": "悠閒的對話",
       "rarity": "5-Star",
       "event": "ホロライブ＆ガールズバンドパーティPart3ガチャ",
       "release_date": "2024-01-13",
@@ -155,17 +155,17 @@
     },
     {
       "card_id": 5012,
-      "card_name": "Card 5012",
+      "card_name": "趣水族館",
       "rarity": "2-Star",
       "event": "campaign",
-      "release_date": "",
+      "release_date": "2025-09-19",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res036s01_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res036s01"
     },
     {
       "card_id": 90036,
-      "card_name": "Card 90036",
+      "card_name": "MyGO!!!!!",
       "rarity": "2-Star",
       "event": "",
       "release_date": "",

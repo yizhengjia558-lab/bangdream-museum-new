@@ -655,7 +655,7 @@
     },
     {
       "card_id": 2449,
-      "card_name": "断崖絶壁の告白",
+      "card_name": "懸崖邊的告白",
       "rarity": "3-Star",
       "event": "君と一緒に！パスパレ全国ツアー！",
       "release_date": "2026-05-10",
@@ -725,17 +725,17 @@
     },
     {
       "card_id": 5003,
-      "card_name": "Card 5003",
+      "card_name": "楚楚可憐",
       "rarity": "2-Star",
       "event": "campaign",
-      "release_date": "",
+      "release_date": "2020-10-13",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018s01_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res018s01"
     },
     {
       "card_id": 90018,
-      "card_name": "Card 90018",
+      "card_name": "Frilly Peony",
       "rarity": "2-Star",
       "event": "",
       "release_date": "",

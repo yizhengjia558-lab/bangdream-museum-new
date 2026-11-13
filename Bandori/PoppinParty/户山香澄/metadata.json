@@ -545,7 +545,7 @@
     },
     {
       "card_id": 1869,
-      "card_name": "ときめくセッション♪",
+      "card_name": "心動合奏♪",
       "rarity": "5-Star",
       "event": "ホロライブ＆ガールズバンドパーティPart1ガチャ",
       "release_date": "2023-12-06",
@@ -745,7 +745,7 @@
     },
     {
       "card_id": 2460,
-      "card_name": "ホワイトブライダル",
+      "card_name": "White Bridal",
       "rarity": "2-Star",
       "event": "これからも迎える朝は",
       "release_date": "2026-05-31",
@@ -805,7 +805,7 @@
     },
     {
       "card_id": 271,
-      "card_name": "第2回ガルパ杯",
+      "card_name": "GBP盃",
       "rarity": "4-Star",
       "event": "Other",
       "release_date": "2100-10-31",
@@ -815,17 +815,17 @@
     },
     {
       "card_id": 5001,
-      "card_name": "Card 5001",
+      "card_name": "2018恭賀新禧！",
       "rarity": "2-Star",
       "event": "campaign",
-      "release_date": "",
+      "release_date": "2018-09-30",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res001s01_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res001s01"
     },
     {
       "card_id": 90001,
-      "card_name": "Card 90001",
+      "card_name": "Poppin'☆Miracle",
       "rarity": "2-Star",
       "event": "",
       "release_date": "",
@@ -835,7 +835,7 @@
     },
     {
       "card_id": 90041,
-      "card_name": "Card 90041",
+      "card_name": "Drive Your Heart",
       "rarity": "2-Star",
       "event": "campaign",
       "release_date": "",

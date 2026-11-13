@@ -605,7 +605,7 @@
     },
     {
       "card_id": 2457,
-      "card_name": "あの頃のぬくもり",
+      "card_name": "那時候的溫暖",
       "rarity": "5-Star",
       "event": "チャペルに響く旅立ちの鐘ガチャ",
       "release_date": "2026-05-31",
@@ -655,17 +655,17 @@
     },
     {
       "card_id": 5005,
-      "card_name": "Card 5005",
+      "card_name": "楚楚可憐",
       "rarity": "2-Star",
       "event": "campaign",
-      "release_date": "",
+      "release_date": "2020-10-13",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res004s01_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res004s01"
     },
     {
       "card_id": 90004,
-      "card_name": "Card 90004",
+      "card_name": "Poppin'☆Miracle",
       "rarity": "2-Star",
       "event": "",
       "release_date": "",
@@ -675,7 +675,7 @@
     },
     {
       "card_id": 90044,
-      "card_name": "Card 90044",
+      "card_name": "Drive Your Heart",
       "rarity": "2-Star",
       "event": "campaign",
       "release_date": "",

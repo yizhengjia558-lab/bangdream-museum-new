@@ -635,17 +635,17 @@
     },
     {
       "card_id": 2445,
-      "card_name": "街角ファッショニスタ",
+      "card_name": "街角时尚达人",
       "rarity": "5-Star",
       "event": "ドリームフェスティバルガチャ",
-      "release_date": "2026-04-29",
+      "release_date": "2026-11-13",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014087_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014087_rip/card_after_training.png",
       "resource_set_name": "res014087"
     },
     {
       "card_id": 2455,
-      "card_name": "フューチャーナース",
+      "card_name": "Future Nurse",
       "rarity": "2-Star",
       "event": "ハロー・スマイル♡なんでも屋さん★",
       "release_date": "2026-05-21",
@@ -735,17 +735,17 @@
     },
     {
       "card_id": 5010,
-      "card_name": "Card 5010",
+      "card_name": "輕柔可愛",
       "rarity": "2-Star",
       "event": "campaign",
-      "release_date": "",
+      "release_date": "2023-01-15",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res014s01_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res014s01"
     },
     {
       "card_id": 90014,
-      "card_name": "Card 90014",
+      "card_name": "Wonder∞Smile!",
       "rarity": "2-Star",
       "event": "",
       "release_date": "",
@@ -755,7 +755,7 @@
     },
     {
       "card_id": 90049,
-      "card_name": "Card 90049",
+      "card_name": "Talk to me, Talk to you",
       "rarity": "2-Star",
       "event": "campaign",
       "release_date": "",

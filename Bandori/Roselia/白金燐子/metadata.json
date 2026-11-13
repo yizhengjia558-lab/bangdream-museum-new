@@ -665,7 +665,7 @@
     },
     {
       "card_id": 2467,
-      "card_name": "ピュア・ノーブル",
+      "card_name": "純粹・高貴",
       "rarity": "2-Star",
       "event": "ディープ・ローズ・ホライズン",
       "release_date": "2026-06-10",
@@ -715,17 +715,17 @@
     },
     {
       "card_id": 5006,
-      "card_name": "Card 5006",
+      "card_name": "楚楚可憐",
       "rarity": "2-Star",
       "event": "campaign",
-      "release_date": "",
+      "release_date": "2020-10-13",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res025s01_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res025s01"
     },
     {
       "card_id": 90025,
-      "card_name": "Card 90025",
+      "card_name": "Mystical Bouquet",
       "rarity": "2-Star",
       "event": "",
       "release_date": "",

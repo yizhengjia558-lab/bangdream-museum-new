@@ -705,7 +705,7 @@
     },
     {
       "card_id": 2468,
-      "card_name": "約束の場所",
+      "card_name": "約定的場所",
       "rarity": "4-Star",
       "event": "クリムゾンの空想理想ガチャ",
       "release_date": "2026-06-10",
@@ -755,17 +755,17 @@
     },
     {
       "card_id": 5008,
-      "card_name": "Card 5008",
+      "card_name": "輕柔可愛",
       "rarity": "2-Star",
       "event": "campaign",
-      "release_date": "",
+      "release_date": "2023-01-15",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res023s01_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res023s01"
     },
     {
       "card_id": 90023,
-      "card_name": "Card 90023",
+      "card_name": "Mystical Bouquet",
       "rarity": "2-Star",
       "event": "",
       "release_date": "",

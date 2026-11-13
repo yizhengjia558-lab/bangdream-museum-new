@@ -335,10 +335,10 @@
     },
     {
       "card_id": 2443,
-      "card_name": "ノーブルオーケストラ",
+      "card_name": "高雅管弦乐",
       "rarity": "2-Star",
       "event": "Beyond my Imagination",
-      "release_date": "2026-04-29",
+      "release_date": "2026-11-13",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res033045_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res033045"
@@ -405,7 +405,7 @@
     },
     {
       "card_id": 90033,
-      "card_name": "Card 90033",
+      "card_name": "Rampage!!!",
       "rarity": "2-Star",
       "event": "",
       "release_date": "",

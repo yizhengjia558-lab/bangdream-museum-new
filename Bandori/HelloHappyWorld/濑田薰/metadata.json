@@ -685,7 +685,7 @@
     },
     {
       "card_id": 2454,
-      "card_name": "瀬田薫にお任せあれ！",
+      "card_name": "交給瀨田薰吧！",
       "rarity": "3-Star",
       "event": "ハロー・スマイル♡なんでも屋さん★",
       "release_date": "2026-05-21",
@@ -755,17 +755,17 @@
     },
     {
       "card_id": 5004,
-      "card_name": "Card 5004",
+      "card_name": "楚楚可憐",
       "rarity": "2-Star",
       "event": "campaign",
-      "release_date": "",
+      "release_date": "2020-10-13",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012s01_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res012s01"
     },
     {
       "card_id": 90012,
-      "card_name": "Card 90012",
+      "card_name": "Wonder∞Smile!",
       "rarity": "2-Star",
       "event": "",
       "release_date": "",
@@ -775,7 +775,7 @@
     },
     {
       "card_id": 90047,
-      "card_name": "Card 90047",
+      "card_name": "Talk to me, Talk to you",
       "rarity": "2-Star",
       "event": "campaign",
       "release_date": "",

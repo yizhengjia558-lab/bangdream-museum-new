@@ -315,10 +315,10 @@
     },
     {
       "card_id": 2441,
-      "card_name": "こっちの道",
+      "card_name": "这条路",
       "rarity": "5-Star",
       "event": "光差す世界に羽ばたくコンダクターガチャ",
-      "release_date": "2026-04-29",
+      "release_date": "2026-11-13",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res035046_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res035046_rip/card_after_training.png",
       "resource_set_name": "res035046"
@@ -375,7 +375,7 @@
     },
     {
       "card_id": 90035,
-      "card_name": "Card 90035",
+      "card_name": "Rampage!!!",
       "rarity": "2-Star",
       "event": "",
       "release_date": "",

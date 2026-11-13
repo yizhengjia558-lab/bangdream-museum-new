@@ -225,7 +225,7 @@
     },
     {
       "card_id": 1883,
-      "card_name": "さあ、歌いましょう",
+      "card_name": "來，歌唱吧",
       "rarity": "5-Star",
       "event": "ホロライブ＆ガールズバンドパーティPart2ガチャ",
       "release_date": "2023-12-23",
@@ -345,10 +345,10 @@
     },
     {
       "card_id": 2442,
-      "card_name": "きみがいてくれて",
+      "card_name": "有你在我身边",
       "rarity": "3-Star",
       "event": "Beyond my Imagination",
-      "release_date": "2026-04-29",
+      "release_date": "2026-11-13",
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res031048_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res031048_rip/card_after_training.png",
       "resource_set_name": "res031048"
@@ -415,7 +415,7 @@
     },
     {
       "card_id": 90031,
-      "card_name": "Card 90031",
+      "card_name": "Rampage!!!",
       "rarity": "2-Star",
       "event": "",
       "release_date": "",
