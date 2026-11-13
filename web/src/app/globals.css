@@ -2291,7 +2291,12 @@ button.glass-frame.card-tile:active {
 }
 
 .band-logo--lg .band-logo__mark {
-  height: clamp(2rem, 4vw, 2.85rem);
+  height: clamp(4rem, 8vw, 5.7rem);
+}
+
+.band-logo--lg .band-logo__pattern {
+  width: 88%;
+  max-width: 16rem;
 }
 
 .band-logo--fallback {
@@ -2314,7 +2319,7 @@ button.glass-frame.card-tile:active {
 }
 
 .band-card-logo {
-  min-height: 2.8rem;
+  min-height: 5.5rem;
 }
 
 .mobile-bottom-nav {
