@@ -9264,35 +9264,40 @@ html[data-locale="en"] .type-hero-title {
 }
 
 .band-member-strip__img {
-  object-position: 50% var(--strip-face-y, 16%);
-  transform: scale(1.12);
-  transform-origin: 50% var(--strip-face-y, 16%);
+  object-position: var(--strip-face-x, 50%) var(--strip-face-y, 12%);
+  transform: scale(1.06);
+  transform-origin: var(--strip-face-x, 50%) var(--strip-face-y, 12%);
   transition: transform 0.45s var(--ease-premium);
+  /* Prefer sharp full-res assets over soft upscales. */
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .band-member-strip--card .band-member-strip__img {
-  /* Zoom into the upper third so faces survive the tall crop. */
-  transform: scale(1.42);
-  object-position: 50% var(--strip-face-y, 14%);
-  transform-origin: 50% var(--strip-face-y, 14%);
+  /* Mild zoom into the face region — avoid extreme crops that hide heads. */
+  transform: scale(1.18);
+  object-position: var(--strip-face-x, 50%) var(--strip-face-y, 12%);
+  transform-origin: var(--strip-face-x, 50%) var(--strip-face-y, 12%);
 }
 
 .band-member-strip--standing .band-member-strip__img {
-  transform: scale(1.05);
-  object-position: 50% 6%;
-  transform-origin: 50% 8%;
+  /* Standing sprites are already tall; keep the head near the top. */
+  transform: scale(1.08);
+  object-position: var(--strip-face-x, 50%) 4%;
+  transform-origin: var(--strip-face-x, 50%) 8%;
 }
 
 .band-member-strip:hover .band-member-strip__img {
-  transform: scale(1.18);
+  transform: scale(1.12);
 }
 
 .band-member-strip--card:hover .band-member-strip__img {
-  transform: scale(1.5);
+  transform: scale(1.24);
 }
 
 .band-member-strip--standing:hover .band-member-strip__img {
-  transform: scale(1.1);
+  transform: scale(1.12);
 }
 
 .band-member-strip__fade {

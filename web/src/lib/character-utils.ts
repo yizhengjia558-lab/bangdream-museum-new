@@ -62,60 +62,125 @@ export function getCharacterPortrait(
   return character.standing;
 }
 
+export type StripArt = {
+  src: string;
+  kind: "standing" | "card";
+  /** Vertical focus (%). Lower = favor top of art (faces). */
+  faceBiasY: number;
+  /** Horizontal focus (%). */
+  faceBiasX: number;
+};
+
 /**
- * Vertical band-member strip art: prioritize face-visible framing.
- * Prefer untrained / mid-rarity busts (faces usually upper-center), then
- * standing sprites, then any remaining card CG / portrait.
+ * Characters whose landscape CGs crop badly in a tall strip —
+ * always prefer standing so the face stays in frame.
+ */
+const STRIP_FORCE_STANDING = new Set<number>([
+  9, // Tomoe — drum / back-view CGs
+  33, // Masuki — face often far right in CGs
+]);
+
+/**
+ * Optional horizontal face bias when card art is used.
+ * Useful for characters who sit off-center in most illustrations.
+ */
+const STRIP_FACE_X: Record<number, number> = {
+  9: 42, // Tomoe
+  33: 72, // Masuki / Masking — face tends to sit on the right
+  35: 48, // Pareo / Chiyu
+};
+
+function scoreStripCard(card: CardData): { src: string; score: number; untrained: boolean } | null {
+  const untrained = card.untrained_file || card.untrained_image;
+  const trained = card.trained_file || card.trained_image;
+  // Prefer untrained busts — trained scenes often hide faces in tall crops.
+  const src = untrained || trained;
+  if (!src) return null;
+
+  const starMatch = card.rarity.match(/([1-5])/);
+  const stars = card.stars ?? (starMatch ? Number(starMatch[1]) : 0);
+  const name = `${card.card_name || ""} ${card.event || ""}`.toLowerCase();
+
+  let score = 0;
+  if (untrained) score += 45;
+  if (stars === 3) score += 26;
+  else if (stars === 2) score += 24;
+  else if (stars === 1) score += 14;
+  else if (stars === 4) score += 8;
+  else if (stars === 5) score -= 12;
+
+  if (!untrained && trained) score -= 25;
+
+  // Scenic / prop-heavy titles tend to crop to instruments or backs.
+  if (/舞台|鼓|ドラム|演奏|ライブ|concert|stage|drum|背影|夕映|骑|馳|驰/.test(name)) {
+    score -= 35;
+  }
+
+  return { src, score, untrained: Boolean(untrained) };
+}
+
+function pickStripCardArt(
+  character: Pick<CharacterSummary, "id"> & { cards?: CardData[] }
+): StripArt | null {
+  if (!character.cards?.length) return null;
+
+  const ranked = character.cards
+    .map(scoreStripCard)
+    .filter(Boolean) as Array<{ src: string; score: number; untrained: boolean }>;
+
+  ranked.sort((a, b) => b.score - a.score);
+  const best = ranked[0];
+  if (!best || best.score < 25) return null;
+
+  return {
+    src: best.src,
+    kind: "card",
+    faceBiasY: best.untrained ? 12 : 16,
+    faceBiasX: STRIP_FACE_X[character.id] ?? 50,
+  };
+}
+
+/**
+ * Vertical band-member strip art.
+ * Standing first (face always near the top). Card busts only when standing is missing,
+ * or when the character is not in the known bad-crop list and we want a bust fallback —
+ * currently standing wins whenever available so faces stay framed.
  */
 export function getCharacterStripArt(
   character: Pick<CharacterSummary, "id" | "standing" | "portrait"> & { cards?: CardData[] }
-): { src: string; kind: "standing" | "card"; faceBias: number } {
-  if (character.cards?.length) {
-    const ranked = [...character.cards]
-      .map((card) => {
-        const untrained = card.untrained_file || card.untrained_image;
-        const trained = card.trained_file || card.trained_image;
-        const src = untrained || trained;
-        if (!src) return null;
-
-        const starMatch = card.rarity.match(/([1-5])/);
-        const stars = card.stars ?? (starMatch ? Number(starMatch[1]) : 0);
-        let score = 0;
-        // Untrained art is usually a closer bust with the face in frame.
-        if (untrained) score += 40;
-        if (stars === 2) score += 28;
-        else if (stars === 3) score += 24;
-        else if (stars === 4) score += 12;
-        else if (stars === 1) score += 18;
-        else if (stars === 5) score -= 8;
-        // Trained scenic CGs often crop to torso / props in a tall strip.
-        if (!untrained && trained) score -= 18;
-        return { src, score, untrained: Boolean(untrained) };
-      })
-      .filter(Boolean) as { src: string; score: number; untrained: boolean }[];
-
-    ranked.sort((a, b) => b.score - a.score);
-    if (ranked[0] && ranked[0].score >= 20) {
-      return {
-        src: ranked[0].src,
-        kind: "card",
-        faceBias: ranked[0].untrained ? 14 : 18,
-      };
-    }
-  }
-
+): StripArt {
+  // Standing sprites keep the face near the top of a tall crop.
   if (character.standing) {
-    return { src: character.standing, kind: "standing", faceBias: 8 };
+    return {
+      src: character.standing,
+      kind: "standing",
+      faceBiasY: 6,
+      faceBiasX: STRIP_FACE_X[character.id] ?? 50,
+    };
   }
 
-  if (character.cards?.length) {
-    const any =
-      character.cards
-        .map((c) => c.untrained_file || c.untrained_image || c.trained_file || c.trained_image)
-        .find(Boolean) || "";
-    if (any) return { src: any, kind: "card", faceBias: 16 };
+  // No standing: try a face-friendly untrained bust (skip known scenic-prone ids).
+  if (!STRIP_FORCE_STANDING.has(character.id)) {
+    const fromCards = pickStripCardArt(character);
+    if (fromCards) return fromCards;
   }
 
-  if (character.portrait) return { src: character.portrait, kind: "card", faceBias: 16 };
-  return { src: character.standing || "", kind: "standing", faceBias: 8 };
+  if (character.portrait) {
+    return {
+      src: character.portrait,
+      kind: "card",
+      faceBiasY: 14,
+      faceBiasX: STRIP_FACE_X[character.id] ?? 50,
+    };
+  }
+
+  const fromCards = pickStripCardArt(character);
+  if (fromCards) return fromCards;
+
+  return {
+    src: "",
+    kind: "standing",
+    faceBiasY: 6,
+    faceBiasX: 50,
+  };
 }

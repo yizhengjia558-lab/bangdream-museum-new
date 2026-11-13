@@ -37,7 +37,8 @@ export function BandMemberStrip({
       style={
         {
           "--member-color": color,
-          "--strip-face-y": `${art.faceBias}%`,
+          "--strip-face-x": `${art.faceBiasX}%`,
+          "--strip-face-y": `${art.faceBiasY}%`,
           animationDelay: `${Math.min(index, 8) * 55}ms`,
         } as CSSProperties
       }
@@ -49,7 +50,8 @@ export function BandMemberStrip({
           src={art.src}
           alt=""
           fill
-          variant="mobile"
+          variant="full"
+          priority={index < 5}
           className="band-member-strip__img object-cover"
         />
       </span>
