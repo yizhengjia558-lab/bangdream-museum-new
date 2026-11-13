@@ -72,81 +72,117 @@ export type StripArt = {
 };
 
 /**
- * Optional horizontal face bias when card art is used.
- * Useful for characters who sit off-center in most illustrations.
+ * Optional horizontal face bias when 5★ trained art is used.
+ * Useful for characters who sit off-center in many CGs.
  */
 const STRIP_FACE_X: Record<number, number> = {
-  9: 45, // Tomoe
-  33: 68, // Masuki / Masking
-  35: 48, // Pareo / Chiyu
-  2: 48, // Tae
-  18: 55, // Yukina
+  1: 48, // Kasumi
+  2: 46, // Tae
+  6: 48, // Ran
+  9: 44, // Tomoe
+  15: 52, // Michelle
+  16: 42, // Aya — often profile / back of hair
+  18: 52, // Yukina
+  22: 40, // Sayo — often left-framed
+  31: 50, // LAYER
+  32: 48, // LOCK
+  33: 62, // MASKING
+  34: 48, // PAREO
+  35: 48, // CHU2
+  36: 46, // Tomori
 };
 
-function scoreStripCard(card: CardData): { src: string; score: number; untrained: boolean } | null {
-  const untrained = card.untrained_file || card.untrained_image;
-  const trained = card.trained_file || card.trained_image;
-  // Prefer untrained busts — closer waist-up portraits for tall strips.
-  const src = untrained || trained;
-  if (!src) return null;
+function cardStars(card: CardData): number {
+  if (typeof card.stars === "number" && card.stars > 0) return card.stars;
+  const m = String(card.rarity || "").match(/([1-5])/);
+  return m ? Number(m[1]) : 0;
+}
 
-  const starMatch = card.rarity.match(/([1-5])/);
-  const stars = card.stars ?? (starMatch ? Number(starMatch[1]) : 0);
+/** Score a 5★ trained CG for tall-strip face visibility. */
+function scoreFiveStarTrained(card: CardData): { src: string; score: number } | null {
+  const src = card.trained_file || card.trained_image;
+  if (!src || cardStars(card) !== 5) return null;
+
   const name = `${card.card_name || ""} ${card.event || ""}`.toLowerCase();
   const kind = String(card.card_kind || card.bestdori_type || "").toLowerCase();
 
-  let score = 0;
-  if (untrained) score += 50;
-  // 3★ / 4★ untrained CGs match the Afterglow museum strips best.
-  if (stars === 3) score += 32;
-  else if (stars === 4) score += 28;
-  else if (stars === 2) score += 16;
-  else if (stars === 1) score += 8;
-  else if (stars === 5) score -= 6;
+  let score = 100;
 
-  if (!untrained && trained) score -= 18;
-  if (kind === "birthday" || /birthday|誕生日|生日/.test(name)) score -= 10;
+  // Prefer permanent / limited stage portraits; kirafes can be very wide scenic.
+  if (kind === "normal" || kind === "permanent") score += 18;
+  else if (kind === "limited") score += 14;
+  else if (kind === "dreamfes") score += 8;
+  else if (kind === "kirafes") score -= 6;
+  else if (kind === "birthday") score -= 12;
 
-  // Scenic / prop-heavy titles tend to crop to instruments or backs.
-  if (/舞台|鼓|ドラム|演奏|ライブ|concert|stage|drum|背影|夕映|骑|馳|驰|泳|水着|游泳池/.test(name)) {
-    score -= 40;
+  // Wide scenic / prop-heavy titles often lose the face in a 9:22 crop.
+  if (/背影|鼓|ドラム|drum|骑|馳|驰|泳|水着|游泳池|海|雨|车|車|猫|停车场|駐車場/.test(name)) {
+    score -= 28;
   }
+  if (/舞台|ライブ|concert|stage|演奏/.test(name)) score -= 10;
 
-  return { src, score, untrained: Boolean(untrained) };
+  // Slight preference for newer ids (usually sharper assets).
+  const idNum = Number(card.bestdori_card_id ?? card.id);
+  if (Number.isFinite(idNum)) score += Math.min(12, Math.floor(idNum / 400));
+
+  return { src, score };
 }
 
-function pickStripCardArt(
+function pickFiveStarTrainedStrip(
   character: Pick<CharacterSummary, "id"> & { cards?: CardData[] }
 ): StripArt | null {
   if (!character.cards?.length) return null;
 
   const ranked = character.cards
-    .map(scoreStripCard)
-    .filter(Boolean) as Array<{ src: string; score: number; untrained: boolean }>;
+    .map(scoreFiveStarTrained)
+    .filter(Boolean) as Array<{ src: string; score: number }>;
+
+  if (!ranked.length) return null;
 
   ranked.sort((a, b) => b.score - a.score);
-  const best = ranked[0];
-  if (!best || best.score < 20) return null;
+  // Stable pick among near-top scores so strips don't jump on tiny score noise.
+  const top = ranked.filter((entry) => entry.score >= ranked[0].score - 8);
+  const chosen = top[hashSeed(character.id) % top.length];
 
   return {
-    src: best.src,
+    src: chosen.src,
     kind: "card",
-    faceBiasY: best.untrained ? 16 : 20,
+    // 5★ trained faces sit a bit lower than untrained busts — bias toward upper third.
+    faceBiasY: 18,
     faceBiasX: STRIP_FACE_X[character.id] ?? 50,
   };
 }
 
 /**
- * Vertical band-member strip art — Afterglow-style high-res card CG for every band.
- * Never prefer Q-version standing sprites when card art exists.
+ * Vertical band-member strip art: always prefer a 5★ trained CG when available,
+ * cropped toward the face. Falls back to portrait / any trained / standing.
  */
 export function getCharacterStripArt(
   character: Pick<CharacterSummary, "id" | "standing" | "portrait"> & { cards?: CardData[] }
 ): StripArt {
-  const fromCards = pickStripCardArt(character);
-  if (fromCards) return fromCards;
+  const fiveStar = pickFiveStarTrainedStrip(character);
+  if (fiveStar) return fiveStar;
 
-  // Curated portrait CG (usually a strong trained/untrained still).
+  // Fallback: any trained art (prefer higher rarity).
+  if (character.cards?.length) {
+    const trained = character.cards
+      .map((card) => {
+        const src = card.trained_file || card.trained_image;
+        if (!src) return null;
+        return { src, score: cardStars(card) * 10 };
+      })
+      .filter(Boolean) as Array<{ src: string; score: number }>;
+    trained.sort((a, b) => b.score - a.score);
+    if (trained[0]) {
+      return {
+        src: trained[0].src,
+        kind: "card",
+        faceBiasY: 18,
+        faceBiasX: STRIP_FACE_X[character.id] ?? 50,
+      };
+    }
+  }
+
   if (character.portrait) {
     return {
       src: character.portrait,
@@ -156,7 +192,6 @@ export function getCharacterStripArt(
     };
   }
 
-  // Last resort only — Q standing when a character has no card files yet.
   if (character.standing) {
     return {
       src: character.standing,
@@ -169,7 +204,7 @@ export function getCharacterStripArt(
   return {
     src: "",
     kind: "card",
-    faceBiasY: 16,
+    faceBiasY: 18,
     faceBiasX: 50,
   };
 }

@@ -9265,7 +9265,7 @@ html[data-locale="en"] .type-hero-title {
 
 .band-member-strip__img {
   object-position: var(--strip-face-x, 50%) var(--strip-face-y, 18%);
-  transform: scale(1.22);
+  transform: scale(1.28);
   transform-origin: var(--strip-face-x, 50%) var(--strip-face-y, 18%);
   transition: transform 0.45s var(--ease-premium);
   image-rendering: auto;
@@ -9274,8 +9274,8 @@ html[data-locale="en"] .type-hero-title {
 }
 
 .band-member-strip--card .band-member-strip__img {
-  /* Afterglow-style: fill the tall strip with a waist-up card bust. */
-  transform: scale(1.32);
+  /* 5★ trained: zoom into the upper third so faces survive the tall crop. */
+  transform: scale(1.38);
   object-position: var(--strip-face-x, 50%) var(--strip-face-y, 18%);
   transform-origin: var(--strip-face-x, 50%) var(--strip-face-y, 18%);
 }
