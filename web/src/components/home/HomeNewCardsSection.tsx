@@ -3,6 +3,7 @@
 import { useMemo, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { AssetImage } from "@/components/ui/AssetImage";
+import { CardCornerBadges } from "@/components/cards/CardCornerBadges";
 import { CardDetailModal } from "@/components/cards/CardDetailModal";
 import { CardFavoriteButton } from "@/components/cards/CardFavoriteButton";
 import { CardTile } from "@/components/cards/CardTile";
@@ -149,6 +150,7 @@ function NewCardTile({
             priority={index < 2}
             className="home-new-cards__image object-cover"
           />
+          <CardCornerBadges card={item.card} compact />
           <span className="home-new-cards__shine" aria-hidden />
         </div>
         <div className="home-new-cards__meta">

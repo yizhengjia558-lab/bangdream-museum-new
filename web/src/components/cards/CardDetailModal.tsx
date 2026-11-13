@@ -3,13 +3,13 @@
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { AssetImage } from "@/components/ui/AssetImage";
+import { CardDetailExhibitStrip } from "@/components/cards/CardDetailExhibitStrip";
 import { CardFavoriteButton } from "@/components/cards/CardFavoriteButton";
 import { CardPaletteBackground } from "@/components/cards/CardPaletteBackground";
 import { CardLive2DViewer } from "@/components/cards/CardLive2DViewer";
 import { KirafesDynamicStage } from "@/components/cards/KirafesDynamicStage";
 import { useCardPalette } from "@/hooks/useCardPalette";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { getCardRarityLabel } from "@/lib/i18n/display";
 import type { CardData } from "@/lib/data-types";
 import {
   getCardVariantAvailability,
@@ -33,42 +33,6 @@ function resolveCardAccent(card: CardData | null | undefined, fallback = "#e9435
     (card.band_folder ? getBandByFolder(card.band_folder) : undefined) ??
     (card.band ? getBandByName(card.band) : undefined);
   return theme?.colors.primary ?? fallback;
-}
-
-function CardDetailInfoChips({ card }: { card: CardData }) {
-  const { t, locale } = useLocale();
-  const rarityLabel = getCardRarityLabel(card, locale);
-  const attribute = card.attribute
-    ? t(`filter.attr.${card.attribute}` as "filter.attr.power")
-    : null;
-  const kind =
-    card.card_kind && card.card_kind !== "normal"
-      ? t(`filter.kind.${card.card_kind}` as "filter.kind.limited")
-      : null;
-  const releaseYear =
-    card.release_year ?? (card.release_date ? parseInt(card.release_date.slice(0, 4), 10) : null);
-
-  const chips = [
-    { label: rarityLabel, accent: true },
-    attribute ? { label: attribute } : null,
-    kind ? { label: kind } : null,
-    releaseYear ? { label: String(releaseYear) } : null,
-  ].filter(Boolean) as { label: string; accent?: boolean }[];
-
-  if (!chips.length) return null;
-
-  return (
-    <div className="card-detail-info-chips">
-      {chips.map((chip) => (
-        <span
-          key={chip.label}
-          className={cn("card-detail-info-chip", chip.accent && "card-detail-info-chip--accent")}
-        >
-          {chip.label}
-        </span>
-      ))}
-    </div>
-  );
 }
 
 function isTypingTarget(target: EventTarget | null) {
@@ -340,42 +304,46 @@ export function CardDetailModal({
 
                     {showToggle ? (
                       <div className="card-detail-toggle-wrap card-detail-toggle-wrap--below">
-                        <div className="card-detail-toggle" role="tablist" aria-label={t("card.viewMode")}>
-                          <button
-                            type="button"
-                            role="tab"
-                            aria-selected={variant === "untrained" ? "true" : "false"}
-                            disabled={!availability.untrained}
-                            className={cn(
-                              "card-detail-toggle-btn",
-                              variant === "untrained" && "card-detail-toggle-btn--active"
-                            )}
-                            onClick={() => setVariant("untrained")}
-                          >
-                            {t("card.beforeTraining")}
-                          </button>
-                          <button
-                            type="button"
-                            role="tab"
-                            aria-selected={variant === "trained" ? "true" : "false"}
-                            disabled={!availability.trained}
-                            className={cn(
-                              "card-detail-toggle-btn",
-                              variant === "trained" && "card-detail-toggle-btn--active"
-                            )}
-                            onClick={() => setVariant("trained")}
-                          >
-                            {t("card.afterTraining")}
-                          </button>
+                        <div className="card-detail-variant-pair" role="tablist" aria-label={t("card.viewMode")}>
+                          {(
+                            [
+                              ["untrained", availability.untrained, t("card.beforeTraining")],
+                              ["trained", availability.trained, t("card.afterTraining")],
+                            ] as const
+                          ).map(([mode, enabled, label]) => {
+                            const src = getCardVariantSrc(item.card, mode);
+                            return (
+                              <button
+                                key={mode}
+                                type="button"
+                                role="tab"
+                                aria-selected={variant === mode ? "true" : "false"}
+                                disabled={!enabled || !src}
+                                className={cn(
+                                  "card-detail-variant-btn",
+                                  variant === mode && "card-detail-variant-btn--active"
+                                )}
+                                onClick={() => setVariant(mode)}
+                              >
+                                {src ? (
+                                  <span className="card-detail-variant-btn__thumb">
+                                    <AssetImage
+                                      src={src}
+                                      alt=""
+                                      variant="thumb"
+                                      className="card-detail-variant-btn__img"
+                                    />
+                                  </span>
+                                ) : null}
+                                <span className="card-detail-variant-btn__label">{label}</span>
+                              </button>
+                            );
+                          })}
                         </div>
                       </div>
                     ) : null}
 
-                    <div className="card-detail-meta card-detail-meta--inline">
-                      <p className="card-detail-name">{item.card.card_name}</p>
-                      <p className="card-detail-sub">{item.card.event || t("card.special")}</p>
-                      <CardDetailInfoChips card={item.card} />
-                    </div>
+                    <CardDetailExhibitStrip card={item.card} />
 
                     <button type="button" className="card-detail-fullscreen-btn" onClick={() => setFullscreen(true)}>
                       {t("card.fullscreenPreview")}

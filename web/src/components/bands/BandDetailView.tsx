@@ -1,11 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { MemberCard } from "@/components/characters/MemberCard";
+import { BandMemberStrip } from "@/components/bands/BandMemberStrip";
 import { CardGallery } from "@/components/cards/CardGallery";
 import { BandHotCharacters } from "@/components/bands/BandHotCharacters";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { CinematicBackground } from "@/components/effects/CinematicBackground";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { BandLogo } from "@/components/ui/BandLogo";
 import { BandBackButton } from "@/components/bands/BandBackButton";
@@ -14,7 +13,6 @@ import { getBandName, getBandSlogan } from "@/lib/i18n/display";
 import { flattenBandCards } from "@/lib/card-filters";
 import type { CharacterData } from "@/lib/data-types";
 import type { BandTheme } from "@/lib/themes";
-import { getCharacterBackdrop } from "@/lib/character-utils";
 
 export function BandDetailView({
   band,
@@ -23,7 +21,6 @@ export function BandDetailView({
 }) {
   const { t, locale } = useLocale();
   const allCards = flattenBandCards(band.members);
-  const backdrop = band.members[0] ? getCharacterBackdrop(band.members[0]) : "";
   const bandName = getBandName(band, locale);
   const slogan = getBandSlogan(band, locale);
 
@@ -31,35 +28,33 @@ export function BandDetailView({
     <div className="museum-page relative" style={{ ["--band-color" as string]: band.colors.primary }}>
       <BandBackButton color={band.colors.primary} />
 
-      <section className="page-hero-band relative overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-14">
-        {backdrop && <CinematicBackground src={backdrop} overlay={0.42} parallax={false} kenBurns={false} />}
-        <div className="page-hero-scrim pointer-events-none absolute inset-0 z-[1]" aria-hidden />
-
-        <div className="relative z-10 page-container">
-          <GlassPanel
-            className="max-w-2xl p-10 sm:p-12"
-            glow={`radial-gradient(circle, ${band.colors.primary}35, transparent)`}
-          >
+      <section className="band-stage page-section relative pt-28 pb-10 sm:pt-32 sm:pb-14">
+        <div
+          className="band-stage__glow pointer-events-none absolute inset-0"
+          style={{
+            background: `radial-gradient(60% 50% at 50% 18%, ${band.colors.primary}28, transparent 70%)`,
+          }}
+          aria-hidden
+        />
+        <div className="relative page-container">
+          <div className="band-stage__header">
             <h1 className="sr-only">{bandName}</h1>
             <BandLogo band={band} size="lg" showPattern />
-            <p className="type-slogan mt-5 text-base sm:text-lg text-[var(--text-secondary)]">&ldquo;{slogan}&rdquo;</p>
-          </GlassPanel>
-        </div>
-      </section>
+            <p className="band-stage__slogan">&ldquo;{slogan}&rdquo;</p>
+          </div>
 
-      <section className="page-section relative py-16 sm:py-20">
-        <div className="pointer-events-none absolute inset-0 bloom-layer opacity-50" aria-hidden />
-        <div className="relative page-container">
-          <SectionHeading title={t("band.members")} />
           {band.members.length === 0 ? (
-            <p className="mt-6 text-center text-[var(--text-muted)]">{t("bands.emptyMembers")}</p>
+            <p className="mt-10 text-center text-[var(--text-muted)]">{t("bands.emptyMembers")}</p>
           ) : (
-            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-8">
+            <div className="band-member-strip-row" role="list" aria-label={t("band.members")}>
               {band.members.map((member, i) => (
-                <MemberCard key={member.id} member={member} theme={band} index={i} />
+                <div key={member.id} role="listitem" className="band-member-strip-row__item">
+                  <BandMemberStrip member={member} theme={band} index={i} />
+                </div>
               ))}
             </div>
           )}
+
           <div className="mt-12">
             <BandHotCharacters
               bandFolder={band.folder}

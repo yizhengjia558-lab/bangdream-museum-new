@@ -19,16 +19,10 @@ import {
   type CardFilterState,
   type CardKind,
 } from "@/lib/card-filters";
+import { ATTR_COLORS } from "@/lib/card-attrs";
 import type { CardData, CharacterSummary } from "@/lib/data-types";
 import { BAND_THEMES } from "@/lib/themes";
 import { cn } from "@/lib/utils";
-
-const ATTR_COLORS: Record<CardAttribute, string> = {
-  power: "#e9435e",
-  cool: "#4f7cff",
-  pure: "#3ecf8e",
-  happy: "#ffb02e",
-};
 
 function toggle<T>(list: T[], value: T): T[] {
   return list.includes(value) ? list.filter((v) => v !== value) : [...list, value];

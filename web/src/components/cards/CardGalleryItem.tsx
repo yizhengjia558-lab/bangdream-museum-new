@@ -1,6 +1,7 @@
 "use client";
 
 import { AssetImage } from "@/components/ui/AssetImage";
+import { CardCornerBadges } from "@/components/cards/CardCornerBadges";
 import { CardFavoriteButton } from "@/components/cards/CardFavoriteButton";
 import { CardTile } from "@/components/cards/CardTile";
 import { CardVariantBadge } from "@/components/cards/CardVariantBadge";
@@ -53,6 +54,7 @@ export function CardGalleryItem({
             variant="mobile"
             className="card-image object-cover"
           />
+          <CardCornerBadges card={item.card} />
         </div>
 
         <div className="card-caption card-caption--uniform">
