@@ -124,6 +124,13 @@ function buildNavFuseItems(): NavFuseItem[] {
       href: "/costumes/",
       keywords: "服装 衣装 costume live2d 图鉴 図鑑 gallery 衣装図鑑",
     },
+    {
+      type: "page",
+      label: "活动一览",
+      sublabel: "Events",
+      href: "/events/",
+      keywords: "活动 イベント event events 国服 日服",
+    },
   ];
 
   for (const band of BAND_THEMES) {
@@ -225,6 +232,13 @@ export function searchNavigation(query: string, limit = 8, locale: Locale = "zh"
                 ? "Costume / Live2D Gallery"
                 : "服装 / Live2D 图鉴",
           sublabel: locale === "ja" ? "衣装" : "Costumes",
+        };
+      }
+      if (hit.href.includes("events")) {
+        return {
+          ...hit,
+          label: locale === "ja" ? "イベント一覧" : locale === "en" ? "Events" : "活动一览",
+          sublabel: locale === "ja" ? "イベント" : "Events",
         };
       }
     }

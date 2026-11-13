@@ -1,0 +1,1458 @@
+{
+  "generated_at": "2026-11-13T13:54:21.820Z",
+  "events": [
+    {
+      "id": 348,
+      "name": {
+        "zh": "Rock!Lock!Rock!",
+        "ja": "Rock!Lock!Rock!",
+        "en": "Rock!Lock!Rock!"
+      },
+      "eventType": "mission_live",
+      "assetBundleName": "rock_lock_rock",
+      "bannerAssetBundleName": "banner_event348",
+      "banner": "/data/events/348/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event348.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-11-10T06:00:00.000Z",
+          "endAt": "2026-11-17T11:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "eventId": 348,
+          "attribute": "cool",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 31,
+          "percent": 20
+        },
+        {
+          "characterId": 32,
+          "percent": 20
+        },
+        {
+          "characterId": 33,
+          "percent": 20
+        },
+        {
+          "characterId": 34,
+          "percent": 20
+        },
+        {
+          "characterId": 35,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2557,
+        2556
+      ],
+      "storyCount": 7,
+      "musicCount": 0
+    },
+    {
+      "id": 347,
+      "name": {
+        "zh": "みんなの笑顔をかき混ぜて",
+        "ja": "みんなの笑顔をかき混ぜて",
+        "en": "みんなの笑顔をかき混ぜて"
+      },
+      "eventType": "challenge",
+      "assetBundleName": "minnano_egao",
+      "bannerAssetBundleName": "banner_event347",
+      "banner": "/data/events/347/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event347.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-10-31T06:00:00.000Z",
+          "endAt": "2026-11-08T11:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "eventId": 347,
+          "attribute": "pure",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 1,
+          "percent": 20
+        },
+        {
+          "characterId": 2,
+          "percent": 20
+        },
+        {
+          "characterId": 13,
+          "percent": 20
+        },
+        {
+          "characterId": 15,
+          "percent": 20
+        },
+        {
+          "characterId": 20,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2550,
+        2549
+      ],
+      "storyCount": 7,
+      "musicCount": 5
+    },
+    {
+      "id": 346,
+      "name": {
+        "zh": "夕日の先に羽を広げて",
+        "ja": "夕日の先に羽を広げて",
+        "en": "Beyond the Sunset, Spreading our Wings"
+      },
+      "eventType": "live_try",
+      "assetBundleName": "afterglow_yuhinosakini",
+      "bannerAssetBundleName": "banner_event346",
+      "banner": "/data/events/346/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event346.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-10-21T06:00:00.000Z",
+          "endAt": "2026-10-29T11:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "powerful",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 6,
+          "percent": 20
+        },
+        {
+          "characterId": 7,
+          "percent": 20
+        },
+        {
+          "characterId": 8,
+          "percent": 20
+        },
+        {
+          "characterId": 9,
+          "percent": 20
+        },
+        {
+          "characterId": 10,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2545,
+        2544
+      ],
+      "storyCount": 7,
+      "musicCount": 0
+    },
+    {
+      "id": 345,
+      "name": {
+        "zh": "時を繋ぐノクターン",
+        "ja": "時を繋ぐノクターン",
+        "en": "Nocturne to Weave the Strands of Time"
+      },
+      "eventType": "mission_live",
+      "assetBundleName": "morfonica_nocturne",
+      "bannerAssetBundleName": "banner_event345",
+      "banner": "/data/events/345/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event345.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-10-10T06:00:00.000Z",
+          "endAt": "2026-10-19T11:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "cool",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 26,
+          "percent": 20
+        },
+        {
+          "characterId": 27,
+          "percent": 20
+        },
+        {
+          "characterId": 28,
+          "percent": 20
+        },
+        {
+          "characterId": 29,
+          "percent": 20
+        },
+        {
+          "characterId": 30,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2540,
+        2539
+      ],
+      "storyCount": 7,
+      "musicCount": 0
+    },
+    {
+      "id": 344,
+      "name": {
+        "zh": "A Little Magical Me",
+        "ja": "A Little Magical Me",
+        "en": "A Little Magical Me"
+      },
+      "eventType": "versus",
+      "assetBundleName": "a_little_magical_me",
+      "bannerAssetBundleName": "banner_event344",
+      "banner": "/data/events/344/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event344.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-09-29T06:00:00.000Z",
+          "endAt": "2026-10-08T11:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "happy",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 10,
+          "percent": 20
+        },
+        {
+          "characterId": 13,
+          "percent": 20
+        },
+        {
+          "characterId": 14,
+          "percent": 20
+        },
+        {
+          "characterId": 17,
+          "percent": 20
+        },
+        {
+          "characterId": 18,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2533,
+        2532
+      ],
+      "storyCount": 7,
+      "musicCount": 5
+    },
+    {
+      "id": 343,
+      "name": {
+        "zh": "君に歌う等身大のハーモニー",
+        "ja": "君に歌う等身大のハーモニー",
+        "en": "Heartfelt Harmony, Song for You"
+      },
+      "eventType": "mission_live",
+      "assetBundleName": "popipa_rimi_yuri",
+      "bannerAssetBundleName": "banner_event343",
+      "banner": "/data/events/343/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event343.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-09-19T06:00:00.000Z",
+          "endAt": "2026-09-27T11:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "pure",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 1,
+          "percent": 20
+        },
+        {
+          "characterId": 2,
+          "percent": 20
+        },
+        {
+          "characterId": 3,
+          "percent": 20
+        },
+        {
+          "characterId": 4,
+          "percent": 20
+        },
+        {
+          "characterId": 5,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2523,
+        2522
+      ],
+      "storyCount": 7,
+      "musicCount": 0
+    },
+    {
+      "id": 342,
+      "name": {
+        "zh": "未来想送曲",
+        "ja": "未来想送曲",
+        "en": "Requiem for Tomorrow"
+      },
+      "eventType": "challenge",
+      "assetBundleName": "mirai_sousoukyoku",
+      "bannerAssetBundleName": "banner_event342",
+      "banner": "/data/events/342/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event342.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-09-10T09:00:00.000Z",
+          "endAt": "2026-09-17T11:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "happy",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 21,
+          "percent": 20
+        },
+        {
+          "characterId": 22,
+          "percent": 20
+        },
+        {
+          "characterId": 23,
+          "percent": 20
+        },
+        {
+          "characterId": 24,
+          "percent": 20
+        },
+        {
+          "characterId": 25,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2516,
+        2515
+      ],
+      "storyCount": 7,
+      "musicCount": 5
+    },
+    {
+      "id": 341,
+      "name": {
+        "zh": "爆熱！スーパーハイクバトラーズ！",
+        "ja": "爆熱！スーパーハイクバトラーズ！",
+        "en": "Explosively Hot! SUPER HAIKU BATTLERS!"
+      },
+      "eventType": "medley",
+      "assetBundleName": "super_haiku_battlers",
+      "bannerAssetBundleName": "banner_event341",
+      "banner": "/data/events/341/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event341.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-08-30T06:00:00.000Z",
+          "endAt": "2026-09-08T11:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "powerful",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 11,
+          "percent": 20
+        },
+        {
+          "characterId": 12,
+          "percent": 20
+        },
+        {
+          "characterId": 13,
+          "percent": 20
+        },
+        {
+          "characterId": 14,
+          "percent": 20
+        },
+        {
+          "characterId": 15,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2511,
+        2510
+      ],
+      "storyCount": 7,
+      "musicCount": 5
+    },
+    {
+      "id": 340,
+      "name": {
+        "zh": "夏の終わりの忘れ物",
+        "ja": "夏の終わりの忘れ物",
+        "en": "What We Forgot, at Summer's End"
+      },
+      "eventType": "live_try",
+      "assetBundleName": "summer_lostitem",
+      "bannerAssetBundleName": "banner_event340",
+      "banner": "/data/events/340/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event340.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-08-20T06:00:00.000Z",
+          "endAt": "2026-08-28T11:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "cool",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 9,
+          "percent": 20
+        },
+        {
+          "characterId": 22,
+          "percent": 20
+        },
+        {
+          "characterId": 24,
+          "percent": 20
+        },
+        {
+          "characterId": 26,
+          "percent": 20
+        },
+        {
+          "characterId": 29,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2506,
+        2505
+      ],
+      "storyCount": 7,
+      "musicCount": 0
+    },
+    {
+      "id": 339,
+      "name": {
+        "zh": "parallel in the mirror",
+        "ja": "parallel in the mirror",
+        "en": "parallel in the mirror"
+      },
+      "eventType": "mission_live",
+      "assetBundleName": "parallel_in_the_mirror",
+      "bannerAssetBundleName": "banner_event339",
+      "banner": "/data/events/339/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event339.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-08-11T06:00:00.000Z",
+          "endAt": "2026-08-18T11:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "pure",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 31,
+          "percent": 20
+        },
+        {
+          "characterId": 32,
+          "percent": 20
+        },
+        {
+          "characterId": 33,
+          "percent": 20
+        },
+        {
+          "characterId": 34,
+          "percent": 20
+        },
+        {
+          "characterId": 35,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2501,
+        2500
+      ],
+      "storyCount": 7,
+      "musicCount": 0
+    },
+    {
+      "id": 338,
+      "name": {
+        "zh": "Let's Drive and Sea!",
+        "ja": "Let's Drive and Sea!",
+        "en": "Let's Drive and Sea!"
+      },
+      "eventType": "versus",
+      "assetBundleName": "drive_and_sea",
+      "bannerAssetBundleName": "banner_event338",
+      "banner": "/data/events/338/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event338.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-07-31T06:00:00.000Z",
+          "endAt": "2026-08-09T11:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "happy",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 12,
+          "percent": 20
+        },
+        {
+          "characterId": 14,
+          "percent": 20
+        },
+        {
+          "characterId": 16,
+          "percent": 20
+        },
+        {
+          "characterId": 17,
+          "percent": 20
+        },
+        {
+          "characterId": 21,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2494,
+        2493
+      ],
+      "storyCount": 7,
+      "musicCount": 5
+    },
+    {
+      "id": 337,
+      "name": {
+        "zh": "真っ白なページ、紡いでいく彩り",
+        "ja": "真っ白なページ、紡いでいく彩り",
+        "en": "Pure White Pages, Spun with Pastel"
+      },
+      "eventType": "live_try",
+      "assetBundleName": "paspale_tour_final",
+      "bannerAssetBundleName": "banner_event337",
+      "banner": "/data/events/337/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event337.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-07-20T06:00:00.000Z",
+          "endAt": "2026-07-29T11:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "powerful",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 16,
+          "percent": 20
+        },
+        {
+          "characterId": 17,
+          "percent": 20
+        },
+        {
+          "characterId": 18,
+          "percent": 20
+        },
+        {
+          "characterId": 19,
+          "percent": 20
+        },
+        {
+          "characterId": 20,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2489,
+        2488
+      ],
+      "storyCount": 7,
+      "musicCount": 0
+    },
+    {
+      "id": 336,
+      "name": {
+        "zh": "あの夕映えに誓って",
+        "ja": "あの夕映えに誓って",
+        "en": "By That Sunset, I Swear to You"
+      },
+      "eventType": "mission_live",
+      "assetBundleName": "sunset_glow",
+      "bannerAssetBundleName": "banner_event336",
+      "banner": "/data/events/336/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event336.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-07-10T06:00:00.000Z",
+          "endAt": "2026-07-18T11:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "pure",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 6,
+          "percent": 20
+        },
+        {
+          "characterId": 7,
+          "percent": 20
+        },
+        {
+          "characterId": 8,
+          "percent": 20
+        },
+        {
+          "characterId": 9,
+          "percent": 20
+        },
+        {
+          "characterId": 10,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2484,
+        2483
+      ],
+      "storyCount": 7,
+      "musicCount": 0
+    },
+    {
+      "id": 329,
+      "name": {
+        "zh": "Beyond my Imagination",
+        "ja": "Beyond my Imagination",
+        "en": "Beyond my Imagination"
+      },
+      "eventType": "challenge",
+      "assetBundleName": "ras_beyond",
+      "bannerAssetBundleName": "banner_event329",
+      "banner": "/data/events/329/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event329.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-04-29T06:00:00.000Z",
+          "endAt": "2026-05-08T11:59:59.000Z"
+        },
+        "cn": {
+          "startAt": "2026-11-13T05:00:00.000Z",
+          "endAt": "2026-11-22T14:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "powerful",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 31,
+          "percent": 20
+        },
+        {
+          "characterId": 32,
+          "percent": 20
+        },
+        {
+          "characterId": 33,
+          "percent": 20
+        },
+        {
+          "characterId": 34,
+          "percent": 20
+        },
+        {
+          "characterId": 35,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2443,
+        2442
+      ],
+      "storyCount": 7,
+      "musicCount": 5
+    },
+    {
+      "id": 328,
+      "name": {
+        "zh": "萌生的心意，交织于夕阳下",
+        "ja": "芽生えた想い、夕陽に交わして",
+        "en": "Sprouting Sentiments, Shared in the Sunset "
+      },
+      "eventType": "live_try",
+      "assetBundleName": "mebaeta_omoi",
+      "bannerAssetBundleName": "banner_event328",
+      "banner": "/data/events/328/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event328.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-04-20T06:00:00.000Z",
+          "endAt": "2026-04-27T11:59:59.000Z"
+        },
+        "cn": {
+          "startAt": "2026-11-05T05:00:00.000Z",
+          "endAt": "2026-11-11T14:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "cool",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 6,
+          "percent": 20
+        },
+        {
+          "characterId": 7,
+          "percent": 20
+        },
+        {
+          "characterId": 8,
+          "percent": 20
+        },
+        {
+          "characterId": 9,
+          "percent": 20
+        },
+        {
+          "characterId": 10,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2438,
+        2437
+      ],
+      "storyCount": 7,
+      "musicCount": 0
+    },
+    {
+      "id": 327,
+      "name": {
+        "zh": "黎明的Stand By",
+        "ja": "黎明のスタン・バイ",
+        "en": "Standby at Daybreak "
+      },
+      "eventType": "mission_live",
+      "assetBundleName": "kaochisa_reimei",
+      "bannerAssetBundleName": "banner_event327",
+      "banner": "/data/events/327/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event327.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-04-10T06:00:00.000Z",
+          "endAt": "2026-04-18T11:59:59.000Z"
+        },
+        "cn": {
+          "startAt": "2026-10-26T05:00:00.000Z",
+          "endAt": "2026-11-03T14:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "happy",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 8,
+          "percent": 20
+        },
+        {
+          "characterId": 12,
+          "percent": 20
+        },
+        {
+          "characterId": 14,
+          "percent": 20
+        },
+        {
+          "characterId": 18,
+          "percent": 20
+        },
+        {
+          "characterId": 19,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2433,
+        2432
+      ],
+      "storyCount": 7,
+      "musicCount": 0
+    },
+    {
+      "id": 326,
+      "name": {
+        "zh": "迈向广阔世界的自由变奏",
+        "ja": "広がる世界へのリベラメンテ",
+        "en": "Liberamente Towards A Widening World "
+      },
+      "eventType": "versus",
+      "assetBundleName": "hirogaru_sekai",
+      "bannerAssetBundleName": "banner_event326",
+      "banner": "/data/events/326/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event326.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-03-31T06:00:00.000Z",
+          "endAt": "2026-04-08T11:59:59.000Z"
+        },
+        "cn": {
+          "startAt": "2026-10-16T05:00:00.000Z",
+          "endAt": "2026-10-24T14:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "pure",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 26,
+          "percent": 20
+        },
+        {
+          "characterId": 27,
+          "percent": 20
+        },
+        {
+          "characterId": 28,
+          "percent": 20
+        },
+        {
+          "characterId": 29,
+          "percent": 20
+        },
+        {
+          "characterId": 30,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2426,
+        2425
+      ],
+      "storyCount": 7,
+      "musicCount": 5
+    },
+    {
+      "id": 325,
+      "name": {
+        "zh": "All☆Stars CiRCRiNG Fes!",
+        "ja": "All☆Stars CiRCRiNG Fes!",
+        "en": "All☆Stars CiRCRiNG Fes!"
+      },
+      "eventType": "challenge",
+      "assetBundleName": "9th_shuffle",
+      "bannerAssetBundleName": "banner_event325",
+      "banner": "/data/events/325/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event325.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-03-13T15:00:00.000Z",
+          "endAt": "2026-03-29T11:59:59.000Z"
+        },
+        "cn": {
+          "startAt": "2026-09-29T02:00:00.000Z",
+          "endAt": "2026-10-14T14:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "powerful",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 4,
+          "percent": 20
+        },
+        {
+          "characterId": 9,
+          "percent": 20
+        },
+        {
+          "characterId": 14,
+          "percent": 20
+        },
+        {
+          "characterId": 16,
+          "percent": 20
+        },
+        {
+          "characterId": 19,
+          "percent": 20
+        },
+        {
+          "characterId": 24,
+          "percent": 20
+        },
+        {
+          "characterId": 29,
+          "percent": 20
+        },
+        {
+          "characterId": 33,
+          "percent": 20
+        },
+        {
+          "characterId": 35,
+          "percent": 20
+        },
+        {
+          "characterId": 40,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2418,
+        2417
+      ],
+      "storyCount": 10,
+      "musicCount": 5
+    },
+    {
+      "id": 324,
+      "name": {
+        "zh": "悠然一刻、HelloHappy温泉之旅",
+        "ja": "ほっとひと息、ハロハピ温泉旅情",
+        "en": "Hello, Happy World!'s Hot Spring Getaway"
+      },
+      "eventType": "festival",
+      "assetBundleName": "harohapi_onsen",
+      "bannerAssetBundleName": "banner_event324",
+      "banner": "/data/events/324/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event324.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-03-07T06:00:00.000Z",
+          "endAt": "2026-03-12T11:59:59.000Z"
+        },
+        "cn": {
+          "startAt": "2026-09-22T05:00:00.000Z",
+          "endAt": "2026-09-27T14:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "eventId": 324,
+          "attribute": "pure",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 11,
+          "percent": 20
+        },
+        {
+          "characterId": 12,
+          "percent": 20
+        },
+        {
+          "characterId": 13,
+          "percent": 20
+        },
+        {
+          "characterId": 14,
+          "percent": 20
+        },
+        {
+          "characterId": 15,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2411,
+        2410
+      ],
+      "storyCount": 7,
+      "musicCount": 0
+    },
+    {
+      "id": 323,
+      "name": {
+        "zh": "纵使千言万语亦不足以表达",
+        "ja": "千の言葉でも足りないくらい",
+        "en": "More Than a Thousand Words"
+      },
+      "eventType": "medley",
+      "assetBundleName": "chisato_lyric",
+      "bannerAssetBundleName": "banner_event323",
+      "banner": "/data/events/323/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event323.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-02-27T06:00:00.000Z",
+          "endAt": "2026-03-05T11:59:59.000Z"
+        },
+        "cn": {
+          "startAt": "2026-09-14T05:00:00.000Z",
+          "endAt": "2026-09-20T14:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "cool",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 16,
+          "percent": 20
+        },
+        {
+          "characterId": 17,
+          "percent": 20
+        },
+        {
+          "characterId": 18,
+          "percent": 20
+        },
+        {
+          "characterId": 19,
+          "percent": 20
+        },
+        {
+          "characterId": 20,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2406,
+        2405
+      ],
+      "storyCount": 7,
+      "musicCount": 5
+    },
+    {
+      "id": 322,
+      "name": {
+        "zh": "Re:Like Re:Live",
+        "ja": "Re:Like Re:Live",
+        "en": "Re:Like Re:Live"
+      },
+      "eventType": "live_try",
+      "assetBundleName": "lisa_base",
+      "bannerAssetBundleName": "banner_event322",
+      "banner": "/data/events/322/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event322.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-02-18T06:00:00.000Z",
+          "endAt": "2026-02-25T11:59:59.000Z"
+        },
+        "cn": {
+          "startAt": "2026-09-04T05:00:00.000Z",
+          "endAt": "2026-09-12T14:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "powerful",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 21,
+          "percent": 20
+        },
+        {
+          "characterId": 22,
+          "percent": 20
+        },
+        {
+          "characterId": 23,
+          "percent": 20
+        },
+        {
+          "characterId": 24,
+          "percent": 20
+        },
+        {
+          "characterId": 25,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2401,
+        2400
+      ],
+      "storyCount": 7,
+      "musicCount": 0
+    },
+    {
+      "id": 321,
+      "name": {
+        "zh": "再次许下约定，明天再见",
+        "ja": "約束重ねて、また明日",
+        "en": "Promising Again, See You Tomorrow"
+      },
+      "eventType": "mission_live",
+      "assetBundleName": "kasuari_date",
+      "bannerAssetBundleName": "banner_event321",
+      "banner": "/data/events/321/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event321.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-02-09T06:00:00.000Z",
+          "endAt": "2026-02-16T11:59:59.000Z"
+        },
+        "cn": {
+          "startAt": "2026-08-26T05:00:00.000Z",
+          "endAt": "2026-09-02T14:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "cool",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 1,
+          "percent": 20
+        },
+        {
+          "characterId": 2,
+          "percent": 20
+        },
+        {
+          "characterId": 3,
+          "percent": 20
+        },
+        {
+          "characterId": 4,
+          "percent": 20
+        },
+        {
+          "characterId": 5,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2391,
+        2390
+      ],
+      "storyCount": 7,
+      "musicCount": 0
+    },
+    {
+      "id": 320,
+      "name": {
+        "zh": "Our Sweetest Valentine！",
+        "ja": "Our Sweetest Valentine！",
+        "en": "Our Sweetest Valentine!"
+      },
+      "eventType": "versus",
+      "assetBundleName": "afterglow_valentine_2026",
+      "bannerAssetBundleName": "banner_event320",
+      "banner": "/data/events/320/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event320.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-01-31T06:00:00.000Z",
+          "endAt": "2026-02-07T11:59:59.000Z"
+        },
+        "cn": {
+          "startAt": "2026-08-17T05:00:00.000Z",
+          "endAt": "2026-08-24T14:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "happy",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 6,
+          "percent": 20
+        },
+        {
+          "characterId": 7,
+          "percent": 20
+        },
+        {
+          "characterId": 8,
+          "percent": 20
+        },
+        {
+          "characterId": 9,
+          "percent": 20
+        },
+        {
+          "characterId": 10,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2384,
+        2383
+      ],
+      "storyCount": 7,
+      "musicCount": 5
+    },
+    {
+      "id": 319,
+      "name": {
+        "zh": "Radiance and Eclipse",
+        "ja": "Radiance and Eclipse",
+        "en": "Radiance and Eclipse"
+      },
+      "eventType": "live_try",
+      "assetBundleName": "radiance_and_eclipse",
+      "bannerAssetBundleName": "banner_event319",
+      "banner": "/data/events/319/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event319.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-01-21T06:00:00.000Z",
+          "endAt": "2026-01-29T11:59:59.000Z"
+        },
+        "cn": {
+          "startAt": "2026-08-07T05:00:00.000Z",
+          "endAt": "2026-08-15T14:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "cool",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 31,
+          "percent": 20
+        },
+        {
+          "characterId": 32,
+          "percent": 20
+        },
+        {
+          "characterId": 33,
+          "percent": 20
+        },
+        {
+          "characterId": 34,
+          "percent": 20
+        },
+        {
+          "characterId": 35,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2379,
+        2378
+      ],
+      "storyCount": 7,
+      "musicCount": 0
+    },
+    {
+      "id": 318,
+      "name": {
+        "zh": "将你照亮的黎明曲",
+        "ja": "あなたを照らすオーバード",
+        "en": "An Overture That Lights Your Way"
+      },
+      "eventType": "mission_live",
+      "assetBundleName": "tsukushi_rising",
+      "bannerAssetBundleName": "banner_event318",
+      "banner": "/data/events/318/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event318.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2026-01-10T06:00:00.000Z",
+          "endAt": "2026-01-19T11:59:59.000Z"
+        },
+        "cn": {
+          "startAt": "2026-07-27T05:00:00.000Z",
+          "endAt": "2026-08-05T14:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "pure",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 26,
+          "percent": 20
+        },
+        {
+          "characterId": 27,
+          "percent": 20
+        },
+        {
+          "characterId": 28,
+          "percent": 20
+        },
+        {
+          "characterId": 29,
+          "percent": 20
+        },
+        {
+          "characterId": 30,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2364,
+        2363
+      ],
+      "storyCount": 7,
+      "musicCount": 0
+    },
+    {
+      "id": 317,
+      "name": {
+        "zh": "迷途尽头，福泽自来",
+        "ja": "迷い道の先、福来たる",
+        "en": "Beyond the Winding Road, Fortune Awaits"
+      },
+      "eventType": "challenge",
+      "assetBundleName": "new_year_2026",
+      "bannerAssetBundleName": "banner_event317",
+      "banner": "/data/events/317/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event317.png",
+      "schedules": {
+        "jp": {
+          "startAt": "2025-12-31T06:00:00.000Z",
+          "endAt": "2026-01-08T11:59:59.000Z"
+        },
+        "cn": {
+          "startAt": "2026-07-16T05:00:00.000Z",
+          "endAt": "2026-07-25T14:59:59.000Z"
+        }
+      },
+      "attributes": [
+        {
+          "attribute": "powerful",
+          "percent": 10
+        }
+      ],
+      "characters": [
+        {
+          "characterId": 2,
+          "percent": 20
+        },
+        {
+          "characterId": 14,
+          "percent": 20
+        },
+        {
+          "characterId": 20,
+          "percent": 20
+        },
+        {
+          "characterId": 24,
+          "percent": 20
+        },
+        {
+          "characterId": 28,
+          "percent": 20
+        }
+      ],
+      "rewardCards": [
+        2356,
+        2355
+      ],
+      "storyCount": 7,
+      "musicCount": 5
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import "server-only";
 
 import homePulse from "@/data/home-pulse.json";
+import { resolveEventBanner } from "@/lib/events";
 import { getAllSiteCards, getCharacterSummaries } from "@/lib/data-server";
 import type { CardData, CharacterSummary } from "@/lib/data-types";
 
@@ -11,6 +12,7 @@ export type PulseEvent = {
   startAt: string;
   endAt: string;
   banner: string;
+  eventType?: string;
 };
 
 export type PulseBirthday = {
@@ -29,13 +31,41 @@ export type PulseServerCard = {
 };
 
 export type HomePulseData = {
-  events: PulseEvent[];
+  eventsByServer: {
+    cn: PulseEvent[];
+    jp: PulseEvent[];
+  };
   birthdays: PulseBirthday[];
   recentByServer: {
     cn: PulseServerCard[];
     jp: PulseServerCard[];
   };
 };
+
+function normalizeEvent(raw: {
+  id: number;
+  server: string;
+  name: { zh: string; ja: string; en: string };
+  startAt: string;
+  endAt: string;
+  banner?: string | null;
+  bannerRemote?: string | null;
+  eventType?: string;
+}): PulseEvent {
+  return {
+    id: raw.id,
+    server: raw.server,
+    name: raw.name,
+    startAt: raw.startAt,
+    endAt: raw.endAt,
+    eventType: raw.eventType,
+    banner: resolveEventBanner({
+      id: raw.id,
+      banner: raw.banner,
+      bannerRemote: raw.bannerRemote,
+    }),
+  };
+}
 
 export function getHomePulseData(): HomePulseData {
   const cards = getAllSiteCards();
@@ -49,7 +79,11 @@ export function getHomePulseData(): HomePulseData {
   const memberById = new Map(members.map((m) => [m.id, m]));
 
   const raw = homePulse as {
-    activeEvents?: PulseEvent[];
+    activeByServer?: {
+      cn?: Array<Parameters<typeof normalizeEvent>[0]>;
+      jp?: Array<Parameters<typeof normalizeEvent>[0]>;
+    };
+    activeEvents?: Array<Parameters<typeof normalizeEvent>[0]>;
     upcomingBirthdays?: Array<{
       id: number;
       zh: string;
@@ -63,8 +97,18 @@ export function getHomePulseData(): HomePulseData {
     };
   };
 
-  const events = (raw.activeEvents || []).filter((e) => e.server === "cn").slice(0, 2);
-  const fallbackEvents = events.length ? events : (raw.activeEvents || []).slice(0, 2);
+  const eventsByServer = {
+    cn: (raw.activeByServer?.cn || []).map(normalizeEvent),
+    jp: (raw.activeByServer?.jp || []).map(normalizeEvent),
+  };
+
+  // Back-compat if older home-pulse only has flat activeEvents
+  if (!eventsByServer.cn.length && !eventsByServer.jp.length && raw.activeEvents?.length) {
+    for (const event of raw.activeEvents) {
+      const key = event.server === "jp" ? "jp" : "cn";
+      eventsByServer[key].push(normalizeEvent(event));
+    }
+  }
 
   const birthdays = (raw.upcomingBirthdays || [])
     .map((entry) => {
@@ -94,7 +138,7 @@ export function getHomePulseData(): HomePulseData {
   }
 
   return {
-    events: fallbackEvents,
+    eventsByServer,
     birthdays,
     recentByServer: {
       cn: resolveServer(raw.recentByServer?.cn),

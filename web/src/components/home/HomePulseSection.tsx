@@ -1,10 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { AssetImage } from "@/components/ui/AssetImage";
+import { CardCornerBadges } from "@/components/cards/CardCornerBadges";
+import { CardDetailModal } from "@/components/cards/CardDetailModal";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getCardName, getCharacterName } from "@/lib/i18n/display";
+import type { CardDisplayItem } from "@/lib/cards";
 import type { HomePulseData } from "@/lib/home-pulse";
 import type { Locale } from "@/lib/i18n/types";
 import { cn } from "@/lib/utils";
@@ -39,47 +42,108 @@ function formatBirthday(md: string, locale: Locale) {
   }
 }
 
+function cardArt(card: HomePulseData["recentByServer"]["cn"][number]["card"]) {
+  return card.trained_file || card.trained_image || card.untrained_file || card.untrained_image;
+}
+
 export function HomePulseSection({ pulse }: { pulse: HomePulseData }) {
   const { t, locale } = useLocale();
   const [server, setServer] = useState<"cn" | "jp">("cn");
+  const [lightbox, setLightbox] = useState<CardDisplayItem | null>(null);
+
+  const events = pulse.eventsByServer[server] || [];
   const recentCards = pulse.recentByServer[server] || [];
 
-  if (!pulse.events.length && !pulse.birthdays.length && !recentCards.length) {
+  const displays = useMemo(() => {
+    return recentCards
+      .map(({ card, date }) => {
+        const src = cardArt(card);
+        if (!src) return null;
+        return {
+          key: `pulse-${server}-${card.id}`,
+          card,
+          variant: (card.trained_file || card.trained_image ? "trained" : "untrained") as "trained" | "untrained",
+          src,
+          date,
+        } satisfies CardDisplayItem & { date: string };
+      })
+      .filter(Boolean) as Array<CardDisplayItem & { date: string }>;
+  }, [recentCards, server]);
+
+  if (!events.length && !pulse.birthdays.length && !displays.length) {
     return null;
   }
 
   return (
     <section className="home-pulse page-section relative pt-2 pb-6 lg:pt-4 lg:pb-8">
       <div className="relative page-container">
-        {pulse.events.length > 0 ? (
-          <div className="home-pulse__events">
-            <div className="home-pulse__head">
+        <div className="home-pulse__server-bar">
+          <div className="home-pulse__server-copy">
+            <p className="hero-eyebrow">{t("pulse.serverEyebrow")}</p>
+            <h2 className="home-pulse__title">{t("pulse.serverSwitchTitle")}</h2>
+            <p className="home-pulse__hint">{t("pulse.serverLagHint")}</p>
+          </div>
+          <div className="home-pulse__tabs home-pulse__tabs--lg" role="tablist" aria-label={t("pulse.serverSwitchTitle")}>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={server === "cn"}
+              className={cn("home-pulse__tab", server === "cn" && "home-pulse__tab--active")}
+              onClick={() => setServer("cn")}
+            >
+              {t("pulse.serverCn")}
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={server === "jp"}
+              className={cn("home-pulse__tab", server === "jp" && "home-pulse__tab--active")}
+              onClick={() => setServer("jp")}
+            >
+              {t("pulse.serverJp")}
+            </button>
+          </div>
+        </div>
+
+        <div className="home-pulse__events">
+          <div className="home-pulse__head home-pulse__head--split">
+            <div>
               <p className="hero-eyebrow">{t("pulse.eventsEyebrow")}</p>
               <h2 className="home-pulse__title">{t("pulse.eventsTitle")}</h2>
             </div>
+            <Link href={`/events/?server=${server}`} className="home-pulse__more">
+              {t("pulse.eventsMore")}
+            </Link>
+          </div>
+
+          {events.length === 0 ? (
+            <p className="home-pulse__empty">{t("pulse.eventsEmpty")}</p>
+          ) : (
             <div className="home-pulse__event-grid">
-              {pulse.events.map((event) => (
-                <a
+              {events.map((event) => (
+                <Link
                   key={`${event.server}-${event.id}`}
                   className="home-pulse__event"
-                  href={`https://bestdori.com/info/events/${event.id}`}
-                  target="_blank"
-                  rel="noreferrer"
+                  href={`/events/${event.id}/?server=${server}`}
                 >
                   <span className="home-pulse__event-banner">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={event.banner} alt="" loading="lazy" />
-                    <span className="home-pulse__server-tag">{event.server.toUpperCase()}</span>
+                    {event.banner ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={event.banner} alt="" loading="lazy" />
+                    ) : (
+                      <span className="home-pulse__event-fallback" aria-hidden />
+                    )}
+                    <span className="home-pulse__server-tag">{server.toUpperCase()}</span>
                   </span>
                   <span className="home-pulse__event-meta">
                     <span className="home-pulse__event-name">{localizeName(event.name, locale)}</span>
                     <span className="home-pulse__event-count">{formatCountdown(event.endAt, locale)}</span>
                   </span>
-                </a>
+                </Link>
               ))}
             </div>
-          </div>
-        ) : null}
+          )}
+        </div>
 
         <div className="home-pulse__row">
           {pulse.birthdays.length > 0 ? (
@@ -116,58 +180,36 @@ export function HomePulseSection({ pulse }: { pulse: HomePulseData }) {
           ) : null}
 
           <div className="home-pulse__servers">
-            <div className="home-pulse__head home-pulse__head--split">
-              <div>
-                <p className="hero-eyebrow">{t("pulse.serverEyebrow")}</p>
-                <h2 className="home-pulse__title">{t("pulse.serverTitle")}</h2>
-              </div>
-              <div className="home-pulse__tabs" role="tablist" aria-label={t("pulse.serverTitle")}>
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={server === "cn"}
-                  className={cn("home-pulse__tab", server === "cn" && "home-pulse__tab--active")}
-                  onClick={() => setServer("cn")}
-                >
-                  {t("pulse.serverCn")}
-                </button>
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={server === "jp"}
-                  className={cn("home-pulse__tab", server === "jp" && "home-pulse__tab--active")}
-                  onClick={() => setServer("jp")}
-                >
-                  {t("pulse.serverJp")}
-                </button>
-              </div>
+            <div className="home-pulse__head">
+              <p className="hero-eyebrow">{t("pulse.serverEyebrow")}</p>
+              <h2 className="home-pulse__title">{t("pulse.serverTitle")}</h2>
             </div>
 
-            {recentCards.length === 0 ? (
+            {displays.length === 0 ? (
               <p className="home-pulse__empty">{t("pulse.serverEmpty")}</p>
             ) : (
-              <ul className="home-pulse__server-list">
-                {recentCards.map(({ card, date }) => (
-                  <li key={`${server}-${card.id}`}>
-                    <Link href={`/bands/`} className="home-pulse__server-item">
-                      <span className="home-pulse__server-thumb">
+              <ul className="home-pulse__card-grid">
+                {displays.map((item) => (
+                  <li key={item.key}>
+                    <button
+                      type="button"
+                      className="home-pulse__card"
+                      onClick={() => setLightbox(item)}
+                    >
+                      <span className="home-pulse__card-art">
                         <AssetImage
-                          src={
-                            card.trained_file ||
-                            card.trained_image ||
-                            card.untrained_file ||
-                            card.untrained_image
-                          }
+                          src={item.src}
                           alt=""
-                          variant="thumb"
-                          className="home-pulse__server-img"
+                          variant="mobile"
+                          className="home-pulse__card-img"
                         />
+                        <CardCornerBadges card={item.card} compact />
                       </span>
-                      <span className="home-pulse__server-copy">
-                        <span className="home-pulse__server-name">{getCardName(card, locale)}</span>
-                        <span className="home-pulse__server-date">{date}</span>
+                      <span className="home-pulse__card-meta">
+                        <span className="home-pulse__card-name">{getCardName(item.card, locale)}</span>
+                        <span className="home-pulse__card-date">{item.date}</span>
                       </span>
-                    </Link>
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -175,6 +217,14 @@ export function HomePulseSection({ pulse }: { pulse: HomePulseData }) {
           </div>
         </div>
       </div>
+
+      <CardDetailModal
+        item={lightbox}
+        items={displays}
+        onSelectItem={setLightbox}
+        onClose={() => setLightbox(null)}
+        themeColor="#e9435e"
+      />
     </section>
   );
 }

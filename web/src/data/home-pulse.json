@@ -1,18 +1,6 @@
 {
-  "generated_at": "2026-11-13T13:25:35.094Z",
+  "generated_at": "2026-11-13T13:54:21.821Z",
   "activeEvents": [
-    {
-      "id": 348,
-      "server": "jp",
-      "name": {
-        "zh": "Rock!Lock!Rock!",
-        "ja": "Rock!Lock!Rock!",
-        "en": "Rock!Lock!Rock!"
-      },
-      "startAt": "2026-11-10T06:00:00.000Z",
-      "endAt": "2026-11-17T11:59:59.000Z",
-      "banner": "https://bestdori.com/assets/jp/event/00348_rip/banner.png"
-    },
     {
       "id": 329,
       "server": "cn",
@@ -23,9 +11,59 @@
       },
       "startAt": "2026-11-13T05:00:00.000Z",
       "endAt": "2026-11-22T14:59:59.000Z",
-      "banner": "https://bestdori.com/assets/cn/event/00329_rip/banner.png"
+      "banner": "/data/events/329/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event329.png",
+      "eventType": "challenge"
+    },
+    {
+      "id": 348,
+      "server": "jp",
+      "name": {
+        "zh": "Rock!Lock!Rock!",
+        "ja": "Rock!Lock!Rock!",
+        "en": "Rock!Lock!Rock!"
+      },
+      "startAt": "2026-11-10T06:00:00.000Z",
+      "endAt": "2026-11-17T11:59:59.000Z",
+      "banner": "/data/events/348/banner.png",
+      "bannerRemote": "jp/homebanner_rip/banner_event348.png",
+      "eventType": "mission_live"
     }
   ],
+  "activeByServer": {
+    "jp": [
+      {
+        "id": 348,
+        "server": "jp",
+        "name": {
+          "zh": "Rock!Lock!Rock!",
+          "ja": "Rock!Lock!Rock!",
+          "en": "Rock!Lock!Rock!"
+        },
+        "startAt": "2026-11-10T06:00:00.000Z",
+        "endAt": "2026-11-17T11:59:59.000Z",
+        "banner": "/data/events/348/banner.png",
+        "bannerRemote": "jp/homebanner_rip/banner_event348.png",
+        "eventType": "mission_live"
+      }
+    ],
+    "cn": [
+      {
+        "id": 329,
+        "server": "cn",
+        "name": {
+          "zh": "Beyond my Imagination",
+          "ja": "Beyond my Imagination",
+          "en": "Beyond my Imagination"
+        },
+        "startAt": "2026-11-13T05:00:00.000Z",
+        "endAt": "2026-11-22T14:59:59.000Z",
+        "banner": "/data/events/329/banner.png",
+        "bannerRemote": "jp/homebanner_rip/banner_event329.png",
+        "eventType": "challenge"
+      }
+    ]
+  },
   "upcomingBirthdays": [
     {
       "id": 30,
