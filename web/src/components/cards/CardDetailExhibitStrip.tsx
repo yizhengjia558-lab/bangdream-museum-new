@@ -5,7 +5,7 @@ import { AssetImage } from "@/components/ui/AssetImage";
 import { BandLogo } from "@/components/ui/BandLogo";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getCardAttrColor } from "@/lib/card-attrs";
-import { getCardRarityLabel, getCharacterName } from "@/lib/i18n/display";
+import { getCardName, getCardRarityLabel, getCharacterName } from "@/lib/i18n/display";
 import siteIndex from "@/data/site-index.json";
 import type { CardData, CharacterSummary } from "@/lib/data-types";
 import { getBandByFolder, getBandByName } from "@/lib/themes";
@@ -58,7 +58,7 @@ export function CardDetailExhibitStrip({ card }: { card: CardData }) {
           </span>
         ) : null}
         <div className="card-detail-exhibit__copy">
-          <p className="card-detail-exhibit__title">{card.card_name}</p>
+          <p className="card-detail-exhibit__title">{getCardName(card, locale)}</p>
           <p className="card-detail-exhibit__sub">
             {[characterLabel, card.event || t("card.special")].filter(Boolean).join(" · ")}
           </p>

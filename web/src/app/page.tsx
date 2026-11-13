@@ -1,6 +1,8 @@
 import { getHeroRiverCards, getHomeBandsData, getRecentCards } from "@/lib/data-server";
+import { getHomePulseData } from "@/lib/home-pulse";
 import { HeroMainVisual } from "@/components/home/HeroMainVisual";
 import { HomeNewCardsSection } from "@/components/home/HomeNewCardsSection";
+import { HomePulseSection } from "@/components/home/HomePulseSection";
 import { HomeBandsSection } from "@/components/home/HomeBandsSection";
 import { BAND_THEMES } from "@/lib/themes";
 import type { HeroBannerSlide } from "@/lib/hero-banner";
@@ -9,6 +11,7 @@ export default function HomePage() {
   const riverCards = getHeroRiverCards();
   const homeBands = getHomeBandsData();
   const recent = getRecentCards(12);
+  const pulse = getHomePulseData();
   const bannerSlides: HeroBannerSlide[] = homeBands.flatMap((entry) => {
     const band = BAND_THEMES.find((theme) => theme.slug === entry.slug);
     if (!band) return [];
@@ -18,6 +21,7 @@ export default function HomePage() {
   return (
     <div className="museum-page home-page">
       <HeroMainVisual riverCards={riverCards} bannerSlides={bannerSlides} />
+      <HomePulseSection pulse={pulse} />
       <HomeNewCardsSection recent={recent} />
       <HomeBandsSection bands={homeBands} />
     </div>

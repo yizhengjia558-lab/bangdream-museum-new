@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { getCardRarityLabel } from "@/lib/i18n/display";
+import { getCardName, getCardRarityLabel } from "@/lib/i18n/display";
 import { filterCardDisplaysByName, type CardDisplayItem } from "@/lib/cards";
 import { cn } from "@/lib/utils";
 
@@ -157,7 +157,7 @@ export function CardNameSearch({
                     onMouseEnter={() => setActiveIndex(index)}
                     onClick={() => jump(item.key)}
                   >
-                    <span className="card-search-result-name">{item.card.card_name}</span>
+                    <span className="card-search-result-name">{getCardName(item.card, locale)}</span>
                     <span className="card-search-result-meta">
                       <span className="card-search-result-variant" style={{ color: themeColor }}>
                         {variantLabel}

@@ -6,7 +6,7 @@ import { AssetImage } from "@/components/ui/AssetImage";
 import { BandLogo } from "@/components/ui/BandLogo";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { getBandName, getCharacterName } from "@/lib/i18n/display";
+import { getBandName, getCardName, getCharacterName } from "@/lib/i18n/display";
 import { getCharacterPortrait } from "@/lib/character-utils";
 import { BAND_THEMES, getBandByFolder, getCharacterSummaries } from "@/lib/data";
 import { getCardVariantSrc } from "@/lib/cards";
@@ -171,7 +171,7 @@ export function ChampionshipPageView() {
                           {src ? (
                             <AssetImage
                               src={src}
-                              alt={card?.card_name || row.cardId}
+                              alt={(card ? getCardName(card, locale) : null) || row.cardId}
                               fill
                               variant="thumb"
                               className="object-cover object-center"
@@ -183,7 +183,7 @@ export function ChampionshipPageView() {
                           <p className="championship-label">
                             {member ? getCharacterName(member, locale) : `#${row.characterId}`}
                           </p>
-                          <p className="championship-name">{card?.card_name || row.cardId}</p>
+                          <p className="championship-name">{(card ? getCardName(card, locale) : null) || row.cardId}</p>
                           <p className="character-hot-views">
                             {t("hotCards.views").replace("{count}", row.views.toLocaleString())}
                           </p>
@@ -214,7 +214,7 @@ export function ChampionshipPageView() {
                             {src ? (
                               <AssetImage
                                 src={src}
-                                alt={card?.card_name || row.cardId}
+                                alt={(card ? getCardName(card, locale) : null) || row.cardId}
                                 fill
                                 variant="thumb"
                                 className="object-cover object-center"
@@ -226,7 +226,7 @@ export function ChampionshipPageView() {
                               {member ? getCharacterName(member, locale) : `#${row.characterId}`}
                               {band ? ` · ${getBandName(band, locale)}` : ""}
                             </p>
-                            <p className="championship-name">{card?.card_name || row.cardId}</p>
+                            <p className="championship-name">{(card ? getCardName(card, locale) : null) || row.cardId}</p>
                             <p className="character-hot-views">
                               {t("hotCards.views").replace("{count}", row.views.toLocaleString())}
                             </p>

@@ -568,3 +568,11 @@ const withBoth = characters.reduce(
 console.log(
   `Wrote index (${summaries.length} chars), ${cardsCatalog.length} catalog cards, ${withBoth} with both variants`
 );
+
+const localeScript = path.join(root, "scripts/build-locale-data.mjs");
+if (fs.existsSync(localeScript)) {
+  const localeResult = spawnSync("node", [localeScript], { cwd: root, stdio: "inherit" });
+  if (localeResult.status !== 0) {
+    console.warn("[build-data] build-locale-data.mjs failed; keeping existing locale overlays if present.");
+  }
+}

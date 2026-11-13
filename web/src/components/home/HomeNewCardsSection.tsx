@@ -8,7 +8,7 @@ import { CardDetailModal } from "@/components/cards/CardDetailModal";
 import { CardFavoriteButton } from "@/components/cards/CardFavoriteButton";
 import { CardTile } from "@/components/cards/CardTile";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { getCardRarityLabel } from "@/lib/i18n/display";
+import { getCardName, getCardRarityLabel } from "@/lib/i18n/display";
 import { getBandByFolder, getBandByName } from "@/lib/themes";
 import type { CardDisplayItem } from "@/lib/cards";
 import type { CardData } from "@/lib/data-types";
@@ -87,7 +87,16 @@ export function HomeNewCardsSection({ recent }: { recent: RecentCardsResult }) {
                 dateLabel={formatReleaseDate(item.card.release_date, locale)}
                 rarityLabel={getCardRarityLabel(item.card, locale)}
                 newLabel={t("newCards.badge")}
-                characterLabel={item.card.character_name_cn || item.card.character_name_jp || ""}
+                characterLabel={
+                  locale === "ja"
+                    ? item.card.character_name_jp || item.card.character_name_cn || ""
+                    : locale === "en"
+                      ? item.card.character_name_en ||
+                        item.card.character_name_jp ||
+                        item.card.character_name_cn ||
+                        ""
+                      : item.card.character_name_cn || item.card.character_name_jp || ""
+                }
                 ariaHidden={index >= uniqueDisplays.length}
                 onOpen={() => setLightbox(item)}
               />
@@ -128,6 +137,8 @@ function NewCardTile({
   ariaHidden?: boolean;
   onOpen: () => void;
 }) {
+  const { locale } = useLocale();
+  const cardName = getCardName(item.card, locale);
   return (
     <li
       className="home-new-cards__item"
@@ -144,7 +155,7 @@ function NewCardTile({
         <div className="home-new-cards__image-wrap">
           <AssetImage
             src={item.src}
-            alt={ariaHidden ? "" : item.card.card_name}
+            alt={ariaHidden ? "" : cardName}
             fill
             variant="mobile"
             priority={index < 2}
@@ -155,7 +166,7 @@ function NewCardTile({
         </div>
         <div className="home-new-cards__meta">
           <p className="home-new-cards__rarity">{rarityLabel}</p>
-          <p className="home-new-cards__name">{item.card.card_name}</p>
+          <p className="home-new-cards__name">{cardName}</p>
           <p className="home-new-cards__sub">
             {[characterLabel, dateLabel].filter(Boolean).join(" · ")}
           </p>

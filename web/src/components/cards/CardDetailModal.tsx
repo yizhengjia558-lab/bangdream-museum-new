@@ -10,6 +10,7 @@ import { CardLive2DViewer } from "@/components/cards/CardLive2DViewer";
 import { KirafesDynamicStage } from "@/components/cards/KirafesDynamicStage";
 import { useCardPalette } from "@/hooks/useCardPalette";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { getCardName } from "@/lib/i18n/display";
 import type { CardData } from "@/lib/data-types";
 import {
   getCardVariantAvailability,
@@ -81,7 +82,7 @@ export function CardDetailModal({
   onClose: () => void;
   themeColor?: string;
 }) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const [variant, setVariant] = useState<CardVariant>("untrained");
   const [fullscreen, setFullscreen] = useState(false);
   const [kirafesMode, setKirafesMode] = useState<KirafesPreviewMode>("dynamic");
@@ -177,6 +178,7 @@ export function CardDetailModal({
   if (!activeSrc && !item.card.live2d_asset_bundle_name) return null;
 
   const showToggle = availability.both;
+  const cardName = getCardName(item.card, locale);
 
   return (
     <>
@@ -233,7 +235,7 @@ export function CardDetailModal({
                     {showKirafesDynamic ? (
                       <KirafesDynamicStage
                         cardSrc={activeSrc}
-                        cardName={item.card.card_name}
+                        cardName={cardName}
                         videoSrc={item.card.kirafes_video}
                         bilibiliBvid={item.card.bilibili_bvid}
                       />
@@ -256,7 +258,7 @@ export function CardDetailModal({
                             >
                               <AssetImage
                                 src={activeSrc}
-                                alt={item.card.card_name}
+                                alt={cardName}
                                 fill
                                 variant="thumb"
                                 progressive
@@ -356,7 +358,7 @@ export function CardDetailModal({
                     characterId={characterId}
                     live2dAssetBundleName={item.card.live2d_asset_bundle_name}
                     sdResourceName={item.card.sd_resource_name}
-                    characterName={item.card.card_name}
+                    characterName={cardName}
                     className="card-detail-sidebar"
                   />
                 ) : null}
@@ -406,7 +408,7 @@ export function CardDetailModal({
                 <div className="card-detail-fullscreen-dynamic">
                   <KirafesDynamicStage
                     cardSrc={activeSrc}
-                    cardName={item.card.card_name}
+                    cardName={cardName}
                     videoSrc={item.card.kirafes_video}
                     bilibiliBvid={item.card.bilibili_bvid}
                   />
@@ -424,7 +426,7 @@ export function CardDetailModal({
                   >
                     <AssetImage
                       src={activeSrc}
-                      alt={item.card.card_name}
+                      alt={cardName}
                       variant="full"
                       progressive
                       className="card-detail-fullscreen-image"
@@ -438,7 +440,7 @@ export function CardDetailModal({
                   : variant === "trained"
                     ? t("card.afterTraining")
                     : t("card.beforeTraining")}{" "}
-                · {item.card.card_name}
+                · {cardName}
               </p>
             </motion.div>
           </motion.div>

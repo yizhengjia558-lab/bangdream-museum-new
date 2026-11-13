@@ -1,0 +1,282 @@
+{
+  "1": {
+    "zh": "户山 香澄",
+    "ja": "戸山 香澄",
+    "en": "Kasumi Toyama",
+    "birthday": "07-14",
+    "bandId": 1
+  },
+  "2": {
+    "zh": "花园 多惠",
+    "ja": "花園 たえ",
+    "en": "Tae Hanazono",
+    "birthday": "12-04",
+    "bandId": 1
+  },
+  "3": {
+    "zh": "牛込 里美",
+    "ja": "牛込 りみ",
+    "en": "Rimi Ushigome",
+    "birthday": "03-23",
+    "bandId": 1
+  },
+  "4": {
+    "zh": "山吹 沙绫",
+    "ja": "山吹 沙綾",
+    "en": "Saya Yamabuki",
+    "birthday": "05-19",
+    "bandId": 1
+  },
+  "5": {
+    "zh": "市谷 有咲",
+    "ja": "市ヶ谷 有咲",
+    "en": "Arisa Ichigaya",
+    "birthday": "10-27",
+    "bandId": 1
+  },
+  "6": {
+    "zh": "美竹 兰",
+    "ja": "美竹 蘭",
+    "en": "Ran Mitake",
+    "birthday": "04-10",
+    "bandId": 2
+  },
+  "7": {
+    "zh": "青叶 摩卡",
+    "ja": "青葉 モカ",
+    "en": "Moca Aoba",
+    "birthday": "09-03",
+    "bandId": 2
+  },
+  "8": {
+    "zh": "上原 绯玛丽",
+    "ja": "上原 ひまり",
+    "en": "Himari Uehara",
+    "birthday": "10-23",
+    "bandId": 2
+  },
+  "9": {
+    "zh": "宇田川 巴",
+    "ja": "宇田川 巴",
+    "en": "Tomoe Udagawa",
+    "birthday": "04-15",
+    "bandId": 2
+  },
+  "10": {
+    "zh": "羽泽 鸫",
+    "ja": "羽沢 つぐみ",
+    "en": "Tsugumi Hazawa",
+    "birthday": "01-07",
+    "bandId": 2
+  },
+  "11": {
+    "zh": "弦卷 心",
+    "ja": "弦巻 こころ",
+    "en": "Kokoro Tsurumaki",
+    "birthday": "08-08",
+    "bandId": 3
+  },
+  "12": {
+    "zh": "濑田 薰",
+    "ja": "瀬田 薫",
+    "en": "Kaoru Seta",
+    "birthday": "02-28",
+    "bandId": 3
+  },
+  "13": {
+    "zh": "北泽 育美",
+    "ja": "北沢 はぐみ",
+    "en": "Hagumi Kitazawa",
+    "birthday": "07-30",
+    "bandId": 3
+  },
+  "14": {
+    "zh": "松原 花音",
+    "ja": "松原 花音",
+    "en": "Kanon Matsubara",
+    "birthday": "05-11",
+    "bandId": 3
+  },
+  "15": {
+    "zh": "米歇尔",
+    "ja": "ミッシェル",
+    "en": "Misaki Okusawa",
+    "birthday": "10-01",
+    "bandId": 3
+  },
+  "16": {
+    "zh": "丸山 彩",
+    "ja": "丸山 彩",
+    "en": "Aya Maruyama",
+    "birthday": "12-27",
+    "bandId": 4
+  },
+  "17": {
+    "zh": "冰川 日菜",
+    "ja": "氷川 日菜",
+    "en": "Hina Hikawa",
+    "birthday": "03-20",
+    "bandId": 4
+  },
+  "18": {
+    "zh": "白鹭 千圣",
+    "ja": "白鷺 千聖",
+    "en": "Chisato Shirasagi",
+    "birthday": "04-06",
+    "bandId": 4
+  },
+  "19": {
+    "zh": "大和 麻弥",
+    "ja": "大和 麻弥",
+    "en": "Maya Yamato",
+    "birthday": "11-03",
+    "bandId": 4
+  },
+  "20": {
+    "zh": "若宫 伊芙",
+    "ja": "若宮 イヴ",
+    "en": "Eve Wakamiya",
+    "birthday": "06-27",
+    "bandId": 4
+  },
+  "21": {
+    "zh": "凑 友希那",
+    "ja": "湊 友希那",
+    "en": "Yukina Minato",
+    "birthday": "10-26",
+    "bandId": 5
+  },
+  "22": {
+    "zh": "冰川 纱夜",
+    "ja": "氷川 紗夜",
+    "en": "Sayo Hikawa",
+    "birthday": "03-20",
+    "bandId": 5
+  },
+  "23": {
+    "zh": "今井 莉莎",
+    "ja": "今井 リサ",
+    "en": "Lisa Imai",
+    "birthday": "08-25",
+    "bandId": 5
+  },
+  "24": {
+    "zh": "宇田川 亚子",
+    "ja": "宇田川 あこ",
+    "en": "Ako Udagawa",
+    "birthday": "07-03",
+    "bandId": 5
+  },
+  "25": {
+    "zh": "白金 燐子",
+    "ja": "白金 燐子",
+    "en": "Rinko Shirokane",
+    "birthday": "10-17",
+    "bandId": 5
+  },
+  "26": {
+    "zh": "仓田 真白",
+    "ja": "倉田 ましろ",
+    "en": "Mashiro Kurata",
+    "birthday": "02-19",
+    "bandId": 21
+  },
+  "27": {
+    "zh": "桐谷 透子",
+    "ja": "桐ヶ谷 透子",
+    "en": "Toko Kirigaya",
+    "birthday": "12-16",
+    "bandId": 21
+  },
+  "28": {
+    "zh": "广町 七深",
+    "ja": "広町 七深",
+    "en": "Nanami Hiromachi",
+    "birthday": "06-16",
+    "bandId": 21
+  },
+  "29": {
+    "zh": "二叶 筑紫",
+    "ja": "二葉 つくし",
+    "en": "Tsukushi Futaba",
+    "birthday": "09-15",
+    "bandId": 21
+  },
+  "30": {
+    "zh": "八潮 瑠唯",
+    "ja": "八潮 瑠唯",
+    "en": "Rui Yashio",
+    "birthday": "11-19",
+    "bandId": 21
+  },
+  "31": {
+    "zh": "和奏 瑞依",
+    "ja": "和奏 レイ",
+    "en": "Rei Wakana",
+    "birthday": "01-13",
+    "bandId": 18
+  },
+  "32": {
+    "zh": "朝日 六花",
+    "ja": "朝日 六花",
+    "en": "Rokka Asahi",
+    "birthday": "07-17",
+    "bandId": 18
+  },
+  "33": {
+    "zh": "佐藤 益木",
+    "ja": "佐藤 ますき",
+    "en": "Masuki Sato",
+    "birthday": "05-12",
+    "bandId": 18
+  },
+  "34": {
+    "zh": "鳰原 令王那",
+    "ja": "鳰原 令王那",
+    "en": "Reona Nyubara",
+    "birthday": "03-25",
+    "bandId": 18
+  },
+  "35": {
+    "zh": "珠手 知由",
+    "ja": "珠手 ちゆ",
+    "en": "Chiyu Tamade",
+    "birthday": "12-07",
+    "bandId": 18
+  },
+  "36": {
+    "zh": "高松 灯",
+    "ja": "高松 燈",
+    "en": "Tomori Takamatsu",
+    "birthday": "11-22",
+    "bandId": 45
+  },
+  "37": {
+    "zh": "千早 爱音",
+    "ja": "千早 愛音",
+    "en": "Anon Chihaya",
+    "birthday": "09-08",
+    "bandId": 45
+  },
+  "38": {
+    "zh": "要 乐奈",
+    "ja": "要 楽奈",
+    "en": "Rana Kaname",
+    "birthday": "02-22",
+    "bandId": 45
+  },
+  "39": {
+    "zh": "长崎 爽世",
+    "ja": "長崎 そよ",
+    "en": "Soyo Nagasaki",
+    "birthday": "05-27",
+    "bandId": 45
+  },
+  "40": {
+    "zh": "椎名 立希",
+    "ja": "椎名 立希",
+    "en": "Taki Shina",
+    "birthday": "08-09",
+    "bandId": 45
+  }
+}

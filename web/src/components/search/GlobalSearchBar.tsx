@@ -61,13 +61,16 @@ export function GlobalSearchBar({ className }: { className?: string }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const pathname = usePathname();
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const { query, setQuery, clearQuery, hasQuery } = useGlobalSearch();
   const [focused, setFocused] = useState(false);
   const [open, setOpen] = useState(false);
 
   const onCardPage = isCardListPath(pathname);
-  const navHits = useMemo(() => (hasQuery ? searchNavigation(query, 8) : []), [hasQuery, query]);
+  const navHits = useMemo(
+    () => (hasQuery ? searchNavigation(query, 8, locale) : []),
+    [hasQuery, query, locale]
+  );
   const showDropdown = open && hasQuery && !onCardPage;
 
   useEffect(() => {

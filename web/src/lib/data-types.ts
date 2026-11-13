@@ -4,6 +4,9 @@ export type CardKind = "normal" | "limited" | "birthday" | "collab" | "kirafes";
 export interface CardData {
   id: string;
   card_name: string;
+  /** Optional locale overlays (Bestdori prefix). Prefer getCardName(). */
+  card_name_jp?: string;
+  card_name_en?: string;
   rarity: string;
   event: string;
   release_date: string;
@@ -14,6 +17,7 @@ export interface CardData {
   character_id?: number;
   character_name_cn?: string;
   character_name_jp?: string;
+  character_name_en?: string;
   band?: string;
   band_folder?: string;
   stars?: number | null;
@@ -44,6 +48,8 @@ export interface CharacterSummary {
   slug: string;
   name_cn: string;
   name_jp: string;
+  /** English / romaji display name when available. */
+  name_en?: string;
   band: string;
   band_folder: string;
   standing: string;

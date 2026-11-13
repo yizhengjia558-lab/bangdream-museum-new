@@ -61,3 +61,61 @@ export function getCharacterPortrait(
   if (character.portrait) return character.portrait;
   return character.standing;
 }
+
+/**
+ * Vertical band-member strip art: prioritize face-visible framing.
+ * Prefer untrained / mid-rarity busts (faces usually upper-center), then
+ * standing sprites, then any remaining card CG / portrait.
+ */
+export function getCharacterStripArt(
+  character: Pick<CharacterSummary, "id" | "standing" | "portrait"> & { cards?: CardData[] }
+): { src: string; kind: "standing" | "card"; faceBias: number } {
+  if (character.cards?.length) {
+    const ranked = [...character.cards]
+      .map((card) => {
+        const untrained = card.untrained_file || card.untrained_image;
+        const trained = card.trained_file || card.trained_image;
+        const src = untrained || trained;
+        if (!src) return null;
+
+        const starMatch = card.rarity.match(/([1-5])/);
+        const stars = card.stars ?? (starMatch ? Number(starMatch[1]) : 0);
+        let score = 0;
+        // Untrained art is usually a closer bust with the face in frame.
+        if (untrained) score += 40;
+        if (stars === 2) score += 28;
+        else if (stars === 3) score += 24;
+        else if (stars === 4) score += 12;
+        else if (stars === 1) score += 18;
+        else if (stars === 5) score -= 8;
+        // Trained scenic CGs often crop to torso / props in a tall strip.
+        if (!untrained && trained) score -= 18;
+        return { src, score, untrained: Boolean(untrained) };
+      })
+      .filter(Boolean) as { src: string; score: number; untrained: boolean }[];
+
+    ranked.sort((a, b) => b.score - a.score);
+    if (ranked[0] && ranked[0].score >= 20) {
+      return {
+        src: ranked[0].src,
+        kind: "card",
+        faceBias: ranked[0].untrained ? 14 : 18,
+      };
+    }
+  }
+
+  if (character.standing) {
+    return { src: character.standing, kind: "standing", faceBias: 8 };
+  }
+
+  if (character.cards?.length) {
+    const any =
+      character.cards
+        .map((c) => c.untrained_file || c.untrained_image || c.trained_file || c.trained_image)
+        .find(Boolean) || "";
+    if (any) return { src: any, kind: "card", faceBias: 16 };
+  }
+
+  if (character.portrait) return { src: character.portrait, kind: "card", faceBias: 16 };
+  return { src: character.standing || "", kind: "standing", faceBias: 8 };
+}

@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { getCardName } from "@/lib/i18n/display";
 import { fetchCharacterTopCards, isCommunityEnabled } from "@/lib/community-api";
 import { getCardVariantSrc } from "@/lib/cards";
 import type { CardData } from "@/lib/data-types";
@@ -18,7 +19,7 @@ export function CharacterHotCards({
   accent?: string;
   onJump?: (cardId: string) => void;
 }) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const [entries, setEntries] = useState<{ card: CardData; views: number }[]>([]);
   const [loaded, setLoaded] = useState(false);
 
@@ -81,7 +82,7 @@ export function CharacterHotCards({
                   {src ? (
                     <AssetImage
                       src={src}
-                      alt={entry.card.card_name}
+                      alt={getCardName(entry.card, locale)}
                       fill
                       variant="thumb"
                       className="object-cover object-top"
@@ -89,7 +90,7 @@ export function CharacterHotCards({
                   ) : null}
                 </div>
                 <div className="character-hot-meta">
-                  <p className="character-hot-name">{entry.card.card_name}</p>
+                  <p className="character-hot-name">{getCardName(entry.card, locale)}</p>
                   <p className="character-hot-views">
                     {t("hotCards.views").replace("{count}", entry.views.toLocaleString())}
                   </p>

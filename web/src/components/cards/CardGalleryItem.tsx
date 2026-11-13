@@ -6,7 +6,7 @@ import { CardFavoriteButton } from "@/components/cards/CardFavoriteButton";
 import { CardTile } from "@/components/cards/CardTile";
 import { CardVariantBadge } from "@/components/cards/CardVariantBadge";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { getCardRarityLabel } from "@/lib/i18n/display";
+import { getCardName, getCardRarityLabel } from "@/lib/i18n/display";
 import type { CardDisplayItem } from "@/lib/cards";
 import { cn } from "@/lib/utils";
 
@@ -25,6 +25,7 @@ export function CardGalleryItem({
 }) {
   const { locale, t } = useLocale();
   const rarityLabel = getCardRarityLabel(item.card, locale);
+  const cardName = getCardName(item.card, locale);
   const isKirafes = item.card.card_kind === "kirafes";
 
   return (
@@ -49,7 +50,7 @@ export function CardGalleryItem({
         <div className="card-image-wrap card-image-wrap--landscape relative aspect-[4/3]">
           <AssetImage
             src={item.src}
-            alt={item.card.card_name}
+            alt={cardName}
             fill
             variant="mobile"
             className="card-image object-cover"
@@ -62,7 +63,7 @@ export function CardGalleryItem({
             {rarityLabel}
           </p>
           <div className="card-caption-name-box">
-            <p className="fit-text card-caption-name">{item.card.card_name}</p>
+            <p className="fit-text card-caption-name">{cardName}</p>
           </div>
         </div>
       </CardTile>

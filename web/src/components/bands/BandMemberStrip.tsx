@@ -6,8 +6,8 @@ import { AssetImage } from "@/components/ui/AssetImage";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getCharacterAltName, getCharacterName } from "@/lib/i18n/display";
 import { getCharacterColor } from "@/lib/character-colors";
-import { getCharacterPortrait } from "@/lib/character-utils";
-import type { CharacterSummary } from "@/lib/data-types";
+import { getCharacterStripArt } from "@/lib/character-utils";
+import type { CharacterData, CharacterSummary } from "@/lib/data-types";
 import type { BandTheme } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 
@@ -16,23 +16,28 @@ export function BandMemberStrip({
   theme,
   index = 0,
 }: {
-  member: CharacterSummary;
+  member: CharacterSummary | CharacterData;
   theme: BandTheme;
   index?: number;
 }) {
   const { locale } = useLocale();
   const displayName = getCharacterName(member, locale);
   const altName = getCharacterAltName(member, locale);
-  const portrait = getCharacterPortrait(member);
+  const art = getCharacterStripArt(member);
   const color = getCharacterColor(member.id, theme.colors.primary);
 
   return (
     <Link
       href={`/characters/${member.slug}/`}
-      className={cn("band-member-strip", "band-member-strip--enter")}
+      className={cn(
+        "band-member-strip",
+        "band-member-strip--enter",
+        art.kind === "standing" ? "band-member-strip--standing" : "band-member-strip--card"
+      )}
       style={
         {
           "--member-color": color,
+          "--strip-face-y": `${art.faceBias}%`,
           animationDelay: `${Math.min(index, 8) * 55}ms`,
         } as CSSProperties
       }
@@ -41,7 +46,7 @@ export function BandMemberStrip({
       <span className="band-member-strip__bg" aria-hidden />
       <span className="band-member-strip__art">
         <AssetImage
-          src={portrait}
+          src={art.src}
           alt=""
           fill
           variant="mobile"

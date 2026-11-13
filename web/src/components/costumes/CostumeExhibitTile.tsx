@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import { CostumeLiveStillPoster } from "@/components/costumes/CostumeLiveStillPoster";
 import { Live2DPhoneFrame } from "@/components/live2d/Live2DPhoneFrame";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { getCardName } from "@/lib/i18n/display";
 import { getBandByFolder, getBandByName } from "@/lib/themes";
 import type { CardData } from "@/lib/data-types";
 import { cn } from "@/lib/utils";
@@ -45,9 +46,15 @@ export function CostumeExhibitTile({
   onDeactivate: () => void;
   onOpenDetail: () => void;
 }) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const bundle = card.live2d_asset_bundle_name;
-  const characterLabel = card.character_name_cn || card.character_name_jp || "";
+  const cardName = getCardName(card, locale);
+  const characterLabel =
+    locale === "ja"
+      ? card.character_name_jp || card.character_name_cn || ""
+      : locale === "en"
+        ? card.character_name_en || card.character_name_jp || card.character_name_cn || ""
+        : card.character_name_cn || card.character_name_jp || "";
   const bandColors = resolveBandColors(card);
 
   return (
@@ -84,7 +91,7 @@ export function CostumeExhibitTile({
             onOpenDetail();
           }
         }}
-        aria-label={`${card.card_name}. ${t("costumes.openCardDetail")}`}
+        aria-label={`${cardName}. ${t("costumes.openCardDetail")}`}
       >
         <span className="costume-tile__badge">{t("costumes.live2dBadge")}</span>
         {liveActive ? (
@@ -125,7 +132,7 @@ export function CostumeExhibitTile({
 
         <div className="costume-tile__meta">
           <p className="costume-tile__character">{characterLabel || card.band}</p>
-          <p className="costume-tile__name">{card.card_name}</p>
+          <p className="costume-tile__name">{cardName}</p>
           <p className="costume-tile__sub">{card.band}</p>
         </div>
       </div>

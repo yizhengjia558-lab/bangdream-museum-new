@@ -1,5 +1,7 @@
 import Fuse from "fuse.js";
 import siteIndex from "@/data/site-index.json";
+import { getBandName, getCharacterName } from "@/lib/i18n/display";
+import type { Locale } from "@/lib/i18n/types";
 import type { CardData, CharacterSummary } from "./data-types";
 import { BAND_THEMES, getBandByFolder, type BandTheme } from "./themes";
 
@@ -8,6 +10,7 @@ export type SearchableCard = {
   cardName: string;
   memberCn: string;
   memberJp: string;
+  memberEn: string;
   band: string;
   bandJp: string;
   cvCn: string;
@@ -37,9 +40,10 @@ export function toSearchableCard(
 
   return {
     id: card.id,
-    cardName: card.card_name,
+    cardName: [card.card_name, card.card_name_jp, card.card_name_en].filter(Boolean).join(" "),
     memberCn: card.character_name_cn ?? member?.name_cn ?? "",
     memberJp: card.character_name_jp ?? member?.name_jp ?? "",
+    memberEn: card.character_name_en ?? member?.name_en ?? "",
     band: card.band ?? member?.band ?? band?.name ?? "",
     bandJp: band?.nameJp ?? "",
     cvCn: va?.cv_cn ?? "",
@@ -53,6 +57,7 @@ const CARD_FUSE_KEYS: (keyof SearchableCard)[] = [
   "cardName",
   "memberCn",
   "memberJp",
+  "memberEn",
   "band",
   "bandJp",
   "cvCn",
@@ -94,6 +99,7 @@ export type NavSearchHit = {
   thumb?: string;
   thumbKind?: "image" | "band-logo";
   bandSlug?: string;
+  memberId?: number;
 };
 
 let navFuse: Fuse<NavFuseItem> | null = null;
@@ -132,7 +138,7 @@ function buildNavFuseItems(): NavFuseItem[] {
     });
   }
 
-  for (const member of siteIndex.characters) {
+  for (const member of siteIndex.characters as CharacterSummary[]) {
     const va = member.voice_actor;
     items.push({
       type: "character",
@@ -142,6 +148,7 @@ function buildNavFuseItems(): NavFuseItem[] {
       keywords: [
         member.name_cn,
         member.name_jp,
+        member.name_en,
         member.band,
         va?.cv_cn,
         va?.cv_jp,
@@ -151,13 +158,14 @@ function buildNavFuseItems(): NavFuseItem[] {
         .join(" "),
       thumb: member.portrait || member.standing || "",
       thumbKind: "image",
+      memberId: member.id,
     });
   }
 
   return items;
 }
 
-export function searchNavigation(query: string, limit = 8): NavSearchHit[] {
+export function searchNavigation(query: string, limit = 8, locale: Locale = "zh"): NavSearchHit[] {
   const trimmed = query.trim();
   if (!trimmed) return [];
 
@@ -169,7 +177,59 @@ export function searchNavigation(query: string, limit = 8): NavSearchHit[] {
     });
   }
 
-  return navFuse.search(trimmed, { limit }).map((result) => result.item);
+  const members = siteIndex.characters as CharacterSummary[];
+  const memberMap = new Map(members.map((m) => [m.id, m]));
+
+  return navFuse.search(trimmed, { limit }).map((result) => {
+    const hit = result.item;
+    if (hit.type === "band" && hit.bandSlug) {
+      const band = BAND_THEMES.find((b) => b.slug === hit.bandSlug);
+      if (band) {
+        return {
+          ...hit,
+          label: getBandName(band, locale),
+          sublabel: locale === "ja" ? band.name : band.nameJp,
+        };
+      }
+    }
+    if (hit.type === "character" && hit.memberId != null) {
+      const member = memberMap.get(hit.memberId);
+      if (member) {
+        return {
+          ...hit,
+          label: getCharacterName(member, locale),
+          sublabel:
+            locale === "zh"
+              ? member.name_jp
+              : locale === "ja"
+                ? member.name_cn
+                : member.name_jp || member.name_cn,
+        };
+      }
+    }
+    if (hit.type === "page") {
+      if (hit.href.includes("forum")) {
+        return {
+          ...hit,
+          label: locale === "ja" ? "コミュニティ" : locale === "en" ? "Forum" : "社区论坛",
+          sublabel: locale === "en" ? "Community" : "Forum",
+        };
+      }
+      if (hit.href.includes("costumes")) {
+        return {
+          ...hit,
+          label:
+            locale === "ja"
+              ? "衣装 / Live2D 図鑑"
+              : locale === "en"
+                ? "Costume / Live2D Gallery"
+                : "服装 / Live2D 图鉴",
+          sublabel: locale === "ja" ? "衣装" : "Costumes",
+        };
+      }
+    }
+    return hit;
+  });
 }
 
 export function isCardListPath(pathname: string) {

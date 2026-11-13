@@ -115,8 +115,11 @@ export function CostumesPageView() {
       list = list.filter((card) => {
         const hay = [
           card.card_name,
+          card.card_name_jp,
+          card.card_name_en,
           card.character_name_cn,
           card.character_name_jp,
+          card.character_name_en,
           card.band,
           card.event,
           card.live2d_asset_bundle_name,

@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { CardLive2DViewer } from "@/components/cards/CardLive2DViewer";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { getCardRarityLabel } from "@/lib/i18n/display";
+import { getCardName, getCardRarityLabel } from "@/lib/i18n/display";
 import { costumePreviewSrc } from "@/lib/recent-cards";
 import type { CardData } from "@/lib/data-types";
 import { cn } from "@/lib/utils";
@@ -45,8 +45,14 @@ export function CostumeDetailModal({
   if (!card) return null;
 
   const preview = costumePreviewSrc(card);
+  const cardName = getCardName(card, locale);
   const characterId = card.character_id ?? 0;
-  const characterName = card.character_name_cn || card.character_name_jp || "";
+  const characterName =
+    locale === "ja"
+      ? card.character_name_jp || card.character_name_cn || ""
+      : locale === "en"
+        ? card.character_name_en || card.character_name_jp || card.character_name_cn || ""
+        : card.character_name_cn || card.character_name_jp || "";
   const characterHref = characterId ? `/characters/${characterId}/` : null;
 
   return (
@@ -79,7 +85,7 @@ export function CostumeDetailModal({
               {preview ? (
                 <AssetImage
                   src={preview}
-                  alt={card.card_name}
+                  alt={cardName}
                   fill
                   variant="full"
                   className="object-cover"
@@ -106,7 +112,7 @@ export function CostumeDetailModal({
                 {t("costumes.live2dBadge")}
                 {card.costume_id != null ? ` · #${card.costume_id}` : ""}
               </p>
-              <h3 className="costume-detail-title">{card.card_name}</h3>
+              <h3 className="costume-detail-title">{cardName}</h3>
               <p className="costume-detail-sub">
                 {[characterName, card.band, getCardRarityLabel(card, locale)]
                   .filter(Boolean)
