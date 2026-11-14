@@ -28,9 +28,21 @@ const JACKET_PKG_OVERRIDE = {
   40: 30,
 };
 
+/** Songs whose jackets live on CN CDN (or only reliably there). */
+const JACKET_REGION_OVERRIDE = {
+  273: "cn",
+};
+
 function jacketPackageId(songId) {
   if (JACKET_PKG_OVERRIDE[songId] != null) return JACKET_PKG_OVERRIDE[songId];
   return Math.ceil(songId / 10) * 10;
+}
+
+function jacketRegion(songId) {
+  if (JACKET_REGION_OVERRIDE[songId]) return JACKET_REGION_OVERRIDE[songId];
+  // Bilibili / CN-original song ids
+  if (songId >= 10000) return "cn";
+  return "jp";
 }
 
 function pickLocale(arr, index, fallback = "") {
@@ -46,6 +58,7 @@ function jacketAssetPath(songId, jacketName, region = "jp") {
 
 function firstPublishedMs(publishedAt) {
   if (!Array.isArray(publishedAt)) return null;
+  // Prefer JP → EN → TW → CN → KR so year filters match main release when possible.
   for (const raw of publishedAt) {
     const n = Number(raw);
     if (Number.isFinite(n) && n > 0) return n;
@@ -76,6 +89,7 @@ async function main() {
     const bandId = Number(raw.bandId) || 0;
     const titles = raw.musicTitle || [];
     const diffs = raw.difficulty || {};
+    const region = jacketRegion(id);
 
     songs.push({
       id,
@@ -87,7 +101,8 @@ async function main() {
       title_tw: pickLocale(titles, 2),
       title_cn: pickLocale(titles, 3),
       jacket_name: jacketName,
-      jacket_path: jacketAssetPath(id, jacketName, "jp"),
+      jacket_region: region,
+      jacket_path: jacketAssetPath(id, jacketName, region),
       published_at: firstPublishedMs(raw.publishedAt),
       difficulty: {
         easy: diffs["0"]?.playLevel ?? null,

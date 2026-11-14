@@ -1,36 +1,72 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { BandBackButton } from "@/components/bands/BandBackButton";
-import { AssetImage } from "@/components/ui/AssetImage";
+import { SongJacketImage } from "@/components/music/SongJacketImage";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { fetchSongsCatalog } from "@/lib/data";
 import type { SongData } from "@/lib/data-types";
 import { getBandName } from "@/lib/i18n/display";
 import {
+  collectSongYears,
   filterSongsByBand,
+  filterSongsByExpert,
   filterSongsByQuery,
+  filterSongsByTag,
+  filterSongsByYear,
   getSongAltTitle,
-  getSongJacketUrl,
   getSongTitle,
   resolveSongBand,
+  sortSongs,
+  type SongExpertFilter,
+  type SongSort,
+  type SongTagFilter,
 } from "@/lib/songs";
 import { BAND_THEMES, type BandSlug } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 
 const PAGE_SIZE = 60;
 
+function parseYear(raw: string | null): number | null {
+  if (!raw) return null;
+  const year = Number(raw);
+  return Number.isFinite(year) ? year : null;
+}
+
+function parseTag(raw: string | null): SongTagFilter {
+  if (raw === "normal" || raw === "anime" || raw === "tie_up") return raw;
+  return "all";
+}
+
+function parseExpert(raw: string | null): SongExpertFilter {
+  if (raw === "le20" || raw === "21to25" || raw === "ge26") return raw;
+  return "all";
+}
+
+function parseSort(raw: string | null): SongSort {
+  if (raw === "oldest" || raw === "title") return raw;
+  return "newest";
+}
+
 export function MusicPageView() {
   const { t, locale } = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
+
   const bandParam = searchParams.get("band");
   const activeSlug =
     bandParam && BAND_THEMES.some((band) => band.slug === bandParam)
       ? (bandParam as BandSlug)
       : null;
+  const yearFilter = parseYear(searchParams.get("year"));
+  const tagFilter = parseTag(searchParams.get("tag"));
+  const expertFilter = parseExpert(searchParams.get("expert"));
+  const sort = parseSort(searchParams.get("sort"));
+
   const activeBand = activeSlug ? BAND_THEMES.find((band) => band.slug === activeSlug) : null;
   const accent = activeBand?.colors.primary ?? "#e9435e";
 
@@ -55,14 +91,39 @@ export function MusicPageView() {
 
   useEffect(() => {
     setVisible(PAGE_SIZE);
-  }, [activeSlug, query]);
+  }, [activeSlug, yearFilter, tagFilter, expertFilter, sort, query]);
+
+  const years = useMemo(() => (songs ? collectSongYears(songs) : []), [songs]);
 
   const filtered = useMemo(() => {
     if (!songs) return [];
-    return filterSongsByQuery(filterSongsByBand(songs, activeSlug), query);
-  }, [songs, activeSlug, query]);
+    let list = filterSongsByBand(songs, activeSlug);
+    list = filterSongsByYear(list, yearFilter);
+    list = filterSongsByTag(list, tagFilter);
+    list = filterSongsByExpert(list, expertFilter);
+    list = filterSongsByQuery(list, query);
+    return sortSongs(list, sort, locale);
+  }, [songs, activeSlug, yearFilter, tagFilter, expertFilter, query, sort, locale]);
 
   const shown = filtered.slice(0, visible);
+
+  function replaceParams(patch: Record<string, string | null>) {
+    const params = new URLSearchParams(searchParams.toString());
+    for (const [key, value] of Object.entries(patch)) {
+      if (!value) params.delete(key);
+      else params.set(key, value);
+    }
+    const qs = params.toString();
+    router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+  }
+
+  function bandHref(slug: string | null) {
+    const params = new URLSearchParams(searchParams.toString());
+    if (!slug) params.delete("band");
+    else params.set("band", slug);
+    const qs = params.toString();
+    return qs ? `/music/?${qs}` : "/music/";
+  }
 
   return (
     <div className="museum-page music-page relative min-h-screen pb-28" style={{ ["--band-color" as string]: accent }}>
@@ -84,28 +145,122 @@ export function MusicPageView() {
             </p>
           ) : null}
 
-          <div className="music-page__filters" aria-label={t("music.filterBand")}>
-            <Link
-              href="/music/"
-              className={cn("music-page__chip", !activeSlug && "music-page__chip--active")}
-              aria-current={!activeSlug ? "page" : undefined}
-            >
-              {t("music.allBands")}
-            </Link>
-            {BAND_THEMES.map((band) => {
-              const active = band.slug === activeSlug;
-              return (
-                <Link
-                  key={band.slug}
-                  href={`/music/?band=${band.slug}`}
-                  className={cn("music-page__chip", active && "music-page__chip--active")}
-                  style={{ ["--chip-color" as string]: band.colors.primary } as CSSProperties}
-                  aria-current={active ? "page" : undefined}
+          <div className="music-page__filter-block">
+            <p className="music-page__filter-label">{t("music.filterBand")}</p>
+            <div className="music-page__filters" aria-label={t("music.filterBand")}>
+              <Link
+                href={bandHref(null)}
+                className={cn("music-page__chip", !activeSlug && "music-page__chip--active")}
+                aria-current={!activeSlug ? "page" : undefined}
+              >
+                {t("music.allBands")}
+              </Link>
+              {BAND_THEMES.map((band) => {
+                const active = band.slug === activeSlug;
+                return (
+                  <Link
+                    key={band.slug}
+                    href={bandHref(band.slug)}
+                    className={cn("music-page__chip", active && "music-page__chip--active")}
+                    style={{ ["--chip-color" as string]: band.colors.primary } as CSSProperties}
+                    aria-current={active ? "page" : undefined}
+                  >
+                    {getBandName(band, locale)}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="music-page__filter-block">
+            <p className="music-page__filter-label">{t("music.filterYear")}</p>
+            <div className="music-page__filters" aria-label={t("music.filterYear")}>
+              <button
+                type="button"
+                className={cn("music-page__chip", yearFilter == null && "music-page__chip--active")}
+                onClick={() => replaceParams({ year: null })}
+              >
+                {t("music.allYears")}
+              </button>
+              {years.map((year) => (
+                <button
+                  key={year}
+                  type="button"
+                  className={cn("music-page__chip", yearFilter === year && "music-page__chip--active")}
+                  onClick={() => replaceParams({ year: String(year) })}
                 >
-                  {getBandName(band, locale)}
-                </Link>
-              );
-            })}
+                  {year}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="music-page__filter-block">
+            <p className="music-page__filter-label">{t("music.filterTag")}</p>
+            <div className="music-page__filters" aria-label={t("music.filterTag")}>
+              {(
+                [
+                  ["all", t("music.tagAll")],
+                  ["normal", t("music.tagNormal")],
+                  ["anime", t("music.tagAnime")],
+                  ["tie_up", t("music.tagTieUp")],
+                ] as const
+              ).map(([value, label]) => (
+                <button
+                  key={value}
+                  type="button"
+                  className={cn("music-page__chip", tagFilter === value && "music-page__chip--active")}
+                  onClick={() => replaceParams({ tag: value === "all" ? null : value })}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="music-page__filter-block">
+            <p className="music-page__filter-label">{t("music.filterExpert")}</p>
+            <div className="music-page__filters" aria-label={t("music.filterExpert")}>
+              {(
+                [
+                  ["all", t("music.expertAll")],
+                  ["le20", t("music.expertLe20")],
+                  ["21to25", t("music.expert21to25")],
+                  ["ge26", t("music.expertGe26")],
+                ] as const
+              ).map(([value, label]) => (
+                <button
+                  key={value}
+                  type="button"
+                  className={cn("music-page__chip", expertFilter === value && "music-page__chip--active")}
+                  onClick={() => replaceParams({ expert: value === "all" ? null : value })}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="music-page__filter-block">
+            <p className="music-page__filter-label">{t("music.sort")}</p>
+            <div className="music-page__filters" aria-label={t("music.sort")}>
+              {(
+                [
+                  ["newest", t("music.sortNewest")],
+                  ["oldest", t("music.sortOldest")],
+                  ["title", t("music.sortTitle")],
+                ] as const
+              ).map(([value, label]) => (
+                <button
+                  key={value}
+                  type="button"
+                  className={cn("music-page__chip", sort === value && "music-page__chip--active")}
+                  onClick={() => replaceParams({ sort: value === "newest" ? null : value })}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
           </div>
 
           <label className="music-page__search music-page__search--live">
@@ -134,12 +289,14 @@ export function MusicPageView() {
           ) : (
             <>
               <div className="music-jacket-wall" role="list" aria-label={t("music.title")}>
-                {shown.map((song) => {
+                {shown.map((song, index) => {
                   const band = resolveSongBand(song);
                   const color = band?.colors.primary ?? accent;
                   const title = getSongTitle(song, locale);
                   const alt = getSongAltTitle(song, locale);
-                  const jacket = getSongJacketUrl(song);
+                  const year = song.published_at
+                    ? new Date(song.published_at).getUTCFullYear()
+                    : null;
                   return (
                     <article
                       key={song.id}
@@ -148,20 +305,11 @@ export function MusicPageView() {
                       style={{ ["--jacket-color" as string]: color }}
                     >
                       <div className="music-jacket__art">
-                        {jacket ? (
-                          <AssetImage
-                            src={jacket}
-                            alt={title}
-                            fill
-                            variant="full"
-                            className="object-cover"
-                          />
-                        ) : (
-                          <span className="music-jacket__glyph">{t("music.jacketPlaceholder")}</span>
-                        )}
+                        <SongJacketImage song={song} alt={title} priority={index < 8} />
                         {band ? (
                           <span className="music-jacket__band">{getBandName(band, locale)}</span>
                         ) : null}
+                        {year ? <span className="music-jacket__year">{year}</span> : null}
                       </div>
                       <div className="music-jacket__meta">
                         <p className="music-jacket__title">{title}</p>

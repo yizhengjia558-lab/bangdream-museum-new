@@ -95,6 +95,8 @@ export type SongData = {
   title_tw: string;
   title_cn: string;
   jacket_name: string;
+  /** CDN region that hosts the jacket (`jp` / `cn` / …). */
+  jacket_region?: string | null;
   jacket_path: string;
   published_at: number | null;
   difficulty: SongDifficulty;

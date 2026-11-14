@@ -10088,11 +10088,23 @@ html[data-locale="en"] .type-hero-title {
   font-size: 0.78rem;
 }
 
+.music-page__filter-block {
+  margin-top: 1rem;
+}
+
+.music-page__filter-label {
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
 .music-page__filters {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
-  margin-top: 1.25rem;
 }
 
 .music-page__chip {
@@ -10103,9 +10115,11 @@ html[data-locale="en"] .type-hero-title {
   border: 1px solid color-mix(in srgb, var(--chip-color, var(--band-color, #e9435e)) 28%, transparent);
   background: color-mix(in srgb, var(--chip-color, var(--band-color, #e9435e)) 8%, var(--glass-bg));
   color: var(--text-secondary);
+  font: inherit;
   font-size: 0.78rem;
   font-weight: 700;
   text-decoration: none;
+  cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -10262,6 +10276,18 @@ html[data-locale="en"] .type-hero-title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.music-jacket__year {
+  position: absolute;
+  left: 0.7rem;
+  top: 0.7rem;
+  padding: 0.18rem 0.4rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.34);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
 }
 
 .music-jacket__meta {

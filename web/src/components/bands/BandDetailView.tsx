@@ -8,13 +8,13 @@ import { BandHotCharacters } from "@/components/bands/BandHotCharacters";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BandLogo } from "@/components/ui/BandLogo";
 import { BandBackButton } from "@/components/bands/BandBackButton";
-import { AssetImage } from "@/components/ui/AssetImage";
+import { SongJacketImage } from "@/components/music/SongJacketImage";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getBandName, getBandSlogan } from "@/lib/i18n/display";
 import { flattenBandCards } from "@/lib/card-filters";
 import { fetchSongsCatalog } from "@/lib/data";
 import type { CharacterData, SongData } from "@/lib/data-types";
-import { filterSongsByBand, getSongAltTitle, getSongJacketUrl, getSongTitle } from "@/lib/songs";
+import { filterSongsByBand, getSongAltTitle, getSongTitle } from "@/lib/songs";
 import type { BandTheme } from "@/lib/themes";
 
 export function BandDetailView({
@@ -105,7 +105,6 @@ export function BandDetailView({
               ? bandSongs.map((song) => {
                   const title = getSongTitle(song, locale);
                   const alt = getSongAltTitle(song, locale);
-                  const jacket = getSongJacketUrl(song);
                   return (
                     <div
                       key={song.id}
@@ -113,17 +112,7 @@ export function BandDetailView({
                       style={{ ["--jacket-color" as string]: band.colors.primary }}
                     >
                       <div className="band-music-preview__art">
-                        {jacket ? (
-                          <AssetImage
-                            src={jacket}
-                            alt={title}
-                            fill
-                            variant="full"
-                            className="object-cover"
-                          />
-                        ) : (
-                          <span>{t("music.jacketPlaceholder")}</span>
-                        )}
+                        <SongJacketImage song={song} alt={title} />
                       </div>
                       <div className="band-music-preview__meta">
                         <p className="type-caption text-[var(--text-muted)]">{t("band.signatureTrack")}</p>
