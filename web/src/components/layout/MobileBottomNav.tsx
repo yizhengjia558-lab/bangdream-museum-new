@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { useFavorites } from "@/components/favorites/FavoritesProvider";
+import { useMusicPlayer } from "@/components/music/MusicPlayerProvider";
 import { cn } from "@/lib/utils";
 
 type NavIconName = "home" | "bands" | "music" | "costumes" | "favorites";
@@ -63,7 +64,9 @@ function NavIcon({ name }: { name: NavIconName }) {
 export function MobileBottomNav() {
   const pathname = usePathname();
   const { t } = useLocale();
-  const { count: favoriteCount } = useFavorites();
+  const { count: cardFavoriteCount } = useFavorites();
+  const { favoriteIds } = useMusicPlayer();
+  const favoriteCount = cardFavoriteCount + favoriteIds.length;
 
   const items = [
     { href: "/", label: t("nav.home"), icon: "home" as const, match: (p: string) => p === "/" || p === "" },

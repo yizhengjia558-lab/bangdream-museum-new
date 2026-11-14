@@ -6,13 +6,16 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { useFavorites } from "@/components/favorites/FavoritesProvider";
+import { useMusicPlayer } from "@/components/music/MusicPlayerProvider";
 import { GlobalSearchBar } from "@/components/search/GlobalSearchBar";
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const { t } = useLocale();
-  const { count: favoriteCount } = useFavorites();
+  const { count: cardFavoriteCount } = useFavorites();
+  const { favoriteIds } = useMusicPlayer();
+  const favoriteCount = cardFavoriteCount + favoriteIds.length;
 
   const NAV = [
     { href: "/", label: t("nav.home"), match: (p: string) => p === "/" || p === "" },
