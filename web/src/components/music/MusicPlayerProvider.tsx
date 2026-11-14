@@ -36,6 +36,7 @@ type MusicPlayerContextValue = {
   playSong: (song: SongData, queue?: SongData[]) => void;
   togglePlay: () => void;
   pause: () => void;
+  closePlayer: () => void;
   playNext: () => void;
   playPrev: () => void;
   seek: (seconds: number) => void;
@@ -236,6 +237,25 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
 
   const pause = useCallback(() => {
     audioRef.current?.pause();
+  }, []);
+
+  const closePlayer = useCallback(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.pause();
+      audio.removeAttribute("src");
+      audio.load();
+    }
+    playTokenRef.current += 1;
+    candidatesRef.current = [];
+    candidateIndexRef.current = 0;
+    setExpanded(false);
+    setPlaying(false);
+    setCurrent(null);
+    setCurrentTime(0);
+    setDuration(0);
+    setQueue([]);
+    plainQueueRef.current = [];
   }, []);
 
   const playNext = useCallback(() => {
@@ -494,6 +514,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       playSong,
       togglePlay,
       pause,
+      closePlayer,
       playNext,
       playPrev,
       seek,
@@ -525,6 +546,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       playSong,
       togglePlay,
       pause,
+      closePlayer,
       playNext,
       playPrev,
       seek,

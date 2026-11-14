@@ -35,6 +35,7 @@ export function MusicPlayerDock() {
     queue,
     playSong,
     togglePlay,
+    closePlayer,
     playNext,
     playPrev,
     seek,
@@ -135,6 +136,17 @@ export function MusicPlayerDock() {
           >
             {liked ? "♥" : "♡"}
           </button>
+          <button
+            type="button"
+            className="music-player-mini__btn music-player-mini__btn--close"
+            aria-label={t("music.playerClose")}
+            onClick={(event) => {
+              event.stopPropagation();
+              closePlayer();
+            }}
+          >
+            ×
+          </button>
         </div>
         <label className="music-player-mini__seek">
           <span className="sr-only">{t("music.playerSeek")}</span>
@@ -166,14 +178,24 @@ export function MusicPlayerDock() {
                 <span>{t("music.playerNowPlaying")}</span>
                 {bandName ? <strong>{bandName}</strong> : null}
               </div>
-              <button
-                type="button"
-                className={cn("music-player-sheet__heart", liked && "is-active")}
-                aria-label={liked ? t("music.unfavorite") : t("music.favorite")}
-                onClick={() => toggleSongFavorite(current.id)}
-              >
-                {liked ? "♥" : "♡"}
-              </button>
+              <div className="music-player-sheet__top-actions">
+                <button
+                  type="button"
+                  className={cn("music-player-sheet__heart", liked && "is-active")}
+                  aria-label={liked ? t("music.unfavorite") : t("music.favorite")}
+                  onClick={() => toggleSongFavorite(current.id)}
+                >
+                  {liked ? "♥" : "♡"}
+                </button>
+                <button
+                  type="button"
+                  className="music-player-sheet__close"
+                  aria-label={t("music.playerClose")}
+                  onClick={closePlayer}
+                >
+                  ×
+                </button>
+              </div>
             </div>
 
             <div className="music-player-sheet__stage">
