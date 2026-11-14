@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { BandBackButton } from "@/components/bands/BandBackButton";
 import { useMusicPlayer } from "@/components/music/MusicPlayerProvider";
@@ -70,7 +70,6 @@ function parseView(raw: string | null): MusicGalleryView {
 export function MusicPageView() {
   const { t, locale } = useLocale();
   const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const bandParam = searchParams.get("band");
@@ -102,6 +101,7 @@ export function MusicPageView() {
   const [visible, setVisible] = useState(PAGE_SIZE);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const itemRefs = useRef<Map<number, HTMLElement>>(new Map());
+  const skipScrollRef = useRef(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -119,14 +119,22 @@ export function MusicPageView() {
 
   useEffect(() => {
     setVisible(PAGE_SIZE);
+    // Filter/search changes should not steal scroll to the now-playing track.
+    skipScrollRef.current = true;
   }, [activeSlug, yearFilter, tagFilter, expertFilter, sort, query, favoritesOnly, view]);
 
-  const years = useMemo(() => (songs ? collectSongYears(songs) : []), [songs]);
   const favoriteSet = useMemo(() => new Set(favoriteIds), [favoriteIds]);
+
+  const bandScoped = useMemo(() => {
+    if (!songs) return [];
+    return filterSongsByBand(songs, activeSlug);
+  }, [songs, activeSlug]);
+
+  const years = useMemo(() => collectSongYears(bandScoped), [bandScoped]);
 
   const filtered = useMemo(() => {
     if (!songs) return [];
-    let list = filterSongsByBand(songs, activeSlug);
+    let list = bandScoped;
     list = filterSongsByYear(list, yearFilter);
     list = filterSongsByTag(list, tagFilter);
     list = filterSongsByExpert(list, expertFilter);
@@ -135,7 +143,7 @@ export function MusicPageView() {
     return sortSongs(list, sort, locale);
   }, [
     songs,
-    activeSlug,
+    bandScoped,
     yearFilter,
     tagFilter,
     expertFilter,
@@ -148,22 +156,42 @@ export function MusicPageView() {
 
   const shown = filtered.slice(0, visible);
 
+  const advancedActive =
+    yearFilter != null || tagFilter !== "all" || expertFilter !== "all";
+
+  // Keep year/tag/expert panel open when those filters are active (incl. deep links).
+  useEffect(() => {
+    if (advancedActive) setFiltersOpen(true);
+  }, [advancedActive]);
+
+  // If the selected year disappears after switching band, clear it.
+  useEffect(() => {
+    if (yearFilter == null) return;
+    if (!years.includes(yearFilter)) {
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("year");
+      const qs = params.toString();
+      router.replace(qs ? `/music/?${qs}` : "/music/", { scroll: false });
+    }
+  }, [yearFilter, years, router, searchParams]);
+
   useEffect(() => {
     if (!current) return;
     const index = filtered.findIndex((song) => song.id === current.id);
     if (index >= 0 && index >= visible) {
       setVisible(index + PAGE_SIZE);
+    }
+  }, [current, filtered, visible]);
+
+  useEffect(() => {
+    if (!current) return;
+    if (skipScrollRef.current) {
+      skipScrollRef.current = false;
       return;
     }
     const node = itemRefs.current.get(current.id);
     node?.scrollIntoView({ behavior: "smooth", block: "nearest" });
-  }, [current, filtered, playing, visible]);
-  const advancedActive =
-    yearFilter != null ||
-    tagFilter !== "all" ||
-    expertFilter !== "all" ||
-    favoritesOnly ||
-    sort !== "newest";
+  }, [current?.id, playing]);
 
   function replaceParams(patch: Record<string, string | null>) {
     const params = new URLSearchParams(searchParams.toString());
@@ -172,13 +200,24 @@ export function MusicPageView() {
       else params.set(key, value);
     }
     const qs = params.toString();
-    router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+    // Always use trailing-slash music path (next.config trailingSlash: true).
+    router.replace(qs ? `/music/?${qs}` : "/music/", { scroll: false });
+  }
+
+  function clearAdvancedFilters() {
+    replaceParams({
+      year: null,
+      tag: null,
+      expert: null,
+      fav: null,
+    });
   }
 
   function bandHref(slug: string | null) {
     const params = new URLSearchParams(searchParams.toString());
     if (!slug) params.delete("band");
     else params.set("band", slug);
+    // Drop year if it would become invalid for the next band — handled by effect too.
     const qs = params.toString();
     return qs ? `/music/?${qs}` : "/music/";
   }
@@ -249,6 +288,11 @@ export function MusicPageView() {
               {filtersOpen ? t("music.filtersHide") : t("music.filtersShow")}
               {advancedActive ? " ·" : ""}
             </button>
+            {advancedActive || favoritesOnly ? (
+              <button type="button" className="music-page__chip" onClick={clearAdvancedFilters}>
+                {t("music.filtersClear")}
+              </button>
+            ) : null}
           </div>
 
           <div className="music-page__filter-block">
@@ -278,6 +322,56 @@ export function MusicPageView() {
             </div>
           </div>
 
+          <div className="music-page__filter-block">
+            <p className="music-page__filter-label">{t("music.sort")}</p>
+            <div className="music-page__filters" aria-label={t("music.sort")}>
+              {(
+                [
+                  ["newest", t("music.sortNewest")],
+                  ["oldest", t("music.sortOldest")],
+                  ["title", t("music.sortTitle")],
+                  ["bpm", t("music.sortBpm")],
+                  ["length", t("music.sortLength")],
+                  ["composer", t("music.sortComposer")],
+                ] as const
+              ).map(([value, label]) => (
+                <button
+                  key={value}
+                  type="button"
+                  className={cn("music-page__chip", sort === value && "music-page__chip--active")}
+                  onClick={() =>
+                    replaceParams({
+                      sort: sort === value || value === "newest" ? null : value,
+                    })
+                  }
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="music-page__filter-block">
+            <p className="music-page__filter-label">{t("music.filterFavorite")}</p>
+            <div className="music-page__filters" aria-label={t("music.filterFavorite")}>
+              <button
+                type="button"
+                className={cn("music-page__chip", !favoritesOnly && "music-page__chip--active")}
+                onClick={() => replaceParams({ fav: null })}
+              >
+                {t("music.favAll")}
+              </button>
+              <button
+                type="button"
+                className={cn("music-page__chip", favoritesOnly && "music-page__chip--active")}
+                onClick={() => replaceParams({ fav: favoritesOnly ? null : "1" })}
+              >
+                ♥ {t("music.favOnly")}
+                {favoriteIds.length > 0 ? ` (${favoriteIds.length})` : ""}
+              </button>
+            </div>
+          </div>
+
           {filtersOpen ? (
             <div className="music-page__filters-panel">
               <div className="music-page__filter-block">
@@ -295,7 +389,9 @@ export function MusicPageView() {
                       key={year}
                       type="button"
                       className={cn("music-page__chip", yearFilter === year && "music-page__chip--active")}
-                      onClick={() => replaceParams({ year: String(year) })}
+                      onClick={() =>
+                        replaceParams({ year: yearFilter === year ? null : String(year) })
+                      }
                     >
                       {year}
                     </button>
@@ -318,7 +414,11 @@ export function MusicPageView() {
                       key={value}
                       type="button"
                       className={cn("music-page__chip", tagFilter === value && "music-page__chip--active")}
-                      onClick={() => replaceParams({ tag: value === "all" ? null : value })}
+                      onClick={() =>
+                        replaceParams({
+                          tag: value === "all" || tagFilter === value ? null : value,
+                        })
+                      }
                     >
                       {label}
                     </button>
@@ -341,57 +441,15 @@ export function MusicPageView() {
                       key={value}
                       type="button"
                       className={cn("music-page__chip", expertFilter === value && "music-page__chip--active")}
-                      onClick={() => replaceParams({ expert: value === "all" ? null : value })}
+                      onClick={() =>
+                        replaceParams({
+                          expert: value === "all" || expertFilter === value ? null : value,
+                        })
+                      }
                     >
                       {label}
                     </button>
                   ))}
-                </div>
-              </div>
-
-              <div className="music-page__filter-block">
-                <p className="music-page__filter-label">{t("music.sort")}</p>
-                <div className="music-page__filters" aria-label={t("music.sort")}>
-                  {(
-                    [
-                      ["newest", t("music.sortNewest")],
-                      ["oldest", t("music.sortOldest")],
-                      ["title", t("music.sortTitle")],
-                      ["bpm", t("music.sortBpm")],
-                      ["length", t("music.sortLength")],
-                      ["composer", t("music.sortComposer")],
-                    ] as const
-                  ).map(([value, label]) => (
-                    <button
-                      key={value}
-                      type="button"
-                      className={cn("music-page__chip", sort === value && "music-page__chip--active")}
-                      onClick={() => replaceParams({ sort: value === "newest" ? null : value })}
-                    >
-                      {label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="music-page__filter-block">
-                <p className="music-page__filter-label">{t("music.filterFavorite")}</p>
-                <div className="music-page__filters" aria-label={t("music.filterFavorite")}>
-                  <button
-                    type="button"
-                    className={cn("music-page__chip", !favoritesOnly && "music-page__chip--active")}
-                    onClick={() => replaceParams({ fav: null })}
-                  >
-                    {t("music.favAll")}
-                  </button>
-                  <button
-                    type="button"
-                    className={cn("music-page__chip", favoritesOnly && "music-page__chip--active")}
-                    onClick={() => replaceParams({ fav: "1" })}
-                  >
-                    ♥ {t("music.favOnly")}
-                    {favoriteIds.length > 0 ? ` (${favoriteIds.length})` : ""}
-                  </button>
                 </div>
               </div>
             </div>
