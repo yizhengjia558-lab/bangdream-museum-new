@@ -9257,10 +9257,23 @@ html[data-locale="en"] .type-hero-title {
     );
 }
 
+/* Official site: flat character-color plate behind the trim cutout. */
+.band-member-strip--trim .band-member-strip__bg {
+  background: var(--member-color, #e9435e);
+}
+
 .band-member-strip__art {
   position: absolute;
   inset: 0;
   z-index: 1;
+}
+
+.band-member-strip--trim .band-member-strip__art {
+  /*
+   * Widen the art box past the strip so a square trim can fill the tall
+   * frame height under object-fit:contain; overflow clips the sides.
+   */
+  inset: 1.5% -52% 15%;
 }
 
 .band-member-strip__img {
@@ -9273,8 +9286,19 @@ html[data-locale="en"] .type-hero-title {
   backface-visibility: hidden;
 }
 
+.band-member-strip--trim .band-member-strip__img {
+  /*
+   * Official site language: cutout on solid color, face fully inside.
+   * Negative side inset + contain lets the trim fill strip height without
+   * shearing off forehead on diagonal poses.
+   */
+  object-position: center 22%;
+  transform: none;
+  transform-origin: center 22%;
+}
+
 .band-member-strip--card .band-member-strip__img {
-  /* 5★ trained: zoom into the upper third so faces survive the tall crop. */
+  /* Fallback CG: zoom into the upper third so faces survive the tall crop. */
   transform: scale(1.38);
   object-position: var(--strip-face-x, 50%) var(--strip-face-y, 18%);
   transform-origin: var(--strip-face-x, 50%) var(--strip-face-y, 18%);
@@ -9291,6 +9315,11 @@ html[data-locale="en"] .type-hero-title {
   transform: scale(1.28);
 }
 
+.band-member-strip--trim:hover .band-member-strip__img {
+  transform: scale(1.05);
+  transform-origin: center 22%;
+}
+
 .band-member-strip--card:hover .band-member-strip__img {
   transform: scale(1.38);
 }
@@ -9305,6 +9334,11 @@ html[data-locale="en"] .type-hero-title {
   height: 42%;
   z-index: 2;
   background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.62));
+}
+
+.band-member-strip--trim .band-member-strip__fade {
+  height: 28%;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.48));
 }
 
 .band-member-strip__meta {

@@ -32,7 +32,11 @@ export function BandMemberStrip({
       className={cn(
         "band-member-strip",
         "band-member-strip--enter",
-        art.kind === "standing" ? "band-member-strip--standing" : "band-member-strip--card"
+        art.kind === "trim"
+          ? "band-member-strip--trim"
+          : art.kind === "standing"
+            ? "band-member-strip--standing"
+            : "band-member-strip--card"
       )}
       style={
         {
@@ -52,7 +56,10 @@ export function BandMemberStrip({
           fill
           variant="full"
           priority={index < 5}
-          className="band-member-strip__img object-cover"
+          className={cn(
+            "band-member-strip__img",
+            art.kind === "trim" ? "object-contain" : "object-cover"
+          )}
         />
       </span>
       <span className="band-member-strip__fade" aria-hidden />

@@ -111,6 +111,47 @@ export async function resolveLive2DViewerUrl(assetBundleName: string | null | un
   return null;
 }
 
+/**
+ * Map LIVE SD id (`sd001062`, `bili_sd001001`) → resourceset id (`res001062`).
+ * Official site member strips use `characters/resourceset/{res}_rip/trim_*.png`.
+ */
+export function resourceSetNameFromSd(sdResourceName: string) {
+  return sdResourceName.replace(/sd/i, "res");
+}
+
+export type CardTrimVariant = "after_training" | "normal";
+
+/** Relative Bestdori asset path for a card character trim (cutout). */
+export function getCardTrimAssetPath(
+  sdResourceName: string,
+  variant: CardTrimVariant = "after_training",
+  region: BestdoriRegion = "jp"
+) {
+  const res = resourceSetNameFromSd(sdResourceName);
+  const file = variant === "after_training" ? "trim_after_training.png" : "trim_normal.png";
+  return `${region}/characters/resourceset/${res}_rip/${file}`;
+}
+
+/** Direct CDN URL for card trim cutouts (safe for `<img>` / band strips). */
+export function getCardTrimDirectUrl(
+  sdResourceName: string,
+  variant: CardTrimVariant = "after_training",
+  region: BestdoriRegion = "jp"
+) {
+  return `${assetBase(region)}/characters/resourceset/${resourceSetNameFromSd(sdResourceName)}_rip/${
+    variant === "after_training" ? "trim_after_training.png" : "trim_normal.png"
+  }`;
+}
+
+/** Same-origin proxy URL for card trim cutouts. */
+export function getCardTrimProxyUrl(
+  sdResourceName: string,
+  variant: CardTrimVariant = "after_training",
+  region: BestdoriRegion = "jp"
+) {
+  return getBestdoriAssetProxyUrl(getCardTrimAssetPath(sdResourceName, variant, region));
+}
+
 export type BandLogoSize = "L" | "S";
 
 /** Official Bestdori band wordmark (`logoL.png` / `logoS.png`). */
