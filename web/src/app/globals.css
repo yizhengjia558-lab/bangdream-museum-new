@@ -2780,21 +2780,6 @@ button.glass-frame.card-tile:active {
     gap: 0.4rem;
   }
 
-  .band-back-btn--fixed {
-    top: auto;
-    bottom: calc(5.35rem + env(safe-area-inset-bottom, 0px));
-    right: max(0.55rem, env(safe-area-inset-right, 0px));
-    min-height: 2.35rem;
-    padding: 0.45rem 0.8rem;
-    font-size: 0.75rem;
-    border-radius: 999px;
-    z-index: 70;
-  }
-
-  body.music-player-active .band-back-btn--fixed {
-    bottom: calc(9.4rem + env(safe-area-inset-bottom, 0px));
-  }
-
   .theme-toggle-fixed,
   body:has(.band-back-btn--fixed) .theme-toggle-fixed {
     top: calc(max(0.4rem, env(safe-area-inset-top, 0px)) + 3.55rem);
@@ -2935,14 +2920,6 @@ button.glass-frame.card-tile:active {
     min-height: 2.35rem;
     padding: 0.2rem 0.1rem 0.25rem;
     font-size: 0.5rem;
-  }
-
-  .band-back-btn--fixed {
-    bottom: calc(4.6rem + env(safe-area-inset-bottom, 0px));
-  }
-
-  body.music-player-active .band-back-btn--fixed {
-    bottom: calc(8.4rem + env(safe-area-inset-bottom, 0px));
   }
 
   .theme-toggle-fixed,
@@ -5276,6 +5253,46 @@ body.live2d-embed-route main {
   top: max(1.25rem, env(safe-area-inset-top, 0px));
   right: max(1.25rem, env(safe-area-inset-right, 0px));
   z-index: 70;
+}
+
+/* Must come AFTER .band-back-btn--fixed so top/bottom don't both stick (full-height stretch). */
+@media (max-width: 767px), (orientation: landscape) and (max-height: 520px) {
+  .band-back-btn.band-back-btn--fixed {
+    top: unset;
+    left: unset;
+    right: max(0.55rem, env(safe-area-inset-right, 0px));
+    bottom: calc(5.35rem + env(safe-area-inset-bottom, 0px));
+    width: auto;
+    height: auto;
+    min-height: 2.25rem;
+    max-height: none;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.72rem;
+    border-radius: 999px;
+    gap: 0.3rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  }
+
+  .band-back-btn.band-back-btn--fixed .band-back-btn-label {
+    font-size: 0.72rem;
+  }
+
+  body.music-player-active .band-back-btn.band-back-btn--fixed {
+    bottom: calc(9.4rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (orientation: landscape) and (max-height: 520px) {
+  .band-back-btn.band-back-btn--fixed {
+    bottom: calc(4.6rem + env(safe-area-inset-bottom, 0px));
+    min-height: 2.1rem;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.68rem;
+  }
+
+  body.music-player-active .band-back-btn.band-back-btn--fixed {
+    bottom: calc(8.4rem + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 .lang-toggle-fixed {
