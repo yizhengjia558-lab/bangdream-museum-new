@@ -5,7 +5,6 @@ import Link from "next/link";
 import { AssetImage } from "@/components/ui/AssetImage";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getCharacterAltName, getCharacterName } from "@/lib/i18n/display";
-import { getCharacterColor } from "@/lib/character-colors";
 import { getCharacterStripArt } from "@/lib/character-utils";
 import type { CharacterData, CharacterSummary } from "@/lib/data-types";
 import type { BandTheme } from "@/lib/themes";
@@ -24,7 +23,7 @@ export function BandMemberStrip({
   const displayName = getCharacterName(member, locale);
   const altName = getCharacterAltName(member, locale);
   const art = getCharacterStripArt(member);
-  const color = getCharacterColor(member.id, theme.colors.primary);
+  const color = theme.colors.primary;
 
   return (
     <Link
