@@ -152,6 +152,43 @@ export function getCardTrimProxyUrl(
   return getBestdoriAssetProxyUrl(getCardTrimAssetPath(sdResourceName, variant, region));
 }
 
+/** Jacket package folder id for a song (Bestdori musicjacket{N}_rip). */
+export function songJacketPackageId(songId: number) {
+  if (songId === 13 || songId === 40) return 30;
+  return Math.ceil(songId / 10) * 10;
+}
+
+/** Relative Bestdori path for a song album jacket. */
+export function getSongJacketAssetPath(
+  songId: number,
+  jacketName: string,
+  region: BestdoriRegion = "jp"
+) {
+  const pkg = songJacketPackageId(songId);
+  const name = jacketName.toLowerCase();
+  return `${region}/musicjacket/musicjacket${pkg}_rip/assets-star-forassetbundle-startapp-musicjacket-musicjacket${pkg}-${name}-jacket.png`;
+}
+
+/** Direct CDN URL for song jacket (album cover). */
+export function getSongJacketDirectUrl(
+  songId: number,
+  jacketName: string,
+  region: BestdoriRegion = "jp"
+) {
+  const pkg = songJacketPackageId(songId);
+  const name = jacketName.toLowerCase();
+  return `${assetBase(region)}/musicjacket/musicjacket${pkg}_rip/assets-star-forassetbundle-startapp-musicjacket-musicjacket${pkg}-${name}-jacket.png`;
+}
+
+/** Same-origin proxy URL for song jackets. */
+export function getSongJacketProxyUrl(
+  songId: number,
+  jacketName: string,
+  region: BestdoriRegion = "jp"
+) {
+  return getBestdoriAssetProxyUrl(getSongJacketAssetPath(songId, jacketName, region));
+}
+
 export type BandLogoSize = "L" | "S";
 
 /** Official Bestdori band wordmark (`logoL.png` / `logoS.png`). */

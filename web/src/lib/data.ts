@@ -1,6 +1,6 @@
 import siteIndex from "@/data/site-index.json";
 import { BAND_THEMES, getBandByFolder, getBandBySlug } from "./themes";
-import type { CardData, CharacterSummary } from "./data-types";
+import type { CardData, CharacterSummary, SongData } from "./data-types";
 
 export type {
   CardAttribute,
@@ -10,6 +10,8 @@ export type {
   CharacterSummary,
   HomeBandEntry,
   RiverCardItem,
+  SongData,
+  SongDifficulty,
   VoiceActorData,
 } from "./data-types";
 
@@ -38,4 +40,12 @@ export async function fetchCardsCatalog(): Promise<CardData[]> {
   if (!res.ok) throw new Error("Failed to load cards catalog");
   const data = (await res.json()) as { cards: CardData[] };
   return data.cards;
+}
+
+export async function fetchSongsCatalog(): Promise<SongData[]> {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH?.replace(/\/$/, "") ?? "";
+  const res = await fetch(`${basePath}/data/songs-catalog.json`);
+  if (!res.ok) throw new Error("Failed to load songs catalog");
+  const data = (await res.json()) as { songs: SongData[] };
+  return data.songs;
 }

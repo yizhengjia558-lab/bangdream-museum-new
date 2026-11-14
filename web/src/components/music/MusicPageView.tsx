@@ -2,54 +2,26 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useMemo, type CSSProperties } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { BandBackButton } from "@/components/bands/BandBackButton";
+import { AssetImage } from "@/components/ui/AssetImage";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { fetchSongsCatalog } from "@/lib/data";
+import type { SongData } from "@/lib/data-types";
 import { getBandName } from "@/lib/i18n/display";
-import { BAND_THEMES, type BandSlug, type BandTheme } from "@/lib/themes";
+import {
+  filterSongsByBand,
+  filterSongsByQuery,
+  getSongAltTitle,
+  getSongJacketUrl,
+  getSongTitle,
+  resolveSongBand,
+} from "@/lib/songs";
+import { BAND_THEMES, type BandSlug } from "@/lib/themes";
 import { cn } from "@/lib/utils";
 
-type PreviewTrack = {
-  key: string;
-  title: string;
-  titleJp: string;
-  band: BandTheme;
-};
-
-function buildPreviewTracks(activeSlug: string | null): PreviewTrack[] {
-  const bands = activeSlug
-    ? BAND_THEMES.filter((band) => band.slug === activeSlug)
-    : BAND_THEMES;
-
-  const tracks: PreviewTrack[] = [];
-  for (const band of bands) {
-    band.songs.forEach((song, index) => {
-      tracks.push({
-        key: `${band.slug}-${index}`,
-        title: song.title,
-        titleJp: song.titleJp,
-        band,
-      });
-    });
-  }
-
-  // Fill the cover wall so the gallery reads as a museum even before assets land.
-  if (!activeSlug) {
-    for (const band of BAND_THEMES) {
-      for (let i = 0; i < 2; i++) {
-        tracks.push({
-          key: `${band.slug}-slot-${i}`,
-          title: "—",
-          titleJp: "",
-          band,
-        });
-      }
-    }
-  }
-
-  return tracks;
-}
+const PAGE_SIZE = 60;
 
 export function MusicPageView() {
   const { t, locale } = useLocale();
@@ -60,8 +32,37 @@ export function MusicPageView() {
       ? (bandParam as BandSlug)
       : null;
   const activeBand = activeSlug ? BAND_THEMES.find((band) => band.slug === activeSlug) : null;
-  const tracks = useMemo(() => buildPreviewTracks(activeSlug), [activeSlug]);
   const accent = activeBand?.colors.primary ?? "#e9435e";
+
+  const [songs, setSongs] = useState<SongData[] | null>(null);
+  const [error, setError] = useState(false);
+  const [query, setQuery] = useState("");
+  const [visible, setVisible] = useState(PAGE_SIZE);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchSongsCatalog()
+      .then((list) => {
+        if (!cancelled) setSongs(list);
+      })
+      .catch(() => {
+        if (!cancelled) setError(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    setVisible(PAGE_SIZE);
+  }, [activeSlug, query]);
+
+  const filtered = useMemo(() => {
+    if (!songs) return [];
+    return filterSongsByQuery(filterSongsByBand(songs, activeSlug), query);
+  }, [songs, activeSlug, query]);
+
+  const shown = filtered.slice(0, visible);
 
   return (
     <div className="museum-page music-page relative min-h-screen pb-28" style={{ ["--band-color" as string]: accent }}>
@@ -77,10 +78,11 @@ export function MusicPageView() {
         />
         <div className="relative page-container">
           <SectionHeading title={t("music.title")} subtitle={t("music.subtitle")} />
-          <p className="music-page__banner" role="status">
-            {t("music.comingSoon")}
-          </p>
-          <p className="music-page__hint">{t("music.previewHint")}</p>
+          {songs ? (
+            <p className="music-page__count">
+              {t("music.count").replace("{count}", String(filtered.length))}
+            </p>
+          ) : null}
 
           <div className="music-page__filters" aria-label={t("music.filterBand")}>
             <Link
@@ -97,11 +99,7 @@ export function MusicPageView() {
                   key={band.slug}
                   href={`/music/?band=${band.slug}`}
                   className={cn("music-page__chip", active && "music-page__chip--active")}
-                  style={
-                    {
-                      ["--chip-color" as string]: band.colors.primary,
-                    } as CSSProperties
-                  }
+                  style={{ ["--chip-color" as string]: band.colors.primary } as CSSProperties}
                   aria-current={active ? "page" : undefined}
                 >
                   {getBandName(band, locale)}
@@ -110,47 +108,87 @@ export function MusicPageView() {
             })}
           </div>
 
-          <div className="music-page__search" aria-hidden>
-            <span className="music-page__search-icon">⌕</span>
-            <span className="music-page__search-text">{t("music.searchPlaceholder")}</span>
-          </div>
+          <label className="music-page__search music-page__search--live">
+            <span className="music-page__search-icon" aria-hidden>
+              ⌕
+            </span>
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder={t("music.searchPlaceholder")}
+              className="music-page__search-input"
+            />
+          </label>
         </div>
       </section>
 
       <section className="page-section relative pb-8">
         <div className="relative page-container">
-          {tracks.length === 0 ? (
-            <p className="music-page__empty">{t("music.emptyBand")}</p>
+          {error ? (
+            <p className="music-page__empty">{t("music.loadError")}</p>
+          ) : !songs ? (
+            <p className="music-page__empty">{t("music.loading")}</p>
+          ) : shown.length === 0 ? (
+            <p className="music-page__empty">{t("music.empty")}</p>
           ) : (
-            <div className="music-jacket-wall" role="list" aria-label={t("music.title")}>
-              {tracks.map((track) => {
-                const title = locale === "ja" && track.titleJp ? track.titleJp : track.title;
-                const isPlaceholder = track.title === "—";
-                return (
-                  <div
-                    key={track.key}
-                    role="listitem"
-                    className={cn("music-jacket", isPlaceholder && "music-jacket--slot")}
-                    style={{ ["--jacket-color" as string]: track.band.colors.primary }}
+            <>
+              <div className="music-jacket-wall" role="list" aria-label={t("music.title")}>
+                {shown.map((song) => {
+                  const band = resolveSongBand(song);
+                  const color = band?.colors.primary ?? accent;
+                  const title = getSongTitle(song, locale);
+                  const alt = getSongAltTitle(song, locale);
+                  const jacket = getSongJacketUrl(song);
+                  return (
+                    <article
+                      key={song.id}
+                      role="listitem"
+                      className="music-jacket music-jacket--live"
+                      style={{ ["--jacket-color" as string]: color }}
+                    >
+                      <div className="music-jacket__art">
+                        {jacket ? (
+                          <AssetImage
+                            src={jacket}
+                            alt={title}
+                            fill
+                            variant="full"
+                            className="object-cover"
+                          />
+                        ) : (
+                          <span className="music-jacket__glyph">{t("music.jacketPlaceholder")}</span>
+                        )}
+                        {band ? (
+                          <span className="music-jacket__band">{getBandName(band, locale)}</span>
+                        ) : null}
+                      </div>
+                      <div className="music-jacket__meta">
+                        <p className="music-jacket__title">{title}</p>
+                        {alt ? <p className="music-jacket__sub">{alt}</p> : null}
+                      </div>
+                      <div className="music-jacket__actions" aria-hidden>
+                        <span className="music-jacket__btn">{t("music.playSoon")}</span>
+                        <span className="music-jacket__btn music-jacket__btn--heart">
+                          ♥ {t("music.favoritesSoon")}
+                        </span>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+              {visible < filtered.length ? (
+                <div className="mt-8 flex justify-center">
+                  <button
+                    type="button"
+                    className="music-page__more"
+                    onClick={() => setVisible((n) => n + PAGE_SIZE)}
                   >
-                    <div className="music-jacket__art" aria-hidden>
-                      <span className="music-jacket__glyph">{t("music.jacketPlaceholder")}</span>
-                      <span className="music-jacket__band">{getBandName(track.band, locale)}</span>
-                    </div>
-                    <div className="music-jacket__meta">
-                      <p className="music-jacket__title">{isPlaceholder ? t("music.comingSoon") : title}</p>
-                      {!isPlaceholder && locale !== "ja" && track.titleJp ? (
-                        <p className="music-jacket__sub">{track.titleJp}</p>
-                      ) : null}
-                    </div>
-                    <div className="music-jacket__actions" aria-hidden>
-                      <span className="music-jacket__btn">{t("music.playSoon")}</span>
-                      <span className="music-jacket__btn music-jacket__btn--heart">♥ {t("music.favoritesSoon")}</span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                    {t("music.loadMore")}
+                  </button>
+                </div>
+              ) : null}
+            </>
           )}
         </div>
       </section>

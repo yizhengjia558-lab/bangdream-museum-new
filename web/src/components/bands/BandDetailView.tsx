@@ -1,16 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 import { BandMemberStrip } from "@/components/bands/BandMemberStrip";
 import { CardGallery } from "@/components/cards/CardGallery";
 import { BandHotCharacters } from "@/components/bands/BandHotCharacters";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BandLogo } from "@/components/ui/BandLogo";
 import { BandBackButton } from "@/components/bands/BandBackButton";
+import { AssetImage } from "@/components/ui/AssetImage";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getBandName, getBandSlogan } from "@/lib/i18n/display";
 import { flattenBandCards } from "@/lib/card-filters";
-import type { CharacterData } from "@/lib/data-types";
+import { fetchSongsCatalog } from "@/lib/data";
+import type { CharacterData, SongData } from "@/lib/data-types";
+import { filterSongsByBand, getSongAltTitle, getSongJacketUrl, getSongTitle } from "@/lib/songs";
 import type { BandTheme } from "@/lib/themes";
 
 export function BandDetailView({
@@ -22,6 +26,26 @@ export function BandDetailView({
   const allCards = flattenBandCards(band.members);
   const bandName = getBandName(band, locale);
   const slogan = getBandSlogan(band, locale);
+  const [songs, setSongs] = useState<SongData[] | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchSongsCatalog()
+      .then((list) => {
+        if (!cancelled) setSongs(list);
+      })
+      .catch(() => {
+        if (!cancelled) setSongs([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const bandSongs = useMemo(() => {
+    if (!songs) return [];
+    return filterSongsByBand(songs, band.slug).slice(0, 8);
+  }, [songs, band.slug]);
 
   return (
     <div className="museum-page relative" style={{ ["--band-color" as string]: band.colors.primary }}>
@@ -75,29 +99,59 @@ export function BandDetailView({
 
       <section className="page-section relative py-16 sm:py-20">
         <div className="relative page-container">
-          <SectionHeading title={t("band.music")} subtitle={t("band.musicComingSoon")} />
+          <SectionHeading title={t("band.music")} subtitle={t("band.musicPreviewSubtitle")} />
           <div className="band-music-preview">
-            {band.songs.map((song, index) => {
-              const title = locale === "ja" ? song.titleJp : song.title;
-              return (
-                <div
-                  key={`${song.title}-${index}`}
-                  className="band-music-preview__card"
-                  style={{ ["--jacket-color" as string]: band.colors.primary }}
-                >
-                  <div className="band-music-preview__art" aria-hidden>
-                    <span>{t("music.jacketPlaceholder")}</span>
-                  </div>
-                  <div className="band-music-preview__meta">
-                    <p className="type-caption text-[var(--text-muted)]">{t("band.signatureTrack")}</p>
-                    <p className="band-music-preview__title">{title}</p>
-                    {locale !== "ja" && (
-                      <p className="band-music-preview__jp">{song.titleJp}</p>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+            {bandSongs.length > 0
+              ? bandSongs.map((song) => {
+                  const title = getSongTitle(song, locale);
+                  const alt = getSongAltTitle(song, locale);
+                  const jacket = getSongJacketUrl(song);
+                  return (
+                    <div
+                      key={song.id}
+                      className="band-music-preview__card"
+                      style={{ ["--jacket-color" as string]: band.colors.primary }}
+                    >
+                      <div className="band-music-preview__art">
+                        {jacket ? (
+                          <AssetImage
+                            src={jacket}
+                            alt={title}
+                            fill
+                            variant="full"
+                            className="object-cover"
+                          />
+                        ) : (
+                          <span>{t("music.jacketPlaceholder")}</span>
+                        )}
+                      </div>
+                      <div className="band-music-preview__meta">
+                        <p className="type-caption text-[var(--text-muted)]">{t("band.signatureTrack")}</p>
+                        <p className="band-music-preview__title">{title}</p>
+                        {alt ? <p className="band-music-preview__jp">{alt}</p> : null}
+                      </div>
+                    </div>
+                  );
+                })
+              : band.songs.map((song, index) => {
+                  const title = locale === "ja" ? song.titleJp : song.title;
+                  return (
+                    <div
+                      key={`${song.title}-${index}`}
+                      className="band-music-preview__card"
+                      style={{ ["--jacket-color" as string]: band.colors.primary }}
+                    >
+                      <div className="band-music-preview__art">
+                        <span>{t("music.jacketPlaceholder")}</span>
+                      </div>
+                      <div className="band-music-preview__meta">
+                        <p className="type-caption text-[var(--text-muted)]">{t("band.signatureTrack")}</p>
+                        <p className="band-music-preview__title">{title}</p>
+                        {locale !== "ja" && <p className="band-music-preview__jp">{song.titleJp}</p>}
+                      </div>
+                    </div>
+                  );
+                })}
           </div>
           <p className="mt-6 text-center">
             <Link

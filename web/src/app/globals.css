@@ -10120,6 +10120,12 @@ html[data-locale="en"] .type-hero-title {
   border-color: transparent;
 }
 
+.music-page__count {
+  margin: 0.55rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
 .music-page__search {
   margin-top: 1rem;
   display: flex;
@@ -10131,17 +10137,41 @@ html[data-locale="en"] .type-hero-title {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   color: var(--text-muted);
-  opacity: 0.72;
-  pointer-events: none;
-  user-select: none;
+}
+
+.music-page__search--live {
+  opacity: 1;
+  pointer-events: auto;
+  cursor: text;
 }
 
 .music-page__search-icon {
   font-size: 0.95rem;
 }
 
-.music-page__search-text {
-  font-size: 0.84rem;
+.music-page__search-input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.88rem;
+}
+
+.music-page__search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.music-page__more {
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--band-color, #e9435e) 35%, transparent);
+  background: color-mix(in srgb, var(--band-color, #e9435e) 14%, var(--glass-bg));
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 0.86rem;
+  cursor: pointer;
 }
 
 .music-page__empty {
@@ -10180,8 +10210,11 @@ html[data-locale="en"] .type-hero-title {
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
+}
+
+.music-jacket--live .music-jacket__actions {
   pointer-events: none;
-  user-select: none;
+  opacity: 0.55;
 }
 
 .music-jacket__art {
@@ -10295,8 +10328,10 @@ html[data-locale="en"] .type-hero-title {
 }
 
 .band-music-preview__art {
+  position: relative;
   aspect-ratio: 1;
   border-radius: 0.85rem;
+  overflow: hidden;
   display: grid;
   place-items: center;
   background:

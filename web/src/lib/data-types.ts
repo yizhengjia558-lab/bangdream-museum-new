@@ -76,3 +76,26 @@ export type RiverCardItem = {
   src: string;
   band: string;
 };
+
+export type SongDifficulty = {
+  easy: number | null;
+  normal: number | null;
+  hard: number | null;
+  expert: number | null;
+  special: number | null;
+};
+
+export type SongData = {
+  id: number;
+  band_id: number;
+  band_slug: string | null;
+  tag: string;
+  title_jp: string;
+  title_en: string;
+  title_tw: string;
+  title_cn: string;
+  jacket_name: string;
+  jacket_path: string;
+  published_at: number | null;
+  difficulty: SongDifficulty;
+};

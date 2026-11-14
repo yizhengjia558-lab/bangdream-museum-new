@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "node scripts/build-data.mjs && node scripts/generate-thumbnails.mjs",
-    "prebuild": "node scripts/build-data.mjs && node scripts/generate-thumbnails.mjs",
+    "predev": "node scripts/build-data.mjs && node scripts/build-songs-catalog.mjs && node scripts/generate-thumbnails.mjs",
+    "prebuild": "node scripts/build-data.mjs && node scripts/build-songs-catalog.mjs && node scripts/generate-thumbnails.mjs",
+    "build:songs": "node scripts/build-songs-catalog.mjs",
     "dev": "node scripts/dev-with-proxy.mjs",
     "dev:next": "next dev",
     "build": "next build",
