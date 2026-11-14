@@ -1,5 +1,5 @@
 /**
- * Build songs catalog + jacket paths from Bestdori all.5 API.
+ * Build songs catalog + jacket/audio paths from Bestdori all.7 API.
  * Output: web/public/data/songs-catalog.json
  */
 import fs from "fs";
@@ -8,6 +8,7 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const outPath = path.join(__dirname, "../public/data/songs-catalog.json");
+const SOURCE = "https://bestdori.com/api/songs/all.7.json";
 
 /** Bestdori bandId → museum band slug (MyGO folder also includes Ave Mujica). */
 const BAND_ID_TO_SLUG = {
@@ -28,8 +29,8 @@ const JACKET_PKG_OVERRIDE = {
   40: 30,
 };
 
-/** Songs whose jackets live on CN CDN (or only reliably there). */
-const JACKET_REGION_OVERRIDE = {
+/** Songs whose jackets / BGM live on CN CDN (or only reliably there). */
+const ASSET_REGION_OVERRIDE = {
   273: "cn",
 };
 
@@ -38,11 +39,15 @@ function jacketPackageId(songId) {
   return Math.ceil(songId / 10) * 10;
 }
 
-function jacketRegion(songId) {
-  if (JACKET_REGION_OVERRIDE[songId]) return JACKET_REGION_OVERRIDE[songId];
-  // Bilibili / CN-original song ids
+function assetRegion(songId) {
+  if (ASSET_REGION_OVERRIDE[songId]) return ASSET_REGION_OVERRIDE[songId];
   if (songId >= 10000) return "cn";
   return "jp";
+}
+
+/** Bestdori BGM folder id — bgm001, bgm273, bgm10005… */
+function songBgmId(songId) {
+  return `bgm${String(songId).padStart(3, "0")}`;
 }
 
 function pickLocale(arr, index, fallback = "") {
@@ -58,7 +63,6 @@ function jacketAssetPath(songId, jacketName, region = "jp") {
 
 function firstPublishedMs(publishedAt) {
   if (!Array.isArray(publishedAt)) return null;
-  // Prefer JP → EN → TW → CN → KR so year filters match main release when possible.
   for (const raw of publishedAt) {
     const n = Number(raw);
     if (Number.isFinite(n) && n > 0) return n;
@@ -66,11 +70,28 @@ function firstPublishedMs(publishedAt) {
   return null;
 }
 
+function firstBpm(bpm) {
+  if (bpm == null) return null;
+  if (typeof bpm === "number" && Number.isFinite(bpm)) return bpm;
+  if (Array.isArray(bpm)) {
+    for (const entry of bpm) {
+      if (typeof entry === "number" && Number.isFinite(entry)) return entry;
+      if (entry && typeof entry === "object") {
+        const n = Number(entry.bpm ?? entry.value);
+        if (Number.isFinite(n) && n > 0) return n;
+      }
+    }
+  }
+  if (typeof bpm === "object") {
+    const n = Number(bpm.bpm ?? bpm.value);
+    if (Number.isFinite(n) && n > 0) return n;
+  }
+  return null;
+}
+
 async function main() {
-  const res = await fetch("https://bestdori.com/api/songs/all.5.json", {
-    headers: { Accept: "application/json" },
-  });
-  if (!res.ok) throw new Error(`Bestdori songs all.5 HTTP ${res.status}`);
+  const res = await fetch(SOURCE, { headers: { Accept: "application/json" } });
+  if (!res.ok) throw new Error(`Bestdori songs all.7 HTTP ${res.status}`);
   const all = await res.json();
 
   const songs = [];
@@ -89,7 +110,10 @@ async function main() {
     const bandId = Number(raw.bandId) || 0;
     const titles = raw.musicTitle || [];
     const diffs = raw.difficulty || {};
-    const region = jacketRegion(id);
+    const region = assetRegion(id);
+    const bgmId = songBgmId(id);
+    const lengthSec = Number(raw.length);
+    const bpm = firstBpm(raw.bpm);
 
     songs.push({
       id,
@@ -103,6 +127,10 @@ async function main() {
       jacket_name: jacketName,
       jacket_region: region,
       jacket_path: jacketAssetPath(id, jacketName, region),
+      bgm_id: bgmId,
+      audio_region: region,
+      length: Number.isFinite(lengthSec) && lengthSec > 0 ? lengthSec : null,
+      bpm,
       published_at: firstPublishedMs(raw.publishedAt),
       difficulty: {
         easy: diffs["0"]?.playLevel ?? null,
@@ -123,7 +151,7 @@ async function main() {
 
   const payload = {
     generated_at: new Date().toISOString(),
-    source: "https://bestdori.com/api/songs/all.5.json",
+    source: SOURCE,
     count: songs.length,
     songs,
   };

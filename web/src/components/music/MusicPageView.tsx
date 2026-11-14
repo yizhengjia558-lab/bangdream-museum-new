@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { BandBackButton } from "@/components/bands/BandBackButton";
+import { useMusicPlayer } from "@/components/music/MusicPlayerProvider";
 import { SongJacketImage } from "@/components/music/SongJacketImage";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useLocale } from "@/components/i18n/LocaleProvider";
@@ -66,9 +67,18 @@ export function MusicPageView() {
   const tagFilter = parseTag(searchParams.get("tag"));
   const expertFilter = parseExpert(searchParams.get("expert"));
   const sort = parseSort(searchParams.get("sort"));
+  const favoritesOnly = searchParams.get("fav") === "1";
 
   const activeBand = activeSlug ? BAND_THEMES.find((band) => band.slug === activeSlug) : null;
   const accent = activeBand?.colors.primary ?? "#e9435e";
+  const {
+    current,
+    playing,
+    playSong,
+    isSongFavorite,
+    toggleSongFavorite,
+    favoriteIds,
+  } = useMusicPlayer();
 
   const [songs, setSongs] = useState<SongData[] | null>(null);
   const [error, setError] = useState(false);
@@ -91,9 +101,10 @@ export function MusicPageView() {
 
   useEffect(() => {
     setVisible(PAGE_SIZE);
-  }, [activeSlug, yearFilter, tagFilter, expertFilter, sort, query]);
+  }, [activeSlug, yearFilter, tagFilter, expertFilter, sort, query, favoritesOnly]);
 
   const years = useMemo(() => (songs ? collectSongYears(songs) : []), [songs]);
+  const favoriteSet = useMemo(() => new Set(favoriteIds), [favoriteIds]);
 
   const filtered = useMemo(() => {
     if (!songs) return [];
@@ -101,9 +112,21 @@ export function MusicPageView() {
     list = filterSongsByYear(list, yearFilter);
     list = filterSongsByTag(list, tagFilter);
     list = filterSongsByExpert(list, expertFilter);
+    if (favoritesOnly) list = list.filter((song) => favoriteSet.has(song.id));
     list = filterSongsByQuery(list, query);
     return sortSongs(list, sort, locale);
-  }, [songs, activeSlug, yearFilter, tagFilter, expertFilter, query, sort, locale]);
+  }, [
+    songs,
+    activeSlug,
+    yearFilter,
+    tagFilter,
+    expertFilter,
+    favoritesOnly,
+    favoriteSet,
+    query,
+    sort,
+    locale,
+  ]);
 
   const shown = filtered.slice(0, visible);
 
@@ -263,6 +286,27 @@ export function MusicPageView() {
             </div>
           </div>
 
+          <div className="music-page__filter-block">
+            <p className="music-page__filter-label">{t("music.filterFavorite")}</p>
+            <div className="music-page__filters" aria-label={t("music.filterFavorite")}>
+              <button
+                type="button"
+                className={cn("music-page__chip", !favoritesOnly && "music-page__chip--active")}
+                onClick={() => replaceParams({ fav: null })}
+              >
+                {t("music.favAll")}
+              </button>
+              <button
+                type="button"
+                className={cn("music-page__chip", favoritesOnly && "music-page__chip--active")}
+                onClick={() => replaceParams({ fav: "1" })}
+              >
+                ♥ {t("music.favOnly")}
+                {favoriteIds.length > 0 ? ` (${favoriteIds.length})` : ""}
+              </button>
+            </div>
+          </div>
+
           <label className="music-page__search music-page__search--live">
             <span className="music-page__search-icon" aria-hidden>
               ⌕
@@ -297,29 +341,57 @@ export function MusicPageView() {
                   const year = song.published_at
                     ? new Date(song.published_at).getUTCFullYear()
                     : null;
+                  const isCurrent = current?.id === song.id;
+                  const isPlaying = isCurrent && playing;
+                  const liked = isSongFavorite(song.id);
                   return (
                     <article
                       key={song.id}
                       role="listitem"
-                      className="music-jacket music-jacket--live"
+                      className={cn(
+                        "music-jacket music-jacket--live",
+                        isCurrent && "music-jacket--current"
+                      )}
                       style={{ ["--jacket-color" as string]: color }}
                     >
-                      <div className="music-jacket__art">
+                      <button
+                        type="button"
+                        className="music-jacket__art music-jacket__art--playable"
+                        onClick={() => playSong(song, filtered)}
+                        aria-label={`${isPlaying ? t("music.pause") : t("music.play")} ${title}`}
+                      >
                         <SongJacketImage song={song} alt={title} priority={index < 8} />
                         {band ? (
                           <span className="music-jacket__band">{getBandName(band, locale)}</span>
                         ) : null}
                         {year ? <span className="music-jacket__year">{year}</span> : null}
-                      </div>
+                        <span className={cn("music-jacket__play-badge", isPlaying && "is-playing")}>
+                          {isPlaying ? "❚❚" : "▶"}
+                        </span>
+                      </button>
                       <div className="music-jacket__meta">
                         <p className="music-jacket__title">{title}</p>
                         {alt ? <p className="music-jacket__sub">{alt}</p> : null}
                       </div>
-                      <div className="music-jacket__actions" aria-hidden>
-                        <span className="music-jacket__btn">{t("music.playSoon")}</span>
-                        <span className="music-jacket__btn music-jacket__btn--heart">
-                          ♥ {t("music.favoritesSoon")}
-                        </span>
+                      <div className="music-jacket__actions">
+                        <button
+                          type="button"
+                          className={cn("music-jacket__btn", isPlaying && "is-active")}
+                          onClick={() => playSong(song, filtered)}
+                        >
+                          {isPlaying ? t("music.pause") : t("music.play")}
+                        </button>
+                        <button
+                          type="button"
+                          className={cn(
+                            "music-jacket__btn music-jacket__btn--heart",
+                            liked && "is-active"
+                          )}
+                          onClick={() => toggleSongFavorite(song.id)}
+                          aria-pressed={liked}
+                        >
+                          {liked ? "♥" : "♡"} {t("music.favorite")}
+                        </button>
                       </div>
                     </article>
                   );

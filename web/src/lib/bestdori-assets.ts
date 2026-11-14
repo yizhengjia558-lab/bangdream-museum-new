@@ -180,6 +180,18 @@ export function getSongJacketDirectUrl(
   return `${assetBase(region)}/musicjacket/musicjacket${pkg}_rip/assets-star-forassetbundle-startapp-musicjacket-musicjacket${pkg}-${name}-jacket.png`;
 }
 
+/** Bestdori BGM folder id from song id (`bgm001`, `bgm10005`). */
+export function songBgmId(songId: number, explicit?: string | null) {
+  if (explicit) return explicit;
+  return `bgm${String(songId).padStart(3, "0")}`;
+}
+
+/** Full-track MP3 URL from Bestdori sound CDN. */
+export function getSongAudioDirectUrl(bgmId: string, region: BestdoriRegion = "jp") {
+  const id = bgmId.toLowerCase();
+  return `${assetBase(region)}/sound/${id}_rip/${id}.mp3`;
+}
+
 /** Same-origin proxy URL for song jackets. */
 export function getSongJacketProxyUrl(
   songId: number,

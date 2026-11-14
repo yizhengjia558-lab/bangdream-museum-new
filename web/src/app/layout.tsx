@@ -14,6 +14,8 @@ import { BangDreamPageBackground } from "@/components/effects/BangDreamPageBackg
 import { ScrollToTopButton } from "@/components/layout/ScrollToTopButton";
 import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import { VisitTracker } from "@/components/analytics/VisitTracker";
+import { MusicPlayerProvider } from "@/components/music/MusicPlayerProvider";
+import { MusicPlayerDock } from "@/components/music/MusicPlayerDock";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -51,17 +53,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <VisitTracker />
           <GlobalSearchProvider>
             <FavoritesProvider>
-              <ThemeProvider>
-                <SmoothScroll>
-                  <LanguageToggle className="lang-toggle-fixed" />
-                  <ThemeToggle className="theme-toggle-fixed" />
-                  <ScrollToTopButton />
-                  <SiteHeader />
-                  <main className="relative flex-1">{children}</main>
-                  <SiteFooter />
-                  <MobileBottomNav />
-                </SmoothScroll>
-              </ThemeProvider>
+              <MusicPlayerProvider>
+                <ThemeProvider>
+                  <SmoothScroll>
+                    <LanguageToggle className="lang-toggle-fixed" />
+                    <ThemeToggle className="theme-toggle-fixed" />
+                    <ScrollToTopButton />
+                    <SiteHeader />
+                    <main className="relative flex-1">{children}</main>
+                    <SiteFooter />
+                    <MusicPlayerDock />
+                    <MobileBottomNav />
+                  </SmoothScroll>
+                </ThemeProvider>
+              </MusicPlayerProvider>
             </FavoritesProvider>
           </GlobalSearchProvider>
         </LocaleProvider>

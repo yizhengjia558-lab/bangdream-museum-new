@@ -98,6 +98,13 @@ export type SongData = {
   /** CDN region that hosts the jacket (`jp` / `cn` / …). */
   jacket_region?: string | null;
   jacket_path: string;
+  /** Bestdori BGM id, e.g. `bgm001`. */
+  bgm_id?: string | null;
+  /** Preferred CDN region for full track audio. */
+  audio_region?: string | null;
+  /** Track length in seconds (from Bestdori). */
+  length?: number | null;
+  bpm?: number | null;
   published_at: number | null;
   difficulty: SongDifficulty;
 };

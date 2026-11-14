@@ -8,6 +8,7 @@ import { BandHotCharacters } from "@/components/bands/BandHotCharacters";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BandLogo } from "@/components/ui/BandLogo";
 import { BandBackButton } from "@/components/bands/BandBackButton";
+import { useMusicPlayer } from "@/components/music/MusicPlayerProvider";
 import { SongJacketImage } from "@/components/music/SongJacketImage";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 import { getBandName, getBandSlogan } from "@/lib/i18n/display";
@@ -23,6 +24,7 @@ export function BandDetailView({
   band: BandTheme & { members: CharacterData[] };
 }) {
   const { t, locale } = useLocale();
+  const { playSong, current, playing } = useMusicPlayer();
   const allCards = flattenBandCards(band.members);
   const bandName = getBandName(band, locale);
   const slogan = getBandSlogan(band, locale);
@@ -105,21 +107,26 @@ export function BandDetailView({
               ? bandSongs.map((song) => {
                   const title = getSongTitle(song, locale);
                   const alt = getSongAltTitle(song, locale);
+                  const isPlaying = current?.id === song.id && playing;
                   return (
-                    <div
+                    <button
                       key={song.id}
-                      className="band-music-preview__card"
+                      type="button"
+                      className="band-music-preview__card band-music-preview__card--playable"
                       style={{ ["--jacket-color" as string]: band.colors.primary }}
+                      onClick={() => playSong(song, bandSongs)}
+                      aria-label={`${isPlaying ? t("music.pause") : t("music.play")} ${title}`}
                     >
                       <div className="band-music-preview__art">
                         <SongJacketImage song={song} alt={title} />
+                        <span className="band-music-preview__play">{isPlaying ? "❚❚" : "▶"}</span>
                       </div>
                       <div className="band-music-preview__meta">
                         <p className="type-caption text-[var(--text-muted)]">{t("band.signatureTrack")}</p>
                         <p className="band-music-preview__title">{title}</p>
                         {alt ? <p className="band-music-preview__jp">{alt}</p> : null}
                       </div>
-                    </div>
+                    </button>
                   );
                 })
               : band.songs.map((song, index) => {

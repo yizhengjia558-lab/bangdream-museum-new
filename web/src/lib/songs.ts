@@ -1,4 +1,9 @@
-import { getSongJacketDirectUrl, type BestdoriRegion } from "@/lib/bestdori-assets";
+import {
+  getSongAudioDirectUrl,
+  getSongJacketDirectUrl,
+  songBgmId,
+  type BestdoriRegion,
+} from "@/lib/bestdori-assets";
 import type { SongData } from "@/lib/data-types";
 import type { Locale } from "@/lib/i18n/types";
 import { getBandBySlug, type BandTheme } from "@/lib/themes";
@@ -43,6 +48,41 @@ export function getSongJacketCandidates(song: SongData): string[] {
     (region, index, all) => all.indexOf(region) === index
   ) as BestdoriRegion[];
   return order.map((region) => getSongJacketDirectUrl(song.id, song.jacket_name, region));
+}
+
+function preferredAudioRegion(song: SongData): BestdoriRegion {
+  const region = (song.audio_region || song.jacket_region || "").toLowerCase();
+  if (region === "cn" || region === "en" || region === "tw" || region === "kr") {
+    return region;
+  }
+  if (song.id >= 10000 || song.id === 273) return "cn";
+  return "jp";
+}
+
+export function getSongBgmId(song: SongData): string {
+  return songBgmId(song.id, song.bgm_id);
+}
+
+/** Primary + fallback full-track MP3 URLs. */
+export function getSongAudioCandidates(song: SongData): string[] {
+  const bgmId = getSongBgmId(song);
+  const primary = preferredAudioRegion(song);
+  const order = [primary, "jp", "cn", "en", "tw", "kr"].filter(
+    (region, index, all) => all.indexOf(region) === index
+  ) as BestdoriRegion[];
+  return order.map((region) => getSongAudioDirectUrl(bgmId, region));
+}
+
+export function getSongAudioUrl(song: SongData): string {
+  return getSongAudioCandidates(song)[0] || "";
+}
+
+export function formatSongTime(seconds: number): string {
+  if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+  const total = Math.floor(seconds);
+  const m = Math.floor(total / 60);
+  const s = total % 60;
+  return `${m}:${String(s).padStart(2, "0")}`;
 }
 
 export function resolveSongBand(song: SongData): BandTheme | undefined {
