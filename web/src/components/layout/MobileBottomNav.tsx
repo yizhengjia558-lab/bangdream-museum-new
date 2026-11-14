@@ -6,7 +6,9 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 import { useFavorites } from "@/components/favorites/FavoritesProvider";
 import { cn } from "@/lib/utils";
 
-function NavIcon({ name }: { name: "home" | "bands" | "costumes" | "favorites" }) {
+type NavIconName = "home" | "bands" | "music" | "costumes" | "favorites";
+
+function NavIcon({ name }: { name: NavIconName }) {
   const common = {
     viewBox: "0 0 24 24",
     fill: "none",
@@ -34,6 +36,15 @@ function NavIcon({ name }: { name: "home" | "bands" | "costumes" | "favorites" }
       </svg>
     );
   }
+  if (name === "music") {
+    return (
+      <svg {...common}>
+        <path d="M9 18V5l11-2v13" />
+        <circle cx="7" cy="18" r="2.4" />
+        <circle cx="18" cy="16" r="2.4" />
+      </svg>
+    );
+  }
   if (name === "costumes") {
     return (
       <svg {...common}>
@@ -57,6 +68,7 @@ export function MobileBottomNav() {
   const items = [
     { href: "/", label: t("nav.home"), icon: "home" as const, match: (p: string) => p === "/" || p === "" },
     { href: "/bands/", label: t("nav.bands"), icon: "bands" as const, match: (p: string) => p.startsWith("/bands") },
+    { href: "/music/", label: t("nav.music"), icon: "music" as const, match: (p: string) => p.startsWith("/music") },
     {
       href: "/costumes/",
       label: t("nav.costumes"),

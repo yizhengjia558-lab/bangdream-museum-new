@@ -14,8 +14,6 @@ import { BangDreamPageBackground } from "@/components/effects/BangDreamPageBackg
 import { ScrollToTopButton } from "@/components/layout/ScrollToTopButton";
 import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import { VisitTracker } from "@/components/analytics/VisitTracker";
-import { AuthProvider } from "@/components/auth/AuthProvider";
-import { AuthModal } from "@/components/auth/AuthModal";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -53,20 +51,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <VisitTracker />
           <GlobalSearchProvider>
             <FavoritesProvider>
-              <AuthProvider>
-                <ThemeProvider>
-                  <SmoothScroll>
-                    <LanguageToggle className="lang-toggle-fixed" />
-                    <ThemeToggle className="theme-toggle-fixed" />
-                    <ScrollToTopButton />
-                    <SiteHeader />
-                    <main className="relative flex-1">{children}</main>
-                    <SiteFooter />
-                    <MobileBottomNav />
-                    <AuthModal />
-                  </SmoothScroll>
-                </ThemeProvider>
-              </AuthProvider>
+              <ThemeProvider>
+                <SmoothScroll>
+                  <LanguageToggle className="lang-toggle-fixed" />
+                  <ThemeToggle className="theme-toggle-fixed" />
+                  <ScrollToTopButton />
+                  <SiteHeader />
+                  <main className="relative flex-1">{children}</main>
+                  <SiteFooter />
+                  <MobileBottomNav />
+                </SmoothScroll>
+              </ThemeProvider>
             </FavoritesProvider>
           </GlobalSearchProvider>
         </LocaleProvider>

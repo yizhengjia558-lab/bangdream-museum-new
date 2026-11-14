@@ -10,6 +10,7 @@ export function SiteFooter() {
   const links = [
     { href: "/", label: t("nav.home") },
     { href: "/bands/", label: t("nav.bands") },
+    { href: "/music/", label: t("nav.music") },
     { href: "/costumes/", label: t("nav.costumes") },
     { href: "/events/", label: t("nav.events") },
     { href: "/championship/", label: t("nav.championship") },

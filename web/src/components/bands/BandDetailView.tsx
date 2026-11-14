@@ -5,7 +5,6 @@ import { BandMemberStrip } from "@/components/bands/BandMemberStrip";
 import { CardGallery } from "@/components/cards/CardGallery";
 import { BandHotCharacters } from "@/components/bands/BandHotCharacters";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { GlassPanel } from "@/components/ui/GlassPanel";
 import { BandLogo } from "@/components/ui/BandLogo";
 import { BandBackButton } from "@/components/bands/BandBackButton";
 import { useLocale } from "@/components/i18n/LocaleProvider";
@@ -76,20 +75,39 @@ export function BandDetailView({
 
       <section className="page-section relative py-16 sm:py-20">
         <div className="relative page-container">
-          <SectionHeading title={t("band.music")} />
-          <div className="grid gap-8 md:grid-cols-2">
-            {band.songs.map((song) => (
-              <GlassPanel key={song.title} className="p-10 sm:p-12">
-                <p className="type-caption text-[var(--text-muted)]">{t("band.signatureTrack")}</p>
-                <p className="mt-4 font-[family-name:var(--font-subtitle-active)] text-xl font-bold text-[var(--text-primary)] sm:text-2xl">
-                  {locale === "ja" ? song.titleJp : song.title}
-                </p>
-                {locale !== "ja" && (
-                  <p className="mt-2 text-base text-[var(--text-secondary)]">{song.titleJp}</p>
-                )}
-              </GlassPanel>
-            ))}
+          <SectionHeading title={t("band.music")} subtitle={t("band.musicComingSoon")} />
+          <div className="band-music-preview">
+            {band.songs.map((song, index) => {
+              const title = locale === "ja" ? song.titleJp : song.title;
+              return (
+                <div
+                  key={`${song.title}-${index}`}
+                  className="band-music-preview__card"
+                  style={{ ["--jacket-color" as string]: band.colors.primary }}
+                >
+                  <div className="band-music-preview__art" aria-hidden>
+                    <span>{t("music.jacketPlaceholder")}</span>
+                  </div>
+                  <div className="band-music-preview__meta">
+                    <p className="type-caption text-[var(--text-muted)]">{t("band.signatureTrack")}</p>
+                    <p className="band-music-preview__title">{title}</p>
+                    {locale !== "ja" && (
+                      <p className="band-music-preview__jp">{song.titleJp}</p>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
+          <p className="mt-6 text-center">
+            <Link
+              href={`/music/?band=${band.slug}`}
+              className="championship-inline-link"
+              style={{ color: band.colors.primary }}
+            >
+              {t("band.musicLibraryLink")}
+            </Link>
+          </p>
         </div>
       </section>
 
