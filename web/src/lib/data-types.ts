@@ -94,6 +94,15 @@ export type SongData = {
   title_en: string;
   title_tw: string;
   title_cn: string;
+  lyricist_jp?: string;
+  lyricist_en?: string;
+  lyricist_cn?: string;
+  composer_jp?: string;
+  composer_en?: string;
+  composer_cn?: string;
+  arranger_jp?: string;
+  arranger_en?: string;
+  arranger_cn?: string;
   jacket_name: string;
   /** CDN region that hosts the jacket (`jp` / `cn` / …). */
   jacket_region?: string | null;

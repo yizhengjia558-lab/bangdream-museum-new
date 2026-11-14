@@ -10,7 +10,24 @@ import { getBandBySlug, type BandTheme } from "@/lib/themes";
 
 export type SongTagFilter = "all" | "normal" | "anime" | "tie_up";
 export type SongExpertFilter = "all" | "le20" | "21to25" | "ge26";
-export type SongSort = "newest" | "oldest" | "title";
+export type SongSort = "newest" | "oldest" | "title" | "bpm" | "length" | "composer";
+export type MusicGalleryView = "cover" | "list";
+
+export function getSongCredit(
+  song: SongData,
+  field: "lyricist" | "composer" | "arranger",
+  locale: Locale
+): string {
+  const map = {
+    lyricist: [song.lyricist_jp, song.lyricist_en, song.lyricist_cn],
+    composer: [song.composer_jp, song.composer_en, song.composer_cn],
+    arranger: [song.arranger_jp, song.arranger_en, song.arranger_cn],
+  } as const;
+  const [jp, en, cn] = map[field];
+  if (locale === "ja") return jp || en || cn || "";
+  if (locale === "en") return en || jp || cn || "";
+  return cn || jp || en || "";
+}
 
 export function getSongTitle(song: SongData, locale: Locale): string {
   if (locale === "ja") return song.title_jp || song.title_en || song.title_cn;
@@ -121,6 +138,12 @@ export function filterSongsByQuery(songs: SongData[], query: string): SongData[]
       song.title_tw,
       song.jacket_name,
       song.tag,
+      song.composer_jp,
+      song.composer_en,
+      song.composer_cn,
+      song.lyricist_jp,
+      song.lyricist_en,
+      song.lyricist_cn,
     ]
       .join(" ")
       .toLowerCase();
@@ -153,6 +176,21 @@ export function sortSongs(songs: SongData[], sort: SongSort, locale: Locale): So
   const next = [...songs];
   if (sort === "title") {
     next.sort((a, b) => getSongTitle(a, locale).localeCompare(getSongTitle(b, locale), locale));
+    return next;
+  }
+  if (sort === "bpm") {
+    next.sort((a, b) => (b.bpm ?? -1) - (a.bpm ?? -1) || b.id - a.id);
+    return next;
+  }
+  if (sort === "length") {
+    next.sort((a, b) => (b.length ?? -1) - (a.length ?? -1) || b.id - a.id);
+    return next;
+  }
+  if (sort === "composer") {
+    next.sort((a, b) =>
+      getSongCredit(a, "composer", locale).localeCompare(getSongCredit(b, "composer", locale), locale) ||
+      b.id - a.id
+    );
     return next;
   }
   next.sort((a, b) => {

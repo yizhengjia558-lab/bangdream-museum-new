@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { BandBackButton } from "@/components/bands/BandBackButton";
 import { useMusicPlayer } from "@/components/music/MusicPlayerProvider";
 import { SongJacketImage } from "@/components/music/SongJacketImage";
@@ -18,10 +18,13 @@ import {
   filterSongsByQuery,
   filterSongsByTag,
   filterSongsByYear,
+  formatSongTime,
   getSongAltTitle,
+  getSongCredit,
   getSongTitle,
   resolveSongBand,
   sortSongs,
+  type MusicGalleryView,
   type SongExpertFilter,
   type SongSort,
   type SongTagFilter,
@@ -48,8 +51,20 @@ function parseExpert(raw: string | null): SongExpertFilter {
 }
 
 function parseSort(raw: string | null): SongSort {
-  if (raw === "oldest" || raw === "title") return raw;
+  if (
+    raw === "oldest" ||
+    raw === "title" ||
+    raw === "bpm" ||
+    raw === "length" ||
+    raw === "composer"
+  ) {
+    return raw;
+  }
   return "newest";
+}
+
+function parseView(raw: string | null): MusicGalleryView {
+  return raw === "list" ? "list" : "cover";
 }
 
 export function MusicPageView() {
@@ -68,6 +83,7 @@ export function MusicPageView() {
   const expertFilter = parseExpert(searchParams.get("expert"));
   const sort = parseSort(searchParams.get("sort"));
   const favoritesOnly = searchParams.get("fav") === "1";
+  const view = parseView(searchParams.get("view"));
 
   const activeBand = activeSlug ? BAND_THEMES.find((band) => band.slug === activeSlug) : null;
   const accent = activeBand?.colors.primary ?? "#e9435e";
@@ -84,6 +100,8 @@ export function MusicPageView() {
   const [error, setError] = useState(false);
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(PAGE_SIZE);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const itemRefs = useRef<Map<number, HTMLElement>>(new Map());
 
   useEffect(() => {
     let cancelled = false;
@@ -101,7 +119,7 @@ export function MusicPageView() {
 
   useEffect(() => {
     setVisible(PAGE_SIZE);
-  }, [activeSlug, yearFilter, tagFilter, expertFilter, sort, query, favoritesOnly]);
+  }, [activeSlug, yearFilter, tagFilter, expertFilter, sort, query, favoritesOnly, view]);
 
   const years = useMemo(() => (songs ? collectSongYears(songs) : []), [songs]);
   const favoriteSet = useMemo(() => new Set(favoriteIds), [favoriteIds]);
@@ -130,6 +148,23 @@ export function MusicPageView() {
 
   const shown = filtered.slice(0, visible);
 
+  useEffect(() => {
+    if (!current) return;
+    const index = filtered.findIndex((song) => song.id === current.id);
+    if (index >= 0 && index >= visible) {
+      setVisible(index + PAGE_SIZE);
+      return;
+    }
+    const node = itemRefs.current.get(current.id);
+    node?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }, [current, filtered, playing, visible]);
+  const advancedActive =
+    yearFilter != null ||
+    tagFilter !== "all" ||
+    expertFilter !== "all" ||
+    favoritesOnly ||
+    sort !== "newest";
+
   function replaceParams(patch: Record<string, string | null>) {
     const params = new URLSearchParams(searchParams.toString());
     for (const [key, value] of Object.entries(patch)) {
@@ -146,6 +181,11 @@ export function MusicPageView() {
     else params.set("band", slug);
     const qs = params.toString();
     return qs ? `/music/?${qs}` : "/music/";
+  }
+
+  function bindRef(songId: number, node: HTMLElement | null) {
+    if (node) itemRefs.current.set(songId, node);
+    else itemRefs.current.delete(songId);
   }
 
   return (
@@ -167,6 +207,49 @@ export function MusicPageView() {
               {t("music.count").replace("{count}", String(filtered.length))}
             </p>
           ) : null}
+
+          <div className="music-page__toolbar">
+            <label className="music-page__search music-page__search--live">
+              <span className="music-page__search-icon" aria-hidden>
+                ⌕
+              </span>
+              <input
+                type="search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder={t("music.searchPlaceholder")}
+                className="music-page__search-input"
+              />
+            </label>
+            <div className="music-page__view-toggle" role="group" aria-label={t("music.viewMode")}>
+              <button
+                type="button"
+                className={cn("music-page__chip", view === "cover" && "music-page__chip--active")}
+                onClick={() => replaceParams({ view: null })}
+              >
+                {t("music.viewCover")}
+              </button>
+              <button
+                type="button"
+                className={cn("music-page__chip", view === "list" && "music-page__chip--active")}
+                onClick={() => replaceParams({ view: "list" })}
+              >
+                {t("music.viewList")}
+              </button>
+            </div>
+            <button
+              type="button"
+              className={cn(
+                "music-page__chip music-page__filters-toggle",
+                (filtersOpen || advancedActive) && "music-page__chip--active"
+              )}
+              aria-expanded={filtersOpen}
+              onClick={() => setFiltersOpen((open) => !open)}
+            >
+              {filtersOpen ? t("music.filtersHide") : t("music.filtersShow")}
+              {advancedActive ? " ·" : ""}
+            </button>
+          </div>
 
           <div className="music-page__filter-block">
             <p className="music-page__filter-label">{t("music.filterBand")}</p>
@@ -195,130 +278,124 @@ export function MusicPageView() {
             </div>
           </div>
 
-          <div className="music-page__filter-block">
-            <p className="music-page__filter-label">{t("music.filterYear")}</p>
-            <div className="music-page__filters" aria-label={t("music.filterYear")}>
-              <button
-                type="button"
-                className={cn("music-page__chip", yearFilter == null && "music-page__chip--active")}
-                onClick={() => replaceParams({ year: null })}
-              >
-                {t("music.allYears")}
-              </button>
-              {years.map((year) => (
-                <button
-                  key={year}
-                  type="button"
-                  className={cn("music-page__chip", yearFilter === year && "music-page__chip--active")}
-                  onClick={() => replaceParams({ year: String(year) })}
-                >
-                  {year}
-                </button>
-              ))}
-            </div>
-          </div>
+          {filtersOpen ? (
+            <div className="music-page__filters-panel">
+              <div className="music-page__filter-block">
+                <p className="music-page__filter-label">{t("music.filterYear")}</p>
+                <div className="music-page__filters" aria-label={t("music.filterYear")}>
+                  <button
+                    type="button"
+                    className={cn("music-page__chip", yearFilter == null && "music-page__chip--active")}
+                    onClick={() => replaceParams({ year: null })}
+                  >
+                    {t("music.allYears")}
+                  </button>
+                  {years.map((year) => (
+                    <button
+                      key={year}
+                      type="button"
+                      className={cn("music-page__chip", yearFilter === year && "music-page__chip--active")}
+                      onClick={() => replaceParams({ year: String(year) })}
+                    >
+                      {year}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-          <div className="music-page__filter-block">
-            <p className="music-page__filter-label">{t("music.filterTag")}</p>
-            <div className="music-page__filters" aria-label={t("music.filterTag")}>
-              {(
-                [
-                  ["all", t("music.tagAll")],
-                  ["normal", t("music.tagNormal")],
-                  ["anime", t("music.tagAnime")],
-                  ["tie_up", t("music.tagTieUp")],
-                ] as const
-              ).map(([value, label]) => (
-                <button
-                  key={value}
-                  type="button"
-                  className={cn("music-page__chip", tagFilter === value && "music-page__chip--active")}
-                  onClick={() => replaceParams({ tag: value === "all" ? null : value })}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-          </div>
+              <div className="music-page__filter-block">
+                <p className="music-page__filter-label">{t("music.filterTag")}</p>
+                <div className="music-page__filters" aria-label={t("music.filterTag")}>
+                  {(
+                    [
+                      ["all", t("music.tagAll")],
+                      ["normal", t("music.tagNormal")],
+                      ["anime", t("music.tagAnime")],
+                      ["tie_up", t("music.tagTieUp")],
+                    ] as const
+                  ).map(([value, label]) => (
+                    <button
+                      key={value}
+                      type="button"
+                      className={cn("music-page__chip", tagFilter === value && "music-page__chip--active")}
+                      onClick={() => replaceParams({ tag: value === "all" ? null : value })}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-          <div className="music-page__filter-block">
-            <p className="music-page__filter-label">{t("music.filterExpert")}</p>
-            <div className="music-page__filters" aria-label={t("music.filterExpert")}>
-              {(
-                [
-                  ["all", t("music.expertAll")],
-                  ["le20", t("music.expertLe20")],
-                  ["21to25", t("music.expert21to25")],
-                  ["ge26", t("music.expertGe26")],
-                ] as const
-              ).map(([value, label]) => (
-                <button
-                  key={value}
-                  type="button"
-                  className={cn("music-page__chip", expertFilter === value && "music-page__chip--active")}
-                  onClick={() => replaceParams({ expert: value === "all" ? null : value })}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-          </div>
+              <div className="music-page__filter-block">
+                <p className="music-page__filter-label">{t("music.filterExpert")}</p>
+                <div className="music-page__filters" aria-label={t("music.filterExpert")}>
+                  {(
+                    [
+                      ["all", t("music.expertAll")],
+                      ["le20", t("music.expertLe20")],
+                      ["21to25", t("music.expert21to25")],
+                      ["ge26", t("music.expertGe26")],
+                    ] as const
+                  ).map(([value, label]) => (
+                    <button
+                      key={value}
+                      type="button"
+                      className={cn("music-page__chip", expertFilter === value && "music-page__chip--active")}
+                      onClick={() => replaceParams({ expert: value === "all" ? null : value })}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-          <div className="music-page__filter-block">
-            <p className="music-page__filter-label">{t("music.sort")}</p>
-            <div className="music-page__filters" aria-label={t("music.sort")}>
-              {(
-                [
-                  ["newest", t("music.sortNewest")],
-                  ["oldest", t("music.sortOldest")],
-                  ["title", t("music.sortTitle")],
-                ] as const
-              ).map(([value, label]) => (
-                <button
-                  key={value}
-                  type="button"
-                  className={cn("music-page__chip", sort === value && "music-page__chip--active")}
-                  onClick={() => replaceParams({ sort: value === "newest" ? null : value })}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-          </div>
+              <div className="music-page__filter-block">
+                <p className="music-page__filter-label">{t("music.sort")}</p>
+                <div className="music-page__filters" aria-label={t("music.sort")}>
+                  {(
+                    [
+                      ["newest", t("music.sortNewest")],
+                      ["oldest", t("music.sortOldest")],
+                      ["title", t("music.sortTitle")],
+                      ["bpm", t("music.sortBpm")],
+                      ["length", t("music.sortLength")],
+                      ["composer", t("music.sortComposer")],
+                    ] as const
+                  ).map(([value, label]) => (
+                    <button
+                      key={value}
+                      type="button"
+                      className={cn("music-page__chip", sort === value && "music-page__chip--active")}
+                      onClick={() => replaceParams({ sort: value === "newest" ? null : value })}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-          <div className="music-page__filter-block">
-            <p className="music-page__filter-label">{t("music.filterFavorite")}</p>
-            <div className="music-page__filters" aria-label={t("music.filterFavorite")}>
-              <button
-                type="button"
-                className={cn("music-page__chip", !favoritesOnly && "music-page__chip--active")}
-                onClick={() => replaceParams({ fav: null })}
-              >
-                {t("music.favAll")}
-              </button>
-              <button
-                type="button"
-                className={cn("music-page__chip", favoritesOnly && "music-page__chip--active")}
-                onClick={() => replaceParams({ fav: "1" })}
-              >
-                ♥ {t("music.favOnly")}
-                {favoriteIds.length > 0 ? ` (${favoriteIds.length})` : ""}
-              </button>
+              <div className="music-page__filter-block">
+                <p className="music-page__filter-label">{t("music.filterFavorite")}</p>
+                <div className="music-page__filters" aria-label={t("music.filterFavorite")}>
+                  <button
+                    type="button"
+                    className={cn("music-page__chip", !favoritesOnly && "music-page__chip--active")}
+                    onClick={() => replaceParams({ fav: null })}
+                  >
+                    {t("music.favAll")}
+                  </button>
+                  <button
+                    type="button"
+                    className={cn("music-page__chip", favoritesOnly && "music-page__chip--active")}
+                    onClick={() => replaceParams({ fav: "1" })}
+                  >
+                    ♥ {t("music.favOnly")}
+                    {favoriteIds.length > 0 ? ` (${favoriteIds.length})` : ""}
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <label className="music-page__search music-page__search--live">
-            <span className="music-page__search-icon" aria-hidden>
-              ⌕
-            </span>
-            <input
-              type="search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder={t("music.searchPlaceholder")}
-              className="music-page__search-input"
-            />
-          </label>
+          ) : null}
         </div>
       </section>
 
@@ -330,6 +407,75 @@ export function MusicPageView() {
             <p className="music-page__empty">{t("music.loading")}</p>
           ) : shown.length === 0 ? (
             <p className="music-page__empty">{t("music.empty")}</p>
+          ) : view === "list" ? (
+            <>
+              <div className="music-song-list" role="list" aria-label={t("music.title")}>
+                {shown.map((song, index) => {
+                  const band = resolveSongBand(song);
+                  const color = band?.colors.primary ?? accent;
+                  const title = getSongTitle(song, locale);
+                  const alt = getSongAltTitle(song, locale);
+                  const isCurrent = current?.id === song.id;
+                  const isPlaying = isCurrent && playing;
+                  const liked = isSongFavorite(song.id);
+                  const composer = getSongCredit(song, "composer", locale);
+                  return (
+                    <article
+                      key={song.id}
+                      role="listitem"
+                      ref={(node) => bindRef(song.id, node)}
+                      className={cn("music-song-row", isCurrent && "is-current")}
+                      style={{ ["--jacket-color" as string]: color }}
+                    >
+                      <button
+                        type="button"
+                        className="music-song-row__main"
+                        onClick={() => playSong(song, filtered)}
+                        aria-label={`${isPlaying ? t("music.pause") : t("music.play")} ${title}`}
+                      >
+                        <span className="music-song-row__index">
+                          {isPlaying ? "♪" : index + 1}
+                        </span>
+                        <span className="music-song-row__art">
+                          <SongJacketImage song={song} alt={title} priority={index < 6} />
+                        </span>
+                        <span className="music-song-row__meta">
+                          <strong>{title}</strong>
+                          <em>
+                            {[band ? getBandName(band, locale) : null, alt || composer]
+                              .filter(Boolean)
+                              .join(" · ")}
+                          </em>
+                        </span>
+                        <span className="music-song-row__stats">
+                          {song.bpm ? `${Math.round(song.bpm)} BPM` : "—"}
+                          <span>{song.length ? formatSongTime(song.length) : "—"}</span>
+                        </span>
+                      </button>
+                      <button
+                        type="button"
+                        className={cn("music-jacket__btn music-jacket__btn--heart", liked && "is-active")}
+                        onClick={() => toggleSongFavorite(song.id)}
+                        aria-pressed={liked}
+                      >
+                        {liked ? "♥" : "♡"}
+                      </button>
+                    </article>
+                  );
+                })}
+              </div>
+              {visible < filtered.length ? (
+                <div className="mt-8 flex justify-center">
+                  <button
+                    type="button"
+                    className="music-page__more"
+                    onClick={() => setVisible((n) => n + PAGE_SIZE)}
+                  >
+                    {t("music.loadMore")}
+                  </button>
+                </div>
+              ) : null}
+            </>
           ) : (
             <>
               <div className="music-jacket-wall" role="list" aria-label={t("music.title")}>
@@ -348,6 +494,7 @@ export function MusicPageView() {
                     <article
                       key={song.id}
                       role="listitem"
+                      ref={(node) => bindRef(song.id, node)}
                       className={cn(
                         "music-jacket music-jacket--live",
                         isCurrent && "music-jacket--current"

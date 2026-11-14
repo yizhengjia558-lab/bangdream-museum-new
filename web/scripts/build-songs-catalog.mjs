@@ -1,5 +1,5 @@
 /**
- * Build songs catalog + jacket/audio paths from Bestdori all.7 API.
+ * Build songs catalog + jacket/audio/meta from Bestdori all.8 API.
  * Output: web/public/data/songs-catalog.json
  */
 import fs from "fs";
@@ -8,9 +8,8 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const outPath = path.join(__dirname, "../public/data/songs-catalog.json");
-const SOURCE = "https://bestdori.com/api/songs/all.7.json";
+const SOURCE = "https://bestdori.com/api/songs/all.8.json";
 
-/** Bestdori bandId → museum band slug (MyGO folder also includes Ave Mujica). */
 const BAND_ID_TO_SLUG = {
   1: "poppin-party",
   2: "afterglow",
@@ -23,13 +22,11 @@ const BAND_ID_TO_SLUG = {
   46: "mygo",
 };
 
-/** Known jacket package overrides (Bestdori asset quirks). */
 const JACKET_PKG_OVERRIDE = {
   13: 30,
   40: 30,
 };
 
-/** Songs whose jackets / BGM live on CN CDN (or only reliably there). */
 const ASSET_REGION_OVERRIDE = {
   273: "cn",
 };
@@ -45,7 +42,6 @@ function assetRegion(songId) {
   return "jp";
 }
 
-/** Bestdori BGM folder id — bgm001, bgm273, bgm10005… */
 function songBgmId(songId) {
   return `bgm${String(songId).padStart(3, "0")}`;
 }
@@ -70,28 +66,36 @@ function firstPublishedMs(publishedAt) {
   return null;
 }
 
-function firstBpm(bpm) {
+/** Prefer Expert BPM map entry, then any difficulty. */
+function extractBpm(bpm) {
   if (bpm == null) return null;
   if (typeof bpm === "number" && Number.isFinite(bpm)) return bpm;
   if (Array.isArray(bpm)) {
     for (const entry of bpm) {
-      if (typeof entry === "number" && Number.isFinite(entry)) return entry;
-      if (entry && typeof entry === "object") {
-        const n = Number(entry.bpm ?? entry.value);
-        if (Number.isFinite(n) && n > 0) return n;
-      }
+      const n = Number(entry?.bpm ?? entry);
+      if (Number.isFinite(n) && n > 0) return n;
     }
+    return null;
   }
   if (typeof bpm === "object") {
-    const n = Number(bpm.bpm ?? bpm.value);
-    if (Number.isFinite(n) && n > 0) return n;
+    for (const key of ["3", "2", "1", "0", "4"]) {
+      const lane = bpm[key];
+      if (!Array.isArray(lane) || !lane.length) continue;
+      const n = Number(lane[0]?.bpm);
+      if (Number.isFinite(n) && n > 0) return n;
+    }
+    for (const lane of Object.values(bpm)) {
+      if (!Array.isArray(lane) || !lane.length) continue;
+      const n = Number(lane[0]?.bpm);
+      if (Number.isFinite(n) && n > 0) return n;
+    }
   }
   return null;
 }
 
 async function main() {
   const res = await fetch(SOURCE, { headers: { Accept: "application/json" } });
-  if (!res.ok) throw new Error(`Bestdori songs all.7 HTTP ${res.status}`);
+  if (!res.ok) throw new Error(`Bestdori songs all.8 HTTP ${res.status}`);
   const all = await res.json();
 
   const songs = [];
@@ -113,7 +117,7 @@ async function main() {
     const region = assetRegion(id);
     const bgmId = songBgmId(id);
     const lengthSec = Number(raw.length);
-    const bpm = firstBpm(raw.bpm);
+    const bpm = extractBpm(raw.bpm);
 
     songs.push({
       id,
@@ -124,6 +128,15 @@ async function main() {
       title_en: pickLocale(titles, 1),
       title_tw: pickLocale(titles, 2),
       title_cn: pickLocale(titles, 3),
+      lyricist_jp: pickLocale(raw.lyricist, 0),
+      lyricist_en: pickLocale(raw.lyricist, 1),
+      lyricist_cn: pickLocale(raw.lyricist, 3),
+      composer_jp: pickLocale(raw.composer, 0),
+      composer_en: pickLocale(raw.composer, 1),
+      composer_cn: pickLocale(raw.composer, 3),
+      arranger_jp: pickLocale(raw.arranger, 0),
+      arranger_en: pickLocale(raw.arranger, 1),
+      arranger_cn: pickLocale(raw.arranger, 3),
       jacket_name: jacketName,
       jacket_region: region,
       jacket_path: jacketAssetPath(id, jacketName, region),
