@@ -16,7 +16,9 @@ function run(command, args, cwd = webRoot) {
 }
 
 const proxy = run(process.execPath, [proxyScript]);
-const next = run(process.execPath, [nextBin, "dev"]);
+// Webpack is more stable on Windows than Turbopack for large globals.css
+// (Turbopack can panic with os error 299 while spawning PostCSS workers).
+const next = run(process.execPath, [nextBin, "dev", "--webpack"]);
 
 function shutdown(code = 0) {
   proxy.kill("SIGTERM");
