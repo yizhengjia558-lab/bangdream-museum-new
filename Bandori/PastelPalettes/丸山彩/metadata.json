@@ -804,6 +804,16 @@
       "resource_set_name": "res016098"
     },
     {
+      "card_id": 2562,
+      "card_name": "秘密の夜回り",
+      "rarity": "2-Star",
+      "event": "いざ尋常に！　君よ真の武士となれ！",
+      "release_date": "2026-11-19",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016102_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res016102"
+    },
+    {
       "card_id": 273,
       "card_name": "GBP盃",
       "rarity": "4-Star",

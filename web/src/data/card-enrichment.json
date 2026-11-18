@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-17T20:29:30.478178+00:00",
-  "matched": 2384,
-  "total": 2384,
+  "generated_at": "2026-11-18T20:00:15.192075+00:00",
+  "matched": 2392,
+  "total": 2392,
   "cards": {
     "1|奋不顾身向前冲！": {
       "character_id": 1,
@@ -978,7 +978,7 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "1|仲間を信じて！": {
+    "1|相信夥伴！": {
       "character_id": 1,
       "bestdori_card_id": 2474,
       "stars": 5,
@@ -10416,7 +10416,7 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "11|これも『最高の夏』": {
+    "11|這也是『最棒的夏天』": {
       "character_id": 11,
       "bestdori_card_id": 2475,
       "stars": 5,
@@ -15486,6 +15486,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
     },
+    "16|秘密の夜回り": {
+      "character_id": 16,
+      "bestdori_card_id": 2562,
+      "stars": 2,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2481,
+      "sd_resource_name": "sd016102",
+      "live2d_asset_bundle_name": "016_live_event_349_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
     "16|gbp盃": {
       "character_id": 16,
       "bestdori_card_id": 273,
@@ -16461,6 +16474,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
+    "17|気分は鬼コーチ": {
+      "character_id": 17,
+      "bestdori_card_id": 2560,
+      "stars": 5,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2479,
+      "sd_resource_name": "sd017090",
+      "live2d_asset_bundle_name": "017_live_event_349_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "17|frillypeony": {
       "character_id": 17,
       "bestdori_card_id": 90017,
@@ -17410,6 +17436,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
+    "18|一意専心": {
+      "character_id": 18,
+      "bestdori_card_id": 2561,
+      "stars": 3,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2480,
+      "sd_resource_name": "sd018088",
+      "live2d_asset_bundle_name": "018_live_event_349_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
     "18|楚楚可憐": {
       "character_id": 18,
       "bestdori_card_id": 5003,
@@ -18255,7 +18294,7 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "campaign"
     },
-    "19|朝焼けに照らされて": {
+    "19|被朝霞照耀": {
       "character_id": 19,
       "bestdori_card_id": 2479,
       "stars": 5,
@@ -18319,6 +18358,19 @@
       "live2d_asset_bundle_name": "019_live_event_327_sr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
+    },
+    "19|険しい修行？": {
+      "character_id": 19,
+      "bestdori_card_id": 2563,
+      "stars": 4,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2482,
+      "sd_resource_name": "sd019087",
+      "live2d_asset_bundle_name": "019_live_event_349_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "19|frillypeony": {
       "character_id": 19,
@@ -19281,6 +19333,19 @@
       "live2d_asset_bundle_name": "020_live_event_347_ssr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "20|真の武士": {
+      "character_id": 20,
+      "bestdori_card_id": 2559,
+      "stars": 5,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2478,
+      "sd_resource_name": "sd020091",
+      "live2d_asset_bundle_name": "020_live_event_349_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "20|frillypeony": {
       "character_id": 20,
@@ -22298,6 +22363,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
+    "23|真実への追及": {
+      "character_id": 23,
+      "bestdori_card_id": 2527,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "collab",
+      "release_year": 2026,
+      "costume_id": 2446,
+      "sd_resource_name": "sd023091",
+      "live2d_asset_bundle_name": "023_collabo_m_2",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
+    },
     "23|輕柔可愛": {
       "character_id": 23,
       "bestdori_card_id": 5008,
@@ -23247,7 +23325,7 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "24|弾けるサンフラワー": {
+    "24|彈跳的向日葵": {
       "character_id": 24,
       "bestdori_card_id": 2477,
       "stars": 2,
@@ -23324,6 +23402,19 @@
       "live2d_asset_bundle_name": "024_live_event_325_ssr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
+    },
+    "24|名探偵の観察眼": {
+      "character_id": 24,
+      "bestdori_card_id": 2528,
+      "stars": 5,
+      "attribute": "happy",
+      "card_kind": "collab",
+      "release_year": 2026,
+      "costume_id": 2447,
+      "sd_resource_name": "sd024090",
+      "live2d_asset_bundle_name": "024_collabo_m_2",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "24|mysticalbouquet": {
       "character_id": 24,
@@ -24260,6 +24351,19 @@
       "live2d_asset_bundle_name": "025_dream_festival_5_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
+    },
+    "25|物言わぬ眠り姫": {
+      "character_id": 25,
+      "bestdori_card_id": 2529,
+      "stars": 5,
+      "attribute": "pure",
+      "card_kind": "collab",
+      "release_year": 2026,
+      "costume_id": 2448,
+      "sd_resource_name": "sd025085",
+      "live2d_asset_bundle_name": "025_collabo_m_2",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "25|楚楚可憐": {
       "character_id": 25,
@@ -26055,7 +26159,7 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "28|雰囲気はバッチリ": {
+    "28|氣氛十分到位": {
       "character_id": 28,
       "bestdori_card_id": 2478,
       "stars": 4,
@@ -28265,7 +28369,7 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
     },
-    "32|私たちだけのプール": {
+    "32|僅屬於我們的泳池": {
       "character_id": 32,
       "bestdori_card_id": 2480,
       "stars": 5,
@@ -28798,7 +28902,7 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "33|通人は語る": {
+    "33|行家如是說": {
       "character_id": 33,
       "bestdori_card_id": 2476,
       "stars": 3,

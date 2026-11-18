@@ -635,7 +635,7 @@
     },
     {
       "card_id": 2479,
-      "card_name": "朝焼けに照らされて",
+      "card_name": "被朝霞照耀",
       "rarity": "5-Star",
       "event": "ドリームフェスティバルガチャ",
       "release_date": "2026-06-30",
@@ -682,6 +682,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019083_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019083_rip/card_after_training.png",
       "resource_set_name": "res019083"
+    },
+    {
+      "card_id": 2563,
+      "card_name": "険しい修行？",
+      "rarity": "4-Star",
+      "event": "悪を蹴散らす五弁の楓ガチャ",
+      "release_date": "2026-11-19",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019087_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res019087_rip/card_after_training.png",
+      "resource_set_name": "res019087"
     },
     {
       "card_id": 90019,

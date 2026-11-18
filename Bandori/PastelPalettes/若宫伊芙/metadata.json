@@ -734,6 +734,16 @@
       "resource_set_name": "res020090"
     },
     {
+      "card_id": 2559,
+      "card_name": "真の武士",
+      "rarity": "5-Star",
+      "event": "悪を蹴散らす五弁の楓ガチャ",
+      "release_date": "2026-11-19",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res020091_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res020091_rip/card_after_training.png",
+      "resource_set_name": "res020091"
+    },
+    {
       "card_id": 90020,
       "card_name": "Frilly Peony",
       "rarity": "2-Star",

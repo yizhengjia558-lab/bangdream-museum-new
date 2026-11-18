@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T20:29:00.674595+00:00",
+  "generated_at": "2026-11-18T19:59:18.541168+00:00",
   "source": [
     "Bestdori API",
     "Bandori Party API"
@@ -240,7 +240,7 @@
       "standing_url": "",
       "cards_untrained_path": "PastelPalettes/丸山彩/Cards/Untrained",
       "cards_trained_path": "PastelPalettes/丸山彩/Cards/Trained",
-      "card_count": 82
+      "card_count": 83
     },
     {
       "character_id": 17,
@@ -254,7 +254,7 @@
       "standing_url": "",
       "cards_untrained_path": "PastelPalettes/冰川日菜/Cards/Untrained",
       "cards_trained_path": "PastelPalettes/冰川日菜/Cards/Trained",
-      "card_count": 75
+      "card_count": 76
     },
     {
       "character_id": 18,
@@ -268,7 +268,7 @@
       "standing_url": "",
       "cards_untrained_path": "PastelPalettes/白鹭千圣/Cards/Untrained",
       "cards_trained_path": "PastelPalettes/白鹭千圣/Cards/Trained",
-      "card_count": 74
+      "card_count": 75
     },
     {
       "character_id": 19,
@@ -282,7 +282,7 @@
       "standing_url": "",
       "cards_untrained_path": "PastelPalettes/大和麻弥/Cards/Untrained",
       "cards_trained_path": "PastelPalettes/大和麻弥/Cards/Trained",
-      "card_count": 69
+      "card_count": 70
     },
     {
       "character_id": 20,
@@ -296,7 +296,7 @@
       "standing_url": "",
       "cards_untrained_path": "PastelPalettes/若宫伊芙/Cards/Untrained",
       "cards_trained_path": "PastelPalettes/若宫伊芙/Cards/Trained",
-      "card_count": 74
+      "card_count": 75
     },
     {
       "character_id": 21,
@@ -338,7 +338,7 @@
       "standing_url": "",
       "cards_untrained_path": "Roselia/今井莉莎/Cards/Untrained",
       "cards_trained_path": "Roselia/今井莉莎/Cards/Trained",
-      "card_count": 77
+      "card_count": 78
     },
     {
       "character_id": 24,
@@ -352,7 +352,7 @@
       "standing_url": "",
       "cards_untrained_path": "Roselia/宇田川亚子/Cards/Untrained",
       "cards_trained_path": "Roselia/宇田川亚子/Cards/Trained",
-      "card_count": 78
+      "card_count": 79
     },
     {
       "character_id": 25,
@@ -366,7 +366,7 @@
       "standing_url": "",
       "cards_untrained_path": "Roselia/白金燐子/Cards/Untrained",
       "cards_trained_path": "Roselia/白金燐子/Cards/Trained",
-      "card_count": 73
+      "card_count": 74
     },
     {
       "character_id": 26,

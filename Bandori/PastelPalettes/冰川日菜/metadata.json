@@ -744,6 +744,16 @@
       "resource_set_name": "res017089"
     },
     {
+      "card_id": 2560,
+      "card_name": "気分は鬼コーチ",
+      "rarity": "5-Star",
+      "event": "悪を蹴散らす五弁の楓ガチャ",
+      "release_date": "2026-11-19",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017090_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017090_rip/card_after_training.png",
+      "resource_set_name": "res017090"
+    },
+    {
       "card_id": 90017,
       "card_name": "Frilly Peony",
       "rarity": "2-Star",

@@ -714,6 +714,16 @@
       "resource_set_name": "res025082"
     },
     {
+      "card_id": 2529,
+      "card_name": "物言わぬ眠り姫",
+      "rarity": "5-Star",
+      "event": "魔法少女ノ魔女裁判コラボガチャpart2",
+      "release_date": "2026-11-18",
+      "untrained_image": "",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res025085_rip/card_after_training.png",
+      "resource_set_name": "res025085"
+    },
+    {
       "card_id": 5006,
       "card_name": "楚楚可憐",
       "rarity": "2-Star",

@@ -715,7 +715,7 @@
     },
     {
       "card_id": 2477,
-      "card_name": "弾けるサンフラワー",
+      "card_name": "彈跳的向日葵",
       "rarity": "2-Star",
       "event": "エンジョイ！　私たちのベストサマー！",
       "release_date": "2026-06-30",
@@ -772,6 +772,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res024084_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res024084_rip/card_after_training.png",
       "resource_set_name": "res024084"
+    },
+    {
+      "card_id": 2528,
+      "card_name": "名探偵の観察眼",
+      "rarity": "5-Star",
+      "event": "魔法少女ノ魔女裁判コラボガチャpart2",
+      "release_date": "2026-11-18",
+      "untrained_image": "",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res024090_rip/card_after_training.png",
+      "resource_set_name": "res024090"
     },
     {
       "card_id": 90024,
