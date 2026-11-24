@@ -734,16 +734,6 @@
       "resource_set_name": "res016092"
     },
     {
-      "card_id": 2451,
-      "card_name": "實吃！在地美食",
-      "rarity": "4-Star",
-      "event": "準備はOK？Road tripガチャ",
-      "release_date": "2026-05-10",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016099_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016099_rip/card_after_training.png",
-      "resource_set_name": "res016099"
-    },
-    {
       "card_id": 2311,
       "card_name": "因为知道来时的路",
       "rarity": "3-Star",
@@ -812,6 +802,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016102_rip/card_normal.png",
       "trained_image": "",
       "resource_set_name": "res016102"
+    },
+    {
+      "card_id": 2451,
+      "card_name": "亲自品尝！当地美味",
+      "rarity": "4-Star",
+      "event": "准备好了吗？Road trip招募",
+      "release_date": "2026-11-24",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016099_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016099_rip/card_after_training.png",
+      "resource_set_name": "res016099"
     },
     {
       "card_id": 273,

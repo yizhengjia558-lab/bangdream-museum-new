@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T23:24:12.787970+00:00",
+  "generated_at": "2026-11-24T21:57:10.346866+00:00",
   "matched": 2392,
   "total": 2392,
   "cards": {
@@ -15395,19 +15395,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
-    "16|實吃！在地美食": {
-      "character_id": 16,
-      "bestdori_card_id": 2451,
-      "stars": 4,
-      "attribute": "pure",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2370,
-      "sd_resource_name": "sd016099",
-      "live2d_asset_bundle_name": "016_live_event_330_ssr",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "16|因为知道来时的路": {
       "character_id": 16,
       "bestdori_card_id": 2311,
@@ -15498,6 +15485,19 @@
       "live2d_asset_bundle_name": "016_live_event_349_r",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
+    },
+    "16|亲自品尝！当地美味": {
+      "character_id": 16,
+      "bestdori_card_id": 2451,
+      "stars": 4,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2370,
+      "sd_resource_name": "sd016099",
+      "live2d_asset_bundle_name": "016_live_event_330_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
     },
     "16|gbp盃": {
       "character_id": 16,
@@ -16383,19 +16383,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
     },
-    "17|travelingway": {
-      "character_id": 17,
-      "bestdori_card_id": 2450,
-      "stars": 2,
-      "attribute": "happy",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2369,
-      "sd_resource_name": "sd017086",
-      "live2d_asset_bundle_name": "017_live_event_330_r",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "event"
-    },
     "17|说出口，听进心": {
       "character_id": 17,
       "bestdori_card_id": 2310,
@@ -16486,6 +16473,19 @@
       "live2d_asset_bundle_name": "017_live_event_349_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "17|旅行之路": {
+      "character_id": 17,
+      "bestdori_card_id": 2450,
+      "stars": 2,
+      "attribute": "happy",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2369,
+      "sd_resource_name": "sd017086",
+      "live2d_asset_bundle_name": "017_live_event_330_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
     },
     "17|frillypeony": {
       "character_id": 17,
@@ -17345,19 +17345,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "18|懸崖邊的告白": {
-      "character_id": 18,
-      "bestdori_card_id": 2449,
-      "stars": 3,
-      "attribute": "power",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2368,
-      "sd_resource_name": "sd018085",
-      "live2d_asset_bundle_name": "018_live_event_330_sr",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "event"
-    },
     "18|lovelycat": {
       "character_id": 18,
       "bestdori_card_id": 2307,
@@ -17446,6 +17433,19 @@
       "costume_id": 2480,
       "sd_resource_name": "sd018088",
       "live2d_asset_bundle_name": "018_live_event_349_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
+    "18|悬崖峭壁上的告白": {
+      "character_id": 18,
+      "bestdori_card_id": 2449,
+      "stars": 3,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2368,
+      "sd_resource_name": "sd018085",
+      "live2d_asset_bundle_name": "018_live_event_330_sr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
     },
@@ -18255,19 +18255,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "19|一句句令人欣喜的話語": {
-      "character_id": 19,
-      "bestdori_card_id": 2448,
-      "stars": 5,
-      "attribute": "pure",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2367,
-      "sd_resource_name": "sd019084",
-      "live2d_asset_bundle_name": "019_live_event_330_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "19|干劲满满的发表会": {
       "character_id": 19,
       "bestdori_card_id": 2308,
@@ -18369,6 +18356,19 @@
       "costume_id": 2482,
       "sd_resource_name": "sd019087",
       "live2d_asset_bundle_name": "019_live_event_349_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
+    },
+    "19|句句暖心的话语": {
+      "character_id": 19,
+      "bestdori_card_id": 2448,
+      "stars": 5,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2367,
+      "sd_resource_name": "sd019084",
+      "live2d_asset_bundle_name": "019_live_event_330_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
@@ -19243,19 +19243,6 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
     },
-    "20|加上hashtag": {
-      "character_id": 20,
-      "bestdori_card_id": 2447,
-      "stars": 5,
-      "attribute": "pure",
-      "card_kind": "normal",
-      "release_year": 2026,
-      "costume_id": 2366,
-      "sd_resource_name": "sd020087",
-      "live2d_asset_bundle_name": "020_live_event_330_ur",
-      "animation_asset_bundle_name": null,
-      "bestdori_type": "permanent"
-    },
     "20|兴奋的试穿时间": {
       "character_id": 20,
       "bestdori_card_id": 2304,
@@ -19344,6 +19331,19 @@
       "costume_id": 2478,
       "sd_resource_name": "sd020091",
       "live2d_asset_bundle_name": "020_live_event_349_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "permanent"
+    },
+    "20|带上话题标签": {
+      "character_id": 20,
+      "bestdori_card_id": 2447,
+      "stars": 5,
+      "attribute": "pure",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2366,
+      "sd_resource_name": "sd020087",
+      "live2d_asset_bundle_name": "020_live_event_330_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },

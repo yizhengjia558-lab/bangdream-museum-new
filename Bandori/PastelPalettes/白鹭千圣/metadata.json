@@ -654,16 +654,6 @@
       "resource_set_name": "res018079"
     },
     {
-      "card_id": 2449,
-      "card_name": "懸崖邊的告白",
-      "rarity": "3-Star",
-      "event": "君と一緒に！パスパレ全国ツアー！",
-      "release_date": "2026-05-10",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018085_rip/card_normal.png",
-      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018085_rip/card_after_training.png",
-      "resource_set_name": "res018085"
-    },
-    {
       "card_id": 2307,
       "card_name": "LOVELY CAT",
       "rarity": "2-Star",
@@ -732,6 +722,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018088_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018088_rip/card_after_training.png",
       "resource_set_name": "res018088"
+    },
+    {
+      "card_id": 2449,
+      "card_name": "悬崖峭壁上的告白",
+      "rarity": "3-Star",
+      "event": "与你同行！PasPale全国巡演—！",
+      "release_date": "2026-11-24",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018085_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res018085_rip/card_after_training.png",
+      "resource_set_name": "res018085"
     },
     {
       "card_id": 5003,

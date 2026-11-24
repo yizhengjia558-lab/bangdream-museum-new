@@ -674,16 +674,6 @@
       "resource_set_name": "res017081"
     },
     {
-      "card_id": 2450,
-      "card_name": "Traveling Way",
-      "rarity": "2-Star",
-      "event": "君と一緒に！パスパレ全国ツアー！",
-      "release_date": "2026-05-10",
-      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017086_rip/card_normal.png",
-      "trained_image": "",
-      "resource_set_name": "res017086"
-    },
-    {
       "card_id": 2310,
       "card_name": "说出口，听进心",
       "rarity": "5-Star",
@@ -752,6 +742,16 @@
       "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017090_rip/card_normal.png",
       "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017090_rip/card_after_training.png",
       "resource_set_name": "res017090"
+    },
+    {
+      "card_id": 2450,
+      "card_name": "旅行之路",
+      "rarity": "2-Star",
+      "event": "与你同行！PasPale全国巡演—！",
+      "release_date": "2026-11-24",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res017086_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res017086"
     },
     {
       "card_id": 90017,
