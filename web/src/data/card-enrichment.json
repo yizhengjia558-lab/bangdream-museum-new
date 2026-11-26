@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T21:03:12.017331+00:00",
+  "generated_at": "2026-11-26T20:57:50.439516+00:00",
   "matched": 2392,
   "total": 2392,
   "cards": {
@@ -5671,7 +5671,7 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "6|今日は、ありがと": {
+    "6|今天，謝謝你": {
       "character_id": 6,
       "bestdori_card_id": 2483,
       "stars": 3,
@@ -6620,7 +6620,7 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "7|初めての熱を浴びて": {
+    "7|沐浴在初次感受的熱度": {
       "character_id": 7,
       "bestdori_card_id": 2482,
       "stars": 5,
@@ -7569,7 +7569,7 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
-    "8|忘れえぬ夕焼け": {
+    "8|無法遺忘的夕陽": {
       "character_id": 8,
       "bestdori_card_id": 2484,
       "stars": 2,
@@ -8453,7 +8453,7 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
     },
-    "9|この夕映えを胸に": {
+    "9|將這夕陽映於胸中": {
       "character_id": 9,
       "bestdori_card_id": 2481,
       "stars": 5,
@@ -9428,7 +9428,7 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "dreamfes"
     },
-    "10|最初の一歩は": {
+    "10|最初的一步是": {
       "character_id": 10,
       "bestdori_card_id": 2485,
       "stars": 4,
