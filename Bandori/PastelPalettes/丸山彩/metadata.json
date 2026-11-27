@@ -814,6 +814,16 @@
       "resource_set_name": "res016099"
     },
     {
+      "card_id": 2564,
+      "card_name": "聖なる夜に包まれて",
+      "rarity": "5-Star",
+      "event": "聖夜を飾るプリズムライトガチャ",
+      "release_date": "2026-11-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016103_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res016103_rip/card_after_training.png",
+      "resource_set_name": "res016103"
+    },
+    {
       "card_id": 273,
       "card_name": "GBP盃",
       "rarity": "4-Star",

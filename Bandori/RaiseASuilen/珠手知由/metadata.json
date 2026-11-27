@@ -374,6 +374,16 @@
       "resource_set_name": "res035046"
     },
     {
+      "card_id": 2565,
+      "card_name": "温かな星灯り",
+      "rarity": "5-Star",
+      "event": "聖夜を飾るプリズムライトガチャ",
+      "release_date": "2026-11-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res035049_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res035049_rip/card_after_training.png",
+      "resource_set_name": "res035049"
+    },
+    {
       "card_id": 90035,
       "card_name": "Rampage!!!",
       "rarity": "2-Star",

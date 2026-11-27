@@ -774,6 +774,16 @@
       "resource_set_name": "res021089"
     },
     {
+      "card_id": 2568,
+      "card_name": "無垢な願い",
+      "rarity": "4-Star",
+      "event": "聖夜を飾るプリズムライトガチャ",
+      "release_date": "2026-11-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021091_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res021091_rip/card_after_training.png",
+      "resource_set_name": "res021091"
+    },
+    {
       "card_id": 274,
       "card_name": "GBP盃",
       "rarity": "4-Star",

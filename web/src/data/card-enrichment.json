@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-26T20:57:50.439516+00:00",
-  "matched": 2392,
-  "total": 2392,
+  "generated_at": "2026-11-27T20:42:27.462002+00:00",
+  "matched": 2399,
+  "total": 2399,
   "cards": {
     "1|奋不顾身向前冲！": {
       "character_id": 1,
@@ -1042,6 +1042,19 @@
       "live2d_asset_bundle_name": "001_live_event_347_sr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "event"
+    },
+    "1|これは私たちの序章": {
+      "character_id": 1,
+      "bestdori_card_id": 2569,
+      "stars": 5,
+      "attribute": "happy",
+      "card_kind": "limited",
+      "release_year": 2026,
+      "costume_id": 2488,
+      "sd_resource_name": "sd001103",
+      "live2d_asset_bundle_name": "001_dream_festival_5_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "dreamfes"
     },
     "1|gbp盃": {
       "character_id": 1,
@@ -11495,6 +11508,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
+    "12|輝け、薫ツリー": {
+      "character_id": 12,
+      "bestdori_card_id": 2566,
+      "stars": 3,
+      "attribute": "cool",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2485,
+      "sd_resource_name": "sd012092",
+      "live2d_asset_bundle_name": "012_live_event_350_sr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
     "12|楚楚可憐": {
       "character_id": 12,
       "bestdori_card_id": 5004,
@@ -15498,6 +15524,19 @@
       "live2d_asset_bundle_name": "016_live_event_330_ssr",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "16|聖なる夜に包まれて": {
+      "character_id": 16,
+      "bestdori_card_id": 2564,
+      "stars": 5,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2483,
+      "sd_resource_name": "sd016103",
+      "live2d_asset_bundle_name": "016_live_event_350_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "16|gbp盃": {
       "character_id": 16,
@@ -20360,6 +20399,19 @@
       "live2d_asset_bundle_name": "021_collabo_m_1",
       "animation_asset_bundle_name": null,
       "bestdori_type": "limited"
+    },
+    "21|無垢な願い": {
+      "character_id": 21,
+      "bestdori_card_id": 2568,
+      "stars": 4,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2487,
+      "sd_resource_name": "sd021091",
+      "live2d_asset_bundle_name": "021_live_event_350_ssr",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "21|gbp盃": {
       "character_id": 21,
@@ -27316,6 +27368,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
+    "30|ピュア・スノー": {
+      "character_id": 30,
+      "bestdori_card_id": 2567,
+      "stars": 2,
+      "attribute": "happy",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2486,
+      "sd_resource_name": "sd030049",
+      "live2d_asset_bundle_name": "030_live_event_350_r",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "event"
+    },
     "30|stellapolaris": {
       "character_id": 30,
       "bestdori_card_id": 90030,
@@ -29474,6 +29539,19 @@
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
     },
+    "34|街を染める光彩": {
+      "character_id": 34,
+      "bestdori_card_id": 2570,
+      "stars": 5,
+      "attribute": "cool",
+      "card_kind": "limited",
+      "release_year": 2026,
+      "costume_id": 2489,
+      "sd_resource_name": "sd034046",
+      "live2d_asset_bundle_name": "034_dream_festival_5_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "dreamfes"
+    },
     "34|輕柔可愛": {
       "character_id": 34,
       "bestdori_card_id": 5011,
@@ -29980,6 +30058,19 @@
       "live2d_asset_bundle_name": "035_live_event_329_ur",
       "animation_asset_bundle_name": null,
       "bestdori_type": "permanent"
+    },
+    "35|温かな星灯り": {
+      "character_id": 35,
+      "bestdori_card_id": 2565,
+      "stars": 5,
+      "attribute": "power",
+      "card_kind": "normal",
+      "release_year": 2026,
+      "costume_id": 2484,
+      "sd_resource_name": "sd035049",
+      "live2d_asset_bundle_name": "035_live_event_350_ur",
+      "animation_asset_bundle_name": null,
+      "bestdori_type": "special"
     },
     "35|rampage!!!": {
       "character_id": 35,

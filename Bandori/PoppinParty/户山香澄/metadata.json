@@ -804,6 +804,16 @@
       "resource_set_name": "res001102"
     },
     {
+      "card_id": 2569,
+      "card_name": "これは私たちの序章",
+      "rarity": "5-Star",
+      "event": "ドリームフェスティバルガチャ",
+      "release_date": "2026-11-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res001103_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res001103_rip/card_after_training.png",
+      "resource_set_name": "res001103"
+    },
+    {
       "card_id": 271,
       "card_name": "GBP盃",
       "rarity": "4-Star",

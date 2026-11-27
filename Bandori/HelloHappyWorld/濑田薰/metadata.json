@@ -754,6 +754,16 @@
       "resource_set_name": "res012088"
     },
     {
+      "card_id": 2566,
+      "card_name": "輝け、薫ツリー",
+      "rarity": "3-Star",
+      "event": "君が為にベルは鳴る",
+      "release_date": "2026-11-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012092_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res012092_rip/card_after_training.png",
+      "resource_set_name": "res012092"
+    },
+    {
       "card_id": 5004,
       "card_name": "楚楚可憐",
       "rarity": "2-Star",

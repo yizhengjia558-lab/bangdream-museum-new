@@ -404,6 +404,16 @@
       "resource_set_name": "res030046"
     },
     {
+      "card_id": 2567,
+      "card_name": "ピュア・スノー",
+      "rarity": "2-Star",
+      "event": "君が為にベルは鳴る",
+      "release_date": "2026-11-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res030049_rip/card_normal.png",
+      "trained_image": "",
+      "resource_set_name": "res030049"
+    },
+    {
       "card_id": 90030,
       "card_name": "Stella Polaris",
       "rarity": "2-Star",

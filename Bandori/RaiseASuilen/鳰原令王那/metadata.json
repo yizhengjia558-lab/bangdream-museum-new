@@ -374,6 +374,16 @@
       "resource_set_name": "res034043"
     },
     {
+      "card_id": 2570,
+      "card_name": "街を染める光彩",
+      "rarity": "5-Star",
+      "event": "ドリームフェスティバルガチャ",
+      "release_date": "2026-11-29",
+      "untrained_image": "https://bestdori.com/assets/jp/characters/resourceset/res034046_rip/card_normal.png",
+      "trained_image": "https://bestdori.com/assets/jp/characters/resourceset/res034046_rip/card_after_training.png",
+      "resource_set_name": "res034046"
+    },
+    {
       "card_id": 5011,
       "card_name": "輕柔可愛",
       "rarity": "2-Star",
